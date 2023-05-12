@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMzE5MDU2MDYxOkNwMTI1MjoxNjgzODExNzg2MjE1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:59:46
+* @ValidationCode : MjotNTMxMDA0OTg1OkNwMTI1MjoxNjgxMDU2NDg1NDAyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 09 Apr 2023 21:38:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.INT.LIQ.AUTH
@@ -27,7 +27,7 @@ SUBROUTINE REDO.REINV.INT.LIQ.AUTH
 *  DATE             WHO         REFERENCE         DESCRIPTION
 * 04-Jul-2011    H GANESH     PACS00072695_N.11 INITIAL CREATION
 * 10.04.2023   Conversion Tool       R22        Auto Conversion     - No changes
-* 10.04.2023   Shanmugapriya M       R22        Manual Conversion   - CALL routine format modified
+* 10.04.2023   Shanmugapriya M       R22        Manual Conversion   - No changes
 *
 
 *----------------------------------------------------------------------------
@@ -47,7 +47,7 @@ LOC.REF:
 LOC.REF.APPLICATION="ACCOUNT":
     LOC.REF.FIELDS='L.AC.AZ.ACC.REF'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AC.AZ.ACC.REF = LOC.REF.POS<1,1>
 
 RETURN

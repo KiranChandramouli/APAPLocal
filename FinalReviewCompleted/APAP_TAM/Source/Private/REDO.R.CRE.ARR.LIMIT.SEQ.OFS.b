@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMTE3NTg1MzQ0OkNwMTI1MjoxNjgzODA5MzY2MDY4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:19:26
+* @ValidationCode : Mjo3NDIyNDY1ODY6Q3AxMjUyOjE2ODI1ODk0OTg2NzU6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:28:18
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.R.CRE.ARR.LIMIT.SEQ.OFS(Y.REQUEST, Y.RESPONSE)
@@ -59,7 +59,6 @@ PROCESS:
     P.LAST.ID = Y.REQUEST<3>
     P.LAST.COLL.ID = Y.REQUEST<4>
     E = ""
-*CALL APAP.TAM.REDO.R.CRE.ARR.LIMIT.SEQ.UPD(P.CUSTOMER.ID, P.LIMIT.REF, P.ACTION, P.LAST.ID, P.LAST.COLL.ID) ;*MANUAL R22 CODE CONVERSION
     CALL APAP.TAM.redoRCreArrLimitSeqUpd(P.CUSTOMER.ID, P.LIMIT.REF, P.ACTION, P.LAST.ID, P.LAST.COLL.ID) ;*MANUAL R22 CODE CONVERSION
     Y.RESPONSE = ""
 

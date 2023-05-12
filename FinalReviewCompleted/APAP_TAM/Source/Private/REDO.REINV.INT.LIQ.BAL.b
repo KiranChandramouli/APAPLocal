@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODUxNzIxMTgwOkNwMTI1MjoxNjgzODExOTUxMjQ2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 19:02:31
+* @ValidationCode : Mjo2MjIyODcyNzI6Q3AxMjUyOjE2ODEwNTY0ODU0ODI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 09 Apr 2023 21:38:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.INT.LIQ.BAL
@@ -27,7 +27,7 @@ SUBROUTINE REDO.REINV.INT.LIQ.BAL
 *  DATE             WHO         REFERENCE           DESCRIPTION
 * 05-Jul-2011    H GANESH       PACS00072695_N.11  INITIAL CREATION
 * 10.04.2023   Conversion Tool       R22            Auto Conversion     - FM TO @FM
-* 10.04.2023   Shanmugapriya M       R22            Manual Conversion   - CALL routine format modified
+* 10.04.2023   Shanmugapriya M       R22            Manual Conversion   - No changes
 *
 *----------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ INIT:
     LOC.REF.APPLICATION="ACCOUNT":@FM:'AZ.ACCOUNT':@FM:'FUNDS.TRANSFER':@FM:'TELLER'
     LOC.REF.FIELDS='L.AC.AV.BAL':@FM:'L.AZ.REIVSD.INT':@FM:'L.FT.AZ.ACC.REF':@FM:'L.TT.AZ.ACC.REF'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AC.AV.BAL = LOC.REF.POS<1,1>
     POS.L.AZ.REIVSD.INT = LOC.REF.POS<2,1>
     FT.L.FT.AZ.ACC.REF = LOC.REF.POS<3,1>

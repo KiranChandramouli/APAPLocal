@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNDk0ODc3NjE2OkNwMTI1MjoxNjgzODExNjEwOTQ5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:56:50
+* @ValidationCode : MjozNTMyMjA4NTY6Q3AxMjUyOjE2ODI1Mjg0NzI1MjY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.AUTH
@@ -30,7 +30,7 @@ SUBROUTINE REDO.REINV.AUTH
 *Modification History
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *18-04-2023            Conversion Tool             R22 Auto Code conversion                       VM TO @VM,SM TO @SM,++ TO +=1
-*18-04-2023              Samaran T                R22 Manual Code conversion                       CALL routine format modified
+*18-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
 *-----------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -52,7 +52,7 @@ INIT:
     LOC.REF.APPLICATION="AZ.ACCOUNT"
     LOC.REF.FIELDS='L.AZ.METHOD.PAY':@VM:'L.AZ.AMOUNT':@VM:'L.AZ.DEBIT.ACC'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AZ.METHOD.PAY = LOC.REF.POS<1,1>
     POS.L.AZ.AMOUNT     = LOC.REF.POS<1,2>
     POS.L.AZ.DEBIT.ACC  = LOC.REF.POS<1,3>

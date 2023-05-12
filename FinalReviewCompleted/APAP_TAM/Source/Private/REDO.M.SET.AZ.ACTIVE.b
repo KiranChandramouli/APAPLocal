@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjEyMzcyMTEwMDpDcDEyNTI6MTY4MzgwODMzNjkzODpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:02:16
+* @ValidationCode : MjotMTM2NjE4NTk3NDpDcDEyNTI6MTY4MTM3NjA5ODE3ODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 13 Apr 2023 14:24:58
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.M.SET.AZ.ACTIVE
@@ -33,7 +33,7 @@ SUBROUTINE REDO.M.SET.AZ.ACTIVE
 *  ------           --------          ---------------                  ------------------
 * 24-07-2012     Prabhu N                                             Initial Creation
 * 13.04.2023     Conversion Tool             R22                      Auto Conversion     - FM TO @FM, VM TO @VM, ++ TO += 1
-* 13.04.2023    Shanmugapriya M             R22                      Manual Conversion   - CALL routine format modified
+* 13.04.2023    Shanmugapriya M             R22                      Manual Conversion   - No changes
 *
 *--------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -62,7 +62,7 @@ SUBROUTINE REDO.M.SET.AZ.ACTIVE
     LRF.FIELD='L.AC.STATUS1'
     LRF.APP  ='ACCOUNT'
     LRF.POS  =''
-    CALL MULTI.GET.LOC.REF(LRF.APP,LRF.FIELD,LRF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LRF.APP,LRF.FIELD,LRF.POS)
 
     SEL.CMD="SELECT ":FN.AZ.CUSTOMER
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk2MDgzMTY4OTpDcDEyNTI6MTY4MzgyNDk2MzE5MDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 22:39:23
+* @ValidationCode : MjoxNTYyMDEyNDAyOkNwMTI1MjoxNjgyNTI4NDc0MjUwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:14
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE  REDO.REMAIN.AMT(VAR.ACCT.AMT)
@@ -29,7 +29,7 @@ SUBROUTINE  REDO.REMAIN.AMT(VAR.ACCT.AMT)
 *Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *13/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION         FM TO @FM, VM TO @VM, SM TO @SM
-*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION       CALL routine format modified
+*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
 *-------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -68,7 +68,7 @@ INIT:
     LREF.APP=APPLICATION
     LREF.FIELDS='L.NO.OF.INSTAL'
     LREF.POS=''
-    CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
 
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
         VAR.NO.INSTAL=R.NEW(FT.LOCAL.REF)<1,LREF.POS>

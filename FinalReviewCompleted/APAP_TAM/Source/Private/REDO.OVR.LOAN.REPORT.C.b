@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4MzQxNTE5MjU6Q3AxMjUyOjE2ODM4MDkwNjYyMzM6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:14:26
+* @ValidationCode : MjoxODY4NTgyMjU3OkNwMTI1MjoxNjgyNTI4NDY4NTM0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:08
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.OVR.LOAN.REPORT.C(Y.FIN.ARR)
@@ -16,7 +16,7 @@ SUBROUTINE REDO.OVR.LOAN.REPORT.C(Y.FIN.ARR)
 *Modification History
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *18-04-2023            Conversion Tool             R22 Auto Code conversion                FM TO @FM,VM TO @VM,SM TO @SM
-*18-04-2023              Samaran T                R22 Manual Code conversion               CALL routine format modified
+*18-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
 *--------------------------------------------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -73,7 +73,7 @@ SUBROUTINE REDO.OVR.LOAN.REPORT.C(Y.FIN.ARR)
 
     Y.APPL = 'AA.PRD.DES.CUSTOMER':@FM:'CUSTOMER':@FM:'AA.PRD.DES.OVERDUE'
     Y.FLDS = 'L.AA.CAMP.TY':@FM:'L.CU.CIDENT':@VM:'L.CU.RNC':@VM:'L.CU.NOUNICO':@VM:'L.CU.ACTANAC':@VM:'L.CU.TEL.NO':@FM:'L.LOAN.STATUS.1':@VM:'L.LOAN.COND'
-    CALL MULTI.GET.LOC.REF(Y.APPL,Y.FLDS,Y.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(Y.APPL,Y.FLDS,Y.POS)
     Y.CA.POS = Y.POS<1,1> ; Y.CID.POS = Y.POS<2,1> ; Y.RNC.POS = Y.POS<2,2> ; Y.NOUN.POS = Y.POS<2,3> ; Y.ACT.POS = Y.POS<2,4>; Y.TEL.NO.PS = Y.POS<2,5>
     Y.LN.ST.POS = Y.POS<3,1> ; Y.LN.COND.POS = Y.POS<3,2>
 

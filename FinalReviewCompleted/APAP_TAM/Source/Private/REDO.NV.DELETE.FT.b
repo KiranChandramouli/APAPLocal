@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo3MjAxMTM5OTc6Q3AxMjUyOjE2ODM4MDg4NjMwMjM6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:11:03
+* @ValidationCode : MjozMzUwMTg4NjE6Q3AxMjUyOjE2ODI1Mjg0NjY5MTc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:06
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *
@@ -32,7 +32,7 @@ SUBROUTINE REDO.NV.DELETE.FT
 *Modification History
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *18-04-2023            Conversion Tool             R22 Auto Code conversion                FM TO @FM,VM TO @VM,IF CONDITION ADDED
-*18-04-2023              Samaran T                R22 Manual Code conversion                     CALL routine format modified
+*18-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
 *-------------------------------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -209,7 +209,7 @@ INITIALISE:
     WCAMPO<3> = "L.CH.CCY"
     WCAMPO<4> = "L.INITIAL.ID"
     WCAMPO    = CHANGE(WCAMPO,@FM,@VM) : @FM : "L.INITIAL.ID"
-    CALL MULTI.GET.LOC.REF(WAPP.LST,WCAMPO,YPOS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(WAPP.LST,WCAMPO,YPOS)
     WCASH   = YPOS<1,1>
     WCHECK  = YPOS<1,2>
     WCCY    = YPOS<1,3>

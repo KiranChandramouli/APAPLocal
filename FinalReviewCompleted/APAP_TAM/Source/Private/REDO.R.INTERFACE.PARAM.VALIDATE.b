@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTg2ODY0NDkyNTpDcDEyNTI6MTY4Mzg2NjA3NTczNDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 10:04:35
+* @ValidationCode : MjotMTM1ODUxOTM5MzpDcDEyNTI6MTY4MjU4OTUwMDM1ODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:28:20
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 
@@ -64,8 +64,11 @@ INITIALISE:
 
     sendMethod = ""
     sendMethodNo = 0
-* CALL APAP.TAM.TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo) ;*MANUAL R22 CODE CONVERSION
+    
+*CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo)
+** R22 Manual conversion
+    CALL APAP.TAM.tamRGetValueByFieldName(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo)
+
 RETURN
 *-----------------------------------------------------------------------------
 *** </region>
@@ -102,7 +105,9 @@ PROCESS:
                 RETURN
             END
         END ELSE
-            CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo) ;*MANUAL R22 CODE CONVERSION
+*CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
+** R22 Manual conversion
+            CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
         END
 
         BEGIN CASE
@@ -196,7 +201,9 @@ CHECK.FIELD.MANDATORY:
 *-----------------------------------------------------------------------------
     fieldValue = ""
     fieldNo    = 0
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo) ;*MANUAL R22 CODE CONVERSION
+*CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
+** R22 Manual conversion
+    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
     IF fieldValue EQ "" THEN
         AF = fieldNo
         Y.E.TEXT = "ST-REDO.BCR-MANDATORY-FIELD"
@@ -213,13 +220,17 @@ CHECK.PARAMTYPE:
     fieldParamType     = ""
     fieldParamTypeNo   = 0
     fieldName          = "PARAM.TYPE"
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo) ;*MANUAL R22 CODE CONVERSION
+*CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
+** R22 Manual conversion
+    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
 
 * PARAM.VALUE field
     fieldParamValue    = ""
     fieldParamValueNo  = 0
     fieldName          = "PARAM.VALUE"
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamValue, fieldParamValueNo) ;*MANUAL R22 CODE CONVERSION
+*CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
+** R22 Manual conversion
+    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamValue, fieldParamValueNo)
 
 
 * Check Dup on some paramTypes
@@ -310,8 +321,7 @@ CHECK.DUP.PARAM.TYPE:
         result = 0
 * CALL TAM.R.CHECK.DUP.VALUES(paramTypeToCheck, fieldParamType, @VM, result)
 ** R22 Manual conversion
-*CALL APAP.TAM.TAM.R.CHECK.DUP.VALUES(paramTypeToCheck, fieldParamType, @VM, result)
-        CALL APAP.TAM.tamRCheckDupValues(paramTypeToCheck, fieldParamType, @VM, result) ;* R22 Manual conversion
+        CALL APAP.TAM.tamRCheckDupValues(paramTypeToCheck, fieldParamType, @VM, result)
         IF result GT 0 THEN
             AF =  fieldParamTypeNo
             AV =  result

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDE2MzE2NzgzOkNwMTI1MjoxNjgzODExNTg0OTc5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:56:24
+* @ValidationCode : MjotMTkzMTEzNzc2NTpDcDEyNTI6MTY4MTA1NjQ4NTI0NzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 09 Apr 2023 21:38:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.AUT.DEAL.SLIP
@@ -28,7 +28,7 @@ SUBROUTINE REDO.REINV.AUT.DEAL.SLIP
 *  DATE             WHO         REFERENCE         DESCRIPTION
 * 05-04-2011     H GANESH     N.11 - PACS00030247  Changes Made
 * 10.04.2023  Conversion Tool       R22            Auto Conversion     - FM TO @FM
-* 10.04.2023  Shanmugapriya M       R22            Manual Conversion   - CALL routine format modified
+* 10.04.2023  Shanmugapriya M       R22            Manual Conversion   - No changes
 *
 *----------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ PROCESS:
     LOC.REF.APPLICATION="TELLER":@FM:"FUNDS.TRANSFER"
     LOC.REF.FIELDS='L.TT.AZ.ACC.REF':@FM:'L.FT.AZ.ACC.REF'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.TT.AZ.ACC.REF=LOC.REF.POS<1,1>
     POS.L.FT.AZ.ACC.REF=LOC.REF.POS<2,1>
 

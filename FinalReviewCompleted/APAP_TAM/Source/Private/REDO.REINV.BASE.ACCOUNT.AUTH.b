@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTI3NDY2MDc0MjpDcDEyNTI6MTY4MzgxMTY2MTYwMDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:57:41
+* @ValidationCode : MjotMTQ5MTQ1NzQ5OTpDcDEyNTI6MTY4MjUyODQ3MjY4ODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.BASE.ACCOUNT.AUTH
@@ -29,7 +29,7 @@ SUBROUTINE REDO.REINV.BASE.ACCOUNT.AUTH
 *
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *13/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION           FM TO @FM, VM TO @VM
-*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION         CALL routine format modified
+*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
 *----------------------------------------------------------------------------
  
     $INSERT I_COMMON
@@ -57,7 +57,7 @@ INIT:
     LOC.REF.APPLICATION="ACCOUNT":@FM:"AZ.PRODUCT.PARAMETER"
     LOC.REF.FIELDS='L.AZ.APP':@VM:'L.AC.AZ.ACC.REF':@VM:'L.AC.STATUS1':@FM:'L.AZ.RE.INV.CAT'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
 
     POS.L.AZ.APP        = LOC.REF.POS<1,1>
     POS.L.AC.AZ.ACC.REF = LOC.REF.POS<1,2>

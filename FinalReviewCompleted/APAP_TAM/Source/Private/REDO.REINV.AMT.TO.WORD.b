@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTAzNDUyNDY2OTpDcDEyNTI6MTY4Mzg2NjM2NTQ5ODpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 10:09:25
+* @ValidationCode : MjotMjEyMTM2NDM4NjpDcDEyNTI6MTY4MjU4OTUzNTkwNjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:28:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.AMT.TO.WORD(Y.AMT)
@@ -79,8 +79,10 @@ PROCESS.PARA:
 *Y.AMT.IN.WORDS='(':OUT.AMT:' ':R.CUR<EB.CUR.CCY.NAME>:Y.DEC.OUT:') PARA SER'
 
     IN.AMT = Y.FULL.AMT
-
+*CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;* R22 Manual conversion
+** R22 Manual conversion
     CALL APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;* R22 Manual conversion
+
 
     Y.AMT.IN.WORDS = "( ":UPCASE(OUT.AMT):" ) PARA SER"
     Y.TOTAL.LEN=LEN(Y.AMT.IN.WORDS)

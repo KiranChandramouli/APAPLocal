@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNTQ5ODYwOTc1OkNwMTI1MjoxNjgzODA4NDU1OTQwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:04:15
+* @ValidationCode : MjoxNDMwOTE2MDUzOkNwMTI1MjoxNjgwNjEwNzQ4MzY2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 04 Apr 2023 17:49:08
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
 $PACKAGE APAP.TAM
@@ -37,7 +37,7 @@ MAIN:
 
     Y.APL = 'USER'
     Y.FLDS = 'L.TELR.LOAN':@VM:'L.ALLOW.ACTS'  ; PS.OO = ''
-    CALL MULTI.GET.LOC.REF(Y.APL,Y.FLDS,PS.OO) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(Y.APL,Y.FLDS,PS.OO)
     Y.TLR.POS = PS.OO<1,1>
     Y.AL.C.POS = PS.OO<1,2>
 

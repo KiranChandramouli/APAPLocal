@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo3MTI4NDkwODc6Q3AxMjUyOjE2ODM4MDg0OTE3NTY6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:04:51
+* @ValidationCode : MjoxOTgwMzA3NjE5OkNwMTI1MjoxNjgyNTA5NjA5ODQxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:49
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.MASSIVE.FILE.PROCESS.LOAD
@@ -22,7 +22,7 @@ SUBROUTINE REDO.MASSIVE.FILE.PROCESS.LOAD
 * 10 Sep 2011     H Ganesh         Massive rate - B.16      INITIAL CREATION
 * 10 Oct 2017     D Edwin Charles  Reprice(Interest Rate change)
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM,CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM
 * ----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -48,7 +48,7 @@ PROCESS:
     LOC.REF.APPLICATION="AA.PRD.DES.INTEREST"
     LOC.REF.FIELDS='L.AA.LST.REV.DT':@VM:'L.AA.NXT.REV.DT':@VM:'L.AA.RT.RV.FREQ'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AA.LST.REV.DT = LOC.REF.POS<1,1>
     POS.L.AA.NXT.REV.DT = LOC.REF.POS<1,2>
     POS.L.AA.RT.RV.FREQ = LOC.REF.POS<1,3>
@@ -56,7 +56,7 @@ PROCESS:
     Y.APPL = 'ACCOUNT'
     Y.FLD = 'L.OD.STATUS':@VM:'L.OD.STATUS.2'
     POS.D = ''
-    CALL MULTI.GET.LOC.REF(Y.APPL,Y.FLD,POS.D) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(Y.APPL,Y.FLD,POS.D)
     Y.POS.OVR.1 = POS.D<1,1>
     Y.POS.OVR.2 = POS.D<1,2>
 

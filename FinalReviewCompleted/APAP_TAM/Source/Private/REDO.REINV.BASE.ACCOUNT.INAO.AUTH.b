@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNjM1Mjg3MTQ3OkNwMTI1MjoxNjgzODExNzI1MDgyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:58:45
+* @ValidationCode : MjotOTgxODA4NjkxOkNwMTI1MjoxNjgyNTA5NjE2Mjg0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.BASE.ACCOUNT.INAO.AUTH
@@ -28,7 +28,7 @@ SUBROUTINE REDO.REINV.BASE.ACCOUNT.INAO.AUTH
 * 04-Jul-2011     H GANESH    PACS00072695_N.11   INITIAL CREATION
 *
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM
 *----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -59,7 +59,7 @@ INIT:
     LOC.REF.APPLICATION="ACCOUNT":@FM:"AZ.PRODUCT.PARAMETER"
     LOC.REF.FIELDS='L.AZ.APP':@VM:'L.AC.AZ.ACC.REF':@VM:'L.AC.PAYMT.MODE':@FM:'L.AZ.RE.INV.CAT'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
 
     POS.L.AZ.APP        = LOC.REF.POS<1,1>
     POS.L.AC.AZ.ACC.REF = LOC.REF.POS<1,2>

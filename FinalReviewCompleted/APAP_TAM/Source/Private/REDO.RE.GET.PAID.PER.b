@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTUwNjQ1MzU1NzpDcDEyNTI6MTY4Mzg2NjMzMjg2NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 10:08:52
+* @ValidationCode : MjoxNTExMjE5OTkxOkNwMTI1MjoxNjgzODI5MzQ4MTk2OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 May 2023 23:52:28
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 
@@ -31,6 +31,7 @@ SUBROUTINE REDO.RE.GET.PAID.PER(CUSTOMER.IDENTITY)
     $INSERT I_EQUATE
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.AA.TERM.AMOUNT
+    $USING APAP.AA
 
     GOSUB OPEN.FILES
     GOSUB PROCESS
@@ -90,7 +91,10 @@ LOAN.DETAILS:
 
     OUT.PROP.ACC    = ''
     R.OUT.AA.RECORD = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,OUT.PROP.ACC,OUT.ERR) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,OUT.PROP.ACC,OUT.ERR)
+** R22 Manual conversion
+    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,OUT.PROP.ACC,OUT.ERR)
+
 
 RETURN
 *-----------------------------------------------------------------------------
@@ -105,7 +109,7 @@ GET.TERM.AMOUNT:
     ERR.MSG = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG)
+    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG)
     Y.LOAN.AMOUNT=R.CONDITION.TERM<AA.AMT.AMOUNT>
 
 RETURN
@@ -121,7 +125,7 @@ GET.OVERDUE.TYPE:
     ERR.MSG = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
     Y.OVERDUE.STATUS =  R.CONDITION.OVERDUE<AA.OD.OVERDUE.STATUS>
 *  CHANGE VM TO FM IN Y.OVERDUE.STATUS
     CHANGE @SM TO @FM IN Y.OVERDUE.STATUS

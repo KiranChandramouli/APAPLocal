@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMTEzNzY1Njg2OkNwMTI1MjoxNjgyNTA0MzY4ODczOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Apr 2023 15:49:28
+* @ValidationCode : MjotMTYwNDU2ODg1ODpDcDEyNTI6MTY4MjU4OTUwNTEwOTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:28:25
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -37,6 +37,7 @@ SUBROUTINE REDO.RAD.MON.CUSTID
     $INSERT I_EQUATE
     $INSERT I_F.CUSTOMER
     $INSERT I_TSS.COMMON
+    
     $USING APAP.REDOCHNLS
 
     GOSUB INITIALISE
@@ -121,7 +122,7 @@ LOG.ERROR:
     REC.CON = Y.PARAM
     EX.USER = OPERATOR
     EX.PC = IP.ADDRESS
- 
+
     BEGIN CASE
         CASE ERR.TYPE EQ 'WARNING'
             MON.TP = 05

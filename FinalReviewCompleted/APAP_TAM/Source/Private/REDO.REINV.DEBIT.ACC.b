@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2NTQxNzE4MTA6Q3AxMjUyOjE2ODM4MTE3NTQzMzA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:59:14
+* @ValidationCode : MjoxMDQ5NDI4ODk4OkNwMTI1MjoxNjgyNTA5NjE2Mzc2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.DEBIT.ACC
@@ -28,7 +28,7 @@ SUBROUTINE REDO.REINV.DEBIT.ACC
 * 05-Jul-2011    H GANESH      PACS00072695_N.11  INITIAL CREATION
 *
 ** 13-04-2023 R22 Auto Conversion no changes
-** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM
 *----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -51,7 +51,7 @@ INIT:
     LOC.REF.APPLICATION="ACCOUNT"
     LOC.REF.FIELDS="L.AC.AV.BAL"
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
 
     POS.L.AC.AV.BAL = LOC.REF.POS<1,1>
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTE1ODEyMzI1NjpDcDEyNTI6MTY4MzgwODY3MTY3NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:07:51
+* @ValidationCode : Mjo0MDcyMTYxMjA6Q3AxMjUyOjE2ODEzNzYwOTg3MzY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 13 Apr 2023 14:24:58
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.NV.CHEQUE.QUANTITY
@@ -19,7 +19,7 @@ SUBROUTINE REDO.NV.CHEQUE.QUANTITY
 *
 * Date             Who                   Reference      Description
 * 13.04.2023       Conversion Tool       R22            Auto Conversion     - FM TO @FM, VM TO @VM, SM TO @SM, ++ TO += 1
-* 13.04.2023       Shanmugapriya M       R22            Manual Conversion   - CALL routine format modified
+* 13.04.2023       Shanmugapriya M       R22            Manual Conversion   - No changes
 *
 *------------------------------------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ Y.GET.LOC.REF:
     LOC.REF.APPLICATION="FUNDS.TRANSFER":@FM:"TELLER"
     LOC.REF.FIELDS='L.FT.ADD.INFO':@VM:'L.INITIAL.ID':@VM:'L.NEXT.VERSION':@VM:'CERT.CHEQUE.NO':@VM:'L.ACTUAL.VERSIO':@FM:'L.INITIAL.ID'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.FT.ADD.INFO    = LOC.REF.POS<1,1>
     POS.L.INITIAL.ID     = LOC.REF.POS<1,2>
     POS.L.NEXT.VERSION   = LOC.REF.POS<1,3>

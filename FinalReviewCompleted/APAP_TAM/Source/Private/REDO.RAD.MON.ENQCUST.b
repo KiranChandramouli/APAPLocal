@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNjY3MzExNjgzOkNwMTI1MjoxNjgyNTA0NzA2NDQ4OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Apr 2023 15:55:06
+* @ValidationCode : MjoyMTExOTI5OTE3OkNwMTI1MjoxNjgyNTg5NTEzMTQwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:28:33
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -39,7 +39,9 @@ SUBROUTINE REDO.RAD.MON.ENQCUST
     $INSERT I_F.REDO.MONITOR.PARAMETER
     $INSERT I_F.ACCOUNT
     $INSERT I_F.AA.ARRANGEMENT
+    
     $USING APAP.REDOCHNLS
+
     GOSUB INITIALISE
     GOSUB OPEN.FILES
     GOSUB CHECK.PRELIM.CONDITIONS

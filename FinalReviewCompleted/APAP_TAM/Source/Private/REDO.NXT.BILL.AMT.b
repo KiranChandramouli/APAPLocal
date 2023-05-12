@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNTY5Njg0OTk4OkNwMTI1MjoxNjgzODA4OTU0NjYyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:12:34
+* @ValidationCode : MjotNTU1ODU5NTI6Q3AxMjUyOjE2ODI1MDk2MTE1Mzk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.NXT.BILL.AMT(TXN.AMT)
@@ -28,7 +28,7 @@ SUBROUTINE REDO.NXT.BILL.AMT(TXN.AMT)
 *DATE             WHO                    REFERENCE         DESCRIPTION
 *20.12.2009      H GANESH            ODR-2009-10-0305  INITIAL CREATION
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - Added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - Added APAP.TAM
 *----------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -58,7 +58,7 @@ PROCESS:
     LOC.APPLICATION='TELLER':@FM:'FUNDS.TRANSFER'
     LOC.FIELDS='L.TT.NEXT.PAY':@FM:'L.FT.NEXT.PAY'
     LOC.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.APPLICATION,LOC.FIELDS,LOC.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.APPLICATION,LOC.FIELDS,LOC.POS)
 
     L.TT.NEXT.PAY.POS=LOC.POS<1,1>
     L.FT.NEXT.PAY.POS=LOC.POS<2,1>

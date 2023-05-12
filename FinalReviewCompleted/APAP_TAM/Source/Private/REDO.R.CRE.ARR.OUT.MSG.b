@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMzQxMTAxNzAyOkNwMTI1MjoxNjgzODY1OTE5OTg4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 10:01:59
+* @ValidationCode : MjoyNDc4MjkxMDI6Q3AxMjUyOjE2ODM4Mjg4ODc2Mjc6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 May 2023 23:44:47
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.R.CRE.ARR.OUT.MSG(Y.REQ)
@@ -29,7 +29,7 @@ SUBROUTINE REDO.R.CRE.ARR.OUT.MSG(Y.REQ)
 * DEVELOPED BY : hpasquel@temenos.com
 * PROGRAM NAME : REDO.R.CRE.ARR.OUT.MSG
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion -CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - CALL routine prefix added
 *-----------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -39,8 +39,10 @@ SUBROUTINE REDO.R.CRE.ARR.OUT.MSG(Y.REQ)
     Y.TXN.COMMITED = ''
     Y.OFS.RESPONSE = Y.REQ
     Y.OUT.ERR.MSG = ''
-*CALL APAP.AA.REDO.R.BULK.MAN.RESPONSE(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.AA.redoRBulkManResponse(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+    
+*CALL REDO.R.BULK.MAN.RESPONSE(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG)
+** R22 Manual conversion
+    CALL APAP.AA.redoRBulkManResponse(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG)
 * If an error was found, then only the error messages must be informed
     IF Y.OUT.ERR.MSG NE '' THEN
         Y.REQ = Y.REQ[",",1,1]

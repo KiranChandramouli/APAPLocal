@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMjAwNjI5NzQ4OTpDcDEyNTI6MTY4MzgwOTIwOTA0MTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:16:49
+* @ValidationCode : MjoyMDk3MzQyMjk2OkNwMTI1MjoxNjgyNTk0Mzk2ODMxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 SUBROUTINE REDO.R.BCR.REPORT.DELIVERY(Y.INT.CODE,Y.INT.TYPE,R.REDO.INTERFACE.PARAM)
 *-----------------------------------------------------------------------------
 * Esta rutina es la encargada de entregar el archivo generado de acuerdo a los
@@ -28,7 +29,7 @@ SUBROUTINE REDO.R.BCR.REPORT.DELIVERY(Y.INT.CODE,Y.INT.TYPE,R.REDO.INTERFACE.PAR
 *               E  (out)    In case of error the message is here
 *
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - CALL routine prefix added
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -269,8 +270,7 @@ PROCESS_MAIL:
 
     Y.PATH.TO.MOVE = Y.PATH.SUCCESS
 
-*CALL APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR)              ;* R22 Manual conversion
     IF Y.ERROR NE '' THEN
         E = Y.ERROR
         Y.PATH.TO.MOVE = Y.PATH.FAILURE

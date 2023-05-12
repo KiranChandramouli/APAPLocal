@@ -1,16 +1,17 @@
-* @ValidationCode : MjotNDkyNDY3NTQ1OkNwMTI1MjoxNjgzODA4NDI4OTYwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:03:48
+* @ValidationCode : MjotNTUyMzk4MjQ1OkNwMTI1MjoxNjgzODI4Mzg5NzUxOklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 May 2023 23:36:29
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 SUBROUTINE REDO.MANUAL.RATE.CHANGE
 *-----------------------------------------------------------------------------
 *DESCRIPTIONS:
@@ -37,7 +38,7 @@ SUBROUTINE REDO.MANUAL.RATE.CHANGE
 * Date            Who             Reference            Description
 * 05-AUG-10    Kishore.SP      ODR-2009-10-0325      Initial Creation
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - Call routine prefix added
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -45,6 +46,8 @@ SUBROUTINE REDO.MANUAL.RATE.CHANGE
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
     $INSERT I_F.AA.INTEREST
     $INSERT I_F.REDO.SUCESS.RATE.CHANGE
+    $USING APAP.AA
+    
 *-----------------------------------------------------------------------------
     GOSUB INITIALISE
     GOSUB OPEN.CSV.FILE
@@ -222,8 +225,9 @@ FORM.OFS:
 *
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-*CALL APAP.TAM.REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR)
+** R22 Manual conversion
+    CALL APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR)
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
 
@@ -281,8 +285,9 @@ UPDATE.SUCESS:
     R.Condition=''
     ERR.MSG=''
     R.SUCESS.CHANGE = ''
-*CALL APAP.TAM.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+** R22 Manual conversion
+    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     Y.OLD.EFF.RATE = R.Condition<AA.INT.EFFECTIVE.RATE>
     R.SUCESS.CHANGE<REDO.SUC.DATE>              = TODAY
     R.SUCESS.CHANGE<REDO.SUC.OLD.INTEREST.RATE> = Y.OLD.EFF.RATE

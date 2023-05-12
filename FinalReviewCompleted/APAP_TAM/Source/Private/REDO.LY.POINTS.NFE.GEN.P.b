@@ -1,17 +1,17 @@
-* @ValidationCode : MjotMTU0NDIwNzc4MjpDcDEyNTI6MTY4MjQ5MjE4OTk1NDozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 Apr 2023 12:26:29
+* @ValidationCode : MjotMzY5MDU5MzMyOkNwMTI1MjoxNjgwNjEwNzQ4MjYzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 04 Apr 2023 17:49:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
- 
+
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.LY.POINTS.NFE.GEN.P(ENQ.DATA)
 *-------------------------------------------------------------------------------------------

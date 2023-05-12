@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNDk4Njk4NDMwOkNwMTI1MjoxNjgzODExNjg5MTI5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:58:09
+* @ValidationCode : MjotNjM2OTI0MjE1OkNwMTI1MjoxNjgyNTI4NDcyODQzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.BASE.ACCOUNT
@@ -29,7 +29,7 @@ SUBROUTINE REDO.REINV.BASE.ACCOUNT
 *Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *13/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION          FM TO @FM, VM TO @VM, IF CONDITION ADDED
-*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION        CALL routine format modified
+*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
 *----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -52,7 +52,7 @@ INIT:
     LOC.REF.APPLICATION="ACCOUNT"
     LOC.REF.FIELDS='L.AZ.APP':@VM:'L.AC.REINVESTED'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
 
     POS.L.AZ.APP = LOC.REF.POS<1,1>
     POS.L.AC.REINVESTED = LOC.REF.POS<1,2>

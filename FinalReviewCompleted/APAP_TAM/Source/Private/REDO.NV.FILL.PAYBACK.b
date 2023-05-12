@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTU5MDYxNDMyOkNwMTI1MjoxNjgzODA4OTk1MjM1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:13:15
+* @ValidationCode : MjotMTM5NDMyODIzMzpDcDEyNTI6MTY4MjU5NDM5NDg3ODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.NV.FILL.PAYBACK
@@ -25,7 +25,7 @@ SUBROUTINE REDO.NV.FILL.PAYBACK
 *  PACS00128530 - Show cash amount available for PAYBACK versions
 *
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - Call routine prefix added
 * ======================================================================
 *
     $INSERT I_COMMON
@@ -35,6 +35,8 @@ SUBROUTINE REDO.NV.FILL.PAYBACK
     $INSERT I_F.VERSION
     $INSERT I_F.TELLER
     $INSERT I_F.TELLER.ID
+    
+    $USING APAP.TAM
 *
     GOSUB INITIALISE
     GOSUB OPEN.FILES
@@ -67,7 +69,6 @@ PROCESS:
         END ELSE
             R.NEW(TT.TE.AMOUNT.FCY.1) = CASH.BALANCE
         END
-*CALL APAP.TAM.REDO.HANDLE.COMM.TAX.FIELDS ;* R22 Manual conversion
         CALL APAP.TAM.redoHandleCommTaxFields() ;* R22 Manual conversion
         CALL System.setVariable("CURRENT.WTM.RESULT","0")
         CALL System.setVariable("CURRENT.WTM.MONEDA",WCCY)
@@ -146,7 +147,7 @@ INITIALISE:
     WCAMPO<7> = "L.TRAN.AMOUNT"
     WCAMPO    = CHANGE(WCAMPO,@FM,@VM)
     WFLD.LST := @FM : WCAMPO
-    CALL MULTI.GET.LOC.REF(WAPP.LST,WFLD.LST,YPOS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(WAPP.LST,WFLD.LST,YPOS)
     WPOSLI    = YPOS<1,1>
     WPOSCASH  = YPOS<1,2>
     WPOSCHECK = YPOS<1,3>

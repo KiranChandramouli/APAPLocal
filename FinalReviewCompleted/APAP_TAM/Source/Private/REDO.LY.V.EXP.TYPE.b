@@ -1,14 +1,14 @@
-* @ValidationCode : MjozNjY2MjUyOTpDcDEyNTI6MTY4Mzg2NTc3MTE1NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 09:59:31
+* @ValidationCode : MjoyMDAyMDc0MTAzOkNwMTI1MjoxNjgyNTk0MzkyMTAxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE  REDO.LY.V.EXP.TYPE
@@ -30,12 +30,13 @@ SUBROUTINE  REDO.LY.V.EXP.TYPE
 *DATE             WHO                REFERENCE         DESCRIPTION
 *30.11.2011    RMONDRAGON         ODR-2011-06-0243       UPDATE
 ** 13-04-2023 R22 Auto Conversion no changes
-** 13-04-2023 Skanda R22 Manual Conversion added APAP.TAM
+** 13-04-2023 Skanda R22 Manual Conversion Call routine prefix added
 * -----------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.LY.PROGRAM
+    
     $USING APAP.REDOVER
 
     IF VAL.TEXT THEN
@@ -54,33 +55,20 @@ PROCESS:
 
     IF VAL.TEXT EQ '' THEN
         VAL.TEXT = 'VALIDATED'
-*CALL APAP.TAM.REDO.V.AVAIL.PROGRAM ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVAvailProgram();* R22 Manual conversion
-*CALL APAP.TAM.REDO.V.DISDELAY ;* R22 Manual conversion
+        CALL APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
         CALL APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
-*CALL APAP.TAM.REDO.LY.DIS.FIELDS.T ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
-*CALL APAP.TAM.REDO.LY.DIS.FIELDS.P ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
-*CALL APAP.TAM.REDO.LY.DIS.FIELDS.P2 ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
-* CALL APAP.TAM.REDO.V.TXN.INT ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVTxnInt();* R22 Manual conversion
-        
+        CALL APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
         VAL.TEXT = ''
     END ELSE
-*CALL APAP.TAM.REDO.V.AVAIL.PROGRAM ;* R22 Manual conversion
-        APAP.REDOVER.redoVAvailProgram();* R22 Manual conversion
-* CALL APAP.TAM.REDO.V.DISDELAY ;* R22 Manual conversion
+        CALL APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
         CALL APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
-* CALL APAP.TAM.REDO.LY.DIS.FIELDS.T ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
-* CALL APAP.TAM.REDO.LY.DIS.FIELDS.P ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
-*CALL APAP.TAM.REDO.LY.DIS.FIELDS.P2 ;* R22 Manual conversion
         CALL APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
-*CALL APAP.TAM.REDO.V.TXN.INT ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVTxnInt();* R22 Manual conversion
+        CALL APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
     END
 
     IF VAR.EXP.TYPE EQ 'POR.DIAS' THEN

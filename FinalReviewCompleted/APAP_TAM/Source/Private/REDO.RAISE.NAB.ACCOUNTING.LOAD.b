@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0MzU3MTIzMjA6Q3AxMjUyOjE2ODM4MTExNzYxNjE6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:49:36
+* @ValidationCode : MjotNjY5NjU5NzA4OkNwMTI1MjoxNjgyNTA5NjE1MDQwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.RAISE.NAB.ACCOUNTING.LOAD
@@ -32,7 +32,7 @@ SUBROUTINE REDO.RAISE.NAB.ACCOUNTING.LOAD
 * 05 Dec 2011    Ravikiran AV              CR.41                 Initial Creation
 *
 ** 13-04-2023 R22 Auto Conversion no changes
-** 13-04-2023 Skanda R22 Manual Conversion - Added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - Added APAP.TAM
 *-------------------------------------------------------------------------------------------------------------------
 * All File INSERTS done here
 *
@@ -72,7 +72,7 @@ OPEN.FILES:
     APP = 'ACCOUNT'
     LOC.FLD = 'L.LOAN.STATUS'
     LOC.FLD.POS = ''
-    CALL MULTI.GET.LOC.REF(APP, LOC.FLD, LOC.FLD.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(APP, LOC.FLD, LOC.FLD.POS)
     L.LOAN.STATUS.POS = LOC.FLD.POS<1,1>
 
 RETURN

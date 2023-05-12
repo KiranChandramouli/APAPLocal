@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjAxMjg1NzczODpDcDEyNTI6MTY4MzgxMTMzMzE5NDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:52:13
+* @ValidationCode : MjotMzA3OTI5Mjc5OkNwMTI1MjoxNjgyNTI4NDcxNDM2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 Apr 2023 22:31:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.RAISE.WOF.ACCOUNTING.LOAD
@@ -34,7 +34,7 @@ SUBROUTINE REDO.RAISE.WOF.ACCOUNTING.LOAD
 *Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *13/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
-*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION        CALL routine format modified
+*13/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
 *-------------------------------------------------------------------------------------------------------------------
 * All File INSERTS done here
 *
@@ -74,7 +74,7 @@ OPEN.FILES:
     APP = 'ACCOUNT'
     LOC.FLD = 'L.LOAN.STATUS'
     LOC.FLD.POS = ''
-    CALL MULTI.GET.LOC.REF(APP, LOC.FLD, LOC.FLD.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(APP, LOC.FLD, LOC.FLD.POS)
     L.LOAN.STATUS.POS = LOC.FLD.POS<1,1>
 
 RETURN

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotODg1NTYwMzEwOkNwMTI1MjoxNjgzODExNTQ0OTAwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:55:44
+* @ValidationCode : MjotMTA4Nzk1NTA5NDpDcDEyNTI6MTY4MjUwOTYxNTgyNDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 Apr 2023 17:16:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.ANC.FT
@@ -24,7 +24,7 @@ SUBROUTINE REDO.REINV.ANC.FT
 *  DATE             WHO         REFERENCE           DESCRIPTION
 * 14-Jul-2011     H Ganesh    PACS00072695 - N.11   Initial Draft
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM, CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - added APAP.TAM
 
 
     $INSERT I_COMMON
@@ -54,7 +54,7 @@ INIT:
     LOC.REF.FIELDS := @VM:'L.TT.WV.COMM':@VM:'L.TT.COMM.AMT':@VM:'L.TT.TAX.CODE':@VM:'L.TT.WV.TAX':@VM:'L.TT.TAX.AMT':@VM:'L.TT.WV.TAX.AMT'
     LOC.REF.FIELDS := @VM:'L.NCF.REQUIRED':@VM:'L.NCF.NUMBER':@VM:'L.NCF.TAX.NUM':@VM:'TRANSACTION.REF'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.BENEFIC.NAME    = LOC.REF.POS<1,1>
     POS.L.FT.CONCEPT    = LOC.REF.POS<1,2>
     POS.L.FT.COMM.CODE  = LOC.REF.POS<1,3>

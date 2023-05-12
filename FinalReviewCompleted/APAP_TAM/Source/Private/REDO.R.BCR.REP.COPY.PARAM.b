@@ -1,16 +1,17 @@
-* @ValidationCode : MjotNzA1ODI2OTU0OkNwMTI1MjoxNjgzODA5MTY1MDY1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:16:05
+* @ValidationCode : MjotMTIxNDcyOTk2OkNwMTI1MjoxNjgyNTk0Mzk2NzkxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 SUBROUTINE REDO.R.BCR.REP.COPY.PARAM(redoIntParamID)
 *-----------------------------------------------------------------------------
 * Allows to copy the content from REDO.INTERFACE.PARAM to the R.NEW array
@@ -24,7 +25,7 @@ SUBROUTINE REDO.R.BCR.REP.COPY.PARAM(redoIntParamID)
 *          E             (out)       Common variable with message in case of Error
 
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 13-04-2023 Skanda R22 Manual Conversion - CALL routine format modified
+** 13-04-2023 Skanda R22 Manual Conversion - CALL routine prefix added
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -46,15 +47,14 @@ PROCESS:
     WHILE fieldName : yPos
         fieldValue = ""
         fieldNoFrom    = 0
-*CALL APAP.TAM.TAM.R.FIELD.NAME.TO.NUMBER("REDO.INTERFACE.PARAM", fieldName, fieldNoFrom) ;*MANUAL R22 CODE CONVERSION
-        CALL APAP.TAM.tamRFieldNameToNumber("REDO.INTERFACE.PARAM", fieldName, fieldNoFrom) ;*MANUAL R22 CODE CONVERSION
+        CALL APAP.TAM.tamRFieldNameToNumber("REDO.INTERFACE.PARAM", fieldName, fieldNoFrom)   ;* R22 Manual conversion
         IF fieldNoFrom EQ 0 THEN
             E    = "ST-REDO.BCR.FIELD.NON.EXIST"
             E<2> = fieldName : @VM : "REDO.INTERFACE.PARAM"
             RETURN
         END
         fieldNoTo = 0
-        CALL APAP.TAM.tamRFieldNameToNumber(APPLICATION, fieldName, fieldNoTo) ;*MANUAL R22 CODE CONVERSION
+        CALL APAP.TAM.tamRFieldNameToNumber(APPLICATION, fieldName, fieldNoTo)              ;* R22 Manual conversion
         IF fieldNoTo EQ 0 THEN
             E    = "ST-REDO.BCR.FIELD.NON.EXIST"
             E<2> = fieldNoTo : @VM : APPLICATION

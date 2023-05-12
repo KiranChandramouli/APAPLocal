@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyNzM5MTMzODM6Q3AxMjUyOjE2ODM4NjYyNDA4NzY6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 10:07:20
+* @ValidationCode : MjoxNzc2ODM0NTMxOkNwMTI1MjoxNjgzODI5MjI4NzI1OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 May 2023 23:50:28
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.RE.GET.LOAN.STAT(CUSTOMER.IDENTITY)
@@ -37,6 +37,7 @@ SUBROUTINE REDO.RE.GET.LOAN.STAT(CUSTOMER.IDENTITY)
     $INSERT I_F.ACCOUNT
     $INSERT I_F.CUSTOMER.ACCOUNT
     $INSERT I_F.AA.OVERDUE
+    $USING APAP.AA
 
     GOSUB OPEN.FILES
     GOSUB PROCESS
@@ -86,7 +87,7 @@ PROCESS:
                 EFF.DATE = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 ** R22 Manual conversion
-                CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+                CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
                 LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 
                 IF LOAN.COND NE 'Legal' THEN

@@ -1,16 +1,17 @@
-* @ValidationCode : MjoxNjg1NTQ4NTg0OkNwMTI1MjoxNjgzODA4NzgyNjM0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 18:09:42
+* @ValidationCode : MjotMTYzNDU2NDA2MjpDcDEyNTI6MTY4MjU4OTQ3NzcyNDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Apr 2023 15:27:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 SUBROUTINE REDO.NV.COLL.CHQ.VALIDATION
 *--------------------------------------------------
 *Description: This Input routine is to validation the Collection area
@@ -71,7 +72,7 @@ GET.LOC.REF:
     LOC.REF.APPLICATION   = "FUNDS.TRANSFER":@FM:"TELLER"
     LOC.REF.FIELDS        = 'L.ACTUAL.VERSIO':@VM:'L.NEXT.VERSION':@VM:'CERT.CHEQUE.NO':@FM:'L.INITIAL.ID':@VM:'L.NEXT.VERSION'
     LOC.REF.POS           = ''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.ACTUAL.VERSIO   = LOC.REF.POS<1,1>
     POS.L.NEXT.VERSION    = LOC.REF.POS<1,2>
     POS.CERT.CHEQUE.NO    = LOC.REF.POS<1,3>
@@ -168,8 +169,8 @@ PROCESS.TELLER:
 
 *CALL REDO.GET.NV.VERSION.TYPES(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD)
 ** R22 Manual conversion
-    CALL APAP.TAM.REDO.GET.NV.VERSION.TYPES(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD)
-    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;* R22 Manual Conversion
+    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD)
+
     LOCATE 'AA.COLLECTION' IN Y.VERSION.TYPES SETTING POS1 THEN
         GOSUB GET.NEXT.VERSION
         IF Y.VERSION.TYPE.TT EQ 'CHEQUE' THEN

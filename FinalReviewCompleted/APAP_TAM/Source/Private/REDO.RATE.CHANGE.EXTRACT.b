@@ -1,16 +1,17 @@
-* @ValidationCode : MjoxNTUzODQ5MTA4OkNwMTI1MjoxNjgzODY2MjIwMzkyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 10:07:00
+* @ValidationCode : MjotMTEwNzkwMTQ1OkNwMTI1MjoxNjgzODI5MTMwNjkzOklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 May 2023 23:48:50
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 SUBROUTINE REDO.RATE.CHANGE.EXTRACT
 *-----------------------------------------------------------
 * Description: This routine is attached to EB.PHANTOM application to
@@ -21,7 +22,7 @@ SUBROUTINE REDO.RATE.CHANGE.EXTRACT
 *   Date            Who                   Reference               Description
 * 05 Dec 2011   H Ganesh               Massive rate              Initial Draft
 * 13.04.2023    Conversion Tool           R22                    Auto Conversion     - ++ TO += 1, FM TO @FM, VM TO @VM
-* 13.04.2023    Shanmugapriya M           R22                    Manual Conversion   - Add call routine prefix, CALL routine format modified
+* 13.04.2023    Shanmugapriya M           R22                    Manual Conversion   - Add call routine prefix
 *
 *-----------------------------------------------------------------------------
 
@@ -31,8 +32,9 @@ SUBROUTINE REDO.RATE.CHANGE.EXTRACT
     $INSERT I_F.AA.INTEREST
     $INSERT I_F.REDO.RATE.CHANGE
     $INSERT I_F.REDO.MASSIVE.FILE.PATH
+    
     $USING APAP.AA
-       
+
     GOSUB OPENFILES
     GOSUB PROCESS
 RETURN
@@ -60,7 +62,7 @@ OPENFILES:
     LOC.REF.APPLICATION="AA.PRD.DES.INTEREST"
     LOC.REF.FIELDS='L.AA.NXT.REV.DT':@VM:'L.AA.REV.FORM':@VM:'L.AA.FIR.REV.DT':@VM:'L.AA.REV.RT.TY'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AA.NXT.REV.DT = LOC.REF.POS<1,1>
     POS.L.AA.REV.FORM   = LOC.REF.POS<1,2>
     POS.L.AA.FIR.REV.DT = LOC.REF.POS<1,3>
@@ -130,12 +132,15 @@ PROCESS.FILE.EXTRACT:
             Y.VAR1 += 1                 ;** R22 Auto conversion - ++ TO += 1
         REPEAT
         IF Y.AA.IDS.LIST THEN
-*CALL APAP.TAM.REDO.CHECK.MARGIN.IDS(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS) ;*MANUAL R22 CODE CONVERSION
-            CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.CHECK.MARGIN.IDS(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
+** R22 Manual conversion
+            CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
         END
     END
 
     IF Y.RETURN.IDS THEN
+*CALL REDO.CHECK.AA.IDS(Y.RETURN.IDS,RETURN.AA.IDS)
+** R22 Manual conversion
         CALL APAP.AA.redoCheckAaIds(Y.RETURN.IDS,RETURN.AA.IDS) ;* R22 Manual conversion - CALL method format changed
     END
 
@@ -166,7 +171,9 @@ PROCESS.AUTO.IDS:
         Y.VAR1 += 1          ;** R22 Auto conversion - ++ TO += 1
     REPEAT
     IF Y.AA.IDS.LIST THEN
-        CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.CHECK.MARGIN.IDS(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
+** R22 Manual conversion
+        CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
     END
 RETURN
 *-----------------------------------------------------------------------------
@@ -191,7 +198,9 @@ PROCESS.MANUAL.IDS:
         Y.VAR1 += 1             ;** R22 Auto conversion - ++ TO += 1
     REPEAT
     IF Y.AA.IDS.LIST THEN
-        CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS) ;*MANUAL R22 CODE CONVERSION
+*CALL REDO.CHECK.MARGIN.IDS(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
+** R22 Manual conversion
+        CALL APAP.TAM.redoCheckMarginIds(Y.AA.IDS.LIST,Y.RATE.CHANGE.ID,Y.RETURN.IDS)
     END
 RETURN
 *-----------------------------------------------------------------------------
@@ -257,7 +266,6 @@ GET.INTEREST.CONDITION:
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
 *CALL REDO.GET.INTEREST.PROPERTY(ARR.ID,PROP.NAME,PRIN.PROP,ERR)
 ** R22 Manual conversion
-*CALL APAP.TAM.REDO.GET.INTEREST.PROPERTY(ARR.ID,PROP.NAME,PRIN.PROP,ERR)
     CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,PRIN.PROP,ERR)
     IF PRIN.PROP THEN
         EFF.DATE = TODAY
@@ -267,8 +275,7 @@ GET.INTEREST.CONDITION:
         ERR.MSG = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INTEREST,ERR.MSG)
 ** R22 Manual conversion
-*CALL APAP.TAM.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INTEREST,ERR.MSG)
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INTEREST,ERR.MSG)
+        CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INTEREST,ERR.MSG)
     END
     Y.FIRST.REVIEW.DATE =  R.CONDITION.INTEREST<AA.INT.LOCAL.REF,POS.L.AA.FIR.REV.DT>
     Y.NEXT.REVIEW.DATE  =  R.CONDITION.INTEREST<AA.INT.LOCAL.REF,POS.L.AA.NXT.REV.DT>

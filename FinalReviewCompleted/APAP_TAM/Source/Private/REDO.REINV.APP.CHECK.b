@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQ3NTg1NDgwNjpDcDEyNTI6MTY4MzgxMTU2NzQyNDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 May 2023 18:56:07
+* @ValidationCode : MjotMTA0MTgzODg0MDpDcDEyNTI6MTY4MTA1NjQ4NTE3OTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 09 Apr 2023 21:38:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.REINV.APP.CHECK
@@ -27,7 +27,7 @@ SUBROUTINE REDO.REINV.APP.CHECK
 *  DATE             WHO         REFERENCE            DESCRIPTION
 * 04-Jul-2011    H GANESH      PACS00072695-N.11   INITIAL CREATION
 * 10.04.2023   Conversion Tool       R22            Auto Conversion     - FM TO @FM, VM TO @VM
-* 10.04.2023   Shanmugapriya M       R22            Manual Conversion   - CALL routine format modified
+* 10.04.2023   Shanmugapriya M       R22            Manual Conversion   - No changes
 *
 *
 *----------------------------------------------------------------------------
@@ -51,7 +51,7 @@ INIT:
     LOC.REF.APPLICATION="AZ.PRODUCT.PARAMETER":@FM:"ACCOUNT"
     LOC.REF.FIELDS='L.AZ.RE.INV.CAT':@VM:'L.APP.INT.LIQ':@FM:'L.AZ.APP'
     LOC.REF.POS=''
-    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS) ;*MANUAL R22 CODE CONVERSION
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
     POS.L.AZ.RE.INV.CAT = LOC.REF.POS<1,1>
     POS.L.APP.INT.LIQ   = LOC.REF.POS<1,2>
     POS.L.AZ.APP        = LOC.REF.POS<2,1>
