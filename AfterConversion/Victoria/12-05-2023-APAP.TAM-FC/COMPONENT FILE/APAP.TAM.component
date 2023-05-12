@@ -1,0 +1,3369 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoFtHisFields (
+)
+{
+    jBC: REDO.FT.HIS.FIELDS
+}
+
+
+
+public method redoFtLaunchSupportingEnq (
+)
+{
+    jBC: REDO.FT.LAUNCH.SUPPORTING.ENQ
+}
+
+
+
+
+public method redoFtNcfIdGen (
+)
+{
+    jBC: REDO.FT.NCF.ID.GEN
+}
+
+
+
+public method redoFtTt (
+)
+{
+    jBC: REDO.FT.TT
+}
+
+
+
+public method redoFtTtTransactionFields (
+)
+{
+    jBC: REDO.FT.TT.TRANSACTION.FIELDS
+}
+
+
+
+public method redoFtTtTransactionId (
+)
+{
+    jBC: REDO.FT.TT.TRANSACTION.ID
+}
+
+
+
+public method redoFtUpdateAchParameter (
+    INOUT yFtId string,
+    INOUT yFtStatus string
+)
+{
+    jBC: REDO.FT.UPDATE.ACH.PARAMETER
+}
+
+
+
+public method redoFxCcyPosn (
+)
+{
+    jBC: REDO.FX.CCY.POSN
+}
+
+
+
+public method redoFxCcyPosnFields (
+)
+{
+    jBC: REDO.FX.CCY.POSN.FIELDS
+}
+
+
+
+public method redoFxDsBuySource (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.FX.DS.BUY.SOURCE
+}
+
+
+
+public method redoFxDsSellSource (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.FX.DS.SELL.SOURCE
+}
+
+
+
+public method redoFxsnTxnVersion (
+)
+{
+    jBC: REDO.FXSN.TXN.VERSION
+}
+
+
+
+public method redoFxsnTxnVersionFields (
+)
+{
+    jBC: REDO.FXSN.TXN.VERSION.FIELDS
+}
+
+
+
+public method redoGarCorrAcctAle (
+)
+{
+    jBC: REDO.GAR.CORR.ACCT.ALE
+}
+
+
+
+public method redoGarCreditProcess (
+)
+{
+    jBC: REDO.GAR.CREDIT.PROCESS
+}
+
+
+
+public method redoGarCreditProcessFields (
+)
+{
+    jBC: REDO.GAR.CREDIT.PROCESS.FIELDS
+}
+
+
+
+public method redoGarGenTaxEntry (
+)
+{
+    jBC: REDO.GAR.GEN.TAX.ENTRY
+}
+
+
+
+public method redoGarLockAle (
+)
+{
+    jBC: REDO.GAR.LOCK.ALE
+}
+
+
+
+public method redoGarLockAleFields (
+)
+{
+    jBC: REDO.GAR.LOCK.ALE.FIELDS
+}
+
+
+
+public method redoGarSuspAcct (
+)
+{
+    jBC: REDO.GAR.SUSP.ACCT
+}
+
+
+
+public method redoGarSuspAcctFields (
+)
+{
+    jBC: REDO.GAR.SUSP.ACCT.FIELDS
+}
+
+
+
+public method redoGenAcMaskOfs (
+    INOUT yId string
+)
+{
+    jBC: REDO.GEN.AC.MASK.OFS
+}
+
+
+
+public method redoGenAcMaskOfsLoad (
+)
+{
+    jBC: REDO.GEN.AC.MASK.OFS.LOAD
+}
+
+
+
+public method redoGenAcMaskOfsSelect (
+)
+{
+    jBC: REDO.GEN.AC.MASK.OFS.SELECT
+}
+
+
+
+public method redoGenGarTaxAmt (
+)
+{
+    jBC: REDO.GEN.GAR.TAX.AMT
+}
+
+
+
+public method redoGenPaymColSlip (
+)
+{
+    jBC: REDO.GEN.PAYM.COL.SLIP
+}
+
+
+
+public method redoGenTaxEntry (
+)
+{
+    jBC: REDO.GEN.TAX.ENTRY
+}
+
+
+
+public method redoGenerateNabAccounting (
+    INOUT arrId string
+)
+{
+    jBC: REDO.GENERATE.NAB.ACCOUNTING
+}
+
+
+
+public method redoGenerateNabAccountingLoad (
+)
+{
+    jBC: REDO.GENERATE.NAB.ACCOUNTING.LOAD
+}
+
+
+
+public method redoGenerateNabAccountingSelect (
+)
+{
+    jBC: REDO.GENERATE.NAB.ACCOUNTING.SELECT
+}
+
+
+
+public method redoGeneratePaymentSlip (
+)
+{
+    jBC: REDO.GENERATE.PAYMENT.SLIP
+}
+
+
+
+public method redoGenerateWofAccounting (
+    INOUT arrId string
+)
+{
+    jBC: REDO.GENERATE.WOF.ACCOUNTING
+}
+
+
+
+public method redoGenerateWofAccountingLoad (
+)
+{
+    jBC: REDO.GENERATE.WOF.ACCOUNTING.LOAD
+}
+
+
+
+public method redoGenerateWofAccountingSelect (
+)
+{
+    jBC: REDO.GENERATE.WOF.ACCOUNTING.SELECT
+}
+
+
+
+public method redoGetAccountIntRate (
+)
+{
+    jBC: REDO.GET.ACCOUNT.INT.RATE
+}
+
+
+
+public method redoGetAciHis (
+    INOUT rAci string,
+    INOUT yCur string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.ACI.HIS
+}
+
+
+
+public method redoGetAdjustedAmount (
+    INOUT yProp string,
+    INOUT billId string,
+    INOUT adjAmount string
+)
+{
+    jBC: REDO.GET.ADJUSTED.AMOUNT
+}
+
+
+
+public method redoGetAmountLetter (
+    INOUT yAmt string
+)
+{
+    jBC: REDO.GET.AMOUNT.LETTER
+}
+
+
+
+public method redoGetAzcancelAmtMode (
+    INOUT recAzAccount string,
+    INOUT yAzId string,
+    INOUT yMontoCancel string,
+    INOUT yCancelMode string
+)
+{
+    jBC: REDO.GET.AZCANCEL.AMT.MODE
+}
+
+
+
+public method redoGetBenfName (
+    INOUT varAcId string
+)
+{
+    jBC: REDO.GET.BENF.NAME
+}
+
+
+
+public method redoGetBenfNameCs (
+    INOUT varAcId string
+)
+{
+    jBC: REDO.GET.BENF.NAME.CS
+}
+
+
+
+public method redoGetBenficName (
+    INOUT varBenName string
+)
+{
+    jBC: REDO.GET.BENFIC.NAME
+}
+
+
+
+public method redoGetBenficName2 (
+    INOUT varBenName2 string
+)
+{
+    jBC: REDO.GET.BENFIC.NAME2
+}
+
+
+
+public method redoGetBillActualAmt (
+    INOUT yBillIds string,
+    INOUT rArray string,
+    INOUT yFutureUse string
+)
+{
+    jBC: REDO.GET.BILL.ACTUAL.AMT
+}
+
+
+
+public method redoGetBillDetails (
+    INOUT yBillId string,
+    INOUT yArrangeId string,
+    INOUT insPolicyTypePos string,
+    INOUT yBillDueDate string,
+    INOUT yTotCapitalFee string,
+    INOUT yTotFeeInterest string,
+    INOUT yTotDueFee string,
+    INOUT yTotChrgCommFee string,
+    INOUT yTotChrgInsFee string,
+    INOUT yTotalFee string
+)
+{
+    jBC: REDO.GET.BILL.DETAILS
+}
+
+
+
+public method redoGetCardRequestId (
+    INOUT yCardNum string,
+    INOUT requestId string,
+    INOUT cardType string,
+    INOUT err string
+)
+{
+    jBC: REDO.GET.CARD.REQUEST.ID
+}
+
+
+
+public method redoGetCardType (
+    INOUT yCardNo string,
+    INOUT yCardAcct string,
+    INOUT yCardType string
+)
+{
+    jBC: REDO.GET.CARD.TYPE
+}
+
+
+
+public method redoGetCardsCnt (
+)
+{
+    jBC: REDO.GET.CARDS.CNT
+}
+
+
+
+public method redoGetCardsExpiryDate (
+)
+{
+    jBC: REDO.GET.CARDS.EXPIRY.DATE
+}
+
+
+
+public method redoGetChgPropPdis (
+    INOUT rData string
+)
+{
+    jBC: REDO.GET.CHG.PROP.PDIS
+}
+
+
+
+public method redoGetChrgAmt (
+    INOUT yCcy string,
+    INOUT yFtChrgType string,
+    INOUT yAmt string
+)
+{
+    jBC: REDO.GET.CHRG.AMT
+}
+
+
+
+public method redoGetClass119 (
+)
+{
+    jBC: REDO.GET.CLASS.119
+}
+
+
+
+public method redoGetColDesc (
+)
+{
+    jBC: REDO.GET.COL.DESC
+}
+
+
+
+public method redoGetCollateralId (
+    INOUT enqData string
+)
+{
+    jBC: REDO.GET.COLLATERAL.ID
+}
+
+
+
+public method redoGetCoverDetails (
+    INOUT yFinalArr string
+)
+{
+    jBC: REDO.GET.COVER.DETAILS
+}
+
+
+
+public method redoGetCurrFreq (
+)
+{
+    jBC: REDO.GET.CURR.FREQ
+}
+
+
+
+public method redoGetCurrStoDupFreq (
+)
+{
+    jBC: REDO.GET.CURR.STO.DUP.FREQ
+}
+
+
+
+public method redoGetCustomerSegment (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.CUSTOMER.SEGMENT
+}
+
+
+
+public method redoGetDateFormat (
+    INOUT yDate string
+)
+{
+    jBC: REDO.GET.DATE.FORMAT
+}
+
+
+
+public method redoGetDateIntForm (
+    INOUT yDate string
+)
+{
+    jBC: REDO.GET.DATE.INT.FORM
+}
+
+
+
+public method redoGetDealCusName (
+    INOUT yNamePart string
+)
+{
+    jBC: REDO.GET.DEAL.CUS.NAME
+}
+
+
+
+public method redoGetDealName (
+    INOUT yFinalName string
+)
+{
+    jBC: REDO.GET.DEAL.NAME
+}
+
+
+
+public method redoGetDisbDate (
+)
+{
+    jBC: REDO.GET.DISB.DATE
+}
+
+
+
+public method redoGetDisbursedAmt (
+    INOUT arrId string,
+    INOUT yDisbAmount string
+)
+{
+    jBC: REDO.GET.DISBURSED.AMT
+}
+
+
+
+public method redoGetDisbursementDetails (
+    INOUT yIdsDetails string,
+    INOUT rDisbDetails string,
+    INOUT yCommitedAmt string,
+    INOUT yPendDisb string
+)
+{
+    jBC: REDO.GET.DISBURSEMENT.DETAILS
+}
+
+
+
+public method redoGetDraftAmtwrd (
+    INOUT yAmt string
+)
+{
+    jBC: REDO.GET.DRAFT.AMTWRD
+}
+
+
+
+public method redoGetExpiredLock (
+)
+{
+    jBC: REDO.GET.EXPIRED.LOCK
+}
+
+
+
+public method redoGetFinalAccount (
+)
+{
+    jBC: REDO.GET.FINAL.ACCOUNT
+}
+
+
+
+public method redoGetGarBenDet (
+    INOUT yBen string
+)
+{
+    jBC: REDO.GET.GAR.BEN.DET
+}
+
+
+
+public method redoGetHighAci (
+    INOUT aciId string,
+    INOUT yCur string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.HIGH.ACI
+}
+
+
+
+public method redoGetHighGci (
+    INOUT gciId string,
+    INOUT yCur string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.HIGH.GCI
+}
+
+
+
+public method redoGetInterestRate (
+    INOUT arrId string,
+    INOUT intRate string
+)
+{
+    jBC: REDO.GET.INTEREST.RATE
+}
+
+
+
+public method redoGetInventoryDetail (
+    INOUT yFinalName string
+)
+{
+    jBC: REDO.GET.INVENTORY.DETAIL
+}
+
+
+
+public method redoGetJulianDate (
+)
+{
+    jBC: REDO.GET.JULIAN.DATE
+}
+
+
+
+public method redoGetLnAnter (
+)
+{
+    jBC: REDO.GET.LN.ANTER
+}
+
+
+
+public method redoGetLoanTerm (
+    INOUT yAaId string,
+    INOUT effectiveDate string,
+    INOUT yLoanTerm string
+)
+{
+    jBC: REDO.GET.LOAN.TERM
+}
+
+
+
+public method redoGetLockType (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.LOCK.TYPE
+}
+
+
+
+public method redoGetMarginId (
+    INOUT yCampType string,
+    INOUT yAffCamp string,
+    INOUT rRedoRateChange string,
+    INOUT yMarginId string
+)
+{
+    jBC: REDO.GET.MARGIN.ID
+}
+
+
+
+public method redoGetMessage (
+    INOUT varAcId string
+)
+{
+    jBC: REDO.GET.MESSAGE
+}
+
+
+
+public method redoGetMthDetails (
+    INOUT date1 string,
+    INOUT date2 string,
+    INOUT outMonth string,
+    INOUT outDate string,
+    INOUT outCount string,
+    INOUT outMthDate string
+)
+{
+    jBC: REDO.GET.MTH.DETAILS
+}
+
+
+
+public method redoGetMtsTransInfo (
+)
+{
+    jBC: REDO.GET.MTS.TRANS.INFO
+}
+
+
+
+public method redoGetNameDetails (
+    INOUT yFinalName string
+)
+{
+    jBC: REDO.GET.NAME.DETAILS
+}
+
+
+
+public method redoGetNextActualAmount (
+)
+{
+    jBC: REDO.GET.NEXT.ACTUAL.AMOUNT
+}
+
+
+
+public method redoGetNextCycledate (
+    INOUT arrId string,
+    INOUT freq string,
+    INOUT yDate string,
+    INOUT yOutDate string
+)
+{
+    jBC: REDO.GET.NEXT.CYCLEDATE
+}
+
+
+
+public method redoGetNextImmediatePaymentAmt (
+)
+{
+    jBC: REDO.GET.NEXT.IMMEDIATE.PAYMENT.AMT
+}
+
+
+
+public method redoGetNextPaymentAmount (
+    INOUT arrId string,
+    INOUT yDate string,
+    INOUT yAmt string
+)
+{
+    jBC: REDO.GET.NEXT.PAYMENT.AMOUNT
+}
+
+
+
+public method redoGetNextPaymentAmountOld (
+    INOUT yAaId string,
+    INOUT yDate string,
+    INOUT yAmt string
+)
+{
+    jBC: REDO.GET.NEXT.PAYMENT.AMOUNT.OLD
+}
+
+
+
+public method redoGetNotifyList (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.NOTIFY.LIST
+}
+
+
+
+public method redoGetNvVersionTypes (
+    INOUT yTransId string,
+    INOUT yVersionNames string,
+    INOUT yVersionTypes string,
+    INOUT yProcType string,
+    INOUT yRecepMethod string
+)
+{
+    jBC: REDO.GET.NV.VERSION.TYPES
+}
+
+
+
+public method redoGetOsAmt (
+)
+{
+    jBC: REDO.GET.OS.AMT
+}
+
+
+
+public method redoGetOverdueCond (
+)
+{
+    jBC: REDO.GET.OVERDUE.COND
+}
+
+
+
+public method redoGetOverduePosition (
+    INOUT arrId string,
+    INOUT odStatus string,
+    INOUT odPos string,
+    INOUT totalOd string
+)
+{
+    jBC: REDO.GET.OVERDUE.POSITION
+}
+
+
+
+public method redoGetOverpymt (
+    INOUT yDealValue string
+)
+{
+    jBC: REDO.GET.OVERPYMT
+}
+
+
+
+public method redoGetPayMon (
+    INOUT yMonth string
+)
+{
+    jBC: REDO.GET.PAY.MON
+}
+
+
+
+public method redoGetPoolRate (
+    INOUT yCurrency string,
+    INOUT yReviewFreq string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.POOL.RATE
+}
+
+
+
+public method redoGetRejectReason (
+    INOUT yRegulatory string,
+    INOUT yRedoRejectReason string
+)
+{
+    jBC: REDO.GET.REJECT.REASON
+}
+
+
+
+public method redoGetRequestType (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.REQUEST.TYPE
+}
+
+
+
+public method redoGetRpNm (
+)
+{
+    jBC: REDO.GET.RP.NM
+}
+
+
+
+public method redoGetSunnelDetails (
+    INOUT yCardNo string,
+    INOUT yCardType string
+)
+{
+    jBC: REDO.GET.SUNNEL.DETAILS
+}
+
+
+
+public method redoGetTotalOutstandingSinUncUnd (
+    INOUT arrId string,
+    INOUT yPropAmt string,
+    INOUT yTotalAmt string
+)
+{
+    jBC: REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND
+}
+
+
+
+public method redoGetTransColType (
+    INOUT yType string
+)
+{
+    jBC: REDO.GET.TRANS.COL.TYPE
+}
+
+
+
+public method redoGetTransType (
+)
+{
+    jBC: REDO.GET.TRANS.TYPE
+}
+
+
+
+public method redoGetTxnRevChainAu (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.TXN.REV.CHAIN.AU
+}
+
+
+
+public method redoGetTxnRevChain (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.TXN.REV.CHAIN
+}
+
+
+
+public method redoGetUploadType (
+)
+{
+    jBC: REDO.GET.UPLOAD.TYPE
+}
+
+
+
+public method redoGetUserLoginBranch (
+)
+{
+    jBC: REDO.GET.USER.LOGIN.BRANCH
+}
+
+
+
+public method redoGetVirtualTable (
+    INOUT appl string,
+    INOUT locRefPos string,
+    INOUT yVirtualTable string,
+    INOUT err string
+)
+{
+    jBC: REDO.GET.VIRTUAL.TABLE
+}
+
+
+
+public method redoGetVpCcyAi (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.VP.CCY.AI
+}
+
+
+
+public method redoGitCusgrpFormat (
+    INOUT gitMapData string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.GIT.CUSGRP.FORMAT
+}
+
+
+
+public method redoGlBExtractRtn (
+)
+{
+    jBC: REDO.GL.B.EXTRACT.RTN
+}
+
+
+
+public method redoGlHExtractParameter (
+)
+{
+    jBC: REDO.GL.H.EXTRACT.PARAMETER
+}
+
+
+
+public method redoGlHExtractParameterFields (
+)
+{
+    jBC: REDO.GL.H.EXTRACT.PARAMETER.FIELDS
+}
+
+
+
+public method redoGlHExtractParameterValidate (
+)
+{
+    jBC: REDO.GL.H.EXTRACT.PARAMETER.VALIDATE
+}
+
+
+
+public method redoGlLRerunExtn (
+)
+{
+    jBC: REDO.GL.L.RERUN.EXTN
+}
+
+
+
+public method redoGlLRerunExtnFields (
+)
+{
+    jBC: REDO.GL.L.RERUN.EXTN.FIELDS
+}
+
+
+
+public method redoGlVAuthIntrfRepLine (
+)
+{
+    jBC: REDO.GL.V.AUTH.INTRF.REP.LINE
+}
+
+
+
+public method redoGlWExtractOnline (
+)
+{
+    jBC: REDO.GL.W.EXTRACT.ONLINE
+}
+
+
+
+public method redoGlWExtractOnlineFields (
+)
+{
+    jBC: REDO.GL.W.EXTRACT.ONLINE.FIELDS
+}
+
+
+
+public method redoGlWExtractOnlineRun (
+)
+{
+    jBC: REDO.GL.W.EXTRACT.ONLINE.RUN
+}
+
+
+
+public method redoGtExpDate (
+)
+{
+    jBC: REDO.GT.EXP.DATE
+}
+
+
+
+public method redoGuarantorType (
+)
+{
+    jBC: REDO.GUARANTOR.TYPE
+}
+
+
+
+public method redoGuarantorTypeFields (
+)
+{
+    jBC: REDO.GUARANTOR.TYPE.FIELDS
+}
+
+
+
+public method redoHAdminChequesAuthorise (
+)
+{
+    jBC: REDO.H.ADMIN.CHEQUES.AUTHORISE
+}
+
+
+
+public method redoHAdminCheques (
+)
+{
+    jBC: REDO.H.ADMIN.CHEQUES
+}
+
+
+
+public method redoHAdminChequesFields (
+)
+{
+    jBC: REDO.H.ADMIN.CHEQUES.FIELDS
+}
+
+
+
+public method redoHApapParameter (
+)
+{
+    jBC: REDO.H.APAP.PARAMETER
+}
+
+
+
+public method redoHApapParameterFields (
+)
+{
+    jBC: REDO.H.APAP.PARAMETER.FIELDS
+}
+
+
+
+public method redoHAssignCmp (
+)
+{
+    jBC: REDO.H.ASSIGN.CMP
+}
+
+
+
+public method redoHAssignRtn (
+)
+{
+    jBC: REDO.H.ASSIGN.RTN
+}
+
+
+
+public method redoHAssignment (
+)
+{
+    jBC: REDO.H.ASSIGNMENT
+}
+
+
+
+public method redoHAssignmentFields (
+)
+{
+    jBC: REDO.H.ASSIGNMENT.FIELDS
+}
+
+
+
+public method redoHAzReinvDeposit (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT
+}
+
+
+
+public method redoHAzReinvDepositFields (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT.FIELDS
+}
+
+
+
+public method redoHAzReinvDepositValidate (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT.VALIDATE
+}
+
+
+
+public method redoHBankDraftsAuthorise (
+)
+{
+    jBC: REDO.H.BANK.DRAFTS.AUTHORISE
+}
+
+
+
+public method redoHBankDrafts (
+)
+{
+    jBC: REDO.H.BANK.DRAFTS
+}
+
+
+
+public method redoHBankDraftsFields (
+)
+{
+    jBC: REDO.H.BANK.DRAFTS.FIELDS
+}
+
+
+
+public method redoHBatChqDetails (
+)
+{
+    jBC: REDO.H.BAT.CHQ.DETAILS
+}
+
+
+
+public method redoHBatChqDetailsFields (
+)
+{
+    jBC: REDO.H.BAT.CHQ.DETAILS.FIELDS
+}
+
+
+
+public method redoHCantCk (
+)
+{
+    jBC: REDO.H.CANT.CK
+}
+
+
+
+public method redoHCantCkFields (
+)
+{
+    jBC: REDO.H.CANT.CK.FIELDS
+}
+
+
+
+public method redoHCashierPrint (
+)
+{
+    jBC: REDO.H.CASHIER.PRINT
+}
+
+
+
+public method redoHCashierPrintFields (
+)
+{
+    jBC: REDO.H.CASHIER.PRINT.FIELDS
+}
+
+
+
+public method redoHCcyRules (
+)
+{
+    jBC: REDO.H.CCY.RULES
+}
+
+
+
+public method redoHCcyRulesFields (
+)
+{
+    jBC: REDO.H.CCY.RULES.FIELDS
+}
+
+
+
+public method redoHCheckClearingScreenAuthorise (
+)
+{
+    jBC: REDO.H.CHECK.CLEARING.SCREEN.AUTHORISE
+}
+
+
+
+public method redoHCheckClearingScreen (
+)
+{
+    jBC: REDO.H.CHECK.CLEARING.SCREEN
+}
+
+
+
+public method redoHCheckClearingScreenFields (
+)
+{
+    jBC: REDO.H.CHECK.CLEARING.SCREEN.FIELDS
+}
+
+
+
+public method redoHCheckClearingScreenId (
+)
+{
+    jBC: REDO.H.CHECK.CLEARING.SCREEN.ID
+}
+
+
+
+public method redoHCheckClearingScreenValidate (
+)
+{
+    jBC: REDO.H.CHECK.CLEARING.SCREEN.VALIDATE
+}
+
+
+
+public method redoHCheqChangeParam (
+)
+{
+    jBC: REDO.H.CHEQ.CHANGE.PARAM
+}
+
+
+
+public method redoHCheqChangeParamFields (
+)
+{
+    jBC: REDO.H.CHEQ.CHANGE.PARAM.FIELDS
+}
+
+
+
+public method redoHChequeRegister (
+)
+{
+    jBC: REDO.H.CHEQUE.REGISTER
+}
+
+
+
+public method redoHChequeRegisterFields (
+)
+{
+    jBC: REDO.H.CHEQUE.REGISTER.FIELDS
+}
+
+
+
+public method redoHClearingOutward (
+)
+{
+    jBC: REDO.H.CLEARING.OUTWARD
+}
+
+
+
+public method redoHClearingOutwardFields (
+)
+{
+    jBC: REDO.H.CLEARING.OUTWARD.FIELDS
+}
+
+
+
+public method redoHClearingRulesParam (
+)
+{
+    jBC: REDO.H.CLEARING.RULES.PARAM
+}
+
+
+
+public method redoHClearingRulesParamFields (
+)
+{
+    jBC: REDO.H.CLEARING.RULES.PARAM.FIELDS
+}
+
+
+
+public method redoHCrmParam (
+)
+{
+    jBC: REDO.H.CRM.PARAM
+}
+
+
+
+public method redoHCrmParamFields (
+)
+{
+    jBC: REDO.H.CRM.PARAM.FIELDS
+}
+
+
+
+public method redoHCustWriteProv (
+)
+{
+    jBC: REDO.H.CUST.WRITE.PROV
+}
+
+
+
+public method redoHCustWriteProvFields (
+)
+{
+    jBC: REDO.H.CUST.WRITE.PROV.FIELDS
+}
+
+
+
+public method redoHCustomerProvision (
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISION
+}
+
+
+
+public method redoHCustomerProvisionFields (
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISION.FIELDS
+}
+
+
+
+public method redoHCustomerProvisioning (
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISIONING
+}
+
+
+
+public method redoHCustomerProvisioningFields (
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISIONING.FIELDS
+}
+
+
+
+public method redoHDebitCards (
+)
+{
+    jBC: REDO.H.DEBIT.CARDS
+}
+
+
+
+public method redoHDebitCardsFields (
+)
+{
+    jBC: REDO.H.DEBIT.CARDS.FIELDS
+}
+
+
+
+public method redoHDepDetails (
+)
+{
+    jBC: REDO.H.DEP.DETAILS
+}
+
+
+
+public method redoHDepDetailsFields (
+)
+{
+    jBC: REDO.H.DEP.DETAILS.FIELDS
+}
+
+
+
+public method redoHDepositReceiptsAuthorise (
+)
+{
+    jBC: REDO.H.DEPOSIT.RECEIPTS.AUTHORISE
+}
+
+
+
+public method redoHDepositReceipts (
+)
+{
+    jBC: REDO.H.DEPOSIT.RECEIPTS
+}
+
+
+
+public method redoHDepositReceiptsFields (
+)
+{
+    jBC: REDO.H.DEPOSIT.RECEIPTS.FIELDS
+}
+
+
+
+public method redoHForexAml (
+)
+{
+    jBC: REDO.H.FOREX.AML
+}
+
+
+
+public method redoHForexAmlFields (
+)
+{
+    jBC: REDO.H.FOREX.AML.FIELDS
+}
+
+
+
+public method redoHForexAmlValidate (
+)
+{
+    jBC: REDO.H.FOREX.AML.VALIDATE
+}
+
+
+
+public method redoHFtConcatFile (
+)
+{
+    jBC: REDO.H.FT.CONCAT.FILE
+}
+
+
+
+public method redoHFtConcatFileFields (
+)
+{
+    jBC: REDO.H.FT.CONCAT.FILE.FIELDS
+}
+
+
+
+public method redoHInventoryMaintain (
+)
+{
+    jBC: REDO.H.INVENTORY.MAINTAIN
+}
+
+
+
+public method redoHInventoryMaintainFields (
+)
+{
+    jBC: REDO.H.INVENTORY.MAINTAIN.FIELDS
+}
+
+
+
+public method redoHInventoryParameter (
+)
+{
+    jBC: REDO.H.INVENTORY.PARAMETER
+}
+
+
+
+public method redoHInventoryParameterFields (
+)
+{
+    jBC: REDO.H.INVENTORY.PARAMETER.FIELDS
+}
+
+
+
+public method redoHItemDetails (
+)
+{
+    jBC: REDO.H.ITEM.DETAILS
+}
+
+
+
+public method redoHItemDetailsFields (
+)
+{
+    jBC: REDO.H.ITEM.DETAILS.FIELDS
+}
+
+
+
+public method redoHMainCompany (
+)
+{
+    jBC: REDO.H.MAIN.COMPANY
+}
+
+
+
+public method redoHMainCompanyFields (
+)
+{
+    jBC: REDO.H.MAIN.COMPANY.FIELDS
+}
+
+
+
+public method redoHModChequera (
+)
+{
+    jBC: REDO.H.MOD.CHEQUERA
+}
+
+
+
+public method redoHModChequeraFields (
+)
+{
+    jBC: REDO.H.MOD.CHEQUERA.FIELDS
+}
+
+
+
+public method redoHMotDest (
+)
+{
+    jBC: REDO.H.MOT.DEST
+}
+
+
+
+public method redoHMotDestFields (
+)
+{
+    jBC: REDO.H.MOT.DEST.FIELDS
+}
+
+
+
+public method redoHMotExcep (
+)
+{
+    jBC: REDO.H.MOT.EXCEP
+}
+
+
+
+public method redoHMotExcepFields (
+)
+{
+    jBC: REDO.H.MOT.EXCEP.FIELDS
+}
+
+
+
+public method redoHOrderDetails (
+)
+{
+    jBC: REDO.H.ORDER.DETAILS
+}
+
+
+
+public method redoHOrderDetailsFields (
+)
+{
+    jBC: REDO.H.ORDER.DETAILS.FIELDS
+}
+
+
+
+public method redoHOrderDetailsRecord (
+)
+{
+    jBC: REDO.H.ORDER.DETAILS.RECORD
+}
+
+
+
+public method redoHPartPay (
+)
+{
+    jBC: REDO.H.PART.PAY
+}
+
+
+
+public method redoHPartPayFt (
+)
+{
+    jBC: REDO.H.PART.PAY.FT
+}
+
+
+
+public method redoHPartPayFtFields (
+)
+{
+    jBC: REDO.H.PART.PAY.FT.FIELDS
+}
+
+
+
+public method redoHPartPayTt (
+)
+{
+    jBC: REDO.H.PART.PAY.TT
+}
+
+
+
+public method redoHPartPayTtFields (
+)
+{
+    jBC: REDO.H.PART.PAY.TT.FIELDS
+}
+
+
+
+public method redoHPassbookInventoryAuthorise (
+)
+{
+    jBC: REDO.H.PASSBOOK.INVENTORY.AUTHORISE
+}
+
+
+
+public method redoHPassbookInventory (
+)
+{
+    jBC: REDO.H.PASSBOOK.INVENTORY
+}
+
+
+
+public method redoHPassbookInventoryFields (
+)
+{
+    jBC: REDO.H.PASSBOOK.INVENTORY.FIELDS
+}
+
+
+
+public method redoHPayModeParam (
+)
+{
+    jBC: REDO.H.PAY.MODE.PARAM
+}
+
+
+
+public method redoHPayModeParamFields (
+)
+{
+    jBC: REDO.H.PAY.MODE.PARAM.FIELDS
+}
+
+
+
+public method redoHPayVersion (
+)
+{
+    jBC: REDO.H.PAY.VERSION
+}
+
+
+
+public method redoHPayVersionFields (
+)
+{
+    jBC: REDO.H.PAY.VERSION.FIELDS
+}
+
+
+
+public method redoHPiggyBankAssignment (
+)
+{
+    jBC: REDO.H.PIGGY.BANK.ASSIGNMENT
+}
+
+
+
+public method redoHPiggyBankAssignmentFields (
+)
+{
+    jBC: REDO.H.PIGGY.BANK.ASSIGNMENT.FIELDS
+}
+
+
+
+public method redoHPiggyBanks (
+)
+{
+    jBC: REDO.H.PIGGY.BANKS
+}
+
+
+
+public method redoHPiggyBanksFields (
+)
+{
+    jBC: REDO.H.PIGGY.BANKS.FIELDS
+}
+
+
+
+public method redoHPolicyNumber (
+)
+{
+    jBC: REDO.H.POLICY.NUMBER
+}
+
+
+
+public method redoHPolicyNumberFields (
+)
+{
+    jBC: REDO.H.POLICY.NUMBER.FIELDS
+}
+
+
+
+public method redoHProvisionParameterAuthorise (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER.AUTHORISE
+}
+
+
+
+public method redoHProvisionParameter (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER
+}
+
+
+
+public method redoHProvisionParameterFields (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER.FIELDS
+}
+
+
+
+public method redoHProvisionParameterProcess (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER.PROCESS
+}
+
+
+
+public method redoHProvisionParameterValidate (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER.VALIDATE
+}
+
+
+
+public method redoHReassignment (
+)
+{
+    jBC: REDO.H.REASSIGNMENT
+}
+
+
+
+public method redoHReassignmentFields (
+)
+{
+    jBC: REDO.H.REASSIGNMENT.FIELDS
+}
+
+
+
+public method redoHReassignmentValidate (
+)
+{
+    jBC: REDO.H.REASSIGNMENT.VALIDATE
+}
+
+
+
+public method redoHReciptDate (
+)
+{
+    jBC: REDO.H.RECIPT.DATE
+}
+
+
+
+public method redoHReorderDetails (
+)
+{
+    jBC: REDO.H.REORDER.DETAILS
+}
+
+
+
+public method redoHReorderDetailsFields (
+)
+{
+    jBC: REDO.H.REORDER.DETAILS.FIELDS
+}
+
+
+
+public method redoHReorderLevel (
+)
+{
+    jBC: REDO.H.REORDER.LEVEL
+}
+
+
+
+public method redoHReorderLevelFields (
+)
+{
+    jBC: REDO.H.REORDER.LEVEL.FIELDS
+}
+
+
+
+public method redoHReorderLevelProcess (
+)
+{
+    jBC: REDO.H.REORDER.LEVEL.PROCESS
+}
+
+
+
+public method redoHReorderLevelRecord (
+)
+{
+    jBC: REDO.H.REORDER.LEVEL.RECORD
+}
+
+
+
+public method redoHReportsParam (
+)
+{
+    jBC: REDO.H.REPORTS.PARAM
+}
+
+
+
+public method redoHReportsParamFields (
+)
+{
+    jBC: REDO.H.REPORTS.PARAM.FIELDS
+}
+
+
+
+public method redoHReportsParamValidate (
+)
+{
+    jBC: REDO.H.REPORTS.PARAM.VALIDATE
+}
+
+
+
+public method redoHRevaluationParam (
+)
+{
+    jBC: REDO.H.REVALUATION.PARAM
+}
+
+
+
+public method redoHRevaluationParamFields (
+)
+{
+    jBC: REDO.H.REVALUATION.PARAM.FIELDS
+}
+
+
+
+public method redoHRevaluationParamValidate (
+)
+{
+    jBC: REDO.H.REVALUATION.PARAM.VALIDATE
+}
+
+
+
+public method redoHRoutingHeader (
+)
+{
+    jBC: REDO.H.ROUTING.HEADER
+}
+
+
+
+public method redoHRoutingHeaderFields (
+)
+{
+    jBC: REDO.H.ROUTING.HEADER.FIELDS
+}
+
+
+
+public method redoHRoutingNumber (
+)
+{
+    jBC: REDO.H.ROUTING.NUMBER
+}
+
+
+
+public method redoHRoutingNumberFields (
+)
+{
+    jBC: REDO.H.ROUTING.NUMBER.FIELDS
+}
+
+
+
+public method redoHSolicitudCk (
+)
+{
+    jBC: REDO.H.SOLICITUD.CK
+}
+
+
+
+public method redoHSolicitudCkFields (
+)
+{
+    jBC: REDO.H.SOLICITUD.CK.FIELDS
+}
+
+
+
+public method redoHSolicitudCkValidate (
+)
+{
+    jBC: REDO.H.SOLICITUD.CK.VALIDATE
+}
+
+
+
+public method redoHStSubAssetType (
+)
+{
+    jBC: REDO.H.ST.SUB.ASSET.TYPE
+}
+
+
+
+public method redoHStSubAssetTypeFields (
+)
+{
+    jBC: REDO.H.ST.SUB.ASSET.TYPE.FIELDS
+}
+
+
+
+public method redoHSucursal (
+)
+{
+    jBC: REDO.H.SUCURSAL
+}
+
+
+
+public method redoHSucursalFields (
+)
+{
+    jBC: REDO.H.SUCURSAL.FIELDS
+}
+
+
+
+public method redoHTaxDataChecks (
+)
+{
+    jBC: REDO.H.TAX.DATA.CHECKS
+}
+
+
+
+public method redoHTaxDataChecksFields (
+)
+{
+    jBC: REDO.H.TAX.DATA.CHECKS.FIELDS
+}
+
+
+
+public method redoHTaxDataChecksValidate (
+)
+{
+    jBC: REDO.H.TAX.DATA.CHECKS.VALIDATE
+}
+
+
+
+public method redoHTellerTxnCodes (
+)
+{
+    jBC: REDO.H.TELLER.TXN.CODES
+}
+
+
+
+public method redoHTellerTxnCodesFields (
+)
+{
+    jBC: REDO.H.TELLER.TXN.CODES.FIELDS
+}
+
+
+
+public method redoHTiempoent (
+)
+{
+    jBC: REDO.H.TIEMPOENT
+}
+
+
+
+public method redoHTiempoentFields (
+)
+{
+    jBC: REDO.H.TIEMPOENT.FIELDS
+}
+
+
+
+public method redoHTtConcatFile (
+)
+{
+    jBC: REDO.H.TT.CONCAT.FILE
+}
+
+
+
+public method redoHTtConcatFileFields (
+)
+{
+    jBC: REDO.H.TT.CONCAT.FILE.FIELDS
+}
+
+
+
+public method redoHandleCommTaxFields (
+)
+{
+    jBC: REDO.HANDLE.COMM.TAX.FIELDS
+}
+
+
+
+public method redoHtmlBodyProcess (
+)
+{
+    jBC: REDO.HTML.BODY.PROCESS
+}
+
+
+
+public method redoHtmlDataProcess (
+)
+{
+    jBC: REDO.HTML.DATA.PROCESS
+}
+
+
+
+public method redoHtmlDateFmt (
+)
+{
+    jBC: REDO.HTML.DATE.FMT
+}
+
+
+
+public method redoHtmlFooterProcess (
+)
+{
+    jBC: REDO.HTML.FOOTER.PROCESS
+}
+
+
+
+public method redoHtmlHeaderPage (
+)
+{
+    jBC: REDO.HTML.HEADER.PAGE
+}
+
+
+
+public method redoHtmlHeaderProcess (
+)
+{
+    jBC: REDO.HTML.HEADER.PROCESS
+}
+
+
+
+public method redoIdentityNumber (
+    INOUT custId string,
+    INOUT idNum string
+)
+{
+    jBC: REDO.IDENTITY.NUMBER
+}
+
+
+
+public method redoInFmtAmount (
+)
+{
+    jBC: REDO.IN.FMT.AMOUNT
+}
+
+
+
+public method redoIncrDecrAtmPosAmt (
+)
+{
+    jBC: REDO.INCR.DECR.ATM.POS.AMT
+}
+
+
+
+public method redoIncrDecrAtmPosAmtFields (
+)
+{
+    jBC: REDO.INCR.DECR.ATM.POS.AMT.FIELDS
+}
+
+
+
+public method redoIndivExecutiveEmp (
+    INOUT aaArray string
+)
+{
+    jBC: REDO.INDIV.EXECUTIVE.EMP
+}
+
+
+
+public method redoIndividualRefPdfGen (
+    INOUT yArray string
+)
+{
+    jBC: REDO.INDIVIDUAL.REF.PDF.GEN
+}
+
+
+
+public method redoInitCardVal (
+)
+{
+    jBC: REDO.INIT.CARD.VAL
+}
+
+
+
+public method redoInpCcyPosnUpdNew (
+)
+{
+    jBC: REDO.INP.CCY.POSN.UPD.NEW
+}
+
+
+
+public method redoInstrumentType (
+)
+{
+    jBC: REDO.INSTRUMENT.TYPE
+}
+
+
+
+public method redoInstrumentTypeFields (
+)
+{
+    jBC: REDO.INSTRUMENT.TYPE.FIELDS
+}
+
+
+
+public method redoInsurDetConcatUpd (
+)
+{
+    jBC: REDO.INSUR.DET.CONCAT.UPD
+}
+
+
+
+public method redoInsurDetConcatUpdOtime (
+)
+{
+    jBC: REDO.INSUR.DET.CONCAT.UPD.OTIME
+}
+
+
+
+public method redoIntAcctPayoff (
+)
+{
+    jBC: REDO.INT.ACCT.PAYOFF
+}
+
+
+
+public method redoIntCheckCrt (
+)
+{
+    jBC: REDO.INT.CHECK.CRT
+}
+
+
+
+public method redoIntProperty (
+    INOUT yAaId string,
+    INOUT yEffDate string,
+    INOUT yInterest string,
+    INOUT yIntFlag string
+)
+{
+    jBC: REDO.INT.PROPERTY
+}
+
+
+
+public method redoIntReverseHis (
+)
+{
+    jBC: REDO.INT.REVERSE.HIS
+}
+
+
+
+public method redoIntReverseHisFields (
+)
+{
+    jBC: REDO.INT.REVERSE.HIS.FIELDS
+}
+
+
+
+public method redoInterestReverse (
+)
+{
+    jBC: REDO.INTEREST.REVERSE
+}
+
+
+
+public method redoInterestReverseFields (
+)
+{
+    jBC: REDO.INTEREST.REVERSE.FIELDS
+}
+
+
+
+public method redoIssueClaims (
+)
+{
+    jBC: REDO.ISSUE.CLAIMS
+}
+
+
+
+public method redoIssueClaimsFields (
+)
+{
+    jBC: REDO.ISSUE.CLAIMS.FIELDS
+}
+
+
+
+public method redoIssueClaimsId (
+)
+{
+    jBC: REDO.ISSUE.CLAIMS.ID
+}
+
+
+
+public method redoIssueClaimsRecord (
+)
+{
+    jBC: REDO.ISSUE.CLAIMS.RECORD
+}
+
+
+
+public method redoIssueComplaints (
+)
+{
+    jBC: REDO.ISSUE.COMPLAINTS
+}
+
+
+
+public method redoIssueComplaintsFields (
+)
+{
+    jBC: REDO.ISSUE.COMPLAINTS.FIELDS
+}
+
+
+
+public method redoIssueComplaintsId (
+)
+{
+    jBC: REDO.ISSUE.COMPLAINTS.ID
+}
+
+
+
+public method redoIssueComplaintsRecord (
+)
+{
+    jBC: REDO.ISSUE.COMPLAINTS.RECORD
+}
+
+
+
+public method redoIssueDeptCode (
+)
+{
+    jBC: REDO.ISSUE.DEPT.CODE
+}
+
+
+
+public method redoIssueDeptCodeFields (
+)
+{
+    jBC: REDO.ISSUE.DEPT.CODE.FIELDS
+}
+
+
+
+public method redoIssueDeptCodeId (
+)
+{
+    jBC: REDO.ISSUE.DEPT.CODE.ID
+}
+
+
+
+public method redoIssueEmail (
+)
+{
+    jBC: REDO.ISSUE.EMAIL
+}
+
+
+
+public method redoIssueEmailFields (
+)
+{
+    jBC: REDO.ISSUE.EMAIL.FIELDS
+}
+
+
+
+public method redoIssueEntity (
+)
+{
+    jBC: REDO.ISSUE.ENTITY
+}
+
+
+
+public method redoIssueEntityFields (
+)
+{
+    jBC: REDO.ISSUE.ENTITY.FIELDS
+}
+
+
+
+public method redoIssueRequests (
+)
+{
+    jBC: REDO.ISSUE.REQUESTS
+}
+
+
+
+public method redoIssueRequestsFields (
+)
+{
+    jBC: REDO.ISSUE.REQUESTS.FIELDS
+}
+
+
+
+public method redoIssueRequestsId (
+)
+{
+    jBC: REDO.ISSUE.REQUESTS.ID
+}
+
+
+
+public method redoIssueRequestsRecord (
+)
+{
+    jBC: REDO.ISSUE.REQUESTS.RECORD
+}
+
+
+
+public method redoIstRespCode (
+)
+{
+    jBC: REDO.IST.RESP.CODE
+}
+
+
+
+public method redoIstRespCodeFields (
+)
+{
+    jBC: REDO.IST.RESP.CODE.FIELDS
+}
+
+
+
+public method redoItemReqOrderStatus (
+    INOUT lnArray string
+)
+{
+    jBC: REDO.ITEM.REQ.ORDER.STATUS
+}
+
+
+
+public method redoItemStock (
+)
+{
+    jBC: REDO.ITEM.STOCK
+}
+
+
+
+public method redoItemStockByDate (
+)
+{
+    jBC: REDO.ITEM.STOCK.BY.DATE
+}
+
+
+
+public method redoItemStockByDateFields (
+)
+{
+    jBC: REDO.ITEM.STOCK.BY.DATE.FIELDS
+}
+
+
+
+public method redoItemStockFields (
+)
+{
+    jBC: REDO.ITEM.STOCK.FIELDS
+}
+
+
+
+public method redoLAcStatusCode (
+)
+{
+    jBC: REDO.L.AC.STATUS.CODE
+}
+
+
+
+public method redoLAcStatusCodeFields (
+)
+{
+    jBC: REDO.L.AC.STATUS.CODE.FIELDS
+}
+
+
+
+public method redoLAcStatusCodeProcess (
+)
+{
+    jBC: REDO.L.AC.STATUS.CODE.PROCESS
+}
+
+
+
+public method redoLAdminDepDets (
+)
+{
+    jBC: REDO.L.ADMIN.DEP.DETS
+}
+
+
+
+public method redoLAdminDepDetsFields (
+)
+{
+    jBC: REDO.L.ADMIN.DEP.DETS.FIELDS
+}
+
+
+
+public method redoLAllFtTtFxIds (
+)
+{
+    jBC: REDO.L.ALL.FT.TT.FX.IDS
+}
+
+
+
+public method redoLAllFtTtFxIdsFields (
+)
+{
+    jBC: REDO.L.ALL.FT.TT.FX.IDS.FIELDS
+}
+
+
+
+public method redoLAuthCollateral (
+)
+{
+    jBC: REDO.L.AUTH.COLLATERAL
+}
+
+
+
+public method redoLAuthCollateralFields (
+)
+{
+    jBC: REDO.L.AUTH.COLLATERAL.FIELDS
+}
+
+
+
+public method redoLNcfCancel (
+)
+{
+    jBC: REDO.L.NCF.CANCEL
+}
+
+
+
+public method redoLNcfCancelFields (
+)
+{
+    jBC: REDO.L.NCF.CANCEL.FIELDS
+}
+
+
+
+public method redoLNcfCancellationType (
+)
+{
+    jBC: REDO.L.NCF.CANCELLATION.TYPE
+}
+
+
+
+public method redoLNcfCancellationTypeFields (
+)
+{
+    jBC: REDO.L.NCF.CANCELLATION.TYPE.FIELDS
+}
+
+
+
+public method redoLNcfCancelled (
+)
+{
+    jBC: REDO.L.NCF.CANCELLED
+}
+
+
+
+public method redoLNcfCancelledFields (
+)
+{
+    jBC: REDO.L.NCF.CANCELLED.FIELDS
+}
+
+
+
+public method redoLNcfIssue (
+)
+{
+    jBC: REDO.L.NCF.ISSUE
+}
+
+
+
+public method redoLNcfIssueFields (
+)
+{
+    jBC: REDO.L.NCF.ISSUE.FIELDS
+}
+
+
+
+public method redoLNcfIssueRun (
+)
+{
+    jBC: REDO.L.NCF.ISSUE.RUN
+}
+
+
+
+public method redoLNcfStatus (
+)
+{
+    jBC: REDO.L.NCF.STATUS
+}
+
+
+
+public method redoLNcfStatusFields (
+)
+{
+    jBC: REDO.L.NCF.STATUS.FIELDS
+}
+
+
+
+public method redoLNcfStock (
+)
+{
+    jBC: REDO.L.NCF.STOCK
+}
+
+
+
+public method redoLNcfStockFields (
+)
+{
+    jBC: REDO.L.NCF.STOCK.FIELDS
+}
+
+
+
+public method redoLNcfStockValidate (
+)
+{
+    jBC: REDO.L.NCF.STOCK.VALIDATE
+}
+
+
+
+public method redoLNcfUnmapped (
+)
+{
+    jBC: REDO.L.NCF.UNMAPPED
+}
+
+
+
+public method redoLNcfUnmappedFields (
+)
+{
+    jBC: REDO.L.NCF.UNMAPPED.FIELDS
+}
+
+
+
+public method redoLRevalFcyProdPos (
+)
+{
+    jBC: REDO.L.REVAL.FCY.PROD.POS
+}
+
+
+
+public method redoLRevalFcyProdPosFields (
+)
+{
+    jBC: REDO.L.REVAL.FCY.PROD.POS.FIELDS
+}
+
+
+
+public method redoLScTrnyieldChange (
+)
+{
+    jBC: REDO.L.SC.TRNYIELD.CHANGE
+}
+
+
+
+public method redoLScTrnyieldChangeFields (
+)
+{
+    jBC: REDO.L.SC.TRNYIELD.CHANGE.FIELDS
+}
+
+
+
+public method redoLSeriesChangeDets (
+)
+{
+    jBC: REDO.L.SERIES.CHANGE.DETS
+}
+
+
+
+public method redoLSeriesChangeDetsFields (
+)
+{
+    jBC: REDO.L.SERIES.CHANGE.DETS.FIELDS
+}
+
+
+
+public method redoLUserLog (
+)
+{
+    jBC: REDO.L.USER.LOG
+}
+
+
+
+public method redoLUserLogFields (
+)
+{
+    jBC: REDO.L.USER.LOG.FIELDS
+}
+
+
+
+public method redoLetterIssueAutortn (
+)
+{
+    jBC: REDO.LETTER.ISSUE.AUTORTN
+}
+
+
+
+public method redoLetterIssue (
+)
+{
+    jBC: REDO.LETTER.ISSUE
+}
+
+
+
+public method redoLetterIssueFields (
+)
+{
+    jBC: REDO.LETTER.ISSUE.FIELDS
+}
+
+
+
+public method redoLetterIssueValidate (
+)
+{
+    jBC: REDO.LETTER.ISSUE.VALIDATE
+}
+
+
+
+public method redoListCustomerAccounts (
+    INOUT acList string
+)
+{
+    jBC: REDO.LIST.CUSTOMER.ACCOUNTS
+}
+
+
+
+public method redoLoanAccountStatus (
+)
+{
+    jBC: REDO.LOAN.ACCOUNT.STATUS
+}
+
+
+
+public method redoLoanAccountStatusFields (
+)
+{
+    jBC: REDO.LOAN.ACCOUNT.STATUS.FIELDS
+}
+
+
+
+public method redoLoanChqReturn (
+)
+{
+    jBC: REDO.LOAN.CHQ.RETURN
+}
+
+
+
+public method redoLoanChqReturnFields (
+)
+{
+    jBC: REDO.LOAN.CHQ.RETURN.FIELDS
+}
+
+
+
+public method redoLoanDocumentation (
+)
+{
+    jBC: REDO.LOAN.DOCUMENTATION
+}
+
+
+
+public method redoLoanDocumentationFields (
+)
+{
+    jBC: REDO.LOAN.DOCUMENTATION.FIELDS
+}
+
+
+
+public method redoLoanFtTtTxn (
+)
+{
+    jBC: REDO.LOAN.FT.TT.TXN
+}
+
+
+
+public method redoLoanFtTtTxnFields (
+)
+{
+    jBC: REDO.LOAN.FT.TT.TXN.FIELDS
+}
+
+
+
+public method redoLoanMarginRate (
+)
+{
+    jBC: REDO.LOAN.MARGIN.RATE
+}
+
+
+
+public method redoLoanMarginRateFields (
+)
+{
+    jBC: REDO.LOAN.MARGIN.RATE.FIELDS
+}
+
+
+
+public method redoLoanSelCriteria (
+)
+{
+    jBC: REDO.LOAN.SEL.CRITERIA
+}
+
+
+
+public method redoLoanStatus (
+)
+{
+    jBC: REDO.LOAN.STATUS
+}
+
+
+
+public method redoLocalidadFields (
+)
+{
+    jBC: REDO.LOCALIDAD.FIELDS
+}
+
+
+
+public method redoLoyInfof360 (
+    INOUT rData string
+)
+{
+    jBC: REDO.LOY.INFOF360
+}
+
+
+
+public method redoLoyaltyCcard (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.LOYALTY.CCARD
+}
+
+
+
+public method redoLyAerocat (
+)
+{
+    jBC: REDO.LY.AEROCAT
+}
+
+
+
+public method redoLyAerocatFields (
+)
+{
+    jBC: REDO.LY.AEROCAT.FIELDS
+}
+
+
+
+public method redoLyAirFilegen (
+)
+{
+    jBC: REDO.LY.AIR.FILEGEN
+}
+
+
+
+public method redoLyAirFilegenFields (
+)
+{
+    jBC: REDO.LY.AIR.FILEGEN.FIELDS
+}
+
+
+
+public method redoLyApplication (
+)
+{
+    jBC: REDO.LY.APPLICATION
+}
+
+
+
+public method redoLyApplicationFields (
+)
+{
+    jBC: REDO.LY.APPLICATION.FIELDS
+}
+
+
+
+public method redoLyAvail (
+)
+{
+    jBC: REDO.LY.AVAIL
+}
+
+
+
+public method redoLyAvailFields (
+)
+{
+    jBC: REDO.LY.AVAIL.FIELDS
+}
+
+
+
+public method redoLyChannel (
+)
+{
+    jBC: REDO.LY.CHANNEL
+}
+
+
+
+public method redoLyChannelFields (
+)
+{
+    jBC: REDO.LY.CHANNEL.FIELDS
+}
+
+
+
+public method redoLyCusgroup (
+)
+{
+    jBC: REDO.LY.CUSGROUP
+}
+
+
+
+public method redoLyCusgroupFields (
+)
+{
+    jBC: REDO.LY.CUSGROUP.FIELDS
+}
+
+
+
+public method redoLyCusgroupId (
+)
+{
+    jBC: REDO.LY.CUSGROUP.ID
+}
+
+
+
+public method redoLyDisFieldsM (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.M
+}
+
+
+
+public method redoLyDisFieldsM2 (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.M2
+}
+
+
+
+public method redoLyDisFieldsMod (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.MOD
+}
+
+
+
+public method redoLyDisFieldsMod1 (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.MOD1
+}
+
+
+
+public method redoLyDisFieldsP (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.P
+}
+
+
+
+public method redoLyDisFieldsP2 (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.P2
+}
+
+
+
+public method redoLyDisFieldsP3 (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.P3
+}
+
+
+
+public method redoLyDisFieldsT (
+)
+{
+    jBC: REDO.LY.DIS.FIELDS.T
+}
+
+
+
+public method redoLyEvent (
+)
+{
+    jBC: REDO.LY.EVENT
+}
+
+
+
+public method redoLyEventFields (
+)
+{
+    jBC: REDO.LY.EVENT.FIELDS
+}
+
+
+
+public method redoLyGenform (
+)
+{
+    jBC: REDO.LY.GENFORM
+}
+
+
+
+public method redoLyGenformFields (
+)
+{
+    jBC: REDO.LY.GENFORM.FIELDS
+}
+
+
+
+public method redoLyGetInaur (
+    INOUT rData string
+)
+{
+    jBC: REDO.LY.GET.INAUR
+}
+
+
+
+public method redoLyGetsavc (
+    INOUT rData string
+)
+{
+    jBC: REDO.LY.GETSAVC
+}
+
+
+
+public method redoLyInpDisFieldsM (
+)
+{
+    jBC: REDO.LY.INP.DIS.FIELDS.M
+}
+
+
+
+public method redoLyInputFtusmov (
+)
+{
+    jBC: REDO.LY.INPUT.FTUSMOV
+}
+
+
+
+public method redoLyInputMan (
+)
+{
+    jBC: REDO.LY.INPUT.MAN
+}
+
+
+
+public method redoLyInputManDat (
+)
+{
+    jBC: REDO.LY.INPUT.MAN.DAT
+}
+
+
+
+public method redoLyInputManDat2 (
+)
+{
+    jBC: REDO.LY.INPUT.MAN.DAT2
+}
+
+
+
+public method redoLyInputManDat3 (
+)
+{
+    jBC: REDO.LY.INPUT.MAN.DAT3
+}
+
+
+
+public method redoLyInputMan2 (
+)
+{
+    jBC: REDO.LY.INPUT.MAN2
+}
+
+
+
+public method redoLyInputUsmov (
+)
+{
+    jBC: REDO.LY.INPUT.USMOV
+}
+
+
+
+public method redoLyLog (
+)
+{
+    jBC: REDO.LY.LOG
+}
+
+
+
+public method redoLyLogFields (
+)
+{
+    jBC: REDO.LY.LOG.FIELDS
+}
+
+
+
+public method redoLyMasterprgdr (
+)
+{
+    jBC: REDO.LY.MASTERPRGDR
+}
+
+
+
+public method redoLyMasterprgdrFields (
+)
+{
+    jBC: REDO.LY.MASTERPRGDR.FIELDS
+}
+
+
+
+public method redoLyMfileBkp (
+)
+{
+    jBC: REDO.LY.MFILE.BKP
+}
+
+
+
+public method redoLyMfileBkpFields (
+)
+{
+    jBC: REDO.LY.MFILE.BKP.FIELDS
+}
+
+
+
+public method redoStoNcfUpdate (
+   INOUT varNcfReq string,
+   INOUT varCurrency string,
+   INOUT varChargeAmount string,
+   INOUT varTaxAmount string
+)
+{
+   jBC: REDO.STO.NCF.UPDATE
+}
+
+
+
+public method redoNcfPerfRtn (
+   INOUT ncfCnt string,
+   INOUT getNcfId string
+)
+{
+   jBC: REDO.NCF.PERF.RTN
+}
+
