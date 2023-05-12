@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNjM4Mjg3NTE6Q3AxMjUyOjE2ODI0OTE4ODkyMTA6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 Apr 2023 12:21:29
+* @ValidationCode : MjotMTQ1MzIwMjU3MjpDcDEyNTI6MTY4Mzg4Mzk4Nzg4NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 May 2023 15:03:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -98,7 +98,9 @@ OFS.PROCESS:
 
     AC.EXPECTED.RECS = "TAM.OFS.SRC"
 
-    CALL OFS.GLOBUS.MANAGER("AC.EXPECTED.RECS",Y.MESSAGE.ACC)
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*CALL OFS.GLOBUS.MANAGER("AC.EXPECTED.RECS",Y.MESSAGE.ACC)
+    CALL OFS.CALL.BULK.MANAGER("AC.EXPECTED.RECS",Y.MESSAGE.ACC, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
 
     Y.F.RES = FIELD(Y.MESSAGE.ACC,",",1)
     Y.RESCTA = FIELD(Y.F.RES,"/",3)
@@ -107,8 +109,7 @@ OFS.PROCESS:
 * error
     END ELSE
 *CALL REDO.FC.E.MAIN(Y.CUS.ID,DATA.ENQ)
-** R22 Manual conversion
-        CALL APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ)
+        CALL APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ);* R22 Manual conversion
         IF DATA.ENQ THEN
             GOSUB Y.DATA.ENQ
         END

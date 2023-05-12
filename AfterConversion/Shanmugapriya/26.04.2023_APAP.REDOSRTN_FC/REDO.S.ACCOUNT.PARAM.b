@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDY5MDY1MTc5OkNwMTI1MjoxNjgyNDkxODg1ODg0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 12:21:25
+* @ValidationCode : MjoxMTI3NTM4MTg4OkNwMTI1MjoxNjgzODg0MzY1ODY0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 May 2023 15:09:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -74,7 +74,7 @@ UPD.ACCOUNT:
 ************
 *CALL REDO.APAP.S.AC.AV.BAL.UPDATE(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD)
 ** R22 Manual conversion
-    CALL APAP.REDOAPAP.redoApapSAcAvBalUpdate(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD)
+    CALL APAP.REDOAPAP.redoApapSAcAvBalUpdate(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
 
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -103,8 +103,7 @@ PENDING.CHARGE:
 
         IF IN.ACCT.CATEG GE RCP.CATEG.STR<1,COUNT.CAT> AND IN.ACCT.CATEG LE RCP.CATEG.END<1,COUNT.CAT> THEN
 *CALL REDO.S.PENDING.CHARGES(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ)
-** R22 Manual conversion
-            CALL APAP.TAM.redoSPendingCharges(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ)
+            CALL APAP.TAM.redoSPendingCharges(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ);* R22 Manual conversion
         END
         COUNT.CAT += 1
     REPEAT
@@ -248,7 +247,7 @@ GENERATE.NCF.UNMAP:
         IF NCF.NT.REQ NE 'YES' THEN
 *CALL REDO.AP.GEN.NCF.UNMAP(STMT.ENT.ID,STMT.RECORD)
 ** R22 Manual conversion
-            CALL APAP.REDOEB.redoApGenNcfUnmap(STMT.ENT.ID,STMT.RECORD)
+            CALL APAP.REDOEB.redoApGenNcfUnmap(STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
         END
         NCF.NT.REQ = ''
     END

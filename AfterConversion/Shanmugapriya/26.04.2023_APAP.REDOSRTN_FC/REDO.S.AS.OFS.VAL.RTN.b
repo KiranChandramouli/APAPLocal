@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTMwNDA1NTAyODpDcDEyNTI6MTY4MjQ5MTg4NjIzOTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Apr 2023 12:21:26
+* @ValidationCode : MjotODMwMTUxNjE5OkNwMTI1MjoxNjgzODgzMzUzNzIzOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 May 2023 14:52:33
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -99,7 +99,7 @@ PROCESS:
         Y.INT.DATA = ""
 *CALL REDO.INTERFACE.REC.ACT(Y.INT.CODE, Y.INT.TYPE, '', '', Y.INT.INFO, Y.INT.INFO, Y.NRO.DOCUMENTO, Y.INT.MONT, Y.INT.DESC, Y.INT.DATA, Y.INT.USER, Y.INT.EXPC)
 ** R22 Manual conversion
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE, Y.INT.TYPE, '', '', Y.INT.INFO, Y.INT.INFO, Y.NRO.DOCUMENTO, Y.INT.MONT, Y.INT.DESC, Y.INT.DATA, Y.INT.USER, Y.INT.EXPC)
+        CALL APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE, Y.INT.TYPE, '', '', Y.INT.INFO, Y.INT.INFO, Y.NRO.DOCUMENTO, Y.INT.MONT, Y.INT.DESC, Y.INT.DATA, Y.INT.USER, Y.INT.EXPC);* R22 Manual conversion
         RETURN
     END
     CALL OPF(FN.AA.ARRANGEMENT , F.AA.ARRANGEMENT )

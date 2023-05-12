@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNzg1MDcxMjUyOkNwMTI1MjoxNjgyNDkxODg2ODQzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 12:21:26
+* @ValidationCode : MjotMTUwMjI2MDQwNjpDcDEyNTI6MTY4Mzg4MzQ0NTU0NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 May 2023 14:54:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -213,7 +213,7 @@ REDO.CRR.GET.CONDITIONS.TERM:
     ERR.MSG = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
 RETURN
 ******************
 MULTI.GET.LOC.REF:
@@ -238,6 +238,6 @@ REDO.CRR.GET.CONDITIONS.LIMIT:
     ERR.MSG = ''
 * CALL REDO.CRR.GET.CONDITIONS(ARR.ID.LIMIT,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID.LIMIT,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG)
+    CALL APAP.TAM.redoCrrGetConditions(ARR.ID.LIMIT,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG);* R22 Manual conversion
 RETURN
 END
