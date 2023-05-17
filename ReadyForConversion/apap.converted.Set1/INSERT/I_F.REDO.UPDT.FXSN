@@ -1,0 +1,12 @@
+* I_F.REDO.UPDT.FXSN Created 05 MAY 10 at 06:13PM by apapr8/TCHANDRU
+*      PREFIX[UP.FX]
+     EQU UP.FX.SPECIFY.NO.REC TO 1,   RedoUpdtFxsn_SpecifyNoRec TO 1,
+          UP.FX.RECORD.STATUS TO 2,   RedoUpdtFxsn_RecordStatus TO 2,
+                UP.FX.CURR.NO TO 3,   RedoUpdtFxsn_CurrNo TO 3,
+               UP.FX.INPUTTER TO 4,   RedoUpdtFxsn_Inputter TO 4,
+              UP.FX.DATE.TIME TO 5,   RedoUpdtFxsn_DateTime TO 5,
+             UP.FX.AUTHORISER TO 6,   RedoUpdtFxsn_Authoriser TO 6,
+                UP.FX.CO.CODE TO 7,   RedoUpdtFxsn_CoCode TO 7,
+              UP.FX.DEPT.CODE TO 8,   RedoUpdtFxsn_DeptCode TO 8,
+           UP.FX.AUDITOR.CODE TO 9,   RedoUpdtFxsn_AuditorCode TO 9,
+        UP.FX.AUDIT.DATE.TIME TO 10,  RedoUpdtFxsn_AuditDateTime TO 10

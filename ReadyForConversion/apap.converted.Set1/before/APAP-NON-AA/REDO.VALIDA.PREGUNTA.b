@@ -1,0 +1,68 @@
+*-----------------------------------------------------------------------------
+* <Rating>88</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.VALIDA.PREGUNTA
+
+******************************************************************
+
+* Validate Fields of REDO.PREGUNTAS.USUARIO Table
+
+* HISTORY
+*       AUTHOR.1 - EDGAR GABRIEL RESENDES GONZALEZ
+*
+*       CLIENT:    APAP
+
+*       DATE:      15/SEP/2010
+
+******************************************************************
+
+$INSERT I_COMMON
+$INSERT I_EQUATE
+
+$INSERT I_F.REDO.PREGUNTAS.USR
+
+  GOSUB INITIALIZE
+  RETURN
+
+INITIALIZE:
+
+*** GETS DATA FROM TABLE
+
+  OPENPATH 'C:\' TO MYPATH ELSE NULL
+
+  ID.PREG.USR = ID.NEW
+
+  ID.TIPO.CANAL = R.NEW(RD.PU.TIPO.CANAL)
+  PREGUNTA = R.NEW(RD.PU.PREGUNTA)
+  RESPUESTA = R.NEW(RD.PU.RESPUESTA)
+
+  CADENA = ID.TIPO.CANAL:" ":PREGUNTA:" ":RESPUESTA
+  WRITE CADENA TO MYPATH,'PWDTEST.txt':ID.TIPO.CANAL:PREGUNTA:RESPUESTA ON ERROR NULL
+ 
+
+*** VALIDATE INPUT
+  STR.LENGTH.CANAL = LEN(ID.TIPO.CANAL)
+  STR.LENGTH.PREGUNTA = LEN(PREGUNTA)
+  STR.LENGTH.RESPUESTA = LEN(RESPUESTA)
+
+  IF STR.LENGTH.CANAL <= 0 OR ID.TIPO.CANAL = "NONE" THEN
+    E = "EB-VALIDA.CANAL"
+    CALL ERR
+    RETURN
+  END
+
+  IF STR.LENGTH.PREGUNTA <= 0 THEN
+    E = "EB-VALIDA.PREGUNTA"
+    CALL ERR
+    RETURN
+  END
+
+  IF STR.LENGTH.RESPUESTA <= 0 THEN
+    E = "EB-VALIDA.RESPUESTA"
+    CALL ERR
+    RETURN
+  END
+
+  RETURN
+
+END

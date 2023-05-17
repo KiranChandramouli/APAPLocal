@@ -1,0 +1,30 @@
+*********************************************************************************************************
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : I_REDO.APAP.B.INVST.PROVISIONING.COMMON
+*--------------------------------------------------------------------------------------------------------
+*Description       : I_REDO.APAP.B.INVST.PROVISIONING.COMMON is used to initialise all the common
+*                    variables required throughout the routine
+*Linked With       : Batch BNK/REDO.B.INVST.PROVISIONING
+*In  Parameter     : NA
+*Out Parameter     : NA
+*--------------------------------------------------------------------------------------------------------
+*Modification Details:
+*=====================
+*    Date                 Who                    Reference                  Description
+*   ------               -----                 -------------               -------------
+* 27 Sep 2010        Shiva Prasad Y        ODR-2010-09-0167 B.23B         Initial Creation
+*
+*********************************************************************************************************
+    COMMON / REDO.APAP.B.INVST.PROVISIONING /FN.REDO.H.CUSTOMER.PROVISION,
+    FN.REDO.H.CUSTOMER.PROVISION,     F.REDO.H.CUSTOMER.PROVISION,     R.REDO.H.CUSTOMER.PROVISION,
+    FN.REDO.H.CUST.WRITE.PROV,        F.REDO.H.CUST.WRITE.PROV,        R.REDO.H.CUST.WRITE.PROV,
+    FN.REDO.H.CUST.WRITE.PROV$HIS, F.REDO.H.CUST.WRITE.PROV$HIS,       R.REDO.H.CUST.WRITE.PROV.HIS,
+    FN.REDO.H.CUSTOMER.PROVISION$HIS, F.REDO.H.CUSTOMER.PROVISION$HIS, R.REDO.H.CUSTOMER.PROVISION$HIS,
+    FN.SC.TRADING.POSITION,           F.SC.TRADING.POSITION,           R.SC.TRADING.POSITION,
+    FN.SECURITY.MASTER,               F.SECURITY.MASTER,               R.SECURITY.MASTER,
+    FN.CUSTOMER,                      F.CUSTOMER,                      R.CUSTOMER,
+    FN.EB.RATING,                     F.EB.RATING,                     R.EB.RATING,
+    FN.LMM.ACCOUNT.BALANCES,          F.LMM.ACCOUNT.BALANCES,          R.LMM.ACCOUNT.BALANCES,
+    LOC.L.CU.PRO.RATING.POS,           Y.NEXT.RUN.DATE,                R.REDO.H.PROVISION.PARAMETER,
+    FN.MM.MONEY.MARKET,                 F.MM.MONEY.MARKET,             R.MM.MONEY.MARKET

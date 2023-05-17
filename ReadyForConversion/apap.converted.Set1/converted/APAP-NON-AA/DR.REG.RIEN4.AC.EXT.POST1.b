@@ -1,0 +1,64 @@
+*
+*--------------------------------------------------------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------------------------------------------------------
+SUBROUTINE DR.REG.RIEN4.AC.EXT.POST1
+*----------------------------------------------------------------------------------------------------------------------------------
+*
+* Description  : This routine will get the details from work file and writes into text file.
+*
+*-------------------------------------------------------------------------
+* Date              Author                    Description
+* ==========        ====================      ============
+*
+*-------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.BATCH
+    $INSERT I_F.DATES
+    $INSERT I_F.DR.REG.RIEN4.AC.REP1
+*
+    GOSUB OPEN.FILES
+    GOSUB PROCESS.PARA
+*
+RETURN
+
+*----------------------------------------------------------
+OPEN.FILES:
+***********
+
+    FN.DR.REG.RIEN4.AC.REP1 = 'F.DR.REG.RIEN4.AC.REP1'
+    F.DR.REG.RIEN4.AC.REP1 = ''
+    CALL OPF(FN.DR.REG.RIEN4.AC.REP1,F.DR.REG.RIEN4.AC.REP1)
+*
+RETURN
+*-------------------------------------------------------------------
+PROCESS.PARA:
+*************
+
+    SEL.CMD = "SELECT ":FN.DR.REG.RIEN4.AC.REP1:" BY INT.RATE BY CATEGORY"
+    CALL EB.READLIST(SEL.CMD, ID.LIST, "", ID.CNT, ERR.SEL)
+    BALANCE = ''
+    ID.CTR = 1
+    LOOP
+    WHILE ID.CTR LE ID.CNT
+        CURR.REP.ID = ID.LIST<ID.CTR>
+        NEXT.REP.ID = ID.LIST<ID.CTR+1>
+        CALL F.READ(FN.DR.REG.RIEN4.AC.REP1,CURR.REP.ID,R.DR.REG.RIEN4.AC.REP1,F.DR.REG.RIEN4.AC.REP1,DR.REG.RIEN4.AC.REP1.ERR)
+        CALL F.READ(FN.DR.REG.RIEN4.AC.REP1,NEXT.REP.ID,R.DR.REG.RIEN4.AC.REP1.1,F.DR.REG.RIEN4.AC.REP1,DR.REG.RIEN4.AC.REP1.ERR)
+        CURR.RATE = R.DR.REG.RIEN4.AC.REP1<DR.RIEN4.AC1.INT.RATE>
+        NEXT.RATE = R.DR.REG.RIEN4.AC.REP1.1<DR.RIEN4.AC1.INT.RATE>
+        CURR.PRIN.VAL = R.DR.REG.RIEN4.AC.REP1<DR.RIEN4.AC1.ONLINE.ACT.BAL>
+        IF CURR.RATE NE NEXT.RATE THEN
+            R.DR.REG.RIEN4.AC.REP1<DR.RIEN4.AC1.TOTAL> = CURR.PRIN.VAL + BALANCE
+            CALL F.WRITE(FN.DR.REG.RIEN4.AC.REP1,CURR.REP.ID,R.DR.REG.RIEN4.AC.REP1)
+            BALANCE = ''
+        END ELSE
+            BALANCE += CURR.PRIN.VAL
+        END
+        ID.CTR += 1
+    REPEAT
+*
+RETURN
+*-------------------------------------------------------------------
+END

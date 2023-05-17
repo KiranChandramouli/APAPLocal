@@ -1,0 +1,86 @@
+*-----------------------------------------------------------------------------
+* <Rating>-10</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.VIRGIN.CARD.RETURN.VALIDATE
+
+
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.VIRGIN.CARD.RETURN.AUTHORISE
+*--------------------------------------------------------------------------------------------------------
+*Description  : This is a authorisation routine to update the status of damaged cards in STOCK.REGISTER and
+*               REDO.CINCLUDE TAM.BP I_F.REDO.CARD.SERIES.PARAM
+
+
+
+$INSERT I_COMMON
+$INSERT I_EQUATE
+$INSERT I_F.STOCK.REGISTER
+$INSERT I_F.STOCK.ENTRY
+$INSERT I_F.DATES
+$INSERT I_F.COMPANY
+$INSERT I_F.USER
+$INSERT I_F.REDO.BRANCH.CARD.RETURN
+$INSERT I_F.REDO.CARD.NO.LOCK
+$INSERT I_F.REDO.CARD.NUMBERS
+$INSERT I_F.REDO.STOCK.QTY.COUNT
+$INSERT I_F.REDO.CARD.SERIES.PARAM
+$INSERT I_F.REDO.VIRGIN.CARD.RETURN
+
+
+  CRD.TYPS=R.NEW (REDO.VIR.RTN.CARD.TYPE)
+
+  CRD.NOS=R.NEW( REDO.VIR.RTN.NUMBER.OF.CARDS)
+
+  CRD.CNT=DCOUNT(CRD.TYPS,VM)
+
+  IF CRD.CNT EQ 1 THEN
+
+    RETURN
+
+  END
+
+
+  FOR LOOP.DUP=1 TO CRD.CNT-1
+
+
+    LOCATE CRD.TYPS<1,LOOP.DUP> IN CRD.TYPS<1,1> SETTING POS.DUP THEN
+
+
+      IF POS.DUP EQ LOOP.DUP AND LOOP.DUP NE CRD.CNT THEN
+
+        GOSUB CHECK.DUP
+
+      END ELSE
+
+        AF=REDO.VIR.RTN.CARD.TYPE
+        AV=POS.DUP
+
+        ETEXT='ST-DUPLICATE.CRD.TYPE'
+        CALL STORE.END.ERROR
+
+
+      END
+    END
+  NEXT
+
+
+  RETURN
+
+
+CHECK.DUP:
+  LOCATE CRD.TYPS<1,LOOP.DUP> IN CRD.TYPS<1,POS.DUP+1> SETTING POS.DUP1 THEN
+
+    AF=REDO.VIR.RTN.CARD.TYPE
+    AV=POS.DUP1
+    ETEXT='ST-DUPLICATE.CRD.TYPE'
+    CALL STORE.END.ERROR
+
+  END
+
+
+  RETURN
+
+
+
+END

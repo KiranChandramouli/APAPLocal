@@ -1,0 +1,5 @@
+* I_F.REDO.AA.REVERSE.REPAY Created 26 AUG 17 at 06:57PM by da5tus/UPGRADE2
+*      PREFIX[AA.RE]
+                 EQU AA.RE.REPAY.FT.REF TO 1,   RedoAaReverseRepay_RepayFtRef TO 1,
+                       AA.RE.UNC.FT.REF TO 2,   RedoAaReverseRepay_UncFtRef TO 2,
+                       AA.RE.RESERVED.1 TO 3,   RedoAaReverseRepay_Reserved1 TO 3

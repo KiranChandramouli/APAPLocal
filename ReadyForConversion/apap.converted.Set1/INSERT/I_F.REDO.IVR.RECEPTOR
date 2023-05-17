@@ -1,0 +1,16 @@
+* I_F.REDO.IVR.RECEPTOR Created 11 JUN 12 at 09:39PM by t24bbcr9/TEM.RMONDR.01
+*      PREFIX[REDO.IVR.REC]
+        EQU REDO.IVR.REC.INTERACT.NO TO 1,   RedoIvrReceptor_InteractNo TO 1,
+                REDO.IVR.REC.DATA.IN TO 2,   RedoIvrReceptor_DataIn TO 2,
+               REDO.IVR.REC.DATA.OUT TO 3,   RedoIvrReceptor_DataOut TO 3,
+              REDO.IVR.REC.LOCAL.REF TO 4,   RedoIvrReceptor_LocalRef TO 4,
+               REDO.IVR.REC.OVERRIDE TO 5,   RedoIvrReceptor_Override TO 5,
+          REDO.IVR.REC.RECORD.STATUS TO 6,   RedoIvrReceptor_RecordStatus TO 6,
+                REDO.IVR.REC.CURR.NO TO 7,   RedoIvrReceptor_CurrNo TO 7,
+               REDO.IVR.REC.INPUTTER TO 8,   RedoIvrReceptor_Inputter TO 8,
+              REDO.IVR.REC.DATE.TIME TO 9,   RedoIvrReceptor_DateTime TO 9,
+             REDO.IVR.REC.AUTHORISER TO 10,  RedoIvrReceptor_Authoriser TO 10,
+                REDO.IVR.REC.CO.CODE TO 11,  RedoIvrReceptor_CoCode TO 11,
+              REDO.IVR.REC.DEPT.CODE TO 12,  RedoIvrReceptor_DeptCode TO 12,
+           REDO.IVR.REC.AUDITOR.CODE TO 13,  RedoIvrReceptor_AuditorCode TO 13,
+        REDO.IVR.REC.AUDIT.DATE.TIME TO 14,  RedoIvrReceptor_AuditDateTime TO 14

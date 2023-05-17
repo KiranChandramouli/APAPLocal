@@ -1,0 +1,23 @@
+* I_F.REDO.H.PIGGY.BANKS Created 16 JUN 11 at 01:08PM by apapr8/SJEY
+*      PREFIX[REDO.PIG]
+        EQU REDO.PIG.BRANCH.DEPT TO 1,   RedoHPiggyBanks_BranchDept TO 1,
+              REDO.PIG.ITEM.CODE TO 2,   RedoHPiggyBanks_ItemCode TO 2,
+                REDO.PIG.NO.AVBL TO 3,   RedoHPiggyBanks_NoAvbl TO 3,
+                 REDO.PIG.STATUS TO 4,   RedoHPiggyBanks_Status TO 4,
+                   REDO.PIG.DEPT TO 5,   RedoHPiggyBanks_Dept TO 5,
+             REDO.PIG.RESERVED.5 TO 6,   RedoHPiggyBanks_Reserved5 TO 6,
+             REDO.PIG.RESERVED.4 TO 7,   RedoHPiggyBanks_Reserved4 TO 7,
+             REDO.PIG.RESERVED.3 TO 8,   RedoHPiggyBanks_Reserved3 TO 8,
+             REDO.PIG.RESERVED.2 TO 9,   RedoHPiggyBanks_Reserved2 TO 9,
+             REDO.PIG.RESERVED.1 TO 10,  RedoHPiggyBanks_Reserved1 TO 10,
+              REDO.PIG.LOCAL.REF TO 11,  RedoHPiggyBanks_LocalRef TO 11,
+               REDO.PIG.OVERRIDE TO 12,  RedoHPiggyBanks_Override TO 12,
+          REDO.PIG.RECORD.STATUS TO 13,  RedoHPiggyBanks_RecordStatus TO 13,
+                REDO.PIG.CURR.NO TO 14,  RedoHPiggyBanks_CurrNo TO 14,
+               REDO.PIG.INPUTTER TO 15,  RedoHPiggyBanks_Inputter TO 15,
+              REDO.PIG.DATE.TIME TO 16,  RedoHPiggyBanks_DateTime TO 16,
+             REDO.PIG.AUTHORISER TO 17,  RedoHPiggyBanks_Authoriser TO 17,
+                REDO.PIG.CO.CODE TO 18,  RedoHPiggyBanks_CoCode TO 18,
+              REDO.PIG.DEPT.CODE TO 19,  RedoHPiggyBanks_DeptCode TO 19,
+           REDO.PIG.AUDITOR.CODE TO 20,  RedoHPiggyBanks_AuditorCode TO 20,
+        REDO.PIG.AUDIT.DATE.TIME TO 21,  RedoHPiggyBanks_AuditDateTime TO 21

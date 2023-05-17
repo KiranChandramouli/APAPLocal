@@ -1,0 +1,12 @@
+* I_F.REDO.ATH.TRANS.TYPE Created 15 DEC 10 at 01:15PM by apapr8/GANESHH3
+*      PREFIX[ATH.TRANS]
+        EQU ATH.TRANS.DESCRIPTION TO 1,   RedoAthTransType_Description TO 1,
+          ATH.TRANS.RECORD.STATUS TO 2,   RedoAthTransType_RecordStatus TO 2,
+                ATH.TRANS.CURR.NO TO 3,   RedoAthTransType_CurrNo TO 3,
+               ATH.TRANS.INPUTTER TO 4,   RedoAthTransType_Inputter TO 4,
+              ATH.TRANS.DATE.TIME TO 5,   RedoAthTransType_DateTime TO 5,
+             ATH.TRANS.AUTHORISER TO 6,   RedoAthTransType_Authoriser TO 6,
+                ATH.TRANS.CO.CODE TO 7,   RedoAthTransType_CoCode TO 7,
+              ATH.TRANS.DEPT.CODE TO 8,   RedoAthTransType_DeptCode TO 8,
+           ATH.TRANS.AUDITOR.CODE TO 9,   RedoAthTransType_AuditorCode TO 9,
+        ATH.TRANS.AUDIT.DATE.TIME TO 10,  RedoAthTransType_AuditDateTime TO 10

@@ -1,0 +1,75 @@
+*-----------------------------------------------------------------------------
+* <Rating>-41</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.E.LIST.VAULTS(VAULTS.ID.LIST)
+
+
+$INSERT I_COMMON
+$INSERT I_EQUATE
+$INSERT I_F.TELLER.PARAMETER
+
+
+INITIALISE:
+*----------
+*
+
+  F.TELLER.PARAMETER = ''
+  FN.TELLER.PARAMETER = 'F.TELLER.PARAMETER'
+  CALL OPF(FN.TELLER.PARAMETER, F.TELLER.PARAMETER)
+
+  R.TT.TP = ''
+  TT.TP.ID = ''
+  TT.TP.ERR = ''
+  VAULTS.IDS = ''
+  TT.TP.ID.LIST = ''
+  VAULTS.ID.LIST = ''
+  CMP.VAULT.LIST = ''
+  VAULT.ID = ''
+
+
+SEL.RECS:
+*--------
+*
+
+  SEL.CMD = "SELECT ":FN.TELLER.PARAMETER
+  SEL.CMD := " WITH @ID NE ":ID.COMPANY
+  CALL EB.READLIST(SEL.CMD, TT.TP.ID.LIST, "", "", "")
+
+
+PROCESS:
+*-------
+*
+  LOOP
+    REMOVE TT.TP.ID FROM TT.TP.ID.LIST SETTING TP.POS
+  WHILE TT.TP.ID : TP.POS
+    CALL F.READ(FN.TELLER.PARAMETER, TT.TP.ID, R.TT.TP, F.TELLER.PARAMETER, TT.TP.ERR)
+
+    IF NOT(TT.TP.ERR) THEN
+      GOSUB FILTER.VAULTS.IDS
+    END
+
+  REPEAT
+
+  RETURN
+
+
+FILTER.VAULTS.IDS:
+*-----------------
+*
+  CMP.VAULT.LIST = '' ;  CMP.VAULT.LIST = R.TT.TP<TT.PAR.VAULT.ID>
+  CNT = DCOUNT(CMP.VAULT.LIST, @VM)
+
+
+  FOR I = 1 TO CNT
+
+    VAULT.ID = R.TT.TP<TT.PAR.VAULT.ID><1,I>
+    VAULT.DESC = R.TT.TP<TT.PAR.VAULT.DESC><1,I>
+
+    IF VAULT.ID NE '0099' THEN
+      VAULTS.ID.LIST<-1> = VAULT.ID:'#': VAULT.DESC
+    END
+
+  NEXT I
+
+  RETURN
+END

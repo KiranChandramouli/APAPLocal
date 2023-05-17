@@ -1,0 +1,45 @@
+SUBROUTINE REDO.FEECOLLECT.VALIDATE
+
+
+
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.REDO.FEECOLLECT
+
+    RES.COD=R.NEW(REDO.FEE.REASON.CODE)
+    CTRY.CDE=R.NEW(REDO.FEE.COUNTRY.CODE)
+
+    BEGIN CASE
+
+        CASE RES.COD EQ '0100' OR RES.COD EQ '0190'
+            IF CTRY.CDE EQ '' THEN
+                AF=REDO.FEE.COUNTRY.CODE
+                ETEXT='EB-INP.MISS'
+                CALL STORE.END.ERROR
+            END
+        CASE RES.COD EQ '0300'
+
+            IF CTRY.CDE NE 'CA' AND CTRY.CDE NE 'BR' THEN
+                AF=REDO.FEE.COUNTRY.CODE
+                ETEXT='EB-INP.CA.OR.BR'
+                CALL STORE.END.ERROR
+
+            END
+
+        CASE OTHERWISE
+
+
+            IF CTRY.CDE NE '' THEN
+
+                AF=REDO.FEE.COUNTRY.CODE
+                ETEXT='EB-INP.BLANK'
+                CALL STORE.END.ERROR
+
+            END
+
+    END CASE
+
+RETURN
+
+END

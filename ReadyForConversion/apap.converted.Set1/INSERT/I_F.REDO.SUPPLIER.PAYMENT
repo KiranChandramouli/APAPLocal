@@ -1,0 +1,19 @@
+* I_F.REDO.SUPPLIER.PAYMENT Created 27 MAR 13 at 01:34PM by t24uat1/RIYASA2
+*      PREFIX[REDO.SUP.PAY]
+          EQU REDO.SUP.PAY.FILE.NAME TO 1,   RedoSupplierPayment_FileName TO 1,
+         REDO.SUP.PAY.SOURCE.ACCOUNT TO 2,   RedoSupplierPayment_SourceAccount TO 2,
+           REDO.SUP.PAY.PAYMENT.DATE TO 3,   RedoSupplierPayment_PaymentDate TO 3,
+              REDO.SUP.PAY.BANK.CODE TO 4,   RedoSupplierPayment_BankCode TO 4,
+              REDO.SUP.PAY.BANK.NAME TO 5,   RedoSupplierPayment_BankName TO 5,
+            REDO.SUP.PAY.BEN.ACCOUNT TO 6,   RedoSupplierPayment_BenAccount TO 6,
+          REDO.SUP.PAY.IDENTIFY.TYPE TO 7,   RedoSupplierPayment_IdentifyType TO 7,
+              REDO.SUP.PAY.BEN.ID.NO TO 8,   RedoSupplierPayment_BenIdNo TO 8,
+           REDO.SUP.PAY.BEN.CUSTOMER TO 9,   RedoSupplierPayment_BenCustomer TO 9,
+             REDO.SUP.PAY.INVOICE.NO TO 10,  RedoSupplierPayment_InvoiceNo TO 10,
+                 REDO.SUP.PAY.NCF.NO TO 11,  RedoSupplierPayment_NcfNo TO 11,
+               REDO.SUP.PAY.CURRENCY TO 12,  RedoSupplierPayment_Currency TO 12,
+                 REDO.SUP.PAY.AMOUNT TO 13,  RedoSupplierPayment_Amount TO 13,
+         REDO.SUP.PAY.OFS.MESSAGE.ID TO 14,  RedoSupplierPayment_OfsMessageId TO 14,
+              REDO.SUP.PAY.DR.STATUS TO 15,  RedoSupplierPayment_DrStatus TO 15,
+              REDO.SUP.PAY.CR.STATUS TO 16,  RedoSupplierPayment_CrStatus TO 16,
+           REDO.SUP.PAY.FILE.TOT.AMT TO 17,  RedoSupplierPayment_FileTotAmt TO 17

@@ -1,0 +1,46 @@
+*-----------------------------------------------------------------------------
+* <Rating>-20</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE REDO.V.FACILITY.VAL.DEFLT
+*
+* Description: Routine to update the L.INV.FACILITY field value from the CATEGORY for the AZ record.
+* DEV By: V.P.Ashokkumar
+*
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_F.CATEGORY
+    $INSERT T24.BP I_F.AZ.ACCOUNT
+
+
+    GOSUB INIT
+    GOSUB PROCESS
+    RETURN
+
+
+INIT:
+*****
+    YTP.CATEG = ''; YTPL.INV.FACILITY = ''; YINV.VAL = ''; LVAL.POSN = ''
+    FN.CATEGORY = 'F.CATEGORY'; F.CATEGORY = ''
+    CALL OPF(FN.CATEGORY,F.CATEGORY)
+
+    YFILE.NME = "CATEGORY":FM:"AZ.ACCOUNT"
+    YFIELD.NME = "L.CU.AGE":FM:"L.INV.FACILITY"
+    CALL MULTI.GET.LOC.REF(YFILE.NME,YFIELD.NME,LVAL.POSN)
+    L.CU.AGE.POS = LVAL.POSN<1,1>
+    L.INV.FACILITY.POS = LVAL.POSN<2,1>
+    RETURN
+
+PROCESS:
+********
+    YTP.CATEG = R.NEW(AZ.CATEGORY)
+    YTPL.INV.FACILITY = R.NEW(AZ.LOCAL.REF)<1,L.INV.FACILITY.POS>
+
+    ERR.CATEGORY = ''; R.CATEGORY = ''
+    CALL F.READ(FN.CATEGORY,YTP.CATEG,R.CATEGORY,F.CATEGORY,ERR.CATEGORY)
+    YINV.VAL = R.CATEGORY<EB.CAT.LOCAL.REF,L.CU.AGE.POS>
+    IF NOT(YTPL.INV.FACILITY) THEN
+        R.NEW(AZ.LOCAL.REF)<1,L.INV.FACILITY.POS> = YINV.VAL
+    END
+    RETURN
+
+END
