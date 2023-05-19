@@ -16180,3 +16180,327 @@ public method redoVisionPlusDd (
 }
 
 
+
+
+public method pacsCorrAaa (
+)
+{
+    jBC: PACS.CORR.AAA
+}
+
+
+
+public method pacsEbCorrEntryHold (
+)
+{
+    jBC: PACS.EB.CORR.ENTRY.HOLD
+}
+
+
+
+public method pacsFtDelete (
+)
+{
+    jBC: PACS.FT.DELETE 
+}
+
+
+
+public method redoAaBillDetails (
+)
+{
+    jBC: REDO.AA.BILL.DETAILS 
+}
+
+
+
+public method redoAaChargeParam (
+)
+{
+    jBC: REDO.AA.CHARGE.PARAM
+}
+
+
+
+public method redoAaDdCategory (
+)
+{
+    jBC: REDO.AA.DD.CATEGORY
+}
+
+
+
+public method redoAaDisbLoan (
+)
+{
+    jBC: REDO.AA.DISB.LOAN
+}
+
+
+
+public method redoAaGetOutBalance (
+    INOUT aaId string,
+    INOUT yBalance string
+)
+{
+    jBC: REDO.AA.GET.OUT.BALANCE
+}
+
+
+
+public method redoAaRepay (
+)
+{
+    jBC: REDO.AA.REPAY
+}
+
+
+
+public method redoApapAuthChqSlip (
+)
+{
+    jBC: REDO.APAP.AUTH.CHQ.SLIP
+}
+
+
+
+public method redoCallDepTfsReArr (
+)
+{
+    jBC: REDO.CALL.DEP.TFS.RE.ARR
+}
+
+
+
+public method redoViAppRepCrVoucher (
+)
+{
+    jBC: REDO.VI.APP.REP.CR.VOUCHER
+}
+
+
+
+public method redoVisaOutTc40Gen (
+)
+{
+    jBC: REDO.VISA.OUT.TC40.GEN
+}
+
+
+
+public method redoVisaOutMapProcess (
+)
+{
+    jBC: REDO.VISA.OUT.MAP.PROCESS
+}
+
+
+
+public method redoVisaAUpdateFtref (
+)
+{
+    jBC: REDO.VISA.A.UPDATE.FTREF
+}
+
+
+
+public method redoViVisaRepApprove (
+)
+{
+    jBC: REDO.VI.VISA.REP.APPROVE
+}
+
+
+
+public method redoViApproveCrVoucher (
+)
+{
+    jBC: REDO.VI.APPROVE.CR.VOUCHER
+}
+
+
+
+public method redoChangeNabStatus (
+)
+{
+    jBC: REDO.CHANGE.NAB.STATUS
+}
+
+
+
+public method redoChkDebitCardNumber ( 
+)
+{
+    jBC: REDO.CHK.DEBIT.CARD.NUMBER
+}
+
+
+
+public method redoConcatPenaltyUpdate (
+)
+{
+    jBC: REDO.CONCAT.PENALTY.UPDATE
+}
+
+
+
+public method redoGetArrangementStatus (
+    INOUT arrangementId string
+)
+{
+    jBC: REDO.GET.ARRANGEMENT.STATUS
+}
+
+
+
+public method redoGetReportLoanPayamt (
+    INOUT yAaId string,
+    INOUT yRepayAmt string,
+    INOUT yDummyVar1 string,
+    INOUT yDummyVar2 string
+)
+{
+    jBC: REDO.GET.REPORT.LOAN.PAYAMT
+}
+
+
+
+public method redoInpCalcTxnDates (
+    INOUT yReturnDate string
+)
+{
+    jBC: REDO.INP.CALC.TXN.DATES
+}
+
+
+
+public method redoMassiveFileProcess (
+    INOUT yRecord string
+)
+{
+    jBC: REDO.MASSIVE.FILE.PROCESS
+}
+
+
+
+public method redoNofAdjustClearReport (
+    INOUT yFinArr string
+)
+{
+    jBC: REDO.NOF.ADJUST.CLEAR.REPORT
+}
+
+
+
+public method redoNofChqNtPresent (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.NOF.CHQ.NT.PRESENT
+}
+
+
+
+public method redoNofGenChqAgency (
+    INOUT yFinArr string
+)
+{
+    jBC: REDO.NOF.GEN.CHQ.AGENCY
+}
+
+
+
+public method redoStlmtTc25inAcctRtn (
+)
+{
+    jBC: REDO.STLMT.TC25IN.ACCT.RTN
+}
+
+
+
+public method redoTfsAutortn (
+)
+{
+    jBC: REDO.TFS.AUTORTN
+}
+
+
+
+public method redoTfsDenomCheck (
+)
+{
+    jBC: REDO.TFS.DENOM.CHECK
+}
+
+
+
+public method redoUpdIntAmtOthr (
+)
+{
+    jBC: REDO.UPD.INT.AMT.OTHR 
+}
+
+
+
+public method redoUpdateChangeInterest (
+)
+{
+    jBC: REDO.UPDATE.CHANGE.INTEREST
+}
+
+
+
+public method redoUpdateVersionName (
+)
+{
+    jBC: REDO.UPDATE.VERSION.NAME
+}
+
+
+
+public method redoVAutActivateAcc (
+)
+{
+    jBC: REDO.V.AUT.ACTIVATE.ACC
+}
+
+
+
+public method redoVGetPayMethod (
+)
+{
+    jBC: REDO.V.GET.PAY.METHOD
+}
+
+
+
+public method redoVInpAmlFtChk (
+)
+{
+    jBC: REDO.V.INP.AML.FT.CHK
+}
+
+
+
+public method redoVInpTfsCheckAcc (
+)
+{
+    jBC: REDO.V.INP.TFS.CHECK.ACC
+}
+
+
+
+public method redoVInpTfsDealslip (
+)
+{
+    jBC: REDO.V.INP.TFS.DEALSLIP
+}
+
+
+
+public method redoVInpTfsLimit (
+)
+{
+    jBC: REDO.V.INP.TFS.LIMIT
+}
+
