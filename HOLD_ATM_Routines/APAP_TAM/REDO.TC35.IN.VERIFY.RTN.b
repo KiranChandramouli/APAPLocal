@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY4NTA5NjgwOTpDcDEyNTI6MTY4MzAxODA5NTQ1MjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 14:31:35
+* @ValidationCode : MjoxNDczNDk0OTA5OkNwMTI1MjoxNjg0NDkxMDQwNDg3OklUU1M6LTE6LTE6MTg5OjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 189
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.TC35.IN.VERIFY.RTN
@@ -48,7 +48,7 @@ SUBROUTINE REDO.TC35.IN.VERIFY.RTN
     $INSERT I_F.REDO.VISA.OUTGOING
     $INSERT I_F.REDO.VISA.STLMT.05TO37
     $INSERT I_REDO.VISA.STLMT.FILE.PROCESS.COMMON
-	$USING APAP.TAM
+
 
 
     GOSUB PROCESS
@@ -74,8 +74,9 @@ PROCESS:
     CALL F.READ(FN.REDO.VISA.OUTGOING,Y.ID,R.ARRAY,F.REDO.VISA.OUTGOING,REDO.VISA.OUTGOING.ERR)
 
     R.ARRAY<VISA.OUT.STATUS> = "REVERSED"
-*CALL REDO.VISA.OUTGOING.WRITE(Y.ID,R.ARRAY)
-    CALL APAP.TAM.redoVisaOutgoingWrite(Y.ID,R.ARRAY)   ;*R22 MANUAL CODE CONVERSION
+
+*CALL APAP.TAM.REDO.VISA.OUTGOING.WRITE(Y.ID,R.ARRAY)   ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoVisaOutgoingWrite(Y.ID,R.ARRAY) ;*R22 MANUAL CODE CONVERSION
 
 
 RETURN

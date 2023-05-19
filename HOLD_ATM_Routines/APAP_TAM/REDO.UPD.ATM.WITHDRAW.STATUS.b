@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxMjU1MzI1MzgzOkNwMTI1MjoxNjgzMDI0MzM0MjMyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 16:15:34
+* @ValidationCode : MjoxMjU1MzI1MzgzOkNwMTI1MjoxNjg0NDkxMDQxNTg4OklUU1M6LTE6LTE6NTgwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 580
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false

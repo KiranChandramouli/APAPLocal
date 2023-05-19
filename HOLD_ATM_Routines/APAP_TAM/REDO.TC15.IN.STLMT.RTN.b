@@ -1,17 +1,16 @@
-* @ValidationCode : MjotODkyMTg1MDU1OkNwMTI1MjoxNjgzNzI4ODY1MjQxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 10 May 2023 19:57:45
+* @ValidationCode : Mjo3MTE1MTMwODg6Q3AxMjUyOjE2ODQ0OTEwNDAyNTI6SVRTUzotMTotMToxODM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:40
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 183
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.TC15.IN.STLMT.RTN(STLMT.LINES)
 *--------------------------------------------
 *Company Name      : APAP Bank
@@ -30,7 +29,7 @@ SUBROUTINE REDO.TC15.IN.STLMT.RTN(STLMT.LINES)
 * -------                ----                   ----------              --------
 *23/11/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 ** 17-04-2023 R22 Auto Conversion no changes
-** 17-04-2023 Skanda R22 Manual Conversion - Add call routine prefix
+** 17-04-2023 Skanda R22 Manual Conversion -CALL RTN FORMAT MODIFIED
 *------------------------------------------------------------------------------------
 
 
@@ -40,7 +39,7 @@ SUBROUTINE REDO.TC15.IN.STLMT.RTN(STLMT.LINES)
     $INSERT I_F.ATM.REVERSAL
     $INSERT I_F.REDO.VISA.STLMT.05TO37
     $INSERT I_REDO.VISA.STLMT.FILE.PROCESS.COMMON
-    $USING APAP.TAM
+
 
     GOSUB PROCESS
 
@@ -50,9 +49,8 @@ RETURN
 PROCESS:
 *---------------------------------------------------------------------------------------------------
 
-*CALL REDO.TC.IN.FRAME.ARR(STLMT.LINES)
-** R22 Manual conversion
-    CALL APAP.TAM.redoTcInFrameArr(STLMT.LINES)
+*CALL REDO.TC.IN.FRAME.ARR(STLMT.LINES) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoTcInFrameArr(STLMT.LINES) ;*R22 MANUAL CODE CONVERSION
 *CALL  REDO.STLMT.VERIFY.MSG()       ;* Removed
 *STATUS.DEFAULT= R.REDO.VISA.STLMT.MAPPING<UPDATE.STATUS>  ;* Removed
 
@@ -92,9 +90,8 @@ PROCESS:
     ID.NEW.LAST=IDNEW.LAST
     Y.STL.ID= COMI
     R.REDO.STLMT.LINE<VISA.SETTLE.FILE.DATE>=Y.FILE.DATE
-*CALL REDO.VISA.SETTLE.WRITE(Y.STL.ID,R.REDO.STLMT.LINE)
-** R22 Manual conversion
-    CALL APAP.TAM.redoVisaSettleWrite(Y.STL.ID,R.REDO.STLMT.LINE)
+*CALL REDO.VISA.SETTLE.WRITE(Y.STL.ID,R.REDO.STLMT.LINE) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoVisaSettleWrite(Y.STL.ID,R.REDO.STLMT.LINE) ;*R22 MANUAL CODE CONVERSION
     IF R.REDO.STLMT.LINE<VISA.SETTLE.STATUS> EQ 'PENDING' THEN
         R.ATM.REVERSAL<AT.REV.VISA.CHGBCK.REF>=Y.STL.ID
         CALL F.WRITE(FN.ATM.REVERSAL,ATM.REV.ID,R.ATM.REVERSAL)

@@ -1,10 +1,10 @@
-* @ValidationCode : MjotODIyNTU4OTk2OkNwMTI1MjoxNjgzNzI4ODY1Mjk3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 10 May 2023 19:57:45
+* @ValidationCode : MjotMTYzNzU5NTg0NzpDcDEyNTI6MTY4NDQ5MTA0MDM1MjpJVFNTOi0xOi0xOjc5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:40
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 79
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -31,7 +31,7 @@ SUBROUTINE REDO.TC25.IN.STLMT.RTN(STLMT.LINES)
 *DATE           WHO           REFERENCE         DESCRIPTION
 *03.12.2010  H GANESH     ODR-2010-08-0469   INITIAL CREATION
 *10.04.2023 Conversion Tool    R22           Auto Conversion     - No changes
-*10.04.2023 Shanmugapriya M    R22           Manual Conversion   - Add call routine prefix
+*10.04.2023 Shanmugapriya M    R22           Manual Conversion   - Add call routine prefix ,CALL RTN FORMAT MODIFIED
 *
 *----------------------------------------------------------------------
 
@@ -44,7 +44,6 @@ SUBROUTINE REDO.TC25.IN.STLMT.RTN(STLMT.LINES)
     $INSERT I_F.REDO.VISA.STLMT.PARAM
     $INSERT I_F.REDO.DC.STLMT.ERR.CODE
     $INSERT I_F.ATM.REVERSAL
-    $USING APAP.TAM
 
 
     GOSUB PROCESS
@@ -56,10 +55,12 @@ PROCESS:
 
 *CALL REDO.TC.IN.FRAME.ARR(STLMT.LINES)
 ** R22 Manual conversion
+*CALL APAP.TAM.REDO.TC.IN.FRAME.ARR(STLMT.LINES) ;*R22 MANUAL CODE CONVERSION
     CALL APAP.TAM.redoTcInFrameArr(STLMT.LINES)
 *CALL REDO.TC25.IN.VERIFY.RTN
 ** R22 Manual conversion
-    CALL APAP.TAM.redoTc25InVerifyRtn()
+*CALL APAP.TAM.REDO.TC25.IN.VERIFY.RTN ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoTc25InVerifyRtn() ;*R22 MANUAL CODE CONVERSION
     R.REDO.STLMT.LINE<VISA.SETTLE.FILE.DATE>=Y.FILE.DATE
 
 
@@ -101,7 +102,8 @@ PROCESS:
     END
 *CALL REDO.VISA.SETTLE.WRITE(Y.STL.ID,R.REDO.STLMT.LINE)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoVisaSettleWrite(Y.STL.ID,R.REDO.STLMT.LINE)
+*CALL APAP.TAM.REDO.VISA.SETTLE.WRITE(Y.STL.ID,R.REDO.STLMT.LINE) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoVisaSettleWrite(Y.STL.ID,R.REDO.STLMT.LINE) ;*R22 MANUAL CODE CONVERSION
 
 RETURN
 END

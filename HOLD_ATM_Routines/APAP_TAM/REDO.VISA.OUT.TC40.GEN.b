@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4ODU1NjIwNzM6Q3AxMjUyOjE2ODM4NjcwODEzODA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 10:21:21
+* @ValidationCode : MjoxMjY5NTE4OTM6Q3AxMjUyOjE2ODQ0OTEwNTExNzY6SVRTUzotMTotMTo4NjM6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 863
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VISA.OUT.TC40.GEN
@@ -29,7 +29,7 @@ SUBROUTINE REDO.VISA.OUT.TC40.GEN
 *DATE           WHO           REFERENCE         DESCRIPTION
 *03.12.2010   S DHAMU       ODR-2010-08-0469  INITIAL CREATION
 *11.04.2023  Conversion Tool       R22        Auto Conversion     - No changes
-*11.04.2023  Shanmugapriya M       R22        Manual Conversion   - Add call routine prefix
+*11.04.2023  Shanmugapriya M       R22        Manual Conversion   - Add call routine prefix,CALL RTN FORMAT MODIFIED
 *
 *----------------------------------------------------------------------
     $INSERT I_COMMON
@@ -191,8 +191,8 @@ VISA.TC40.UPDATE:
     Y.ID.40= COMI
 *CALL VISA.TC40.WRITE(Y.ID.40,R.VISA.TC40)
 ** R22 Manual conversion
-*CALL APAP.TAM.VISA.TC40.WRITE(Y.ID.40,R.VISA.TC40)
-    CALL APAP.TAM.visaTc40Write(Y.ID.40,R.VISA.TC40)
+*CALL APAP.TAM.VISA.TC40.WRITE(Y.ID.40,R.VISA.TC40) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.visaTc40Write(Y.ID.40,R.VISA.TC40) ;*R22 MANUAL CODE CONVERSION
 *    Y.VISA.GEN.ID.1=Y.ID.40:'*VISA.TC40.OUT.FILE'
 *   CALL F.WRITE(FN.REDO.VISA.GEN.OUT,Y.VISA.GEN.ID.1,R.ARRAY)
 

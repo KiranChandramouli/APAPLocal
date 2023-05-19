@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyNTc3NTk3ODI6Q3AxMjUyOjE2ODM4NjY1MjgwNzA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 10:12:08
+* @ValidationCode : MjotODk4NDEzMTkyOkNwMTI1MjoxNjg0NDkxMDM5MzcxOklUU1M6LTE6LTE6MjMwMjoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:39
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 2302
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.STLMT.ACCT.IN.RTN
@@ -33,7 +33,7 @@ SUBROUTINE REDO.STLMT.ACCT.IN.RTN
 * 03.12.2010     H GANESH            ODR-2010-08-0469    INITIAL CREATION
 * 22/01/2019     Vignesh Kumaar R                        BRD003 [UNARED]
 ** 17-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 17-04-2023 Skanda R22 Manual Conversion - CALL routine format modified
+** 17-04-2023 Skanda R22 Manual Conversion - CALL RTN FORMAT MODIFIED
 *----------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -385,8 +385,8 @@ VISA.TC40.UPDATE:
 
 
     Y.ID.40= COMI
-    CALL APAP.TAM.visaTc40Write(Y.ID.40,R.VISA.TC40) ;*MANUAL R22 CODE CONVERSION
-    
+*CALL VISA.TC40.WRITE(Y.ID.40,R.VISA.TC40) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.visaTc40Write(Y.ID.40,R.VISA.TC40) ;*R22 MANUAL CODE CONVERSION
     Y.VISA.GEN.ID.1=Y.ID.40:'*VISA.TC40.OUT.FILE'
     CALL F.WRITE(FN.REDO.VISA.GEN.OUT,Y.VISA.GEN.ID.1,R.ARRAY)
 RETURN

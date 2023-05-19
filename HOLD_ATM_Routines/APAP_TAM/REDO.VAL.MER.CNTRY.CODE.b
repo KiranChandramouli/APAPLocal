@@ -1,17 +1,16 @@
-* @ValidationCode : MjoxOTI2MTQ1MDU5OkNwMTI1MjoxNjgzMDI0MzM2MzU3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 16:15:36
+* @ValidationCode : MjoxOTI2MTQ1MDU5OkNwMTI1MjoxNjg0NDkxMDQ4NzA0OklUU1M6LTE6LTE6LTg6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -8
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.VAL.MER.CNTRY.CODE
 ***********************************************************************
 * COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS

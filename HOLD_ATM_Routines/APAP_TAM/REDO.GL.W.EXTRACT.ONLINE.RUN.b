@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTAzNzkwMjkzNjpDcDEyNTI6MTY4Mzg5MjYzMDc1MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:10
+* @ValidationCode : MjotMTIwMzE2ODMxOTpDcDEyNTI6MTY4NDQ5MTAzNTQ4MDpJVFNTOi0xOi0xOjQ4MTI6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 May 2023 15:40:35
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 4812
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 
@@ -41,7 +41,7 @@ SUBROUTINE REDO.GL.W.EXTRACT.ONLINE.RUN
 * 26 JUN 2011       Prabhu N             PACS00071961                  Back Up written process added and C22 added
 * 20-12-2011        SHANKAR RAJU         PACS00169428 & PACS00169423   Deletion of Detail record
 * 13.04.2023       Conversion Tool       R22                           Auto Conversion     - FM TO @FM, VM TO @VM, F TO CACHE
-* 13.04.2023       Shanmugapriya M       R22                           Manual Conversion   - Add call routine prefix
+* 13.04.2023       Shanmugapriya M       R22                           Manual Conversion   - Add call routine prefix,CALL RTN FORMAT MODIFIED
 *
 *********************************************************************************************************
     $INSERT I_COMMON
@@ -578,7 +578,8 @@ WRITE.BACKUP:
         EX.PC   = ''
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 ** R22 Manual conversion
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL APAP.REDOCHNLS.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 MANUAL CODE CONVERSION
+        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CODE CONVERSION
         RETURN
     END
     Y.BACKUP.PATH=R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.BACKUP.PATH>
