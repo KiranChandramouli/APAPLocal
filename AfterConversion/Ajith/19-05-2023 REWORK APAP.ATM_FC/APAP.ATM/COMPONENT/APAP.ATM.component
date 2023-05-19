@@ -1,0 +1,324 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method atCalcAvailBalance (
+    INOUT rAcct string,
+    INOUT wrkBal string,
+    INOUT availBal string
+)
+{
+    jBC: AT.CALC.AVAIL.BALANCE
+}
+
+
+
+public method atDupOverride (
+)
+{
+    jBC: AT.DUP.OVERRIDE
+}
+
+
+
+public method atFmtTxnAmt (
+)
+{
+    jBC: AT.FMT.TXN.AMT
+}
+
+
+
+public method atGetAcctBranch (
+    INOUT incoming string,
+    INOUT returnval string
+)
+{
+    jBC: AT.GET.ACCT.BRANCH
+}
+
+
+
+public method atGetAcctEntDetls (
+    INOUT yAcctNo string,
+    INOUT noOfTxns string,
+    INOUT txnDetls string
+)
+{
+    jBC: AT.GET.ACCT.ENT.DETLS
+}
+
+
+
+public method atIsoChgAmt (
+    INOUT inArg string,
+    INOUT outArg string
+)
+{
+    jBC: AT.ISO.CHG.AMT
+}
+
+
+
+public method atIsoPostProcessMsg (
+    INOUT isoMessage string
+)
+{
+    jBC: AT.ISO.POST.PROCESS.MSG
+}
+
+
+
+public method atIsoRev (
+    INOUT atUniqueId string,
+    INOUT retFuncId string
+)
+{
+    jBC: AT.ISO.REV
+}
+
+
+
+public method atmBranchCheckFields (
+)
+{
+    jBC: ATM.BRANCH.CHECK.FIELDS
+}
+
+
+
+public method atmIsoErrCodeRtnBak (
+    INOUT outMsg string
+)
+{
+    jBC: ATM.ISO.ERR.CODE.RTN.BAK
+}
+
+
+
+public method atmBranchFieldDefinitions (
+)
+{
+    jBC: ATM.BRANCH.FIELD.DEFINITIONS
+}
+
+
+
+public method atmBranchCrossval (
+)
+{
+    jBC: ATM.BRANCH.CROSSVAL
+}
+
+
+
+public method atmDupCheck (
+    INOUT uniqueId string,
+    INOUT outgoing string
+)
+{
+    jBC: ATM.DUP.CHECK
+}
+
+
+
+public method atmIsoErrCodeRtn (
+    INOUT outMsg string
+)
+{
+    jBC: ATM.ISO.ERR.CODE.RTN
+}
+
+
+
+public method atmIsoSysErrRtn (
+    INOUT outMsg string
+)
+{
+    jBC: ATM.ISO.SYS.ERR.RTN
+}
+
+
+
+public method atmParameterCrossval (
+)
+{
+    jBC: ATM.PARAMETER.CROSSVAL
+}
+
+
+
+public method atmParameterFieldDefinitions (
+)
+{
+    jBC: ATM.PARAMETER.FIELD.DEFINITIONS
+}
+
+
+
+public method atmParameterOverride (
+)
+{
+    jBC: ATM.PARAMETER.OVERRIDE
+}
+
+
+
+public method atmPrev (
+    INOUT atmidUniqueId string,
+    INOUT outgoing string
+)
+{
+    jBC: ATM.PREV
+}
+
+
+
+public method atmResCodTable (
+)
+{
+    jBC: ATM.RES.COD.TABLE
+}
+
+
+
+public method atmResCodTableFields (
+)
+{
+    jBC: ATM.RES.COD.TABLE.FIELDS
+}
+
+
+
+public method atmReversal (
+)
+{
+    jBC: ATM.REVERSAL
+}
+
+
+
+public method calCompanyCde (
+    INOUT atmId string,
+    INOUT companyCde string
+)
+{
+    jBC: CAL.COMPANY.CDE
+}
+
+
+
+public method eIsoRetSpfStatus (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.SPF.STATUS
+}
+
+
+
+public method intrfMappingFieldDefinitions (
+)
+{
+    jBC: INTRF.MAPPING.FIELD.DEFINITIONS
+}
+
+
+
+public method intrfMessageFieldDefinitions (
+)
+{
+    jBC: INTRF.MESSAGE.FIELD.DEFINITIONS
+}
+
+
+
+public method intrfParameterFieldDefinitions (
+)
+{
+    jBC: INTRF.PARAMETER.FIELD.DEFINITIONS
+}
+
+
+
+public method redoDeviceIdPopulate (
+)
+{
+    jBC: REDO.DEVICE.ID.POPULATE
+}
+ 
+
+
+
+public method vFtUpdEnqAtmKeyId (
+)
+{
+    jBC: V.FT.UPD.ENQ.ATM.KEY.ID
+}
+
+
+
+public method eIsoRetSpfStatusRev (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.SPF.STATUS.REV
+}
+
+
+
+public method isoParser (
+)
+{
+    jBC: ISO.PARSER
+}
+
+
+
+public method redoAtmCardAcct (
+    INOUT cardNumm string,
+    INOUT retVal string
+)
+{
+    jBC: REDO.ATM.CARD.ACCT
+}
+
+
+
+public method redoChkAthRevMsg (
+)
+{
+    jBC: REDO.CHK.ATH.REV.MSG
+}
+
+
+
+public method vFtRevUpdAtmKeyId (
+)
+{
+    jBC: V.FT.REV.UPD.ATM.KEY.ID
+}
+
+
+
+public method redoGetIsoResp (
+    INOUT yOutMsg string
+)
+{
+    jBC: REDO.GET.ISO.RESP
+}
+
+
+
+public method redoEnqChgRev (
+    INOUT yIdList string
+)
+{
+    jBC: REDO.ENQ.CHG.REV
+}
+
+
+
+
