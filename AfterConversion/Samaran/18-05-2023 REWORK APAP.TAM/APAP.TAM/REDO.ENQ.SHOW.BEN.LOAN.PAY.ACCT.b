@@ -1,0 +1,377 @@
+* @ValidationCode : MjoxOTU1Mjk1MDUyOkNwMTI1MjoxNjg0Mzg3NTMxMjE3OnNhbWFyOi0xOi0xOjA6MDpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 18 May 2023 10:55:31
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : samar
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.TAM
+SUBROUTINE REDO.ENQ.SHOW.BEN.LOAN.PAY.ACCT(LOAN.LIST)
+  
+*-----------------------------------------------------------------------------
+* Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By : Prabhu N
+* Program Name : REDO.E.ELIM.LOAN.PRODUCT
+*-----------------------------------------------------------------------------
+* Description : This subroutine is attached as a BUILD routine in the Enquiry AI.REDO.LOAN.ACCT.TO
+* In Parameter : ENQ.DATA
+*
+**DATE           ODR                   DEVELOPER               VERSION
+*
+*26/08/11      PACS00108342          Prabhu N                MODIFICAION
+*DATE                 WHO                  REFERENCE                     DESCRIPTION
+*25/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION       FM TO @FM, VM TO @VM, SM TO @SM,++ TO +=,F.READ TO CACHE.READ,IF CONDITION ADDED
+*25/04/2023         SURESH           MANUAL R22 CODE CONVERSION        CALL routine format modified
+*-----------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_System
+    $INSERT I_EB.EXTERNAL.COMMON
+    $INSERT I_F.CUSTOMER.ACCOUNT
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AA.OVERDUE
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+    $INSERT I_F.AA.BILL.DETAILS
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.AA.TERM.AMOUNT
+    $INSERT I_F.AA.PRODUCT
+    $INSERT I_F.BENEFICIARY
+    $USING APAP.AA
+    
+*Tus Start
+    $INSERT I_F.EB.CONTRACT.BALANCES
+*Tus End
+    GOSUB INITIALISE
+    GOSUB PERFORM.FINAL.ARRAY
+RETURN
+*-----------------------------------------------------------------------------
+INITIALISE:
+*-----------------------------------------------------------------------------
+
+    LR.APP = 'AA.PRD.DES.OVERDUE':@FM:'AA.PRD.DES.TERM.AMOUNT':@FM:'BENEFICIARY'
+    LR.FLDS = 'L.LOAN.COND':@VM:'L.LOAN.STATUS.1':@FM:'L.AA.PART.ALLOW':@VM:'L.AA.PART.PCNT':@FM:'L.BEN.PROD.TYPE'
+    LR.POS = ''
+    LOAN.LIST.ACCOUNTS=''
+    EB.LKP.LOAN.COND.ID=''
+    EB.LKP.LOAN.STATUS.ID=''
+    CALL MULTI.GET.LOC.REF(LR.APP,LR.FLDS,LR.POS)
+    OD.LOAN.COND.POS =  LR.POS<1,1>
+    OD.LOAN.STATUS.POS = LR.POS<1,2>
+    L.APP.PART.POS=LR.POS<2,1>
+    L.APP.PCNT.POS=LR.POS<2,2>
+    POS.L.BEN.PROD.TYPE = LR.POS<3,1>
+
+    FN.CUS.ACC = 'F.CUSTOMER.ACCOUNT'
+    F.CUS.ACC = ''
+    CALL OPF(FN.CUS.ACC,F.CUS.ACC)
+
+    FN.ACC = 'F.ACCOUNT'
+    F.ACC = ''
+    CALL OPF(FN.ACC,F.ACC)
+
+    FN.AA.ACC.DET = 'F.AA.ACCOUNT.DETAILS'
+    F.AA.ACC.DET = ''
+    CALL OPF(FN.AA.ACC.DET,F.AA.ACC.DET)
+
+    FN.AA.BILL.DET = 'F.AA.BILL.DETAILS'
+    F.AA.BILL.DET = ''
+    CALL OPF(FN.AA.BILL.DET,F.AA.BILL.DET)
+
+    FN.CUS.BEN.LIST = 'F.CUS.BEN.LIST'
+    F.CUS.BEN.LIST  = ''
+    CALL OPF(FN.CUS.BEN.LIST,F.CUS.BEN.LIST)
+
+    FN.ARR = 'F.AA.ARRANGEMENT'
+    F.ARR = ''
+    CALL OPF(FN.ARR,F.ARR)
+
+    FN.AA.PROD = 'F.AA.PRODUCT'
+    F.AA.PROD = ''
+    CALL OPF(FN.AA.PROD,F.AA.PROD)
+
+    CUST.ID= System.getVariable("EXT.SMS.CUSTOMERS")
+    IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;*AUTO R22 CODE CONVERSION - START
+        CUST.ID = ""
+    END ;*AUTO R22 CODE CONVERSION - END
+
+
+    Y.CUSTOMER.BEN.ID = CUST.ID:'-OWN'
+    FN.BENEFICIARY='F.BENEFICIARY'
+    F.BENEFICIARY =''
+    CALL OPF(FN.BENEFICIARY,F.BENEFICIARY)
+    CALL F.READ(FN.CUS.BEN.LIST,Y.CUSTOMER.BEN.ID,R.CUS.BEN.LIST,F.CUS.BEN.LIST,CUS.BEN.LIST.ERR)
+
+    LOOP
+        REMOVE BEN.ID FROM R.CUS.BEN.LIST SETTING BEN.POS
+    WHILE BEN.ID:BEN.POS
+
+        BEN.PART.ID = FIELD(BEN.ID,'*',2)
+        CALL CACHE.READ(FN.BENEFICIARY, BEN.PART.ID, R.BENEFICIARY, BENEFICIARY.ERR) ;*AUTO R22 CODE CONVERSION
+        IF R.BENEFICIARY THEN
+            Y.BEN.PROD.TYPE = R.BENEFICIARY<ARC.BEN.LOCAL.REF,POS.L.BEN.PROD.TYPE>
+            IF Y.BEN.PROD.TYPE EQ 'LOAN' THEN
+                R.CUSTOMER.ACCOUNT.REC<-1>=R.BENEFICIARY<ARC.BEN.BEN.ACCT.NO>
+
+                Y.ALIAS = R.BENEFICIARY<ARC.BEN.NICKNAME>
+                IF Y.ALIAS THEN
+                    Y.CUSTOMER.ALIAS<-1> = Y.ALIAS
+                END ELSE
+                    Y.ALIAS = '  '
+                    Y.CUSTOMER.ALIAS<-1> = Y.ALIAS
+                END
+                SEL.LIST <-1> = BEN.PART.ID
+            END
+        END
+    REPEAT
+
+RETURN
+
+*******************
+PERFORM.FINAL.ARRAY:
+*******************
+
+    PROP.CLASS = 'OVERDUE'
+    PROPERTY = ''
+    R.Condition = ''
+    ERR.MSG = ''
+    EFF.DATE = ''
+
+
+    Y.SEL.LIST.CNT=1
+    LOOP
+
+        REMOVE ACC.ID FROM R.CUSTOMER.ACCOUNT.REC SETTING ACCT.POS
+    WHILE ACC.ID:ACCT.POS
+
+        LOAN.FLAG=''
+        GOSUB CHECK.LOAN.ACCT
+        IF ARR.ID NE '' THEN
+*CALL APAP.TAM.REDO.CONVERT.ACCOUNT(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+            CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+*CALL APAP.AA.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+            CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)  ;*MANUAL R22 CODE CONVERSION
+            LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
+            LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
+            GOSUB READ.AA.ACCT.DETAILS
+            GOSUB READ.AA.BILL.DETAILS
+            GOSUB GET.NEXT.BILL.DUE
+            GOSUB ARR.STATUS.CHECK.SUB
+        END
+        Y.SEL.LIST.CNT += 1 ;*AUTO R22 CODE CONVERSION
+    REPEAT
+
+RETURN
+*********************
+ARR.STATUS.CHECK.SUB:
+*********************
+
+    VAR.CCY = LCCY
+    VAR.DIGIT = '2'
+    CALL EB.ROUND.AMOUNT(VAR.CCY,BILL.MINUS.PART.AMT,VAR.DIGIT,'')
+    Y.DESC = 'Prestamo'
+    LOAN.LIST<-1> = ARR.ID:"@":ARR.ACCT.BAL:"@":EXACT.AMT:"@":ACC.ID:"@":ARR.OPEN.DTE:"@":ARR.TERM.AMT:"@":ARR.BAL.OUT:"@":ARR.PRODUCT:"@":TOT.UNP.BILL.CNT:"@":BILL.MINUS.PART.AMT:'@':Y.BILL.AMT.LIST:'@':SEL.LIST<Y.SEL.LIST.CNT>:'@':Y.CUSTOMER.ALIAS<Y.SEL.LIST.CNT>:'@':Y.DESC:'@':Y.TOT.BILL.AMT
+
+RETURN
+
+****************
+CHECK.LOAN.ACCT:
+***************
+
+    R.ACC= ''
+    CALL F.READ(FN.ACC,ACC.ID,R.ACC,F.ACC,ACC.ERR)
+    R.ECB='' ; ECB.ERR='' ;*Tus Start
+    CALL EB.READ.HVT("EB.CONTRACT.BALANCES",ACC.ID,R.ECB,ECB.ERR);*Tus End
+    IF R.ACC THEN
+        ARR.ID = R.ACC<AC.ARRANGEMENT.ID>
+*  ARR.ACCT.BAL = R.ACC<AC.ONLINE.ACTUAL.BAL> ;*Tus Start
+        ARR.ACCT.BAL = R.ECB<ECB.ONLINE.ACTUAL.BAL> ;*Tus End
+
+    END
+
+
+RETURN
+**********************
+READ.AA.ACCT.DETAILS:
+**********************
+
+    ARR.OPEN.DTE=''
+    ARR.TERM.AMT=''
+    ARR.BAL.OUT=''
+
+
+    CALL F.READ(FN.ARR,ARR.ID,R.ARR.REC,F.ARR,ARR.ERR)
+    IF R.ARR.REC THEN
+        ARR.OPEN.DTE = R.ARR.REC<AA.ARR.START.DATE>
+        ARR.PRODUCT = R.ARR.REC<AA.ARR.PRODUCT>
+
+        CALL CACHE.READ(FN.AA.PROD, ARR.PRODUCT, R.AA.PRODUCT, AA.PRODUCT.ERR) ;*AUTO R22 CODE CONVERSION
+        Y.DESC = R.AA.PRODUCT<AA.PDT.DESCRIPTION,LNGG>
+        IF NOT(Y.DESC) THEN
+            Y.DESC  = R.AA.PRODUCT<AA.PDT.DESCRIPTION,1>
+        END
+
+        ARR.STATUS.CHECK = R.ARR.REC<AA.ARR.ARR.STATUS>
+*CALL APAP.TAM.REDO.AA.GET.OUT.BALANCE(ARR.ID,Y.BALANCE) ;*MANUAL R22 CODE CONVERSION
+        CALL APAP.TAM.redoAaGetOutBalance(ARR.ID,Y.BALANCE) ;*MANUAL R22 CODE CONVERSION
+        ARR.BAL.OUT = Y.BALANCE
+        Y.TERM.AMOUNT=0
+        EFF.DATE = ''
+        PROP.CLASS='TERM.AMOUNT'
+        PROPERTY = ''
+        R.CONDITION = ''
+        ERR.MSG = ''
+*CALL APAP.AA.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+        CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+        ARR.TERM.AMT=R.CONDITION<AA.AMT.AMOUNT>
+        PART.PAY=R.CONDITION<AA.AMT.LOCAL.REF,L.APP.PART.POS>
+        PART.PCNT=R.CONDITION<AA.AMT.LOCAL.REF,L.APP.PCNT.POS>
+    END
+
+    GET.FULL.DET = ''
+    O.DATA = ARR.ID
+    TOT.BILL.DET =''
+    TOT.BILL.CNT = ''
+    CALL E.AA.GET.BILLS.CONVERSION
+    GET.FULL.DET = R.RECORD
+    TOT.BILL.DET = R.RECORD<AA.AD.BILL.ID>
+    CHANGE @VM TO @FM IN TOT.BILL.DET
+    TOT.BILL.CNT = DCOUNT(TOT.BILL.DET,@FM)
+*    CALL System.setVariable('CURRENT.TOT.BILL.CNT',TOT.BILL.CNT)
+    TOT.BILL.STATUS = R.RECORD<AA.AD.SET.STATUS>
+
+RETURN
+**********************
+READ.AA.BILL.DETAILS:
+**********************
+
+    BILL.CNT=''
+    EXACT.AMT=''
+    BILL.CNT = 1
+    TOT.UNP.BILL.CNT=0
+    CHECK.BILL.AMT=''
+    FIRST.BILL.PART.AMT=''
+    FIRST.AMT.TO.SUB=''
+    PART.FLG=''
+    BILL.MINUS.PART.AMT=''
+    EXACT.PART.AMT=''
+    Y.OLD.BILL.SET=''
+    Y.BILL.AMT.LIST=''
+    Y.TOT.BILL.AMT = ''
+    LOOP
+
+    WHILE BILL.CNT LE TOT.BILL.CNT
+
+        EACH.BILL.ID=GET.FULL.DET<AA.AD.BILL.ID,BILL.CNT>
+        EACH.BILL.STATUS = GET.FULL.DET<AA.AD.SET.STATUS,BILL.CNT>
+        GOSUB EACH.BILL.STATUS.SUB
+        BILL.CNT += 1 ;*AUTO R22 CODE CONVERSION
+    REPEAT
+    CHANGE @FM TO '#' IN Y.BILL.AMT.LIST
+RETURN
+
+*********************
+EACH.BILL.STATUS.SUB:
+*********************
+    IF EACH.BILL.STATUS EQ 'UNPAID' THEN
+
+
+        R.BILL.DET = ''
+        CALL F.READ(FN.AA.BILL.DET,EACH.BILL.ID,R.BILL.DET,F.AA.BILL.DET,BILL.DET.ERR)
+        IF R.BILL.DET THEN
+            Y.PROPERTY.LIST = R.BILL.DET<AA.BD.PROPERTY>
+            CHANGE @VM TO @FM IN Y.PROPERTY.LIST
+            CHANGE @SM TO @FM IN Y.PROPERTY.LIST
+
+            Y.TOT.PROP.CNT = DCOUNT(Y.PROPERTY.LIST,@FM)
+            Y.PROP.CNT = 1
+            LOOP
+            WHILE Y.PROP.CNT LE Y.TOT.PROP.CNT
+                Y.EACH.BILL.AMT + = R.BILL.DET<AA.BD.OS.PROP.AMOUNT,Y.PROP.CNT>
+                Y.PROP.CNT += 1 ;*AUTO R22 CODE CONVERSION
+
+            REPEAT
+            Y.TOT.BILL.AMT +  = Y.EACH.BILL.AMT
+            Y.BILL.AMT.LIST<BILL.CNT>=Y.EACH.BILL.AMT
+            Y.EACH.BILL.AMT = ''
+            GOSUB CHECK.PART.PAY
+        END
+    END
+RETURN
+
+
+********************
+CHECK.PART.PAY:
+********************
+    IF PART.PAY EQ 'YES' OR PART.PAY EQ 'SI' THEN
+
+        PART.FLG=1
+
+        GOSUB CHECK.BILL.CNT.ONE
+
+        GOSUB CHECK.BILL.CNT.GT.ONE
+
+
+        TOT.UNP.BILL.CNT += 1 ;*AUTO R22 CODE CONVERSION
+    END ELSE
+* EXACT.AMT += SUM(R.BILL.DET<AA.BD.OS.PROP.AMOUNT>)
+        TOT.UNP.BILL.CNT += 1
+    END
+
+RETURN
+*************
+CHECK.BILL.CNT.ONE:
+***********
+    IF BILL.CNT EQ '1' THEN
+
+        CHECK.BILL.AMT=R.BILL.DET<AA.BD.OR.TOTAL.AMOUNT>*(PART.PCNT/100)
+
+        FIRST.BILL.PART.AMT=CHECK.BILL.AMT
+        FIRST.AMT.TO.SUB   = SUM(R.BILL.DET<AA.BD.OS.PROP.AMOUNT>)
+
+    END
+
+
+RETURN
+
+******************
+GET.NEXT.BILL.DUE:
+******************
+
+    CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+    
+    Y.DU.DTES = DUE.DATES
+    Y.DU.DTES = CHANGE(Y.DU.DTES,@FM,@VM)
+
+    POS.AR = ''
+    LOCATE TODAY IN Y.DU.DTES<1,1> BY 'AR' SETTING POS.AR THEN
+        POS.AR += 1 ;*AUTO R22 CODE CONVERSION
+        IF Y.DU.DTES<1,POS.AR> EQ TODAY THEN
+            POS.AR += 1
+        END
+    END
+
+    IF POS.AR THEN
+        Y.DU.PRPS = DUE.PROPS<POS.AR>
+        EXACT.AMT = TOT.PAYMENT<POS.AR>
+        Y.EXACT.DATE = DUE.DATES<POS.AR>
+    END
+
+RETURN
+*******************
+CHECK.BILL.CNT.GT.ONE:
+*******************************
+    IF BILL.CNT GT '1' THEN
+        EXACT.PART.AMT += SUM(R.BILL.DET<AA.BD.OS.PROP.AMOUNT>)
+    END
+
+RETURN
+
+*-----------------------------------------------------------------------------
+END
+*---------------------------*END OF SUBROUTINE*-------------------------------
