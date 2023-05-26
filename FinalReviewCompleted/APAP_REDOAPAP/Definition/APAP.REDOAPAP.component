@@ -3381,7 +3381,7 @@ public method redoArcDueVal (
 public method redoApapEGetName (
 )
 {
-   jBC: REDO.APAP.E.GET.NAME
+    jBC: REDO.APAP.E.GET.NAME
 }
 
 
@@ -3389,52 +3389,52 @@ public method redoApapEGetName (
 public method redoApapEGetRelCode (
 )
 {
-   jBC: REDO.APAP.E.GET.REL.CODE
+    jBC: REDO.APAP.E.GET.REL.CODE
 }
 
 
 
 public  method redoApapENofAcctHist (
-   INOUT dataReturn string
+    INOUT dataReturn string
 )
 {
-   jBC: REDO.APAP.E.NOF.ACCT.HIST
+    jBC: REDO.APAP.E.NOF.ACCT.HIST
 }
 
 
 
 public method redoApapENofCusDemog (
-   INOUT dataReturn string
+    INOUT dataReturn string
 )
 {
-   jBC: REDO.APAP.E.NOF.CUS.DEMOG
+    jBC: REDO.APAP.E.NOF.CUS.DEMOG
 }
 
 
 
 public method redoApapENofInvReinv94 (
-   INOUT dataReturn string
+    INOUT dataReturn string
 )
 {
-   jBC: REDO.APAP.E.NOF.INV.REINV.94
+    jBC: REDO.APAP.E.NOF.INV.REINV.94
 }
 
 
 
 public method redoApapENofInvstProvisioning (
-   INOUT yOutArray string
+    INOUT yOutArray string
 )
 {
-   jBC: REDO.APAP.E.NOF.INVST.PROVISIONING
+    jBC: REDO.APAP.E.NOF.INVST.PROVISIONING
 }
 
 
 
 public method redoApapENofPaymentDynamicRpt (
-   INOUT yOutArray string
+    INOUT yOutArray string
 )
 {
-   jBC: REDO.APAP.E.NOF.PAYMENT.DYNAMIC.RPT
+    jBC: REDO.APAP.E.NOF.PAYMENT.DYNAMIC.RPT
 }
 
 
@@ -3442,7 +3442,7 @@ public method redoApapENofPaymentDynamicRpt (
 public method redoApapECusName (
 )
 {
-   jBC: REDO.APAP.E.CUS.NAME
+    jBC: REDO.APAP.E.CUS.NAME
 }
 
 
@@ -3450,7 +3450,7 @@ public method redoApapECusName (
 public method redoApapEConvSelCritPrestn1 (
 )
 {
-   jBC: REDO.APAP.E.CONV.SEL.CRIT.PRESTN1
+    jBC: REDO.APAP.E.CONV.SEL.CRIT.PRESTN1
 }
 
 
@@ -3458,7 +3458,7 @@ public method redoApapEConvSelCritPrestn1 (
 public method redoApapEConvSelCrit66 (
 )
 {
-   jBC: REDO.APAP.E.CONV.SEL.CRIT.66
+    jBC: REDO.APAP.E.CONV.SEL.CRIT.66
 }
 
 
@@ -3466,7 +3466,7 @@ public method redoApapEConvSelCrit66 (
 public method redoApapEConvSelCrit38 (
 )
 {
-   jBC: REDO.APAP.E.CONV.SEL.CRIT.38
+    jBC: REDO.APAP.E.CONV.SEL.CRIT.38
 }
 
 
@@ -3474,7 +3474,7 @@ public method redoApapEConvSelCrit38 (
 public method redoApapEConvSelCrit102 (
 )
 {
-   jBC: REDO.APAP.E.CONV.SEL.CRIT.102
+    jBC: REDO.APAP.E.CONV.SEL.CRIT.102
 }
 
 
@@ -3482,7 +3482,7 @@ public method redoApapEConvSelCrit102 (
 public method redoApapEConvSelCrit109 (
 )
 {
-   jBC: REDO.APAP.E.CONV.SEL.CRIT.109
+    jBC: REDO.APAP.E.CONV.SEL.CRIT.109
 }
 
 
@@ -3490,142 +3490,142 @@ public method redoApapEConvSelCrit109 (
 public method redoApapEConvCouponBase (
 )
 {
-   jBC: REDO.APAP.E.CONV.COUPON.BASE
+    jBC: REDO.APAP.E.CONV.COUPON.BASE
 }
 
 
 
 public method redoApapEBldCusDao (
-   INOUT yEnqDtls string
+    INOUT yEnqDtls string
 )
 {
-   jBC: REDO.APAP.E.BLD.CUS.DAO
+    jBC: REDO.APAP.E.BLD.CUS.DAO
 }
 
 
 
 public method redoApapDtTypeOfTxnCcy (
-   INOUT countryCode string
+    INOUT countryCode string
 )
 {
-   jBC: REDO.APAP.DT.TYPE.OF.TXN.CCY
+    jBC: REDO.APAP.DT.TYPE.OF.TXN.CCY
 }
 
 
 
 public method redoApapDtTypeOfTxn (
-   INOUT typeTxn string
+    INOUT typeTxn string
 )
 {
-   jBC: REDO.APAP.DT.TYPE.OF.TXN
+    jBC: REDO.APAP.DT.TYPE.OF.TXN
 }
 
 
 
 public method redoApapDtTrApp (
-   INOUT trApprover string
+    INOUT trApprover string
 )
 {
-   jBC: REDO.APAP.DT.TR.APP
+    jBC: REDO.APAP.DT.TR.APP
 }
 
 
 
 public method redoApapDtRate (
-   INOUT spFwRate string
+    INOUT spFwRate string
 )
 {
-   jBC: REDO.APAP.DT.RATE
+    jBC: REDO.APAP.DT.RATE
 }
 
 
 
 public method redoApapDtPymtIns (
-   INOUT pymtIns string
+    INOUT pymtIns string
 )
 {
-   jBC: REDO.APAP.DT.PYMT.INS
+    jBC: REDO.APAP.DT.PYMT.INS
 }
 
 
 
 public method redoApapDtLccyAmt (
-   INOUT locCcyAmt string
+    INOUT locCcyAmt string
 )
 {
-   jBC: REDO.APAP.DT.LCCY.AMT
+    jBC: REDO.APAP.DT.LCCY.AMT
 }
 
 
 
 public method redoApapDsStopAccTitle (
-   INOUT accTitle string
+    INOUT accTitle string
 )
 {
-   jBC: REDO.APAP.DS.STOP.ACC.TITLE
+    jBC: REDO.APAP.DS.STOP.ACC.TITLE
 }
 
 
 
 public method redoApapDsRepayDeposit (
-   INOUT yMulti string
+    INOUT yMulti string
 )
 {
-   jBC: REDO.APAP.DS.REPAY.DEPOSIT
+    jBC: REDO.APAP.DS.REPAY.DEPOSIT
 }
 
 
 
 public method redoApapDsPayMulti (
-   INOUT yMulti string
+    INOUT yMulti string
 )
 {
-   jBC: REDO.APAP.DS.PAY.MULTI
+    jBC: REDO.APAP.DS.PAY.MULTI
 }
 
 
 
 public method redoApapDsCfDiscountRate (
-   INOUT intRate string
+    INOUT intRate string
 )
 {
-   jBC: REDO.APAP.DS.CF.DISCOUNT.RATE
+    jBC: REDO.APAP.DS.CF.DISCOUNT.RATE
 }
 
 
 
 public method redoApapDsAzDiscountRate (
-   INOUT intRate string
+    INOUT intRate string
 )
 {
-   jBC: REDO.APAP.DS.AZ.DISCOUNT.RATE
+    jBC: REDO.APAP.DS.AZ.DISCOUNT.RATE
 }
 
 
 
 public method redoApapDsAmtToWords (
-   INOUT yAmt string
+    INOUT yAmt string
 )
 {
-   jBC: REDO.APAP.DS.AMT.TO.WORDS
+    jBC: REDO.APAP.DS.AMT.TO.WORDS
 }
 
 
 
 public method redoApapDealConvVal (
-   INOUT yVal string
+    INOUT yVal string
 )
 {
-   jBC: REDO.APAP.DEAL.CONV.VAL
+    jBC: REDO.APAP.DEAL.CONV.VAL
 }
 
 
 
 public method redoApapDealAuthName (
-   INOUT yName string
+    INOUT yName string
 )
 {
-   jBC: REDO.APAP.DEAL.AUTH.NAME
+    jBC: REDO.APAP.DEAL.AUTH.NAME
 }
 
 
@@ -3633,7 +3633,7 @@ public method redoApapDealAuthName (
 public method redoApapCusFieldChangeFields (
 )
 {
-   jBC: REDO.APAP.CUS.FIELD.CHANGE.FIELDS
+    jBC: REDO.APAP.CUS.FIELD.CHANGE.FIELDS
 }
 
 
@@ -3641,7 +3641,7 @@ public method redoApapCusFieldChangeFields (
 public method redoApapCusFieldChange (
 )
 {
-   jBC: REDO.APAP.CUS.FIELD.CHANGE
+    jBC: REDO.APAP.CUS.FIELD.CHANGE
 }
 
 
@@ -3649,7 +3649,7 @@ public method redoApapCusFieldChange (
 public method redoApapCusExpClassify (
 )
 {
-   jBC: REDO.APAP.CUS.EXP.CLASSIFY
+    jBC: REDO.APAP.CUS.EXP.CLASSIFY
 }
 
 
@@ -3657,7 +3657,7 @@ public method redoApapCusExpClassify (
 public method redoApapCphParameterValidate (
 )
 {
-   jBC: REDO.APAP.CPH.PARAMETER.VALIDATE
+    jBC: REDO.APAP.CPH.PARAMETER.VALIDATE
 }
 
 
@@ -3665,7 +3665,7 @@ public method redoApapCphParameterValidate (
 public method redoApapCphParameterFields (
 )
 {
-   jBC: REDO.APAP.CPH.PARAMETER.FIELDS
+    jBC: REDO.APAP.CPH.PARAMETER.FIELDS
 }
 
 
@@ -3673,7 +3673,7 @@ public method redoApapCphParameterFields (
 public method redoApapCphParameter (
 )
 {
-   jBC: REDO.APAP.CPH.PARAMETER
+    jBC: REDO.APAP.CPH.PARAMETER
 }
 
 
@@ -3681,7 +3681,7 @@ public method redoApapCphParameter (
 public method redoApapConvStmtConsValue (
 )
 {
-   jBC: REDO.APAP.CONV.STMT.CONS.VALUE
+    jBC: REDO.APAP.CONV.STMT.CONS.VALUE
 }
 
 
@@ -3689,7 +3689,7 @@ public method redoApapConvStmtConsValue (
 public method redoApapConvSell (
 )
 {
-   jBC: REDO.APAP.CONV.SELL
+    jBC: REDO.APAP.CONV.SELL
 }
 
 
@@ -3697,7 +3697,7 @@ public method redoApapConvSell (
 public method redoApapConvSelDisplay (
 )
 {
-   jBC: REDO.APAP.CONV.SEL.DISPLAY
+    jBC: REDO.APAP.CONV.SEL.DISPLAY
 }
 
 
@@ -3705,7 +3705,7 @@ public method redoApapConvSelDisplay (
 public method redoApapConvSelDisp (
 )
 {
-   jBC: REDO.APAP.CONV.SEL.DISP
+    jBC: REDO.APAP.CONV.SEL.DISP
 }
 
 
@@ -3713,7 +3713,7 @@ public method redoApapConvSelDisp (
 public method redoApapConvSelCriteria (
 )
 {
-   jBC: REDO.APAP.CONV.SEL.CRITERIA
+    jBC: REDO.APAP.CONV.SEL.CRITERIA
 }
 
 
@@ -3721,7 +3721,7 @@ public method redoApapConvSelCriteria (
 public method redoApapConvRiskAmt (
 )
 {
-   jBC: REDO.APAP.CONV.RISK.AMT
+    jBC: REDO.APAP.CONV.RISK.AMT
 }
 
 
@@ -3729,7 +3729,7 @@ public method redoApapConvRiskAmt (
 public method redoApapConvOverride (
 )
 {
-   jBC: REDO.APAP.CONV.OVERRIDE
+    jBC: REDO.APAP.CONV.OVERRIDE
 }
 
 
@@ -3737,7 +3737,7 @@ public method redoApapConvOverride (
 public method redoApapConvGettingTime (
 )
 {
-   jBC: REDO.APAP.CONV.GETTING.TIME
+    jBC: REDO.APAP.CONV.GETTING.TIME
 }
 
 
@@ -3745,7 +3745,7 @@ public method redoApapConvGettingTime (
 public method redoApapConvGetTime (
 )
 {
-   jBC: REDO.APAP.CONV.GET.TIME
+    jBC: REDO.APAP.CONV.GET.TIME
 }
 
 
@@ -3753,7 +3753,7 @@ public method redoApapConvGetTime (
 public method redoApapConvGetStatus (
 )
 {
-   jBC: REDO.APAP.CONV.GET.STATUS
+    jBC: REDO.APAP.CONV.GET.STATUS
 }
 
 
@@ -3761,7 +3761,7 @@ public method redoApapConvGetStatus (
 public method redoApapConvGetClassification (
 )
 {
-   jBC: REDO.APAP.CONV.GET.CLASSIFICATION
+    jBC: REDO.APAP.CONV.GET.CLASSIFICATION
 }
 
 
@@ -3769,7 +3769,7 @@ public method redoApapConvGetClassification (
 public method redoApapConvGetClassi (
 )
 {
-   jBC: REDO.APAP.CONV.GET.CLASSI
+    jBC: REDO.APAP.CONV.GET.CLASSI
 }
 
 
@@ -3777,7 +3777,7 @@ public method redoApapConvGetClassi (
 public method redoApapConvGetClass (
 )
 {
-   jBC: REDO.APAP.CONV.GET.CLASS
+    jBC: REDO.APAP.CONV.GET.CLASS
 }
 
 
@@ -3785,7 +3785,7 @@ public method redoApapConvGetClass (
 public method redoApapConvGetAcctName (
 )
 {
-   jBC: REDO.APAP.CONV.GET.ACCT.NAME
+    jBC: REDO.APAP.CONV.GET.ACCT.NAME
 }
 
 
@@ -3793,7 +3793,7 @@ public method redoApapConvGetAcctName (
 public method redoApapConvClass (
 )
 {
-   jBC: REDO.APAP.CONV.CLASS
+    jBC: REDO.APAP.CONV.CLASS
 }
 
 
@@ -3801,7 +3801,7 @@ public method redoApapConvClass (
 public method redoApapConvCalTerm (
 )
 {
-   jBC: REDO.APAP.CONV.CAL.TERM
+    jBC: REDO.APAP.CONV.CAL.TERM
 }
 
 
@@ -3809,7 +3809,7 @@ public method redoApapConvCalTerm (
 public method redoApapConvAccBal (
 )
 {
-   jBC: REDO.APAP.CONV.ACC.BAL
+    jBC: REDO.APAP.CONV.ACC.BAL
 }
 
 
@@ -3817,7 +3817,7 @@ public method redoApapConvAccBal (
 public method redoApapClearingOutwardFields (
 )
 {
-   jBC: REDO.APAP.CLEARING.OUTWARD.FIELDS
+    jBC: REDO.APAP.CLEARING.OUTWARD.FIELDS
 }
 
 
@@ -3825,7 +3825,7 @@ public method redoApapClearingOutwardFields (
 public method redoApapClearingOutward (
 )
 {
-   jBC: REDO.APAP.CLEARING.OUTWARD
+    jBC: REDO.APAP.CLEARING.OUTWARD
 }
 
 
@@ -3833,7 +3833,7 @@ public method redoApapClearingOutward (
 public method redoApapClearingInwardValidate (
 )
 {
-   jBC: REDO.APAP.CLEARING.INWARD.VALIDATE
+    jBC: REDO.APAP.CLEARING.INWARD.VALIDATE
 }
 
 
@@ -3841,7 +3841,7 @@ public method redoApapClearingInwardValidate (
 public method redoApapClearingInwardAuth (
 )
 {
-   jBC: REDO.APAP.CLEARING.INWARD.AUTH
+    jBC: REDO.APAP.CLEARING.INWARD.AUTH
 }
 
 
@@ -3849,7 +3849,7 @@ public method redoApapClearingInwardAuth (
 public method redoApapClearParamValidate (
 )
 {
-   jBC: REDO.APAP.CLEAR.PARAM.VALIDATE
+    jBC: REDO.APAP.CLEAR.PARAM.VALIDATE
 }
 
 
@@ -3857,7 +3857,7 @@ public method redoApapClearParamValidate (
 public method redoApapClearParamFields (
 )
 {
-   jBC: REDO.APAP.CLEAR.PARAM.FIELDS
+    jBC: REDO.APAP.CLEAR.PARAM.FIELDS
 }
 
 
@@ -3865,7 +3865,7 @@ public method redoApapClearParamFields (
 public method redoApapClearParam (
 )
 {
-   jBC: REDO.APAP.CLEAR.PARAM
+    jBC: REDO.APAP.CLEAR.PARAM
 }
 
 
@@ -3873,6 +3873,310 @@ public method redoApapClearParam (
 public method redoApapClassificationSelCrit24 (
 )
 { 
-   jBC: REDO.APAP.CLASSIFICATION.SEL.CRIT.24
+    jBC: REDO.APAP.CLASSIFICATION.SEL.CRIT.24
 }
 
+public method apapdrViAdjbillchargeCobros (
+)
+{
+    jBC: APAPDR.VI.ADJBILLCHARGE.COBROS
+}
+
+
+
+public method itssCallNvDealSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: ITSS.CALL.NV.DEAL.SLIP
+}
+
+
+
+public method lapapValAccCategoryRt (
+)
+{
+    jBC: LAPAP.VAL.ACC.CATEGORY.RT
+}
+
+
+
+public method lapapValBolBalanceRt (
+)
+{
+    jBC: LAPAP.VAL.BOL.BALANCE.RT
+}
+
+
+
+public method lapapValBolEmbargoRt (
+)
+{
+    jBC: LAPAP.VAL.BOL.EMBARGO.RT
+}
+
+
+
+public method redoBCrfNwgl (
+    INOUT acctId string
+)
+{
+    jBC: REDO.B.CRF.NWGL
+}
+
+
+
+public method redoReCrfNwglFields (
+)
+{
+    jBC: REDO.RE.CRF.NWGL.FIELDS
+}
+
+
+
+public method redoSNofileAcStatus (
+    INOUT yFinalArr string
+)
+{
+    jBC: REDO.S.NOFILE.AC.STATUS
+}
+
+
+
+public method redoStatusFields (
+)
+{
+    jBC: REDO.STATUS.FIELDS
+}
+
+
+
+public method redoTAcctstatByDate (
+)
+{
+    jBC: REDO.T.ACCTSTAT.BY.DATE
+}
+
+
+
+public method redoTAcctstatByDateFields (
+)
+{
+    jBC: REDO.T.ACCTSTAT.BY.DATE.FIELDS
+}
+
+
+
+public method redoTStatseqByAcct (
+)
+{
+    jBC: REDO.T.STATSEQ.BY.ACCT
+}
+
+
+
+public method redoTStatseqByAcctFields (
+)
+{
+    jBC: REDO.T.STATSEQ.BY.ACCT.FIELDS
+}
+
+
+
+public method redoUpdAccountRevGarnish (
+)
+{
+    jBC: REDO.UPD.ACCOUNT.REV.GARNISH
+}
+
+
+
+public method redoVAutChkExstCust (
+)
+{
+    jBC: REDO.V.AUT.CHK.EXST.CUST
+}
+
+
+
+public method redoVAutUpdateStatusAcCol (
+)
+{
+    jBC: REDO.V.AUT.UPDATE.STATUS.AC.COL
+}
+
+
+
+public method redoVAuthGenAcLock (
+)
+{
+    jBC: REDO.V.AUTH.GEN.AC.LOCK
+}
+
+
+
+public method redoVAuthLockAcct (
+)
+{
+    jBC: REDO.V.AUTH.LOCK.ACCT
+}
+
+
+
+public method redoVAuthNewAcctStatus (
+)
+{
+    jBC: REDO.V.AUTH.NEW.ACCT.STATUS
+}
+
+
+
+public method redoVCheckBalIntEntries (
+    INOUT acctId string,
+    INOUT balCrAmt string,
+    INOUT balDrAmt string,
+    INOUT intCrAmt string,
+    INOUT intDrAmt string,
+    INOUT yBalAccNo string,
+    INOUT yIntAccNo string
+)
+{
+    jBC: REDO.V.CHECK.BAL.INT.ENTRIES
+}
+
+
+
+public method redoValAdjbillchargeCobros (
+)
+{
+    jBC: REDO.VAL.ADJBILLCHARGE.COBROS
+}
+
+
+
+public method redoConvMnemToStatus (
+    INOUT acctId string,
+    INOUT yStatus string
+)
+{
+    jBC: REDO.CONV.MNEM.TO.STATUS
+}
+
+
+
+public method redoUpdAccountStatusDate (
+    INOUT accountId string,
+    INOUT statusSeq string
+)
+{
+    jBC: REDO.UPD.ACCOUNT.STATUS.DATE
+}
+
+
+
+public method lapapValBolosilloRt (
+)
+{
+    jBC: LAPAP.VAL.BOLOSILLO.RT
+}
+
+
+
+public method lapapValDateBolRt (
+)
+{
+    jBC: LAPAP.VAL.DATE.BOL.RT
+}
+
+
+
+public method lapapValDifBolsRt (
+)
+{
+    jBC: LAPAP.VAL.DIF.BOLS.RT
+}
+
+public method redoBAddgestCharge (
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.ADDGEST.CHARGE
+}
+
+
+
+public method redoBAddgestChargeLoad (
+)
+{
+    jBC: REDO.B.ADDGEST.CHARGE.LOAD
+}
+
+
+
+public method redoBAddgestChargePost (
+)
+{
+    jBC: REDO.B.ADDGEST.CHARGE.POST
+}
+
+
+
+public method redoBAddgestChargeSelect (
+)
+{
+    jBC: REDO.B.ADDGEST.CHARGE.SELECT
+}
+
+
+
+public method redoBAddgestCorrect (
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT
+}
+
+
+
+public method redoBAddgestCorrectLoad (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT.LOAD
+}
+
+
+
+public method redoBAddgestCorrectPost (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT.POST
+}
+
+
+
+public method redoBAddgestCorrectSelect (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT.SELECT
+}
+
+
+
+public method redoBAddgestCorrect1 (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT1
+}
+
+public method redoBCrfNwglLoad (
+)
+{
+    jBC: REDO.B.CRF.NWGL.LOAD
+}
+
+public method redoNofileCrbReportRegl (
+    INOUT yArray string
+)
+{
+    jBC: REDO.NOFILE.CRB.REPORT.REGL
+}

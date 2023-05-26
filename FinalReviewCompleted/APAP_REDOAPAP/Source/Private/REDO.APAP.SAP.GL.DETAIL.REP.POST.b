@@ -1,32 +1,28 @@
-* @ValidationCode : MjotMTI0Mjg3MTMyMjpDcDEyNTI6MTY4MzAzMTI1NTEyMjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 18:10:55
+* @ValidationCode : MjotMTY5MzMxODAyNzpDcDEyNTI6MTY4NTAwOTIyNjgxNDpIYXJpc2h2aWtyYW1DOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 May 2023 15:37:06
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
-*MODIFICATION HISTORY:
-*---------------------------------------------------------------------------------------
-*DATE               WHO                       REFERENCE                 DESCRIPTION
-*18-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  ++ to +=
-*18-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION CALL RTN FORMAT CAN BE MODIFIED
-*----------------------------------------------------------------------------------------
-
-
-
-
+*  DATE            NAME                  REFERENCE                     DESCRIPTION
+* 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+* 25-05-2023     Conversion tool    R22 Auto conversion       ++ to +=
+* 25-05-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.APAP.SAP.GL.DETAIL.REP.POST
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.DATES
     $INSERT I_REDO.APAP.SAP.GL.DETAIL.COMMON
     $INSERT I_F.REDO.GL.H.EXTRACT.PARAMETER
+    
 
     GOSUB INITIALISE
     GOSUB READ.GENERATED.FILES
@@ -35,14 +31,7 @@ SUBROUTINE REDO.APAP.SAP.GL.DETAIL.REP.POST
 RETURN
 
 INITIALISE:
-
-    Y.DATE = BATCH.DETAILS<3,1,1>
-
-    IF Y.DATE THEN
-        PROCESS.DATE =Y.DATE
-    END ELSE
-        PROCESS.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY)
-    END
+    PROCESS.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY)
     CONSOLIDATED.DETAIL.ID = "DETAIL":PROCESS.DATE[7,2]:PROCESS.DATE[5,2]:PROCESS.DATE[1,4]:Y.EXT.FILE.EXTENSION
     Y.INTF.EXTENSION       =  R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.EXT.FILE.EXTN>
     Y.NORMAL.ID            =  Y.NORMAL.ID:PROCESS.DATE[7,2]:PROCESS.DATE[5,2]:PROCESS.DATE[1,4]:Y.INTF.EXTENSION
@@ -79,7 +68,7 @@ READ.GENERATED.FILES:
         EXE.MV="mv ":Y.EXTRACT.OUT.PATH:"/":SESSION.FILE.ID:" "::Y.EXTRACT.OUT.PATH:"/":Y.NEW.SESSION.FILE.ID:Y.CNT:Y.FILE.EXTN
         DAEMON.EXE.MV = SHELL.CMD:EXE.MV
         EXECUTE DAEMON.EXE.MV RETURNING RETURN.VALUE CAPTURING CAPTURE.MV.CON.VALUE
-        Y.CNT += 1 ;*R22 AUTO CODE CONVERSION
+        Y.CNT += 1 ;*R22 Auto conversion
     REPEAT
 RETURN
 *--------------------
@@ -108,8 +97,7 @@ PROCESS.NORMAL.FILES:
     END
 
     Y.REVAL.IND=''
-*CALL APAP.REDOAPAP.REDO.APAP.SAP.GL.NR.HDR.EXP.LOG(NORMAL.FILE.DATA,Y.REVAL.IND) ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapSapGlNrHdrExpLog(NORMAL.FILE.DATA,Y.REVAL.IND)
+    CALL APAP.REDOAPAP.redoApapSapGlNrHdrExpLog(NORMAL.FILE.DATA,Y.REVAL.IND) ;*Manual R22 conversion
     LOOP
         REMOVE NORMAL.FILE.LINE FROM NORMAL.FILE.DATA SETTING NORMAL.LINE.POS
     WHILE NORMAL.FILE.LINE:NORMAL.LINE.POS
@@ -142,7 +130,7 @@ PROCESS.REVAL.FILES:
         END
     END
     Y.REVAL.IND='REVAL'
-    CALL APAP.REDOAPAP.redoApapSapGlNrHdrExpLog(REVAL.FILE.DATA,Y.REVAL.IND) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.REDOAPAP.redoApapSapGlNrHdrExpLog(REVAL.FILE.DATA,Y.REVAL.IND) ;*Manual R22 conversion
     LOOP
         REMOVE REVAL.FILE.LINE FROM REVAL.FILE.DATA SETTING REVAL.LINE.POS
     WHILE REVAL.FILE.LINE:REVAL.LINE.POS
