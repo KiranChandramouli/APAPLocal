@@ -1,0 +1,28 @@
+SUBROUTINE REDO.B.ADDGEST.CORRECT.LOAD
+*-----------------------------------------------------------------------------
+*
+*-----------------------------------------------------------------------------
+* Modification History :
+*-----------------------------------------------------------------------------
+
+*-----------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_REDO.B.ADDGEST.CORRECT.COMMON
+
+****WRITE LOACTION****
+    FN.TEMP.FILE.PATH = '&TEMP&'
+    OPEN FN.TEMP.FILE.PATH TO F.TEMP.FILE.PATH ELSE
+    END
+****FILE UPLOAD LOCATION***
+    FN.SL = '&SAVEDLISTS&'
+    F.SL = ''
+    CALL OPF(FN.SL,F.SL)
+
+    FN.AA.REF = "F.AA.ARRANGEMENT.DATED.XREF"
+    F.AA.REF = ""
+    CALL OPF(FN.AA.REF,F.AA.REF)
+
+RETURN
+END

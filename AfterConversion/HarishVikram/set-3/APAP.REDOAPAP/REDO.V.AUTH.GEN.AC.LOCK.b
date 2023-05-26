@@ -1,0 +1,194 @@
+* @ValidationCode : MjotMTU5NDUyMTA0NzpDcDEyNTI6MTY4NTAxODk4OTA0ODp2aWN0bzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 May 2023 18:19:49
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : victo
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOAPAP
+SUBROUTINE REDO.V.AUTH.GEN.AC.LOCK
+*---------------------------------------------------------------------------------
+*This is an Authorisation routine for the version AC.LOCKED.EVENTS,INPUT it will lock
+*the customer's account
+*----------------------------------------------------------------------------------
+* Company Name  : ASOCIACION POPUL
+* Developed By  : GANESH R
+* Program Name  : REDO.V.INP.GARNISHMENT.MAINT
+* ODR NUMBER    : ODR-2009-10-0531
+* HD REFERENCE  : HD1016159
+*Routine Name   :REDO.V.AUTH.LOCK.ACCT
+*LINKED WITH:
+*----------------------------------------------------------------------
+*Input param = none
+*output param =none
+*-----------------------------------------------------------------------
+*MODIFICATION DETAILS:
+* Date               By                 HD ISSUE
+* 16-02-2011        Prabhu.N            PACS00023885  Routine to post ofs message for AC.LOCKED.EVENTS
+* 16-11-2011        Prabhu              PACS00146120
+* 11-09-2018        Gopala Krishnan R   PACS00698313 - Post L.AC.LOCKE.TYPE field value as 'Garnishment'
+* 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+* 16-02-2023     Edwin Charles D               ACCOUNTING-CR        TSR-502386
+*25-05-2023    CONVERSION TOOL     R22 AUTO CONVERSION     FM TO @FM, VM TO @VM, ++ TO +=1
+*25-05-2023    VICTORIA S          R22 MANUAL CONVERSION   Call routine modified
+*----------------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AC.LOCKED.EVENTS
+    $INSERT I_F.LOCKING
+    $INSERT I_F.OVERRIDE
+    $INSERT I_F.REDO.T.ACCTSTAT.BY.DATE
+    $INSERT I_F.APAP.H.GARNISH.DETAILS
+    $INSERT I_F.REDO.GAR.LOCK.ALE
+
+    GOSUB INIT
+    GOSUB OPENFILE
+    GOSUB PROCESS
+RETURN
+*----------------------------
+INIT:
+    Y.LOOP.CNT=1
+    LOC.APPLICATION='AC.LOCKED.EVENTS':@FM:'ACCOUNT' ;*R22 AUTO CONVERSION
+    LOCAL.FIELD='L.AC.CUSTOMER':@VM:'L.AC.GAR.REF.NO':@VM:'L.AC.LOCKE.TYPE':@VM:'L.AC.AVAIL.BAL':@VM:'L.AC.STATUS2':@FM:'L.AC.TRAN.AVAIL' ;*R22 AUTO CONVERSION
+RETURN
+*------------------------------
+OPENFILE:
+
+    FN.ACCOUNT='F.ACCOUNT'
+    F.ACCOUNT=''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.AC.LOCKED.EVENTS='F.AC.LOCKED.EVENTS'
+    F.AC.LOCKED.EVENTS=''
+    CALL OPF(FN.AC.LOCKED.EVENTS,F.AC.LOCKED.EVENTS)
+
+    FN.REDO.GAR.LOCK.ALE='F.REDO.GAR.LOCK.ALE'
+    F.REDO.GAR.LOCK.ALE=''
+    CALL OPF(FN.REDO.GAR.LOCK.ALE,F.REDO.GAR.LOCK.ALE)
+
+    FN.REDO.T.ACCTSTAT.BY.DATE = 'F.REDO.T.ACCTSTAT.BY.DATE'
+    F.REDO.T.ACCTSTAT.BY.DATE = ''
+    CALL OPF(FN.REDO.T.ACCTSTAT.BY.DATE, F.REDO.T.ACCTSTAT.BY.DATE)
+
+RETURN
+
+*----------------------------
+PROCESS:
+
+    CALL MULTI.GET.LOC.REF(LOC.APPLICATION,LOCAL.FIELD,LOC.POS)
+    LOC.GAR.REF.POS     = LOC.POS<1,2>
+    LOC.AVAIL.BAL.POS   = LOC.POS<1,4>
+    LOC.CUSTOMER.POS    = LOC.POS<1,1>
+    L.AC.TRAN.AVAIL.POS    = LOC.POS<2,1>
+    LOC.L.AC.LOCKE.TYPE.POS  = LOC.POS<1,3>       ;*PACS00698313
+
+    CURR.DATE = TODAY
+    CALL F.READ(FN.REDO.T.ACCTSTAT.BY.DATE,CURR.DATE,R.REDO.T.ACCTSTAT.BY.DATE,F.REDO.T.ACCTSTAT.BY.DATE,DATE.ERR)
+    DATE.ARRAY = R.REDO.T.ACCTSTAT.BY.DATE<REDAT.ACCOUNT>
+    CHANGE @VM TO @FM IN DATE.ARRAY ;*R22 AUTO CONVERSION
+    DATE.LT.UPD = ''
+
+    GOSUB PROCESS1
+
+    IF DATE.LT.UPD THEN
+        WRITE R.REDO.T.ACCTSTAT.BY.DATE ON F.REDO.T.ACCTSTAT.BY.DATE,CURR.DATE
+    END
+
+RETURN
+
+********
+PROCESS1:
+*********
+    Y.ACCT.LIST=R.NEW(APAP.GAR.ACCOUNT.NO)
+    CHANGE @VM TO @FM IN Y.ACCT.LIST ;*R22 AUTO CONVERSION
+    Y.ACCT.LIST.CNT=DCOUNT(Y.ACCT.LIST,@FM) ;*R22 AUTO CONVERSION
+    OFSRECORD=''
+    LOOP
+    WHILE Y.LOOP.CNT LE Y.ACCT.LIST.CNT
+        R.AC.LOCKED.EVENTS<AC.LCK.ACCOUNT.NUMBER> =R.NEW(APAP.GAR.ACCOUNT.NO)<1,Y.LOOP.CNT>
+        R.AC.LOCKED.EVENTS<AC.LCK.FROM.DATE> = TODAY
+        R.AC.LOCKED.EVENTS<AC.LCK.TO.DATE> = ''
+        R.AC.LOCKED.EVENTS<AC.LCK.LOCKED.AMOUNT> = R.NEW(APAP.GAR.GARNISH.AMT)<1,Y.LOOP.CNT>
+        R.AC.LOCKED.EVENTS<AC.LCK.LOCAL.REF,LOC.GAR.REF.POS> = R.NEW(APAP.GAR.GARNISHMENT.REF)
+        R.AC.LOCKED.EVENTS<AC.LCK.LOCAL.REF,LOC.AVAIL.BAL.POS> = R.NEW(APAP.GAR.AVAIL.BAL)<1,Y.LOOP.CNT>
+        R.AC.LOCKED.EVENTS<AC.LCK.LOCAL.REF,LOC.CUSTOMER.POS> = R.NEW(APAP.GAR.CUSTOMER)
+        R.AC.LOCKED.EVENTS<AC.LCK.LOCAL.REF,LOC.L.AC.LOCKE.TYPE.POS> = "GARNISHMENT"      ;*PACS00698313
+        APP.NAME = 'AC.LOCKED.EVENTS'
+        OFSFUNCT = 'I'
+        PROCESS  = 'PROCESS'
+        OFSVERSION = 'AC.LOCKED.EVENTS,LOCK'
+        GTSMODE = ''
+        NO.OF.AUTH = '0'
+        TRANSACTION.ID = ''
+        OFS.MSG.ID =''
+        OFS.SOURCE.ID = 'REDO.OFS.ACI.UPDATE'
+        OFS.ERR = ''
+        CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCT,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.AC.LOCKED.EVENTS,OFSRECORD)
+        CALL OFS.POST.MESSAGE(OFSRECORD,OFS.MSG.ID,OFS.SOURCE.ID,OFS.ERR)
+**** CALL ROUTINE TO UPDATE IN DATE TABLE****
+
+        ACC.LOCK.ID = '' ; VAR.STATUS = ''
+        ACC.LOCK.ID = R.NEW(APAP.GAR.ACCOUNT.NO)<1,Y.LOOP.CNT>
+        VAR.STATUS = "GARNISHMENT"
+        LOCATE ACC.LOCK.ID IN DATE.ARRAY<1> SETTING DAT.POS THEN
+        END ELSE
+            DATE.LT.UPD = '1'
+            R.REDO.T.ACCTSTAT.BY.DATE<REDAT.ACCOUNT,-1> = ACC.LOCK.ID
+        END
+        IF ACC.LOCK.ID THEN
+*CALL REDO.UPD.ACCOUNT.STATUS.DATE(ACC.LOCK.ID,VAR.STATUS)
+            CALL APAP.REDOAPAP.redoUpdAccountStatusDate(ACC.LOCK.ID,VAR.STATUS) ;*R22 MANUAL CONVERSION
+        END
+****END****
+
+        Y.LOOP.CNT += 1 ;*R22 AUTO CONVERSION
+*********************************************
+
+    REPEAT
+    Y.ALE.FIT.LIST=R.NEW(APAP.GAR.FIT.ALE)
+    IF Y.ALE.FIT.LIST THEN
+        Y.CUST=R.NEW(APAP.GAR.CUSTOMER)
+        CALL F.READ(FN.REDO.GAR.LOCK.ALE,Y.CUST,R.REDO.GAR.LOCK.ALE,F.REDO.GAR.LOCK.ALE,ERR)
+        Y.ALE.EXIST=R.REDO.GAR.LOCK.ALE<TT.ALE.ALE>
+        CHANGE @VM TO @FM IN Y.ALE.EXIST ;*R22 AUTO CONVERSION
+        IF R.REDO.GAR.LOCK.ALE THEN
+            CHANGE @VM TO @FM IN Y.ALE.FIT.LIST ;*R22 AUTO CONVERSION
+            Y.ALE.FIT.TOT.CNT=DCOUNT(Y.ALE.FIT.LIST,@FM) ;*R22 AUTO CONVERSION
+            Y.ALE.FIT.CNT=1
+            LOOP
+            WHILE Y.ALE.FIT.CNT LE Y.ALE.FIT.TOT.CNT
+                Y.ALE.FIT=Y.ALE.FIT.LIST<Y.ALE.FIT.CNT>
+                LOCATE Y.ALE.FIT IN Y.ALE.EXIST SETTING POS ELSE
+                    Y.ALE.EXIST<-1>=Y.ALE.FIT
+                END
+                Y.ALE.FIT.CNT += 1 ;*R22 AUTO CONVERSION
+            REPEAT
+            CHANGE @FM TO @VM IN Y.ALE.EXIST ;*R22 AUTO CONVERSION
+            R.REDO.GAR.LOCK.ALE<TT.ALE.ALE>=Y.ALE.EXIST
+        END
+        ELSE
+            R.REDO.GAR.LOCK.ALE<TT.ALE.ALE,-1>=Y.ALE.FIT.LIST
+        END
+        R.REDO.GAR.LOCK.ALE<TT.ALE.AHG,-1>=ID.NEW
+        CALL F.WRITE(FN.REDO.GAR.LOCK.ALE,Y.CUST,R.REDO.GAR.LOCK.ALE)
+        Y.FIT.ACC=R.NEW(APAP.GAR.FIT.ACC)
+        CHANGE @VM TO @FM IN Y.FIT.ACC ;*R22 AUTO CONVERSION
+        Y.FIT.ACC.TOT.CNT=DCOUNT(Y.FIT.ACC,@FM) ;*R22 AUTO CONVERSION
+        Y.FIT.ACC.CNT=1
+        LOOP
+        WHILE Y.FIT.ACC.CNT LE Y.FIT.ACC.TOT.CNT
+            CALL F.READ(FN.ACCOUNT,Y.FIT.ACC<Y.FIT.ACC.CNT>,R.ACCOUNT,F.ACCOUNT,ERR)
+            R.ACCOUNT<AC.LOCAL.REF,L.AC.TRAN.AVAIL.POS>=0
+            CALL F.WRITE(FN.ACCOUNT,Y.FIT.ACC<Y.FIT.ACC.CNT>,R.ACCOUNT)
+            Y.FIT.ACC.CNT += 1 ;*R22 AUTO CONVERSION
+        REPEAT
+    END
+RETURN
+END

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4NTg2MTA4OTY6Q3AxMjUyOjE2ODMxMzA4ODIwMjQ6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 03 May 2023 21:51:22
+* @ValidationCode : Mjo1NTU0MjA2ODA6Q3AxMjUyOjE2ODUwOTI0OTk2OTE6SVRTUzotMTotMTo1MzA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 May 2023 14:44:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 530
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.STATUS1.UPD(ID)
@@ -38,12 +38,13 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
 *                                                             REDO.B.STATUS1.UPD.POST job will merge all the data from
 *                                                             REDO.CUST.PRD.LST to REDO.CUST.PRD.LIST
 * Aslam                 07-08-2015       PACS00472936     Fix for the issues
-* Date                  who                   Reference
-* 13-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ADD I_TSA.COMMON AND SESSION.NO TO AGENT.NUMBER
-* 13-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -ADDING PACKAGE NAME FOR CALL ROUTINE
+* DATE  NAME   REFERENCE    DESCRIPTION
+* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
+* 25-05-2023     Conversion tool    R22 Auto conversion       SESSION.NO to AGENT.NUMBER,FM TO @FM, VM to @VM, SM to @SM
+* 25-05-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
 *-------------------------------------------------------------------------
 
-    $INSERT I_TSA.COMMON   ;*R22 AUTO CONVERSTION ADD I_TSA.COMMON
+    $INSERT I_TSA.COMMON
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
@@ -80,6 +81,7 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
     Y.AC.ST.POS=''
 
     GOSUB ACCOUNT.CHECK
+
     GOSUB CHECK.MONTHS
 
 RETURN
@@ -88,10 +90,12 @@ ACCOUNT.CHECK:
 *-----------------------------------------------------------
 *Description : Selection Saving, Current,Sweep Account
 *-----------------------------------------------------------
+
     CALL F.READ(FN.ACCOUNT,ID,R.ACCOUNT,F.ACCOUNT,ERR.ACCOUNT)
 *TUS START
 *  CALL EB.READ.HVT ("EB.CONTRACT.BALANCES",ID, R.ECB, ECB.ERR)
 *TUS END
+
     Y.CAT.ACCOUNT = R.ACCOUNT<AC.CATEGORY>
     Y.DEPOSIT.ACCOUNT = R.ACCOUNT<AC.ALL.IN.ONE.PRODUCT>
 *    IF NOT(Y.DEPOSIT.ACCOUNT) THEN
@@ -104,6 +108,7 @@ CHECK.MONTHS:
 * and no.of.months value is obtained and compared with required values
 *-----------------------------------------------------------
 *TUS START
+
     LAST.CR.DT = R.ACCOUNT<AC.DATE.LAST.CR.CUST>
     LAST.DR.DT = R.ACCOUNT<AC.DATE.LAST.DR.CUST>
 
@@ -124,7 +129,6 @@ CHECK.MONTHS:
         GOSUB FULL.CHECK
     END
 
-
     IF NOT(Y.LAST.TRANSACTION.DATE) THEN
         Y.LAST.TRANSACTION.DATE = R.ACCOUNT<AC.OPENING.DATE>
     END
@@ -133,6 +137,7 @@ CHECK.MONTHS:
 * No.of.Months value is compared here
 *-------------------------------------------------
 *Shek -start
+
     jPos = ""
     MatchDate = ""
 *Locate the date in sorted array
@@ -182,6 +187,14 @@ CHECK.MONTHS:
     IF NOT(R.AZ.ACCOUNT) AND NOT(Y.AZ.DEP.LIQ.ACCT) THEN
         GOSUB CHANGE.STATUS
     END
+*****There is no change for deposit account in L.AC.STATUS1***
+*    IF Y.DEPOSIT.ACCOUNT THEN
+*       IF R.ACCOUNT<AC.LOCAL.REF,REF.POS> NE Y.PREV.SELECT.STATUS THEN
+*            R.ACCOUNT<AC.LOCAL.REF,REF.POS>= Y.PREV.SELECT.STATUS
+*       END
+*      CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
+* END
+
 
 *-    END
 
@@ -190,6 +203,7 @@ CHECK.MONTHS:
 *-------------------------------------------------
 *Updating the only saving,current,sweep account - starts
 *-------------------------------------------------
+
 *    IF Y.WAIVE.CHG.UPD EQ '1' THEN
 *        CALL F.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
 *   END
@@ -204,8 +218,8 @@ CHECK.MONTHS:
             APP.ID = ''
             Y.AC.ST.POS<1>=REF.POS
             Y.AC.ST.POS<2>=STATUS2.POS
-*CALL APAP.REDOBATCH.REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*R22 MANUAL CONVERSTION ADDING PACKAGE NAME FOR CALL ROUTINE
-            CALL APAP.REDOBATCH.RedoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*R22 MANUAL CONVERSTION ADDING PACKAGE NAME FOR CALL ROUTINE
+
+            CALL APAP.REDOBATCH.redoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*Manual R22 conversion
         END ELSE
             V = AC.AUDIT.DATE.TIME
             CALL F.LIVE.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
@@ -213,17 +227,11 @@ CHECK.MONTHS:
         END
 
 *Shek... is this required?
-*Y.LAST.WRK.DAY.ID = Y.LAST.WRK.DAY:'-':SESSION.NO
-*CALL F.READ(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, *R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)
-
-        Y.TODAY = R.DATES(EB.DAT.TODAY)
-        Y.TODAY.ID = Y.TODAY:'-':AGENT.NUMBER  	;*R22 AUTO CONVERSTION SESSION.NO TO AGENT.NUMBER
-        CALL F.READ(FN.UPD.ACC.LIST, Y.TODAY.ID, R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)
+        Y.LAST.WRK.DAY.ID = Y.LAST.WRK.DAY:'-':AGENT.NUMBER
+        CALL F.READ(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)
 
         R.UPD.ACC.LIST<-1>=ID
-*CALL F.WRITE(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST)
-
-        CALL F.WRITE(FN.UPD.ACC.LIST, Y.TODAY.ID, R.UPD.ACC.LIST)
+        CALL F.WRITE(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST)
 *Shek -end
 *        CALL F.RELEASE(FN.UPD.ACC.LIST,Y.LAST.WRK.DAY, F.UPD.ACC.LIST)
 *        END
@@ -318,7 +326,7 @@ UPD.PRD.LIST:
 
     END
 
-    PrdListID = Y.CUSTOMER.ID :'-' : AGENT.NUMBER ;*R22 AUTO CONVERSTION SESSION.NO TO AGENT.NUMBER
+    PrdListID = Y.CUSTOMER.ID :'-' : AGENT.NUMBER
 
     Y.PRD.LIST = RCustPrdList<PRD.PRODUCT.ID>
     CHANGE @VM TO @FM IN Y.PRD.LIST
@@ -359,6 +367,7 @@ CHANGE.STATUS:
         R.ACCOUNT<AC.LOCAL.REF,REF.POS>= Y.PREV.SELECT.STATUS
         Y.STATUS.UPD = 1
         Y.STATUS.CHG.UPD=1
+        CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
     END
 *PACS00308629-S
     VAR.ACCT.ID = ID

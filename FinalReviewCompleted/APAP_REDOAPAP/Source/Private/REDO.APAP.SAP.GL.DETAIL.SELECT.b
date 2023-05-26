@@ -1,17 +1,23 @@
-* @ValidationCode : MjotNTk2MDU4ODA3OkNwMTI1MjoxNjgwNzYwNzU0MDc2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 11:29:14
+* @ValidationCode : MjotMTMyMDM5MjU5MDpDcDEyNTI6MTY4NTA3OTc2NDM3MzpJVFNTOi0xOi0xOjYwMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 11:12:44
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 601
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.SAP.GL.DETAIL.SELECT
+
+* DATE  NAME   REFERENCE    DESCRIPTION
+* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
+* 25-05-2023     Conversion tool           R22 Auto conversion                FM TO @FM, VM to @VM, SM to @SM
+* 25-05-2023      Harishvikram C           Manual R22 conversion               No changes
+*----------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
@@ -21,13 +27,7 @@ SUBROUTINE REDO.APAP.SAP.GL.DETAIL.SELECT
     $INSERT I_F.RE.TXN.CODE
     $INSERT I_REDO.APAP.SAP.GL.DETAIL.COMMON
     $INSERT I_F.REDO.GL.H.EXTRACT.PARAMETER
-    
-*-------------------------------------------------------------------------------------
-*Modification
-* Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION SM TO @SM
-* 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
-*-------------------------------------------------------------------------------------
+    $INSERT I_REDO.PREVAL.STATUS.COMMON
 
     GOSUB REMOVE.FILES
     GOSUB GET.SEL.DATE
@@ -161,8 +161,12 @@ SELECT.RE.STAT.LINE.BAL:
 *SEL.LINE.BAL.CMD = "SELECT ":FN.RE.STAT.LINE.BAL:" WITH (@ID LIKE MB...":Y.START.DATE:"*... OR @ID LIKE MB...":Y.END.DATE:"*...) AND @ID UNLIKE ...PROFIT... AND @ID UNLIKE ...LOCAL..."
 * 20170926 /E
         CALL EB.READLIST(SEL.LINE.BAL.CMD,SELECTED.LINE.BAL,'',NO.OF.LINE.BAL,ERR.LINE.BAL)
-        CALL BATCH.BUILD.LIST('',SELECTED.LINE.BAL)
 
+        Y.SYS.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY) ; SELECTED.ACCT.LIST = ''
+        CALL F.READ(FN.REDO.T.ACCTSTAT.BY.DATE,Y.SYS.DATE,Y.ACCTNG.LIST,F.REDO.T.ACCTSTAT.BY.DATE,ERR.DAT)
+        CHANGE @VM TO @FM IN Y.ACCTNG.LIST
+        SELECTED.LINE.BAL<-1> = Y.ACCTNG.LIST
+        CALL BATCH.BUILD.LIST('',SELECTED.LINE.BAL)
 
         RETURN
 

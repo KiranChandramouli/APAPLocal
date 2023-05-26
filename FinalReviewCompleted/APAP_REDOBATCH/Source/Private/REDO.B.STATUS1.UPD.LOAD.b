@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDI3MTI5NTU6Q3AxMjUyOjE2ODEzNjMxMDczMDA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 13 Apr 2023 10:48:27
+* @ValidationCode : MjotNjM2MjA3NzQxOkNwMTI1MjoxNjg1MDkyNDk5MjQ3OklUU1M6LTE6LTE6MTc5NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 14:44:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1797
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,9 +28,10 @@ SUBROUTINE REDO.B.STATUS1.UPD.LOAD
 * 20-Apr-11          H Ganesh        PACS00054881           Logic added to read eb lookup
 * 05-07-2011         JEEVA T          PACS00084781          reading account parameter file
 * 05-02-2013         SHEK             Performance           Change REDO.CUST.PRD.LIST to REDO.CUST.PRD.LST
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND ++ TO += 1 
-* 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+* DATE  NAME   REFERENCE    DESCRIPTION
+* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
+* 25-05-2023     Conversion tool       R22 Auto conversion              FM TO @FM, VM to @VM, SM to @SM, ++ to +=
+* 25-05-2023      Harishvikram C       Manual R22 conversion              No changes
 *------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -45,7 +46,8 @@ SUBROUTINE REDO.B.STATUS1.UPD.LOAD
 RETURN
 
 INITIALISE:
-
+    Y.STATUS.SEQ.ARRAY = ''
+    Y.AC.ARRAY = ''
     LAST.CR.DT = ''
     SYS.DATE = ''
     NO.OF.MTHS = ''
@@ -118,7 +120,7 @@ INITIALISE:
     CALL CACHE.READ(FN.REDO.WAIVE.LEDGER.ACCT,Y.TRANS.ID,R.REDO.WAIVE.LEDGER.ACCT,WAIVE.ERR)
 *PACS00308629-E
     PrdIdList = ''; PrdListRec = ''
-    PARAM.STATUS = ''; PREVALANCE.STATUS = ''; STAT.FM.CNTR = 0
+    PARAM.STATUS = ''; PREVALANCE.STATUS = ''; STAT.FM.CNTR = 0 ; ACCT.TYPE.LIST = ''
     FN.REDO.PREVALANCE.STATUS = 'F.REDO.PREVALANCE.STATUS'
     F.REDO.PREVALANCE.STATUS = ''
     CALL OPF(FN.REDO.PREVALANCE.STATUS,F.REDO.PREVALANCE.STATUS)
@@ -127,23 +129,26 @@ INITIALISE:
     CALL CACHE.READ(FN.REDO.PREVALANCE.STATUS,'SYSTEM',R.REDO.PREVALANCE.STATUS,F.ERR)
     PARAM.STATUS.VAL = R.REDO.PREVALANCE.STATUS<REDO.PRE.STATUS>
     PREVALANCE.STATUS.VAL = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.PREVALANT.STATUS>,@VM,@FM)
+    ACCT.TYPE.VAL = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.ACCT.TYPE>,@VM,@FM)
 
     STAT.FM.CNTR = DCOUNT(PARAM.STATUS.VAL,@VM)
     LOOP.FM.CNTR = 1
+
     LOOP
     WHILE LOOP.FM.CNTR LE STAT.FM.CNTR
         Y.FM.STATUS = PARAM.STATUS.VAL<1,LOOP.FM.CNTR>
-        Y.FM.STATUS = SORT(Y.FM.STATUS)
+*Y.FM.STATUS = SORT(Y.FM.STATUS)
         Y.FM.STATUS = CHANGE(Y.FM.STATUS,@FM,':')
+        Y.FM.STATUS = CHANGE(Y.FM.STATUS,@SM,':')
         PARAM.STATUS<-1> = Y.FM.STATUS
         PREVALANCE.STATUS<-1> = PREVALANCE.STATUS.VAL<LOOP.FM.CNTR>
+        ACCT.TYPE.LIST<-1> = ACCT.TYPE.VAL<LOOP.FM.CNTR>
         LOOP.FM.CNTR + = 1
     REPEAT
 * 20170327 /E TUS
 
 *   SYS.DATE = R.DATES(EB.DAT.NEXT.WORKING.DAY)
     SYS.DATE = TODAY
-
 
     EB.LOOKUP.1='L.AC.STATUS1'
     CALL EB.LOOKUP.LIST(EB.LOOKUP.1)
