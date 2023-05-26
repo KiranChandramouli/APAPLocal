@@ -1,10 +1,10 @@
-* @ValidationCode : MjoyMDM4MTgxNTc3OkNwMTI1MjoxNjgzODkyNjMyOTg3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:12
+* @ValidationCode : MjotMzczMzEyODY1OkNwMTI1MjoxNjg0ODQzMzc2MTYyOklUU1M6LTE6LTE6MTE4OToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 17:32:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1189
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -231,7 +231,9 @@ OFS.VALIDATE:
     CALL OFS.BUILD.RECORD(ACTUAL.APP.NAME,OFS.FUNCTION,PROCESS,OFS.VERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.AC.DETAIL,OFS.RECORD)
     OFS.MSG.VAL = VERSION:OFS.RECORD
 
-    CALL OFS.GLOBUS.MANAGER(OFS.SRC.ID,OFS.MSG.VAL)
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*CALL OFS.GLOBUS.MANAGER(OFS.SRC.ID,OFS.MSG.VAL)
+    CALL OFS.CALL.BULK.MANAGER(OFS.SRC.ID,OFS.MSG.VAL, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
 
     FIRST = FIELD(OFS.MSG.VAL,',',1)
     SECOND = FIELD(FIRST,'/',3)
@@ -396,8 +398,11 @@ REINV.ACC:
 
     OFS.MSG.VAL1=OFS.HEADER1:OFS.BODY1:JOINT.MULTI
     OFS.SRC.ID1 = 'REINV.DEPOSIT'
-    CALL OFS.GLOBUS.MANAGER(OFS.SRC.ID1,OFS.MSG.VAL1)
-
+    
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*CALL OFS.GLOBUS.MANAGER(OFS.SRC.ID1,OFS.MSG.VAL1)
+    CALL OFS.CALL.BULK.MANAGER(OFS.SRC.ID1,OFS.MSG.VAL1, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
+    
     FIRST1 = FIELD(OFS.MSG.VAL1,',',1)
     SECOND1 = FIELD(FIRST1,'/',3)
     AC.OGM.ID1 = FIELD(OFS.MSG.VAL1,'/',1)

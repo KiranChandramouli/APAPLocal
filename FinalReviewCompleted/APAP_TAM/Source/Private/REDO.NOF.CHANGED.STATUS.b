@@ -1,21 +1,16 @@
-* @ValidationCode : MjotOTgyMjY5ODIwOkNwMTI1MjoxNjg0MzkwNzI4OTk0OnNhbWFyOi0xOi0xOjA6MDpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 18 May 2023 11:48:48
+* @ValidationCode : Mjo4NTM2MzkwNDpDcDEyNTI6MTY4NDkyMzQ3MzY5MTpJVFNTOi0xOi0xOjEwOTE6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 May 2023 15:47:53
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1091
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
-
- 
-
-
 SUBROUTINE REDO.NOF.CHANGED.STATUS(Y.FINAL.ARRAY)
 *-------------------------------------------------------------------------------
 * Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS

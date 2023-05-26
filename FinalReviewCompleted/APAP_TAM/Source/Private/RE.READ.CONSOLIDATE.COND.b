@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxODY0MzE4NDQ4OkNwMTI1MjoxNjgwNjAyNDgwODc4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:31:20
+* @ValidationCode : MjotMzExOTI1ODgxOkNwMTI1MjoxNjg0ODQxODYyNjI3OklUU1M6LTE6LTE6OTE6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 17:07:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 91
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -31,7 +31,7 @@ SUBROUTINE RE.READ.CONSOLIDATE.COND(COND.ID, COND.REC, ERR.MSG)
 *    COND.REC - Record of the key passed.
 *    ERR.MSG  - Error message if record not found.
 *
-** 04-04-2023 R22 Auto Conversion – FM TO @FM, VM to @VM, SM to @SM
+** 04-04-2023 R22 Auto Conversion ï¿½ FM TO @FM, VM to @VM, SM to @SM
 ** 04-04-2023 Skanda R22 Manual Conversion - No changes
 **********************************************************************************
 *
@@ -227,7 +227,7 @@ SECOND.LOOP:
         Y.FIELD.NUMBER.SAVE = Y.FIELD.NUMBER
         Y.FIELD.NAME = Y.FIELD.NAME.1
         Y.FIELD.NAME.1 = '' ; Y.FIELD.NUMBER = ''
-        GOTO SECOND.LOOP
+        GOSUB SECOND.LOOP;* R22 Manual conversion - GOTO changed to GOSUB
     END
     IF Y.FIELD.NUMBER.SAVE THEN
         Y.FIELD.NUMBER = Y.FIELD.NUMBER.SAVE:"/":Y.FIELD.NUMBER

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4MzA4MjM5NDg6Q3AxMjUyOjE2ODQzMzIzMDA1OTc6c2FtYXI6LTE6LTE6MDowOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 17 May 2023 19:35:00
+* @ValidationCode : MjotMTc5MDQ1NDA2NjpDcDEyNTI6MTY4NTEwOTAxNTk1NzpJVFNTOi0xOi0xOjM4NDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 19:20:15
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 384
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 * Version 1 13/04/00  GLOBUS Release No. 200508 30/06/05
@@ -287,8 +287,8 @@ RETURN
 DELETE.ENTRY:
 *-----------------------------------------------------------------------
     IF Y.MUST.DELETE THEN
-*CALL REDO.COL.R.DEL.UPD.LOCKING("DELETE",Y.TABLE.ID) ;*R22 MANUAL CODE CONVERSION
-        CALL APAP.REDORETAIL.redoColRDelUpdLocking("DELETE",Y.TABLE.ID) ;*R22 MANUAL CODE CONVERSION
+        CALL REDO.COL.R.DEL.UPD.LOCKING("DELETE",Y.TABLE.ID) ;*R22 MANUAL CODE CONVERSION
+*CALL APAP.REDORETAIL.redoColRDelUpdLocking("DELETE",Y.TABLE.ID) ;*R22 MANUAL CODE CONVERSION
         CALL OCOMO("DONE " : Y.TABLE.ID)
     END
 

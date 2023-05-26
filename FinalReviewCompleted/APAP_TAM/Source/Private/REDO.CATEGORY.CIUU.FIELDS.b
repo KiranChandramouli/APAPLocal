@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo2ODg0MDI2OTc6Q3AxMjUyOjE2ODA2MDMzNzM0NDY6SVRTUzotMTotMTowOjA6dHJ1ZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:46:13
+* @ValidationCode : Mjo2ODg0MDI2OTc6Q3AxMjUyOjE2ODQ4NDE4ODEyNjU6SVRTUzotMTotMTotOToxOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 17:08:01
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -9
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -34,7 +34,7 @@ SUBROUTINE REDO.CATEGORY.CIUU.FIELDS
 *  DATE             WHO        REFERENCE             DESCRIPTION
 * 21-06-2010      PREETHI MD   ODR-2009-10-0326 N.3  INITIAL CREATION
 
-** 04-04-2023 R22 Auto Conversion – no changes
+** 04-04-2023 R22 Auto Conversion ï¿½ no changes
 ** 04-04-2023 Skanda R22 Manual Conversion - No changes
 
 *-----------------------------------------------------------------------------

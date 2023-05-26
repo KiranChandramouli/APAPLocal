@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNjcyNDA3ODg1OkNwMTI1MjoxNjgyNTEzOTc5MjE2OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:29:39
+* @ValidationCode : Mjo4MDIzMDA1ODI6Q3AxMjUyOjE2ODQ5MjM4MzQ5MDM6SVRTUzotMTotMTo1NzM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 May 2023 15:53:54
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 573
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -69,7 +69,8 @@ SUBROUTINE REDO.RTE.EXCESS.TELLER(Y.TELLER.ID,Y.CCY,Y.AMT,TXN.CNT)
     SAVE.CACHE.OFF = CACHE.OFF
     CACHE.OFF = 1
     IF Y.TEMP.DATA EQ '' THEN
-        CALL APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*R22 MANUAL CODE CONVERSION
+        CALL REDO.E.NOF.RTE.RTN(Y.DATA)
+*CALL APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*R22 MANUAL CODE CONVERSION
         Y.TEMP.DATA = Y.DATA
     END ELSE
         Y.DATA = Y.TEMP.DATA

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTA3MzE2ODU2NzpDcDEyNTI6MTY4MzAwMTUzNDk2NjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 09:55:34
+* @ValidationCode : Mjo5MzcwMzQxMDA6Q3AxMjUyOjE2ODQ4NDQ2MjIzMzY6SVRTUzotMTotMTo0NDQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 17:53:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 444
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.USER.CHG.PASS.SENT.EMAIL
@@ -120,7 +120,7 @@ SEND.MAIL:
     param = param : "NEXTPARAM" : EMAIL.TO
 
     IF EMAIL.FROM NE "" AND EMAIL.SUBJECT NE "" AND EMAIL.BODY NE "" AND EMAIL.TO NE "" THEN        ;*R22 AUTO CODE CONVERSION
-        CALLJ classNamePwd, methodName, param SETTING ret ON ERROR GOTO errHandler
+        CALLJ classNamePwd, methodName, param SETTING ret ON ERROR GOSUB errHandler ;* R22 Manual conversion - GOTO changed to GOSUB
     END
 
 RETURN
