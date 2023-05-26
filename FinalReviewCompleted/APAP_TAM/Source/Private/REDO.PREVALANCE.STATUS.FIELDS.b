@@ -1,17 +1,4 @@
-* @ValidationCode : MjotMjA5NDc1MTU2ODpDcDEyNTI6MTY4MzA4MjE2Nzg4NTpJVFNTOi0xOi0xOjA6MTp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 08:19:27
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : true
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.PREVALANCE.STATUS.FIELDS
 *-----------------------------------------------------------------------------
 *<doc>
@@ -31,10 +18,10 @@ SUBROUTINE REDO.PREVALANCE.STATUS.FIELDS
 *
 * 14/11/07 - BG_100015736
 *            Exclude routines that are not released
-*Modification History:
-*DATE                 WHO                  REFERENCE                     DESCRIPTION
-*12/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
-*12/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*  DATE            NAME                  REFERENCE                     DESCRIPTION
+* 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+*25-05-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
+*25-05-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *-----------------------------------------------------------------------------
 *** <region name= Header>
 *** <desc>Inserts and control logic</desc>
@@ -59,23 +46,40 @@ SUBROUTINE REDO.PREVALANCE.STATUS.FIELDS
     Y.FINAL.TABLE<2> = table<2>:'_':table1<2>
     Y.FINAL.TABLE<11>=  table<11>:'_':table1<11>
 
+    fieldName="XX<ACCT.TYPE"
+    fieldLength="65"
+    neighbour=''
+    fieldType='A'
+    CALL Table.addFieldDefinition(fieldName, fieldLength, fieldType, neighbour)
 
-    fieldName="XX<XX.STATUS"
+    fieldName="XX-XX.STATUS"
     fieldLength="65"
     neighbour=''
     fieldType=Y.FINAL.TABLE
     CALL Table.addFieldDefinition(fieldName, fieldLength, fieldType, neighbour)
 
+    fieldName="XX-BAL.RECLASS"
+    fieldLength="65"
+    neighbour=''
+    fieldType='A'
+    CALL Table.addFieldDefinition(fieldName, fieldLength, fieldType, neighbour)
+
+    fieldName="XX-INT.RECLASS"
+    fieldLength="65"
+    neighbour=''
+    fieldType='A'
+    CALL Table.addFieldDefinition(fieldName, fieldLength, fieldType, neighbour)
 
     fieldName="XX>PREVALANT.STATUS"
-    fieldLength="2"
+    fieldLength="3"
     fieldType="A"
     neighbour=''
     CALL Table.addFieldDefinition(fieldName, fieldLength, fieldType, neighbour)
     CALL Field.setCheckFile('REDO.STATUS')
 
+
 *-----------------------------------------------------------------------------
-    CALL Table.setAuditPosition ;* Poputale audit information
+    CALL Table.setAuditPosition         ;* Poputale audit information
 *-----------------------------------------------------------------------------
 RETURN
 *-----------------------------------------------------------------------------

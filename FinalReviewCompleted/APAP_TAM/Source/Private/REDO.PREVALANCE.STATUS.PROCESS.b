@@ -1,7 +1,7 @@
-* @ValidationCode : MjotMTEzOTI3NDAyMjpDcDEyNTI6MTY4MzA4MjE2NzkwODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 May 2023 08:19:27
+* @ValidationCode : MjotMTgwMzkxNjI1MTpDcDEyNTI6MTY4NDk5OTU4NjY3NTp2aWN0bzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 May 2023 12:56:26
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.PREVALANCE.STATUS.PROCESS
 *********************************************************************************************************
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -26,11 +25,11 @@ SUBROUTINE REDO.PREVALANCE.STATUS.PROCESS
 *    Date            Who                            Reference                      Description
 *   ------         ------                         -------------                    -------------
 *  21/09/2011      Riyas                         ODR-2010-08-0490                Initial Creation
-*
-*Modification History:
-*DATE                 WHO                  REFERENCE                     DESCRIPTION
-*12/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION        FM TO @FM, VM TO @VM, SM TO @SM, Y.CNT +  TO +=, Y.CNT.SM + 1 TO +=
-*12/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*  DATE            NAME                  REFERENCE                     DESCRIPTION
+* 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+* 27 DEC  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+*25-05-2023    CONVERSION TOOL     R22 AUTO CONVERSION     VM TO @VM,FM TO @FM,SM TO @SM,++ TO +=1
+*25-05-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *********************************************************************************************************
 
     $INSERT I_COMMON
@@ -54,27 +53,32 @@ RETURN
 *--------------------------------------------------------------------------------
 PROCESS:
 *--------------------------------------------------------------------------------
-
     PARAM.STATUS = R.NEW(REDO.PRE.STATUS)
+    Y.AC.TYPE = R.NEW(REDO.PRE.ACCT.TYPE)
+    Y.AC.TYPE.ARRAY = DCOUNT(Y.AC.TYPE,@VM) ;*R22 AUTO CONVERSION START
     Y.VM.ARRAY = DCOUNT(PARAM.STATUS,@VM)
-    Y.SM.ARRAY = DCOUNT(PARAM.STATUS,@SM)
+    Y.SM.ARRAY = DCOUNT(PARAM.STATUS,@SM) ;*R22 AUTO CONVERSION END
 
     Y.CNT = 1
     Y.FLAG1 = ''
     LOOP
     WHILE Y.CNT LE Y.VM.ARRAY
         Y.LIST.VAL = ''
+        Y.ACCT.TYPE1 = Y.AC.TYPE<1,Y.CNT>
         Y.CHECK.VAL = PARAM.STATUS<1,Y.CNT>
 
         GOSUB INNNER.LOOP
+
         IF  Y.FLAG AND Y.FLAG1 THEN
-            AV =Y.CNT
-            AF = REDO.PRE.STATUS
-            ETEXT = "EB-AC.STATUS.DUPICATE"
-            CALL STORE.END.ERROR
-            Y.CNT += Y.VM.ARRAY ;*AUTO R22 CODE CONVERSION
+            IF Y.ACCT.TYPE1 EQ Y.ACCT.TYPE2 THEN
+                AV =Y.CNT
+                AF = REDO.PRE.STATUS
+                ETEXT = "EB-AC.STATUS.DUPICATE"
+                CALL STORE.END.ERROR
+                Y.CNT += Y.VM.ARRAY ;*R22 AUTO CONVERSION
+            END
         END
-        Y.CNT += 1 ;*AUTO R22 CODE CONVERSION
+        Y.CNT += 1 ;*R22 AUTO CONVERSION
     REPEAT
 RETURN
 *-----------
@@ -83,40 +87,53 @@ INNNER.LOOP:
     Y.IN.CNT = Y.CNT + 1
     LOOP
     WHILE Y.IN.CNT LE Y.VM.ARRAY
+        Y.ACCT.TYPE2 = Y.AC.TYPE<1,Y.IN.CNT>
         Y.LIST.VAL = PARAM.STATUS<1,Y.IN.CNT>
-        Y.MY.CNT = DCOUNT(Y.LIST.VAL,@SM)
+        Y.MY.CNT = DCOUNT(Y.LIST.VAL,@SM) ;*R22 AUTO CONVERSION
+
         GOSUB CHEC.DUP
-        Y.IN.CNT += 1 ;*AUTO R22 CODE CONVERSION
+
+        Y.IN.CNT += 1 ;*R22 AUTO CONVERSION
     REPEAT
 RETURN
 *-----------
 CHEC.DUP:
 *-----------
-    CHANGE @VM TO @FM IN Y.LIST.VAL
-    CHANGE @SM TO @FM IN Y.LIST.VAL
-    Y.COUNT = DCOUNT(Y.CHECK.VAL,@SM)
+*    CHANGE VM TO FM IN Y.LIST.VAL
+*   CHANGE SM TO FM IN Y.LIST.VAL
+    Y.COUNT = DCOUNT(Y.CHECK.VAL,@SM) ;*R22 AUTO CONVERSION
     IF Y.COUNT EQ Y.MY.CNT THEN
         Y.FLAG1 = 1
     END ELSE
         Y.FLAG1 = ''
     END
-    Y.CNT.SM = 1
-    LOOP
-    WHILE Y.CNT.SM LE Y.COUNT
-        LOCATE Y.CHECK.VAL<1,1,Y.CNT.SM> IN Y.LIST.VAL SETTING POS THEN
-            Y.FLAG = '1'
-        END ELSE
-            Y.FLAG = ''
-            Y.CNT.SM += Y.COUNT ;*AUTO R22 CODE CONVERSION
-        END
-        Y.CNT.SM += 1 ;*AUTO R22 CODE CONVERSION
-    REPEAT
+*    Y.CNT.SM = 1
+*    LOOP
+*    WHILE Y.CNT.SM LE Y.COUNT
+*        LOCATE Y.CHECK.VAL<1,1,Y.CNT.SM> IN Y.LIST.VAL SETTING POS THEN
+*            Y.FLAG = '1'
+*        END ELSE
+*            Y.FLAG = ''
+*            Y.CNT.SM = Y.CNT.SM + Y.COUNT
+*        END
+*        Y.CNT.SM = Y.CNT.SM + 1
+*    REPEAT
+* The above code is replace for ACCOUNTING CR change as below IF condition
+    IF Y.CHECK.VAL EQ Y.LIST.VAL THEN
+
+        Y.FLAG = '1'
+    END ELSE
+        Y.FLAG = ''
+    END
     IF  Y.FLAG AND Y.FLAG1 THEN
-        AV =Y.CNT
-        AF = REDO.PRE.STATUS
-        ETEXT = "EB-AC.STATUS.DUPICATE"
-        CALL STORE.END.ERROR
-        GOSUB GOEND
+
+        IF  Y.ACCT.TYPE1 EQ Y.ACCT.TYPE2 THEN
+            AV =Y.CNT
+            AF = REDO.PRE.STATUS
+            ETEXT = "EB-AC.STATUS.DUPICATE"
+            CALL STORE.END.ERROR
+            GOSUB GOEND
+        END
     END
 RETURN
 *----------------

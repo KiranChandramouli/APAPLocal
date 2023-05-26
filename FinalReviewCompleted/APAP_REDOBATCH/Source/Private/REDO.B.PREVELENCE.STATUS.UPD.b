@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDYzNzM5MDU5OkNwMTI1MjoxNjgxMjgyODkzODQ1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 Apr 2023 12:31:33
+* @ValidationCode : MjoxNDYxMzEwMTU2OkNwMTI1MjoxNjg1MDkyNzU5MjAxOklUU1M6LTE6LTE6NjMyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 May 2023 14:49:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 632
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -38,9 +38,10 @@ SUBROUTINE REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.STATUS.POS,Y.STATUS.CH
 * 31-05-2011      RIYAS                PACS00060188                    Bug Fixing
 * 19-09-2011      RIYAS                PACS00099905                     Bug Fixing
 * 10-01-2012      Prabhu               PACS00172828                     AZ status field updated
-* Date                   who                   Reference              
-* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND K TO K.VAR
-* 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+* DATE  NAME   REFERENCE    DESCRIPTION
+* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
+* 25-05-2023     Conversion tool        R22 Auto conversion           FM TO @FM, VM to @VM, SM to @SM, ++ to +=, k to K.VAR
+* 25-05-2023      Harishvikram C       Manual R22 conversion           CALL routine format modified
 *--------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -49,7 +50,14 @@ SUBROUTINE REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.STATUS.POS,Y.STATUS.CH
     $INSERT I_F.AZ.ACCOUNT
     $INSERT I_F.REDO.PREVALANCE.STATUS
     $INSERT I_REDO.B.STATUS1.UPD.COMMON
+    $INSERT I_F.REDO.T.STATSEQ.BY.ACCT
+    $USING APAP.REDOAPAP
 *-------------------------------------------------------------------------------
+
+    FN.REDO.T.STATSEQ.BY.ACCT = 'F.REDO.T.STATSEQ.BY.ACCT'
+    F.REDO.T.STATSEQ.BY.ACCT = ''
+    CALL OPF(FN.REDO.T.STATSEQ.BY.ACCT, F.REDO.T.STATSEQ.BY.ACCT)
+
     Y.L.AC.STATUS1.POS=Y.AC.STATUS.POS<1>
     Y.L.AC.STATUS2.POS=Y.AC.STATUS.POS<2>
     GOSUB PROCESS
@@ -60,7 +68,6 @@ RETURN
 PROCESS:
 *--------------------------------------------------------------------------------
 *    CALL F.READU(FN.ACCOUNT,Y.PGM.ID,R.ACCOUNT,F.ACCOUNT,F.ERR,Y.ERR)
-
     Y.STATUS.1 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS1.POS>,@VM,@FM)
     Y.STATUS2 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS2.POS>,@SM,@FM)
     IF Y.STATUS.1 THEN
@@ -80,29 +87,80 @@ PROCESS:
         REPEAT
 
     END
-    IF Y.STATUS.1 AND Y.STATUS.2 THEN
-        Y.STATUS = Y.STATUS.1:@FM:Y.STATUS.2
-    END
-    Y.STATUS = SORT(Y.STATUS)
-
+    Y.STATUS = ''
     Y.AC.TOTAL.STATUS = DCOUNT(Y.STATUS,@FM)
-    Y.STATUS = CHANGE(Y.STATUS,@FM,":")
-    GOSUB FM.COUNTER.CHECK
+    LOCATE ID IN Y.AC.ARRAY<1> SETTING AC.ID.POS THEN       ;* This is only applicable for L.AC.STATUS1
+        Y.STATUS = Y.STATUS.SEQ.ARRAY<AC.ID.POS>
+    END
+
+    CALL APAP.REDOAPAP.redoConvMnemToStatus(ID,Y.STATUS)    ;* This is only applicable for L.AC.STATUS2 ;*Manual R22 conversion
+
+    IF Y.STATUS THEN          ;* This is to check the migrated contract.
+        Y.AZ.ACCOUNT = ''
+        Y.AC.CATEG = R.ACCOUNT<AC.CATEGORY>
+        Y.AZ.ACCOUNT = R.ACCOUNT<AC.ALL.IN.ONE.PRODUCT>
+
+        BEGIN CASE
+            CASE Y.AZ.ACCOUNT
+                Y.CATEG = 'DEP'
+
+            CASE Y.AC.CATEG GE '6000' AND Y.AC.CATEG LE '6999'
+                Y.CATEG = 'SAV'
+
+            CASE Y.AC.CATEG GE '1000' AND Y.AC.CATEG LE '1999'
+                Y.CATEG = 'ALL'
+
+        END CASE
+
+        GOSUB FM.COUNTER.CHECK
+    END
 RETURN
 *--------------------------------------------------------------------------------------------
 FM.COUNTER.CHECK:
 *--------------------------------------------------------------------------------------------
 * 20170327 /S TUS
-    Y.FINAL.STATUS = ''
-    LOCATE Y.STATUS IN PARAM.STATUS SETTING VL.POSN THEN
-        Y.FINAL.STATUS = PREVALANCE.STATUS<VL.POSN>
+    Y.FINAL.STATUS = '' ; AC.FLAG = '' ; CNT.AC = 1 ; Y.AC.TYPE = ''
+
+    TOT.AC.CNT = DCOUNT(ACCT.TYPE.LIST,@FM)
+    LOOP
+    WHILE CNT.AC LE TOT.AC.CNT
+        Y.AC.TYPE = ACCT.TYPE.LIST<CNT.AC>
+        BEGIN CASE
+            CASE Y.AC.TYPE EQ Y.CATEG
+                GOSUB STATUS.CHECK
+            CASE Y.AC.TYPE EQ 'ALL'
+                GOSUB STATUS.CHECK
+        END CASE
+
+        CNT.AC += 1
+    REPEAT
+
+*    IF NOT(Y.FINAL.STATUS) AND NOT(AC.FLAG) THEN  ;* will avoid deleting the existing status from account
+*        GOSUB AC.NULL.WRITE
+*    END
+RETURN
+
+STATUS.CHECK:
+*************
+    IF Y.STATUS EQ PARAM.STATUS<CNT.AC> THEN
+        Y.FINAL.STATUS = PREVALANCE.STATUS<CNT.AC>
         IF R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> NE Y.FINAL.STATUS OR Y.STATUS.CHG.UPD THEN
             GOSUB AC.REC.WRITE.RECORD
+            CNT.AC = TOT.AC.CNT+1
+            AC.FLAG = '1'
         END
-    END ELSE
-        GOSUB AC.NULL.WRITE
+
     END
 RETURN
+*LOCATE Y.STATUS IN PARAM.STATUS SETTING VL.POSN THEN
+*Y.FINAL.STATUS = PREVALANCE.STATUS<VL.POSN>
+*IF R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> NE Y.FINAL.STATUS OR Y.STATUS.CHG.UPD THEN
+*    GOSUB AC.REC.WRITE.RECORD
+*END
+*END ELSE
+*   GOSUB AC.NULL.WRITE
+*END
+*    RETURN
 * 20170327 /E TUS
 *----------------------------------------------------------------------------------------------
 AC.REC.WRITE.RECORD:

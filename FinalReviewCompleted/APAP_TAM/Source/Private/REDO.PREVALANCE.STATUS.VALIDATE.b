@@ -1,7 +1,7 @@
-* @ValidationCode : MjotNjA0MTQ1OTk5OkNwMTI1MjoxNjgzMDgyMTY3OTMwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 08:19:27
+* @ValidationCode : MjoyMDcyMTY1MzU2OkNwMTI1MjoxNjg0OTk5NTg2NzIyOnZpY3RvOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 May 2023 12:56:26
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.PREVALANCE.STATUS.VALIDATE
 *********************************************************************************************************
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -26,13 +25,13 @@ SUBROUTINE REDO.PREVALANCE.STATUS.VALIDATE
 *    Date            Who                            Reference                      Description
 *   ------         ------                         -------------                    -------------
 *  08/10/2010   Jeyachandran S                     ODR-2010-08-0490                Initial Creation
-*
-*Modification History:
-*DATE                 WHO                  REFERENCE                     DESCRIPTION
-*12/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION          FM TO @FM, VM TO @VM, SM TO @SM
-*12/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*  DATE            NAME                  REFERENCE                     DESCRIPTION
+* 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+* 27 DEC  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+*25-05-2023    CONVERSION TOOL     R22 AUTO CONVERSION     VM TO @VM,FM TO @FM,SM TO @SM
+*25-05-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *********************************************************************************************************
- 
+
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_ENQUIRY.COMMON
@@ -54,9 +53,10 @@ RETURN
 *--------------------------------------------------------------------------------
 PROCESS:
 *--------------------------------------------------------------------------------
-    PARAM.STATUS = CHANGE(R.NEW(REDO.PRE.STATUS),@VM,@FM)
+    PARAM.STATUS = CHANGE(R.NEW(REDO.PRE.STATUS),@VM,@FM) ;*R22 AUTO CONVERSION START
     PREVALANCE.STATUS = CHANGE(R.NEW(REDO.PRE.PREVALANT.STATUS),@VM,@FM)
-    STAT.FM.CNTR = DCOUNT(PARAM.STATUS,@FM)
+    Y.AC.TYPE.LIST = CHANGE(R.NEW(REDO.PRE.ACCT.TYPE),@VM,@FM)
+    STAT.FM.CNTR = DCOUNT(PARAM.STATUS,@FM) ;*R22 AUTO CONVERSION END
     IF STAT.FM.CNTR LT 1 THEN
         AF = REDO.PRE.STATUS
         AV = 1
@@ -67,32 +67,36 @@ PROCESS:
     LOOP
     WHILE LOOP.FM.CNTR LE STAT.FM.CNTR
         Y.FM.STATUS1 = PARAM.STATUS<LOOP.FM.CNTR>
-        Y.FM.STATUS = CHANGE(Y.FM.STATUS1,@SM,@FM)
+        Y.FM.STATUS = CHANGE(Y.FM.STATUS1,@SM,@FM) ;*R22 AUTO CONVERSION
         Y.FINAL.STATUS = PREVALANCE.STATUS<LOOP.FM.CNTR>
+        Y.ACCT.TYPE1 = Y.AC.TYPE.LIST<LOOP.FM.CNTR>
         Y.ERROR = ''
         GOSUB SM.COUNTER.CHECK
+
         IF NOT(Y.FINAL.STATUS) THEN
             AF = REDO.PRE.PREVALANT.STATUS
             AV = LOOP.FM.CNTR
             ETEXT = "EB-AC.STATUS.PREVAL.MISSING"
             CALL STORE.END.ERROR
-        END ELSE
-            LOCATE Y.FM.STATUS1 IN PARAM.STATUS SETTING SECOND.POS THEN
-                IF SECOND.POS EQ LOOP.FM.CNTR ELSE
-                    AF = REDO.PRE.STATUS
-                    AV = SECOND.POS
-                    ETEXT = "EB-AC.STATUS.DUPICATE"
-                    CALL STORE.END.ERROR
-                END
-            END
         END
+* ELSE
+*   LOCATE Y.FM.STATUS1 IN PARAM.STATUS SETTING SECOND.POS THEN
+*      IF SECOND.POS EQ LOOP.FM.CNTR ELSE
+*         AF = REDO.PRE.STATUS
+*        AV = SECOND.POS
+*       ETEXT = "EB-AC.STATUS.DUPICATE"
+*      CALL STORE.END.ERROR
+* END
+* END
+* END
+
         LOOP.FM.CNTR + = 1
     REPEAT
 RETURN
 *--------------------------------------------------------------------------------------------
 SM.COUNTER.CHECK:
 *--------------------------------------------------------------------------------------------
-    STAT.SM.CNTR = DCOUNT(Y.FM.STATUS,@FM)
+    STAT.SM.CNTR = DCOUNT(Y.FM.STATUS,@FM) ;*R22 AUTO CONVERSION
     IF STAT.SM.CNTR LT 1 THEN
         AF = REDO.PRE.STATUS
         AV = LOOP.FM.CNTR

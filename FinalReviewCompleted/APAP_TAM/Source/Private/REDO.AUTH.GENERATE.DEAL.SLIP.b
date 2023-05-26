@@ -1,17 +1,16 @@
-* @ValidationCode : MjotNTk4MzExNTE6Q3AxMjUyOjE2ODQ0OTEwMjc2NjI6SVRTUzotMTotMTo0NzE3OjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:27
+* @ValidationCode : MjoxMzY3OTE2NzMzOkNwMTI1MjoxNjg1MDkzNjM0NzgxOklUU1M6LTE6LTE6NDY1NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 15:03:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 4717
+* @ValidationInfo : Rating            : 4657
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
-
 SUBROUTINE REDO.AUTH.GENERATE.DEAL.SLIP
 *----------------------------------------------------------------------------------------------------------------------
 * Description: This routine is auth routine for both teller & FT next version
@@ -27,9 +26,9 @@ SUBROUTINE REDO.AUTH.GENERATE.DEAL.SLIP
 * ------       -----                ------------   -------------
 * 30-05-2011   Marimuthu                           INITIAL CREATION
 * 31-07-2013   Vignesh Kumaar M R   PACS00305984   CASHIER DEAL SLIP PRINT OPTION
-* 24.04.2023   Conversion Tool       R22            Auto Conversion     - FM TO @FM, VM TO @VM, SM TO @SM, SESSION.NO TO AGENT.NUMBER, New condition added, = TO EQ, ++ TO += 1, = Y.TRANS.AMT - TO -=, = Y.CASH - TO -=, = Y.ACCOUNT.DEBIT - TO -=, = Y.CHEQUE - TO -=
-* 24.04.2023   Shanmugapriya M       R22            Manual Conversion   - Add call routine prefix
-*
+
+* 25-05-2023     Conversion tool    R22 Auto conversion       FM TO @FM, VM to @VM, SM to @SM, ++ to +=,= to EQ, -- to -=
+* 25-05-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
 *----------------------------------------------------------------------------------------------------------------------
 *
     $INSERT I_COMMON
@@ -50,7 +49,8 @@ SUBROUTINE REDO.AUTH.GENERATE.DEAL.SLIP
     $INSERT I_F.AC.BALANCE.TYPE
     $INSERT I_F.REDO.STORE.SPOOL.ID     ;* Tus S/E
     $USING APAP.REDORETAIL
-   
+    $USING APAP.AA
+
     GOSUB OPEN.FILES
     GOSUB PROCESS
 
@@ -99,11 +99,7 @@ STORE.DEALSLIP.INFO:
             CALL F.WRITE(FN.REDO.CASHIER.DEALSLIP.INFO,STORE.TXN.ID,R.REDO.CASHIER.DEALSLIP.INFO)   ;*Tus End
         END
 
-        GET.TXN.ID = System.getVariable("CURRENT.WTM.FIRST.ID")                       ;** R22 Auto conversion - START
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN
-            GET.TXN.ID = ""
-        END
-;*Tus Start                                                                           ;** R22 Auto conversion - End
+        GET.TXN.ID = System.getVariable("CURRENT.WTM.FIRST.ID")       ;*Tus Start
 
         IF GET.TXN.ID NE 'CURRENT.WTM.FIRST.ID' THEN
             GET.TXN.ID = GET.TXN.ID:'-NV.INFO'
@@ -207,7 +203,7 @@ TT.PROCESS:
     IF R.NEW(TT.TE.LOCAL.REF)<1,POS.TT.L.NEXT.VERSION> EQ '' AND R.NEW(TT.TE.LOCAL.REF)<1,POS.TT.L.INITIAL.ID> NE '' THEN
         Y.TRANS.ID = R.NEW(TT.TE.LOCAL.REF)<1,POS.TT.L.INITIAL.ID>
         GOSUB CHK.TRANS.CHAIN
-        IF Y.NT.FOUND EQ '' THEN                                 ;** R22 Auto conversion - = TO EQ
+        IF Y.NT.FOUND EQ '' THEN
             GOSUB CHECK.AA.PAYMENT
             IF Y.AA.PAYMENT EQ 'YES' THEN
                 GOSUB PRODUCE.DEAL.SLIP
@@ -224,7 +220,7 @@ TT.PROCESS.SUP:
     GOSUB CHK.TRANS.CHAIN
     IF Y.NT.FOUND EQ '' THEN
         GOSUB CHECK.AA.PAYMENT
-        IF Y.AA.PAYMENT EQ 'YES' THEN                            ;** R22 Auto conversion - = TO EQ
+        IF Y.AA.PAYMENT EQ 'YES' THEN
             GOSUB PRODUCE.DEAL.SLIP
         END
     END
@@ -239,7 +235,7 @@ FT.PROCESS:
         GOSUB CHK.TRANS.CHAIN
         IF Y.NT.FOUND EQ '' THEN
             GOSUB CHECK.AA.PAYMENT
-            IF Y.AA.PAYMENT EQ 'YES' THEN                   ;** R22 Auto conversion - = TO EQ
+            IF Y.AA.PAYMENT EQ 'YES' THEN
                 GOSUB PRODUCE.DEAL.SLIP
             END
         END
@@ -254,7 +250,7 @@ FT.PROCESS.SUP:
     GOSUB CHK.TRANS.CHAIN
     IF Y.NT.FOUND EQ '' THEN
         GOSUB CHECK.AA.PAYMENT
-        IF Y.AA.PAYMENT EQ 'YES' THEN                        ;** R22 Auto conversion - = TO EQ
+        IF Y.AA.PAYMENT EQ 'YES' THEN
             GOSUB PRODUCE.DEAL.SLIP
         END
     END
@@ -297,8 +293,7 @@ CHECK.AA.PAYMENT:
     Y.PROC.TYPE     = ''
     Y.RECEP.METHOD  = ''
 
-*CALL REDO.GET.NV.VERSION.TYPES(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD)
-    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD);* R22 Manual conversion
+    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;*Manual R22 conversion
 
     LOCATE 'AA.PAYMENT' IN Y.VERSION.TYPES SETTING POS1 THEN
         Y.AA.PAYMENT = 'YES'
@@ -362,7 +357,7 @@ GET.TXN.REF:
             END
 
         END
-        Y.VAR1 += 1                      ;** R22 Auto conversion - ++ TO += 1
+        Y.VAR1 += 1
     REPEAT
 
 RETURN
@@ -401,7 +396,7 @@ SPLIT.TRANSACTION:
         Y.DEAL.ARRAY<1,Y.VAR2> = Y.AA.PAYMENT.TXNS<Y.VAR2>  ;* Fix for PACS00305984
 
         GOSUB GET.LOAN.DETAILS
-        Y.VAR2 += 1                             ;** R22 Auto conversion - ++ TO += 1
+        Y.VAR2 += 1
     REPEAT
 
     Y.OLD.ID.NEW = ID.NEW
@@ -415,9 +410,6 @@ SPLIT.TRANSACTION:
         Y.HID = C$LAST.HOLD.ID
 
         WTT.ID = System.getVariable("CURRENT.INDA.ID")
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN                 ;** R22 Auto Conversion - Start
-            WTT.ID = ""
-        END                                                ;** R22 Auto Conversion - End
 
         IF WTT.ID EQ 'CURRENT.INDA.ID' THEN
             WTT.ID = Y.TRANS.ID
@@ -435,7 +427,7 @@ SPLIT.TRANSACTION:
             CALL F.WRITE(FN.REDO.STORE.SPOOL.ID,WTT.ID,R.REDO.STORE.SPOOL.ID)
         END
 
-        Y.VAR2 += 1                          ;** R22 Auto conversion - ++ TO += 1
+        Y.VAR2 += 1
     REPEAT
 
     ID.NEW = Y.OLD.ID.NEW
@@ -573,9 +565,7 @@ GET.CUST.DETAILS:
     CALL F.READ(FN.CUS,Y.CUST.ID,R.CUST,F.CUS,CUS.ERR)
     Y.CUST.NAME = R.CUST<EB.CUS.SHORT.NAME>
 
-*CALL REDO.CUST.IDENTITY.REF(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME)
-** R22 Manual conversion
-    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*Manual R22 conversion
     Y.NAME.1         = Y.CUS.NAME[1,35]
     Y.NAME.2         = Y.CUS.NAME[36,LEN(Y.CUS.NAME)]
 
@@ -603,18 +593,11 @@ GET.AA.PROP.AMTS:
     Y.LOAN.ACC = R.FT<FT.CREDIT.ACCT.NO>
     IN.ARR.ID = ''
     OUT.ID = ''
-*CALL REDO.CONVERT.ACCOUNT(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT)
-** R22 Manual conversion
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*R22 MANUAL CODE CONVERSION
-*CALL REDO.GET.INDV.REPAY.AMT(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE)
-** R22 Manual conversion
-    CALL APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
+    CALL APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*Manual R22 conversion
 
     IF OFS$SOURCE.ID EQ 'FASTPATH' THEN
         WTT.ID = System.getVariable("CURRENT.TID.ID")
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN                  ;** R22 Auto Conversion - Start
-            WTT.ID = ""
-        END                                                 ;** R22 Auto Conversion - End
     END ELSE
         WTT.ID = R.RTC<RTC.TELLER.ID>
     END
@@ -630,33 +613,33 @@ SPLIT.AMTS:
     Y.CHEQUE.SPENT = 0
     IF Y.CASH THEN
         IF Y.TRANS.AMT GT Y.CASH THEN
-            Y.TRANS.AMT -= Y.CASH                              ;** R22 Auto Conversion - = Y.TRANS.AMT - TO -=
+            Y.TRANS.AMT -= Y.CASH
             Y.CASH.SPENT = Y.CASH
             Y.CASH = 0
         END ELSE
-            Y.CASH -= Y.TRANS.AMT                               ;** R22 Auto Conversion - = Y.CASH - TO -=
+            Y.CASH -= Y.TRANS.AMT
             Y.CASH.SPENT = Y.TRANS.AMT
             Y.TRANS.AMT = 0
         END
     END
     IF Y.TRANS.AMT AND Y.ACCOUNT.DEBIT THEN
         IF Y.TRANS.AMT GT Y.ACCOUNT.DEBIT THEN
-            Y.TRANS.AMT -= Y.ACCOUNT.DEBIT                     ;** R22 Auto Conversion - = Y.TRANS.AMT - TO -=
+            Y.TRANS.AMT -= Y.ACCOUNT.DEBIT
             Y.ACCOUNT.DEBIT.SPENT = Y.ACCOUNT.DEBIT
             Y.ACCOUNT.DEBIT = 0
         END ELSE
-            Y.ACCOUNT.DEBIT -= Y.TRANS.AMT                      ;** R22 Auto Conversion - = Y.ACCOUNT.DEBIT - TO -=
+            Y.ACCOUNT.DEBIT -= Y.TRANS.AMT
             Y.ACCOUNT.DEBIT.SPENT = Y.TRANS.AMT
             Y.TRANS.AMT = 0
         END
     END
     IF Y.TRANS.AMT AND Y.CHEQUE THEN
         IF Y.TRANS.AMT GT Y.CHEQUE THEN
-            Y.TRANS.AMT -= Y.CHEQUE                             ;** R22 Auto Conversion - = Y.TRANS.AMT - TO -=
+            Y.TRANS.AMT -= Y.CHEQUE
             Y.CHEQUE.SPENT = Y.CHEQUE
             Y.ACCOUNT.DEBIT = 0
         END ELSE
-            Y.CHEQUE -= Y.TRANS.AMT                           ;** R22 Auto Conversion - = Y.CHEQUE - TO -=
+            Y.CHEQUE -= Y.TRANS.AMT
             Y.CHEQUE.SPENT = Y.TRANS.AMT
             Y.TRANS.AMT = 0
         END
@@ -668,9 +651,7 @@ GET.CAPITAL.BALANCE:
 *-------------------------------------------------------------
 
     IN.PROPERTY.CLASS = 'ACCOUNT'
-*CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
-** R22 Manual conversion
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*R22 MANUAL CODE CONVERSION
+    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*Manual R22 conversion
 
     BALANCE.AMOUNT=''
 
@@ -688,8 +669,7 @@ GET.CAPITAL.BALANCE:
         Y.BALANCE.TO.CHECK = Y.BALANCE.TYPE.ID
 *Get the balance value
         Y.TODAY = TODAY
-*CALL AA.GET.ECB.BALANCE.AMOUNT(Y.LOAN.ACC,Y.BALANCE.TO.CHECK,Y.TODAY,BALANCE.AMOUNT,RET.ERROR) ;*R22 MANUAL CODE CONVERSION
-        CALL APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,Y.BALANCE.TO.CHECK,Y.TODAY,BALANCE.AMOUNT,RET.ERROR) ;*R22 MANUAL CODE CONVERSION
+        CALL APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,Y.BALANCE.TO.CHECK,Y.TODAY,BALANCE.AMOUNT,RET.ERROR) ;*Manual R22 conversion
         Y.CAPITAL.BALANCE += ABS(BALANCE.AMOUNT)
     REPEAT
 
@@ -718,8 +698,7 @@ GET.NEXT.PAYMENT.AMT:
     Y.YEAR = YDATE[1,4] + 2
     YDAYS.ORIG = Y.YEAR:TODAY[5,4]
     DATE.RANGE = TODAY:@FM:YDAYS.ORIG    ;* Date range is passed for 2 years to avoid building schedule for whole loan term
-    CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, PAYMENT.DATES, DUE.DEFER.DATES, PAYMENT.TYPES, DUE.METHODS, DUE.TYPE.AMTS, PAYMENT.PROPERTIES, PAYMENT.PROPERTIES.AMT, DUE.OUTS)
-    
+    CALL APAP.AA.redoEAaScheduleProjector(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, PAYMENT.DATES, DUE.DEFER.DATES, PAYMENT.TYPES, DUE.METHODS, DUE.TYPE.AMTS, PAYMENT.PROPERTIES, PAYMENT.PROPERTIES.AMT, DUE.OUTS) ;*Manual R22 conversion
 
     GOSUB GET.NEXT.AMOUNT
 
@@ -736,7 +715,7 @@ GET.NEXT.AMOUNT:
             Y.NEXT.PAY.AMT = TOT.PAYMENT<Y.VAR3>
             Y.VAR3 = Y.DATES.CNT+1
         END
-        Y.VAR3 += 1                          ;** R22 Auto conversion - ++ TO += 1
+        Y.VAR3 += 1
     REPEAT
 
 RETURN
