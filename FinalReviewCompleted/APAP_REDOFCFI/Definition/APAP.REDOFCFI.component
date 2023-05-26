@@ -1103,7 +1103,7 @@ public method redoFiValidateHeadAndData (
     jBC: REDO.FI.VALIDATE.HEAD.AND.DATA
 }
 
-public method RedoFcActPresFields (
+public method redoFcActPresFields (
 )
 {
     jBC: REDO.FC.ACT.PRES.FIELDS
@@ -1111,7 +1111,7 @@ public method RedoFcActPresFields (
 
 
 
-public method RedoFcArrangementAuth (
+public method redoFcArrangementAuth (
 )
 {
     jBC: REDO.FC.ARRANGEMENT.AUTH
@@ -1119,7 +1119,7 @@ public method RedoFcArrangementAuth (
 
 
 
-public method RedoFcBhValidations (
+public method redoFcBhValidations (
 )
 {
     jBC: REDO.FC.BH.VALIDATIONS
@@ -1127,7 +1127,7 @@ public method RedoFcBhValidations (
 
 
 
-public method RedoFcClBalanceHisFields (
+public method redoFcClBalanceHisFields (
 )
 {
     jBC: REDO.FC.CL.BALANCE.HIS.FIELDS
@@ -1135,7 +1135,7 @@ public method RedoFcClBalanceHisFields (
 
 
 
-public method RedoFcClProcess (
+public method redoFcClProcess (
     INOUT yOption string
 )
 {
@@ -1144,7 +1144,7 @@ public method RedoFcClProcess (
 
 
 
-public method RedoFcClValidate (
+public method redoFcClValidate (
 )
 {
     jBC: REDO.FC.CL.VALIDATE
@@ -1152,7 +1152,7 @@ public method RedoFcClValidate (
 
 
 
-public method RedoFcCollTypeParamsFields (
+public method redoFcCollTypeParamsFields (
 )
 {
     jBC: REDO.FC.COLL.TYPE.PARAMS.FIELDS
@@ -1160,7 +1160,7 @@ public method RedoFcCollTypeParamsFields (
 
 
 
-public method RedoFcCustSolicitud (
+public method redoFcCustSolicitud (
 )
 {
     jBC: REDO.FC.CUST.SOLICITUD
@@ -1168,7 +1168,7 @@ public method RedoFcCustSolicitud (
 
 
 
-public method RedoFcCustSolicitudFields (
+public method redoFcCustSolicitudFields (
 )
 {
     jBC: REDO.FC.CUST.SOLICITUD.FIELDS
@@ -1176,7 +1176,7 @@ public method RedoFcCustSolicitudFields (
 
 
 
-public method RedoFcDisFields (
+public method redoFcDisFields (
 )
 {
     jBC: REDO.FC.DIS.FIELDS
@@ -1184,7 +1184,7 @@ public method RedoFcDisFields (
 
 
 
-public method RedoFcDisParam (
+public method redoFcDisParam (
 )
 {
     jBC: REDO.FC.DIS.PARAM
@@ -1192,7 +1192,7 @@ public method RedoFcDisParam (
 
 
 
-public method RedoFcDisParamFields (
+public method redoFcDisParamFields (
 )
 {
     jBC: REDO.FC.DIS.PARAM.FIELDS
@@ -1200,7 +1200,7 @@ public method RedoFcDisParamFields (
 
 
 
-public method RedoFcEnqNoCollDi (
+public method redoFcEnqNoCollDi (
     INOUT dataOut string
 )
 {
@@ -1209,7 +1209,7 @@ public method RedoFcEnqNoCollDi (
 
 
 
-public method RedoFcEnqNoCollFs (
+public method redoFcEnqNoCollFs (
     INOUT dataOut string
 )
 {
@@ -1218,7 +1218,7 @@ public method RedoFcEnqNoCollFs (
 
 
 
-public method RedoFcEnqNoCollTp (
+public method redoFcEnqNoCollTp (
     INOUT dataOut string
 )
 {
@@ -1227,7 +1227,7 @@ public method RedoFcEnqNoCollTp (
 
 
 
-public method RedoFcFillPyshLife (
+public method redoFcFillPyshLife (
 )
 {
     jBC: REDO.FC.FILL.PYSH.LIFE
@@ -1235,7 +1235,7 @@ public method RedoFcFillPyshLife (
 
 
 
-public method RedoFcFillPyshLifeFields (
+public method redoFcFillPyshLifeFields (
 )
 {
     jBC: REDO.FC.FILL.PYSH.LIFE.FIELDS
@@ -1243,7 +1243,7 @@ public method RedoFcFillPyshLifeFields (
 
 
 
-public method RedoFcFormDisb (
+public method redoFcFormDisb (
 )
 {
     jBC: REDO.FC.FORM.DISB
@@ -1251,7 +1251,7 @@ public method RedoFcFormDisb (
 
 
 
-public method RedoFcMethPagoVal (
+public method redoFcMethPagoVal (
 )
 {
     jBC: REDO.FC.METH.PAGO.VAL
@@ -1259,7 +1259,7 @@ public method RedoFcMethPagoVal (
 
 
 
-public method RedoFcNfDesCat (
+public method redoFcNfDesCat (
     INOUT dataOut string
 )
 {
@@ -1268,7 +1268,7 @@ public method RedoFcNfDesCat (
 
 
 
-public method RedoFcNfNominaExt (
+public method redoFcNfNominaExt (
     INOUT rData string
 )
 {
@@ -1277,7 +1277,7 @@ public method RedoFcNfNominaExt (
 
 
 
-public method RedoFcParamsFields (
+public method redoFcParamsFields (
 )
 {
     jBC: REDO.FC.PARAMS.FIELDS
@@ -1285,7 +1285,7 @@ public method RedoFcParamsFields (
 
 
 
-public method RedoFcPolTypeClass (
+public method redoFcPolTypeClass (
 )
 {
     jBC: REDO.FC.POL.TYPE.CLASS
@@ -1293,7 +1293,7 @@ public method RedoFcPolTypeClass (
 
 
 
-public method RedoFcPolTypeClassFields (
+public method redoFcPolTypeClassFields (
 )
 {
     jBC: REDO.FC.POL.TYPE.CLASS.FIELDS
@@ -1301,7 +1301,7 @@ public method RedoFcPolTypeClassFields (
 
 
 
-public method RedoFcSAuthorise (
+public method redoFcSAuthorise (
     INOUT result string
 )
 {
@@ -1310,7 +1310,7 @@ public method RedoFcSAuthorise (
 
 
 
-public method RedoFcSBalFall (
+public method redoFcSBalFall (
 )
 {
     jBC: REDO.FC.S.BAL.FALL
@@ -1318,7 +1318,7 @@ public method RedoFcSBalFall (
 
 
 
-public method RedoFcSCalcDtVh (
+public method redoFcSCalcDtVh (
 )
 {
     jBC: REDO.FC.S.CALC.DT.VH
@@ -1326,7 +1326,7 @@ public method RedoFcSCalcDtVh (
 
 
 
-public method RedoFcSCollDeVa (
+public method redoFcSCollDeVa (
 )
 {
     jBC: REDO.FC.S.COLL.DE.VA
@@ -1334,7 +1334,7 @@ public method RedoFcSCollDeVa (
 
 
 
-public method RedoFcSCollDi (
+public method redoFcSCollDi (
 )
 {
     jBC: REDO.FC.S.COLL.DI
@@ -1342,7 +1342,7 @@ public method RedoFcSCollDi (
 
 
 
-public method RedoFcSCollDiMontDisp (
+public method redoFcSCollDiMontDisp (
 )
 {
     jBC: REDO.FC.S.COLL.DI.MONT.DISP
@@ -1350,7 +1350,7 @@ public method RedoFcSCollDiMontDisp (
 
 
 
-public method RedoFcSCollVhVa (
+public method redoFcSCollVhVa (
 )
 {
     jBC: REDO.FC.S.COLL.VH.VA
@@ -1358,7 +1358,7 @@ public method RedoFcSCollVhVa (
 
 
 
-public method RedoFcSConditionVh (
+public method redoFcSConditionVh (
 )
 {
     jBC: REDO.FC.S.CONDITION.VH
@@ -1366,7 +1366,7 @@ public method RedoFcSConditionVh (
 
 
 
-public method RedoFcSDocValidate (
+public method redoFcSDocValidate (
 )
 {
     jBC: REDO.FC.S.DOC.VALIDATE
@@ -1374,7 +1374,7 @@ public method RedoFcSDocValidate (
 
 
 
-public method RedoFcSInsPolAmt (
+public method redoFcSInsPolAmt (
 )
 {
     jBC: REDO.FC.S.INS.POL.AMT
@@ -1382,7 +1382,7 @@ public method RedoFcSInsPolAmt (
 
 
 
-public method RedoFcSInsVal (
+public method redoFcSInsVal (
 )
 {
     jBC: REDO.FC.S.INS.VAL
@@ -1390,7 +1390,7 @@ public method RedoFcSInsVal (
 
 
 
-public method RedoFcSMapping (
+public method redoFcSMapping (
     INOUT pCollCode string,
     INOUT yIdColl string,
     INOUT yAv string
@@ -1401,21 +1401,21 @@ public method RedoFcSMapping (
 
 
 
-public method RedoFcSModchr (
+public method redoFcSModchr (
 )
 {
     jBC: REDO.FC.S.MODCHR
 }
 
 
-public method RedoFcSProdCollTypeCg (
+public method redoFcSProdCollTypeCg (
     INOUT enqData string
 )
 {
     jBC: REDO.FC.S.PROD.COLL.TYPE.CG
 }
 
-public method RedoFcSProdVal (
+public method redoFcSProdVal (
 )
 {
     jBC: REDO.FC.S.PROD.VAL
@@ -1423,7 +1423,7 @@ public method RedoFcSProdVal (
 
 
 
-public method RedoFcSProdValDao (
+public method redoFcSProdValDao (
 )
 {
     jBC: REDO.FC.S.PROD.VAL.DAO
@@ -1431,7 +1431,7 @@ public method RedoFcSProdValDao (
 
 
 
-public method RedoFcSProductColl (
+public method redoFcSProductColl (
 )
 {
     jBC: REDO.FC.S.PRODUCT.COLL
@@ -1439,7 +1439,7 @@ public method RedoFcSProductColl (
 
 
 
-public method RedoFcSolicitudData (
+public method redoFcSolicitudData (
     INOUT solData string
 )
 {
@@ -1448,7 +1448,7 @@ public method RedoFcSolicitudData (
 
 
 
-public method RedoFcSolicitudFields (
+public method redoFcSolicitudFields (
 )
 {
     jBC: REDO.FC.SOLICITUD.FIELDS
@@ -1456,7 +1456,7 @@ public method RedoFcSolicitudFields (
 
 
 
-public method RedoFcTempDisb (
+public method redoFcTempDisb (
 )
 {
     jBC: REDO.FC.TEMP.DISB
@@ -1464,7 +1464,7 @@ public method RedoFcTempDisb (
 
 
 
-public method RedoFcTempDisbFields (
+public method redoFcTempDisbFields (
 )
 {
     jBC: REDO.FC.TEMP.DISB.FIELDS
@@ -1472,7 +1472,7 @@ public method RedoFcTempDisbFields (
 
 
 
-public method RedoFcValPlazo (
+public method redoFcValPlazo (
 )
 {
     jBC: REDO.FC.VAL.PLAZO
@@ -1480,7 +1480,7 @@ public method RedoFcValPlazo (
 
 
 
-public method RedoFcValTt (
+public method redoFcValTt (
 )
 {
     jBC: REDO.FC.VAL.TT
@@ -1488,7 +1488,7 @@ public method RedoFcValTt (
 
 
 
-public method RedoFcValValueDate (
+public method redoFcValValueDate (
 )
 {
     jBC: REDO.FC.VAL.VALUE.DATE
@@ -1496,7 +1496,7 @@ public method RedoFcValValueDate (
 
 
 
-public method RedoFcyAutPerformReversal (
+public method redoFcyAutPerformReversal (
 )
 {
     jBC: REDO.FCY.AUT.PERFORM.REVERSAL
@@ -1504,7 +1504,7 @@ public method RedoFcyAutPerformReversal (
 
 
 
-public method RedoFiCentralBankFile (
+public method redoFiCentralBankFile (
     INOUT iXmlMsg string,
     INOUT oErrorMsg string
 )
@@ -1514,7 +1514,7 @@ public method RedoFiCentralBankFile (
 
 
 
-public method RedoFiControlAuth (
+public method redoFiControlAuth (
 )
 {
     jBC: REDO.FI.CONTROL.AUTH
@@ -1522,7 +1522,7 @@ public method RedoFiControlAuth (
 
 
 
-public method RedoFiControl (
+public method redoFiControl (
 )
 {
     jBC: REDO.FI.CONTROL
@@ -1530,7 +1530,7 @@ public method RedoFiControl (
 
 
 
-public method RedoFiControlDigit (
+public method redoFiControlDigit (
     INOUT inText string,
     INOUT inDig string,
     INOUT inErr string
@@ -1541,7 +1541,7 @@ public method RedoFiControlDigit (
 
 
 
-public method RedoFiExtPayrollValidate (
+public method redoFiExtPayrollValidate (
     INOUT inTxtMsg string,
     INOUT outVarWork string,
     INOUT outTxtMsg string,
@@ -1554,7 +1554,7 @@ public method RedoFiExtPayrollValidate (
 
 
 
-public method RedoFiFtProcess (
+public method redoFiFtProcess (
     INOUT yRecId string
 )
 {
@@ -1563,7 +1563,7 @@ public method RedoFiFtProcess (
 
 
 
-public method RedoFiFtProcessLoad (
+public method redoFiFtProcessLoad (
 )
 {
     jBC: REDO.FI.FT.PROCESS.LOAD
@@ -1571,7 +1571,7 @@ public method RedoFiFtProcessLoad (
 
 
 
-public method RedoFiFtProcessPost (
+public method redoFiFtProcessPost (
 )
 {
     jBC: REDO.FI.FT.PROCESS.POST
@@ -1579,7 +1579,7 @@ public method RedoFiFtProcessPost (
 
 
 
-public method RedoFiLbBprocDet (
+public method redoFiLbBprocDet (
 )
 {
     jBC: REDO.FI.LB.BPROC.DET
@@ -1587,7 +1587,7 @@ public method RedoFiLbBprocDet (
 
 
 
-public method RedoFiLbBprocDetFields (
+public method redoFiLbBprocDetFields (
 )
 {
     jBC: REDO.FI.LB.BPROC.DET.FIELDS
@@ -1595,7 +1595,7 @@ public method RedoFiLbBprocDetFields (
 
 
 
-public method RedoFiLbBprocFields (
+public method redoFiLbBprocFields (
 )
 {
     jBC: REDO.FI.LB.BPROC.FIELDS
@@ -1603,7 +1603,7 @@ public method RedoFiLbBprocFields (
 
 
 
-public method RedoFiLbBprocValidaStatus (
+public method redoFiLbBprocValidaStatus (
 )
 {
     jBC: REDO.FI.LB.BPROC.VALIDA.STATUS
@@ -1611,7 +1611,7 @@ public method RedoFiLbBprocValidaStatus (
 
 
 
-public method RedoFiLbEExtrParam (
+public method redoFiLbEExtrParam (
     INOUT dataOut string
 )
 {
@@ -1620,7 +1620,7 @@ public method RedoFiLbEExtrParam (
 
 
 
-public method RedoFiLbGenerateAmnts (
+public method redoFiLbGenerateAmnts (
     INOUT compType string,
     INOUT dataIn string,
     INOUT dataOut string
@@ -1631,7 +1631,7 @@ public method RedoFiLbGenerateAmnts (
 
 
 
-public method RedoFiLbGenerateData (
+public method redoFiLbGenerateData (
     INOUT aaPaySchId string
 )
 {
@@ -1640,7 +1640,7 @@ public method RedoFiLbGenerateData (
 
 
 
-public method RedoFiLbGenerateDataLoad (
+public method redoFiLbGenerateDataLoad (
 )
 {
     jBC: REDO.FI.LB.GENERATE.DATA.LOAD
@@ -1648,7 +1648,7 @@ public method RedoFiLbGenerateDataLoad (
 
 
 
-public method RedoFiLbRecalcDataSelect (
+public method redoFiLbRecalcDataSelect (
 )
 {
     jBC: REDO.FI.LB.RECALC.DATA.SELECT
@@ -1656,7 +1656,7 @@ public method RedoFiLbRecalcDataSelect (
 
 
 
-public method RedoFiMailFormatGen (
+public method redoFiMailFormatGen (
     INOUT yFiControl string,
     INOUT datrep string
 )
@@ -1666,7 +1666,7 @@ public method RedoFiMailFormatGen (
 
 
 
-public method RedoFiMsgFormat (
+public method redoFiMsgFormat (
     INOUT interfaceId string,
     INOUT datoIn string,
     INOUT datoOut string
@@ -1677,7 +1677,7 @@ public method RedoFiMsgFormat (
 
 
 
-public method RedoFiOrangeDdFile (
+public method redoFiOrangeDdFile (
     INOUT inDir string,
     INOUT outErro string
 )
@@ -1687,7 +1687,7 @@ public method RedoFiOrangeDdFile (
 
 
 
-public method RedoFiPayrollValidate (
+public method redoFiPayrollValidate (
     INOUT inTxtMsg string,
     INOUT outVarWork string,
     INOUT outTxtMsg string,
@@ -1699,7 +1699,7 @@ public method RedoFiPayrollValidate (
 
 
 
-public method RedoFiPreformatMsg (
+public method redoFiPreformatMsg (
     INOUT inInterface string,
     INOUT inFieldType string,
     INOUT inMsg string,
@@ -1712,7 +1712,7 @@ public method RedoFiPreformatMsg (
 
 
 
-public method RedoFiRclUsd (
+public method redoFiRclUsd (
 )
 {
     jBC: REDO.FI.RCL.USD
@@ -1720,7 +1720,7 @@ public method RedoFiRclUsd (
 
 
 
-public method RedoFiRecordControl (
+public method redoFiRecordControl (
     INOUT oErrorMsg string
 )
 {

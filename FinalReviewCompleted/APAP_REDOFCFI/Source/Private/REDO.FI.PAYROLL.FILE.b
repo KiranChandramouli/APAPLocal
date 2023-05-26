@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTM1MzAwMjMzNDpVVEYtODoxNjgyNTc0NDgyNzY1OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:18:02
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationCode : MjoxMDc3MzA5MDI4OkNwMTI1MjoxNjg1MTA2MDg2MTMzOklUU1M6LTE6LTE6LTc1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:26
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -75
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -73,7 +73,7 @@ PROCESS:
 *
 *   Validate File
 
-    CALL APAP.REDOFCFI.RedoFiPayrollValidate(IN.TXT.MSG,Y.VAR.WORK,Y.NEW.TXT.MSG,Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOFCFI.redoFiPayrollValidate(IN.TXT.MSG,Y.VAR.WORK,Y.NEW.TXT.MSG,Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
 *   Message Error
 * DEBUG
     GOSUB CONTROL.MSG.ERROR
@@ -94,7 +94,7 @@ PROCESS:
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.AMOUNT.PROC.FAIL>  = W.TOT.FT.ERR
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.PROC.STATUS>       = Y.STT.REC
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.PROC.STAT.D>       = Y.ERR.MSG   ;* Need to refresh the actual Error Message
-        CALL APAP.REDOFCFI.RedoFiRecordControl(Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+        CALL APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
     END
 *
 RETURN
@@ -132,7 +132,7 @@ RECORD.FI.CONTROL:
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.AMOUNT.PROC.FAIL> = 0
     END
 *   Save in Redo.Fi.Control
-    CALL APAP.REDOFCFI.RedoFiRecordControl(Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
 
 RETURN
 *
@@ -185,7 +185,7 @@ SAVE.FILE.IN.DIR:
     Y.STT.REC        = ""
     Y.IN.MSG         = FI.CTA.DESTINO:",":FI.DATO.MONTO.TOTAL:",DOP,-"
     Y.NEW.TXT.MSG<CONTADO.EXTRA> = Y.IN.MSG:",":W.ADDITIONAL.INFO
-    CALL APAP.REDOFCFI.RedoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*MANUAL R22 CODE CONVERSION
 
     IF W.TOT.FT.OK GT 0 THEN
         GOSUB FT.PROCESS
@@ -249,7 +249,7 @@ MESSAGE.FORMAT:
     Y.STT.REC        = ""
     Y.IN.MSG         = Y.NEW.TXT.MSG<I.VAR>
     Y.NEW.TXT.MSG<I.VAR> = Y.NEW.TXT.MSG<I.VAR>:",":W.ADDITIONAL.INFO
-    CALL APAP.REDOFCFI.RedoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*MANUAL R22 CODE CONVERSION
     R.PARAM<1>  = "NULL"
     R.PARAM<2>  = "N"
     R.PARAM<3>  = FIELD(DATO.OUT,"|",3)
@@ -291,7 +291,7 @@ REPORT.FORMAT:
     Y.IN.MSG  = WRECORD.NUMBER:",":Y.IN.MSG:",":W.STATUS:",":Y.ERR.MSG
 *
 *  Call RCL to set data to send report
-    CALL APAP.REDOFCFI.RedoFiMsgFormat(Y.ID.RCL,Y.IN.MSG,Y.OUT.MSG) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOFCFI.redoFiMsgFormat(Y.ID.RCL,Y.IN.MSG,Y.OUT.MSG) ;*MANUAL R22 CODE CONVERSION
 *  Save record in log tabla REDO.INTERFACE.REC.ACT
     FI.INTERFACES = FI.INTERFACE:".INT"
 * DEBUG
@@ -368,7 +368,8 @@ FT.PROCESS:
 *
 * Paragraph that record the error message and move the file to the rejected directory renaming the file
 *
-    CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*MANUAL R22 CODE CONVERSION
+    CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
+*CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*MANUAL R22 CODE CONVERSION
 
     IF OUT.ERR<2> NE "" THEN
         E =OUT.ERR

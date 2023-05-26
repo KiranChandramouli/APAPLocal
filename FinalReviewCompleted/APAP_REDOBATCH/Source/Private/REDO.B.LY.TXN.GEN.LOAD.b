@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNjMyNTk3OTc1OkNwMTI1MjoxNjgxMjc3ODIwODI4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 Apr 2023 11:07:00
+* @ValidationCode : MjoxNjMyNTk3OTc1OkNwMTI1MjoxNjg0ODU0MzkyNDUwOklUU1M6LTE6LTE6MTA3OToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1079
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.B.LY.TXN.GEN.LOAD
 *------------------
 *   Date           who           Reference            Description
 * 03-MAY-2010   S.Marimuthu  ODR-2009-12-0276      Initial Creation
-* 12-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 12-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
     $INSERT I_COMMON

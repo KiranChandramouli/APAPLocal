@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo3NTg2NzM4NjpDcDEyNTI6MTY4MTE5MjM4Mzg5MDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 Apr 2023 11:23:03
+* @ValidationCode : Mjo3NTg2NzM4NjpDcDEyNTI6MTY4NDg1NDM4NzEwMTpJVFNTOi0xOi0xOjI2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 26
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -30,7 +30,7 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE.SELECT
 *1-SEP-2010    Swaminathan.S.R          ODR-2009-12-0290    INITIAL CREATION
 *12-APR-2013   Karthik Sundararajan     PERF-CHANGE
 * Date                  who                   Reference              
-* 11-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 11-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------
     $INSERT I_COMMON

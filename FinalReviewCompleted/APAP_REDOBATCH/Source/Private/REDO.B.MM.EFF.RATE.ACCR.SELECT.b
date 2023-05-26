@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTU3NTMyNTc1MTpDcDEyNTI6MTY4MTI3Nzg3NDA2MzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 Apr 2023 11:07:54
+* @ValidationCode : MjotMTU3NTMyNTc1MTpDcDEyNTI6MTY4NDg1NDM5MjcwOTpJVFNTOi0xOi0xOi0xNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -14
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,7 +28,7 @@ SUBROUTINE REDO.B.MM.EFF.RATE.ACCR.SELECT
 * Date           Who                  Reference           Description
 * ------         ------               -------------       -------------
 * 12 FEB 2013    Balagurunathan B     RTC-553577          Initial Creation
-* 12-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 12-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON

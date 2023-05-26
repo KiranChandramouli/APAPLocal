@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMTU0MjMzMjI1OkNwMTI1MjoxNjgwNzgxMjc4OTU5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 17:11:18
+* @ValidationCode : MjoxMTU0MjMzMjI1OkNwMTI1MjoxNjg0ODU0Mzc5OTk0OklUU1M6LTE6LTE6Mjk4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 298
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -22,7 +22,7 @@ SUBROUTINE REDO.B.AUDIT.LOG.BULK(Y.ID)
 *-------------------------------------------------------------------------------------
 *Modification
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION SESSION.NO TO AGENT.NUMBER AND I_COMMON TO I_TSA.COMMON AND FM TO @FM
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION SESSION.NO TO AGENT.NUMBER AND I_COMMON TO I_TSA.COMMON AND FM TO @FM
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------------
 

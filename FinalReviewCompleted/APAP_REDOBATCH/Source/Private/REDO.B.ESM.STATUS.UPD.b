@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTg3MjI4MDY0NDpDcDEyNTI6MTY4MTE5MTY2MTk5MTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 Apr 2023 11:11:01
+* @ValidationCode : MjotMTg3MjI4MDY0NDpDcDEyNTI6MTY4NDg1NDM4NjMxMjpJVFNTOi0xOi0xOjI5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:26
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 293
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -26,7 +26,7 @@ SUBROUTINE REDO.B.ESM.STATUS.UPD(Y.REDO.T.MSG.ID)
 *  DATE             WHO         REFERENCE         DESCRIPTION
 * 09 AUG 2011    Prabhu N      PACS00100804      routine for the updating secure message status to UNREAD
 * Date                  who                   Reference              
-* 11-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - FM TO @FM AND ++ TO += 1
+* 11-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - FM TO @FM AND ++ TO += 1
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------
     $INSERT I_EQUATE

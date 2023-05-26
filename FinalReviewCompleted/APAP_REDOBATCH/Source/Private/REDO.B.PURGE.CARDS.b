@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTE3OTQ2OTQxNzpDcDEyNTI6MTY4MTI4MzgxMjQ1MzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 Apr 2023 12:46:52
+* @ValidationCode : MjotMTE3OTQ2OTQxNzpDcDEyNTI6MTY4NDg1NDM5NDgwMDpJVFNTOi0xOi0xOjE3MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 172
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -29,7 +29,7 @@ SUBROUTINE REDO.B.PURGE.CARDS(Y.ID)
 *   ------         ------               -------------            -------------
 *  30/07/2010       REKHA S            ODR-2010-03-0400 B166      Initial Creation
 * Date                  who                   Reference              
-* 12-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 12-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *
 *********************************************************************************************************

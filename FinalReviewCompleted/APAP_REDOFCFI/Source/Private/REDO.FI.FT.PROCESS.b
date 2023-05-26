@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODY0NzExODIwOlVURi04OjE2ODI1MTQ3ODY2NTk6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:43:06
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationCode : MjoyODc2NDQyOTI6Q3AxMjUyOjE2ODUxMDYwODQxMzA6SVRTUzotMTotMToxODU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:24
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 185
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -44,8 +44,8 @@ SUBROUTINE REDO.FI.FT.PROCESS(Y.REC.ID)
             CALL APAP.TAM.redoFiDebitProcesBacen(rParams, outResp, outErr) ;*R22 Manual Conversion
 
         CASE R.REDO.TEMP.FI.CONTROL<FI.TEMP.INTER.TYPE> EQ 'INTNOMINA'
-          
-            CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.REF, OUT.RESP) ;*R22 Manual Conversion
+            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.REF, OUT.RESP)
+*CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.REF, OUT.RESP) ;*R22 Manual Conversion
        
         CASE R.REDO.TEMP.FI.CONTROL<FI.TEMP.INTER.TYPE> EQ 'EXTNOMINA'
 *CALL APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM,OUT.REF,OUT.RESP)

@@ -3,7 +3,7 @@ component APAP.REDOBATCH
 metamodelVersion 1.6
 # -------------------------------------------------
 
-public method ApapBCreateLnService (
+public method apapBCreateLnService (
     INOUT RedoCreateArr string
 )
 {
@@ -12,7 +12,7 @@ public method ApapBCreateLnService (
 
 
 
-public method RedoBAchTransferRou (
+public method redoBAchTransferRou (
     INOUT YId string
 )
 {
@@ -21,7 +21,7 @@ public method RedoBAchTransferRou (
 
 
 
-public method RedoBAciUpdLoad (
+public method redoBAciUpdLoad (
 )
 {
     jBC:REDO.B.ACI.UPD.LOAD
@@ -29,7 +29,7 @@ public method RedoBAciUpdLoad (
 
 
 
-public method RedoBAciUpdSelect (
+public method redoBAciUpdSelect (
 )
 {
     jBC:REDO.B.ACI.UPD.SELECT
@@ -37,7 +37,7 @@ public method RedoBAciUpdSelect (
 
 
 
-public method RedoBAdminCheque (
+public method redoBAdminCheque (
     INOUT YIdList string
 )
 {
@@ -46,7 +46,7 @@ public method RedoBAdminCheque (
 
 
 
-public method RedoBAdminChequeLoad (
+public method redoBAdminChequeLoad (
 )
 {
     jBC:REDO.B.ADMIN.CHEQUE.LOAD
@@ -54,7 +54,7 @@ public method RedoBAdminChequeLoad (
 
 
 
-public method RedoBAdminChequeSelect (
+public method redoBAdminChequeSelect (
 )
 {
     jBC:REDO.B.ADMIN.CHEQUE.SELECT
@@ -62,7 +62,7 @@ public method RedoBAdminChequeSelect (
 
 
 
-public method RedoBAleUpdCheques (
+public method redoBAleUpdCheques (
     INOUT YApgId string
 )
 {
@@ -71,7 +71,7 @@ public method RedoBAleUpdCheques (
 
 
 
-public method RedoBAleUpdChequesLoad (
+public method redoBAleUpdChequesLoad (
 )
 {
     jBC:REDO.B.ALE.UPD.CHEQUES.LOAD
@@ -79,7 +79,7 @@ public method RedoBAleUpdChequesLoad (
 
 
 
-public method RedoBApplyChgSelect (
+public method redoBApplyChgSelect (
 )
 {
     jBC:REDO.B.APPLY.CHG.SELECT
@@ -87,7 +87,7 @@ public method RedoBApplyChgSelect (
 
 
 
-public method RedoBArcOfsProcess (
+public method redoBArcOfsProcess (
 )
 {
     jBC:REDO.B.ARC.OFS.PROCESS
@@ -95,7 +95,7 @@ public method RedoBArcOfsProcess (
 
 
 
-public method RedoBArchieveTrace (
+public method redoBArchieveTrace (
     INOUT TraceArcId string
 )
 {
@@ -104,7 +104,7 @@ public method RedoBArchieveTrace (
 
 
 
-public method RedoBArchieveTraceLoad (
+public method redoBArchieveTraceLoad (
 )
 {
     jBC:REDO.B.ARCHIEVE.TRACE.LOAD
@@ -112,7 +112,7 @@ public method RedoBArchieveTraceLoad (
 
 
 
-public method RedoBArchieveTraceSelect (
+public method redoBArchieveTraceSelect (
 )
 {
     jBC:REDO.B.ARCHIEVE.TRACE.SELECT
@@ -120,7 +120,7 @@ public method RedoBArchieveTraceSelect (
 
 
 
-public method RedoBAtChangePass (
+public method redoBAtChangePass (
 )
 {
     jBC:REDO.B.AT.CHANGE.PASS
@@ -128,7 +128,7 @@ public method RedoBAtChangePass (
 
 
 
-public method RedoBAuditLogBulk (
+public method redoBAuditLogBulk (
     INOUT YId string
 )
 {
@@ -137,7 +137,7 @@ public method RedoBAuditLogBulk (
 
 
 
-public method RedoBAutoItemReq (
+public method redoBAutoItemReq (
     INOUT YSel string
 )
 {
@@ -146,7 +146,7 @@ public method RedoBAutoItemReq (
 
 
 
-public method RedoBAutoItemReqLoad (
+public method redoBAutoItemReqLoad (
 )
 {
     jBC:REDO.B.AUTO.ITEM.REQ.LOAD
@@ -154,7 +154,7 @@ public method RedoBAutoItemReqLoad (
 
 
 
-public method RedoBAutoItemReqSelect (
+public method redoBAutoItemReqSelect (
 )
 {
     jBC:REDO.B.AUTO.ITEM.REQ.SELECT
@@ -162,7 +162,7 @@ public method RedoBAutoItemReqSelect (
 
 
 
-public method RedoBAutoPayment (
+public method redoBAutoPayment (
     INOUT YDdAccount string
 )
 {
@@ -171,7 +171,7 @@ public method RedoBAutoPayment (
 
 
 
-public method RedoBAutoPaymentLoad (
+public method redoBAutoPaymentLoad (
 )
 {
     jBC:REDO.B.AUTO.PAYMENT.LOAD
@@ -179,7 +179,7 @@ public method RedoBAutoPaymentLoad (
 
 
 
-public method RedoBAutoPaymentSelect (
+public method redoBAutoPaymentSelect (
 )
 {
     jBC:REDO.B.AUTO.PAYMENT.SELECT
@@ -187,7 +187,7 @@ public method RedoBAutoPaymentSelect (
 
 
 
-public method RedoBAutomaticOrder (
+public method redoBAutomaticOrder (
     INOUT YSrSelList string
 )
 {
@@ -196,7 +196,7 @@ public method RedoBAutomaticOrder (
 
 
 
-public method RedoBAzAccBal (
+public method redoBAzAccBal (
     INOUT AccountId string
 )
 {
@@ -205,7 +205,7 @@ public method RedoBAzAccBal (
 
 
 
-public method RedoBAzAccBalLoad (
+public method redoBAzAccBalLoad (
 )
 {
     jBC:REDO.B.AZ.ACC.BAL.LOAD
@@ -213,7 +213,7 @@ public method RedoBAzAccBalLoad (
 
 
 
-public method RedoBAzAccBalSelect (
+public method redoBAzAccBalSelect (
 )
 {
     jBC:REDO.B.AZ.ACC.BAL.SELECT
@@ -221,7 +221,7 @@ public method RedoBAzAccBalSelect (
 
 
 
-public method RedoBAzMigPeriodEnd (
+public method redoBAzMigPeriodEnd (
     INOUT YAzAccountId string
 )
 {
@@ -230,7 +230,7 @@ public method RedoBAzMigPeriodEnd (
 
 
 
-public method RedoBAzMigPeriodEndLoad (
+public method redoBAzMigPeriodEndLoad (
 )
 {
     jBC:REDO.B.AZ.MIG.PERIOD.END.LOAD
@@ -238,7 +238,7 @@ public method RedoBAzMigPeriodEndLoad (
 
 
 
-public method RedoBAzMigPeriodEndSelect (
+public method redoBAzMigPeriodEndSelect (
 )
 {
     jBC:REDO.B.AZ.MIG.PERIOD.END.SELECT
@@ -246,7 +246,7 @@ public method RedoBAzMigPeriodEndSelect (
 
 
 
-public method RedoBBatCheques (
+public method redoBBatCheques (
     INOUT YClrOutwardId1 string
 )
 {
@@ -255,7 +255,7 @@ public method RedoBBatCheques (
 
 
 
-public method RedoBBatChequesLoad (
+public method redoBBatChequesLoad (
 )
 {
     jBC:REDO.B.BAT.CHEQUES.LOAD
@@ -263,7 +263,7 @@ public method RedoBBatChequesLoad (
 
 
 
-public method RedoBBcrProcessLog (
+public method redoBBcrProcessLog (
 )
 {
     jBC:REDO.B.BCR.PROCESS.LOG
@@ -271,7 +271,7 @@ public method RedoBBcrProcessLog (
 
 
 
-public method RedoBBcrReportBuild (
+public method redoBBcrReportBuild (
 )
 {
     jBC:REDO.B.BCR.REPORT.BUILD
@@ -279,7 +279,7 @@ public method RedoBBcrReportBuild (
 
 
 
-public method RedoBBcrReportDelivery (
+public method redoBBcrReportDelivery (
 )
 {
     jBC:REDO.B.BCR.REPORT.DELIVERY
@@ -287,7 +287,7 @@ public method RedoBBcrReportDelivery (
 
 
 
-public method RedoBBcrReportParamUpd (
+public method redoBBcrReportParamUpd (
 )
 {
     jBC:REDO.B.BCR.REPORT.PARAM.UPD
@@ -295,7 +295,7 @@ public method RedoBBcrReportParamUpd (
 
 
 
-public method RedoBBuildSelFc (
+public method redoBBuildSelFc (
     INOUT EnqData string
 )
 {
@@ -304,7 +304,7 @@ public method RedoBBuildSelFc (
 
 
 
-public method RedoBCapitaliseInt (
+public method redoBCapitaliseInt (
     INOUT IncomePar string
 )
 {
@@ -313,7 +313,7 @@ public method RedoBCapitaliseInt (
 
 
 
-public method RedoBCapitaliseIntLoad (
+public method redoBCapitaliseIntLoad (
 )
 {
     jBC:REDO.B.CAPITALISE.INT.LOAD
@@ -321,7 +321,7 @@ public method RedoBCapitaliseIntLoad (
 
 
 
-public method RedoBCapitaliseIntSelect (
+public method redoBCapitaliseIntSelect (
 )
 {
     jBC:REDO.B.CAPITALISE.INT.SELECT
@@ -329,7 +329,7 @@ public method RedoBCapitaliseIntSelect (
 
 
 
-public method RedoBChangeWorkLoadEnd (
+public method redoBChangeWorkLoadEnd (
 )
 {
     jBC:REDO.B.CHANGE.WORK.LOAD.END
@@ -337,7 +337,7 @@ public method RedoBChangeWorkLoadEnd (
 
 
 
-public method RedoBCheckIntRate (
+public method redoBCheckIntRate (
     INOUT YAzAccountId string
 )
 {
@@ -346,7 +346,7 @@ public method RedoBCheckIntRate (
 
 
 
-public method RedoBCheckIntRateLoad (
+public method redoBCheckIntRateLoad (
 )
 {
     jBC:REDO.B.CHECK.INT.RATE.LOAD
@@ -354,7 +354,7 @@ public method RedoBCheckIntRateLoad (
 
 
 
-public method RedoBCheckIntRateSelect (
+public method redoBCheckIntRateSelect (
 )
 {
     jBC:REDO.B.CHECK.INT.RATE.SELECT
@@ -362,7 +362,7 @@ public method RedoBCheckIntRateSelect (
 
 
 
-public method RedoBChgInactiveAcct (
+public method redoBChgInactiveAcct (
     INOUT YAcctId string
 )
 {
@@ -371,7 +371,7 @@ public method RedoBChgInactiveAcct (
 
 
 
-public method RedoBChgInactiveAcctLoad (
+public method redoBChgInactiveAcctLoad (
 )
 {
     jBC:REDO.B.CHG.INACTIVE.ACCT.LOAD
@@ -379,7 +379,7 @@ public method RedoBChgInactiveAcctLoad (
 
 
 
-public method RedoBChgInactiveAcctSelect (
+public method redoBChgInactiveAcctSelect (
 )
 {
     jBC:REDO.B.CHG.INACTIVE.ACCT.SELECT
@@ -387,7 +387,7 @@ public method RedoBChgInactiveAcctSelect (
 
 
 
-public method RedoBChqUpdStatus (
+public method redoBChqUpdStatus (
     INOUT YLoanNo string
 )
 {
@@ -396,7 +396,7 @@ public method RedoBChqUpdStatus (
 
 
 
-public method RedoBClearChqSelect (
+public method redoBClearChqSelect (
 )
 {
     jBC:REDO.B.CLEAR.CHQ.SELECT
@@ -405,7 +405,7 @@ public method RedoBClearChqSelect (
 
 
 
-public method RedoBClearOutLoad (
+public method redoBClearOutLoad (
 )
 {
     jBC:REDO.B.CLEAR.OUT.LOAD
@@ -413,7 +413,7 @@ public method RedoBClearOutLoad (
 
 
 
-public method RedoBClearOutPost (
+public method redoBClearOutPost (
 )
 {
     jBC:REDO.B.CLEAR.OUT.POST
@@ -421,7 +421,7 @@ public method RedoBClearOutPost (
 
 
 
-public method RedoBClearOutSelect (
+public method redoBClearOutSelect (
 )
 {
     jBC:REDO.B.CLEAR.OUT.SELECT
@@ -430,7 +430,7 @@ public method RedoBClearOutSelect (
 
 
 
-public method RedoBClearReturnSelect (
+public method redoBClearReturnSelect (
 )
 {
     jBC:REDO.B.CLEAR.RETURN.SELECT
@@ -438,7 +438,7 @@ public method RedoBClearReturnSelect (
 
 
 
-public method RedoBComRiskGroup (
+public method redoBComRiskGroup (
     INOUT CustomerId string
 )
 {
@@ -447,7 +447,7 @@ public method RedoBComRiskGroup (
 
 
 
-public method RedoBComRiskGroupLoad (
+public method redoBComRiskGroupLoad (
 )
 {
     jBC:REDO.B.COM.RISK.GROUP.LOAD
@@ -455,7 +455,7 @@ public method RedoBComRiskGroupLoad (
 
 
 
-public method RedoBComRiskGroupPost (
+public method redoBComRiskGroupPost (
 )
 {
     jBC:REDO.B.COM.RISK.GROUP.POST
@@ -463,7 +463,7 @@ public method RedoBComRiskGroupPost (
 
 
 
-public method RedoBComRiskGroupSelect (
+public method redoBComRiskGroupSelect (
 )
 {
     jBC:REDO.B.COM.RISK.GROUP.SELECT
@@ -471,7 +471,7 @@ public method RedoBComRiskGroupSelect (
 
 
 
-public method RedoBCommerDebtrCl (
+public method redoBCommerDebtrCl (
     INOUT YAaCusId string
 )
 {
@@ -480,7 +480,7 @@ public method RedoBCommerDebtrCl (
 
 
 
-public method RedoBCommerDebtrClLoad (
+public method redoBCommerDebtrClLoad (
 )
 {
     jBC:REDO.B.COMMER.DEBTR.CL.LOAD
@@ -488,7 +488,7 @@ public method RedoBCommerDebtrClLoad (
 
 
 
-public method RedoBCompOwnRiskGroup (
+public method redoBCompOwnRiskGroup (
     INOUT CustomerId string
 )
 {
@@ -497,7 +497,7 @@ public method RedoBCompOwnRiskGroup (
 
 
 
-public method RedoBCompOwnRiskGroupLoad (
+public method redoBCompOwnRiskGroupLoad (
 )
 {
     jBC:REDO.B.COMP.OWN.RISK.GROUP.LOAD
@@ -505,7 +505,7 @@ public method RedoBCompOwnRiskGroupLoad (
 
 
 
-public method RedoBCompOwnRiskGroupPost (
+public method redoBCompOwnRiskGroupPost (
 )
 {
     jBC:REDO.B.COMP.OWN.RISK.GROUP.POST
@@ -513,7 +513,7 @@ public method RedoBCompOwnRiskGroupPost (
 
 
 
-public method RedoBCompOwnRiskGroupSelect (
+public method redoBCompOwnRiskGroupSelect (
 )
 {
     jBC:REDO.B.COMP.OWN.RISK.GROUP.SELECT
@@ -521,7 +521,7 @@ public method RedoBCompOwnRiskGroupSelect (
 
 
 
-public method RedoBCompShareGroup (
+public method redoBCompShareGroup (
     INOUT CustomerId string
 )
 {
@@ -530,7 +530,7 @@ public method RedoBCompShareGroup (
 
 
 
-public method RedoBCompShareGroupLoad (
+public method redoBCompShareGroupLoad (
 )
 {
     jBC:REDO.B.COMP.SHARE.GROUP.LOAD
@@ -538,7 +538,7 @@ public method RedoBCompShareGroupLoad (
 
 
 
-public method RedoBCompShareGroupPost (
+public method redoBCompShareGroupPost (
 )
 {
     jBC:REDO.B.COMP.SHARE.GROUP.POST
@@ -546,7 +546,7 @@ public method RedoBCompShareGroupPost (
 
 
 
-public method RedoBCompShareGroupSelect (
+public method redoBCompShareGroupSelect (
 )
 {
     jBC:REDO.B.COMP.SHARE.GROUP.SELECT
@@ -554,7 +554,7 @@ public method RedoBCompShareGroupSelect (
 
 
 
-public method RedoBConvFileSelect (
+public method redoBConvFileSelect (
 )
 {
     jBC:REDO.B.CONV.FILE.SELECT
@@ -562,7 +562,7 @@ public method RedoBConvFileSelect (
 
 
 
-public method RedoBCreateRenewal (
+public method redoBCreateRenewal (
     INOUT YCrSelList string
 )
 {
@@ -571,7 +571,7 @@ public method RedoBCreateRenewal (
 
 
 
-public method RedoBCreateRenewalLoad (
+public method redoBCreateRenewalLoad (
 )
 {
     jBC:REDO.B.CREATE.RENEWAL.LOAD
@@ -579,7 +579,7 @@ public method RedoBCreateRenewalLoad (
 
 
 
-public method RedoBCreateRenewalSelect (
+public method redoBCreateRenewalSelect (
 )
 {
     jBC:REDO.B.CREATE.RENEWAL.SELECT
@@ -587,7 +587,7 @@ public method RedoBCreateRenewalSelect (
 
 
 
-public method RedoBCreditNostroAcct (
+public method redoBCreditNostroAcct (
     INOUT ChqDetailsId string
 )
 {
@@ -596,7 +596,7 @@ public method RedoBCreditNostroAcct (
 
 
 
-public method RedoBCreditNostroAcctLoad (
+public method redoBCreditNostroAcctLoad (
 )
 {
     jBC:REDO.B.CREDIT.NOSTRO.ACCT.LOAD
@@ -604,7 +604,7 @@ public method RedoBCreditNostroAcctLoad (
 
 
 
-public method RedoBCreditNostroAcctSelect (
+public method redoBCreditNostroAcctSelect (
 )
 {
     jBC:REDO.B.CREDIT.NOSTRO.ACCT.SELECT
@@ -612,7 +612,7 @@ public method RedoBCreditNostroAcctSelect (
 
 
 
-public method RedoBCustPrdAciPurge (
+public method redoBCustPrdAciPurge (
     INOUT YAcctNo string
 )
 {
@@ -621,7 +621,7 @@ public method RedoBCustPrdAciPurge (
 
 
 
-public method RedoBCustPrdAciUpd (
+public method redoBCustPrdAciUpd (
     INOUT YAcctNo string
 )
 {
@@ -630,7 +630,7 @@ public method RedoBCustPrdAciUpd (
 
 
 
-public method RedoBCustPrdAciUpdLoad (
+public method redoBCustPrdAciUpdLoad (
 )
 {
     jBC:REDO.B.CUST.PRD.ACI.UPD.LOAD
@@ -638,7 +638,7 @@ public method RedoBCustPrdAciUpdLoad (
 
 
 
-public method RedoBCustPrdAciUpdPre (
+public method redoBCustPrdAciUpdPre (
     INOUT YAcctNo string
 )
 {
@@ -647,7 +647,7 @@ public method RedoBCustPrdAciUpdPre (
 
 
 
-public method RedoBCustPrdAciUpdPreLoad (
+public method redoBCustPrdAciUpdPreLoad (
 )
 {
     jBC:REDO.B.CUST.PRD.ACI.UPD.PRE.LOAD
@@ -655,7 +655,7 @@ public method RedoBCustPrdAciUpdPreLoad (
 
 
 
-public method RedoBCustPrdAciUpdPreSelect (
+public method redoBCustPrdAciUpdPreSelect (
 )
 {
     jBC:REDO.B.CUST.PRD.ACI.UPD.PRE.SELECT
@@ -663,7 +663,7 @@ public method RedoBCustPrdAciUpdPreSelect (
 
 
 
-public method RedoBCustPrdAciUpdSelect (
+public method redoBCustPrdAciUpdSelect (
 )
 {
     jBC:REDO.B.CUST.PRD.ACI.UPD.SELECT
@@ -671,7 +671,7 @@ public method RedoBCustPrdAciUpdSelect (
 
 
 
-public method RedoBCustomerProvision (
+public method redoBCustomerProvision (
     INOUT YCusId string
 )
 {
@@ -680,7 +680,7 @@ public method RedoBCustomerProvision (
 
 
 
-public method RedoBCustomerProvisionLoad (
+public method redoBCustomerProvisionLoad (
 )
 {
     jBC:REDO.B.CUSTOMER.PROVISION.LOAD
@@ -688,7 +688,7 @@ public method RedoBCustomerProvisionLoad (
 
 
 
-public method RedoBCycleCusAgeLoad (
+public method redoBCycleCusAgeLoad (
 )
 {
     jBC:REDO.B.CYCLE.CUS.AGE.LOAD
@@ -696,7 +696,7 @@ public method RedoBCycleCusAgeLoad (
 
 
 
-public method RedoBCycleCusAgeSelect (
+public method redoBCycleCusAgeSelect (
 )
 {
     jBC:REDO.B.CYCLE.CUS.AGE.SELECT
@@ -704,7 +704,7 @@ public method RedoBCycleCusAgeSelect (
 
 
 
-public method RedoBDdDailyProcess (
+public method redoBDdDailyProcess (
     INOUT Id string
 )
 {
@@ -713,7 +713,7 @@ public method RedoBDdDailyProcess (
 
 
 
-public method RedoBDdDailyProcessLoad (
+public method redoBDdDailyProcessLoad (
 )
 {
     jBC:REDO.B.DD.DAILY.PROCESS.LOAD
@@ -721,7 +721,7 @@ public method RedoBDdDailyProcessLoad (
 
 
 
-public method RedoBDdDailyProcessSelect (
+public method redoBDdDailyProcessSelect (
 )
 {
     jBC:REDO.B.DD.DAILY.PROCESS.SELECT
@@ -729,7 +729,7 @@ public method RedoBDdDailyProcessSelect (
 
 
 
-public method RedoBDealSlipQueuePurge (
+public method redoBDealSlipQueuePurge (
     INOUT YPurgeId string
 )
 {
@@ -738,7 +738,7 @@ public method RedoBDealSlipQueuePurge (
 
 
 
-public method RedoBDealSlipQueuePurgeLoad (
+public method redoBDealSlipQueuePurgeLoad (
 )
 {
     jBC:REDO.B.DEAL.SLIP.QUEUE.PURGE.LOAD
@@ -746,7 +746,7 @@ public method RedoBDealSlipQueuePurgeLoad (
 
 
 
-public method RedoBDealSlipQueuePurgeSelect (
+public method redoBDealSlipQueuePurgeSelect (
 )
 {
     jBC:REDO.B.DEAL.SLIP.QUEUE.PURGE.SELECT
@@ -754,7 +754,7 @@ public method RedoBDealSlipQueuePurgeSelect (
 
 
 
-public method RedoBDestroyCards (
+public method redoBDestroyCards (
     INOUT YDhSelList string
 )
 {
@@ -763,7 +763,7 @@ public method RedoBDestroyCards (
 
 
 
-public method RedoBDestroyCardsLoad (
+public method redoBDestroyCardsLoad (
 )
 {
     jBC:REDO.B.DESTROY.CARDS.LOAD
@@ -771,7 +771,7 @@ public method RedoBDestroyCardsLoad (
 
 
 
-public method RedoBDestroyCardsSelect (
+public method redoBDestroyCardsSelect (
 )
 {
     jBC:REDO.B.DESTROY.CARDS.SELECT
@@ -779,7 +779,7 @@ public method RedoBDestroyCardsSelect (
 
 
 
-public method RedoBDirectDebit (
+public method redoBDirectDebit (
     INOUT Id string
 )
 {
@@ -788,7 +788,7 @@ public method RedoBDirectDebit (
 
 
 
-public method RedoBDirectDebitLoad (
+public method redoBDirectDebitLoad (
 )
 {
     jBC:REDO.B.DIRECT.DEBIT.LOAD
@@ -796,7 +796,7 @@ public method RedoBDirectDebitLoad (
 
 
 
-public method RedoBDirectDebitSelect (
+public method redoBDirectDebitSelect (
 )
 {
     jBC:REDO.B.DIRECT.DEBIT.SELECT
@@ -804,7 +804,7 @@ public method RedoBDirectDebitSelect (
 
 
 
-public method RedoBEir (
+public method redoBEir (
     INOUT YId string
 )
 {
@@ -813,7 +813,7 @@ public method RedoBEir (
 
 
 
-public method RedoBEirLoad (
+public method redoBEirLoad (
 )
 {
     jBC:REDO.B.EIR.LOAD
@@ -821,7 +821,7 @@ public method RedoBEirLoad (
 
 
 
-public method RedoBEirMthdSelect (
+public method redoBEirMthdSelect (
 )
 {
     jBC:REDO.B.EIR.MTHD.SELECT
@@ -829,7 +829,7 @@ public method RedoBEirMthdSelect (
 
 
 
-public method RedoBEirSelect (
+public method redoBEirSelect (
 )
 {
     jBC:REDO.B.EIR.SELECT
@@ -837,7 +837,7 @@ public method RedoBEirSelect (
 
 
 
-public method RedoBEmailExpLimit (
+public method redoBEmailExpLimit (
     INOUT IdLimits string
 )
 {
@@ -846,7 +846,7 @@ public method RedoBEmailExpLimit (
 
 
 
-public method RedoBEmailExpLimitLoad (
+public method redoBEmailExpLimitLoad (
 )
 {
     jBC:REDO.B.EMAIL.EXP.LIMIT.LOAD
@@ -854,7 +854,7 @@ public method RedoBEmailExpLimitLoad (
 
 
 
-public method RedoBEmailExpLimitSelect (
+public method redoBEmailExpLimitSelect (
 )
 {
     jBC:REDO.B.EMAIL.EXP.LIMIT.SELECT
@@ -862,7 +862,7 @@ public method RedoBEmailExpLimitSelect (
 
 
 
-public method RedoBEsmStatusUpd (
+public method redoBEsmStatusUpd (
     INOUT YRedoTMsgId string
 )
 {
@@ -871,7 +871,7 @@ public method RedoBEsmStatusUpd (
 
 
 
-public method RedoBEsmStatusUpdLoad (
+public method redoBEsmStatusUpdLoad (
 )
 {
     jBC:REDO.B.ESM.STATUS.UPD.LOAD
@@ -879,7 +879,7 @@ public method RedoBEsmStatusUpdLoad (
 
 
 
-public method RedoBEsmStatusUpdSelect (
+public method redoBEsmStatusUpdSelect (
 )
 {
     jBC:REDO.B.ESM.STATUS.UPD.SELECT
@@ -887,7 +887,7 @@ public method RedoBEsmStatusUpdSelect (
 
 
 
-public method RedoBExpireGvtNgvtSelect (
+public method redoBExpireGvtNgvtSelect (
 )
 {
     jBC:REDO.B.EXPIRE.GVT.NGVT.SELECT
@@ -895,7 +895,7 @@ public method RedoBExpireGvtNgvtSelect (
 
 
 
-public method RedoBExtSunnCusStatus (
+public method redoBExtSunnCusStatus (
     INOUT YId string
 )
 {
@@ -904,7 +904,7 @@ public method RedoBExtSunnCusStatus (
 
 
 
-public method RedoBExtSunnCusStatusLoad (
+public method redoBExtSunnCusStatusLoad (
 )
 {
     jBC:REDO.B.EXT.SUNN.CUS.STATUS.LOAD
@@ -912,7 +912,7 @@ public method RedoBExtSunnCusStatusLoad (
 
 
 
-public method RedoBExtSunnCusStatusSelect (
+public method redoBExtSunnCusStatusSelect (
 )
 {
     jBC:REDO.B.EXT.SUNN.CUS.STATUS.SELECT
@@ -920,7 +920,7 @@ public method RedoBExtSunnCusStatusSelect (
 
 
 
-public method RedoBFtRetry (
+public method redoBFtRetry (
     INOUT ArrId string
 )
 {
@@ -929,7 +929,7 @@ public method RedoBFtRetry (
 
 
 
-public method RedoBFtRetryLoad (
+public method redoBFtRetryLoad (
 )
 {
     jBC:REDO.B.FT.RETRY.LOAD
@@ -937,7 +937,7 @@ public method RedoBFtRetryLoad (
 
 
 
-public method RedoBFtRetrySelect (
+public method redoBFtRetrySelect (
 )
 {
     jBC:REDO.B.FT.RETRY.SELECT
@@ -945,7 +945,7 @@ public method RedoBFtRetrySelect (
 
 
 
-public method RedoBFxProvDly (
+public method redoBFxProvDly (
     INOUT YCusId string
 )
 {
@@ -954,7 +954,7 @@ public method RedoBFxProvDly (
 
 
 
-public method RedoBGenAchOutFile (
+public method redoBGenAchOutFile (
     INOUT YAchSelList string
 )
 {
@@ -963,7 +963,7 @@ public method RedoBGenAchOutFile (
 
 
 
-public method RedoBGenAchOutFileLoad (
+public method redoBGenAchOutFileLoad (
 )
 {
     jBC:REDO.B.GEN.ACH.OUT.FILE.LOAD
@@ -971,7 +971,7 @@ public method RedoBGenAchOutFileLoad (
 
 
 
-public method RedoBGenAchOutFilePost (
+public method redoBGenAchOutFilePost (
 )
 {
     jBC:REDO.B.GEN.ACH.OUT.FILE.POST
@@ -979,7 +979,7 @@ public method RedoBGenAchOutFilePost (
 
 
 
-public method RedoBGenAchOutFileSelect (
+public method redoBGenAchOutFileSelect (
 )
 {
     jBC:REDO.B.GEN.ACH.OUT.FILE.SELECT
@@ -987,7 +987,7 @@ public method RedoBGenAchOutFileSelect (
 
 
 
-public method RedoBGenAchRejinwFile (
+public method redoBGenAchRejinwFile (
     INOUT ProcessId string
 )
 {
@@ -996,7 +996,7 @@ public method RedoBGenAchRejinwFile (
 
 
 
-public method RedoBGenAchRejinwFileLoad (
+public method redoBGenAchRejinwFileLoad (
 )
 {
     jBC:REDO.B.GEN.ACH.REJINW.FILE.LOAD
@@ -1004,7 +1004,7 @@ public method RedoBGenAchRejinwFileLoad (
 
 
 
-public method RedoBGenAchRejinwFilePost (
+public method redoBGenAchRejinwFilePost (
 )
 {
     jBC:REDO.B.GEN.ACH.REJINW.FILE.POST
@@ -1012,7 +1012,7 @@ public method RedoBGenAchRejinwFilePost (
 
 
 
-public method RedoBGenAchRejinwFileSelect (
+public method redoBGenAchRejinwFileSelect (
 )
 {
     jBC:REDO.B.GEN.ACH.REJINW.FILE.SELECT
@@ -1020,7 +1020,7 @@ public method RedoBGenAchRejinwFileSelect (
 
 
 
-public method RedoBGenNcfUnmapSelect (
+public method redoBGenNcfUnmapSelect (
 )
 {
     jBC:REDO.B.GEN.NCF.UNMAP.SELECT
@@ -1028,7 +1028,7 @@ public method RedoBGenNcfUnmapSelect (
 
 
 
-public method RedoBIncreaseAgent (
+public method redoBIncreaseAgent (
 )
 {
     jBC:REDO.B.INCREASE.AGENT
@@ -1036,7 +1036,7 @@ public method RedoBIncreaseAgent (
 
 
 
-public method RedoBInsChgExp (
+public method redoBInsChgExp (
     INOUT YId string
 )
 {
@@ -1045,7 +1045,7 @@ public method RedoBInsChgExp (
 
 
 
-public method RedoBInsChgExpLoad (
+public method redoBInsChgExpLoad (
 )
 {
     jBC:REDO.B.INS.CHG.EXP.LOAD
@@ -1053,7 +1053,7 @@ public method RedoBInsChgExpLoad (
 
 
 
-public method RedoBInsChgExpSelect (
+public method redoBInsChgExpSelect (
 )
 {
     jBC:REDO.B.INS.CHG.EXP.SELECT
@@ -1061,7 +1061,7 @@ public method RedoBInsChgExpSelect (
 
 
 
-public method RedoBIntAcctPmtProcess (
+public method redoBIntAcctPmtProcess (
 )
 {
     jBC:REDO.B.INT.ACCT.PMT.PROCESS
@@ -1069,7 +1069,7 @@ public method RedoBIntAcctPmtProcess (
 
 
 
-public method RedoBIntCalc (
+public method redoBIntCalc (
     INOUT SelList string
 )
 {
@@ -1078,7 +1078,7 @@ public method RedoBIntCalc (
 
 
 
-public method RedoBIntCalcLoad (
+public method redoBIntCalcLoad (
 )
 {
     jBC:REDO.B.INT.CALC.LOAD
@@ -1086,7 +1086,7 @@ public method RedoBIntCalcLoad (
 
 
 
-public method RedoBInwPreprocess (
+public method redoBInwPreprocess (
     INOUT RAperta string
 )
 {
@@ -1095,7 +1095,7 @@ public method RedoBInwPreprocess (
 
 
 
-public method RedoBInwPreprocessLoad (
+public method redoBInwPreprocessLoad (
 )
 {
     jBC:REDO.B.INW.PREPROCESS.LOAD
@@ -1103,7 +1103,7 @@ public method RedoBInwPreprocessLoad (
 
 
 
-public method RedoBInwPreprocessPost (
+public method redoBInwPreprocessPost (
 )
 {
     jBC:REDO.B.INW.PREPROCESS.POST
@@ -1111,7 +1111,7 @@ public method RedoBInwPreprocessPost (
 
 
 
-public method RedoBInwPreprocessSelect (
+public method redoBInwPreprocessSelect (
 )
 {
     jBC:REDO.B.INW.PREPROCESS.SELECT
@@ -1119,7 +1119,7 @@ public method RedoBInwPreprocessSelect (
 
 
 
-public method RedoBInwProcess (
+public method redoBInwProcess (
     INOUT SelList string
 )
 {
@@ -1128,7 +1128,7 @@ public method RedoBInwProcess (
 
 
 
-public method RedoBInwProcessLoad (
+public method redoBInwProcessLoad (
 )
 {
     jBC:REDO.B.INW.PROCESS.LOAD
@@ -1136,7 +1136,7 @@ public method RedoBInwProcessLoad (
 
 
 
-public method RedoBInwProcessSelect (
+public method redoBInwProcessSelect (
 )
 {
     jBC:REDO.B.INW.PROCESS.SELECT
@@ -1144,7 +1144,7 @@ public method RedoBInwProcessSelect (
 
 
 
-public method RedoBLetterHldDel (
+public method redoBLetterHldDel (
     INOUT SelIntList string
 )
 {
@@ -1153,7 +1153,7 @@ public method RedoBLetterHldDel (
 
 
 
-public method RedoBLinksConsanguinity (
+public method redoBLinksConsanguinity (
     INOUT CustomerId string
 )
 {
@@ -1162,7 +1162,7 @@ public method RedoBLinksConsanguinity (
 
 
 
-public method RedoBLinksConsanguinityLoad (
+public method redoBLinksConsanguinityLoad (
 )
 {
     jBC:REDO.B.LINKS.CONSANGUINITY.LOAD
@@ -1170,7 +1170,7 @@ public method RedoBLinksConsanguinityLoad (
 
 
 
-public method RedoBLinksConsanguinityPost (
+public method redoBLinksConsanguinityPost (
 )
 {
     jBC:REDO.B.LINKS.CONSANGUINITY.POST
@@ -1178,7 +1178,7 @@ public method RedoBLinksConsanguinityPost (
 
 
 
-public method RedoBLinksConsanguinitySelect (
+public method redoBLinksConsanguinitySelect (
 )
 {
     jBC:REDO.B.LINKS.CONSANGUINITY.SELECT
@@ -1186,7 +1186,7 @@ public method RedoBLinksConsanguinitySelect (
 
 
 
-public method RedoBLiqAcct (
+public method redoBLiqAcct (
     INOUT EnqData string
 )
 {
@@ -1195,7 +1195,7 @@ public method RedoBLiqAcct (
 
 
 
-public method RedoBListOfCompanies (
+public method redoBListOfCompanies (
     INOUT CustomerId string
 )
 {
@@ -1204,7 +1204,7 @@ public method RedoBListOfCompanies (
 
 
 
-public method RedoBListOfCompaniesLoad (
+public method redoBListOfCompaniesLoad (
 )
 {
     jBC:REDO.B.LIST.OF.COMPANIES.LOAD
@@ -1212,7 +1212,7 @@ public method RedoBListOfCompaniesLoad (
 
 
 
-public method RedoBListOfCompaniesPost (
+public method redoBListOfCompaniesPost (
 )
 {
     jBC:REDO.B.LIST.OF.COMPANIES.POST
@@ -1220,7 +1220,7 @@ public method RedoBListOfCompaniesPost (
 
 
 
-public method RedoBListOfShareholderLoad (
+public method redoBListOfShareholderLoad (
 )
 {
     jBC:REDO.B.LIST.OF.SHAREHOLDER.LOAD
@@ -1228,7 +1228,7 @@ public method RedoBListOfShareholderLoad (
 
 
 
-public method RedoBListOfShareholderPost (
+public method redoBListOfShareholderPost (
 )
 {
     jBC:REDO.B.LIST.OF.SHAREHOLDER.POST
@@ -1236,7 +1236,7 @@ public method RedoBListOfShareholderPost (
 
 
 
-public method RedoBListOfShareholderSelect (
+public method redoBListOfShareholderSelect (
 )
 {
     jBC:REDO.B.LIST.OF.SHAREHOLDER.SELECT
@@ -1244,7 +1244,7 @@ public method RedoBListOfShareholderSelect (
 
 
 
-public method RedoBLoanClosure (
+public method redoBLoanClosure (
     INOUT ArrId string
 )
 {
@@ -1253,7 +1253,7 @@ public method RedoBLoanClosure (
 
 
 
-public method RedoBLoanClosureLoad (
+public method redoBLoanClosureLoad (
 )
 {
     jBC:REDO.B.LOAN.CLOSURE.LOAD
@@ -1261,7 +1261,7 @@ public method RedoBLoanClosureLoad (
 
 
 
-public method RedoBLoanClosureSelect (
+public method redoBLoanClosureSelect (
 )
 {
     jBC:REDO.B.LOAN.CLOSURE.SELECT
@@ -1269,7 +1269,7 @@ public method RedoBLoanClosureSelect (
 
 
 
-public method RedoBLoanPrdUpd (
+public method redoBLoanPrdUpd (
     INOUT YCustomerId string
 )
 {
@@ -1278,7 +1278,7 @@ public method RedoBLoanPrdUpd (
 
 
 
-public method RedoBLoanPrdUpdLoad (
+public method redoBLoanPrdUpdLoad (
 )
 {
     jBC:REDO.B.LOAN.PRD.UPD.LOAD
@@ -1286,7 +1286,7 @@ public method RedoBLoanPrdUpdLoad (
 
 
 
-public method RedoBLoanStatusEliminationLoad (
+public method redoBLoanStatusEliminationLoad (
 )
 {
     jBC:REDO.B.LOAN.STATUS.ELIMINATION.LOAD
@@ -1294,7 +1294,7 @@ public method RedoBLoanStatusEliminationLoad (
 
 
 
-public method RedoBLoanStatusEliminationSelect (
+public method redoBLoanStatusEliminationSelect (
 )
 {
     jBC:REDO.B.LOAN.STATUS.ELIMINATION.SELECT
@@ -1302,7 +1302,7 @@ public method RedoBLoanStatusEliminationSelect (
 
 
 
-public method RedoBLocUpdBalMain (
+public method redoBLocUpdBalMain (
     INOUT ArrId string
 )
 {
@@ -1311,7 +1311,7 @@ public method RedoBLocUpdBalMain (
 
 
 
-public method RedoBLyFileGenLoad (
+public method redoBLyFileGenLoad (
 )
 {
     jBC:REDO.B.LY.FILE.GEN.LOAD
@@ -1319,7 +1319,7 @@ public method RedoBLyFileGenLoad (
 
 
 
-public method RedoBLyFileGenSelect (
+public method redoBLyFileGenSelect (
 )
 {
     jBC:REDO.B.LY.FILE.GEN.SELECT
@@ -1327,7 +1327,7 @@ public method RedoBLyFileGenSelect (
 
 
 
-public method RedoBLyGenAccmov (
+public method redoBLyGenAccmov (
     INOUT YMovId string
 )
 {
@@ -1336,7 +1336,7 @@ public method RedoBLyGenAccmov (
 
 
 
-public method RedoBLyGenAccmovLoad (
+public method redoBLyGenAccmovLoad (
 )
 {
     jBC:REDO.B.LY.GEN.ACCMOV.LOAD
@@ -1344,7 +1344,7 @@ public method RedoBLyGenAccmovLoad (
 
 
 
-public method RedoBLyGenAccmovSelect (
+public method redoBLyGenAccmovSelect (
 )
 {
     jBC:REDO.B.LY.GEN.ACCMOV.SELECT
@@ -1352,7 +1352,7 @@ public method RedoBLyGenAccmovSelect (
 
 
 
-public method RedoBLyGetExpSelect (
+public method redoBLyGetExpSelect (
 )
 {
     jBC:REDO.B.LY.GET.EXP.SELECT
@@ -1360,7 +1360,7 @@ public method RedoBLyGetExpSelect (
 
 
 
-public method RedoBLyGetTxnM (
+public method redoBLyGetTxnM (
     INOUT AcctEntTodayId string
 )
 {
@@ -1369,7 +1369,7 @@ public method RedoBLyGetTxnM (
 
 
 
-public method RedoBLyGetTxnMLoad (
+public method redoBLyGetTxnMLoad (
 )
 {
     jBC:REDO.B.LY.GET.TXN.M.LOAD
@@ -1377,7 +1377,7 @@ public method RedoBLyGetTxnMLoad (
 
 
 
-public method RedoBLyGetTxnMPre (
+public method redoBLyGetTxnMPre (
 )
 {
     jBC:REDO.B.LY.GET.TXN.M.PRE
@@ -1385,7 +1385,7 @@ public method RedoBLyGetTxnMPre (
 
 
 
-public method RedoBLyGetTxnMSelect (
+public method redoBLyGetTxnMSelect (
 )
 {
     jBC:REDO.B.LY.GET.TXN.M.SELECT
@@ -1393,7 +1393,7 @@ public method RedoBLyGetTxnMSelect (
 
 
 
-public method RedoBLyPgenAccop (
+public method redoBLyPgenAccop (
     INOUT AcctId string
 )
 {
@@ -1402,7 +1402,7 @@ public method RedoBLyPgenAccop (
 
 
 
-public method RedoBLyPgenAccopLoad (
+public method redoBLyPgenAccopLoad (
 )
 {
     jBC:REDO.B.LY.PGEN.ACCOP.LOAD
@@ -1410,7 +1410,7 @@ public method RedoBLyPgenAccopLoad (
 
 
 
-public method RedoBLyPgenAccopPre (
+public method redoBLyPgenAccopPre (
 )
 {
     jBC:REDO.B.LY.PGEN.ACCOP.PRE
@@ -1418,7 +1418,7 @@ public method RedoBLyPgenAccopPre (
 
 
 
-public method RedoBLyPgenBirthLoad (
+public method redoBLyPgenBirthLoad (
 )
 {
     jBC:REDO.B.LY.PGEN.BIRTH.LOAD
@@ -1426,7 +1426,7 @@ public method RedoBLyPgenBirthLoad (
 
 
 
-public method RedoBLyPgenBirthPre (
+public method redoBLyPgenBirthPre (
 )
 {
     jBC:REDO.B.LY.PGEN.BIRTH.PRE
@@ -1434,7 +1434,7 @@ public method RedoBLyPgenBirthPre (
 
 
 
-public method RedoBLyPgenBirthSelect (
+public method redoBLyPgenBirthSelect (
 )
 {
     jBC:REDO.B.LY.PGEN.BIRTH.SELECT
@@ -1442,7 +1442,7 @@ public method RedoBLyPgenBirthSelect (
 
 
 
-public method RedoBLyPgenBirthTot (
+public method redoBLyPgenBirthTot (
 )
 {
     jBC:REDO.B.LY.PGEN.BIRTH.TOT
@@ -1450,7 +1450,7 @@ public method RedoBLyPgenBirthTot (
 
 
 
-public method RedoBLyPgenExprod (
+public method redoBLyPgenExprod (
     INOUT CusId string
 )
 {
@@ -1459,7 +1459,7 @@ public method RedoBLyPgenExprod (
 
 
 
-public method RedoBLyPgenExprodLoad (
+public method redoBLyPgenExprodLoad (
 )
 {
     jBC:REDO.B.LY.PGEN.EXPROD.LOAD
@@ -1467,7 +1467,7 @@ public method RedoBLyPgenExprodLoad (
 
 
 
-public method RedoBLyPgenExprodPre (
+public method redoBLyPgenExprodPre (
 )
 {
     jBC:REDO.B.LY.PGEN.EXPROD.PRE
@@ -1475,7 +1475,7 @@ public method RedoBLyPgenExprodPre (
 
 
 
-public method RedoBLyPgenExprodSelect (
+public method redoBLyPgenExprodSelect (
 )
 {
     jBC:REDO.B.LY.PGEN.EXPROD.SELECT
@@ -1483,7 +1483,7 @@ public method RedoBLyPgenExprodSelect (
 
 
 
-public method RedoBLyPgenTbmPre (
+public method redoBLyPgenTbmPre (
 )
 {
     jBC:REDO.B.LY.PGEN.TBM.PRE
@@ -1491,7 +1491,7 @@ public method RedoBLyPgenTbmPre (
 
 
 
-public method RedoBLyPgenTbmSelect (
+public method redoBLyPgenTbmSelect (
 )
 {
     jBC:REDO.B.LY.PGEN.TBM.SELECT
@@ -1499,7 +1499,7 @@ public method RedoBLyPgenTbmSelect (
 
 
 
-public method RedoBLyPointGen (
+public method redoBLyPointGen (
     INOUT AcctId string
 )
 {
@@ -1508,7 +1508,7 @@ public method RedoBLyPointGen (
 
 
 
-public method RedoBLyPointGenLoad (
+public method redoBLyPointGenLoad (
 )
 {
     jBC:REDO.B.LY.POINT.GEN.LOAD
@@ -1516,7 +1516,7 @@ public method RedoBLyPointGenLoad (
 
 
 
-public method RedoBLyPointGenPre (
+public method redoBLyPointGenPre (
 )
 {
     jBC:REDO.B.LY.POINT.GEN.PRE
@@ -1524,7 +1524,7 @@ public method RedoBLyPointGenPre (
 
 
 
-public method RedoBLyPointGenSelect (
+public method redoBLyPointGenSelect (
 )
 {
     jBC:REDO.B.LY.POINT.GEN.SELECT
@@ -1532,7 +1532,7 @@ public method RedoBLyPointGenSelect (
 
 
 
-public method RedoBLyTxnGen (
+public method redoBLyTxnGen (
     INOUT YPrgmId string
 )
 {
@@ -1541,7 +1541,7 @@ public method RedoBLyTxnGen (
 
 
 
-public method RedoBLyTxnGenLoad (
+public method redoBLyTxnGenLoad (
 )
 {
     jBC:REDO.B.LY.TXN.GEN.LOAD
@@ -1549,7 +1549,7 @@ public method RedoBLyTxnGenLoad (
 
 
 
-public method RedoBMmEffRateAccrLoad (
+public method redoBMmEffRateAccrLoad (
 )
 {
     jBC:REDO.B.MM.EFF.RATE.ACCR.LOAD
@@ -1557,7 +1557,7 @@ public method RedoBMmEffRateAccrLoad (
 
 
 
-public method RedoBMmEffRateAccrSelect (
+public method redoBMmEffRateAccrSelect (
 )
 {
     jBC:REDO.B.MM.EFF.RATE.ACCR.SELECT
@@ -1565,7 +1565,7 @@ public method RedoBMmEffRateAccrSelect (
 
 
 
-public method RedoBMonitorMap (
+public method redoBMonitorMap (
     INOUT MsgId string
 )
 {
@@ -1574,7 +1574,7 @@ public method RedoBMonitorMap (
 
 
 
-public method RedoBMonitorMapLoad (
+public method redoBMonitorMapLoad (
 )
 {
     jBC:REDO.B.MONITOR.MAP.LOAD
@@ -1582,7 +1582,7 @@ public method RedoBMonitorMapLoad (
 
 
 
-public method RedoBMonitorMapSelect (
+public method redoBMonitorMapSelect (
 )
 {
     jBC:REDO.B.MONITOR.MAP.SELECT
@@ -1590,7 +1590,7 @@ public method RedoBMonitorMapSelect (
 
 
 
-public method RedoBMonitorShip (
+public method redoBMonitorShip (
     INOUT MsgId string
 )
 {
@@ -1599,7 +1599,7 @@ public method RedoBMonitorShip (
 
 
 
-public method RedoBMonitorShipLoad (
+public method redoBMonitorShipLoad (
 )
 {
     jBC:REDO.B.MONITOR.SHIP.LOAD
@@ -1607,7 +1607,7 @@ public method RedoBMonitorShipLoad (
 
 
 
-public method RedoBMonitorShipSelect (
+public method redoBMonitorShipSelect (
 )
 {
     jBC:REDO.B.MONITOR.SHIP.SELECT
@@ -1615,7 +1615,7 @@ public method RedoBMonitorShipSelect (
 
 
 
-public method RedoBMovePartPayHistSelect (
+public method redoBMovePartPayHistSelect (
 )
 {
     jBC:REDO.B.MOVE.PART.PAY.HIST.SELECT
@@ -1623,7 +1623,7 @@ public method RedoBMovePartPayHistSelect (
 
 
 
-public method RedoBMoveUnused (
+public method redoBMoveUnused (
     INOUT YCardLockId string
 )
 {
@@ -1632,7 +1632,7 @@ public method RedoBMoveUnused (
 
 
 
-public method RedoBMoveUnusedLoad (
+public method redoBMoveUnusedLoad (
 )
 {
     jBC:REDO.B.MOVE.UNUSED.LOAD
@@ -1640,7 +1640,7 @@ public method RedoBMoveUnusedLoad (
 
 
 
-public method RedoBMoveUnusedSelect (
+public method redoBMoveUnusedSelect (
 )
 {
     jBC:REDO.B.MOVE.UNUSED.SELECT
@@ -1648,7 +1648,7 @@ public method RedoBMoveUnusedSelect (
 
 
 
-public method RedoBNabAcctBkDtLoans (
+public method redoBNabAcctBkDtLoans (
     INOUT ArrId string
 )
 {
@@ -1657,7 +1657,7 @@ public method RedoBNabAcctBkDtLoans (
 
 
 
-public method RedoBNabAcctBkDtLoansLoad (
+public method redoBNabAcctBkDtLoansLoad (
 )
 {
     jBC:REDO.B.NAB.ACCT.BK.DT.LOANS.LOAD
@@ -1665,7 +1665,7 @@ public method RedoBNabAcctBkDtLoansLoad (
 
 
 
-public method RedoBNabAcctBkDtLoansSelect (
+public method redoBNabAcctBkDtLoansSelect (
 )
 {
     jBC:REDO.B.NAB.ACCT.BK.DT.LOANS.SELECT
@@ -1673,7 +1673,7 @@ public method RedoBNabAcctBkDtLoansSelect (
 
 
 
-public method RedoBNabAcctHol (
+public method redoBNabAcctHol (
     INOUT YId string
 )
 {
@@ -1682,7 +1682,7 @@ public method RedoBNabAcctHol (
 
 
 
-public method RedoBNcfAssignAdv (
+public method redoBNcfAssignAdv (
     INOUT VarArrangeId string
 )
 {
@@ -1691,7 +1691,7 @@ public method RedoBNcfAssignAdv (
 
 
 
-public method RedoBNcfAssignAdvLoad (
+public method redoBNcfAssignAdvLoad (
 )
 {
     jBC:REDO.B.NCF.ASSIGN.ADV.LOAD
@@ -1699,7 +1699,7 @@ public method RedoBNcfAssignAdvLoad (
 
 
 
-public method RedoBNcfAssignAdvSelect (
+public method redoBNcfAssignAdvSelect (
 )
 {
     jBC:REDO.B.NCF.ASSIGN.ADV.SELECT
@@ -1707,7 +1707,7 @@ public method RedoBNcfAssignAdvSelect (
 
 
 
-public method RedoBNcfIssue (
+public method redoBNcfIssue (
     INOUT YTxnUnmapList string
 )
 {
@@ -1716,7 +1716,7 @@ public method RedoBNcfIssue (
 
 
 
-public method RedoBNcfIssueLoad (
+public method redoBNcfIssueLoad (
 )
 {
     jBC:REDO.B.NCF.ISSUE.LOAD
@@ -1724,7 +1724,7 @@ public method RedoBNcfIssueLoad (
 
 
 
-public method RedoBNcfIssueSelect (
+public method redoBNcfIssueSelect (
 )
 {
     jBC:REDO.B.NCF.ISSUE.SELECT
@@ -1732,7 +1732,7 @@ public method RedoBNcfIssueSelect (
 
 
 
-public method RedoBNewNabAccounting (
+public method redoBNewNabAccounting (
     INOUT ArrId string
 )
 {
@@ -1741,7 +1741,7 @@ public method RedoBNewNabAccounting (
 
 
 
-public method RedoBNewNabAccountingLoad (
+public method redoBNewNabAccountingLoad (
 )
 {
     jBC:REDO.B.NEW.NAB.ACCOUNTING.LOAD
@@ -1749,7 +1749,7 @@ public method RedoBNewNabAccountingLoad (
 
 
 
-public method RedoBNewUpdateCapintAmtLoad (
+public method redoBNewUpdateCapintAmtLoad (
 )
 {
     jBC:REDO.B.NEW.UPDATE.CAPINT.AMT.LOAD
@@ -1757,7 +1757,7 @@ public method RedoBNewUpdateCapintAmtLoad (
 
 
 
-public method RedoBNewUpdateCapintAmtSelect (
+public method redoBNewUpdateCapintAmtSelect (
 )
 {
     jBC:REDO.B.NEW.UPDATE.CAPINT.AMT.SELECT
@@ -1765,7 +1765,7 @@ public method RedoBNewUpdateCapintAmtSelect (
 
 
 
-public method RedoBNewWofOsAcc (
+public method redoBNewWofOsAcc (
     INOUT YId string
 )
 {
@@ -1774,7 +1774,7 @@ public method RedoBNewWofOsAcc (
 
 
 
-public method RedoBNewWofOsAccLoad (
+public method redoBNewWofOsAccLoad (
 )
 {
     jBC:REDO.B.NEW.WOF.OS.ACC.LOAD
@@ -1782,7 +1782,7 @@ public method RedoBNewWofOsAccLoad (
 
 
 
-public method RedoBNewWofOsAccSelect (
+public method redoBNewWofOsAccSelect (
 )
 {
     jBC:REDO.B.NEW.WOF.OS.ACC.SELECT
@@ -1790,7 +1790,7 @@ public method RedoBNewWofOsAccSelect (
 
 
 
-public method RedoBNonConfirmPay (
+public method redoBNonConfirmPay (
     INOUT ChqDetailsId string
 )
 {
@@ -1799,7 +1799,7 @@ public method RedoBNonConfirmPay (
 
 
 
-public method RedoBNonConfirmPayLoad (
+public method redoBNonConfirmPayLoad (
 )
 {
     jBC:REDO.B.NON.CONFIRM.PAY.LOAD
@@ -1807,7 +1807,7 @@ public method RedoBNonConfirmPayLoad (
 
 
 
-public method RedoBNonConfirmPaySelect (
+public method redoBNonConfirmPaySelect (
 )
 {
     jBC:REDO.B.NON.CONFIRM.PAY.SELECT
@@ -1815,7 +1815,7 @@ public method RedoBNonConfirmPaySelect (
 
 
 
-public method RedoBOfficerOfCompanyPost (
+public method redoBOfficerOfCompanyPost (
 )
 {
     jBC:REDO.B.OFFICER.OF.COMPANY.POST
@@ -1823,7 +1823,7 @@ public method RedoBOfficerOfCompanyPost (
 
 
 
-public method RedoBOfficerOfCompanySelect (
+public method redoBOfficerOfCompanySelect (
 )
 {
     jBC:REDO.B.OFFICER.OF.COMPANY.SELECT
@@ -1831,7 +1831,7 @@ public method RedoBOfficerOfCompanySelect (
 
 
 
-public method RedoBPenaltyCharge (
+public method redoBPenaltyCharge (
     INOUT ArrangementId string
 )
 {
@@ -1840,7 +1840,7 @@ public method RedoBPenaltyCharge (
 
 
 
-public method RedoBPendingSchProjector (
+public method redoBPendingSchProjector (
     INOUT YProcessId string
 )
 {
@@ -1849,7 +1849,7 @@ public method RedoBPendingSchProjector (
 
 
 
-public method RedoBPendingSchProjectorLoad (
+public method redoBPendingSchProjectorLoad (
 )
 {
     jBC:REDO.B.PENDING.SCH.PROJECTOR.LOAD
@@ -1857,7 +1857,7 @@ public method RedoBPendingSchProjectorLoad (
 
 
 
-public method RedoBPolicyAutoCancel (
+public method redoBPolicyAutoCancel (
     INOUT InsId string
 )
 {
@@ -1866,7 +1866,7 @@ public method RedoBPolicyAutoCancel (
 
 
 
-public method RedoBPolicyAutoCancelLoad (
+public method redoBPolicyAutoCancelLoad (
 )
 {
     jBC:REDO.B.POLICY.AUTO.CANCEL.LOAD
@@ -1874,7 +1874,7 @@ public method RedoBPolicyAutoCancelLoad (
 
 
 
-public method RedoBPolicyAutoCancelSelect (
+public method redoBPolicyAutoCancelSelect (
 )
 {
     jBC:REDO.B.POLICY.AUTO.CANCEL.SELECT
@@ -1882,7 +1882,7 @@ public method RedoBPolicyAutoCancelSelect (
 
 
 
-public method RedoBPreDelProcess (
+public method redoBPreDelProcess (
 )
 {
     jBC:REDO.B.PRE.DEL.PROCESS
@@ -1890,7 +1890,7 @@ public method RedoBPreDelProcess (
 
 
 
-public method RedoBPrevalanceStatus (
+public method redoBPrevalanceStatus (
     INOUT YPgmId string
 )
 {
@@ -1899,7 +1899,7 @@ public method RedoBPrevalanceStatus (
 
 
 
-public method RedoBPrevalanceStatusLoad (
+public method redoBPrevalanceStatusLoad (
 )
 {
     jBC:REDO.B.PREVALANCE.STATUS.LOAD
@@ -1907,7 +1907,7 @@ public method RedoBPrevalanceStatusLoad (
 
 
 
-public method RedoBPrevalanceStatusSelect (
+public method redoBPrevalanceStatusSelect (
 )
 {
     jBC:REDO.B.PREVALANCE.STATUS.SELECT
@@ -1915,7 +1915,7 @@ public method RedoBPrevalanceStatusSelect (
 
 
 
-public method RedoBPrevelenceStatusUpd (
+public method redoBPrevelenceStatusUpd (
     INOUT Id string,
     INOUT rAccount string,
     INOUT yAcStatusPos string,
@@ -1928,7 +1928,7 @@ public method RedoBPrevelenceStatusUpd (
 
 
 
-public method RedoBPrinIntUpdate (
+public method redoBPrinIntUpdate (
     INOUT MsgId string
 )
 {
@@ -1937,7 +1937,7 @@ public method RedoBPrinIntUpdate (
 
 
 
-public method RedoBPurdgeInvFile (
+public method redoBPurdgeInvFile (
 )
 {
     jBC:REDO.B.PURDGE.INV.FILE
@@ -1945,7 +1945,7 @@ public method RedoBPurdgeInvFile (
 
 
 
-public method RedoBPurgeCards (
+public method redoBPurgeCards (
     INOUT YId string
 )
 {
@@ -1954,7 +1954,7 @@ public method RedoBPurgeCards (
 
 
 
-public method RedoBPurgeUpdAllIds (
+public method redoBPurgeUpdAllIds (
 )
 {
     jBC:REDO.B.PURGE.UPD.ALL.IDS
@@ -1962,7 +1962,7 @@ public method RedoBPurgeUpdAllIds (
 
 
 
-public method RedoBRaiseIncomeEntry (
+public method redoBRaiseIncomeEntry (
     INOUT GrId string
 )
 {
@@ -1971,7 +1971,7 @@ public method RedoBRaiseIncomeEntry (
 
 
 
-public method RedoBRaiseIncomeEntryLoad (
+public method redoBRaiseIncomeEntryLoad (
 )
 {
     jBC:REDO.B.RAISE.INCOME.ENTRY.LOAD
@@ -1979,7 +1979,7 @@ public method RedoBRaiseIncomeEntryLoad (
 
 
 
-public method RedoBRaiseIncomeEntrySelect (
+public method redoBRaiseIncomeEntrySelect (
 )
 {
     jBC:REDO.B.RAISE.INCOME.ENTRY.SELECT
@@ -1987,7 +1987,7 @@ public method RedoBRaiseIncomeEntrySelect (
 
 
 
-public method RedoBRaiseNabActHoli (
+public method redoBRaiseNabActHoli (
     INOUT YId string
 )
 {
@@ -1996,7 +1996,7 @@ public method RedoBRaiseNabActHoli (
 
 
 
-public method RedoBRaiseNabActHoliLoad (
+public method redoBRaiseNabActHoliLoad (
 )
 {
     jBC:REDO.B.RAISE.NAB.ACT.HOLI.LOAD
@@ -2004,7 +2004,7 @@ public method RedoBRaiseNabActHoliLoad (
 
 
 
-public method RedoBRaiseNabActHoliSelect (
+public method redoBRaiseNabActHoliSelect (
 )
 {
     jBC:REDO.B.RAISE.NAB.ACT.HOLI.SELECT
@@ -2012,7 +2012,7 @@ public method RedoBRaiseNabActHoliSelect (
 
 
 
-public method RedoBReduceAgent (
+public method redoBReduceAgent (
 )
 {
     jBC:REDO.B.REDUCE.AGENT
@@ -2020,7 +2020,7 @@ public method RedoBReduceAgent (
 
 
 
-public method RedoBRegenNabAccountingSelect (
+public method redoBRegenNabAccountingSelect (
 )
 {
     jBC:REDO.B.REGEN.NAB.ACCOUNTING.SELECT
@@ -2028,7 +2028,7 @@ public method RedoBRegenNabAccountingSelect (
 
 
 
-public method RedoBReinvBalUpdate (
+public method redoBReinvBalUpdate (
     INOUT YAzId string
 )
 {
@@ -2037,7 +2037,7 @@ public method RedoBReinvBalUpdate (
 
 
 
-public method RedoBReinvBalUpdateLoad (
+public method redoBReinvBalUpdateLoad (
 )
 {
     jBC:REDO.B.REINV.BAL.UPDATE.LOAD
@@ -2045,7 +2045,7 @@ public method RedoBReinvBalUpdateLoad (
 
 
 
-public method RedoBReinvBalUpdateSelect (
+public method redoBReinvBalUpdateSelect (
 )
 {
     jBC:REDO.B.REINV.BAL.UPDATE.SELECT
@@ -2053,7 +2053,7 @@ public method RedoBReinvBalUpdateSelect (
 
 
 
-public method RedoBReinvSync (
+public method redoBReinvSync (
     INOUT YAzAccountId string
 )
 {
@@ -2062,7 +2062,7 @@ public method RedoBReinvSync (
 
 
 
-public method RedoBReinvSyncLoad (
+public method redoBReinvSyncLoad (
 )
 {
     jBC:REDO.B.REINV.SYNC.LOAD
@@ -2070,7 +2070,7 @@ public method RedoBReinvSyncLoad (
 
 
 
-public method RedoBReinvSyncSelect (
+public method redoBReinvSyncSelect (
 )
 {
     jBC:REDO.B.REINV.SYNC.SELECT
@@ -2078,7 +2078,7 @@ public method RedoBReinvSyncSelect (
 
 
 
-public method RedoBRenewProcess (
+public method redoBRenewProcess (
     INOUT YLatamCardList string
 )
 {
@@ -2087,7 +2087,7 @@ public method RedoBRenewProcess (
 
 
 
-public method RedoBRepRatesAndFees (
+public method redoBRepRatesAndFees (
     INOUT YTxnId string
 )
 {
@@ -2096,7 +2096,7 @@ public method RedoBRepRatesAndFees (
 
 
 
-public method RedoBRepRatesAndFeesLoad (
+public method redoBRepRatesAndFeesLoad (
 )
 {
     jBC:REDO.B.REP.RATES.AND.FEES.LOAD
@@ -2104,7 +2104,7 @@ public method RedoBRepRatesAndFeesLoad (
 
 
 
-public method RedoBRepRatesAndFeesPost (
+public method redoBRepRatesAndFeesPost (
 )
 {
     jBC:REDO.B.REP.RATES.AND.FEES.POST
@@ -2112,7 +2112,7 @@ public method RedoBRepRatesAndFeesPost (
 
 
 
-public method RedoBRepRatesAndFeesSelect (
+public method redoBRepRatesAndFeesSelect (
 )
 {
     jBC:REDO.B.REP.RATES.AND.FEES.SELECT
@@ -2120,7 +2120,7 @@ public method RedoBRepRatesAndFeesSelect (
 
 
 
-public method RedoBReporteActividad (
+public method redoBReporteActividad (
     INOUT AaArrId string
 )
 {
@@ -2129,7 +2129,7 @@ public method RedoBReporteActividad (
 
 
 
-public method RedoBReporteActividadLoad (
+public method redoBReporteActividadLoad (
 )
 {
     jBC:REDO.B.REPORTE.ACTIVIDAD.LOAD
@@ -2137,7 +2137,7 @@ public method RedoBReporteActividadLoad (
 
 
 
-public method RedoBReporteActividadPost (
+public method redoBReporteActividadPost (
 )
 {
     jBC:REDO.B.REPORTE.ACTIVIDAD.POST
@@ -2145,7 +2145,7 @@ public method RedoBReporteActividadPost (
 
 
 
-public method RedoBReporteActividadSelect (
+public method redoBReporteActividadSelect (
 )
 {
     jBC:REDO.B.REPORTE.ACTIVIDAD.SELECT
@@ -2153,7 +2153,7 @@ public method RedoBReporteActividadSelect (
 
 
 
-public method RedoBRevNabAcctReachWofSelect (
+public method redoBRevNabAcctReachWofSelect (
 )
 {
     jBC:REDO.B.REV.NAB.ACCT.REACH.WOF.SELECT
@@ -2161,7 +2161,7 @@ public method RedoBRevNabAcctReachWofSelect (
 
 
 
-public method RedoBRevalFcyProdPos (
+public method redoBRevalFcyProdPos (
 )
 {
     jBC:REDO.B.REVAL.FCY.PROD.POS
@@ -2169,7 +2169,7 @@ public method RedoBRevalFcyProdPos (
 
 
 
-public method RedoBRevalReverse (
+public method redoBRevalReverse (
     INOUT FinalArray string
 )
 {
@@ -2178,7 +2178,7 @@ public method RedoBRevalReverse (
 
 
 
-public method RedoBRevalReverseLoad (
+public method redoBRevalReverseLoad (
 )
 {
     jBC:REDO.B.REVAL.REVERSE.LOAD
@@ -2186,7 +2186,7 @@ public method RedoBRevalReverseLoad (
 
 
 
-public method RedoBRevalReverseSelect (
+public method redoBRevalReverseSelect (
 )
 {
     jBC:REDO.B.REVAL.REVERSE.SELECT
@@ -2194,7 +2194,7 @@ public method RedoBRevalReverseSelect (
 
 
 
-public method RedoBRiskGroupMembers (
+public method redoBRiskGroupMembers (
     INOUT CustomerId string
 )
 {
@@ -2203,7 +2203,7 @@ public method RedoBRiskGroupMembers (
 
 
 
-public method RedoBRiskGroupMembersLoad (
+public method redoBRiskGroupMembersLoad (
 )
 {
     jBC:REDO.B.RISK.GROUP.MEMBERS.LOAD
@@ -2211,7 +2211,7 @@ public method RedoBRiskGroupMembersLoad (
 
 
 
-public method RedoBRiskGroupMembersPost (
+public method redoBRiskGroupMembersPost (
 )
 {
     jBC:REDO.B.RISK.GROUP.MEMBERS.POST
@@ -2219,7 +2219,7 @@ public method RedoBRiskGroupMembersPost (
 
 
 
-public method RedoBScRevDiscEntryLoad (
+public method redoBScRevDiscEntryLoad (
 )
 {
     jBC:REDO.B.SC.REV.DISC.ENTRY.LOAD
@@ -2227,7 +2227,7 @@ public method RedoBScRevDiscEntryLoad (
 
 
 
-public method RedoBScRevDiscEntrySelect (
+public method redoBScRevDiscEntrySelect (
 )
 {
     jBC:REDO.B.SC.REV.DISC.ENTRY.SELECT
@@ -2235,7 +2235,7 @@ public method RedoBScRevDiscEntrySelect (
 
 
 
-public method RedoBScRevSpecEntry (
+public method redoBScRevSpecEntry (
     INOUT YId string
 )
 {
@@ -2244,7 +2244,7 @@ public method RedoBScRevSpecEntry (
 
 
 
-public method RedoBScRevSpecEntryLoad (
+public method redoBScRevSpecEntryLoad (
 )
 {
     jBC:REDO.B.SC.REV.SPEC.ENTRY.LOAD
@@ -2252,7 +2252,7 @@ public method RedoBScRevSpecEntryLoad (
 
 
 
-public method RedoBScRevSpecEntrySelect (
+public method redoBScRevSpecEntrySelect (
 )
 {
     jBC:REDO.B.SC.REV.SPEC.ENTRY.SELECT
@@ -2260,7 +2260,7 @@ public method RedoBScRevSpecEntrySelect (
 
 
 
-public method RedoBScSodRevStmtEntry (
+public method redoBScSodRevStmtEntry (
     INOUT YId string
 )
 {
@@ -2269,7 +2269,7 @@ public method RedoBScSodRevStmtEntry (
 
 
 
-public method RedoBScSodRevStmtEntryLoad (
+public method redoBScSodRevStmtEntryLoad (
 )
 {
     jBC:REDO.B.SC.SOD.REV.STMT.ENTRY.LOAD
@@ -2277,7 +2277,7 @@ public method RedoBScSodRevStmtEntryLoad (
 
 
 
-public method RedoBScSodRevStmtEntrySelect (
+public method redoBScSodRevStmtEntrySelect (
 )
 {
     jBC:REDO.B.SC.SOD.REV.STMT.ENTRY.SELECT
@@ -2285,7 +2285,7 @@ public method RedoBScSodRevStmtEntrySelect (
 
 
 
-public method RedoBScheduleProjectorSelect (
+public method redoBScheduleProjectorSelect (
 )
 {
     jBC:REDO.B.SCHEDULE.PROJECTOR.SELECT
@@ -2293,7 +2293,7 @@ public method RedoBScheduleProjectorSelect (
 
 
 
-public method RedoBSecAsset (
+public method redoBSecAsset (
     INOUT YInvDet string
 )
 {
@@ -2302,7 +2302,7 @@ public method RedoBSecAsset (
 
 
 
-public method RedoBSecPosAsset (
+public method redoBSecPosAsset (
     INOUT YFinalArr string
 )
 {
@@ -2311,7 +2311,7 @@ public method RedoBSecPosAsset (
 
 
 
-public method RedoBSecPosAssetLoad (
+public method redoBSecPosAssetLoad (
 )
 {
     jBC:REDO.B.SEC.POS.ASSET.LOAD
@@ -2319,7 +2319,7 @@ public method RedoBSecPosAssetLoad (
 
 
 
-public method RedoBSecPosAssetPost (
+public method redoBSecPosAssetPost (
 )
 {
     jBC:REDO.B.SEC.POS.ASSET.POST
@@ -2327,7 +2327,7 @@ public method RedoBSecPosAssetPost (
 
 
 
-public method RedoBSecPosAssetSelect (
+public method redoBSecPosAssetSelect (
 )
 {
     jBC:REDO.B.SEC.POS.ASSET.SELECT
@@ -2335,7 +2335,7 @@ public method RedoBSecPosAssetSelect (
 
 
 
-public method RedoBSecTrade (
+public method redoBSecTrade (
     INOUT YEnqId string
 )
 {
@@ -2344,7 +2344,7 @@ public method RedoBSecTrade (
 
 
 
-public method RedoBSodMmRevStmtEntry (
+public method redoBSodMmRevStmtEntry (
     INOUT MmMoneyMarketId string
 )
 {
@@ -2353,7 +2353,7 @@ public method RedoBSodMmRevStmtEntry (
 
 
 
-public method RedoBStaffCustTrack (
+public method redoBStaffCustTrack (
     INOUT CustId string
 )
 {
@@ -2362,7 +2362,7 @@ public method RedoBStaffCustTrack (
 
 
 
-public method RedoBStaffCustTrackLoad (
+public method redoBStaffCustTrackLoad (
 )
 {
     jBC:REDO.B.STAFF.CUST.TRACK.LOAD
@@ -2370,7 +2370,7 @@ public method RedoBStaffCustTrackLoad (
 
 
 
-public method RedoBStaffCustTrackSelect (
+public method redoBStaffCustTrackSelect (
 )
 {
     jBC:REDO.B.STAFF.CUST.TRACK.SELECT
@@ -2378,7 +2378,7 @@ public method RedoBStaffCustTrackSelect (
 
 
 
-public method RedoBStatusUpdate (
+public method redoBStatusUpdate (
     INOUT YCustomerId string
 )
 {
@@ -2387,7 +2387,7 @@ public method RedoBStatusUpdate (
 
 
 
-public method RedoBStatusUpdateLoad (
+public method redoBStatusUpdateLoad (
 )
 {
     jBC:REDO.B.STATUS.UPDATE.LOAD
@@ -2395,7 +2395,7 @@ public method RedoBStatusUpdateLoad (
 
 
 
-public method RedoBStatusUpdateSelect (
+public method redoBStatusUpdateSelect (
 )
 {
     jBC:REDO.B.STATUS.UPDATE.SELECT
@@ -2403,7 +2403,7 @@ public method RedoBStatusUpdateSelect (
 
 
 
-public method RedoBStatus1Upd (
+public method redoBStatus1Upd (
     INOUT Id string
 )
 {
@@ -2412,7 +2412,7 @@ public method RedoBStatus1Upd (
 
 
 
-public method RedoBStatus1UpdLoad (
+public method redoBStatus1UpdLoad (
 )
 {
     jBC:REDO.B.STATUS1.UPD.LOAD
@@ -2420,7 +2420,7 @@ public method RedoBStatus1UpdLoad (
 
 
 
-public method RedoBStatus1Update (
+public method redoBStatus1Update (
 )
 {
     jBC:REDO.B.STATUS1.UPDATE
@@ -2428,7 +2428,7 @@ public method RedoBStatus1Update (
 
 
 
-public method RedoBStoOverride (
+public method redoBStoOverride (
     INOUT FtId string
 )
 {
@@ -2437,7 +2437,7 @@ public method RedoBStoOverride (
 
 
 
-public method RedoBStoOverrideLoad (
+public method redoBStoOverrideLoad (
 )
 {
     jBC:REDO.B.STO.OVERRIDE.LOAD
@@ -2445,7 +2445,7 @@ public method RedoBStoOverrideLoad (
 
 
 
-public method RedoBStoOverrideSelect (
+public method redoBStoOverrideSelect (
 )
 {
     jBC:REDO.B.STO.OVERRIDE.SELECT
@@ -2453,7 +2453,7 @@ public method RedoBStoOverrideSelect (
 
 
 
-public method RedoBStockQtyCntHis (
+public method redoBStockQtyCntHis (
     INOUT YSrSelList string
 )
 {
@@ -2462,7 +2462,7 @@ public method RedoBStockQtyCntHis (
 
 
 
-public method RedoBStockQtyCntHisLoad (
+public method redoBStockQtyCntHisLoad (
 )
 {
     jBC:REDO.B.STOCK.QTY.CNT.HIS.LOAD
@@ -2470,7 +2470,7 @@ public method RedoBStockQtyCntHisLoad (
 
 
 
-public method RedoBStockQtyCntHisSelect (
+public method redoBStockQtyCntHisSelect (
 )
 {
     jBC:REDO.B.STOCK.QTY.CNT.HIS.SELECT
@@ -2478,7 +2478,7 @@ public method RedoBStockQtyCntHisSelect (
 
 
 
-public method RedoBStockQtyCount (
+public method redoBStockQtyCount (
     INOUT YSrSelList string
 )
 {
@@ -2487,7 +2487,7 @@ public method RedoBStockQtyCount (
 
 
 
-public method RedoBTransProcess (
+public method redoBTransProcess (
     INOUT BuildList string
 )
 {
@@ -2496,7 +2496,7 @@ public method RedoBTransProcess (
 
 
 
-public method RedoBTransProcessLoad (
+public method redoBTransProcessLoad (
 )
 {
     jBC:REDO.B.TRANS.PROCESS.LOAD
@@ -2504,7 +2504,7 @@ public method RedoBTransProcessLoad (
 
 
 
-public method RedoBTransProcessPost (
+public method redoBTransProcessPost (
 )
 {
     jBC:REDO.B.TRANS.PROCESS.POST
@@ -2512,7 +2512,7 @@ public method RedoBTransProcessPost (
 
 
 
-public method RedoBTransProcessSelect (
+public method redoBTransProcessSelect (
 )
 {
     jBC:REDO.B.TRANS.PROCESS.SELECT
@@ -2520,7 +2520,7 @@ public method RedoBTransProcessSelect (
 
 
 
-public method RedoBTransitCap (
+public method redoBTransitCap (
     INOUT IncomePar string
 )
 {
@@ -2529,7 +2529,7 @@ public method RedoBTransitCap (
 
 
 
-public method RedoBTransitCapLoad (
+public method redoBTransitCapLoad (
 )
 {
     jBC:REDO.B.TRANSIT.CAP.LOAD
@@ -2537,7 +2537,7 @@ public method RedoBTransitCapLoad (
 
 
 
-public method RedoBTransitCapSelect (
+public method redoBTransitCapSelect (
 )
 {
     jBC:REDO.B.TRANSIT.CAP.SELECT
@@ -2545,7 +2545,7 @@ public method RedoBTransitCapSelect (
 
 
 
-public method RedoBUpTransProcess (
+public method redoBUpTransProcess (
     INOUT BuildList string
 )
 {
@@ -2554,7 +2554,7 @@ public method RedoBUpTransProcess (
 
 
 
-public method RedoBUpdApapAccountAct (
+public method redoBUpdApapAccountAct (
 )
 {
     jBC:REDO.B.UPD.APAP.ACCOUNT.ACT
@@ -2562,7 +2562,7 @@ public method RedoBUpdApapAccountAct (
 
 
 
-public method RedoBUpdBranchLimit (
+public method redoBUpdBranchLimit (
     INOUT YBranchId string
 )
 {
@@ -2571,7 +2571,7 @@ public method RedoBUpdBranchLimit (
 
 
 
-public method RedoBUpdBranchLimitLoad (
+public method redoBUpdBranchLimitLoad (
 )
 {
     jBC:REDO.B.UPD.BRANCH.LIMIT.LOAD
@@ -2579,7 +2579,7 @@ public method RedoBUpdBranchLimitLoad (
 
 
 
-public method RedoBUpdBranchLimitSelect (
+public method redoBUpdBranchLimitSelect (
 )
 {
     jBC:REDO.B.UPD.BRANCH.LIMIT.SELECT
@@ -2587,7 +2587,7 @@ public method RedoBUpdBranchLimitSelect (
 
 
 
-public method RedoBUpdCusSeg (
+public method redoBUpdCusSeg (
     INOUT CusDet string
 )
 {
@@ -2596,7 +2596,7 @@ public method RedoBUpdCusSeg (
 
 
 
-public method RedoBUpdCusSegLoad (
+public method redoBUpdCusSegLoad (
 )
 {
     jBC:REDO.B.UPD.CUS.SEG.LOAD
@@ -2604,7 +2604,7 @@ public method RedoBUpdCusSegLoad (
 
 
 
-public method RedoBUpdCusSegSelect (
+public method redoBUpdCusSegSelect (
 )
 {
     jBC:REDO.B.UPD.CUS.SEG.SELECT
@@ -2612,7 +2612,7 @@ public method RedoBUpdCusSegSelect (
 
 
 
-public method RedoBUpdFtRetryTable (
+public method redoBUpdFtRetryTable (
     INOUT ArrId string
 )
 {
@@ -2621,7 +2621,7 @@ public method RedoBUpdFtRetryTable (
 
 
 
-public method RedoBUpdLastPrice (
+public method redoBUpdLastPrice (
     INOUT YSmId string
 )
 {
@@ -2630,7 +2630,7 @@ public method RedoBUpdLastPrice (
 
 
 
-public method RedoBUpdLastPriceLoad (
+public method redoBUpdLastPriceLoad (
 )
 {
     jBC:REDO.B.UPD.LAST.PRICE.LOAD
@@ -2638,7 +2638,7 @@ public method RedoBUpdLastPriceLoad (
 
 
 
-public method RedoBUpdLastPriceSelect (
+public method redoBUpdLastPriceSelect (
 )
 {
     jBC:REDO.B.UPD.LAST.PRICE.SELECT
@@ -2646,7 +2646,7 @@ public method RedoBUpdLastPriceSelect (
 
 
 
-public method RedoBUpdLtUserLimits (
+public method redoBUpdLtUserLimits (
     INOUT YId string
 )
 {
@@ -2655,7 +2655,7 @@ public method RedoBUpdLtUserLimits (
 
 
 
-public method RedoBUpdLtUserLimitsLoad (
+public method redoBUpdLtUserLimitsLoad (
 )
 {
     jBC:REDO.B.UPD.LT.USER.LIMITS.LOAD
@@ -2663,7 +2663,7 @@ public method RedoBUpdLtUserLimitsLoad (
 
 
 
-public method RedoBUpdLtUserLimitsSelect (
+public method redoBUpdLtUserLimitsSelect (
 )
 {
     jBC:REDO.B.UPD.LT.USER.LIMITS.SELECT
@@ -2671,7 +2671,7 @@ public method RedoBUpdLtUserLimitsSelect (
 
 
 
-public method RedoBUpdNcfUrStk (
+public method redoBUpdNcfUrStk (
 )
 {
     jBC:REDO.B.UPD.NCF.UR.STK
@@ -2679,7 +2679,7 @@ public method RedoBUpdNcfUrStk (
 
 
 
-public method RedoBUpdSettRisk (
+public method redoBUpdSettRisk (
     INOUT YFxLimitId string
 )
 {
@@ -2688,7 +2688,7 @@ public method RedoBUpdSettRisk (
 
 
 
-public method RedoBUpdStoCurAmt (
+public method redoBUpdStoCurAmt (
     INOUT StoId string
 )
 {
@@ -2697,7 +2697,7 @@ public method RedoBUpdStoCurAmt (
 
 
 
-public method RedoBUpdStoCurAmtLoad (
+public method redoBUpdStoCurAmtLoad (
 )
 {
     jBC:REDO.B.UPD.STO.CUR.AMT.LOAD
@@ -2705,7 +2705,7 @@ public method RedoBUpdStoCurAmtLoad (
 
 
 
-public method RedoBUpdStoCurAmtSelect (
+public method redoBUpdStoCurAmtSelect (
 )
 {
     jBC:REDO.B.UPD.STO.CUR.AMT.SELECT
@@ -2713,7 +2713,7 @@ public method RedoBUpdStoCurAmtSelect (
 
 
 
-public method RedoBUpdUserLog (
+public method redoBUpdUserLog (
     INOUT YProtocolId string
 )
 {
@@ -2722,7 +2722,7 @@ public method RedoBUpdUserLog (
 
 
 
-public method RedoBUpdUserLogLoad (
+public method redoBUpdUserLogLoad (
 )
 {
     jBC:REDO.B.UPD.USER.LOG.LOAD
@@ -2730,7 +2730,7 @@ public method RedoBUpdUserLogLoad (
 
 
 
-public method RedoBUpdUserLogSelect (
+public method redoBUpdUserLogSelect (
 )
 {
     jBC:REDO.B.UPD.USER.LOG.SELECT
@@ -2738,7 +2738,7 @@ public method RedoBUpdUserLogSelect (
 
 
 
-public method RedoBUpdWorkFile (
+public method redoBUpdWorkFile (
 )
 {
     jBC:REDO.B.UPD.WORK.FILE
@@ -2746,7 +2746,7 @@ public method RedoBUpdWorkFile (
 
 
 
-public method RedoBUpdateCapintAmt (
+public method redoBUpdateCapintAmt (
 )
 {
     jBC:REDO.B.UPDATE.CAPINT.AMT
@@ -2754,7 +2754,7 @@ public method RedoBUpdateCapintAmt (
 
 
 
-public method RedoBUpdateCheqStockLoad (
+public method redoBUpdateCheqStockLoad (
 )
 {
     jBC:REDO.B.UPDATE.CHEQ.STOCK.LOAD
@@ -2762,7 +2762,7 @@ public method RedoBUpdateCheqStockLoad (
 
 
 
-public method RedoBUpdateCheqStockSelect (
+public method redoBUpdateCheqStockSelect (
 )
 {
     jBC:REDO.B.UPDATE.CHEQ.STOCK.SELECT
@@ -2770,7 +2770,7 @@ public method RedoBUpdateCheqStockSelect (
 
 
 
-public method RedoBUpdateDestruction (
+public method redoBUpdateDestruction (
     INOUT YSeSelList string
 )
 {
@@ -2779,7 +2779,7 @@ public method RedoBUpdateDestruction (
 
 
 
-public method RedoBUpdateDestructionLoad (
+public method redoBUpdateDestructionLoad (
 )
 {
     jBC:REDO.B.UPDATE.DESTRUCTION.LOAD
@@ -2787,7 +2787,7 @@ public method RedoBUpdateDestructionLoad (
 
 
 
-public method RedoBUpdateDestructionSelect (
+public method redoBUpdateDestructionSelect (
 )
 {
     jBC:REDO.B.UPDATE.DESTRUCTION.SELECT
@@ -2795,7 +2795,7 @@ public method RedoBUpdateDestructionSelect (
 
 
 
-public method RedoBUpdateDetailsAch (
+public method redoBUpdateDetailsAch (
     INOUT YIdList string
 )
 {
@@ -2804,7 +2804,7 @@ public method RedoBUpdateDetailsAch (
 
 
 
-public method RedoBUpdateDetailsAchLoad (
+public method redoBUpdateDetailsAchLoad (
 )
 {
     jBC:REDO.B.UPDATE.DETAILS.ACH.LOAD
@@ -2812,7 +2812,7 @@ public method RedoBUpdateDetailsAchLoad (
 
 
 
-public method RedoBUpdateDetailsAchSelect (
+public method redoBUpdateDetailsAchSelect (
 )
 {
     jBC:REDO.B.UPDATE.DETAILS.ACH.SELECT
@@ -2820,7 +2820,7 @@ public method RedoBUpdateDetailsAchSelect (
 
 
 
-public method RedoBUpdatePoolRatePost (
+public method redoBUpdatePoolRatePost (
 )
 {
     jBC:REDO.B.UPDATE.POOL.RATE.POST
@@ -2828,7 +2828,7 @@ public method RedoBUpdatePoolRatePost (
 
 
 
-public method RedoBUpdatePoolRateSelect (
+public method redoBUpdatePoolRateSelect (
 )
 {
     jBC:REDO.B.UPDATE.POOL.RATE.SELECT
@@ -2836,7 +2836,7 @@ public method RedoBUpdatePoolRateSelect (
 
 
 
-public method RedoBUpdateTransitBalance (
+public method redoBUpdateTransitBalance (
     INOUT YTransId string
 )
 {
@@ -2845,7 +2845,7 @@ public method RedoBUpdateTransitBalance (
 
 
 
-public method RedoBUpdateTransitBalanceLoad (
+public method redoBUpdateTransitBalanceLoad (
 )
 {
     jBC:REDO.B.UPDATE.TRANSIT.BALANCE.LOAD
@@ -2853,7 +2853,7 @@ public method RedoBUpdateTransitBalanceLoad (
 
 
 
-public method RedoBUpdateTransitBalanceSelect (
+public method redoBUpdateTransitBalanceSelect (
 )
 {
     jBC:REDO.B.UPDATE.TRANSIT.BALANCE.SELECT
@@ -2861,7 +2861,7 @@ public method RedoBUpdateTransitBalanceSelect (
 
 
 
-public method RedoBValidAccounts (
+public method redoBValidAccounts (
     INOUT SelAcctList string
 )
 {
@@ -2870,7 +2870,7 @@ public method RedoBValidAccounts (
 
 
 
-public method RedoBValidAccountsLoad (
+public method redoBValidAccountsLoad (
 )
 {
     jBC:REDO.B.VALID.ACCOUNTS.LOAD
@@ -2878,7 +2878,7 @@ public method RedoBValidAccountsLoad (
 
 
 
-public method RedoBValidAccountsPost (
+public method redoBValidAccountsPost (
 )
 {
     jBC:REDO.B.VALID.ACCOUNTS.POST
@@ -2886,7 +2886,7 @@ public method RedoBValidAccountsPost (
 
 
 
-public method RedoBWofGroupAccount (
+public method redoBWofGroupAccount (
     INOUT GrId string
 )
 {
@@ -2895,7 +2895,7 @@ public method RedoBWofGroupAccount (
 
 
 
-public method RedoBWofGroupAccountLoad (
+public method redoBWofGroupAccountLoad (
 )
 {
     jBC:REDO.B.WOF.GROUP.ACCOUNT.LOAD
@@ -2903,7 +2903,7 @@ public method RedoBWofGroupAccountLoad (
 
 
 
-public method RedoBWofGroupAccountSelect (
+public method redoBWofGroupAccountSelect (
 )
 {
     jBC:REDO.B.WOF.GROUP.ACCOUNT.SELECT
@@ -2911,7 +2911,7 @@ public method RedoBWofGroupAccountSelect (
 
 
 
-public method RedoBWofLoanHistUpdate (
+public method redoBWofLoanHistUpdate (
     INOUT ArrId string
 )
 {
@@ -2920,7 +2920,7 @@ public method RedoBWofLoanHistUpdate (
 
 
 
-public method RedoBWofLoanHistUpdateLoad (
+public method redoBWofLoanHistUpdateLoad (
 )
 {
     jBC:REDO.B.WOF.LOAN.HIST.UPDATE.LOAD
@@ -2928,7 +2928,7 @@ public method RedoBWofLoanHistUpdateLoad (
 
 
 
-public method RedoBWofLoanHistUpdateSelect (
+public method redoBWofLoanHistUpdateSelect (
 )
 {
     jBC:REDO.B.WOF.LOAN.HIST.UPDATE.SELECT
@@ -2936,7 +2936,7 @@ public method RedoBWofLoanHistUpdateSelect (
 
 
 
-public method RedoBYerEndFxSalePre (
+public method redoBYerEndFxSalePre (
     INOUT YFxId string
 )
 {
@@ -2945,7 +2945,7 @@ public method RedoBYerEndFxSalePre (
 
 
 
-public method RedoBYerEndFxSalePreLoad (
+public method redoBYerEndFxSalePreLoad (
 )
 {
     jBC:REDO.B.YER.END.FX.SALE.PRE.LOAD
@@ -2953,7 +2953,7 @@ public method RedoBYerEndFxSalePreLoad (
 
 
 
-public method RedoB2FtData (
+public method redoB2FtData (
 )
 {
     jBC:REDO.B2.FT.DATA
@@ -2961,7 +2961,7 @@ public method RedoB2FtData (
 
 
 
-public method RedoB2FtDataFields (
+public method redoB2FtDataFields (
 )
 {
     jBC:REDO.B2.FT.DATA.FIELDS
@@ -2969,7 +2969,7 @@ public method RedoB2FtDataFields (
 
 
 
-public method RedoB2FtDataRtn (
+public method redoB2FtDataRtn (
 )
 {
     jBC:REDO.B2.FT.DATA.RTN
@@ -2977,7 +2977,7 @@ public method RedoB2FtDataRtn (
 
 
 
-public method RedoB2FtParameters (
+public method redoB2FtParameters (
 )
 {
     jBC:REDO.B2.FT.PARAMETERS
@@ -2985,7 +2985,7 @@ public method RedoB2FtParameters (
 
 
 
-public method RedoB2FtParametersFields (
+public method redoB2FtParametersFields (
 )
 {
     jBC:REDO.B2.FT.PARAMETERS.FIELDS
@@ -2993,7 +2993,7 @@ public method RedoB2FtParametersFields (
 
 
 
-public method RedoB2FtRtn (
+public method redoB2FtRtn (
     INOUT EnqData string
 )
 {
@@ -3002,7 +3002,7 @@ public method RedoB2FtRtn (
 
 
 
-public method RedoB2RecordInsPay (
+public method redoB2RecordInsPay (
 )
 {
     jBC:REDO.B2.RECORD.INS.PAY
@@ -3010,7 +3010,7 @@ public method RedoB2RecordInsPay (
 
 
 
-public method RedoB2RecordInsPayFields (
+public method redoB2RecordInsPayFields (
 )
 {
     jBC:REDO.B2.RECORD.INS.PAY.FIELDS
@@ -3018,7 +3018,7 @@ public method RedoB2RecordInsPayFields (
 
 
 
-public method RedoBalanceCertfPdfGen (
+public method redoBalanceCertfPdfGen (
     INOUT YArray string
 )
 {
@@ -3027,7 +3027,7 @@ public method RedoBalanceCertfPdfGen (
 
 
 
-public method RedoBalanceMainPrevalChg (
+public method redoBalanceMainPrevalChg (
 )
 {
     jBC:REDO.BALANCE.MAIN.PREVAL.CHG
@@ -3035,7 +3035,7 @@ public method RedoBalanceMainPrevalChg (
 
 
 
-public method RedoBankNameCorrection (
+public method redoBankNameCorrection (
 )
 {
     jBC:REDO.BANK.NAME.CORRECTION
@@ -3043,7 +3043,7 @@ public method RedoBankNameCorrection (
 
 
 
-public method RedoBatAuthOfsStrCob (
+public method redoBatAuthOfsStrCob (
 )
 {
     jBC:REDO.BAT.AUTH.OFS.STR.COB
@@ -3051,7 +3051,7 @@ public method RedoBatAuthOfsStrCob (
 
 
 
-public method RedoBatchRelease (
+public method redoBatchRelease (
 )
 {
     jBC:REDO.BATCH.RELEASE
@@ -3059,7 +3059,7 @@ public method RedoBatchRelease (
 
 
 
-public method RedoBatchReleaseFields (
+public method redoBatchReleaseFields (
 )
 {
     jBC:REDO.BATCH.RELEASE.FIELDS
@@ -3067,7 +3067,7 @@ public method RedoBatchReleaseFields (
 
 
 
-public method RedoBatchReleaseRun (
+public method redoBatchReleaseRun (
 )
 {
     jBC:REDO.BATCH.RELEASE.RUN
@@ -3075,7 +3075,7 @@ public method RedoBatchReleaseRun (
 
 
 
-public method RedoBcrReportData (
+public method redoBcrReportData (
 )
 {
     jBC:REDO.BCR.REPORT.DATA
@@ -3083,7 +3083,7 @@ public method RedoBcrReportData (
 
 
 
-public method RedoBcrReportExecFields (
+public method redoBcrReportExecFields (
 )
 {
     jBC:REDO.BCR.REPORT.EXEC.FIELDS
@@ -3091,7 +3091,7 @@ public method RedoBcrReportExecFields (
 
 
 
-public method RedoBcrReportExecId (
+public method redoBcrReportExecId (
 )
 {
     jBC:REDO.BCR.REPORT.EXEC.ID
@@ -3099,7 +3099,7 @@ public method RedoBcrReportExecId (
 
 
 
-public method RedoBcrReportExecProcess (
+public method redoBcrReportExecProcess (
 )
 {
     jBC:REDO.BCR.REPORT.EXEC.PROCESS
@@ -3107,7 +3107,7 @@ public method RedoBcrReportExecProcess (
 
 
 
-public method RedoBcrReportExecRecord (
+public method redoBcrReportExecRecord (
 )
 {
     jBC:REDO.BCR.REPORT.EXEC.RECORD
@@ -3115,7 +3115,7 @@ public method RedoBcrReportExecRecord (
 
 
 
-public method RedoBcrReportExecValidate (
+public method redoBcrReportExecValidate (
 )
 {
     jBC:REDO.BCR.REPORT.EXEC.VALIDATE
@@ -3123,7 +3123,7 @@ public method RedoBcrReportExecValidate (
 
 
 
-public method RedoBcrReportFtpMonitor (
+public method redoBcrReportFtpMonitor (
     INOUT RegistersList string
 )
 {
@@ -3132,7 +3132,7 @@ public method RedoBcrReportFtpMonitor (
 
 
 
-public method RedoBlGetArrangement (
+public method redoBlGetArrangement (
     INOUT YFinalIds string
 )
 {
@@ -3141,7 +3141,7 @@ public method RedoBlGetArrangement (
 
 
 
-public method RedoBldAccFundsIntransit (
+public method redoBldAccFundsIntransit (
     INOUT EnqData string
 )
 {
@@ -3150,7 +3150,7 @@ public method RedoBldAccFundsIntransit (
 
 
 
-public method RedoBldContCus (
+public method redoBldContCus (
     INOUT EnqData string
 )
 {
@@ -3159,7 +3159,7 @@ public method RedoBldContCus (
 
 
 
-public method RedoBldContactCus (
+public method redoBldContactCus (
     INOUT EnqData string
 )
 {
@@ -3168,7 +3168,7 @@ public method RedoBldContactCus (
 
 
 
-public method RedoBldDisbEAuthor (
+public method redoBldDisbEAuthor (
     INOUT EnqData string
 )
 {
@@ -3177,7 +3177,7 @@ public method RedoBldDisbEAuthor (
 
 
 
-public method RedoBldEReprintTxn (
+public method redoBldEReprintTxn (
     INOUT EnqData string
 )
 {
@@ -3186,7 +3186,7 @@ public method RedoBldEReprintTxn (
 
 
 
-public method RedoBldPrintReprintSlip (
+public method redoBldPrintReprintSlip (
     INOUT EnqData string
 )
 {
@@ -3195,7 +3195,7 @@ public method RedoBldPrintReprintSlip (
 
 
 
-public method RedoBldPrntChkIss (
+public method redoBldPrntChkIss (
     INOUT EnqData string
 )
 {
@@ -3204,7 +3204,7 @@ public method RedoBldPrntChkIss (
 
 
 
-public method RedoBldReinvAcc (
+public method redoBldReinvAcc (
     INOUT EnqData string
 )
 {
@@ -3213,7 +3213,7 @@ public method RedoBldReinvAcc (
 
 
 
-public method RedoBldSelectUser (
+public method redoBldSelectUser (
     INOUT EnqData string
 )
 {
@@ -3222,7 +3222,7 @@ public method RedoBldSelectUser (
 
 
 
-public method RedoBranEduDets (
+public method redoBranEduDets (
 )
 {
     jBC:REDO.BRAN.EDU.DETS
@@ -3230,7 +3230,7 @@ public method RedoBranEduDets (
 
 
 
-public method RedoBranEduDetsFields (
+public method redoBranEduDetsFields (
 )
 {
     jBC:REDO.BRAN.EDU.DETS.FIELDS
@@ -3238,7 +3238,7 @@ public method RedoBranEduDetsFields (
 
 
 
-public method RedoBranchCardReturnAuthorise (
+public method redoBranchCardReturnAuthorise (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN.AUTHORISE
@@ -3246,7 +3246,7 @@ public method RedoBranchCardReturnAuthorise (
 
 
 
-public method RedoBranchCardReturn (
+public method redoBranchCardReturn (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN
@@ -3254,7 +3254,7 @@ public method RedoBranchCardReturn (
 
 
 
-public method RedoBranchCardReturnFields (
+public method redoBranchCardReturnFields (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN.FIELDS
@@ -3262,7 +3262,7 @@ public method RedoBranchCardReturnFields (
 
 
 
-public method RedoBranchCardReturnId (
+public method redoBranchCardReturnId (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN.ID
@@ -3270,7 +3270,7 @@ public method RedoBranchCardReturnId (
 
 
 
-public method RedoBranchCardReturnProcess (
+public method redoBranchCardReturnProcess (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN.PROCESS
@@ -3278,7 +3278,7 @@ public method RedoBranchCardReturnProcess (
 
 
 
-public method RedoBranchCardReturnValidate (
+public method redoBranchCardReturnValidate (
 )
 {
     jBC:REDO.BRANCH.CARD.RETURN.VALIDATE
@@ -3286,7 +3286,7 @@ public method RedoBranchCardReturnValidate (
 
 
 
-public method RedoBranchIntAcctParamValidate (
+public method redoBranchIntAcctParamValidate (
 )
 {
     jBC:REDO.BRANCH.INT.ACCT.PARAM.VALIDATE
@@ -3294,7 +3294,7 @@ public method RedoBranchIntAcctParamValidate (
 
 
 
-public method RedoBranchReqStock (
+public method redoBranchReqStock (
 )
 {
     jBC:REDO.BRANCH.REQ.STOCK
@@ -3302,7 +3302,7 @@ public method RedoBranchReqStock (
 
 
 
-public method RedoBranchReqStockFields (
+public method redoBranchReqStockFields (
 )
 {
     jBC:REDO.BRANCH.REQ.STOCK.FIELDS
@@ -3310,7 +3310,7 @@ public method RedoBranchReqStockFields (
 
 
 
-public method RedoBranchStatus (
+public method redoBranchStatus (
 )
 {
     jBC:REDO.BRANCH.STATUS
@@ -3318,7 +3318,7 @@ public method RedoBranchStatus (
 
 
 
-public method RedoBranchStatusChk (
+public method redoBranchStatusChk (
 )
 {
     jBC:REDO.BRANCH.STATUS.CHK
@@ -3326,7 +3326,7 @@ public method RedoBranchStatusChk (
 
 
 
-public method RedoBranchStatusFields (
+public method redoBranchStatusFields (
 )
 {
     jBC:REDO.BRANCH.STATUS.FIELDS
@@ -3334,7 +3334,7 @@ public method RedoBranchStatusFields (
 
 
 
-public method RedoBrowserRestSignOn (
+public method redoBrowserRestSignOn (
 )
 {
     jBC:REDO.BROWSER.REST.SIGN.ON
@@ -3342,7 +3342,7 @@ public method RedoBrowserRestSignOn (
 
 
 
-public method RedoBrrInwreturnProcess (
+public method redoBrrInwreturnProcess (
     INOUT BuildList string
 )
 {
@@ -3351,7 +3351,7 @@ public method RedoBrrInwreturnProcess (
 
 
 
-public method RedoBrrInwreturnProcessSelect (
+public method redoBrrInwreturnProcessSelect (
 )
 {
     jBC:REDO.BRR.INWRETURN.PROCESS.SELECT
@@ -3359,7 +3359,7 @@ public method RedoBrrInwreturnProcessSelect (
 
 
 
-public method RedoBuildAcctLastFivePayment (
+public method redoBuildAcctLastFivePayment (
     INOUT YFinalArray string
 )
 {
@@ -3368,7 +3368,7 @@ public method RedoBuildAcctLastFivePayment (
 
 
 
-public method RedoBuildAcctLastFiveTransfer (
+public method redoBuildAcctLastFiveTransfer (
     INOUT YFinalArray string
 )
 {
@@ -3377,7 +3377,7 @@ public method RedoBuildAcctLastFiveTransfer (
 
 
 
-public method RedoBuildAcctPaymentStmtIds (
+public method redoBuildAcctPaymentStmtIds (
     INOUT YFinalArray string
 )
 {
@@ -3386,7 +3386,7 @@ public method RedoBuildAcctPaymentStmtIds (
 
 
 
-public method RedoBuildAcctTransferStmtIds (
+public method redoBuildAcctTransferStmtIds (
     INOUT YFinalArray string
 )
 {
@@ -3395,7 +3395,7 @@ public method RedoBuildAcctTransferStmtIds (
 
 
 
-public method RedoBuildFormValues (
+public method redoBuildFormValues (
     INOUT EnqData string
 )
 {
@@ -3404,7 +3404,7 @@ public method RedoBuildFormValues (
 
 
 
-public method RedoBuildLetterRtn (
+public method redoBuildLetterRtn (
     INOUT EnqData string
 )
 {
@@ -3413,7 +3413,7 @@ public method RedoBuildLetterRtn (
 
 
 
-public method RedoBuildNewActivities (
+public method redoBuildNewActivities (
     INOUT EnqData string
 )
 {
@@ -3422,7 +3422,7 @@ public method RedoBuildNewActivities (
 
 
 
-public method RedoBuildTypeCustomer (
+public method redoBuildTypeCustomer (
     INOUT EnqData string
 )
 {
@@ -3431,7 +3431,7 @@ public method RedoBuildTypeCustomer (
 
 
 
-public method RedoBuildVersRou (
+public method redoBuildVersRou (
 )
 {
     jBC:REDO.BUILD.VERS.ROU
@@ -3439,7 +3439,7 @@ public method RedoBuildVersRou (
 
 
 
-public method RedoBulkSupPayAcCheckId (
+public method redoBulkSupPayAcCheckId (
 )
 {
     jBC:REDO.BULK.SUP.PAY.AC.CHECK.ID
@@ -3447,7 +3447,7 @@ public method RedoBulkSupPayAcCheckId (
 
 
 
-public method RedoBuySellSource (
+public method redoBuySellSource (
 )
 {
     jBC:REDO.BUY.SELL.SOURCE
@@ -3455,7 +3455,7 @@ public method RedoBuySellSource (
 
 
 
-public method RedoBuySellSourceFields (
+public method redoBuySellSourceFields (
 )
 {
     jBC:REDO.BUY.SELL.SOURCE.FIELDS
@@ -3463,7 +3463,7 @@ public method RedoBuySellSourceFields (
 
 
 
-public method RedoCaplBBuildLineCont (
+public method redoCaplBBuildLineCont (
     INOUT ReStatLineContId string
 )
 {
@@ -3472,7 +3472,7 @@ public method RedoCaplBBuildLineCont (
 
 
 
-public method RedoCaplBBuildLineContLoad (
+public method redoCaplBBuildLineContLoad (
 )
 {
     jBC:REDO.CAPL.B.BUILD.LINE.CONT.LOAD
@@ -3480,7 +3480,7 @@ public method RedoCaplBBuildLineContLoad (
 
 
 
-public method RedoCaplBBuildLineContSelect (
+public method redoCaplBBuildLineContSelect (
 )
 {
     jBC:REDO.CAPL.B.BUILD.LINE.CONT.SELECT
@@ -3488,7 +3488,7 @@ public method RedoCaplBBuildLineContSelect (
 
 
 
-public method RedoCaplBClearLineContSelect (
+public method redoCaplBClearLineContSelect (
 )
 {
     jBC:REDO.CAPL.B.CLEAR.LINE.CONT.SELECT
@@ -3496,7 +3496,7 @@ public method RedoCaplBClearLineContSelect (
 
 
 
-public method RedoCcrgBEva (
+public method redoCcrgBEva (
     INOUT PInProId string
 )
 {
@@ -3505,7 +3505,7 @@ public method RedoCcrgBEva (
 
 
 
-public method RedoCcrgBEvaLoad (
+public method redoCcrgBEvaLoad (
 )
 {
     jBC:REDO.CCRG.B.EVA.LOAD
@@ -3513,7 +3513,7 @@ public method RedoCcrgBEvaLoad (
 
 
 
-public method RedoCcrgBEvaSelect (
+public method redoCcrgBEvaSelect (
 )
 {
     jBC:REDO.CCRG.B.EVA.SELECT
@@ -3521,7 +3521,7 @@ public method RedoCcrgBEvaSelect (
 
 
 
-public method RedoCcrgBExt (
+public method redoCcrgBExt (
     INOUT YCcrgCusId string
 )
 {
@@ -3530,7 +3530,7 @@ public method RedoCcrgBExt (
 
 
 
-public method RedoCcrgBExtLoad (
+public method redoCcrgBExtLoad (
 )
 {
     jBC:REDO.CCRG.B.EXT.LOAD
@@ -3538,7 +3538,7 @@ public method RedoCcrgBExtLoad (
 
 
 
-public method RedoCcrgBExtSelect (
+public method redoCcrgBExtSelect (
 )
 {
     jBC:REDO.CCRG.B.EXT.SELECT
@@ -3546,7 +3546,7 @@ public method RedoCcrgBExtSelect (
 
 
 
-public method RedoCcrgBPop (
+public method redoCcrgBPop (
     INOUT PInCusId string
 )
 {
@@ -3555,7 +3555,7 @@ public method RedoCcrgBPop (
 
 
 
-public method RedoCcrgBPopSelect (
+public method redoCcrgBPopSelect (
 )
 {
     jBC:REDO.CCRG.B.POP.SELECT
@@ -3563,7 +3563,7 @@ public method RedoCcrgBPopSelect (
 
 
 
-public method RedoCcrgBRlDelLog (
+public method redoCcrgBRlDelLog (
     INOUT PInCusId string
 )
 {
@@ -3572,7 +3572,7 @@ public method RedoCcrgBRlDelLog (
 
 
 
-public method RedoCcrgBRlSaveLog (
+public method redoCcrgBRlSaveLog (
     INOUT PInCusId string,
     INOUT PInErrMsg string
 )
@@ -3582,7 +3582,7 @@ public method RedoCcrgBRlSaveLog (
 
 
 
-public method RedoCcrgBTraceError (
+public method redoCcrgBTraceError (
     INOUT PSourceInfo string,
     INOUT PMsg string,
     INOUT PNonFatal string,
@@ -3595,7 +3595,7 @@ public method RedoCcrgBTraceError (
 
 
 
-public method RedoChangeCheqStatus (
+public method redoChangeCheqStatus (
     INOUT SolCkId string
 )
 {
@@ -3604,7 +3604,7 @@ public method RedoChangeCheqStatus (
 
 
 
-public method RedoChangeCheqStatusLoad (
+public method redoChangeCheqStatusLoad (
 )
 {
     jBC:REDO.CHANGE.CHEQ.STATUS.LOAD
@@ -3612,7 +3612,7 @@ public method RedoChangeCheqStatusLoad (
 
 
 
-public method RedoChangeCheqStatusSelect (
+public method redoChangeCheqStatusSelect (
 )
 {
     jBC:REDO.CHANGE.CHEQ.STATUS.SELECT
@@ -3622,7 +3622,7 @@ public method RedoChangeCheqStatusSelect (
 public method apapBCreateLnServiceLoad (
 )
 {
-   jBC: APAP.B.CREATE.LN.SERVICE.LOAD
+    jBC: APAP.B.CREATE.LN.SERVICE.LOAD
 }
 
 
@@ -3630,7 +3630,7 @@ public method apapBCreateLnServiceLoad (
 public method apapBCreateLnServiceSelect (
 )
 {
-   jBC: APAP.B.CREATE.LN.SERVICE.SELECT
+    jBC: APAP.B.CREATE.LN.SERVICE.SELECT
 }
 
 
@@ -3638,7 +3638,7 @@ public method apapBCreateLnServiceSelect (
 public method redoBAchTransferRouLoad (
 )
 {
-   jBC: REDO.B.ACH.TRANSFER.ROU.LOAD
+    jBC: REDO.B.ACH.TRANSFER.ROU.LOAD
 }
 
 
@@ -3646,16 +3646,16 @@ public method redoBAchTransferRouLoad (
 public method redoBAchTransferRouSelect (
 )
 {
-   jBC: REDO.B.ACH.TRANSFER.ROU.SELECT
+    jBC: REDO.B.ACH.TRANSFER.ROU.SELECT
 }
 
 
 
 public method redoBAciUpd (
-   INOUT yAcctNo string
+    INOUT yAcctNo string
 )
 {
-   jBC: REDO.B.ACI.UPD
+    jBC: REDO.B.ACI.UPD
 }
 
 
@@ -3663,16 +3663,16 @@ public method redoBAciUpd (
 public method redoBAleUpdChequesSelect (
 )
 {
-   jBC: REDO.B.ALE.UPD.CHEQUES.SELECT
+    jBC: REDO.B.ALE.UPD.CHEQUES.SELECT
 }
 
 
 
 public method redoBApplyChg (
-   INOUT yLcoSelList string
+    INOUT yLcoSelList string
 )
 {
-   jBC: REDO.B.APPLY.CHG
+    jBC: REDO.B.APPLY.CHG
 }
 
 
@@ -3680,7 +3680,7 @@ public method redoBApplyChg (
 public method redoBApplyChgLoad (
 )
 {
-   jBC: REDO.B.APPLY.CHG.LOAD
+    jBC: REDO.B.APPLY.CHG.LOAD
 }
 
 
@@ -3688,7 +3688,7 @@ public method redoBApplyChgLoad (
 public method redoBAuditLogBulkLoad (
 )
 {
-   jBC: REDO.B.AUDIT.LOG.BULK.LOAD
+    jBC: REDO.B.AUDIT.LOG.BULK.LOAD
 }
 
 
@@ -3696,7 +3696,7 @@ public method redoBAuditLogBulkLoad (
 public method redoBAuditLogBulkPost (
 )
 {
-   jBC: REDO.B.AUDIT.LOG.BULK.POST
+    jBC: REDO.B.AUDIT.LOG.BULK.POST
 }
 
 
@@ -3704,7 +3704,7 @@ public method redoBAuditLogBulkPost (
 public method redoBAuditLogBulkSelect (
 )
 {
-   jBC: REDO.B.AUDIT.LOG.BULK.SELECT
+    jBC: REDO.B.AUDIT.LOG.BULK.SELECT
 }
 
 
@@ -3712,7 +3712,7 @@ public method redoBAuditLogBulkSelect (
 public method redoBAutomaticOrderLoad (
 )
 {
-   jBC: REDO.B.AUTOMATIC.ORDER.LOAD
+    jBC: REDO.B.AUTOMATIC.ORDER.LOAD
 }
 
 
@@ -3720,7 +3720,7 @@ public method redoBAutomaticOrderLoad (
 public method redoBAutomaticOrderSelect (
 )
 {
-   jBC: REDO.B.AUTOMATIC.ORDER.SELECT
+    jBC: REDO.B.AUTOMATIC.ORDER.SELECT
 }
 
 
@@ -3728,7 +3728,7 @@ public method redoBAutomaticOrderSelect (
 public method redoBBatChequesSelect (
 )
 {
-   jBC: REDO.B.BAT.CHEQUES.SELECT
+    jBC: REDO.B.BAT.CHEQUES.SELECT
 }
 
 
@@ -3736,7 +3736,7 @@ public method redoBBatChequesSelect (
 public method redoBBcrGenerateFile (
 )
 {
-   jBC: REDO.B.BCR.GENERATE.FILE
+    jBC: REDO.B.BCR.GENERATE.FILE
 }
 
 
@@ -3744,7 +3744,7 @@ public method redoBBcrGenerateFile (
 public method redoBCcyPosnUpdNew (
 )
 {
-   jBC: REDO.B.CCY.POSN.UPD.NEW
+    jBC: REDO.B.CCY.POSN.UPD.NEW
 }
 
 
@@ -3752,7 +3752,7 @@ public method redoBCcyPosnUpdNew (
 public method redoBChangeWorkLoad (
 )
 {
-   jBC: REDO.B.CHANGE.WORK.LOAD
+    jBC: REDO.B.CHANGE.WORK.LOAD
 }
 
 
@@ -3760,7 +3760,7 @@ public method redoBChangeWorkLoad (
 public method redoBChqUpdStatusLoad (
 )
 {
-   jBC: REDO.B.CHQ.UPD.STATUS.LOAD
+    jBC: REDO.B.CHQ.UPD.STATUS.LOAD
 }
 
 
@@ -3768,7 +3768,7 @@ public method redoBChqUpdStatusLoad (
 public method redoBChqUpdStatusSelect (
 )
 {
-   jBC: REDO.B.CHQ.UPD.STATUS.SELECT
+    jBC: REDO.B.CHQ.UPD.STATUS.SELECT
 }
 
 
@@ -3776,7 +3776,7 @@ public method redoBChqUpdStatusSelect (
 public method redoBClearReturnLoad (
 )
 {
-   jBC: REDO.B.CLEAR.RETURN.LOAD
+    jBC: REDO.B.CLEAR.RETURN.LOAD
 }
 
 
@@ -3784,22 +3784,22 @@ public method redoBClearReturnLoad (
 public method redoBClearReturnPost (
 )
 {
-   jBC: REDO.B.CLEAR.RETURN.POST
+    jBC: REDO.B.CLEAR.RETURN.POST
 }
 
 
 
 public method redoBColFfExtLastPay (
-   INOUT yAaId string,
-   INOUT yTotalCuotas string,
-   INOUT yLastpayAmt string,
-   INOUT yLastpayDat string,
-   INOUT yNextPayAmt string,
-   INOUT yNextPayDate string,
-   INOUT yAlPaidBillsCnt string
+    INOUT yAaId string,
+    INOUT yTotalCuotas string,
+    INOUT yLastpayAmt string,
+    INOUT yLastpayDat string,
+    INOUT yNextPayAmt string,
+    INOUT yNextPayDate string,
+    INOUT yAlPaidBillsCnt string
 )
 {
-   jBC: REDO.B.COL.FF.EXT.LAST.PAY
+    jBC: REDO.B.COL.FF.EXT.LAST.PAY
 }
 
 
@@ -3807,7 +3807,7 @@ public method redoBColFfExtLastPay (
 public method redoBCommerDebtrClPost (
 )
 {
-   jBC: REDO.B.COMMER.DEBTR.CL.POST
+    jBC: REDO.B.COMMER.DEBTR.CL.POST
 }
 
 
@@ -3815,16 +3815,16 @@ public method redoBCommerDebtrClPost (
 public method redoBCommerDebtrClSelect (
 )
 {
-   jBC: REDO.B.COMMER.DEBTR.CL.SELECT
+    jBC: REDO.B.COMMER.DEBTR.CL.SELECT
 }
 
 
 
 public method redoBConvFile (
-   INOUT buildList string
+    INOUT buildList string
 )
 {
-   jBC: REDO.B.CONV.FILE
+    jBC: REDO.B.CONV.FILE
 }
 
 
@@ -3832,7 +3832,7 @@ public method redoBConvFile (
 public method redoBConvFileLoad (
 )
 {
-   jBC: REDO.B.CONV.FILE.LOAD
+    jBC: REDO.B.CONV.FILE.LOAD
 }
 
 
@@ -3840,7 +3840,7 @@ public method redoBConvFileLoad (
 public method redoBCustPrdAciPurgeLoad (
 )
 {
-   jBC: REDO.B.CUST.PRD.ACI.PURGE.LOAD
+    jBC: REDO.B.CUST.PRD.ACI.PURGE.LOAD
 }
 
 
@@ -3848,7 +3848,7 @@ public method redoBCustPrdAciPurgeLoad (
 public method redoBCustPrdAciPurgeSelect (
 )
 {
-   jBC: REDO.B.CUST.PRD.ACI.PURGE.SELECT
+    jBC: REDO.B.CUST.PRD.ACI.PURGE.SELECT
 }
 
 
@@ -3856,43 +3856,43 @@ public method redoBCustPrdAciPurgeSelect (
 public method redoBCustomerProvisionSelect (
 )
 {
-   jBC: REDO.B.CUSTOMER.PROVISION.SELECT
+    jBC: REDO.B.CUSTOMER.PROVISION.SELECT
 }
 
 
 
 public method redoBCycleCusAge (
-   INOUT yId string
+    INOUT yId string
 )
 {
-   jBC: REDO.B.CYCLE.CUS.AGE
+    jBC: REDO.B.CYCLE.CUS.AGE
 }
 
 
 
 public method redoBDeptCode (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.B.DEPT.CODE
+    jBC: REDO.B.DEPT.CODE
 }
 
 
 
 public method redoBDeptCodeTo (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.B.DEPT.CODE.TO
+    jBC: REDO.B.DEPT.CODE.TO
 }
 
 
 
 public method redoBEirMthd (
-   INOUT yId string
+    INOUT yId string
 )
 {
-   jBC: REDO.B.EIR.MTHD
+    jBC: REDO.B.EIR.MTHD
 }
 
 
@@ -3900,16 +3900,16 @@ public method redoBEirMthd (
 public method redoBEirMthdLoad (
 )
 {
-   jBC: REDO.B.EIR.MTHD.LOAD
+    jBC: REDO.B.EIR.MTHD.LOAD
 }
 
 
 
 public method redoBExpireGvtNgvt (
-   INOUT chqDetailsId string
+    INOUT chqDetailsId string
 )
 {
-   jBC: REDO.B.EXPIRE.GVT.NGVT
+    jBC: REDO.B.EXPIRE.GVT.NGVT
 }
 
 
@@ -3917,7 +3917,7 @@ public method redoBExpireGvtNgvt (
 public method redoBExpireGvtNgvtLoad (
 )
 {
-   jBC: REDO.B.EXPIRE.GVT.NGVT.LOAD
+    jBC: REDO.B.EXPIRE.GVT.NGVT.LOAD
 }
 
 
@@ -3925,7 +3925,7 @@ public method redoBExpireGvtNgvtLoad (
 public method redoBFxProvDlyLoad (
 )
 {
-   jBC: REDO.B.FX.PROV.DLY.LOAD
+    jBC: REDO.B.FX.PROV.DLY.LOAD
 }
 
 
@@ -3933,16 +3933,16 @@ public method redoBFxProvDlyLoad (
 public method redoBFxProvDlySelect (
 )
 {
-   jBC: REDO.B.FX.PROV.DLY.SELECT
+    jBC: REDO.B.FX.PROV.DLY.SELECT
 }
 
 
 
 public method redoBGenNcfUnmap (
-   INOUT txnCodeStmtRef string
+    INOUT txnCodeStmtRef string
 )
 {
-   jBC: REDO.B.GEN.NCF.UNMAP
+    jBC: REDO.B.GEN.NCF.UNMAP
 }
 
 
@@ -3950,7 +3950,7 @@ public method redoBGenNcfUnmap (
 public method redoBGenNcfUnmapLoad (
 )
 {
-   jBC: REDO.B.GEN.NCF.UNMAP.LOAD
+    jBC: REDO.B.GEN.NCF.UNMAP.LOAD
 }
 
 
@@ -3958,7 +3958,7 @@ public method redoBGenNcfUnmapLoad (
 public method redoBIntCalcSelect (
 )
 {
-   jBC: REDO.B.INT.CALC.SELECT
+    jBC: REDO.B.INT.CALC.SELECT
 }
 
 
@@ -3966,7 +3966,7 @@ public method redoBIntCalcSelect (
 public method redoBLetterHldDelLoad (
 )
 {
-   jBC: REDO.B.LETTER.HLD.DEL.LOAD
+    jBC: REDO.B.LETTER.HLD.DEL.LOAD
 }
 
 
@@ -3974,7 +3974,7 @@ public method redoBLetterHldDelLoad (
 public method redoBLetterHldDelSelect (
 )
 {
-   jBC: REDO.B.LETTER.HLD.DEL.SELECT
+    jBC: REDO.B.LETTER.HLD.DEL.SELECT
 }
 
 
@@ -3982,16 +3982,16 @@ public method redoBLetterHldDelSelect (
 public method redoBListOfCompaniesSelect (
 )
 {
-   jBC: REDO.B.LIST.OF.COMPANIES.SELECT
+    jBC: REDO.B.LIST.OF.COMPANIES.SELECT
 }
 
 
 
 public method redoBListOfShareholder (
-   INOUT customerId string
+    INOUT customerId string
 )
 {
-   jBC: REDO.B.LIST.OF.SHAREHOLDER
+    jBC: REDO.B.LIST.OF.SHAREHOLDER
 }
 
 
@@ -3999,25 +3999,25 @@ public method redoBListOfShareholder (
 public method redoBLoanPrdUpdSelect (
 )
 {
-   jBC: REDO.B.LOAN.PRD.UPD.SELECT
+    jBC: REDO.B.LOAN.PRD.UPD.SELECT
 }
 
 
 
 public method redoBLoanStatusElimination (
-   INOUT arrId string
+    INOUT arrId string
 )
 {
-   jBC: REDO.B.LOAN.STATUS.ELIMINATION
+    jBC: REDO.B.LOAN.STATUS.ELIMINATION
 }
 
 
 
 public method redoBLyGetExp (
-   INOUT idList string
+    INOUT idList string
 )
 {
-   jBC: REDO.B.LY.GET.EXP
+    jBC: REDO.B.LY.GET.EXP
 }
 
 
@@ -4025,7 +4025,7 @@ public method redoBLyGetExp (
 public method redoBLyGetExpLoad (
 )
 {
-   jBC: REDO.B.LY.GET.EXP.LOAD
+    jBC: REDO.B.LY.GET.EXP.LOAD
 }
 
 
@@ -4033,25 +4033,25 @@ public method redoBLyGetExpLoad (
 public method redoBLyPgenAccopSelect (
 )
 {
-   jBC: REDO.B.LY.PGEN.ACCOP.SELECT
+    jBC: REDO.B.LY.PGEN.ACCOP.SELECT
 }
 
 
 
 public method redoBLyPgenBirth (
-   INOUT cusId string
+    INOUT cusId string
 )
 {
-   jBC: REDO.B.LY.PGEN.BIRTH
+    jBC: REDO.B.LY.PGEN.BIRTH
 }
 
 
 
 public method redoBLyPgenTbm (
-   INOUT tbmId string
+    INOUT tbmId string
 )
 {
-   jBC: REDO.B.LY.PGEN.TBM
+    jBC: REDO.B.LY.PGEN.TBM
 }
 
 
@@ -4059,7 +4059,7 @@ public method redoBLyPgenTbm (
 public method redoBLyPgenTbmLoad (
 )
 {
-   jBC: REDO.B.LY.PGEN.TBM.LOAD
+    jBC: REDO.B.LY.PGEN.TBM.LOAD
 }
 
 
@@ -4067,16 +4067,16 @@ public method redoBLyPgenTbmLoad (
 public method redoBLyTxnGenSelect (
 )
 {
-   jBC: REDO.B.LY.TXN.GEN.SELECT
+    jBC: REDO.B.LY.TXN.GEN.SELECT
 }
 
 
 
 public method redoBMmEffRateAccr (
-   INOUT mmMoneyMarketId string
+    INOUT mmMoneyMarketId string
 )
 {
-   jBC: REDO.B.MM.EFF.RATE.ACCR
+    jBC: REDO.B.MM.EFF.RATE.ACCR
 }
 
 
@@ -4084,16 +4084,16 @@ public method redoBMmEffRateAccr (
 public method redoBNabAcctHolLoad (
 )
 {
-   jBC: REDO.B.NAB.ACCT.HOL.LOAD
+    jBC: REDO.B.NAB.ACCT.HOL.LOAD
 }
 
 
 
 public method redoBMovePartPayHist (
-   INOUT recordId string
+    INOUT recordId string
 )
 {
-   jBC: REDO.B.MOVE.PART.PAY.HIST
+    jBC: REDO.B.MOVE.PART.PAY.HIST
 }
 
 
@@ -4101,7 +4101,7 @@ public method redoBMovePartPayHist (
 public method redoBMovePartPayHistLoad (
 )
 {
-   jBC: REDO.B.MOVE.PART.PAY.HIST.LOAD
+    jBC: REDO.B.MOVE.PART.PAY.HIST.LOAD
 }
 
 
@@ -4109,7 +4109,7 @@ public method redoBMovePartPayHistLoad (
 public method redoBNabAcctHolSelect (
 )
 {
-   jBC: REDO.B.NAB.ACCT.HOL.SELECT
+    jBC: REDO.B.NAB.ACCT.HOL.SELECT
 }
 
 
@@ -4117,25 +4117,25 @@ public method redoBNabAcctHolSelect (
 public method redoBNewNabAccountingSelect (
 )
 {
-   jBC: REDO.B.NEW.NAB.ACCOUNTING.SELECT
+    jBC: REDO.B.NEW.NAB.ACCOUNTING.SELECT
 }
 
 
 
 public method redoBNewUpdateCapintAmt (
-   INOUT yId string
+    INOUT yId string
 )
 {
-   jBC: REDO.B.NEW.UPDATE.CAPINT.AMT
+    jBC: REDO.B.NEW.UPDATE.CAPINT.AMT
 }
 
 
 
 public method redoBOfficerOfCompany (
-   INOUT customerId string
+    INOUT customerId string
 )
 {
-   jBC: REDO.B.OFFICER.OF.COMPANY
+    jBC: REDO.B.OFFICER.OF.COMPANY
 }
 
 
@@ -4143,7 +4143,7 @@ public method redoBOfficerOfCompany (
 public method redoBOfficerOfCompanyLoad (
 )
 {
-   jBC: REDO.B.OFFICER.OF.COMPANY.LOAD
+    jBC: REDO.B.OFFICER.OF.COMPANY.LOAD
 }
 
 
@@ -4151,7 +4151,7 @@ public method redoBOfficerOfCompanyLoad (
 public method redoBPostDdProcess (
 )
 {
-   jBC: REDO.B.POST.DD.PROCESS
+    jBC: REDO.B.POST.DD.PROCESS
 }
 
 
@@ -4159,7 +4159,7 @@ public method redoBPostDdProcess (
 public method redoBPreDdProcess (
 )
 {
-   jBC: REDO.B.PRE.DD.PROCESS
+    jBC: REDO.B.PRE.DD.PROCESS
 }
 
 
@@ -4167,7 +4167,7 @@ public method redoBPreDdProcess (
 public method redoBPurgeCardsLoad (
 )
 {
-   jBC: REDO.B.PURGE.CARDS.LOAD
+    jBC: REDO.B.PURGE.CARDS.LOAD
 }
 
 
@@ -4175,16 +4175,16 @@ public method redoBPurgeCardsLoad (
 public method redoBPurgeCardsSelect (
 )
 {
-   jBC: REDO.B.PURGE.CARDS.SELECT
+    jBC: REDO.B.PURGE.CARDS.SELECT
 }
 
 
 
 public method redoBRegenNabAccounting (
-   INOUT arrId string
+    INOUT arrId string
 )
 {
-   jBC: REDO.B.REGEN.NAB.ACCOUNTING
+    jBC: REDO.B.REGEN.NAB.ACCOUNTING
 }
 
 
@@ -4192,7 +4192,7 @@ public method redoBRegenNabAccounting (
 public method redoBRegenNabAccountingLoad (
 )
 {
-   jBC: REDO.B.REGEN.NAB.ACCOUNTING.LOAD
+    jBC: REDO.B.REGEN.NAB.ACCOUNTING.LOAD
 }
 
 
@@ -4200,7 +4200,7 @@ public method redoBRegenNabAccountingLoad (
 public method redoBRenewProcessSelect (
 )
 {
-   jBC: REDO.B.RENEW.PROCESS.SELECT
+    jBC: REDO.B.RENEW.PROCESS.SELECT
 }
 
 
@@ -4208,7 +4208,7 @@ public method redoBRenewProcessSelect (
 public method redoBRenewProcessLoad (
 )
 {
-   jBC: REDO.B.RENEW.PROCESS.LOAD
+    jBC: REDO.B.RENEW.PROCESS.LOAD
 }
 
 
@@ -4216,7 +4216,7 @@ public method redoBRenewProcessLoad (
 public method redoBRevNabAcctReachWofLoad (
 )
 {
-   jBC: REDO.B.REV.NAB.ACCT.REACH.WOF.LOAD
+    jBC: REDO.B.REV.NAB.ACCT.REACH.WOF.LOAD
 }
 
 
@@ -4224,25 +4224,25 @@ public method redoBRevNabAcctReachWofLoad (
 public method redoBRiskGroupMembersSelect (
 )
 {
-   jBC: REDO.B.RISK.GROUP.MEMBERS.SELECT
+    jBC: REDO.B.RISK.GROUP.MEMBERS.SELECT
 }
 
 
 
 public method redoBScRevDiscEntry (
-   INOUT yId string
+    INOUT yId string
 )
 {
-   jBC: REDO.B.SC.REV.DISC.ENTRY
+    jBC: REDO.B.SC.REV.DISC.ENTRY
 }
 
 
 
 public method redoBScheduleProjector (
-   INOUT yAaId string
+    INOUT yAaId string
 )
 {
-   jBC: REDO.B.SCHEDULE.PROJECTOR
+    jBC: REDO.B.SCHEDULE.PROJECTOR
 }
 
 
@@ -4250,7 +4250,7 @@ public method redoBScheduleProjector (
 public method redoBScheduleProjectorLoad (
 )
 {
-   jBC: REDO.B.SCHEDULE.PROJECTOR.LOAD
+    jBC: REDO.B.SCHEDULE.PROJECTOR.LOAD
 }
 
 
@@ -4258,7 +4258,7 @@ public method redoBScheduleProjectorLoad (
 public method redoBSodMmRevStmtEntryLoad (
 )
 {
-   jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.LOAD
+    jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.LOAD
 }
 
 
@@ -4266,7 +4266,7 @@ public method redoBSodMmRevStmtEntryLoad (
 public method redoBSodMmRevStmtEntrySelect (
 )
 {
-   jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.SELECT
+    jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.SELECT
 }
 
 
@@ -4274,7 +4274,7 @@ public method redoBSodMmRevStmtEntrySelect (
 public method redoBStatus1UpdPost (
 )
 {
-   jBC: REDO.B.STATUS1.UPD.POST
+    jBC: REDO.B.STATUS1.UPD.POST
 }
 
 
@@ -4282,7 +4282,7 @@ public method redoBStatus1UpdPost (
 public method redoBStatus1UpdSelect (
 )
 {
-   jBC: REDO.B.STATUS1.UPD.SELECT
+    jBC: REDO.B.STATUS1.UPD.SELECT
 }
 
 
@@ -4290,7 +4290,7 @@ public method redoBStatus1UpdSelect (
 public method redoBStockQtyCountLoad (
 )
 {
-   jBC: REDO.B.STOCK.QTY.COUNT.LOAD
+    jBC: REDO.B.STOCK.QTY.COUNT.LOAD
 }
 
 
@@ -4298,7 +4298,7 @@ public method redoBStockQtyCountLoad (
 public method redoBStockQtyCountSelect (
 )
 {
-   jBC: REDO.B.STOCK.QTY.COUNT.SELECT
+    jBC: REDO.B.STOCK.QTY.COUNT.SELECT
 }
 
 
@@ -4306,7 +4306,7 @@ public method redoBStockQtyCountSelect (
 public method redoBUpTransProcessLoad (
 )
 {
-   jBC: REDO.B.UP.TRANS.PROCESS.LOAD
+    jBC: REDO.B.UP.TRANS.PROCESS.LOAD
 }
 
 
@@ -4314,7 +4314,7 @@ public method redoBUpTransProcessLoad (
 public method redoBUpTransProcessSelect (
 )
 {
-   jBC: REDO.B.UP.TRANS.PROCESS.SELECT
+    jBC: REDO.B.UP.TRANS.PROCESS.SELECT
 }
 
 
@@ -4322,7 +4322,7 @@ public method redoBUpTransProcessSelect (
 public method redoBUpdFtRetryTableLoad (
 )
 {
-   jBC: REDO.B.UPD.FT.RETRY.TABLE.LOAD
+    jBC: REDO.B.UPD.FT.RETRY.TABLE.LOAD
 }
 
 
@@ -4330,7 +4330,7 @@ public method redoBUpdFtRetryTableLoad (
 public method redoBUpdFtRetryTableSelect (
 )
 {
-   jBC: REDO.B.UPD.FT.RETRY.TABLE.SELECT
+    jBC: REDO.B.UPD.FT.RETRY.TABLE.SELECT
 }
 
 
@@ -4338,7 +4338,7 @@ public method redoBUpdFtRetryTableSelect (
 public method redoBUpdSettRiskLoad (
 )
 {
-   jBC: REDO.B.UPD.SETT.RISK.LOAD
+    jBC: REDO.B.UPD.SETT.RISK.LOAD
 }
 
 
@@ -4346,7 +4346,7 @@ public method redoBUpdSettRiskLoad (
 public method redoBUpdSettRiskSelect (
 )
 {
-   jBC: REDO.B.UPD.SETT.RISK.SELECT
+    jBC: REDO.B.UPD.SETT.RISK.SELECT
 }
 
 
@@ -4354,25 +4354,25 @@ public method redoBUpdSettRiskSelect (
 public method redoBUpdateCapintAmtRp (
 )
 {
-   jBC: REDO.B.UPDATE.CAPINT.AMT.RP
+    jBC: REDO.B.UPDATE.CAPINT.AMT.RP
 }
 
 
 
 public method redoBUpdateCheqStock (
-   INOUT chequeId string
+    INOUT chequeId string
 )
 {
-   jBC: REDO.B.UPDATE.CHEQ.STOCK
+    jBC: REDO.B.UPDATE.CHEQ.STOCK
 }
 
 
 
 public method redoBUpdatePoolRate (
-   INOUT accId string
+    INOUT accId string
 )
 {
-   jBC: REDO.B.UPDATE.POOL.RATE
+    jBC: REDO.B.UPDATE.POOL.RATE
 }
 
 
@@ -4380,7 +4380,7 @@ public method redoBUpdatePoolRate (
 public method redoBUpdatePoolRateLoad (
 )
 {
-   jBC: REDO.B.UPDATE.POOL.RATE.LOAD
+    jBC: REDO.B.UPDATE.POOL.RATE.LOAD
 }
 
 
@@ -4388,7 +4388,7 @@ public method redoBUpdatePoolRateLoad (
 public method redoBValidAccountsPost1 (
 )
 {
-   jBC: REDO.B.VALID.ACCOUNTS.POST1
+    jBC: REDO.B.VALID.ACCOUNTS.POST1
 }
 
 
@@ -4396,7 +4396,7 @@ public method redoBValidAccountsPost1 (
 public method redoBValidAccountsSelect (
 )
 {
-   jBC: REDO.B.VALID.ACCOUNTS.SELECT
+    jBC: REDO.B.VALID.ACCOUNTS.SELECT
 }
 
 
@@ -4404,7 +4404,7 @@ public method redoBValidAccountsSelect (
 public method redoBYerEndFxSalePreSelect (
 )
 {
-   jBC: REDO.B.YER.END.FX.SALE.PRE.SELECT
+    jBC: REDO.B.YER.END.FX.SALE.PRE.SELECT
 }
 
 
@@ -4412,7 +4412,7 @@ public method redoBYerEndFxSalePreSelect (
 public method redoB2FtDataAuthorise (
 )
 {
-   jBC: REDO.B2.FT.DATA.AUTHORISE
+    jBC: REDO.B2.FT.DATA.AUTHORISE
 }
 
 
@@ -4420,16 +4420,16 @@ public method redoB2FtDataAuthorise (
 public method redoB2StoreLastTxn (
 )
 {
-   jBC: REDO.B2.STORE.LAST.TXN
+    jBC: REDO.B2.STORE.LAST.TXN
 }
 
 
 
 public method redoBalanceBuildLetterRtn (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BALANCE.BUILD.LETTER.RTN
+    jBC: REDO.BALANCE.BUILD.LETTER.RTN
 }
 
 
@@ -4437,7 +4437,7 @@ public method redoBalanceBuildLetterRtn (
 public method redoBcrReportDataFields (
 )
 {
-   jBC: REDO.BCR.REPORT.DATA.FIELDS
+    jBC: REDO.BCR.REPORT.DATA.FIELDS
 }
 
 
@@ -4445,43 +4445,43 @@ public method redoBcrReportDataFields (
 public method redoBcrReportExec (
 )
 {
-   jBC: REDO.BCR.REPORT.EXEC
+    jBC: REDO.BCR.REPORT.EXEC
 }
 
 
 
 public method redoBldArcCusPos (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BLD.ARC.CUS.POS
+    jBC: REDO.BLD.ARC.CUS.POS
 }
 
 
 
 public method redoBldAzStmtEntries (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BLD.AZ.STMT.ENTRIES
+    jBC: REDO.BLD.AZ.STMT.ENTRIES
 }
 
 
 
 public method redoBldSelectUserLive (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BLD.SELECT.USER.LIVE
+    jBC: REDO.BLD.SELECT.USER.LIVE
 }
 
 
 
 public method redoBldUserAcctSign (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BLD.USER.ACCT.SIGN
+    jBC: REDO.BLD.USER.ACCT.SIGN
 }
 
 
@@ -4489,7 +4489,7 @@ public method redoBldUserAcctSign (
 public method redoBranchIntAcctParam (
 )
 {
-   jBC: REDO.BRANCH.INT.ACCT.PARAM
+    jBC: REDO.BRANCH.INT.ACCT.PARAM
 }
 
 
@@ -4497,7 +4497,7 @@ public method redoBranchIntAcctParam (
 public method redoBranchIntAcctParamFields (
 )
 {
-   jBC: REDO.BRANCH.INT.ACCT.PARAM.FIELDS
+    jBC: REDO.BRANCH.INT.ACCT.PARAM.FIELDS
 }
 
 
@@ -4505,7 +4505,7 @@ public method redoBranchIntAcctParamFields (
 public method redoBrrInwreturnProcessLoad (
 )
 {
-   jBC: REDO.BRR.INWRETURN.PROCESS.LOAD
+    jBC: REDO.BRR.INWRETURN.PROCESS.LOAD
 }
 
 
@@ -4513,34 +4513,34 @@ public method redoBrrInwreturnProcessLoad (
 public method redoBrrInwreturnProcessPost (
 )
 {
-   jBC: REDO.BRR.INWRETURN.PROCESS.POST
+    jBC: REDO.BRR.INWRETURN.PROCESS.POST
 }
 
 
 
 public method redoBuildSignature (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BUILD.SIGNATURE
+    jBC: REDO.BUILD.SIGNATURE
 }
 
 
 
 public method redoBuildTipoCl (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: REDO.BUILD.TIPO.CL
+    jBC: REDO.BUILD.TIPO.CL
 }
 
 
 
 public method redoCaplBClearLineCont (
-   INOUT redoCaplLReStatLineContId string
+    INOUT redoCaplLReStatLineContId string
 )
 {
-   jBC: REDO.CAPL.B.CLEAR.LINE.CONT
+    jBC: REDO.CAPL.B.CLEAR.LINE.CONT
 }
 
 
@@ -4548,16 +4548,16 @@ public method redoCaplBClearLineCont (
 public method redoCaplBClearLineContLoad (
 )
 {
-   jBC: REDO.CAPL.B.CLEAR.LINE.CONT.LOAD
+    jBC: REDO.CAPL.B.CLEAR.LINE.CONT.LOAD
 }
 
 
 
 public method redoCcrgBPopDel (
-   INOUT pInCusId string
+    INOUT pInCusId string
 )
 {
-   jBC: REDO.CCRG.B.POP.DEL
+    jBC: REDO.CCRG.B.POP.DEL
 }
 
 
@@ -4565,5 +4565,5 @@ public method redoCcrgBPopDel (
 public method redoCcrgBPopLoad (
 )
 {
-   jBC: REDO.CCRG.B.POP.LOAD
+    jBC: REDO.CCRG.B.POP.LOAD
 }

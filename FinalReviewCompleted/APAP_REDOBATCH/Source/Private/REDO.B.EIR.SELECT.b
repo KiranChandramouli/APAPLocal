@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyMTE5MzU3ODgzOkNwMTI1MjoxNjgxMTkwNjM5NzYzOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 Apr 2023 10:53:59
+* @ValidationCode : MjoyMTE5MzU3ODgzOkNwMTI1MjoxNjg0ODU0Mzg1OTg0OklUU1M6LTE6LTE6LTI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -2
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.B.EIR.SELECT
 * 23 Oct 2010      Naveen Kumar N     ODR-2010-07-0081    Initial creation
 * 29 Sep 2011      Pradeeep S         PACS00133293        Code Review changes
 * Date                  who                   Reference              
-* 11-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 11-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON

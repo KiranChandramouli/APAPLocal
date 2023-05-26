@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo3NDA3MTAxOkNwMTI1MjoxNjgxMTA0ODc4MDg0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 10 Apr 2023 11:04:38
+* @ValidationCode : Mjo3NDA3MTAxOkNwMTI1MjoxNjg0ODU0MzgxNDE2OklUU1M6LTE6LTE6Mzk4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 398
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -21,7 +21,7 @@ SUBROUTINE REDO.B.BUILD.SEL.FC(ENQ.DATA)
 *
 * 19-Mar-2013  Sivakumar.K  PACS00255148
 * Date                  who                   Reference              
-* 10-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 10-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 10-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
 

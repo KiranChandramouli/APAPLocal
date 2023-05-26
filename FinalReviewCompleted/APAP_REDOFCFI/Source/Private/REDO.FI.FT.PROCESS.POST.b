@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo2MTU2NzMxMDpVVEYtODoxNjgyNTcyOTAzNzUyOkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:51:43
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationCode : MjotMzA2MDMwMDY2OkNwMTI1MjoxNjg1MTA2MDg0MDk1OklUU1M6LTE6LTE6NTEzMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:24
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 5133
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -237,7 +237,7 @@ BAL.SET.PROCESS:
     END CASE
 
 
-    CALL APAP.REDOFCFI.RedoFiRecordControl(Y.ERR.MSG)  ;*R22 Manual Conversion - Added APAP.REDOFCFI
+    CALL APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG)  ;*R22 Manual Conversion - Added APAP.REDOFCFI
 
     GOSUB MAIL.GENERATION
     CALL F.DELETE(FN.REDO.NOMINA.TEMP,Y.REC.LIST<Y.REC.CNT>)
@@ -344,7 +344,7 @@ MAIL.GENERATION:
     Y.REQUEST.FILE = Y.UNIQUE.ID:'.TXT'
     Y.ATTACH.FILENAME = 'ATTACHMENT':'_':Y.UNIQUE.ID:'.TXT'
     R.RECORD1 = ''
-    CALL APAP.REDOFCFI.RedoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION)    ;*R22 Manual Conversion - Added APAP.REDOFCFI
+    CALL APAP.REDOFCFI.redoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION)    ;*R22 Manual Conversion - Added APAP.REDOFCFI
     R.RECORD1 = Y.FROM.MAIL.ADD.VAL:"#":Y.TO.MAIL.VALUE:'#':Y.REF.FILE.NAME:'#':Y.REF.FILE.NAME
     IF Y.MAIL.MSG THEN
         WRITE Y.MAIL.DESCRIPTION TO F.HRMS.ATTACH.FILE,Y.ATTACH.FILENAME
@@ -528,7 +528,7 @@ ORANGE.PROCESS:
 
     Y.IN.MSG =  WRECORD.NUMBER:",":"DOP":",03,":Y.STT.REC:",":FI.CTA.DESTINO:",":OUT.ERR<1>:",":W.TOT.FT.OK:",":Y.ERR.MSG
 
-    CALL APAP.REDOFCFI.RedoFiPreformatMsg(Y.FI.INTERFACE,"D",Y.IN.MSG,OUT.MSG,Y.ERR.MSG)    ;*R22 Manual Conversion - Added APAP.REDOFCFI
+    CALL APAP.REDOFCFI.redoFiPreformatMsg(Y.FI.INTERFACE,"D",Y.IN.MSG,OUT.MSG,Y.ERR.MSG)    ;*R22 Manual Conversion - Added APAP.REDOFCFI
 
     IF Y.ERR.MSG NE "" THEN
         W.STATUS = "04"
@@ -562,7 +562,8 @@ BAL.SET.INTNOMINA:
     R.PARAM<12> = "NOMINASET"
     R.PARAM<13> = RET.TXN.CODE
     IF W.TOT.FT.ERR GT 0 THEN
-        CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
+        CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
+*CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.RET.FT.REF> = OUT.RESP
         Y.COMMISSION.AMT = W.TOT.FT.ERR * (Y.PAY.COM.PERCENT/100)
         CALL EB.ROUND.AMOUNT("DOP",Y.COMMISSION.AMT,"","")
@@ -570,7 +571,8 @@ BAL.SET.INTNOMINA:
             R.PARAM<6> = Y.PAY.CATEG.ACCOUNT
             R.PARAM<7> = Y.COMMISSION.AMT
             R.PARAM<13> = RET.TAX.CODE
-            CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
+            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
+*CALL APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
             FI.W.REDO.FI.CONTROL<REDO.FI.CON.RET.TAX.FT.REF> = OUT.RESP
 
         END

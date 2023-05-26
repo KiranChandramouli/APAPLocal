@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyOTM4OTMxMjc6Q3AxMjUyOjE2ODMxMzM0NTA0NDg6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 03 May 2023 22:34:10
+* @ValidationCode : MjoxMDg3OTk0NjQ4OkNwMTI1MjoxNjg1MTA3MzczNTc0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 18:52:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.CUST.PRD.ACI.UPD.PRE.LOAD
@@ -36,7 +36,7 @@ SUBROUTINE REDO.B.CUST.PRD.ACI.UPD.PRE.LOAD
 
 
 *CALL APAP.REDOBATCH.REDO.B.CUST.PRD.ACI.UPD.LOAD  ;*R22 MANUAL CONVERSTION ADDING PACKAGE NAME APAP.REDOBATCH
-    CALL APAP.REDOBATCH.RedoBCustPrdAciUpdLoad()
+    CALL APAP.REDOBATCH.redoBCustPrdAciUpdLoad();* R22 Manual conversion
 
 
 RETURN

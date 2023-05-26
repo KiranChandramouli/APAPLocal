@@ -88,7 +88,7 @@ NUMERO.GARANTIA:
 * =========
 
     Y.SEC.TYPE = R.NEW(REDO.FC.TYPE.OF.SEC.DE)<1,Y.I>
-    CALL APAP.REDOFCFI.RedoFcSMapping(Y.SEC.TYPE, Y.SEC.NO, Y.I);*R22 Manual Conversion - Added APAP.REDOFCFI
+    CALL APAP.REDOFCFI.redoFcSMapping(Y.SEC.TYPE, Y.SEC.NO, Y.I);*R22 Manual Conversion - Added APAP.REDOFCFI
     
 
 RETURN

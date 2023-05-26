@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyMDI2NTEzMDI1OlVURi04OjE2ODI1MTU0NzYxMzU6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:54:36
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationCode : MjoxNTE3MjU0Njg3OkNwMTI1MjoxNjg1MTA2MDgzNDI3OklUU1M6LTE6LTE6MjExNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:23
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 2114
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -184,7 +184,8 @@ PROCESS:
         IF AMOUNT.VAL THEN
             VAR.CURRENCY = R.NEW(CLEAR.OUT.CURRENCY)
             REDO.OUTWARD.RETURN.ID = ID.NEW
-            CALL APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID);*R22 Manual Conversion
+            CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
+*CALL APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID);*R22 Manual Conversion
         END
     END
 

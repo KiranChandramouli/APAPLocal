@@ -89,7 +89,7 @@ PROCESS:
         END
         IF Y.SEC.NO<1,Y.I> THEN
             Y.SEC.TYPE = Y.COLL.TYPE<1,Y.I>
-            CALL APAP.REDOFCFI.RedoFcSMapping(Y.SEC.TYPE , Y.SEC.NO<1,Y.I>, Y.I);*MANUAL R22 CODE CONVERSION
+            CALL APAP.REDOFCFI.redoFcSMapping(Y.SEC.TYPE , Y.SEC.NO<1,Y.I>, Y.I);*MANUAL R22 CODE CONVERSION
             
             GOSUB VALIDA.CUST
         END ELSE

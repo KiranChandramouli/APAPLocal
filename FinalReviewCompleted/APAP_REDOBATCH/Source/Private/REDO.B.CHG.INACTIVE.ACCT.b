@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTgyNDkyMDQ5ODpDcDEyNTI6MTY4MTEwNTQyNzQ2MzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 10 Apr 2023 11:13:47
+* @ValidationCode : MjotMTgyNDkyMDQ5ODpDcDEyNTI6MTY4NDg1NDM4MjA1ODpJVFNTOi0xOi0xOjE1NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 157
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,7 +28,7 @@ SUBROUTINE REDO.B.CHG.INACTIVE.ACCT(Y.ACCT.ID)
 *   ------         ------               -------------            -------------
 * 30 Mar 2011    Krishna Murthy T.S   ODR-2011-03-0142           Initial Creation
 * Date                  who                   Reference              
-* 10-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION VM TO @VM AND SM TO @SM
+* 10-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION VM TO @VM AND SM TO @SM
 * 10-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_EQUATE

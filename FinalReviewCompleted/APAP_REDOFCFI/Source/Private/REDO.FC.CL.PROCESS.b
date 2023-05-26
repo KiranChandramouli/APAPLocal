@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNjM5NzkwMjkzOlVURi04OjE2ODI1MTU2NDY5OTE6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:57:26
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationCode : MjoxNzg4Njk1NTMwOkNwMTI1MjoxNjg1MTA2MDc3NDg4OklUU1M6LTE6LTE6LTI2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:17
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -26
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -72,7 +72,8 @@ PROCESS:
 * ======
     BEGIN CASE
         CASE Y.OPTION EQ 'CREACION'
-            CALL APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
+            CALL REDO.FC.CL.REGISTER.AA
+*CALL APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
           
         CASE Y.OPTION EQ 'DESEMBOLSO'
 

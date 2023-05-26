@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTgxMjIzNjQzODpDcDEyNTI6MTY4MTEwNDQ5NDA2MzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 10 Apr 2023 10:58:14
+* @ValidationCode : MjotMTgxMjIzNjQzODpDcDEyNTI6MTY4NDg1NDM4MTIxNDpJVFNTOi0xOi0xOjYwMDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 600
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.B.BAT.CHEQUES(Y.CLR.OUTWARD.ID1)
 * DATE            WHO              REFERENCE        DESCRIPTION
 * 19.05.2010      NATCHIMUTHU.P    ODR-2010-02-0001  INITIAL CREATION
 * Date                  who                   Reference              
-* 10-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 10-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 10-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 * ----------------------------------------------------------------------------
 

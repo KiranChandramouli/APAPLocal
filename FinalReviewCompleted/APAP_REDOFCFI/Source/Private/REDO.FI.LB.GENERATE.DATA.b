@@ -106,7 +106,7 @@ PROCESS:
             END
             GOSUB LOAN.COMPANY.HEAD
             IF SERVICE.CONTROL EQ 'ACTIVE' THEN
-                CALL APAP.REDOFCFI.RedoFiLbGenerateAmnts(COMP.TYPE,ARR.ID,DATA.OUT);*R22 Manual Conversion
+                CALL APAP.REDOFCFI.redoFiLbGenerateAmnts(COMP.TYPE,ARR.ID,DATA.OUT);*R22 Manual Conversion
                 IF DATA.OUT<9> EQ 'S' THEN
                     GOSUB B310.WRITE.DETAIL
                 END

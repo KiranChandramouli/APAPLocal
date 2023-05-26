@@ -1,12 +1,12 @@
-* @ValidationCode : MjotODc2NTc4MDgyOkNwMTI1MjoxNjgzMTMwOTIwMzA1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 21:52:00
+* @ValidationCode : MjotODc2NTc4MDgyOkNwMTI1MjoxNjg0ODU0Mzk4NDQ0OklUU1M6LTE6LTE6NjcwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:38
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 670
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -128,7 +128,7 @@ SUBROUTINE REDO.B.SEC.POS.ASSET(Y.FINAL.ARR)
     END ELSE
 
 * CALL APAP.REDOBATCH.REDO.B.SEC.ASSET(Y.INV.DET) ;*R22 MANUAL CONVERSTION ADDING THE PACKAGE NAME
-        CALL APAP.REDOBATCH.RedoBSecAsset(Y.INV.DET) ;*R22 MANUAL CONVERSTION ADDING THE PACKAGE NAME
+        CALL APAP.REDOBATCH.redoBSecAsset(Y.INV.DET) ;*R22 MANUAL CONVERSTION ADDING THE PACKAGE NAME
     END
 *
 RETURN

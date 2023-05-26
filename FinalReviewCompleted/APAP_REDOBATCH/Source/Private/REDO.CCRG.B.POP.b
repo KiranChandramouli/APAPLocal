@@ -1,12 +1,12 @@
-* @ValidationCode : MjotODg4OTE2MjQxOkNwMTI1MjoxNjgzMTIwMjQ1NzMzOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 18:54:05
+* @ValidationCode : MjotODg4OTE2MjQxOkNwMTI1MjoxNjg0ODU0NDA2MTgzOklUU1M6LTE6LTE6MTA0OToxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:46
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1049
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -767,7 +767,7 @@ RAISE.ERROR:
     R.SOURCE.INFO    = ''
     R.SOURCE.INFO<1> = Y.RNT.NAME
     R.SOURCE.INFO<2> = Y.PRGRAPH.NAME
-    CALL APAP.REDOBATCH.RedoCcrgBTraceError(R.SOURCE.INFO, R.MSG.ERR, @FALSE, P.IN.CUS.ID, @TRUE)
+    CALL APAP.REDOBATCH.redoCcrgBTraceError(R.SOURCE.INFO, R.MSG.ERR, @FALSE, P.IN.CUS.ID, @TRUE)
 *CALL APAP.REDOBATCH.REDO.CCRG.B.TRACE.ERROR(R.SOURCE.INFO, R.MSG.ERR, @FALSE, P.IN.CUS.ID, @TRUE) ;*R22 MANUAL CONVERSTION ADD PACKAGE
 *
 RETURN

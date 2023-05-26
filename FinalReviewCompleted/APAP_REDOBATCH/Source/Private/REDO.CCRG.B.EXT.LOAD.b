@@ -1,12 +1,12 @@
-* @ValidationCode : MjotOTgzNjg0OTYyOkNwMTI1MjoxNjgzMTMwNjAwNjkxOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 21:46:40
+* @ValidationCode : MjotOTgzNjg0OTYyOkNwMTI1MjoxNjg0ODU0NDA1ODMyOklUU1M6LTE6LTE6MTQ0NToxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1445
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -64,7 +64,7 @@ SUBROUTINE REDO.CCRG.B.EXT.LOAD
     IF R.RCP EQ '' THEN
         Y.ERROR    = K.REC.NOT.FOUND
         Y.ERROR<2> = 'SYSTEM' : @VM : 'F.REDO.CCRG.PARAMETERS'
-        CALL APAP.REDOBATCH.RedoCcrgBTraceError('REDO.CCRG.B.EXT.LOAD', Y.ERROR, @FALSE, "", @FALSE)
+        CALL APAP.REDOBATCH.redoCcrgBTraceError('REDO.CCRG.B.EXT.LOAD', Y.ERROR, @FALSE, "", @FALSE)
 *CALL APAP.REDOBATCH.REDO.CCRG.B.TRACE.ERROR('REDO.CCRG.B.EXT.LOAD', Y.ERROR, @FALSE, "", @FALSE) ;*R22 MANUAL CONVERSTION ADD PACKAGE
     END
 

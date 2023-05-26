@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo5Mjg5MjAxNjE6Q3AxMjUyOjE2ODEyNzU2NzYyMTI6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 Apr 2023 10:31:16
+* @ValidationCode : Mjo5Mjg5MjAxNjE6Q3AxMjUyOjE2ODQ4NTQzOTAwMjI6SVRTUzotMTotMTotMTA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -10
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -36,7 +36,7 @@ SUBROUTINE REDO.B.LOAN.STATUS.ELIMINATION.SELECT
 *   Date               who           Reference                     Description
 * 03-JUN-2010   N.Satheesh Kumar  TAM-ODR-2009-10-0331           Initial Creation
 * Date                  who                   Reference              
-* 12-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 12-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
 

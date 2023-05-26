@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTI5MTkwOTgxOkNwMTI1MjoxNjgzMTMwNjYwMjc5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 21:47:40
+* @ValidationCode : MjotMTI5MTkwOTgxOkNwMTI1MjoxNjg0ODU0NDA1NzkzOklUU1M6LTE6LTE6ODc2OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 876
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -472,7 +472,7 @@ RAISE.ERROR:
     R.SOURCE.INFO<1> = "REDO.B.CCRG.EVA"
     R.SOURCE.INFO<2> = Y.PRGRAPH.NAME
     R.SOURCE.INFO<4> = P.IN.PRO.ID
-    CALL APAP.REDOBATCH.RedoCcrgBTraceError(R.SOURCE.INFO, Y.MSG.ERR, @FALSE, Y.CUSTOMER.ID, @TRUE) ;*R22 MANUAL CONVERSTION ADDING PACKAGE TO CALL ROUTINE
+    CALL APAP.REDOBATCH.redoCcrgBTraceError(R.SOURCE.INFO, Y.MSG.ERR, @FALSE, Y.CUSTOMER.ID, @TRUE) ;*R22 MANUAL CONVERSTION ADDING PACKAGE TO CALL ROUTINE
 
 *
 RETURN
