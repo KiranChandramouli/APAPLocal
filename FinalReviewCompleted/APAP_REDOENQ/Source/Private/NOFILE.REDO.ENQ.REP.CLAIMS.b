@@ -1,12 +1,12 @@
-* @ValidationCode : MjozMTI0NjAwNDU6Q3AxMjUyOjE2ODI1MTI3MzMxNzE6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:08:53
+* @ValidationCode : MjozMTI0NjAwNDU6Q3AxMjUyOjE2ODQ4NTE5NjMzMDQ6SVRTUzotMTotMToxMDA4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:03
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1008
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -122,7 +122,7 @@ GET.CLAIM.IDS:
 
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.REDO.ISSUE.CLAIMS
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CLAIM.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CLAIM.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
         CALL EB.READLIST(SEL.CLAIM.CMD,CLAIM.ID.LST,'',NO.OF.REC.CLAIM,SEL.ERR)
         Y.CLAIM.ARR.ID = CLAIM.ID.LST
     END
@@ -148,7 +148,7 @@ GET.CUS.IDS:
     REPEAT
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
         CALL EB.READLIST(SEL.CUS.CMD,CUS.ID.LST,'',NO.OF.REC.CUS,SEL.CUS.ERR)
         Y.CUS.ARR.ID = CUS.ID.LST
     END

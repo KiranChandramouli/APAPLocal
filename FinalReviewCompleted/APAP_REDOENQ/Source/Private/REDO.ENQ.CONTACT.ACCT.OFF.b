@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyNzQwMjYxMzY6Q3AxMjUyOjE2ODM2MTE5NDc2MTM6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 May 2023 11:29:07
+* @ValidationCode : MjoyNzQwMjYxMzY6Q3AxMjUyOjE2ODQ4NTE5ODAyMTI6SVRTUzotMTotMTo2NDU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:20
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 645
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -82,7 +82,7 @@ PROCESS.SEL:
 
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CR.CONTACT.LOG
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CR.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CR.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
         SEL.CR.CMD = SEL.CR.CMD:" AND WITH (CONTACT.STATUS EQ 'NEW' OR CONTACT.STATUS EQ 'NO.COMUNICADO') BY CONTACT.CLIENT"
         CALL EB.READLIST(SEL.CR.CMD,CR.ID.LST,'',NO.OF.REC.ARR,SEL.ERR)
     END ELSE

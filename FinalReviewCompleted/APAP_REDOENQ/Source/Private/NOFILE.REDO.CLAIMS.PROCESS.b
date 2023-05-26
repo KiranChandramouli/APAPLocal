@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTMzMDY0MTQxNTpDcDEyNTI6MTY4MjUxMDU3ODgzNjp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 Apr 2023 17:32:58
+* @ValidationCode : MjotMTMzMDY0MTQxNTpDcDEyNTI6MTY4NDg1MTk2MjYwODpJVFNTOi0xOi0xOjE3MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:02
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 171
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -55,7 +55,7 @@ GET.CLAIM.IDS:
     FILE.NAME = FN.REDO.ISSUE.CLAIMS
     IN.FIXED = "STATUS EQ OPEN"
 
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, IN.FIXED, '', SEL.CLAIM.CMD);*R22 Manual Conversion - Added APAP.REDOFCFI
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, IN.FIXED, '', SEL.CLAIM.CMD);*R22 Manual Conversion - Added APAP.REDOFCFI
     CALL EB.READLIST(SEL.CLAIM.CMD,CLAIM.ID.LST,'',NO.OF.REC.CLAIM,SEL.ERR)
     Y.COMMON.ARRAY = CLAIM.ID.LST
 RETURN

@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo0MjgzNDg0NjY6Q3AxMjUyOjE2ODI1MDc5ODU4MzI6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 16:49:45
+* @ValidationCode : Mjo0MjgzNDg0NjY6Q3AxMjUyOjE2ODQ4NTE5NjI5MTY6SVRTUzotMTotMTo2NzEyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:02
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 6712
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -185,7 +185,7 @@ PROCESS:
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
 *CALL APAP.REDOENQ.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '', SEL.CUS.CMD)
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*R22 Manual Conversion - Added APAP.REDOFCFI
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*R22 Manual Conversion - Added APAP.REDOFCFI
         SEL.CMD1 = SEL.CUS.CMD:" AND (L.CU.TIPO.CL EQ 'PERSONA JURIDICA')"
     END  ELSE
         SEL.CMD1 = "SELECT ":FN.CUSTOMER:" WITH (L.CU.TIPO.CL EQ 'PERSONA JURIDICA')"

@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyMTkwMjQ4NTU6Q3AxMjUyOjE2ODM2MTE3NzcwNDM6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 May 2023 11:26:17
+* @ValidationCode : MjoyMTkwMjQ4NTU6Q3AxMjUyOjE2ODQ4NTE5NzY4Mzc6SVRTUzotMTotMToxNjc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:16
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 167
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -56,7 +56,7 @@ PROCESS:
     FILE.NAME = FN.REDO.ISS.COMPLAINTS
     Y.FIXED = 'STATUS EQ "IN-PROCESS"':@FM:'CLOSING.STATUS EQ ""'
    
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, Y.FIXED, '', SEL.ISS.CMD);*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, Y.FIXED, '', SEL.ISS.CMD);*R22 Manual Conversion - Added APAP.REDOENQ
 
     CALL EB.READLIST(SEL.ISS.CMD,CLAIM.IDS,'',NO.OF.REC,SEL.ERR)
     Y.INIT = 1

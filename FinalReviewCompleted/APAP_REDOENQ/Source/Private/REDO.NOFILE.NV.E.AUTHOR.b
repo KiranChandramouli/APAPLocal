@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTc4MzY1MzIyMjpDcDEyNTI6MTY4MjU4MzY4NzYwNzp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 13:51:27
+* @ValidationCode : MjotMTc4MzY1MzIyMjpDcDEyNTI6MTY4NDg1MTk4ODg3ODpJVFNTOi0xOi0xOjc2NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 767
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -73,7 +73,7 @@ RETURN
 PROCESS:
 *-----------------------------------------------------
     Y.FINAL.ARRAY = ''
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     IF D.RANGE.AND.VALUE THEN
         SEL.CMD := " AND TRANS.AUTH EQ 'U' AND TRANS.DATE EQ "
         SEL.CMD := TODAY : " AND BRANCH.CODE EQ " : ID.COMPANY : " BY.DSND TRANS.DATE"

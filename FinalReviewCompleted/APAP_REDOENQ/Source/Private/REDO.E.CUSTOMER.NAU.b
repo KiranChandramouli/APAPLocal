@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTY4OTQ5ODk1MzpDcDEyNTI6MTY4MjU3MzU1NDAwNDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:02:34
+* @ValidationCode : MjotMTY4OTQ5ODk1MzpDcDEyNTI6MTY4NDg1MTk3Mzc0NTpJVFNTOi0xOi0xOjI2NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:13
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 267
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -78,7 +78,7 @@ OPEN.PROCESS:
     POS.L.CU.NOUNICO = LOCAL.REF.POS<1,4>
     POS.L.CU.RNC     = LOCAL.REF.POS<1,5>
 
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.CUSTOMER.NAU, '', '', SEL.CUST.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FN.CUSTOMER.NAU, '', '', SEL.CUST.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
 
     IF D.RANGE.AND.VALUE THEN
         SEL.CUST.CMD := ' AND CUSTOMER.TYPE NE PROSPECT'

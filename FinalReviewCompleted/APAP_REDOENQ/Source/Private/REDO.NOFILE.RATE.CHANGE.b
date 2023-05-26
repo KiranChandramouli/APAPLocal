@@ -1,12 +1,12 @@
-* @ValidationCode : MjotODA5NjQwMjA2OkNwMTI1MjoxNjgyNTgzNzQzMjI3OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 13:52:23
+* @ValidationCode : MjotODA5NjQwMjA2OkNwMTI1MjoxNjg0ODUxOTg4OTU5OklUU1M6LTE6LTE6MTc4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 178
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -50,7 +50,7 @@ PROCESS:
     Y.ARRAY = ''
     FILE.NAME = FN.REDO.NOTIFY.RATE.CHANGE
 
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CALL EB.READLIST(SEL.CMD,ID.LST,'',NO.OF.REC,SEL.ERR)
 
     IF ID.LST THEN

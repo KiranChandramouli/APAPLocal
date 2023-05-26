@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDY0Mzk3NDY6Q3AxMjUyOjE2ODM1NDA2NjEzOTk6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 15:41:01
+* @ValidationCode : MjotNDY0Mzk3NDY6Q3AxMjUyOjE2ODQ4NTE5ODg2ODA6SVRTUzotMTotMToxNjU6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 165
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -67,7 +67,7 @@ PROCESS:
 
     END
 
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.AA.CMD) ;*Manual R22 conversion
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.CMD) ;*Manual R22 conversion
     SEL.AA.CMD :=' AND (ARR.STATUS EQ AUTH OR ARR.STATUS EQ CURRENT)'
     CALL EB.READLIST(SEL.AA.CMD,AA.IDS,'',NO.OF.REC,SEL.ERR)
     CALL APAP.AA.redoCheckAaIds(AA.IDS,Y.MARGIN.ID,RETURN.AA.IDS) ;*Manual R22 conversion

@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo4NzQ5MzgwMzg6Q3AxMjUyOjE2ODI2MDE4NTY5NTc6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 18:54:16
+* @ValidationCode : Mjo4NzQ5MzgwMzg6Q3AxMjUyOjE2ODQ4NTE5ODI1NTU6SVRTUzotMTotMTo1MjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 526
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -121,7 +121,7 @@ GET.SELECTION.VALUES:
         END
         Y.VAR1 += 1
     REPEAT
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD);* R22 Manual Conversion - CALL method format changed
+    CALL APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD);* R22 Manual Conversion - CALL method format changed
     SEL.CMD:= ' WITH INS.POLICY.TYPE EQ FHA'
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,SEL.ERR)
 

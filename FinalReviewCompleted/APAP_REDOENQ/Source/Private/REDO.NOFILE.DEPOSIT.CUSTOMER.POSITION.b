@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMzM2OTY5NDExOkNwMTI1MjoxNjgzNTQwMDkyMzIwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 15:31:32
+* @ValidationCode : MjoxMzM2OTY5NDExOkNwMTI1MjoxNjg0ODUxOTg3NjkzOklUU1M6LTE6LTE6MjM3NjoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:27
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 2376
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -129,7 +129,7 @@ PROCESS:
     IF Y.TEMP.D.RANGE.AND.VALUE EQ '' THEN
         RETURN
     END
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.CUSTOMER, '', '', SEL.CMD.CUS)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FN.CUSTOMER, '', '', SEL.CMD.CUS)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CALL EB.READLIST(SEL.CMD.CUS,SEL.LIST.CUS,'',NO.OF.REC.CUS,SEL.ERR)
     IF SEL.LIST.CUS THEN
         Y.CUSTOMER.ID=SEL.LIST.CUS<1>

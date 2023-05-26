@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMzc0ODUzOTI2OkNwMTI1MjoxNjgyNTEyODk1NDEyOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Apr 2023 18:11:35
+* @ValidationCode : MjoxMzc0ODUzOTI2OkNwMTI1MjoxNjg0ODUxOTYzMzg0OklUU1M6LTE6LTE6MTAxNToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:03
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1015
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -119,7 +119,7 @@ GET.COMPLAINTS.IDS:
     REPEAT
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.REDO.ISSUE.COMPLAINTS
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.COMPLAINTS.CMD) ;*Manual R22 conversion
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.COMPLAINTS.CMD) ;*Manual R22 conversion
         CALL EB.READLIST(SEL.COMPLAINTS.CMD,COMPLAINTS.ID.LST,'',NO.OF.REC.COMPLAINTS,SEL.ERR)
         Y.COMPLAINTS.ARR.ID=COMPLAINTS.ID.LST
     END
@@ -145,7 +145,7 @@ GET.CUS.IDS:
     REPEAT
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*Manual R22 conversion
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*Manual R22 conversion
         CALL EB.READLIST(SEL.CUS.CMD,CUS.ID.LST,'',NO.OF.REC.CUS,SEL.CUS.ERR)
         Y.CUS.ARR.ID=CUS.ID.LST
     END

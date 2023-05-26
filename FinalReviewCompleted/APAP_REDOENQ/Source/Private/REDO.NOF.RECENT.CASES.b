@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMjE5ODQyMjc0OkNwMTI1MjoxNjgyNTgxODU0NTc3OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 13:20:54
+* @ValidationCode : MjoxMjE5ODQyMjc0OkNwMTI1MjoxNjg0ODUxOTg1MjAwOklUU1M6LTE6LTE6MzYyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:25
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 362
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -72,7 +72,7 @@ PROCESS:
         GOSUB CHECK.DATE
     END
     FILE.NAME = FN.CR.CONTACT.LOG
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '',SEL.CONTACT.CMD) ;*Manual R22 conversion
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CONTACT.CMD) ;*Manual R22 conversion
     SEL.CONTACT.CMD :=" AND CONTACT.DATE LE ":TODAY
     SEL.CONTACT.CMD :=" BY-DSND CONTACT.DATE"
     CALL EB.READLIST(SEL.CONTACT.CMD,SEL.LIST1,'',SEL.NOR1,SEL.RET1)

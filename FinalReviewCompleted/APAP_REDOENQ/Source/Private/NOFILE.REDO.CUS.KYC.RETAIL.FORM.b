@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxOTcyOTU4MTc6Q3AxMjUyOjE2ODI2NjEwNjY5MzY6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 11:21:06
+* @ValidationCode : MjoxOTcyOTU4MTc6Q3AxMjUyOjE2ODQ4NTE5NjMwOTc6SVRTUzotMTotMTo1OTMwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:03
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 5930
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -204,7 +204,7 @@ FORM.SELECT.STATEMENT:
 * It forms the selects statement
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD);*R22 Manual Conversion
+        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD);*R22 Manual Conversion
         SEL.CMD1 = SEL.CUS.CMD:" AND (L.CU.TIPO.CL NE 'PERSONA JURIDICA')"
     END ELSE
         SEL.CMD1 = "SELECT ":FN.CUSTOMER:" WITH (L.CU.TIPO.CL NE 'PERSONA JURIDICA')"

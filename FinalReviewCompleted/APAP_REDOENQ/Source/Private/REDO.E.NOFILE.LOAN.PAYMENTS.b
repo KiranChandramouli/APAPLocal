@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTQzNTc0NDk1MTpDcDEyNTI6MTY4MzYxNTYxNjUyMzp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 May 2023 12:30:16
+* @ValidationCode : MjotMjQ2MDc4Mzc4OkNwMTI1MjoxNjg0ODUzMDEyNDg5OklUU1M6LTE6LTE6MjYzOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:13:32
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 2639
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -57,7 +57,7 @@ SUBROUTINE REDO.E.NOFILE.LOAN.PAYMENTS(Y.OUT.ARRAY)
 
     $INSERT I_F.AA.ACTIVITY
     $INSERT I_F.USER
-    $USING APAP.TAM
+    $USING APAP.AA
 
 *-------------------------------------------------------------------------------------------------------
 MAIN.PARA:
@@ -344,7 +344,7 @@ LOOP.GET.MAIN.TYPE:
             Y.AA.ARR.ACTIVITY = R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY.REF,Y.VM.START,Y.SM.START>
             Y.MAIN.TYPE = FIELD(Y.ACT,'-',3)
             Y.AA.ARR.ACTIVITY<2> = EffectiveDate        ;* Shek  pass effective date
-            CALL APAP.TAM.redoGetPre(Y.AA.ARR.ACTIVITY,Y.PRE,Y.CURENT)
+            CALL APAP.AA.redoGetPre(Y.AA.ARR.ACTIVITY,Y.PRE,Y.CURENT);* R22 Manual conversion
        
             Y.PREV.COND = Y.PRE
             Y.CURR.COND = Y.CURENT

@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTM3Mjc0NzgwNjpDcDEyNTI6MTY4MjU3OTMxMzE2Mjp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 12:38:33
+* @ValidationCode : MjotMTM3Mjc0NzgwNjpDcDEyNTI6MTY4NDg1MTk4MTgxODpJVFNTOi0xOi0xOjUwMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:21
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 501
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -127,7 +127,7 @@ CHECK.CLAIMS:
 *************
 
     FILE.NAME = FN.REDO.ISSUE.CLAIMS
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CLAIM.FLAG = '1'
     GOSUB GET.VALUES
 RETURN
@@ -136,7 +136,7 @@ CHECK.REQUESTS:
 ***************
     CLAIM.FLAG = '' ;
     FILE.NAME = FN.REDO.ISSUE.REQUESTS
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     RETURN.FLAG = '1'
     GOSUB GET.VALUES
 RETURN
@@ -145,7 +145,7 @@ CHECK.COMPLAINTS:
 *****************
     CLAIM.FLAG = '';RETURN.FLAG = ''
     FILE.NAME = FN.REDO.ISSUE.COMPLAINTS
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     COMPLAINT.FLAG = '1'
     GOSUB GET.VALUES
 RETURN
