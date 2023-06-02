@@ -15232,3 +15232,92 @@ public method redoBConLnsByDebtor (
    jBC: REDO.B.CON.LNS.BY.DEBTOR
 }
 
+
+
+public method redoLyInputUsmovrev (
+)
+{
+    jBC: REDO.LY.INPUT.USMOVREV
+}
+
+public method redoGetDisbPaymDetails (
+)
+{
+    jBC: REDO.GET.DISB.PAYM.DETAILS
+}
+
+
+
+public method redoViAthApprove (
+)
+{
+    jBC: REDO.VI.ATH.APPROVE
+}
+
+
+
+public method redoOracleDate (
+    INOUT yProcessValue string,
+    INOUT yDateFormat string
+)
+{
+    jBC: redoOracleDate
+}
+
+
+
+public method redoOracleNull (
+    INOUT valueToCheck string
+)
+{
+    jBC: redoOracleNull
+}
+
+
+
+public method sRedoCheckEmptyField (
+    INOUT fNo string,
+    INOUT mNo string,
+    INOUT sNo string,
+    INOUT callSee string
+)
+{
+    jBC: S.REDO.CHECK.EMPTY.FIELD
+}
+
+
+
+public method redoLoanRepaidAmtRpt (
+    INOUT yFinArr string
+)
+{
+    jBC: REDO.LOAN.REPAID.AMT.RPT
+}
+
+
+
+public method redoVValLoanAccount(
+)
+
+{
+    jBC: REDO.V.VAL.LOAN.ACCOUNT
+}
+
+
+public method tamUpdateIpAddressArcib (
+    INOUT sampleId string,
+    INOUT sampleResponse string,
+    INOUT responseType string,
+    INOUT styleSheet string
+)
+{
+    jBC: TAM.UPDATE.IP.ADDRESS.ARCIB
+}
+
+
+
+public method redoGetTempDisbPaymDetails (
+)
+{
+    jBC:REDO.GET.TEMP.DISB.PAYM.DETAILS
+}

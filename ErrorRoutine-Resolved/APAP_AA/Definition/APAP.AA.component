@@ -1,0 +1,29 @@
+component APAP.AA
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoApapNofileRestructLoan (
+    INOUT yOutArray string
+)
+{
+    jBC: REDO.APAP.NOFILE.RESTRUCT.LOAN
+}
+
+
+public method redoGetPre (
+    INOUT yActivId string,
+    INOUT yCurrVal string,
+    INOUT yPrevCond string,
+)
+{
+    jBC: REDO.GET.PRE
+}
+
+
+
+public method redoAaBillDeailsFields (
+)
+{
+    jBC: REDO.AA.BILL.DETAILS.FIELDS
+}

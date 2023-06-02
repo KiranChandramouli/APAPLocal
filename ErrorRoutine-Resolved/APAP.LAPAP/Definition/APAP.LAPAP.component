@@ -5207,3 +5207,92 @@ public method redoSConCalcDisbDateAmt (
    jBC: REDO.S.CON.CALC.DISB.DATE.AMT
 }
 
+
+
+public method redoSRegCustomerExtract (
+    INOUT yCustomerId string,
+    INOUT yProductGroup string,
+    INOUT yRelCode string,
+    INOUT outArr string
+)
+{
+    jBC: REDO.S.REG.CUSTOMER.EXTRACT
+}
+
+
+
+public method lApapAzFreqPay (
+)
+{
+    jBC:L.APAP.AZ.FREQ.PAY
+}
+
+
+
+public method lApapAzPayUpdate(
+)
+{
+    jBC:L.APAP.AZ.PAY.UPDATE
+}
+
+
+
+public method lApapAzRevFreq (
+)
+{
+    jBC:L.APAP.AZ.REV.FREQ
+}
+
+
+
+
+public method lApapAzRevNewFreq (
+)
+{
+    jBC:L.APAP.AZ.REV.NEW.FREQ
+}
+
+
+
+public method lApapJavaRabitSend (
+    
+    INOUT yData string,
+    INOUT yReturn string,
+    INOUT yRabbit string,
+    INOUT yError string
+)
+{
+    jBC:L.APAP.JAVA.RABIT.SEND
+}
+
+
+
+public method redoBThirdResRecovery (
+    INOUT yArrId string
+)
+{
+    jBC: REDO.B.THIRD.RES.RECOVERY
+}
+
+
+public method lApapCastigadosRuedaPost (
+)
+{
+    jBC:LAPAP.CASTIGADOS.RUEDA.POST
+}
+
+
+
+public method lApapDesmRuedaPost (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.POST
+}
+
+
+
+public method lApapDesmRuedaTwoPost (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.TWO.POST
+}

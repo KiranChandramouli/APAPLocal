@@ -1,0 +1,20 @@
+component APAP.REDORETAIL
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoColRDelUpdLoking (
+    INOUT yOption string,
+    INOUT yResponse string,
+)
+{
+    jBC: REDO.COL.R.DEL.UPD.LOCKING
+}
+
+public method redoDueFeeLoansReport (
+    INOUT yFinalArry string,
+)
+
+{
+    jBC: REDO.DUE.FEE.LOANS.REPORT
+}
