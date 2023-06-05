@@ -5296,3 +5296,10 @@ public method lApapDesmRuedaTwoPost (
 {
     jBC:LAPAP.DESM.RUEDA.TWO.POST
 }
+
+
+public method lApapRestPro (
+)
+{
+    jBC:L.APAP.REST.PRO
+}
