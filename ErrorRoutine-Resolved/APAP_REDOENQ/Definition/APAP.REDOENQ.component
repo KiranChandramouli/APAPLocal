@@ -132,3 +132,30 @@ public method redoConvIntLiqAccount (
 {
     jBC:REDO.CONV.INT.LIQ.ACCOUNT
 }
+
+public method nofileRedoLoanDets (
+    INOUT ArrgArray string
+)
+{
+    jBC:NOFILE.REDO.LOAN.DETS
+}
+
+public method redoEBldValAccountStatus (
+)
+{
+    jBC:REDO.E.BLD.VAL.ACCOUNT.STATUS
+}
+
+public method redoENofDatcust (
+    INOUT CuDetArr string
+)
+{
+    jBC:REDO.E.NOF.DATCUST
+}
+
+public method redoENofMorParGua (
+    INOUT YFinalArray string
+)
+{
+    jBC:REDO.E.NOF.MOR.PAR.GUA
+}

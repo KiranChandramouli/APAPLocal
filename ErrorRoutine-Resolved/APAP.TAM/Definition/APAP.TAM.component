@@ -15321,3 +15321,20 @@ public method redoGetTempDisbPaymDetails (
 {
     jBC:REDO.GET.TEMP.DISB.PAYM.DETAILS
 }
+
+public method redoGetRestructDetails (
+    INOUT yArrangeId string,
+    INOUT loanNum string,
+    INOUT portfolioType string,
+    INOUT product string,
+    INOUT loanOriginAgency string,
+    INOUT prevLoanNum string,
+    INOUT primeName string,
+    INOUT restructureDate string,
+    INOUT currDueDate string,
+    INOUT transactionUser string,
+    INOUT authorisingUser string
+)
+{
+    jBC: REDO.GET.RESTRUCT.DETAILS
+}

@@ -18,3 +18,9 @@ public method redoDueFeeLoansReport (
 {
     jBC: REDO.DUE.FEE.LOANS.REPORT
 }
+
+public method redoAcctVal (
+)
+{
+    jBC: REDO.ACCT.VAL
+}

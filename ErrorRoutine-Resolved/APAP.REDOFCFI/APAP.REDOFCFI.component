@@ -1,0 +1,34 @@
+component APAP.REDOFCFI
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+public method redoFcEval (
+    INOUT idCustLim string,
+    INOUT idNameLim string,
+    INOUT outResult string
+)
+{
+    jBC: REDO.FC.EVAL
+}
+
+public method redoFcSCollVh (
+)
+{
+    jBC: REDO.FC.S.COLL.VH
+}
+
+public method RedoFiCentralBankFile (
+    INOUT iXmlMsg string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.CENTRAL.BANK.FILE
+}
+
+public method RedoFiOrangeDdFile (
+    INOUT inDir string,
+    INOUT outErro string
+)
+{
+    jBC: REDO.FI.ORANGE.DD.FILE
+}
