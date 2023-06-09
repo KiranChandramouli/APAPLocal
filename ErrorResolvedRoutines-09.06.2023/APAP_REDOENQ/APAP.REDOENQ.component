@@ -5459,3 +5459,12 @@ public method lApapDateTransEnq (
    jBC: L.APAP.DATE.TRANS.ENQ
 }
 
+
+
+public method redoEGetStmtPeriod (
+   INOUT yFinalArray string
+)
+{
+   jBC: REDO.E.GET.STMT.PERIOD
+}
+

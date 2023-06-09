@@ -15322,3 +15322,19 @@ public method multiGetLocalRef (
    jBC: MULTI.GET.LOCAL.REF
 }
 
+
+
+public method redoPosTxnPtsProcess (
+)
+{
+   jBC: REDO.POS.TXN.PTS.PROCESS
+}
+
+
+
+public method redoRebuildTSha1 (
+)
+{
+   jBC: REDO.REBUILD.T.SHA1
+}
+
