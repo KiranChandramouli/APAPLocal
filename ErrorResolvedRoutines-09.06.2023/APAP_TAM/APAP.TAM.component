@@ -15338,3 +15338,29 @@ public method redoRebuildTSha1 (
    jBC: REDO.REBUILD.T.SHA1
 }
 
+
+
+public method redoVinRevFtId (
+)
+{
+   jBC: REDO.VIN.REV.FT.ID
+}
+
+
+
+public method redoCallTfsDealSlip (
+   INOUT yInpDeal string
+)
+{
+   jBC: REDO.CALL.TFS.DEAL.SLIP
+}
+
+
+
+public method redoGetFtWaiveCateg (
+   INOUT waiveCat string
+)
+{
+   jBC: REDO.GET.FT.WAIVE.CATEG
+}
+
