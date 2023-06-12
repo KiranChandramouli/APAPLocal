@@ -1,0 +1,33 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+public method lApapNofEnqFxBlotPosn (
+    INOUT yArr string
+)
+{
+    jBC: L.APAP.NOF.ENQ.FX.BLOT.POSN
+}
+
+
+
+public method lapapRawLogger (
+    INOUT logDir string,
+    INOUT logName string,
+    INOUT logArr string
+)
+{
+    jBC: LAPAP.RAW.LOGGER
+}
+
+
+
+public method lapapTellerAutortn (
+)
+{
+    jBC: LAPAP.TELLER.AUTORTN
+}
+
