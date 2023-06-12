@@ -1,0 +1,29 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lapapTotalSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.TOTAL.SLIP
+}
+
+
+
+public method lapapTtpICalcAmtRt (
+)
+{
+    jBC: LAPAP.TTP.I.CALC.AMT.RT
+}
+
+
+
+public method lapapTtpVDefAcct1Rt (
+)
+{
+    jBC: LAPAP.TTP.V.DEF.ACCT1.RT
+}
+

@@ -1,0 +1,88 @@
+* @ValidationCode : MjoxNTM4NTI0NzQ5OkNwMTI1MjoxNjg2NTcyODkyNTU2OnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Jun 2023 17:58:12
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : victo
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+*---------------------------------------------------------------------------------------
+*MODIFICATION HISTORY:
+*DATE           WHO                 REFERENCE               DESCRIPTION
+*12-06-2023    CONVERSION TOOL     R22 AUTO CONVERSION     INSERT FILE MODIFIED, FM TO @FM, VM TO @VM, SM TO @SM
+*12-06-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
+*----------------------------------------------------------------------------------------
+SUBROUTINE LAPAP.TTP.I.CALC.AMT.RT
+    $INSERT I_COMMON ;*R22 AUTO CONVERSION START
+    $INSERT I_EQUATE
+    $INSERT I_GTS.COMMON
+    $INSERT I_F.REDO.TELLER.PROCESS
+    $INSERT I_F.VERSION
+    $INSERT I_F.REDO.TT.GROUP.PARAM ;*R22 AUTO CONVERSION END
+
+    GOSUB LOAD.LOCREF
+    GOSUB INIT
+    GOSUB INITIAL.VAL
+RETURN
+
+INITIAL.VAL:
+    Y.SUB.GROUP = R.NEW(TEL.PRO.SUB.GROUP)
+    IF Y.SUB.GROUP EQ 'PASO RAPIDO' OR Y.SUB.GROUP EQ 'KIT PASO RAPIDO' OR Y.SUB.GROUP EQ 'KIT PASO RAPIDO PIGGY' THEN
+        GOSUB PROCESS
+    END ELSE
+        T.LOCREF<Y.L.TTP.PASO.RAPI.POS,7> = 'NOINPUT'
+        R.NEW(TEL.PRO.LOCAL.REF)<1,Y.L.TTP.PASO.RAPI.POS> = ''
+        GOSUB END.OF.PGM
+    END
+RETURN
+
+INIT:
+    FN.REDO.TT.GROUP.PARAM = 'F.REDO.TT.GROUP.PARAM'
+    F.REDO.TT.GROUP.PARAM = ''
+    CALL OPF(FN.REDO.TT.GROUP.PARAM,F.REDO.TT.GROUP.PARAM)
+
+    Y.SUB.GROUP = ''
+    CALL CACHE.READ(FN.REDO.TT.GROUP.PARAM,'SYSTEM',R.REDO.TT.GROUP.PARAM,GRO.ERR)
+    VAR.GROUP = R.REDO.TT.GROUP.PARAM<TEL.GRO.GROUP>
+
+RETURN
+
+PROCESS:
+
+    Y.GROUP = R.NEW(TEL.PRO.GROUP)
+    Y.SUB.GROUP = R.NEW(TEL.PRO.SUB.GROUP)
+    CHANGE @VM TO @FM IN VAR.GROUP ;*R22 AUTO CONVERSION
+    LOCATE Y.GROUP IN VAR.GROUP SETTING POS.VM THEN
+        VAR.SUB.GROUP = R.REDO.TT.GROUP.PARAM<TEL.GRO.SUB.GROUP,POS.VM>
+        CHANGE @SM TO @FM IN VAR.SUB.GROUP ;*R22 AUTO CONVERSION
+        LOCATE Y.SUB.GROUP IN VAR.SUB.GROUP SETTING POS.SM THEN
+            VAR.AMOUNT = R.REDO.TT.GROUP.PARAM<TEL.GRO.CHG.AMOUNT,POS.VM,POS.SM>
+            Y.INPUT.AMOUNT = VAR.AMOUNT
+            Y.QTY = R.NEW(TEL.PRO.QUANTITY)
+            Y.QTY = Y.QTY * 1;
+            Y.REAL.AMT = Y.INPUT.AMOUNT * Y.QTY;
+            R.NEW(TEL.PRO.AMOUNT) = Y.REAL.AMT
+
+        END
+    END
+
+RETURN
+
+LOAD.LOCREF:
+    APPL.NAME.ARR = "REDO.TELLER.PROCESS"
+    FLD.NAME.ARR = "L.TTP.PASO.RAPI"
+    CALL MULTI.GET.LOC.REF(APPL.NAME.ARR,FLD.NAME.ARR,FLD.POS.ARR)
+
+    Y.L.TTP.PASO.RAPI.POS = FLD.POS.ARR<1,1>
+
+RETURN
+END.OF.PGM:
+
+RETURN
+
+END
