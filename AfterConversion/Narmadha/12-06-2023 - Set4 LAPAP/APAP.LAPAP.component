@@ -1,0 +1,32 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method lApapVunMtsAutorNv (
+)
+{
+    jBC: L.APAP.VUN.MTS.AUTOR.NV
+}
+
+
+
+public method lapapChequeSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.CHEQUE.SLIP
+}
+
+
+
+public method lapapCuetanRetSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.CUETAN.RET.SLIP
+}
+

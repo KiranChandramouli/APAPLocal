@@ -2949,3 +2949,60 @@ public method redoVValAvailAmt (
 {
     jBC: REDO.V.VAL.AVAIL.AMT
 }
+
+
+public method aaGetInterestRateAuth (
+)
+{
+    jBC: AA.GET.INTEREST.RATE.AUTH
+}
+
+
+
+public method redoPostPrincInterest (
+)
+{
+    jBC: REDO.POST.PRINC.INTEREST
+}
+
+
+
+public method redoPrePrincInterest (
+)
+{
+    jBC: REDO.PRE.PRINC.INTEREST
+}
+
+
+
+public method redoSFcDefDisb (
+)
+{
+    jBC: REDO.S.FC.DEF.DISB
+}
+
+
+
+public method redoSFcDefPartDisb (
+)
+{
+    jBC: REDO.S.FC.DEF.PART.DISB
+}
+
+
+
+public method redoVFtAuthUpdNcf (
+)
+{
+    jBC: REDO.V.FT.AUTH.UPD.NCF
+}
+
+
+
+public method redoVisaGenAcqRec (
+    INOUT recId string
+)
+{
+    jBC: REDO.VISA.GEN.ACQ.REC
+}
+
