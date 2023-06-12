@@ -1,0 +1,48 @@
+*-----------------------------------------------------------------------------
+* <Rating>-20</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.MAS.REDON.RT.SELECT
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_GTS.COMMON
+    $INSERT T24.BP I_System
+    $INSERT T24.BP I_F.DATES
+    $INCLUDE BP I_F.ST.LAPAP.CRC.ROUNDUP.DET
+    $INCLUDE BP I_F.ST.LAPAP.CRC.ROUNDUP
+    $INSERT LAPAP.BP I_LAPAP.MAS.REDON.RT.COMMON
+
+    GOSUB DO.GET.PENDING
+
+    RETURN
+
+DO.GET.PENDING:
+    SEL.ERR = ''; SEL.LIST = ''; SEL.REC = ''; SEL.CMD = ''
+    SEL.CMD = "SELECT " : FN.CRC.ROUNDUP.DET : " WITH CRC.ROUNDUP.ID EQ " : Y.BATCH.ID.L
+
+    CALL OCOMO("RUNNING WITH SELECT LIST : " : SEL.CMD)
+
+    GOSUB DO.UPDATE.TO.PROCESSING
+
+    CALL EB.READLIST(SEL.CMD,SEL.REC,'',SEL.LIST,SEL.ERR)
+    CALL BATCH.BUILD.LIST('',SEL.REC)
+    RETURN
+
+DO.UPDATE.TO.PROCESSING:
+    Y.CNT = DCOUNT(Y.BATCH.ARR,@FM)
+    FOR A = 1 TO Y.CNT STEP 1
+        T.BATCH.ID = Y.BATCH.ARR<A>
+        CALL F.READ(FN.CRC.ROUNDUP,T.BATCH.ID,R.CRC,F.CRC.ROUNDUP,ERR.CRC)
+
+        IF R.CRC THEN
+            R.CRC<ST.LAP68.BATCH.STATUS> = 'PROCESSING'
+            CALL F.WRITE(FN.CRC.ROUNDUP, T.BATCH.ID, R.CRC)
+            CALL JOURNAL.UPDATE('')
+            CALL OCOMO('ROUNDUP BATCH: ' : T.BATCH.ID : ', updated to status PROCESSING')
+        END
+
+    NEXT A
+
+    RETURN
+
+END
+

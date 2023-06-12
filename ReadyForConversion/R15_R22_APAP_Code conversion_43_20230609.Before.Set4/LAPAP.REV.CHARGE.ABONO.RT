@@ -1,0 +1,52 @@
+*-----------------------------------------------------------------------------
+* <Rating>-30</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.REV.CHARGE.ABONO.RT
+
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_F.FUNDS.TRANSFER
+    $INSERT T24.BP I_F.STMT.ENTRY
+    $INSERT BP I_F.L.APAP.LIMITE.ABONADO
+
+    GOSUB LOAD
+    GOSUB PROCESS
+
+    RETURN
+
+*****
+LOAD:
+*****
+    Y.FT.ID = ID.NEW.LAST
+
+    FN.FUNDS.TRANSFER = "F.FUNDS.TRANSFER"
+    F.FUNDS.TRANSFER = ""
+    CALL OPF (FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
+
+    RETURN
+
+********
+PROCESS:
+********
+    NO.OF.REC = ''; SEL.ERR = ''; Y.COUNT.ACT = ''; ACTIVITY.POS = '';
+    SEL.CMD = "SELECT ":FN.FUNDS.TRANSFER:" WITH L.FT.ORIGEN EQ ":Y.FT.ID:" AND TRANSACTION.TYPE EQ AC36";
+    CALL EB.READLIST(SEL.CMD, SEL.LIST, "", NO.OF.REC, SEL.ERR);
+
+
+    Y.CHAR.ID = SEL.LIST
+
+    Y.TRANS.ID = Y.CHAR.ID
+    Y.APP.NAME = "FUNDS.TRANSFER"
+    Y.VER.NAME = Y.APP.NAME :",CHAR.REV"
+    Y.FUNC = "R"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    Y.OFS.QUEUE = ""
+    R.FT = ""
+    options = "OFS.CARGO" ; RESP = "" ; COMM = ""
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.FT,Y.OFS.QUEUE)
+    CALL OFS.POST.MESSAGE(Y.OFS.QUEUE,RESP,options,COMM)
+
+    RETURN
+END
