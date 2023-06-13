@@ -1,0 +1,25 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoCreditCustomerPositionVp (
+    INOUT dataRecord string
+)
+{
+    jBC: REDO.CREDIT.CUSTOMER.POSITION.VP
+}
+
+public method redoVpBRegDdTxn (
+)
+{
+    jBC:REDO.VP.B.REG.DD.TXN
+}
+
+public method redoVpWsConsumer (
+    INOUT activation string,
+    INOUT wsData string
+)
+{
+    jBC: REDO.VP.WS.CONSUMER
+}
