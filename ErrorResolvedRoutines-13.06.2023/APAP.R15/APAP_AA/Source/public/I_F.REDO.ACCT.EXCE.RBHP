@@ -1,0 +1,3 @@
+* I_F.REDO.ACCT.EXCE.RBHP Created 19 OCT 11 at 03:12PM by apap/BROWSER.1
+*      PREFIX[ACCT.EX]
+            EQU ACCT.EX.ACCOUNT TO 1,   RedoAcctExceRbhp_Account TO 1

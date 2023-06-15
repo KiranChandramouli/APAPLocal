@@ -1,0 +1,3 @@
+* I_F.REDO.FC.LIMIT.AA Created 23 AUG 11 at 06:30PM by t24bqa02/TEMENOS.01
+*      PREFIX[FC.LI]
+     EQU FC.LI.ARRANGEMENT.ID TO 1,   RedoFcLimitAa_ArrangementId TO 1

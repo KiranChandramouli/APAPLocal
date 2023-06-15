@@ -1,0 +1,15 @@
+*-----------------------------------------------------------------------
+* REDO COLLECTOR EXTRACT PRE-PROCESS
+*-----------------------------------
+    COM /REDO.COL.EXTRACT.PRE.COMMON/FN.REDO.COL.TRACE,F.REDO.COL.TRACE,
+    FN.REDO.COL.TRACE.SUM,F.REDO.COL.TRACE.SUM,
+    C.ALREADY.PROCESSED,      ;* 1 THEN we are re-processing
+    C.AA.PRODUCT.GROUP,       ;* PRODUCT  GROUP SELECTION CRITERIA
+    C.AA.STATUS,    ;* AA STATUS SELECTION CRITERIA 
+    C.TABLE.PROCESS,
+    FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT
+
+*-----------------------------------
+
+* Locking entry, if the EXTRACT process was done OK
+    EQU C.RED.LOKING.ID TO "REDO.COL.EXTRACT.TRACE"

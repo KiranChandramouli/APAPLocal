@@ -1,0 +1,140 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method rgsCoExpiry (
+)
+{
+    jBC: RGS.CO.EXPIRY
+}
+
+
+
+public method rgsCoInventory (
+)
+{
+    jBC: RGS.CO.INVENTORY
+}
+
+
+
+public method rgsCoRealloc (
+)
+{
+    jBC: RGS.CO.REALLOC
+}
+
+
+
+public method rgsCoReview (
+)
+{
+    jBC: RGS.CO.REVIEW
+}
+
+
+
+public method rgsCoRgtExpired (
+)
+{
+    jBC: RGS.CO.RGT.EXPIRED
+}
+
+
+
+public method rgsCoRightExpiry (
+)
+{
+    jBC: RGS.CO.RIGHT.EXPIRY
+}
+
+
+
+public method rgsCoRightReview (
+)
+{
+    jBC: RGS.CO.RIGHT.REVIEW
+}
+
+
+
+public method rgsCshFlowExcep (
+)
+{
+    jBC: RGS.CSH.FLOW.EXCEP
+}
+
+
+
+public method rgsCurrency (
+)
+{
+    jBC: RGS.CURRENCY
+}
+
+
+
+public method rgsCurrencyRates (
+)
+{
+    jBC: RGS.CURRENCY.RATES
+}
+
+
+
+public method rgsCusAlPosition (
+)
+{
+    jBC: RGS.CUS.AL.POSITION
+}
+
+
+
+public method rgsDeptAcctOff (
+)
+{
+    jBC: RGS.DEPT.ACCT.OFF
+}
+
+
+
+public method rgsDetOverride (
+)
+{
+    jBC: RGS.DET.OVERRIDE
+}
+
+
+
+public method rgsEnBqsTerme (
+)
+{
+    jBC: RGS.EN.BQS.TERME
+}
+
+
+
+public method rgsExcepLog2 (
+)
+{
+    jBC: RGS.EXCEP.LOG.2
+}
+
+
+
+public method rgsExceptLogEod (
+)
+{
+    jBC: RGS.EXCEPT.LOG.EOD
+}
+
+
+
+public method rgsExceptLogSod (
+)
+{
+    jBC: RGS.EXCEPT.LOG.SOD
+}
+

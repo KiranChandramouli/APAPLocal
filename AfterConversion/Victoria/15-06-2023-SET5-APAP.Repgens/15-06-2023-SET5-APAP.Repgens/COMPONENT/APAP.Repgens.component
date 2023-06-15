@@ -1,0 +1,140 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method rgsPlJournal (
+)
+{
+    jBC: RGS.PL.JOURNAL
+}
+
+
+
+public method rgsPosAuditDet (
+)
+{
+    jBC: RGS.POS.AUDIT.DET
+}
+
+
+
+public method rgsPosAuditSum (
+)
+{
+    jBC: RGS.POS.AUDIT.SUM
+}
+
+
+
+public method rgsProf2 (
+)
+{
+    jBC: RGS.PROF2
+}
+
+
+
+public method rgsProtocol (
+)
+{
+    jBC: RGS.PROTOCOL
+}
+
+
+
+public method rgsPtfSummaries (
+)
+{
+    jBC: RGS.PTF.SUMMARIES
+}
+
+
+
+public method rgsReferralList (
+)
+{
+    jBC: RGS.REFERRAL.LIST
+}
+
+
+
+public method rgsSecprix (
+)
+{
+    jBC: RGS.SECPRIX
+}
+
+
+
+public method rgsSector (
+)
+{
+    jBC: RGS.SECTOR
+}
+
+
+
+public method rgsSetrep (
+)
+{
+    jBC: RGS.SETREP
+}
+
+
+
+public method rgsTransInv2 (
+)
+{
+    jBC: RGS.TRANS.INV2
+}
+
+
+
+public method rgsTransInv4 (
+)
+{
+    jBC: RGS.TRANS.INV4
+}
+
+
+
+public method rgsTransInv6 (
+)
+{
+    jBC: RGS.TRANS.INV6
+}
+
+
+
+public method rgsTransJournal (
+)
+{
+   jBC: RGS.TRANS.JOURNAL
+}
+
+
+
+public method rgsTransInvyest6 (
+)
+{
+   jBC: RGS.TRANS.INVYEST6
+}
+
+
+
+public method rgsTransInvyest4 (
+)
+{
+   jBC: RGS.TRANS.INVYEST4
+}
+
+
+
+public method rgsTransInvyest2 (
+)
+{
+   jBC: RGS.TRANS.INVYEST2
+}
+
