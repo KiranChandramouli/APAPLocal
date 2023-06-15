@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo2ODE4Nzk2MzpDcDEyNTI6MTY4NjgyMzA4OTMyMzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Jun 2023 15:28:09
+* @ValidationCode : MjoyMDkyMTc5MTkxOkNwMTI1MjoxNjg2ODIwNjc3MjYxOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 15 Jun 2023 14:47:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,15 +11,15 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.Repgens
-SUBROUTINE RGP.VERSION4
-REM "RGP.VERSION4",230614-4
+SUBROUTINE RGP.EXCEPTION.LOG
+REM "RGP.EXCEPTION.LOG",230614-4
 *************************************************************************
-*------------------------------------------------------------------------
-* Modification History :
-*------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE
-* 15-JUNE-2023      Harsha                R22 Manual Conversion - GOTO to GOSUB
-*------------------------------------------------------------------------
+*MODIFICATION HISTORY:
+*---------------------------------------------------------------------------------------
+*    DATE                   WHO               REFERENCE
+* 15-06-2023         Conversion Tool    R22 Auto Conversion - No changes
+* 15-06-2023          ANIL KUMAR B      R22 Manual Conversion - GOTO TO GOSUB
+*----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_RC.COMMON
@@ -28,7 +28,7 @@ REM "RGP.VERSION4",230614-4
     $INSERT I_F.LANGUAGE
     $INSERT I_F.USER
 *************************************************************************
-    REPORT.ID = "RG.VERSION4"
+    REPORT.ID = "RG.EXCEPTION.LOG"
     PRT.UNIT = 0
     IF V$DISPLAY = "D" THEN YPRINTING = 0 ELSE YPRINTING = 1
     IF NOT(YPRINTING) THEN IF NOT(S.COL132.ON) THEN
@@ -37,7 +37,8 @@ REM "RGP.VERSION4",230614-4
     END
 *************************************************************************
     YT.SMS.COMP = ID.COMPANY
-    YT.SMS.FILE = "VERSION"
+    YT.SMS.FILE = "EXCEPTION.LOG.FILE"
+    YT.SMS.FILE<-1> = "COMPANY"
     YCOUNT = COUNT(YT.SMS.FILE,@FM)+1
     LOOP
         YID.COMP = YT.SMS.COMP<1>; DEL YT.SMS.COMP<1>
@@ -91,7 +92,7 @@ REM "RGP.VERSION4",230614-4
     F.LANGUAGE=""; CALL OPF("F.LANGUAGE",F.LANGUAGE)
     READV AMOUNT.FORMAT FROM F.LANGUAGE,LNGG,EB.LAN.AMOUNT.FORMAT ELSE AMOUNT.FORMAT=""
     CLEARSELECT
-    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.VERSION4"
+    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.EXCEPTION.LOG"
     EXECUTE "HUSH ON"
     EXECUTE "SSELECT ":YFILE
     EXECUTE "HUSH OFF"
@@ -109,18 +110,18 @@ REM "RGP.VERSION4",230614-4
         YT.PAGE = ""; T.CONTROLWORD = C.U:@FM:C.B:@FM:C.F:@FM:C.E:@FM:C.V:@FM:C.W
     END
     YKEY = ""; YTOTFD = ""
-    DIM YR.REC(6); MAT YR.REC = ""
-    DIM YR.REC.OLD(4); MAT YR.REC.OLD = "_"
+    DIM YR.REC(10); MAT YR.REC = ""
+    DIM YR.REC.OLD(8); MAT YR.REC.OLD = "_"
     GOSUB 1000000
-    YHDR = "LIST OF VERSIONS WITH HARTCODE"
+    YHDR = " "
     IF YPRINTING THEN
-        YHDR = "RGP.VERSION4 ":YHDR
+        YHDR = "RGP.EXCEPTION.LOG ":YHDR
         YTYPE = "HEADER":@FM:YHDR
         CALL PST ( YTYPE )
     END ELSE
         YTYPE = YHDR
     END
-    YHDR1 = "VERSION  FIELD NO                      OLD VALUE           NEW VALUE"
+    YHDR1 = "APPL. KEY AND CURR. NO.     EOD ROUTINE  NAME              MODULE IN ERROR               ERROR CODE AND MESSAGE"
     YHDR2 = ""
     YHDR3 = ""
     YHDR4 = ""
@@ -178,11 +179,12 @@ REM "RGP.VERSION4",230614-4
         BEGIN CASE
             CASE YR.REC.OLD(1) <> YR.REC(1); YHEADER.STATUS = 1
         END CASE
-        YFD.OLD = YR.REC.OLD(1); YFD = YR.REC(1)  ;* YM.NAME
+        YFD.OLD = YR.REC.OLD(1); YFD = YR.REC(1)  ;* YM.COMPANY
         IF YHEADER.DISPLAY OR YFD.OLD <> YFD THEN
             YHEADER.DISPLAY = 1
-            YFD = FMT(YFD,"30L")
-            IF LEN(YFD) > 30 THEN YFD = YFD[1,29]:"|"
+            YFD = FMT(YFD,"22L")
+            IF LEN(YFD) > 22 THEN YFD = YFD[1,21]:"|"
+            YFD = "COMPANY NAME: ":YFD
             YTOTFD := YFD
         END
         IF YHEADER.DISPLAY THEN
@@ -191,21 +193,146 @@ REM "RGP.VERSION4",230614-4
         END
         YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
         YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
-        YFD = YR.REC(2)  ;* YM.FIELDNO
-        YFD = FMT(YFD,"5L")
-        IF LEN(YFD) > 5 THEN YFD = YFD[1,4]:"|"
-        YTOTFD := "         ":YFD
-        YFD = YR.REC(3)  ;* YM.OLDVALUE
-        YFD = FMT(YFD,"15L")
-        IF LEN(YFD) > 15 THEN YFD = YFD[1,14]:"|"
-        YTOTFD := "                         ":YFD
-        YFD = YR.REC(4)  ;* YM.NEWVALUE
+        YFD = YR.REC(2)  ;* YM.APPLICATION
+        YFD = FMT(YFD,"3L")
+        IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
+        YTOTFD := YFD
+        YFD = YR.REC(3)  ;* YM.KEY
+        IF YFD = "" THEN
+            YFD = STR(" ",21)
+        END ELSE
+            YFD = FMT(YFD,"L#######-#####:#######")
+        END
+        IF LEN(YFD) > 21 THEN YFD = YFD[1,20]:"|"
+        YTOTFD := YFD
+        YFD = YR.REC(4)  ;* YM.EOD.ROUTINE
+        YFD = FMT(YFD,"30L")
+        IF LEN(YFD) > 30 THEN YFD = YFD[1,29]:"|"
+        YTOTFD := "    ":YFD
+        YFD = YR.REC(5)  ;* YM.MODULE
+        YFD = FMT(YFD,"30L")
+        IF LEN(YFD) > 30 THEN YFD = YFD[1,29]:"|"
+        YTOTFD := " ":YFD
+        YFD = YR.REC(6)  ;* YM.ERROR
+        YFD = FMT(YFD,"1L")
+        IF LEN(YFD) > 1 THEN YFD = YFD[1,0]:"|"
+        YTOTFD := YFD
+        YFD = YR.REC(7)  ;* YM.ERROR.CODE
+        YFD = FMT(YFD,"3L")
+        IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
+        YTOTFD := " ":YFD
+        YCNT = COUNT(YR.REC(8),@VM)
+        IF YCNT >= YCOUNT.LIN THEN YCOUNT.LIN = YCNT+1
+        YFD = YR.REC(8)<1,1>  ;* YM.MESSAGE
         YFD = FMT(YFD,"35L")
         IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
-        YTOTFD := "     ":YFD
+        YTOTFD := " ":YFD
         GOSUB 9000000
         IF COMI = C.U THEN RETURN  ;* end of pgm
+*
+        FOR YAV = 2 TO YCOUNT.LIN
+            YFD = YR.REC(8)<1,YAV>  ;* YM.MESSAGE
+            YFD = FMT(YFD,"35L")
+            IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
+            YTOTFD := "                                                                                               ":YFD
+            GOSUB 9000000
+            IF COMI = C.U THEN RETURN  ;* end of pgm
+        NEXT YAV
         GOSUB 1000000
+*
+        IF YKEY.OLD[1,30] <> YKEY[1,30] THEN
+            IF YKEY.OLD[1,1] = YKEY[1,1] THEN
+                YTEXT = "*** END OF GROUP ***"
+                IF LNGG <> 1 THEN CALL TXT ( YTEXT )
+                IF YPRINTING THEN
+                    PRINT
+                END ELSE
+                    IF L < 19 THEN
+                        GOSUB 9000000
+                        IF COMI = C.U THEN RETURN  ;* end of pgm
+                    END
+                END
+                PRINT YTEXT
+                IF NOT(YPRINTING) THEN YT.PAGE<P,L> = YTEXT; L += 1; PRINT @(0,L):
+                IF NOT(YPRINTING) THEN
+                    L = 999; GOSUB 9000010
+                    IF COMI = C.U THEN RETURN  ;* end of pgm
+                END
+                YHDR = " "
+                IF YPRINTING THEN
+                    YHDR = "RGP.EXCEPTION.LOG ":YHDR
+                    YTYPE = "HEADER":@FM:YHDR
+                    CALL PST ( YTYPE )
+                END ELSE
+                    YTYPE = YHDR
+                END
+                YHDR1 = "APPL. KEY AND CURR. NO.     EOD ROUTINE  NAME              MODULE IN ERROR               ERROR CODE AND MESSAGE"
+                YHDR2 = ""
+                YHDR3 = ""
+                YHDR4 = ""
+                IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
+                    YTYPE<3> = YTYPE<3>:YSTML
+                    IF YHDR1 <> "" THEN YTYPE<4> = YHDR1:YSTML
+                    IF YHDR2 <> "" THEN YTYPE<5> = YHDR2:YSTML
+                    IF YHDR3 <> "" THEN YTYPE<6> = YHDR3:YSTML
+                    IF YHDR4 <> "" THEN YTYPE<7> = YHDR4:YSTML
+                END
+                YHDR.GROUP = ""
+                YHDR1 = ""
+                YHDR2 = ""
+                YHDR3 = ""
+                YHDR4 = ""
+                IF YHDR.GROUP <> "" OR YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
+                    YTYPE<7> = YTYPE<7>:YSTML
+                    IF YHDR.GROUP <> "" THEN YTYPE<8> = YHDR.GROUP:YSTML
+                    IF YHDR.GROUP <> "" AND (YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "") THEN
+                        YTYPE<8> = YTYPE<8>:YSTML
+                    END
+                    IF YHDR1 <> "" THEN YTYPE<9> = YHDR1:YSTML
+                    IF YHDR2 <> "" THEN YTYPE<10> = YHDR2:YSTML
+                    IF YHDR3 <> "" THEN YTYPE<11> = YHDR3:YSTML
+                    IF YHDR4 <> "" THEN YTYPE<12> = YHDR4:YSTML
+                END
+                IF YPRINTING THEN
+                    HEAD.SETTING = YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
+                    IF HEAD.SETTING = "" THEN
+                        HEAD.SETTING = " "
+                    END
+                    HEADING HEAD.SETTING
+                END ELSE
+                    PRINT @(25+LEN(SCREEN.TITLE)+LEN(PGM.VERSION),L1ST-4):S.CLEAR.EOL:YTYPE<1>:
+                    IF YTYPE<5> = "" THEN YTYPE<5> = YTYPE<4>; YTYPE<4> = ""
+                    PRINT @(0,L1ST-3):S.CLEAR.EOL:YTYPE<4>:
+                    PRINT @(0,L1ST-2):S.CLEAR.EOL:YTYPE<5>:
+                    L = L1ST; PRINT @(0,L):
+                    IF YTYPE<6> <> "" THEN
+                        YT.PAGE<P,L> = YTYPE<6>; L += 2; PRINT YTYPE<6>:@(0,L):
+                    END
+                    IF YTYPE<7> <> "" THEN
+                        YT.PAGE<P,L> = YTYPE<7>; L += 2; PRINT YTYPE<7>:@(0,L):
+                    END
+                    IF YTYPE<8> <> "" THEN
+                        YT.PAGE<P,L> = YTYPE<8>; L += 2; PRINT YTYPE<6>:@(0,L):
+                    END
+                    IF YTYPE<9> <> "" OR YTYPE<10> <> "" OR YTYPE<11> <> "" OR YTYPE<12> <> "" THEN
+                        IF YTYPE<9> <> "" THEN
+                            YT.PAGE<P,L> = YTYPE<9>; L += 1; PRINT YTYPE<9>:@(0,L):
+                        END
+                        IF YTYPE<10> <> "" THEN
+                            YT.PAGE<P,L> = YTYPE<10>; L += 1; PRINT YTYPE<10>:
+                        END
+                        IF YTYPE<11> <> "" THEN
+                            YT.PAGE<P,L> = YTYPE<11>; L += 1; PRINT YTYPE<11>:
+                        END
+                        IF YTYPE<12> <> "" THEN
+                            YT.PAGE<P,L> = YTYPE<12>; L += 1; PRINT YTYPE<12>:
+                        END
+                        L += 1; PRINT @(0,L):
+                    END
+                END
+                YTYPE = ""
+            END
+        END
     REPEAT
     YTEXT = "*** END OF REPORT ***"
     IF LNGG <> 1 THEN CALL TXT ( YTEXT )
@@ -222,8 +349,8 @@ REM "RGP.VERSION4",230614-4
     IF YPRINTING THEN
         CALL PRINTER.OFF
         IF NOT(PHNO) THEN PRINT @(41,L1ST-3):YBLOCKNO+YWRITNO:
-        C$RPT.CUSTOMER.NO = YR.REC(5)
-        C$RPT.ACCOUNT.NO = YR.REC(6)
+        C$RPT.CUSTOMER.NO = YR.REC(9)
+        C$RPT.ACCOUNT.NO = YR.REC(10)
         CALL PRINTER.CLOSE(REPORT.ID,PRT.UNIT,"")
     END ELSE
         TEXT = "END OF REPORT"; YEND = 1; GOSUB 9100000
@@ -238,7 +365,7 @@ RETURN
     IF NOT(YKEY:YDELIM) THEN
         YKEYFD = "***"; YKEY = STR("*",188); RETURN
     END
-    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOSUB 1000000    ;*R22 Manual Conversion - GOTO to GOSUB
+    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOSUB 1000000  ;*R22 MANUAL CONVERSION GOTO TO GOSUB
     YKEY = "C":YKEY
     IF NOT(PHNO) AND YPRINTING THEN
         IF YWRITNO < 9 THEN
@@ -269,7 +396,7 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     BEGIN CASE
         CASE COMI = C.B; NEXTP = P-1
         CASE COMI = C.F
-            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOSUB 9190000   ;*R22 Manual Conversion - GOTO to GOSUB
+            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOSUB 9190000  ;*R22 MANUAL CONVERSION GOTO TO GOSUB
         CASE COMI = C.E; NEXTP = LASTP
         CASE COMI = C.V OR COMI = C.W OR COMI = C.U
             PRINT S.COL132.OFF:
@@ -277,9 +404,9 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
         CASE COMI = "P"; NEXTP = 1
         CASE COMI[1,1] = "P" AND NUM(COMI[2,99]) = NUMERIC
             NEXTP = COMI[2,99]
-            IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000    ;*R22 Manual Conversion - GOTO to GOSUB
+            IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000   ;*R22 MANUAL CONVERSION GOTO TO GOSUB
         CASE 1
-            E = ""; L = 22; CALL ERR; GOSUB 9100010  ;*R22 Manual Conversion - GOTO to GOSUB
+            E = ""; L = 22; CALL ERR; GOSUB 9100010  ;*R22 MANUAL CONVERSION GOTO TO GOSUB
     END CASE
 *
     IF NEXTP < 1 THEN
@@ -287,16 +414,16 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     END ELSE
         IF NEXTP > LASTP THEN NEXTP = LASTP
     END
-    IF NEXTP = P THEN GOSUB 9100000  ;*R22 Manual Conversion - GOTO to GOSUB
+    IF NEXTP = P THEN GOSUB 9100000  ;*R22 MANUAL CONVERSION GOTO TO GOSUB
     P = NEXTP
 *
     GOSUB 9200000
     FOR LL = L1ST TO 19
         X = YT.PAGE<P,LL>; IF X <> "" THEN PRINT @(0,LL):X:
-    NEXT LL; GOSUB 9100000   ;*R22 Manual Conversion - GOTO to GOSUB
+    NEXT LL; GOSUB 9100000   ;*R22 MANUAL CONVERSION GOTO TO GOSUB
 *
 9190000:
-    IF YEND THEN GOSUB 9100000 ELSE P = NEXTP    ;*R22 Manual Conversion - GOTO to GOSUB
+    IF YEND THEN GOSUB 9100000 ELSE P = NEXTP  ;*R22 MANUAL CONVERSION GOTO TO GOSUB
 *
 9200000:
     L = L1ST; PRINT @(0,L):
