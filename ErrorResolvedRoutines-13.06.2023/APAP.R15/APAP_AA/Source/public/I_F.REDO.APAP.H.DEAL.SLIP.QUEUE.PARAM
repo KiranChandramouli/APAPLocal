@@ -1,0 +1,21 @@
+* I_F.REDO.APAP.H.DEAL.SLIP.QUEUE.PARAM Created 10 DEC 10 at 03:50PM by apapr8/SHAKTI1
+*      PREFIX[REDO.DS.QUEUE.PARAM]
+        EQU REDO.DS.QUEUE.PARAM.DESCRIPTION TO 1,   RedoApapHDealSlipQueueParam_Description TO 1,
+       REDO.DS.QUEUE.PARAM.RECORD.RETENTION TO 2,   RedoApapHDealSlipQueueParam_RecordRetention TO 2,
+             REDO.DS.QUEUE.PARAM.RESERVED.6 TO 3,   RedoApapHDealSlipQueueParam_Reserved6 TO 3,
+             REDO.DS.QUEUE.PARAM.RESERVED.5 TO 4,   RedoApapHDealSlipQueueParam_Reserved5 TO 4,
+             REDO.DS.QUEUE.PARAM.RESERVED.4 TO 5,   RedoApapHDealSlipQueueParam_Reserved4 TO 5,
+             REDO.DS.QUEUE.PARAM.RESERVED.3 TO 6,   RedoApapHDealSlipQueueParam_Reserved3 TO 6,
+             REDO.DS.QUEUE.PARAM.RESERVED.2 TO 7,   RedoApapHDealSlipQueueParam_Reserved2 TO 7,
+             REDO.DS.QUEUE.PARAM.RESERVED.1 TO 8,   RedoApapHDealSlipQueueParam_Reserved1 TO 8,
+              REDO.DS.QUEUE.PARAM.LOCAL.REF TO 9,   RedoApapHDealSlipQueueParam_LocalRef TO 9,
+               REDO.DS.QUEUE.PARAM.OVERRIDE TO 10,  RedoApapHDealSlipQueueParam_Override TO 10,
+          REDO.DS.QUEUE.PARAM.RECORD.STATUS TO 11,  RedoApapHDealSlipQueueParam_RecordStatus TO 11,
+                REDO.DS.QUEUE.PARAM.CURR.NO TO 12,  RedoApapHDealSlipQueueParam_CurrNo TO 12,
+               REDO.DS.QUEUE.PARAM.INPUTTER TO 13,  RedoApapHDealSlipQueueParam_Inputter TO 13,
+              REDO.DS.QUEUE.PARAM.DATE.TIME TO 14,  RedoApapHDealSlipQueueParam_DateTime TO 14,
+             REDO.DS.QUEUE.PARAM.AUTHORISER TO 15,  RedoApapHDealSlipQueueParam_Authoriser TO 15,
+                REDO.DS.QUEUE.PARAM.CO.CODE TO 16,  RedoApapHDealSlipQueueParam_CoCode TO 16,
+              REDO.DS.QUEUE.PARAM.DEPT.CODE TO 17,  RedoApapHDealSlipQueueParam_DeptCode TO 17,
+           REDO.DS.QUEUE.PARAM.AUDITOR.CODE TO 18,  RedoApapHDealSlipQueueParam_AuditorCode TO 18,
+        REDO.DS.QUEUE.PARAM.AUDIT.DATE.TIME TO 19,  RedoApapHDealSlipQueueParam_AuditDateTime TO 19

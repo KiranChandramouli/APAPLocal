@@ -1,0 +1,3 @@
+* I_F.REDO.SUPPLIER.PAY.DATE Created 12 JAN 11 at 10:59AM by apapr8/SELLA.1
+*      PREFIX[REDO.SUP.DATE]
+  EQU REDO.SUP.DATE.PAYMENT.RECORD.ID TO 1,   RedoSupplierPayDate_PaymentRecordId TO 1

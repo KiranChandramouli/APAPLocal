@@ -1,0 +1,18 @@
+* I_F.REDO.H.ASSIGNMENT Created 25 FEB 11 at 06:54PM by apapr8/SJEY
+*      PREFIX[REDO.ASSIGN]
+               EQU REDO.ASSIGN.DATE TO 1,   RedoHAssignment_Date TO 1,
+               REDO.ASSIGN.QUANTITY TO 2,   RedoHAssignment_Quantity TO 2,
+                 REDO.ASSIGN.AMOUNT TO 3,   RedoHAssignment_Amount TO 3,
+         REDO.ASSIGN.ASSIGN.CONCEPT TO 4,   RedoHAssignment_AssignConcept TO 4,
+             REDO.ASSIGN.PAY.METHOD TO 5,   RedoHAssignment_PayMethod TO 5,
+          REDO.ASSIGN.DEBIT.ACCOUNT TO 6,   RedoHAssignment_DebitAccount TO 6,
+               REDO.ASSIGN.OVERRIDE TO 7,   RedoHAssignment_Override TO 7,
+          REDO.ASSIGN.RECORD.STATUS TO 8,   RedoHAssignment_RecordStatus TO 8,
+                REDO.ASSIGN.CURR.NO TO 9,   RedoHAssignment_CurrNo TO 9,
+               REDO.ASSIGN.INPUTTER TO 10,  RedoHAssignment_Inputter TO 10,
+              REDO.ASSIGN.DATE.TIME TO 11,  RedoHAssignment_DateTime TO 11,
+             REDO.ASSIGN.AUTHORISER TO 12,  RedoHAssignment_Authoriser TO 12,
+                REDO.ASSIGN.CO.CODE TO 13,  RedoHAssignment_CoCode TO 13,
+              REDO.ASSIGN.DEPT.CODE TO 14,  RedoHAssignment_DeptCode TO 14,
+           REDO.ASSIGN.AUDITOR.CODE TO 15,  RedoHAssignment_AuditorCode TO 15,
+        REDO.ASSIGN.AUDIT.DATE.TIME TO 16,  RedoHAssignment_AuditDateTime TO 16

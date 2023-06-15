@@ -1,0 +1,22 @@
+* I_F.DR.REG.IF02B.EXTRACT Created 29 APR 14 at 05:13PM by t24uatd/M.MEDINA
+*      PREFIX[IF02B]
+        EQU IF02B.DESCRIPTION TO 1,   DrRegIf02bExtract_Description TO 1,
+           IF02B.EXTRACT.PATH TO 2,   DrRegIf02bExtract_ExtractPath TO 2,
+        IF02B.CUSTOMER.NUMBER TO 3,   DrRegIf02bExtract_CustomerNumber TO 3,
+         IF02B.ID.CARD.NUMBER TO 4,   DrRegIf02bExtract_IdCardNumber TO 4,
+         IF02B.COMMUNC.NUMBER TO 5,   DrRegIf02bExtract_CommuncNumber TO 5,
+           IF02B.COMMUNC.YEAR TO 6,   DrRegIf02bExtract_CommuncYear TO 6,
+             IF02B.START.TIME TO 7,   DrRegIf02bExtract_StartTime TO 7,
+               IF02B.END.TIME TO 8,   DrRegIf02bExtract_EndTime TO 8,
+             IF02B.RESERVED.1 TO 9,   DrRegIf02bExtract_Reserved1 TO 9,
+              IF02B.LOCAL.REF TO 10,  DrRegIf02bExtract_LocalRef TO 10,
+               IF02B.OVERRIDE TO 11,  DrRegIf02bExtract_Override TO 11,
+          IF02B.RECORD.STATUS TO 12,  DrRegIf02bExtract_RecordStatus TO 12,
+                IF02B.CURR.NO TO 13,  DrRegIf02bExtract_CurrNo TO 13,
+               IF02B.INPUTTER TO 14,  DrRegIf02bExtract_Inputter TO 14,
+              IF02B.DATE.TIME TO 15,  DrRegIf02bExtract_DateTime TO 15,
+             IF02B.AUTHORISER TO 16,  DrRegIf02bExtract_Authoriser TO 16,
+                IF02B.CO.CODE TO 17,  DrRegIf02bExtract_CoCode TO 17,
+              IF02B.DEPT.CODE TO 18,  DrRegIf02bExtract_DeptCode TO 18,
+           IF02B.AUDITOR.CODE TO 19,  DrRegIf02bExtract_AuditorCode TO 19,
+        IF02B.AUDIT.DATE.TIME TO 20,  DrRegIf02bExtract_AuditDateTime TO 20

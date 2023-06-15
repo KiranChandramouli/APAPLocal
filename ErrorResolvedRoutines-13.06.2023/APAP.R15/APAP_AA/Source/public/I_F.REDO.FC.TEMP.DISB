@@ -1,0 +1,20 @@
+* I_F.REDO.FC.TEMP.DISB Created 30 MAY 17 at 10:46AM by da5tus/E.01252
+*      PREFIX[FC.TD]
+                  EQU FC.TD.DESCRIPCION TO 1,   RedoFcTempDisb_Descripcion TO 1,
+                     FC.TD.ID.INST.DISB TO 2,   RedoFcTempDisb_IdInstDisb TO 2,
+                        FC.TD.FIELD.VRN TO 3,   RedoFcTempDisb_FieldVrn TO 3,
+                         FC.TD.NAME.VRN TO 4,   RedoFcTempDisb_NameVrn TO 4,
+                    FC.TD.NAME.PART.VRN TO 5,   RedoFcTempDisb_NamePartVrn TO 5,
+                       FC.TD.RESERVED.4 TO 6,   RedoFcTempDisb_Reserved4 TO 6,
+                       FC.TD.RESERVED.3 TO 7,   RedoFcTempDisb_Reserved3 TO 7,
+                       FC.TD.RESERVED.2 TO 8,   RedoFcTempDisb_Reserved2 TO 8,
+                       FC.TD.RESERVED.1 TO 9,   RedoFcTempDisb_Reserved1 TO 9,
+                    FC.TD.RECORD.STATUS TO 10,  RedoFcTempDisb_RecordStatus TO 10,
+                          FC.TD.CURR.NO TO 11,  RedoFcTempDisb_CurrNo TO 11,
+                         FC.TD.INPUTTER TO 12,  RedoFcTempDisb_Inputter TO 12,
+                        FC.TD.DATE.TIME TO 13,  RedoFcTempDisb_DateTime TO 13,
+                       FC.TD.AUTHORISER TO 14,  RedoFcTempDisb_Authoriser TO 14,
+                          FC.TD.CO.CODE TO 15,  RedoFcTempDisb_CoCode TO 15,
+                        FC.TD.DEPT.CODE TO 16,  RedoFcTempDisb_DeptCode TO 16,
+                     FC.TD.AUDITOR.CODE TO 17,  RedoFcTempDisb_AuditorCode TO 17,
+                  FC.TD.AUDIT.DATE.TIME TO 18,  RedoFcTempDisb_AuditDateTime TO 18

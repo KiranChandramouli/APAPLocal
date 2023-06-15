@@ -1,0 +1,11 @@
+* I_F.REDO.ACH.TRANSFER.DETAILS Created 14 FEB 11 at 05:53PM by apap/MARI.1
+*      PREFIX[REDO.ACH]
+             EQU REDO.ACH.AGENCY TO 1,   RedoAchTransferDetails_Agency TO 1,
+           REDO.ACH.PAYMENT.DATE TO 2,   RedoAchTransferDetails_PaymentDate TO 2,
+              REDO.ACH.CLIENT.ID TO 3,   RedoAchTransferDetails_ClientId TO 3,
+             REDO.ACH.DEPOSIT.NO TO 4,   RedoAchTransferDetails_DepositNo TO 4,
+         REDO.ACH.INT.PAYMNT.AMT TO 5,   RedoAchTransferDetails_IntPaymntAmt TO 5,
+            REDO.ACH.BENEFICIARY TO 6,   RedoAchTransferDetails_Beneficiary TO 6,
+        REDO.ACH.BENEFICIARY.ACC TO 7,   RedoAchTransferDetails_BeneficiaryAcc TO 7,
+           REDO.ACH.BEN.BNK.CODE TO 8,   RedoAchTransferDetails_BenBnkCode TO 8,
+              REDO.ACH.TRANS.ACH TO 9,   RedoAchTransferDetails_TransAch TO 9

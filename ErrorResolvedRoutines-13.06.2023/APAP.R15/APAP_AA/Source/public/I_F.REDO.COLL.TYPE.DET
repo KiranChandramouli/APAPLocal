@@ -1,0 +1,20 @@
+* I_F.REDO.COLL.TYPE.DET Created 03 DEC 10 at 11:03AM by apapr8/SWAMI.2
+*      PREFIX[DOC.DET]
+      EQU DOC.DET.DOCUMENT.TYPE TO 1,   RedoCollTypeDet_DocumentType TO 1,
+        DOC.DET.COLLATERAL.TYPE TO 2,   RedoCollTypeDet_CollateralType TO 2,
+            DOC.DET.RESERVED.05 TO 3,   RedoCollTypeDet_Reserved05 TO 3,
+            DOC.DET.RESERVED.04 TO 4,   RedoCollTypeDet_Reserved04 TO 4,
+            DOC.DET.RESERVED.03 TO 5,   RedoCollTypeDet_Reserved03 TO 5,
+            DOC.DET.RESERVED.02 TO 6,   RedoCollTypeDet_Reserved02 TO 6,
+            DOC.DET.RESERVED.01 TO 7,   RedoCollTypeDet_Reserved01 TO 7,
+              DOC.DET.LOCAL.REF TO 8,   RedoCollTypeDet_LocalRef TO 8,
+               DOC.DET.OVERRIDE TO 9,   RedoCollTypeDet_Override TO 9,
+          DOC.DET.RECORD.STATUS TO 10,  RedoCollTypeDet_RecordStatus TO 10,
+                DOC.DET.CURR.NO TO 11,  RedoCollTypeDet_CurrNo TO 11,
+               DOC.DET.INPUTTER TO 12,  RedoCollTypeDet_Inputter TO 12,
+              DOC.DET.DATE.TIME TO 13,  RedoCollTypeDet_DateTime TO 13,
+             DOC.DET.AUTHORISER TO 14,  RedoCollTypeDet_Authoriser TO 14,
+                DOC.DET.CO.CODE TO 15,  RedoCollTypeDet_CoCode TO 15,
+              DOC.DET.DEPT.CODE TO 16,  RedoCollTypeDet_DeptCode TO 16,
+           DOC.DET.AUDITOR.CODE TO 17,  RedoCollTypeDet_AuditorCode TO 17,
+        DOC.DET.AUDIT.DATE.TIME TO 18,  RedoCollTypeDet_AuditDateTime TO 18

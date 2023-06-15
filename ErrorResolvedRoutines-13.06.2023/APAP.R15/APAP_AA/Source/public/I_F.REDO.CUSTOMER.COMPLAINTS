@@ -1,0 +1,3 @@
+* I_F.REDO.CUSTOMER.COMPLAINTS Created 01 MAR 11 at 07:08PM by t24tqa02/INPUTTER
+*      PREFIX[CU.CO]
+            EQU CU.CO.CUS.CNT TO 1,   RedoCustomerComplaints_CusCnt TO 1

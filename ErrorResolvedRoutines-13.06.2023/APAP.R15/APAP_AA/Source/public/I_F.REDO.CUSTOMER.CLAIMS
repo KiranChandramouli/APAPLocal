@@ -1,0 +1,3 @@
+* I_F.REDO.CUSTOMER.CLAIMS Created 27 MAY 11 at 02:03PM by t24tqa02/PRADEEP
+*      PREFIX[CU.CL]
+            EQU CU.CL.CUS.CNT TO 1,   RedoCustomerClaims_CusCnt TO 1
