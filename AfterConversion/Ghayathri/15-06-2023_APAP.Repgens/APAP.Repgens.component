@@ -1,0 +1,144 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method rgpLiCollatSum (
+)
+{
+    jBC: RGP.LI.COLLAT.SUM
+}
+
+
+
+public method rgpLimAlPosition (
+)
+{
+    jBC: RGP.LIM.AL.POSITION
+}
+
+
+
+public method rgpLstBkBal (
+)
+{
+    jBC: RGP.LST.BK.BAL
+}
+
+
+
+public method rgpLstCliBal (
+)
+{
+    jBC: RGP.LST.CLI.BAL
+}
+
+
+
+public method rgpLstFidBanks (
+)
+{
+    jBC: RGP.LST.FID.BANKS
+}
+
+
+
+public method rgpLstFidClients (
+)
+{
+    jBC: RGP.LST.FID.CLIENTS
+}
+
+
+
+public method rgpLstFidMat (
+)
+{
+    jBC: RGP.LST.FID.MAT
+}
+
+
+
+
+
+
+
+public method rgpLstFxCntOpen (
+)
+{
+    jBC: RGP.LST.FX.CNT.OPEN
+}
+
+
+
+public method rgpLstFxFwPurch (
+)
+{
+    jBC: RGP.LST.FX.FW.PURCH
+}
+
+
+
+public method rgpLstFxFwSales (
+)
+{
+    jBC: RGP.LST.FX.FW.SALES
+}
+
+
+
+public method rgpMm0001 (
+)
+{
+    jBC: RGP.MM0001
+}
+
+
+
+public method rgpMm0002 (
+)
+{
+    jBC: RGP.MM0002
+}
+
+
+
+public method rgpMm0003 (
+)
+{
+    jBC: RGP.MM0003
+}
+
+
+
+public method rgpMm0004 (
+)
+{
+    jBC: RGP.MM0004
+}
+
+
+
+public method rgpMm0005 (
+)
+{
+    jBC: RGP.MM0005
+}
+
+
+
+public method rgpMm0006 (
+)
+{
+   jBC: RGP.MM0006
+}
+
+
+
+public method rgpOverdraftList (
+)
+{
+   jBC: RGP.OVERDRAFT.LIST
+}
+
