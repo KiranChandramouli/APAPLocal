@@ -1,0 +1,140 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method rgpTransJournal2 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL2
+}
+
+
+
+public method rgpTransJournal4 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL4
+}
+
+
+
+public method rgpTransJournal6 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL6
+}
+
+
+
+public method rgpTransT24inv2 (
+)
+{
+    jBC: RGP.TRANS.T24INV2
+}
+
+
+
+public method rgpTransT24inv4 (
+)
+{
+    jBC: RGP.TRANS.T24INV4
+}
+
+
+
+public method rgpTransT24inv6 (
+)
+{
+    jBC: RGP.TRANS.T24INV6
+}
+
+
+
+public method rgpTransYest2 (
+)
+{
+    jBC: RGP.TRANS.YEST2
+}
+
+
+
+public method rgpTransYest4 (
+)
+{
+    jBC: RGP.TRANS.YEST4
+}
+
+
+
+public method rgpTransYest6 (
+)
+{
+    jBC: RGP.TRANS.YEST6
+}
+
+
+
+public method rgpVersion4 (
+)
+{
+    jBC: RGP.VERSION4
+}
+
+
+
+public method rgsAccountList (
+)
+{
+    jBC: RGS.ACCOUNT.LIST
+}
+
+
+
+public method rgsAvBqsTerme (
+)
+{
+    jBC: RGS.AV.BQS.TERME
+}
+
+
+
+public method rgsBalanceList (
+)
+{
+    jBC: RGS.BALANCE.LIST
+}
+
+
+
+public method rgsBanksMnemonic (
+)
+{
+    jBC: RGS.BANKS.MNEMONIC
+}
+
+
+
+public method rgsCategory (
+)
+{
+    jBC: RGS.CATEGORY
+}
+
+
+
+public method rgsCoCover (
+)
+{
+    jBC: RGS.CO.COVER
+}
+
+
+
+public method rgsCoExpired (
+)
+{
+    jBC: RGS.CO.EXPIRED
+}
+
