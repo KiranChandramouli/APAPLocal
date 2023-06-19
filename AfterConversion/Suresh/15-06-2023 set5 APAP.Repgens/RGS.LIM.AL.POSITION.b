@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjAzODAyMzgwNTpDcDEyNTI6MTY4NjgxNDg5NzIzOTozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Jun 2023 13:11:37
+* @ValidationCode : MjotMTg0MjExNTM1MDpDcDEyNTI6MTY4NzE0OTUyMDU1NzozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Jun 2023 10:08:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,6 +10,11 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                         DESCRIPTION
+*19/06/2023          SURESH           MANUAL R22 CODE CONVERSION                NOCHANGE
+*----------------------------------------------------------------------------------------
 $PACKAGE APAP.Repgens
 
 SUBROUTINE RGS.LIM.AL.POSITION

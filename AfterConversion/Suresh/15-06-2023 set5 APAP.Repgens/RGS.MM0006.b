@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTczOTEwOTg1NjpDcDEyNTI6MTY4NjgxNDI0MDk0NTozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Jun 2023 13:00:40
+* @ValidationCode : MjotNjg3MTM4MjYxOkNwMTI1MjoxNjg3MTUwNDAwMzIxOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Jun 2023 10:23:20
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,6 +10,11 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                         DESCRIPTION
+*19/06/2023         SURESH           MANUAL R22 CODE CONVERSION                  NOCHANGE
+*----------------------------------------------------------------------------------------
 $PACKAGE APAP.Repgens
 
 SUBROUTINE RGS.MM0006
