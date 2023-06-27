@@ -1,0 +1,15 @@
+* I_F.REDO.TRANS.TYPES.TT.PARAM Created 16 MAR 11 at 10:00PM by apapr8/MARI1
+*      PREFIX[REDO.TXN.TT]
+       EQU REDO.TXN.TT.TYPE.PAYMENT TO 1,   RedoTransTypesTtParam_TypePayment TO 1,
+               REDO.TXN.TT.TXN.TYPE TO 2,   RedoTransTypesTtParam_TxnType TO 2,
+               REDO.TXN.TT.TXN.DESC TO 3,   RedoTransTypesTtParam_TxnDesc TO 3,
+           REDO.TXN.TT.REL.TXN.CODE TO 4,   RedoTransTypesTtParam_RelTxnCode TO 4,
+          REDO.TXN.TT.RECORD.STATUS TO 5,   RedoTransTypesTtParam_RecordStatus TO 5,
+                REDO.TXN.TT.CURR.NO TO 6,   RedoTransTypesTtParam_CurrNo TO 6,
+               REDO.TXN.TT.INPUTTER TO 7,   RedoTransTypesTtParam_Inputter TO 7,
+              REDO.TXN.TT.DATE.TIME TO 8,   RedoTransTypesTtParam_DateTime TO 8,
+             REDO.TXN.TT.AUTHORISER TO 9,   RedoTransTypesTtParam_Authoriser TO 9,
+                REDO.TXN.TT.CO.CODE TO 10,  RedoTransTypesTtParam_CoCode TO 10,
+              REDO.TXN.TT.DEPT.CODE TO 11,  RedoTransTypesTtParam_DeptCode TO 11,
+           REDO.TXN.TT.AUDITOR.CODE TO 12,  RedoTransTypesTtParam_AuditorCode TO 12,
+        REDO.TXN.TT.AUDIT.DATE.TIME TO 13,  RedoTransTypesTtParam_AuditDateTime TO 13

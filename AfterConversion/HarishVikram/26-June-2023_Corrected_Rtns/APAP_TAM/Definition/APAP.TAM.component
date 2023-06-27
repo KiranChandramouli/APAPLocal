@@ -1,0 +1,64 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoVGetPayMethod (
+)
+{
+   jBC: REDO.V.GET.PAY.METHOD
+}
+
+
+
+public method redoVInpAmlFtChk (
+)
+{
+   jBC: REDO.V.INP.AML.FT.CHK
+}
+
+
+
+public method redoVInpTfsCheckAcc (
+)
+{
+   jBC: REDO.V.INP.TFS.CHECK.ACC
+}
+
+
+
+public method redoVInpTfsDealslip (
+)
+{
+   jBC: REDO.V.INP.TFS.DEALSLIP
+}
+
+
+
+public method redoVInpTfsLimit (
+)
+{
+   jBC: REDO.V.INP.TFS.LIMIT
+}
+
+
+
+public method redoVInpTfsTp (
+)
+{
+   jBC: REDO.V.INP.TFS.TP
+}
+
+
+
+public  method redoGetPropertyName (
+   INOUT inAaId string,
+   INOUT inPropertyClass string,
+   INOUT rOutAaRecord string,
+   INOUT outProperty string,
+   INOUT outErr string
+)
+{
+   jBC: REDO.GET.PROPERTY.NAME
+}
+

@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNjE4MTQzNDY0OkNwMTI1MjoxNjg2ODEzNDM3MzMzOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Jun 2023 12:47:17
+* @ValidationCode : MjotMjA2OTg3MjY3NTpDcDEyNTI6MTY4NzE0OTg4MDEyNTozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Jun 2023 10:14:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,6 +10,11 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                         DESCRIPTION
+*19/06/2023          SURESH            MANUAL R22 CODE CONVERSION               NOCHANGE
+*----------------------------------------------------------------------------------------
 $PACKAGE APAP.Repgens
 
 SUBROUTINE RGS.LST.FX.FW.PURCH

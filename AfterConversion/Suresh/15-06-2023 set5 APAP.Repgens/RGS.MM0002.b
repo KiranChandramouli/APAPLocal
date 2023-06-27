@@ -1,6 +1,6 @@
 $PACKAGE APAP.Repgens
-* @ValidationCode : MjoxNzMxMTIxMDczOkNwMTI1MjoxNjg2ODEzNzYxNDY3OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Jun 2023 12:52:41
+* @ValidationCode : MjotMTQzNTYxODk4MDpDcDEyNTI6MTY4NzE1MDE4NTE4ODozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Jun 2023 10:19:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,6 +12,11 @@ $PACKAGE APAP.Repgens
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                         DESCRIPTION
+*19/06/2023         SURESH           MANUAL R22 CODE CONVERSION                 NOCHANGE
+*----------------------------------------------------------------------------------------
 
 SUBROUTINE RGS.MM0002
 REM "RGS.MM0002",230614-4

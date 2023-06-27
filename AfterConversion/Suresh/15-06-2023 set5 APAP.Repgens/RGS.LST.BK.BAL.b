@@ -1,6 +1,6 @@
 $PACKAGE APAP.Repgens
-* @ValidationCode : Mjo1ODQ2MDYzMDpDcDEyNTI6MTY4NjgxMjc1NzU4MjozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Jun 2023 12:35:57
+* @ValidationCode : MjotMTcxNTg4NzgyMTpDcDEyNTI6MTY4NzE0OTU1MzQ3OTozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Jun 2023 10:09:13
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,6 +12,11 @@ $PACKAGE APAP.Repgens
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                         DESCRIPTION
+*19/06/2023          SURESH           MANUAL R22 CODE CONVERSION                NOCHANGE
+*----------------------------------------------------------------------------------------
 
 SUBROUTINE RGS.LST.BK.BAL
 REM "RGS.LST.BK.BAL",230614-4
