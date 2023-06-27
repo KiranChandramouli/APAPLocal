@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNzAyMjYwNzM3OkNwMTI1MjoxNjgzODkyNjI3MzQyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:07
+* @ValidationCode : MjoyMzcwNTMxNzM6Q3AxMjUyOjE2ODU1NDUyODAwMzc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:31:20
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *-----------------------------------------------------------------------------------
@@ -32,6 +32,7 @@ SUBROUTINE REDO.GET.TXN.REV.CHAIN.AU(Y.FINAL.ARRAY)
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.REDO.TRANSACTION.CHAIN
+    $USING APAP.REDOENQ
 
 
 
@@ -76,7 +77,7 @@ PROCESS:
 
     Y.FINAL.ARRAY = ''
 *   CALL REDO.E.FORM.SEL.STMT(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD)
-    CALL APAP.REDOENQ.redoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    APAP.REDOENQ.redoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD) ;*MANUAL R22 CODE CONVERSION
     IF D.RANGE.AND.VALUE THEN
         SEL.CMD := " AND TRANS.AUTH EQ 'IR' AND "
         SEL.CMD := " BRANCH.CODE EQ " : ID.COMPANY : " AND TRANS.DATE EQ ":TODAY:" BY.DSND TRANS.DATE"

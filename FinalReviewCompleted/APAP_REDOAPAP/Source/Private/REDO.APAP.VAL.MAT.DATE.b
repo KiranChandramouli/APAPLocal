@@ -1,14 +1,14 @@
-* @ValidationCode : MjozMzk1MjM5NTI6Q3AxMjUyOjE2ODMwMjgxNzMyNzQ6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 17:19:33
+* @ValidationCode : Mjo0NTk0MzIyMjU6Q3AxMjUyOjE2ODQ4MzYwNTQ3NTU6SVRTUzotMTotMTotMjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -26
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.VAL.MAT.DATE
@@ -63,7 +63,7 @@ PROCESS.PARA:
     CALL System.setVariable("CURRENT.MAT.DATE",Y.MAT.DATE)
     GOSUB FIND.MULTI.LOCAL.REF
     R.NEW(AZ.LOCAL.REF)<1,LOC.L.VAL.MAT.DATE.POS>=Y.VAL.MAT.DATE
-    CALL APAP.REDOVER.redoVPrincipalIntRate()
+    APAP.REDOVER.redoVPrincipalIntRate();* R22 Manual conversion
 RETURN
 **************************************************************************
 *************

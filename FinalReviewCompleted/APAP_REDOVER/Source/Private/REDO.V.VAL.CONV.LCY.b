@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjAyMDk2NDI4MjpDcDEyNTI6MTY4MjQxMjM1Nzk0ODpIYXJpc2h2aWtyYW1DOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:57
+* @ValidationCode : MjotNTIxMDczNTIxOkNwMTI1MjoxNjg1NTQzNjQ5Mjc3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:09
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE  REDO.V.VAL.CONV.LCY
@@ -65,7 +65,8 @@ EXCHANGE:
     CALL EXCHRATE(CCY.MKT,CCY.BUY,BUY.AMT,CCY.SELL,SELL.AMT,'','','','',RETURN.CODE)
     R.NEW(AZ.PRINCIPAL)=BUY.AMT
 
-    CALL APAP.REDOVER.REDO.V.PRINCIPAL.INT.RATE ;*R22 Manual Code Conversion-Call Method Format Modified
+*APAP.REDOVER.REDO.V.PRINCIPAL.INT.RATE
+    APAP.REDOVER.redoVPrincipalIntRate() ;*R22 Manual Code Conversion-Call Method Format Modified
 
 RETURN
 ********

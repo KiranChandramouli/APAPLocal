@@ -1,16 +1,16 @@
-$PACKAGE APAP.DRREG
-* @ValidationCode : Mjo2OTkyMjkzMDE6Q3AxMjUyOjE2ODA2ODA2MDExNTY6YWppdGg6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 05 Apr 2023 13:13:21
+* @ValidationCode : Mjo2OTkyMjkzMDE6Q3AxMjUyOjE2ODQ4NTY4NzIzNDc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 21:17:52
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.DRREG
 
 SUBROUTINE DR.REG.RCL.CUS.NAME.INT.TAX.PAY
 *-----------------------------------------------------------------------------

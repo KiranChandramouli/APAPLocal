@@ -58,7 +58,7 @@ SUBROUTINE L.APAP.VAL.RTE.REST.LIST
 
     IF TEXT EQ '' THEN
 * Rutina previamente invocada por la version
-        CALL APAP.LAPAP.redoLapapDefCustType() ;*MANUAL R22 CODE CONVERSION
+        APAP.LAPAP.redoLapapDefCustType() ;*MANUAL R22 CODE CONVERSION
     END
 
 RETURN

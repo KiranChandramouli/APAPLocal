@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY5Mjg5MTYwNzpDcDEyNTI6MTY4MjY5MTUwNzIxNDpJVFNTOi0xOi0xOjQ3MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:27
+* @ValidationCode : MjotMTA4MjA3MDYxNjpDcDEyNTI6MTY4NTU0MzYyMzg0NzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 473
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.DEF.TEMP.STATUS.COND.DISB
@@ -46,6 +46,7 @@ SUBROUTINE REDO.V.DEF.TEMP.STATUS.COND.DISB
     $INSERT I_F.AA.ARRANGEMENT
     $INSERT I_F.ACCOUNT
     $USING APAP.TAM
+    $USING APAP.AA
 
     IF cTxn_CommitRequests EQ '1' THEN
         RETURN
@@ -111,7 +112,7 @@ PROCESS:
 
 ** PACS00082427 - S
     IF PGM.VERSION EQ ',REDO.MULTI.AA.ACRP.DISB' OR PGM.VERSION EQ ',REDO.MULTI.REPAY.CHQ.DISB' OR PGM.VERSION EQ ',REDO.MULTI.AA.ACCRAP.DISB' THEN
-        CALL APAP.REDOVER.REDO.V.VAL.DEFAULT.AMT ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVValDefaultAmt() ;* R22 Manual Conversion - CALL method format modified
     END
 ** PACS00082427 - E
     ACC.ID =  COMI
@@ -120,8 +121,8 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS

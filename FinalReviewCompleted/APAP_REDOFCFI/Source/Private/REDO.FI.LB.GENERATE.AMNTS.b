@@ -1,18 +1,18 @@
-* @ValidationCode : Mjo4OTA5NzEyODc6VVRGLTg6MTY4MzYxNjA5NjczNTpJVFNTOi0xOi0xOjg4MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:16
-* @ValidationInfo : Encoding          : UTF-8
+* @ValidationCode : MjotNDM1NjU5NTkxOkNwMTI1MjoxNjg1NTQzMTk3NzY1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:56:37
+* @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 880
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.LB.GENERATE.AMNTS(COMP.TYPE,DATA.IN,DATA.OUT)
-
+ 
 ******************************************************************************
 * Subroutine Type : Subroutine
 * Attached to     : REDO.FI.LB.GENERATE.DATA  multithreading routine
@@ -57,6 +57,7 @@ SUBROUTINE REDO.FI.LB.GENERATE.AMNTS(COMP.TYPE,DATA.IN,DATA.OUT)
     $INSERT I_REDO.FI.LB.GENERATE.DATA.COMMON
     $INSERT I_F.REDO.APAP.PROPERTY.PARAM
     $USING APAP.TAM
+    $USING APAP.AA
 
 *************************************************************************
 *
@@ -84,8 +85,8 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-*  CALL APAP.TAM.REDO.CRR.GET.CONDITIONS(DATA.IN,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
-    CALL APAP.TAM.redoCrrGetConditions(DATA.IN,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Conversion
+*  APAP.TAM.REDO.CRR.GET.CONDITIONS(DATA.IN,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(DATA.IN,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Conversion
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     CHANGE @SM TO @VM IN LOAN.COND
@@ -282,7 +283,7 @@ GET.PRINCIPAL.PROP:
 *-----------------------------------------
     IN.PROPERTY.CLASS = 'ACCOUNT'
     OUT.PROPERTY      = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
     Y.PRINCIPAL.PROP = OUT.PROPERTY
 
 RETURN

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDg2MTE0MTQyOlVURi04OjE2ODM2MTYwOTc2NDE6SVRTUzotMTotMTo1NDI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:17
-* @ValidationInfo : Encoding          : UTF-8
+* @ValidationCode : MjotNDM1NTA4MzQzOkNwMTI1MjoxNjg1NTQzNDIwOTEyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:00:20
+* @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 542
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.LB.RECALC.DATA(AA.PAY.SCH.ID)
@@ -81,7 +81,7 @@ PROCESS:
 
     DATA.IN = R.REDO.FI.LB.BATCH.PROCESS.DET<REDO.FI.LB.BPROC.DET.ID.PRESTAMO>
 
-    CALL APAP.REDOFCFI.redoFiLbGenerateAmnts(DATA.IN,DATA.OUT) ;*MANUAL R22 CODE CONVERSION
+    APAP.REDOFCFI.redoFiLbGenerateAmnts(COMP.TYPE,DATA.IN,DATA.OUT) ;*MANUAL R22 CODE CONVERSION
 *
 
     GOSUB B310.WRITE.DETAIL

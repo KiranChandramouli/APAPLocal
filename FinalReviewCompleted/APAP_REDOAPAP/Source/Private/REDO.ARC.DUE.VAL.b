@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMDI3NTIwMzU2OkNwMTI1MjoxNjgyNTczNzYyODUxOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:06:02
+* @ValidationCode : MjoxMzE1NDA2ODQ5OkNwMTI1MjoxNjg1NTQ0MTY3MDc5OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.ARC.DUE.VAL(STO.ID,R.STO,R.ACC,CUR.AMT)
@@ -55,6 +55,7 @@ SUBROUTINE REDO.ARC.DUE.VAL(STO.ID,R.STO,R.ACC,CUR.AMT)
     $INSERT I_F.REDO.RESUBMIT.FT.DET
     $INSERT I_F.REDO.STO.PENDING.RESUBMISSION
 	$USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     IF NOT(RUNNING.UNDER.BATCH) THEN
@@ -140,7 +141,7 @@ GET.OD.STATUS.COND:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 
@@ -219,7 +220,7 @@ CREATE.FT.IN.HOLD:
     R.FUNDS.TRANSFER<FT.COMMISSION.TYPE> = R.STO<STO.COMMISSION.TYPE>
     R.FUNDS.TRANSFER<FT.LOCAL.REF,FT.LOAN.STATUS.POS> = LOAN.STATUS
     R.FUNDS.TRANSFER<FT.LOCAL.REF,FT.LOAN.COND.POS> = LOAN.COND
-    CALL APAP.TAM.RedoUNewFtInHold(ARR.ID,FT.ID,R.FUNDS.TRANSFER,R.STO)
+    APAP.TAM.redoUNewFtInHold(ARR.ID,FT.ID,R.FUNDS.TRANSFER,R.STO);* R22 Manual conversion
 RETURN
 
 END

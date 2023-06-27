@@ -59,7 +59,7 @@ RETURN  ;* Program RETURN
 PROCESS:
 *======
 
-    CALL APAP.REDOVER.redoVValIdGara();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValIdGara();* R22 Manual Conversion - CALL method format modified
     R.NEW(COLL.LOCAL.REF)<1,WPOSCOD>= COMI
 
 RETURN

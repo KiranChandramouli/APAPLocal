@@ -83,8 +83,8 @@ PROCESS.PARA:
 
 
     IF NOT(Y.PROCESS) AND Y.NEW.CARD THEN
-*CALL APAP.TAM.REDO.DEFAULT.CHANNEL.ACCESS    ;* added to default channel exclusion
-        CALL APAP.TAM.redoDefaultChannelAccess() ;*MANUAL R22 CODE CONVERSION
+*APAP.TAM.REDO.DEFAULT.CHANNEL.ACCESS    ;* added to default channel exclusion
+        APAP.TAM.redoDefaultChannelAccess() ;*MANUAL R22 CODE CONVERSION
         Y.PROCESS=1
         Y.NEW.CARD=0
     END

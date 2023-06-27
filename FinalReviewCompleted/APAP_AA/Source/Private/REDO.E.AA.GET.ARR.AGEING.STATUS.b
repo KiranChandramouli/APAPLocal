@@ -81,7 +81,7 @@ PROCESS:
             PROPERTY = ''
             R.CONDITION = ''
             ERR.MSG = ''
-            CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 MANUAL CODE CONVERSION - Changed CALL format
+            APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 MANUAL CODE CONVERSION - Changed CALL format
             Y.OD.STATUS = R.CONDITION<AA.AC.LOCAL.REF,POS.L.OD.STATUS>
         END
     END

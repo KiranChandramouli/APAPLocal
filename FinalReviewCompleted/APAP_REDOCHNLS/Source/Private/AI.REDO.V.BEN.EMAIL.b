@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDQ4ODY0NDQwOkNwMTI1MjoxNjgzNTI4NTMzNDc4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 12:18:53
+* @ValidationCode : MjoxNDQ4ODY0NDQwOkNwMTI1MjoxNjg0ODU0MDUxMTY0OklUU1M6LTE6LTE6LTEwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -10
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -50,8 +50,8 @@ VALIDA:
     AF = ARC.BEN.LOCAL.REF
     AV = LOC.REF.POS<1,1>
 
-*CALL APAP.REDOCHNLS.AI.REDO.V.EMAIL(Y.EMAIL) ;*Manual R22 conversion
-    CALL APAP.REDOCHNLS.aiRedoVEmail(Y.EMAIL) ;*Manual R22 conversion
+*APAP.REDOCHNLS.AI.REDO.V.EMAIL(Y.EMAIL) ;*Manual R22 conversion
+    APAP.REDOCHNLS.aiRedoVEmail(Y.EMAIL) ;*Manual R22 conversion
 RETURN
 
 END

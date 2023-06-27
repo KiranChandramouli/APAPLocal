@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMjkzNzAyMjI4OkNwMTI1MjoxNjg0MTUxNDA2MjMzOkhhcmlzaHZpa3JhbUM6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 May 2023 17:20:06
+* @ValidationCode : MjotMjkzNzAyMjI4OkNwMTI1MjoxNjg0ODU1NzA3NDI1OklUU1M6LTE6LTE6NzYyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:58:27
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 762
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -120,12 +120,12 @@ GET.PROOF.AND.PROCESS:
 *
     BEGIN CASE
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "CEDULA"
-            CALL APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*R22 Manual code conversion
+            APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*R22 Manual code conversion
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "RNC"
             RNC.NUMBER = COMI
             GOSUB RNC.PROOF.CHECK
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "PASAPORTE"
-            CALL APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*R22 Manual Code Conversion-Call Method Format Modified
+            APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*R22 Manual Code Conversion-Call Method Format Modified
     END CASE
 *
 
@@ -193,7 +193,7 @@ CHECK.RNC:
     RNC.CHK.RESULT = ''
     IF LEN(RNC.NUMBER) EQ 9 THEN
         RNC.CHK.RESULT = RNC.NUMBER
-        CALL APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*R22 Manual Code Conversion-Call Method Format Modified
     END ELSE
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
         ETEXT = "EB-INCORRECT.CHECK.DIGIT"
@@ -263,7 +263,7 @@ CHECK.RNC.NON.APAP:
     END ELSE
         MON.TP = '08'
         DESC = 'El webservices no esta disponible'
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
     END
 RETURN
 *------------------------------------------------------------------------------------------------------------------------------------------------
@@ -288,7 +288,7 @@ CHECK.NON.RNC:
         MON.TP = '04'
         REC.CON = RNC.RESULT<2>
         DESC = RNC.RESULT<3>
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
         ETEXT = "EB-INCORRECT.RNC.NUMBER"
         CALL STORE.END.ERROR

@@ -93,7 +93,7 @@ PROCESS:
         Y.STATUS = Y.STATUS.SEQ.ARRAY<AC.ID.POS>
     END
 
-    CALL APAP.REDOAPAP.redoConvMnemToStatus(ID,Y.STATUS)    ;* This is only applicable for L.AC.STATUS2 ;*Manual R22 conversion
+    APAP.REDOAPAP.redoConvMnemToStatus(ID,Y.STATUS)    ;* This is only applicable for L.AC.STATUS2 ;*Manual R22 conversion
 
     IF Y.STATUS THEN          ;* This is to check the migrated contract.
         Y.AZ.ACCOUNT = ''

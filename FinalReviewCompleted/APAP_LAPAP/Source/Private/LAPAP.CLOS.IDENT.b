@@ -38,7 +38,7 @@ SUBROUTINE LAPAP.CLOS.IDENT
     CALL OPF(FN.ACL,F.ACL)
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
     IF ACC NE Y.ACC.ID THEN
@@ -47,7 +47,7 @@ SUBROUTINE LAPAP.CLOS.IDENT
         CALL EB.READ.HISTORY.REC(FV.ACC,Y.ACC.ID,R.ACL,ACC.ERR)
         customer = R.ACL<AC.CUSTOMER>
 
-        CALL APAP.LAPAP.lapapCustomerIdent(customer,IDENT,IDENTYPE,NAME,LASTN,DEFV) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.LAPAP.lapapCustomerIdent(customer,IDENT,IDENTYPE,NAME,LASTN,DEFV) ;*R22 Manual Code Conversion-Call Method Format Modified
         COMI = IDENT
 
     END ELSE
@@ -55,7 +55,7 @@ SUBROUTINE LAPAP.CLOS.IDENT
         CALL EB.READ.HISTORY.REC(FV.ACC,Y.ACC.ID,R.ACC,ACC.ERR)
         customer = R.ACC<AC.CUSTOMER>
 
-        CALL APAP.LAPAP.lapapCustomerIdent(customer,IDENT,IDENTYPE,NAME,LASTN,DEFV) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.LAPAP.lapapCustomerIdent(customer,IDENT,IDENTYPE,NAME,LASTN,DEFV) ;*R22 Manual Code Conversion-Call Method Format Modified
         COMI = IDENT
 
     END

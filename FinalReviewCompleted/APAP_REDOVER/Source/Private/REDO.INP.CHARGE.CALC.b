@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0NzAyNDczMjg6Q3AxMjUyOjE2ODI2OTE0OTQyNDI6SVRTUzotMTotMTo1NDM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:14
+* @ValidationCode : MjotNjM1NzUxMzc2OkNwMTI1MjoxNjg1NTQzNjA2NTkwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:26
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 543
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.INP.CHARGE.CALC
@@ -45,6 +45,7 @@ SUBROUTINE REDO.INP.CHARGE.CALC
     $INSERT I_F.AA.BILL.DETAILS
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -131,13 +132,13 @@ CHARGE:
 *----------------------------------------------------------------------
 * This part gets the details of the arrangement
 
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 MANUAL CODE CONVERSION
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 MANUAL CODE CONVERSION
     Y.ARRANGEMENT.ID=OUT.ID
     PROP.CLASS='TERM.AMOUNT'
     PROPERTY=''
     R.Condition=''
     ERR.MSG=''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)  ;*R22 MANUAL CODE CONVERSION
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)  ;*R22 MANUAL CODE CONVERSION
     Y.COMMITMENT.AMOUNT=R.Condition<AA.AMT.AMOUNT>
     SEL.DISB.CMD='SELECT ':FN.AA.ARRANGEMENT.ACTIVITY:' WITH ARRANGEMENT EQ ':Y.ARRANGEMENT.ID:' AND ACTIVITY.CLASS EQ LENDING-DISBURSE-TERM.AMOUNT'
     CALL EB.READLIST(SEL.DISB.CMD,SEL.DISB.LIST,'',SEL.DISB.NOR,SEL.RET)

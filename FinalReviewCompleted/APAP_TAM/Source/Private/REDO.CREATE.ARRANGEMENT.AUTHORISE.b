@@ -81,7 +81,7 @@ PROCESS.INPUT.AUT:
 
 * Llamadas dinamicas de las rutinas
 * CALL REDO.FC.S.AUTHORISE(Y.RESULT)
-    CALL APAP.REDOFCFI.redoFcSAuthorise(Y.RESULT) ;*R22 Manual Conversion
+    APAP.REDOFCFI.redoFcSAuthorise(Y.RESULT) ;*R22 Manual Conversion
 
     IF Y.RESULT EQ 'OK' THEN
         R.NEW(REDO.FC.STATUS.TEMPLATE) = 'INPROGRESS'

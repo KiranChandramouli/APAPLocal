@@ -58,9 +58,9 @@ GET.ACCOUNT.PROPERTY:
 *------------------------------------------------------------------
 
     Y.ACCOUNT.PROPERTY = ""
-    CALL APAP.TAM.redoGetPropertyName(Y.AA.ID,"ACCOUNT",R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR) ;*Manual R22 conversion
+    APAP.TAM.redoGetPropertyName(Y.AA.ID,"ACCOUNT",R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR) ;*Manual R22 conversion
     Y.PAYSCH.PROPERTY  = ""
-    CALL APAP.TAM.redoGetPropertyName(Y.AA.ID,"PAYMENT.SCHEDULE",R.OUT.AA.RECORD,Y.PAYSCH.PROPERTY,OUT.ERR) ;*Manual R22 conversion
+    APAP.TAM.redoGetPropertyName(Y.AA.ID,"PAYMENT.SCHEDULE",R.OUT.AA.RECORD,Y.PAYSCH.PROPERTY,OUT.ERR) ;*Manual R22 conversion
     IF Y.ACCOUNT.PROPERTY OR Y.PAYSCH.PROPERTY ELSE
         CALL OCOMO("Account or Paysch property missing - ":Y.ID)
         GOSUB END1
@@ -103,7 +103,7 @@ POST.OFS:
     PROPERTY   = ''
     R.CONDITION.PAYSCH = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.PAYSCH,ERR.MSG) ;*Manual R22 conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.PAYSCH,ERR.MSG) ;*Manual R22 conversion
     R.AAA = ""
 
     Y.VAR2 = 1

@@ -80,9 +80,9 @@ PROCESS.MAIN:
     GOSUB SET.MANDATORYS
 * IF LIMIT EXIST, MG 19.08.2011
     IF NOT(R.NEW(REDO.FC.ID.LIMIT)) THEN
-        CALL APAP.TAM.redoFcSSetLimit();*R22 Manual Conversion
+        APAP.TAM.redoFcSSetLimit();*R22 Manual Conversion
     END ELSE
-        CALL APAP.REDOFCFI.redoFcSSetValLimit() ;*R22 Manual Conversion
+        APAP.REDOFCFI.redoFcSSetValLimit() ;*R22 Manual Conversion
     END
 RETURN
 *-----------------------------------------------------------------------------------

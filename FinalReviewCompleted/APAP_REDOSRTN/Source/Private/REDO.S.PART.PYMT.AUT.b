@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNzU5NTU4NDg4OkNwMTI1MjoxNjg0MTI5MTgzODA5OklUU1M6LTE6LTE6MjA2MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 May 2023 11:09:43
+* @ValidationCode : MjotMTA5MzIzMjE1MjpDcDEyNTI6MTY4NTU0MzU3ODkxMjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:02:58
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2061
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOSRTN
 SUBROUTINE REDO.S.PART.PYMT.AUT
@@ -54,6 +54,7 @@ SUBROUTINE REDO.S.PART.PYMT.AUT
     $INSERT I_F.REDO.H.PART.PAY.FT
     
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -130,7 +131,7 @@ TT.PROCESS:
     CALL F.READ(FN.ACCOUNT,ACCT.ID,R.ACCOUNT,F.ACCOUNT,ACCT.ERR)
     VAR.ACCT.ID = R.ACCOUNT<AC.ARRANGEMENT.ID>
 *CALL REDO.CRR.GET.CONDITIONS(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
-    CALL APAP.TAM.redoCrrGetConditions(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
     VAL.PART.ALLOW = R.Condition<AA.AMT.LOCAL.REF><1,VAR.LOC.ALLOW.POS>
     VAL.PART.PCNT = R.Condition<AA.AMT.LOCAL.REF><1,VAR.LOC.PCNT.POS>
     VAR.TT.UPDT.ID = VAR.ACCT.ID:'.':VAR.TXN.ID
@@ -180,7 +181,7 @@ FT.PROCESS:
     CALL F.READ(FN.ACCOUNT,ACCT.ID,R.ACCOUNT,F.ACCOUNT,ACCT.ERR)
     VAR.ACCT.ID = R.ACCOUNT<AC.ARRANGEMENT.ID>
 *CALL REDO.CRR.GET.CONDITIONS(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
-    CALL APAP.TAM.redoCrrGetConditions(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(VAR.ACCT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
     VAL.PART.ALLOW = R.Condition<AA.AMT.LOCAL.REF><1,VAR.LOC.ALLOW.POS>
     VAL.PART.PCNT = R.Condition<AA.AMT.LOCAL.REF><1,VAR.LOC.PCNT.POS>
     VAR.FT.UPDT.ID = VAR.ACCT.ID:'.':VAR.TXN.ID

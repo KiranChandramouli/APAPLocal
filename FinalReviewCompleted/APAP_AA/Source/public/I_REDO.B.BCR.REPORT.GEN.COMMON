@@ -1,0 +1,35 @@
+*
+* Common area for XX.EOD multi-threaded Close of Business job
+* This will contain things such as filename, file variables and standard variables
+*-----------------------------------------------------------------------------
+* Modification History:
+* 2011-08-28 : PACS00060197  - C.22 Integration
+*              hpasquel@temenos.com
+*-----------------------------------------------------------------------------
+    COMMON /REDO.B.BCR.REPORT.GEN.COMMON/ K_PROCESS_FLAG,
+    FN.CUSTOMER, F.CUSTOMER, FN.DATA, F.DATA, FN.AA, F.AA, FN.COUNTRY, F.COUNTRY,
+    FN.AA.DETAILS, F.AA.DETAILS, FN.AA.TERM, F.AA.TERM, FN.AA.BILL, F.AA.BILL, FN.AA.CUSTOMER,
+    FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY, ;* PACS00191153
+    F.AA.CUSTOMER, FN.AA.SCHEDULE, F.AA.SCHEDULE, FN.AA.ACTIVITY, F.AA.ACTIVITY, AA.LIST,
+    K.INT.CODE, K.INT.TYPE, K.BAT.NO, K.BAT.TOT, K.INFO.OR, K.INFO.DE, K.ID.PROC,
+    K.MON.TP, K.DESC, K.REC.CON, K.EX.USER, K.EX.PC,
+    Y.L.CU.TIPO.CL.POS,       ;* PACS00060197 : Local Field from Customer Applications
+    Y.L.CU.CIDENT.POS,
+    Y.L.CU.RNC.POS,
+    Y.L.CU.TEL.AREA.POS,
+    Y.L.CU.TEL.NO.POS,
+    Y.L.CU.TEL.TYPE.POS,
+    Y.L.CU.TEL.EXT.POS,
+    Y.L.CU.URB.ENS.RE.POS,
+    Y.L.CU.RES.SECTOR.POS,
+    Y.L.LOAN.COND,  ;* PACS00060197 : Local field for AA.ARR.OVERDUE
+    POS.L.LOAN.STATUS.1,
+    FN.REDO.AA.SCHEDULE,F.REDO.AA.SCHEDULE,
+    FN.AA.ARRANGEMENT.ACTIVITY,F.AA.ARRANGEMENT.ACTIVITY,
+    FN.AA.REFERENCE.DETAILS,F.AA.REFERENCE.DETAILS,
+    FN.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS,POS.L.PAID.BILL.CNT,FN.ACCOUNT.CLOSED,
+    F.ACCOUNT.CLOSED,Y.LAST.MONTH,
+    Y.CATEGORIA.WOF,     ;*R22 MANUAL CONVERSION
+    Y.LAST.MONTH.ACT,    ;*R22 MANUAL CONVERSION
+    PAYMT.METHOD.POS,     ;*R22 MANUAL CONVERSION
+    Y.ESTATUS.VAL.ARR     ;*R22 MANUAL CONVERSION

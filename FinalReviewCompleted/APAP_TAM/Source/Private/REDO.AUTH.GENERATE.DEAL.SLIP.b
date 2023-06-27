@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMzY3OTE2NzMzOkNwMTI1MjoxNjg1MDkzNjM0NzgxOklUU1M6LTE6LTE6NDY1NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 15:03:54
+* @ValidationCode : MjoxNjkwMTM1NzYyOkNwMTI1MjoxNjg1NTQ1MTU5NTczOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:29:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 4657
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.AUTH.GENERATE.DEAL.SLIP
@@ -293,7 +293,7 @@ CHECK.AA.PAYMENT:
     Y.PROC.TYPE     = ''
     Y.RECEP.METHOD  = ''
 
-    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;*Manual R22 conversion
+    APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;*Manual R22 conversion
 
     LOCATE 'AA.PAYMENT' IN Y.VERSION.TYPES SETTING POS1 THEN
         Y.AA.PAYMENT = 'YES'
@@ -565,7 +565,7 @@ GET.CUST.DETAILS:
     CALL F.READ(FN.CUS,Y.CUST.ID,R.CUST,F.CUS,CUS.ERR)
     Y.CUST.NAME = R.CUST<EB.CUS.SHORT.NAME>
 
-    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*Manual R22 conversion
+    APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*Manual R22 conversion
     Y.NAME.1         = Y.CUS.NAME[1,35]
     Y.NAME.2         = Y.CUS.NAME[36,LEN(Y.CUS.NAME)]
 
@@ -593,8 +593,8 @@ GET.AA.PROP.AMTS:
     Y.LOAN.ACC = R.FT<FT.CREDIT.ACCT.NO>
     IN.ARR.ID = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
-    CALL APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*Manual R22 conversion
+    APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
+    APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*Manual R22 conversion
 
     IF OFS$SOURCE.ID EQ 'FASTPATH' THEN
         WTT.ID = System.getVariable("CURRENT.TID.ID")
@@ -651,7 +651,7 @@ GET.CAPITAL.BALANCE:
 *-------------------------------------------------------------
 
     IN.PROPERTY.CLASS = 'ACCOUNT'
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*Manual R22 conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*Manual R22 conversion
 
     BALANCE.AMOUNT=''
 
@@ -669,7 +669,7 @@ GET.CAPITAL.BALANCE:
         Y.BALANCE.TO.CHECK = Y.BALANCE.TYPE.ID
 *Get the balance value
         Y.TODAY = TODAY
-        CALL APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,Y.BALANCE.TO.CHECK,Y.TODAY,BALANCE.AMOUNT,RET.ERROR) ;*Manual R22 conversion
+        APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,Y.BALANCE.TO.CHECK,Y.TODAY,BALANCE.AMOUNT,RET.ERROR) ;*Manual R22 conversion
         Y.CAPITAL.BALANCE += ABS(BALANCE.AMOUNT)
     REPEAT
 
@@ -698,10 +698,10 @@ GET.NEXT.PAYMENT.AMT:
     Y.YEAR = YDATE[1,4] + 2
     YDAYS.ORIG = Y.YEAR:TODAY[5,4]
     DATE.RANGE = TODAY:@FM:YDAYS.ORIG    ;* Date range is passed for 2 years to avoid building schedule for whole loan term
-    CALL APAP.AA.redoEAaScheduleProjector(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, PAYMENT.DATES, DUE.DEFER.DATES, PAYMENT.TYPES, DUE.METHODS, DUE.TYPE.AMTS, PAYMENT.PROPERTIES, PAYMENT.PROPERTIES.AMT, DUE.OUTS) ;*Manual R22 conversion
+    CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, PAYMENT.DATES, DUE.DEFER.DATES, PAYMENT.TYPES, DUE.METHODS, DUE.TYPE.AMTS, PAYMENT.PROPERTIES, PAYMENT.PROPERTIES.AMT, DUE.OUTS) ;*Manual R22 conversion
 
     GOSUB GET.NEXT.AMOUNT
-
+ 
 RETURN
 *----------------------------------------------------------------------------------
 GET.NEXT.AMOUNT:

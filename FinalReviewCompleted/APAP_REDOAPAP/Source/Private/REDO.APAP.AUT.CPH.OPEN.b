@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODg1NTM3NjU5OkNwMTI1MjoxNjgzMDMwNTY5NTEzOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 17:59:29
+* @ValidationCode : MjoxODg1NTM3NjU5OkNwMTI1MjoxNjg0ODM2MDMzMDE2OklUU1M6LTE6LTE6NTAyOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:33
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 502
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -99,8 +99,8 @@ UPDATE.CPH.DETAIL:
     R.REDO.APAP.CPH.DETAIL<CPH.DET.START.DATE>=R.NEW(AZ.VALUE.DATE)
     R.REDO.APAP.CPH.DETAIL<CPH.DET.END.DATE>=R.NEW(AZ.MATURITY.DATE)
     R.REDO.APAP.CPH.DETAIL<CPH.DET.PRINCIPAL>=R.NEW(AZ.ORIG.PRINCIPAL)
-*CALL APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(ID.NEW,Y.MAT.AMT)
-    CALL APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
+*APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(ID.NEW,Y.MAT.AMT)
+    APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
     R.REDO.APAP.CPH.DETAIL<CPH.DET.MATURITY.AMT>=Y.MAT.AMT
     Y.ACT.COUNT=DCOUNT(Y.MG.ACT.NOS,@SM)
     Y.COUNT=1
@@ -111,8 +111,8 @@ UPDATE.CPH.DETAIL:
         Y.ARR.ID=R.ACCOUNT<AC.ARRANGEMENT.ID>
         Y.LOAN.AC.NAME=R.ACCOUNT<AC.SHORT.TITLE>
         GOSUB UPDATE.STATUS
-*CALL APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
-        CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
+*APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
+        APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
         Y.OUTS.PRINCIPLE=ABS(Y.OUTS.PRINCIPLE)
         GOSUB ASSIGN.LOAN.VALUES
         Y.COUNT += 1

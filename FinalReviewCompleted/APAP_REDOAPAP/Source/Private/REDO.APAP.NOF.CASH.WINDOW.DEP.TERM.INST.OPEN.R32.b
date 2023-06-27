@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5MjI5Njc5ODI6Q3AxMjUyOjE2ODA2ODExODQ3NDQ6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Apr 2023 13:23:04
+* @ValidationCode : MjotMTUwNzA5Mjk0OkNwMTI1MjoxNjg1NTUxMjQ1Mzc3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 22:10:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOF.CASH.WINDOW.DEP.TERM.INST.OPEN.R32(Y.CCY.LIST,Y.TELLER.ID,R.TELLER,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
@@ -32,8 +32,8 @@ SUBROUTINE REDO.APAP.NOF.CASH.WINDOW.DEP.TERM.INST.OPEN.R32(Y.CCY.LIST,Y.TELLER.
 *    Date               Who                         Reference                 Description
 *   ------             -----                       -------------             -------------
 * 15 Jun 2011       Marimuthu S                 ODR-2011-04-0007 32         Modification made in REDO.APAP.NOF.CASH.WINDOW.DEP.TERM.INST.OPEN
-* Date                   who                   Reference              
-* 06-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION FM TO @FM AND SM TO @SM AND VM TO @VM 
+* Date                   who                   Reference
+* 06-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION FM TO @FM AND SM TO @SM AND VM TO @VM
 * 06-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *********************************************************************************************************
     $INSERT I_COMMON

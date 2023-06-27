@@ -1,12 +1,12 @@
-* @ValidationCode : MjotOTY0MTQ2MjU3OkNwMTI1MjoxNjgwNzYxNjQ0NDg2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 11:44:04
+* @ValidationCode : MjotOTY0MTQ2MjU3OkNwMTI1MjoxNjg0ODM2MDUzODgyOklUU1M6LTE6LTE6MjQ0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 244
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -36,7 +36,7 @@ SUBROUTINE REDO.APAP.V.AUTH.AC.AV.BAL.UPDATE
 * 02 MAR 2011       Shankar Raju         PACS00033057                   Updation of L.AC.AV.BAL field issue fix
 * 02 jun 2011        Prabhu  N           PACS00071064                  routine modified to support update in ALE
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *********************************************************************************************************
     $INSERT I_COMMON

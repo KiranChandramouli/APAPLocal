@@ -54,8 +54,8 @@ PROCESS:
 * CALL TO EB.ACCOUNTING ROUTINE
 
     Y.ACTION = 'NEW'
-*CALL APAP.REDOFCFI.REDO.FC.CL.ACCOUNTING(Y.ACTION)
-    CALL APAP.REDOFCFI.redoFcClAccounting(action)   ;* MANUAL R22 CODE CONVERSION
+*APAP.REDOFCFI.REDO.FC.CL.ACCOUNTING(Y.ACTION)
+    APAP.REDOFCFI.redoFcClAccounting(action)   ;* MANUAL R22 CODE CONVERSION
 RETURN
 *---------------------------------------------------------------------------
 END

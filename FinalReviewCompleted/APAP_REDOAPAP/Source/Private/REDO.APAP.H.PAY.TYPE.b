@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTYzMTY0MzEyNjpDcDEyNTI6MTY4MDY3NzkzMjQ2NjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:28:52
+* @ValidationCode : MjotMTYzMTY0MzEyNjpDcDEyNTI6MTY4NDgzNjA0MTYwMTpJVFNTOi0xOi0xOi0xNToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -15
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -38,7 +38,7 @@ SUBROUTINE REDO.APAP.H.PAY.TYPE
 * Date            Who                   Reference               Description
 * 13-11-2010    PRADEEP P           TAM_ODR-2010-03-0099      INITIAL VERSION
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
 * <region name= Inserts>

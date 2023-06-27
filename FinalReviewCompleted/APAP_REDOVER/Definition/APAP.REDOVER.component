@@ -227,10 +227,10 @@ public method redoAuthUpdItemSeriesMig (
 
 
 
-public method redoAuthUpdNcf (
+public method redoVFtAuthUpdNcf (
 )
 {
-    jBC: REDO.AUTH.UPD.NCF
+    jBC: REDO.V.FT.AUTH.UPD.NCF
 }
 
 
@@ -6911,16 +6911,18 @@ public method redoValCidentCust (
 }
 
 
-
-
 public method redoVAuthTxnReferImage (
 )
 {
     jBC: REDO.V.AUTH.TXN.REFER.IMAGE
 }
 
-
-public method redoVValDisponibleDi (
+public method redoVAuthTxnRefer (
+)
+{
+    jBC: REDO.V.AUTH.TXN.REFER
+}
+public method redoVValDisponibleDi ( 
 )
 {
     jBC: REDO.V.VAL.DISPONIBLE.DI
@@ -6931,3 +6933,76 @@ public method redoVValDisponibleOtros (
 {
     jBC: REDO.V.VAL.DISPONIBLE.OTROS
 }
+
+public method redoVInpDefaultAcct(
+)
+{
+    jBC: REDO.V.INP.DEFAULT.ACCT
+}
+
+public method redoVInpChqRetLoanSt (
+)
+{
+    jBC: REDO.V.INP.CHQ.RET.LOAN.ST
+}
+
+
+public method redoVItemStockCal (
+)
+{
+    jBC: REDO.V.ITEM.STOCK.CAL
+}
+
+public method redoVValAcctCreditVp (
+)
+{
+    jBC: REDO.V.VAL.ACCT.CREDIT.VP
+}
+
+public method redoVValAddBen (
+)
+{
+    jBC: REDO.V.VAL.ADD.BEN
+}
+
+public method redoVValCreditVp (
+)
+{
+    jBC: REDO.V.VAL.CREDIT.VP
+}
+
+public method redoVValValuesVh (
+)
+{
+    jBC: REDO.V.VAL.VALUES.VH
+}
+
+
+
+public method redoVPwd (
+)
+{
+    jBC: REDO.V.PWD
+}
+
+
+
+public method redoVInvTillCheckAcc (
+) 
+{
+    jBC: REDO.V.INP.TILL.CHECK.ACC
+}
+   
+
+public method redoVTempCreditVp(
+)
+{
+    jBC: REDO.V.TEMP.CREDIT.VP
+} 
+
+
+public method redoVValMaximumValueDi(
+)
+{
+    jBC: REDO.V.VAL.MAXIMUM.VALUE.DI
+} 

@@ -174,8 +174,8 @@ public method redoFcClMaintAa (
 
 
 public method redoFcClPaymentAa (
-    INOUT payAmount string,
-    INOUT payAaId string
+    INOUT PAY.AMOUNT string, 
+    INOUT PAY.AA.ID string
 )
 {
     jBC: REDO.FC.CL.PAYMENT.AA
@@ -866,7 +866,7 @@ public method redoTAuthCuPostRtn (
     jBC: REDO.T.AUTH.CU.POST.RTN
 }
 
-private method redoTAuthPostRtn (
+public method redoTAuthPostRtn (
 )
 {
     jBC: REDO.T.AUTH.POST.RTN
@@ -874,7 +874,7 @@ private method redoTAuthPostRtn (
 
 
 
-private method redoTempStoreCommon (
+public method redoTempStoreCommon (
     INOUT yAction string
 )
 {
@@ -883,7 +883,7 @@ private method redoTempStoreCommon (
 
 
 
-private method redoTriggerResumeActivity (
+public method redoTriggerResumeActivity (
 )
 {
     jBC: REDO.TRIGGER.RESUME.ACTIVITY
@@ -891,7 +891,7 @@ private method redoTriggerResumeActivity (
 
 
 
-private method redoUpdConcatCloseLoan (
+public method redoUpdConcatCloseLoan (
 )
 {
     jBC: REDO.UPD.CONCAT.CLOSE.LOAN
@@ -899,7 +899,7 @@ private method redoUpdConcatCloseLoan (
 
 
 
-private method redoUpdCusArrangement (
+public method redoUpdCusArrangement (
 )
 {
     jBC: REDO.UPD.CUS.ARRANGEMENT
@@ -907,7 +907,7 @@ private method redoUpdCusArrangement (
 
 
 
-private method redoUpdCusArrangementModify (
+public method redoUpdCusArrangementModify (
 )
 {
     jBC: REDO.UPD.CUS.ARRANGEMENT.MODIFY
@@ -915,7 +915,7 @@ private method redoUpdCusArrangementModify (
 
 
 
-private method redoUpdDirDbtAccounts (
+public method redoUpdDirDbtAccounts (
 )
 {
     jBC: REDO.UPD.DIR.DBT.ACCOUNTS
@@ -923,7 +923,7 @@ private method redoUpdDirDbtAccounts (
 
 
 
-private method redoUpdIntAmtNew (
+public method redoUpdIntAmtNew (
 )
 {
     jBC: REDO.UPD.INT.AMT.NEW
@@ -931,7 +931,7 @@ private method redoUpdIntAmtNew (
 
 
 
-private method redoUpdIntAmtOthr (
+public method redoUpdIntAmtOthr (
 )
 {
     jBC: REDO.UPD.INT.AMT.OTHR
@@ -939,7 +939,7 @@ private method redoUpdIntAmtOthr (
 
 
 
-private method redoUpdateAgingStatus (
+public method redoUpdateAgingStatus (
 )
 {
     jBC: REDO.UPDATE.AGING.STATUS
@@ -947,7 +947,7 @@ private method redoUpdateAgingStatus (
 
 
 
-private method redoUpdateAgingStatusMig (
+public method redoUpdateAgingStatusMig (
 )
 {
     jBC: REDO.UPDATE.AGING.STATUS.MIG
@@ -955,7 +955,7 @@ private method redoUpdateAgingStatusMig (
 
 
 
-private method redoUpdateChangeInterest (
+public method redoUpdateChangeInterest (
 )
 {
     jBC: REDO.UPDATE.CHANGE.INTEREST
@@ -963,7 +963,7 @@ private method redoUpdateChangeInterest (
 
 
 
-private method redoUpdateChqReturn (
+public method redoUpdateChqReturn (
     INOUT arrId string
 )
 {
@@ -972,7 +972,7 @@ private method redoUpdateChqReturn (
 
 
 
-private method redoUpdateChqReturnB10 (
+public method redoUpdateChqReturnB10 (
     INOUT arrId string,
     INOUT yFtId string
 )
@@ -982,7 +982,7 @@ private method redoUpdateChqReturnB10 (
 
 
 
-private method redoUpdateCustName (
+public method redoUpdateCustName (
 )
 {
     jBC: REDO.UPDATE.CUST.NAME
@@ -990,7 +990,7 @@ private method redoUpdateCustName (
 
 
 
-private method redoUpdateJudColSusp (
+public method redoUpdateJudColSusp (
 )
 {
     jBC: REDO.UPDATE.JUD.COL.SUSP
@@ -998,7 +998,7 @@ private method redoUpdateJudColSusp (
 
 
 
-private method redoUpdateLoanAccountStatus (
+public method redoUpdateLoanAccountStatus (
 )
 {
     jBC: REDO.UPDATE.LOAN.ACCOUNT.STATUS
@@ -1006,7 +1006,7 @@ private method redoUpdateLoanAccountStatus (
 
 
 
-private method redoUpdateLoanContAcc (
+public method redoUpdateLoanContAcc (
 )
 {
     jBC: REDO.UPDATE.LOAN.CONT.ACC
@@ -1014,7 +1014,7 @@ private method redoUpdateLoanContAcc (
 
 
 
-private method redoUpdateLoanWofAcc (
+public method redoUpdateLoanWofAcc (
 )
 {
     jBC: REDO.UPDATE.LOAN.WOF.ACC
@@ -1022,7 +1022,7 @@ private method redoUpdateLoanWofAcc (
 
 
 
-private method redoUpdateNabHistory (
+public method redoUpdateNabHistory (
 )
 {
     jBC: REDO.UPDATE.NAB.HISTORY
@@ -1030,7 +1030,7 @@ private method redoUpdateNabHistory (
 
 
 
-private method redoUpdateNabHistoryMig (
+public method redoUpdateNabHistoryMig (
 )
 {
     jBC: REDO.UPDATE.NAB.HISTORY.MIG
@@ -1038,7 +1038,7 @@ private method redoUpdateNabHistoryMig (
 
 
 
-private method redoUpdateOverdueLoanStatus (
+public method redoUpdateOverdueLoanStatus (
 )
 {
     jBC: REDO.UPDATE.OVERDUE.LOAN.STATUS
@@ -1046,7 +1046,7 @@ private method redoUpdateOverdueLoanStatus (
 
 
 
-private method redoUpdatePaymentDetails (
+public method redoUpdatePaymentDetails (
 )
 {
     jBC: REDO.UPDATE.PAYMENT.DETAILS
@@ -1054,7 +1054,7 @@ private method redoUpdatePaymentDetails (
 
 
 
-private method redoUpdatePayoffDetails (
+public method redoUpdatePayoffDetails (
 )
 {
     jBC: REDO.UPDATE.PAYOFF.DETAILS
@@ -1062,7 +1062,7 @@ private method redoUpdatePayoffDetails (
 
 
 
-private method redoUpdatePoolRateTerm (
+public method redoUpdatePoolRateTerm (
 )
 {
     jBC: REDO.UPDATE.POOL.RATE.TERM
@@ -1070,7 +1070,7 @@ private method redoUpdatePoolRateTerm (
 
 
 
-private method redoUpdateRemoveActualAmt (
+public method redoUpdateRemoveActualAmt (
 )
 {
     jBC: REDO.UPDATE.REMOVE.ACTUAL.AMT
@@ -1078,7 +1078,7 @@ private method redoUpdateRemoveActualAmt (
 
 
 
-private method redoUpgrdGetConditions (
+public method redoUpgrdGetConditions (
     INOUT arrId string,
     INOUT effDate string,
     INOUT propClass string,
@@ -1092,7 +1092,7 @@ private method redoUpgrdGetConditions (
 
 
 
-private method redoVAaActUpdate (
+public method redoVAaActUpdate (
 )
 {
     jBC: REDO.V.AA.ACT.UPDATE
@@ -1100,7 +1100,7 @@ private method redoVAaActUpdate (
 
 
 
-private method redoVAncAaDepRef (
+public method redoVAncAaDepRef (
 )
 {
     jBC: REDO.V.ANC.AA.DEP.REF
@@ -1108,7 +1108,7 @@ private method redoVAncAaDepRef (
 
 
 
-private method redoVAutAaLoanLogUpdate (
+public method redoVAutAaLoanLogUpdate (
 )
 {
     jBC: REDO.V.AUT.AA.LOAN.LOG.UPDATE
@@ -1116,7 +1116,7 @@ private method redoVAutAaLoanLogUpdate (
 
 
 
-private method redoVAutAaNcfGen (
+public method redoVAutAaNcfGen (
 )
 {
     jBC: REDO.V.AUT.AA.NCF.GEN
@@ -1124,7 +1124,7 @@ private method redoVAutAaNcfGen (
 
 
 
-private method redoVAutAaPayment (
+public method redoVAutAaPayment (
 )
 {
     jBC: REDO.V.AUT.AA.PAYMENT
@@ -1132,7 +1132,7 @@ private method redoVAutAaPayment (
 
 
 
-private method redoVAutCreateSto (
+public method redoVAutCreateSto (
 )
 {
     jBC: REDO.V.AUT.CREATE.STO
@@ -1140,7 +1140,7 @@ private method redoVAutCreateSto (
 
 
 
-private method redoVAuthCollMvmtDets (
+public method redoVAuthCollMvmtDets (
 )
 {
     jBC: REDO.V.AUTH.COLL.MVMT.DETS
@@ -1148,7 +1148,7 @@ private method redoVAuthCollMvmtDets (
 
 
 
-private method redoVBaAaRevTxn (
+public method redoVBaAaRevTxn (
 )
 {
     jBC: REDO.V.BA.AA.REV.TXN
@@ -1794,17 +1794,6 @@ public method drRegRien5AaAccExtSelect (
     jBC: DR.REG.RIEN5.AA.ACC.EXT.SELECT
 }
 
-
-
-public method drRegTasasActivasConcat (
-    INOUT recId string
-)
-{
-    jBC: DR.REG.TASAS.ACTIVAS.CONCAT
-}
-
-
-
 public method eAaBuildArrCond (
     INOUT enqData string
 )
@@ -2219,7 +2208,7 @@ public method tamUpdateHostDetails (
     jBC: TAM.UPDATE.HOST.DETAILS
 }
 
-public method RedoBAaUncPending (
+public method redoBAaUncPending (
     INOUT yArrId string
 )
 {
@@ -2228,7 +2217,7 @@ public method RedoBAaUncPending (
 
 
 
-public method RedoBAaUncPendingLoad (
+public method redoBAaUncPendingLoad (
 )
 {
     jBC: REDO.B.AA.UNC.PENDING.LOAD
@@ -2236,7 +2225,7 @@ public method RedoBAaUncPendingLoad (
 
 
 
-public method RedoBAaUncPendingSelect (
+public method redoBAaUncPendingSelect (
 )
 {
     jBC: REDO.B.AA.UNC.PENDING.SELECT
@@ -2244,7 +2233,7 @@ public method RedoBAaUncPendingSelect (
 
 
 
-public method RedoBConLnsByDebtorAaRecs (
+public method redoBConLnsByDebtorAaRecs (
     INOUT aaId string,
     INOUT outRecord string
 )
@@ -2254,7 +2243,7 @@ public method RedoBConLnsByDebtorAaRecs (
 
 
 
-public method RedoBCreArrAaOfs (
+public method redoBCreArrAaOfs (
     INOUT yRedoCreArrAaOfsListId string
 )
 {
@@ -2263,7 +2252,7 @@ public method RedoBCreArrAaOfs (
 
 
 
-public method RedoBCreArrAaOfsLoad (
+public method redoBCreArrAaOfsLoad (
 )
 {
     jBC: REDO.B.CRE.ARR.AA.OFS.LOAD
@@ -2271,7 +2260,7 @@ public method RedoBCreArrAaOfsLoad (
 
 
 
-public method RedoBCreArrAaOfsSelect (
+public method redoBCreArrAaOfsSelect (
 )
 {
     jBC: REDO.B.CRE.ARR.AA.OFS.SELECT
@@ -2279,7 +2268,7 @@ public method RedoBCreArrAaOfsSelect (
 
 
 
-public method RedoBIntUpdate (
+public method redoBIntUpdate (
     INOUT arrId string
 )
 {
@@ -2288,7 +2277,7 @@ public method RedoBIntUpdate (
 
 
 
-public method RedoBLocUpdBalMain (
+public method redoBLocUpdBalMain (
     INOUT arrId string
 )
 {
@@ -2297,7 +2286,7 @@ public method RedoBLocUpdBalMain (
 
 
 
-public method RedoBLocUpdBalMainLoad (
+public method redoBLocUpdBalMainLoad (
 )
 {
     jBC: REDO.B.LOC.UPD.BAL.MAIN.LOAD
@@ -2305,7 +2294,7 @@ public method RedoBLocUpdBalMainLoad (
 
 
 
-public method RedoBPenaltyCharge (
+public method redoBPenaltyCharge (
     INOUT arrangementId string
 )
 {
@@ -2314,7 +2303,7 @@ public method RedoBPenaltyCharge (
 
 
 
-public method RedoBalanceMainPrevalChg (
+public method redoBalanceMainPrevalChg (
 )
 {
     jBC: REDO.BALANCE.MAIN.PREVAL.CHG
@@ -2322,7 +2311,7 @@ public method RedoBalanceMainPrevalChg (
 
 
 
-public method RedoBalanceMainPrevalidate (
+public method redoBalanceMainPrevalidate (
 )
 {
     jBC: REDO.BALANCE.MAIN.PREVALIDATE
@@ -2330,7 +2319,7 @@ public method RedoBalanceMainPrevalidate (
 
 
 
-public method RedoBatAuthOfsStrCob (
+public method redoBatAuthOfsStrCob (
 )
 {
     jBC: REDO.BAT.AUTH.OFS.STR.COB
@@ -2338,7 +2327,7 @@ public method RedoBatAuthOfsStrCob (
 
 
 
-public method RedoBatAuthOfsStrMan (
+public method redoBatAuthOfsStrMan (
 )
 {
     jBC: REDO.BAT.AUTH.OFS.STR.MAN
@@ -2346,7 +2335,7 @@ public method RedoBatAuthOfsStrMan (
 
 
 
-public method RedoBuildAaPayChq (
+public method redoBuildAaPayChq (
     INOUT enqData string
 )
 {
@@ -2355,7 +2344,7 @@ public method RedoBuildAaPayChq (
 
 
 
-public method RedoCancChargePayoffPs (
+public method redoCancChargePayoffPs (
 )
 {
     jBC: REDO.CANC.CHARGE.PAYOFF.PS
@@ -2363,7 +2352,7 @@ public method RedoCancChargePayoffPs (
 
 
 
-public method RedoChangeNabStatus (
+public method redoChangeNabStatus (
 )
 {
     jBC: REDO.CHANGE.NAB.STATUS
@@ -2371,7 +2360,7 @@ public method RedoChangeNabStatus (
 
 
 
-public method RedoCheckAaIds (
+public method redoCheckAaIds (
     INOUT aaIds string,
     INOUT returnAaIds string
 )
@@ -2381,7 +2370,7 @@ public method RedoCheckAaIds (
 
 
 
-public method RedoCheckAccountclosureAa (
+public method redoCheckAccountclosureAa (
 )
 {
     jBC: REDO.CHECK.ACCOUNTCLOSURE.AA
@@ -2389,7 +2378,7 @@ public method RedoCheckAccountclosureAa (
 
 
 
-public method RedoCheckCollateralVal (
+public method redoCheckCollateralVal (
 )
 {
     jBC: REDO.CHECK.COLLATERAL.VAL
@@ -2397,7 +2386,7 @@ public method RedoCheckCollateralVal (
 
 
 
-public method RedoCheckSuspension (
+public method redoCheckSuspension (
 )
 {
     jBC: REDO.CHECK.SUSPENSION
@@ -2405,7 +2394,7 @@ public method RedoCheckSuspension (
 
 
 
-public method RedoChqReturnCharges (
+public method redoChqReturnCharges (
 )
 {
     jBC: REDO.CHQ.RETURN.CHARGES
@@ -2413,7 +2402,7 @@ public method RedoChqReturnCharges (
 
 
 
-public method RedoColAaGetLinksCol (
+public method redoColAaGetLinksCol (
     INOUT yAaId string,
     INOUT yCollInfo string
 )
@@ -2423,7 +2412,7 @@ public method RedoColAaGetLinksCol (
 
 
 
-public method RedoColCalcSaldMod (
+public method redoColCalcSaldMod (
 )
 {
     jBC: REDO.COL.CALC.SALD.MOD
@@ -2431,7 +2420,7 @@ public method RedoColCalcSaldMod (
 
 
 
-public method RedoColGetAaBalance (
+public method redoColGetAaBalance (
     INOUT yAaAcId string,
     INOUT yAaBal string
 )
@@ -2441,7 +2430,7 @@ public method RedoColGetAaBalance (
 
 
 
-public method RedoColGetLimitAa (
+public method redoColGetLimitAa (
     INOUT limAaId string,
     INOUT outLimAa string
 )
@@ -2451,7 +2440,7 @@ public method RedoColGetLimitAa (
 
 
 
-public method RedoCollAa (
+public method redoCollAa (
 )
 {
     jBC: REDO.COLL.AA
@@ -2459,7 +2448,7 @@ public method RedoCollAa (
 
 
 
-public method RedoConcatPenaltyUpdate (
+public method redoConcatPenaltyUpdate (
 )
 {
     jBC: REDO.CONCAT.PENALTY.UPDATE
@@ -2467,7 +2456,7 @@ public method RedoConcatPenaltyUpdate (
 
 
 
-public method RedoConvAaDisbProcess (
+public method redoConvAaDisbProcess (
     INOUT yDisbId string
 )
 {
@@ -2476,7 +2465,7 @@ public method RedoConvAaDisbProcess (
 
 
 
-public method RedoConvAaDisbProcessLoad (
+public method redoConvAaDisbProcessLoad (
 )
 {
     jBC: REDO.CONV.AA.DISB.PROCESS.LOAD
@@ -2484,7 +2473,7 @@ public method RedoConvAaDisbProcessLoad (
 
 
 
-public method RedoConvAaDisbProcessPost (
+public method redoConvAaDisbProcessPost (
 )
 {
     jBC: REDO.CONV.AA.DISB.PROCESS.POST
@@ -2492,7 +2481,7 @@ public method RedoConvAaDisbProcessPost (
 
 
 
-public method RedoConvAaDisbProcessSelect (
+public method redoConvAaDisbProcessSelect (
 )
 {
     jBC: REDO.CONV.AA.DISB.PROCESS.SELECT
@@ -2500,7 +2489,7 @@ public method RedoConvAaDisbProcessSelect (
 
 
 
-public method RedoCorrectionAa1512002913 (
+public method redoCorrectionAa1512002913 (
 )
 {
     jBC: REDO.CORRECTION.AA1512002913
@@ -2508,7 +2497,7 @@ public method RedoCorrectionAa1512002913 (
 
 
 
-public method RedoCorrectionAa1512050715 (
+public method redoCorrectionAa1512050715 (
 )
 {
     jBC: REDO.CORRECTION.AA1512050715
@@ -2516,12 +2505,13 @@ public method RedoCorrectionAa1512050715 (
 
 
 
-public method RedoCorrectionNabAct20150512 (
+public method redoCorrectionNabAct20150512 (
     INOUT yAaId string
 )
 {
     jBC: REDO.CORRECTION.NAB.ACT.20150512
 }
+
 public method redoPrePenaltyChargeMig (
 )
 {
@@ -2821,118 +2811,177 @@ public method redoVvalAvailAMt (
 }
 
 public method redoApapNofileAaLoanRatesReviewGet (
-   INOUT yProcessedIds string,
-   INOUT yOutArray string
+    INOUT yProcessedIds string,
+    INOUT yOutArray string
 )
 {
-   jBC: REDO.APAP.NOFILE.AA.LOAN.RATES.REVIEW.GET
+    jBC: REDO.APAP.NOFILE.AA.LOAN.RATES.REVIEW.GET
 }
 
 public method redoVValRiskGroup (
 )
 {
-   jBC: REDO.V.VAL.RISK.GROUP
+    jBC: REDO.V.VAL.RISK.GROUP
 }
 
 public method redoSFcAaPrimOwner (
-   INOUT aaId string,
-   INOUT aaArr string
+    INOUT aaId string,
+    INOUT aaArr string
 )
 {
-   jBC: REDO.S.FC.AA.PRIM.OWNER
+    jBC: REDO.S.FC.AA.PRIM.OWNER
 }
 
 public method redoSFcAaOwner (
-   INOUT aaId string,
-   INOUT aaArr string
+    INOUT aaId string,
+    INOUT aaArr string
 )
 {
-   jBC: REDO.S.FC.AA.OWNER
+    jBC: REDO.S.FC.AA.OWNER
 }
 
 public method redoPostPrintSlip (
 )
 {
-   jBC: REDO.POST.PRINT.SLIP
+    jBC: REDO.POST.PRINT.SLIP
 }
 
 public method redoPostDealSlip (
 )
 {
-   jBC: REDO.POST.DEAL.SLIP
+    jBC: REDO.POST.DEAL.SLIP
 }
 
 public method redoGetPre (
-   INOUT yActiviId string,
-   INOUT currValue string,
-   INOUT previousCond string
+    INOUT yActiviId string,
+    INOUT currValue string,
+    INOUT previousCond string
 )
 {
-   jBC: REDO.GET.PRE
+    jBC: REDO.GET.PRE
 }
 
 public method redoAuthUsedAmt (
 )
 {
-   jBC: REDO.AUTH.USED.AMT
+    jBC: REDO.AUTH.USED.AMT
 }
 
 public method redoApapNofileAaLaonStatusRptSplit1 (
-   INOUT yProcessedIds string,
-   INOUT yLoanStatusSel string,
-   INOUT yLoanCondSel string,
-   INOUT yOutArray string
+    INOUT yProcessedIds string,
+    INOUT yLoanStatusSel string,
+    INOUT yLoanCondSel string,
+    INOUT yOutArray string
 )
 {
-   jBC: REDO.APAP.NOFILE.AA.LAON.STATUS.RPT.SPLIT.1
+    jBC: REDO.APAP.NOFILE.AA.LAON.STATUS.RPT.SPLIT.1
 }
 
 public method redoFiGetAaBals (
-   INOUT inAcctId string,
-   INOUT inBalType string,
-   INOUT outBalArr string
+    INOUT inAcctId string,
+    INOUT inBalType string,
+    INOUT outBalArr string
 )
 {
-   jBC: REDO.FI.GET.AA.BALS
+    jBC: REDO.FI.GET.AA.BALS
 }
 
 public method redoFcSRepayment (
 )
 {
-   jBC: REDO.FC.S.REPAYMENT
+    jBC: REDO.FC.S.REPAYMENT
 }
 
 public method redoGetAaCustIdNo (
 )
 {
-   jBC: REDO.GET.AA.CUST.ID.NO
+    jBC: REDO.GET.AA.CUST.ID.NO
 }
 
 public method redoPostChequeUpdate (
 )
 {
-   jBC: REDO.POST.CHEQUE.UPDATE
+    jBC: REDO.POST.CHEQUE.UPDATE
 }
 
 public method redoPostChqRevCharge (
 )
 {
-   jBC: REDO.POST.CHQ.REV.CHARGE
+    jBC: REDO.POST.CHQ.REV.CHARGE
 }
 
 public method redoSColGetAaStatus (
-   INOUT pInAaId string,
-   INOUT pInProcessDate string,
-   INOUT pOutAaStatus string,
-   INOUT pOutCobroJudicial string
+    INOUT pInAaId string,
+    INOUT pInProcessDate string,
+    INOUT pOutAaStatus string,
+    INOUT pOutCobroJudicial string
 )
 {
-   jBC: REDO.S.COL.GET.AA.STATUS
+    jBC: REDO.S.COL.GET.AA.STATUS
 }
 
 public method redoBAaLoanUncBalPost (
 )
 {
-   jBC: REDO.B.AA.LOAN.UNC.BAL.POST
+    jBC: REDO.B.AA.LOAN.UNC.BAL.POST
 }
+
+
+public method redoApapNofileRestructLoan (
+    INOUT yOutArray string
+)
+{
+    jBC: REDO.APAP.NOFILE.RESTRUCT.LOAN
+}
+
+
+
+public method redoAaBillDeailsFields (
+)
+{
+    jBC: REDO.AA.BILL.DETAILS.FIELDS
+}
+
+
+
+
+public method aaGetInterestRateAuth (
+)
+{
+    jBC: AA.GET.INTEREST.RATE.AUTH
+}
+
+
+
+public method redoPostPrincInterest (
+)
+{
+    jBC: REDO.POST.PRINC.INTEREST
+}
+
+
+
+public method redoPrePrincInterest (
+)
+{
+    jBC: REDO.PRE.PRINC.INTEREST
+}
+
+
+
+public method redoSFcDefDisb (
+)
+{
+    jBC: REDO.S.FC.DEF.DISB
+}
+
+
+
+public method redoSFcDefPartDisb (
+)
+{
+    jBC: REDO.S.FC.DEF.PART.DISB
+}
+
+
 

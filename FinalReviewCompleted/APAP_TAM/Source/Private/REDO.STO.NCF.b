@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTQ3MTQyNDA6Q3AxMjUyOjE2ODQ4NDIxMzIwODU6SVRTUzotMTotMToxOTI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:12
+* @ValidationCode : MjotMTgyNTgzMTA2NDpDcDEyNTI6MTY4NjY3NzI5MDY3MDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 13 Jun 2023 22:58:10
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 192
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 
@@ -46,14 +46,15 @@ SUBROUTINE REDO.STO.NCF(FT.ID,R.FT)
     V$FUNCTION = 'I'
 *CALL REDO.V.CHK.TAX.CHRG
 ** R22 Manual conversion
-    CALL APAP.REDOVER.redoVChkTaxChrg()
+    APAP.REDOVER.redoVChkTaxChrg()
 *CALL REDO.ARC.FT.CALC.COMM
 ** R22 Manual conversion
-    CALL APAP.REDOCHNLS.redoArcFtCalcComm()
-    CALL REDO.V.FT.AUTH.UPD.NCF
+    APAP.REDOCHNLS.redoArcFtCalcComm()
+*CALL REDO.V.FT.AUTH.UPD.NCF
+    APAP.REDOVER.redoVFtAuthUpdNcf()
 *CALL REDO.V.AUTH.FT.WV.COMTAX
 ** R22 Manual conversion
-    CALL APAP.REDOVER.redoVAuthFtWvComtax()
+    APAP.REDOVER.redoVAuthFtWvComtax()
     V$FUNCTION = Y.V$FUNCTION
 *    MATBUILD R.FT FROM R.NEW
     CALL F.MATWRITE(FN.FT,FT.ID,MAT R.NEW,STD.ORDER.REC.SIZE)

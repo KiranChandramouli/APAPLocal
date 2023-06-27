@@ -124,7 +124,7 @@ VALIDATE.CR.MAINT:
     IF Y.OLD.LIMIT.REF NE '' AND Y.NEW.LIMIT.REF EQ '' THEN
 * Deasociando Garantia de Prestamo
         
-        CALL APAP.REDOFCFI.redoFcClProcess('MANTENIMIENTO');*R22 Manual Conversion - Added APAP.REDOFCFI
+        APAP.REDOFCFI.redoFcClProcess('MANTENIMIENTO');*R22 Manual Conversion - Added APAP.REDOFCFI
         
     END
 

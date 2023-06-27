@@ -270,7 +270,7 @@ RETURN
 SEL.AVB.SERIES:
 *--------------------------------------------------------------------------------------------------------
 
-    CALL APAP.TAM.redoCheckApplication(Y.ITEM,APPL.NAME,APPL.PATH);* R22 Manual conversion
+    APAP.TAM.redoCheckApplication(Y.ITEM,APPL.NAME,APPL.PATH);* R22 Manual conversion
     DUP.APPL.NAME = APPL.NAME
     DUP.APPL.PATH = APPL.PATH
     IF DUP.APPL.NAME THEN

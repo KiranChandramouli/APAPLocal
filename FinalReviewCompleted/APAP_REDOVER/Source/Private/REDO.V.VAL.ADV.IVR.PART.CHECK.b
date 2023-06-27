@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTkxMTM2MTM5MTpDcDEyNTI6MTY4MjY5MTUxNzAyNzpJVFNTOi0xOi0xOjgxMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:37
+* @ValidationCode : MjoyMDUwNTAxMDIzOkNwMTI1MjoxNjg1NTQzNjQ3MDI4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 811
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -50,6 +50,7 @@ SUBROUTINE REDO.V.VAL.ADV.IVR.PART.CHECK
     $INSERT I_F.ACCOUNT
     $INSERT I_System
     $USING APAP.TAM
+    $USING APAP.AA
 
 MAIN:
 
@@ -220,7 +221,7 @@ RETURN
 GET.IF.PARTIAL:
 
     PROP.CLASS='TERM.AMOUNT'
-    CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     Y.PARTIAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.PERC>
     Y.PART = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART>
 

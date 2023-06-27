@@ -1,14 +1,14 @@
-* @ValidationCode : MjotOTMxODU0NjkzOkNwMTI1MjoxNjg0MjMzNTI1ODc3OklUU1M6LTE6LTE6LTM2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 16:08:45
+* @ValidationCode : Mjo0Nzk4Mjc3MDk6Q3AxMjUyOjE2ODU1NDk1MzcxNTg6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 21:42:17
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -36
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.V.INF.JUD.RT
@@ -80,7 +80,7 @@ DO.VALIDATE:
         IF GETENV("JUDICIAL_INQUIRY_NOTIFY", shouldNotifyAssertion) THEN
 
             IF shouldNotifyAssertion EQ 'yes' THEN
-                CALL APAP.LAPAP.lapapPlafNotifyRt("JUDICIAL");* R22 Manual conversion
+                APAP.LAPAP.lapapPlafNotifyRt("JUDICIAL");* R22 Manual conversion
             END
         END
         AF = 2

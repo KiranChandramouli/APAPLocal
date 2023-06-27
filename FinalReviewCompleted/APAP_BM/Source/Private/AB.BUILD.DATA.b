@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDA4NDU0MjM1OkNwMTI1MjoxNjg0MTM3ODEyNjQ1OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 May 2023 13:33:32
+* @ValidationCode : MjotNzk4NjU0ODQ0OkNwMTI1MjoxNjg1NTQyOTY5MDU1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:52:49
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -33,10 +33,10 @@ SUBROUTINE AB.BUILD.DATA
 *
     RTN.ERR = ""
     GOSUB INITIALISE ; IF RTN.ERR THEN
-        GOTO EXIT
+        GOSUB EXIT;* R22 Manual conversion - GOTO changed to GOSUB
     END ;*R22 AUTO CODE CONVERSION
     GOSUB MAIN.PROCESSING ; IF RTN.ERR THEN
-        GOTO EXIT
+        GOSUB EXIT ;* R22 Manual conversion - GOTO changed to GOSUB
     END   ;*R22 AUTO CODE CONVERSION
     PRINT
     PRINT "Process complete"
@@ -69,7 +69,7 @@ MAIN.PROCESSING:
                 RETURN
             END ELSE
                 RTN.ERR = ""
-                GOTO NEXT.FILE
+                GOSUB NEXT.FILE ;* R22 Manual conversion - GOTO changed to GOSUB
             END
         END
 *
@@ -85,7 +85,7 @@ MAIN.PROCESSING:
                 RETURN
             END ELSE
                 RTN.ERR = ""
-                GOTO NEXT.FILE
+                GOSUB NEXT.FILE;* R22 Manual conversion - GOTO changed to GOSUB
             END
         END
 *
@@ -102,7 +102,7 @@ MAIN.PROCESSING:
                 RETURN
             END ELSE
                 RTN.ERR = ""
-                GOTO NEXT.FILE
+                GOSUB NEXT.FILE ;* R22 Manual conversion - GOTO changed to GOSUB
             END
         END
 *
@@ -143,7 +143,7 @@ NEXT.FILE:
                 RETURN
             END ELSE
                 RTN.ERR = ""
-                GOTO NEXT.FILE.BP
+                GOSUB NEXT.FILE.BP ;* R22 Manual conversion - GOTO changed to GOSUB
             END
         END
 *
@@ -156,7 +156,7 @@ NEXT.FILE:
                 RETURN
             END ELSE
                 RTN.ERR = ""
-                GOTO NEXT.FILE.BP
+                GOSUB NEXT.FILE.BP ;* R22 Manual conversion - GOTO changed to GOSUB
             END
         END
 *
@@ -173,7 +173,7 @@ NEXT.FILE:
                         RETURN
                     END ELSE
                         RTN.ERR = ""
-                        GOTO NEXT.FILE.BP
+                        GOSUB NEXT.FILE.BP ;* R22 Manual conversion - GOTO changed to GOSUB
                     END
                 END
                 IF MY.VAL THEN
@@ -308,7 +308,7 @@ INPUT.001:
         RETURN
     END
     IF NOT ( STOP.RUN[1,1] MATCHES "Y":@VM:"y":@VM:"" ) THEN
-        GOTO INPUT.001
+        GOSUB INPUT.001 ;* R22 Manual conversion - GOTO changed to GOSUB
     END
 *
 RETURN

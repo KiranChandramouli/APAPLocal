@@ -44,7 +44,7 @@ PROCESS:
     ERR.MSG = ''
     R.INT.ARR.COND = ''
 *    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG)
-    CALL APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;* R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;* R22 Manual Conversion
     INT.RATE = R.INT.ARR.COND<AA.INT.EFFECTIVE.RATE,1>
 
 RETURN
@@ -55,7 +55,7 @@ GET.PROPERTY:
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
 *    CALL REDO.GET.INTEREST.PROPERTY(ARR.ID,PROP.NAME,OUT.PROP,ERR)
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR) ;* R22 Manual Conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR) ;* R22 Manual Conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
 RETURN

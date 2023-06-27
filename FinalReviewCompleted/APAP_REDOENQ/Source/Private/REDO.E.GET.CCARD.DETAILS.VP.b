@@ -114,7 +114,7 @@ INVOKE.VP.WS.CB:
     WS.DATA<3> = 'ITB'
 
 * Invoke VisionPlus Web Service
-    CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
+    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
 
 * Credit Card exits - Info obtained OK
     IF WS.DATA<1> EQ 'OK' THEN

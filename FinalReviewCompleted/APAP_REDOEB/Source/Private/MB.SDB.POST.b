@@ -263,7 +263,7 @@ RETURN
 CHECK.FIELDS:
 
 *CALL MB.SDB.POST.CHECK.FIELDS
-    CALL APAP.REDOEB.mbSdbPostCheckFields();*Manual R22 conversion
+    APAP.REDOEB.mbSdbPostCheckFields();*Manual R22 conversion
     IF E THEN
         T.SEQU = "IFLD"
         CALL ERR
@@ -280,7 +280,7 @@ CROSS.VALIDATION:
     TEXT = ''
 
 * CALL MB.SDB.POST.CROSSVAL
-    CALL APAP.REDOEB.mbSdbPostCrossval();*Manual R22 conversion
+    APAP.REDOEB.mbSdbPostCrossval();*Manual R22 conversion
     IF END.ERROR THEN
         A = 1
         LOOP UNTIL T.ETEXT<A> <> "" DO A += 1 ; REPEAT
@@ -1140,7 +1140,7 @@ DEFINE.PARAMETERS:
 * SEE 'I_RULES' FOR DESCRIPTIONS *
 
 *CALL MB.SDB.POST.FIELD.DEFINITIONS
-        CALL APAP.REDOEB.mbSdbPostFieldDefinitions();*Manual R22 conversion
+        APAP.REDOEB.mbSdbPostFieldDefinitions();*Manual R22 conversion
         RETURN
 
 *************************************************************************

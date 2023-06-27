@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMzg5ODgyMjg2OkNwMTI1MjoxNjgzMDMwNDk3MTYyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 17:58:17
+* @ValidationCode : MjotMzg5ODgyMjg2OkNwMTI1MjoxNjg0ODM2MDMyOTQwOklUU1M6LTE6LTE6MzkzOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 393
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -158,8 +158,8 @@ GET.NEW.MG.DET:
     Y.COUNT = DCOUNT(Y.LOAN.ACT.NOS,@VM)
     Y.COUNT += 1
     GOSUB UPDATE.STATUS
-*CALL APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
-    CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
+*APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
+    APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,Y.ARR.ID,Y.OUTS.PRINCIPLE)
 RETURN
 *------------------------------------------------------------------------------------------------------------------
 READ.ACCOUNT:

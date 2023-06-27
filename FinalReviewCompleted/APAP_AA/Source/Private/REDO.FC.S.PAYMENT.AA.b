@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNjQzMzgzOTE3OkNwMTI1MjoxNjgzODc4MDY3NDgzOklUU1M6LTE6LTE6MTAyOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 13:24:27
+* @ValidationCode : Mjo4NjE1ODg2NzE6Q3AxMjUyOjE2ODU1NDI4MzYxNjQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:50:36
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1029
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA;* MANUAL R22 CODE CONVERSION
 SUBROUTINE REDO.FC.S.PAYMENT.AA
@@ -82,11 +82,11 @@ SUBROUTINE REDO.FC.S.PAYMENT.AA
             IF c_aalocActivityStatus EQ 'REVERSE' OR c_aalocActivityStatus EQ 'AUTH-REV' THEN
                 Y.PROPERTY.AMT = -1 * Y.PROPERTY.AMT
             END
-            CALL APAP.AA.redoFcClPaymentAa(Y.PROPERTY.AMT, ID.ARR);* R22 Manual conversion
+            APAP.AA.redoFcClPaymentAa(Y.PROPERTY.AMT, ID.ARR);* R22 Manual conversion
         END
 
         RETURN
-
+ 
     END
 RETURN
 INITIALISE:
@@ -113,7 +113,7 @@ INITIALISE:
 **
 
     Y.PROCESS.DATE              = TODAY
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,ID.ARR,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,ID.ARR,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
 
     Y.ACCOUNT.ID                = Y.ACCOUNT.ID
     Y.OUT.AA.AMOUNT             = 0
@@ -235,12 +235,12 @@ VALIDATE.INFO:
         IF Y.AMOUNT GE PAY.AMOUNT.BALANCE  THEN
             GOSUB CALCULATE.PAYOFF
             IF Y.VALUE.CAPITAL GT 0 THEN ;*AUTO R22 CODE CONVERSION
-                CALL APAP.AA.redoFcClPaymentAa(Y.VALUE.CAPITAL, ID.ARR);* R22 Manual conversion
+                APAP.AA.redoFcClPaymentAa(Y.VALUE.CAPITAL, ID.ARR);* R22 Manual conversion
             END ELSE
-                CALL APAP.AA.redoFcClPaymentAa(Y.AMOUNT, ID.ARR);* R22 Manual conversion
+                APAP.AA.redoFcClPaymentAa(Y.AMOUNT, ID.ARR);* R22 Manual conversion
             END
         END ELSE
-            CALL APAP.AA.redoFcClPaymentAa(Y.AMOUNT, ID.ARR);* R22 Manual conversion
+            APAP.AA.redoFcClPaymentAa(Y.AMOUNT, ID.ARR);* R22 Manual conversion
         END
     END
 *MG END

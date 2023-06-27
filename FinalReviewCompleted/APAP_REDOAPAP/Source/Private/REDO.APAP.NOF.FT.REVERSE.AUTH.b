@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTM4NDI1MzkwNzpDcDEyNTI6MTY4MjU3MjM4Nzk0ODpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:43:07
+* @ValidationCode : Mjo2NTQzOTM3ODg6Q3AxMjUyOjE2ODU1NDQxMzM4MDI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:13
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -74,8 +74,7 @@ PROCESS:
 *-----------------------------------------------------------------------------
 
 
-
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.FUNDS.TRANSFER.NAU, '', '', SEL.LIVE.CMD)
+    APAP.REDOENQ.redoEFormSelStmt(FN.FUNDS.TRANSFER.NAU, '', '', SEL.LIVE.CMD);* R22 Manual conversion
     IF D.RANGE.AND.VALUE THEN
         SEL.LIVE.CMD := ' AND PAYMENT.DETAILS LIKE ':'REVERSO-...'
     END

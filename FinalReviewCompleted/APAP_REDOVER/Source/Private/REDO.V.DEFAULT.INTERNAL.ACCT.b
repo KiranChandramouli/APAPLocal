@@ -102,7 +102,7 @@ PROCESS:
         IN.ARR.ID = ''
         OUT.ID = ''
         ERR.TEXT = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 Manual Code Conversion
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 Manual Code Conversion
         Y.ARR.ID = OUT.ID
     END
 

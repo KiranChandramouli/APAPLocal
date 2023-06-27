@@ -111,7 +111,7 @@ OFS.PROCESS:
     END ELSE
 *CALL REDO.FC.E.MAIN(Y.CUS.ID,DATA.ENQ)
 ** R22 Manual conversion
-        CALL APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ)
+        APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ)
         IF DATA.ENQ THEN
             GOSUB DISPONIB
         END

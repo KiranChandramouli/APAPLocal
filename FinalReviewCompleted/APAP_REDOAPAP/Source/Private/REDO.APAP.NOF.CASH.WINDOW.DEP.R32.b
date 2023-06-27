@@ -1,14 +1,14 @@
-* @ValidationCode : MjozMjg4NzA0MTI6Q3AxMjUyOjE2ODMwMzEwOTQxNDU6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 18:08:14
+* @ValidationCode : MjoxMjQzMDgyMTM0OkNwMTI1MjoxNjg1NTUxMjQ1MTIzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 22:10:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOF.CASH.WINDOW.DEP.R32(Y.OUT.ARRAY)
@@ -86,8 +86,8 @@ GET.SAV.CURR.DEBIT.DETAILS:
 ** consdiered or not for calculations and display
 
     
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.SAV.CUR.R32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDepSavCurR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.SAV.CUR.R32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowDepSavCurR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
 
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -97,7 +97,8 @@ GET.SAV.TERM.INST.OPENINGS:
 * In this para of the code, the AZ.ACCOUNTs are read and TERm INSTRUMENT OPENING transaction details are
 ** consdiered for calculations and display
 
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDepTermInstOpenR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+*APAP.REDOAPAP.redoApapNofCashWindowDepTermInstOpenR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowDepTermInstOpenR32(Y.CCY.LIST,Y.TELLER.ID,R.TELLER,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
 RETURN
 *--------------------------------------------------------------------------------------------------------
 ****************
@@ -114,7 +115,7 @@ ADD.STATIC.TEXT:
 ****************
 * In this para of the code, a CALL is made to an routine to add the static text in the report for display
 
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDepTextR32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowDepTextR32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY) ;*R22 MANUAL CODE CONVERSION
 
     Y.CNT.FIN = DCOUNT(Y.FINAL.ARRAY,@FM)
     Y.CNTT = 0

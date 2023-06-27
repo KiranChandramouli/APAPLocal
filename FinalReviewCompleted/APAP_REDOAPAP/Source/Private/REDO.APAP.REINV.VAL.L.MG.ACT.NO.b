@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMjA0Njc1NDgyNTpDcDEyNTI6MTY4MzAzMTQxNjM3NzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 18:13:36
+* @ValidationCode : MjotMjA0Njc1NDgyNTpDcDEyNTI6MTY4NDgzNjA1MTk2NDpJVFNTOi0xOi0xOjYwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 60
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -94,8 +94,8 @@ VAL.CATEGORY.AND.LOAN:
             RETURN
         END
     END
-*CALL APAP.REDOAPAP.REDO.APAP.REINV.VAL.FHA.DETS ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapReinvValFhaDets()
+*APAP.REDOAPAP.REDO.APAP.REINV.VAL.FHA.DETS ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapReinvValFhaDets()
 RETURN
 *---------------------------------------------------------------------------------------------------------------------------------
 END

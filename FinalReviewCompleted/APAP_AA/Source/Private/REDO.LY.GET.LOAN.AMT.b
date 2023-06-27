@@ -124,11 +124,11 @@ GET.PROPERTY:
 *-----------------------------------------------------------------------
     VAR.ARR.ID =  c_aalocArrId
     IN.PROPERTY.CLASS='ACCOUNT'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
     IN.PROPERTY.CLASS='INTEREST'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR);* R22 Manual conversion
     IN.PROPERTY.CLASS='TERM.AMOUNT'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.TERM.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.TERM.PROPERTY,OUT.ERR);* R22 Manual conversion
 RETURN
 *----------------------------------------------------------------------
 CHECK.PROD.GRP:
@@ -312,7 +312,7 @@ RETURN
 GET.ACCOUNT:
 *----------------------------------------------------------------------------------------------------
     Y.ARR.ID = c_aalocArrId
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
     CALL F.READ(FN.ACCOUNT,Y.ACCOUNT.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
     CU  = R.ACCOUNT<AC.CUSTOMER>
     Y.CATEGORY = R.ACCOUNT<AC.CATEGORY>
@@ -458,7 +458,7 @@ GET.LOAN.COND.STATUS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
     Y.AC.LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS>
     Y.LOAN.COND.IN.AA = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.COND>
     Y.NO.OF.DAYS = R.Condition<AA.OD.AGEING,1,1>

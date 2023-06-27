@@ -1,0 +1,7 @@
+* I_F.LATAM.CARD.CHARGES Created 24 NOV 11 at 05:48PM by apap/KAVI2
+*      PREFIX[LATAM.CHG]
+         EQU LATAM.CHG.ISSUE.DATE TO 1,   LatamCardCharges_IssueDate TO 1,
+            LATAM.CHG.EXPIRY.DATE TO 2,   LatamCardCharges_ExpiryDate TO 2,
+          LATAM.CHG.LAST.CHG.DATE TO 3,   LatamCardCharges_LastChgDate TO 3,
+                LATAM.CHG.ACCOUNT TO 4,   LatamCardCharges_Account TO 4,
+               LATAM.CHG.CUSTOMER TO 5,   LatamCardCharges_Customer TO 5

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0MjI5NTQyNTc6Q3AxMjUyOjE2ODM1NTQxMzczNDQ6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 19:25:37
+* @ValidationCode : MjoxNjk0NDIzNDYxOkNwMTI1MjoxNjg1NTU0Mjc0NjI3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 23:01:14
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 * Modification History:
@@ -136,8 +136,8 @@ PROCESS.ITEMS.DETAIL:
     Y.AA.BALANCE.LIST<6> := "GRCPRADMSEGENDOSO" : @VM : "DELPRADMSEGENDOSO" : @VM : "NABPRADMSEGENDOSO"
 
 *CALL APAP.REDOSTRN.REDO.S.GET.PERIOD.AMTS(P.ACCOUNT.ID, Y.PROCESS.DATE, Y.PROCESS.DATE, Y.AA.BALANCE.LIST, Y.OUT.AA.AMOUNT.LIST)
-    CALL APAP.REDOSTRN.redoSGetPeriodAmts(P.ACCOUNT.ID, Y.PROCESS.DATE, Y.PROCESS.DATE, Y.AA.BALANCE.LIST, Y.OUT.AA.AMOUNT.LIST);* R22 Manual conversion - CALL method format changed
-
+    APAP.REDOSRTN.redoSGetPeriodAmts(P.ACCOUNT.ID, Y.PROCESS.DATE, Y.PROCESS.DATE, Y.AA.BALANCE.LIST, Y.OUT.AA.AMOUNT.LIST);* R22 Manual conversion - CALL method format changed
+ 
     P.PROCESS.ITEMS.DETAILS    = Y.OUT.AA.AMOUNT.LIST<1,1>
     P.PROCESS.ITEMS.DETAILS<2> = Y.OUT.AA.AMOUNT.LIST<2,1>
     P.PROCESS.ITEMS.DETAILS<3> = Y.OUT.AA.AMOUNT.LIST<3,1>

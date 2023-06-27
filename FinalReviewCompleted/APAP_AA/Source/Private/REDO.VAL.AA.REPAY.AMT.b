@@ -49,7 +49,7 @@ PROCESS:
     Y.LOAN.ACC  = R.NEW(TT.TE.NARRATIVE.1)<1,1>
     Y.REPAY.AMT = R.NEW(TT.TE.AMOUNT.LOCAL.1)
 
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT);* R22 Manual conversion
     GOSUB GET.LOAN.OUTSTANDING.BALANCE
     GOSUB GET.UNC.BALANCES
     Y.PENDING.AMT = Y.PROP.AMT<1> - Y.UNC.BALANCE
@@ -69,7 +69,7 @@ GET.LOAN.OUTSTANDING.BALANCE:
 * Here  we get the amount excluding the UNC balances.
     Y.PROP.AMT  = 0
     Y.TOTAL.AMT = 0
-    CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
+    APAP.TAM.redoGetTotalOutstandingSinUncUnd(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
 
 RETURN
 *-------------------------------------------------------------
@@ -78,7 +78,7 @@ GET.UNC.BALANCES:
 * Here we get the UNC balance of the Loan.
 
     Y.ACCOUNT.PROPERTY = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);* R22 Manual conversion
 
     BALANCE.TO.CHECK = 'UNC':Y.ACCOUNT.PROPERTY
     BALANCE.AMOUNT   = ''

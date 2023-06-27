@@ -71,7 +71,7 @@ GET.ARR.COND:
 *
     Y.ARRG.ID = c_aalocArrId
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
 
@@ -81,7 +81,7 @@ GET.ARR.COND:
     ERR.MSG = ''
     R.ARR.COND = ''
 *
-    CALL APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.ARR.TM.COND,ERR.MSG);* R22 Manual converison
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.ARR.TM.COND,ERR.MSG);* R22 Manual converison
     LOAN.MATURITY.DATE = R.ARR.TM.COND<AA.AMT.MATURITY.DATE>
 *
     Y.ARRG.ID = c_aalocArrId
@@ -91,7 +91,7 @@ GET.ARR.COND:
     ERR.MSG = ''
     R.ARR.COND = ''
 *
-    CALL APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.ARR.COND,ERR.MSG);* R22 Manual converison
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.ARR.COND,ERR.MSG);* R22 Manual converison
     IF R.ARR.COND NE '' THEN
         GOSUB CHECK.RT.TYPE
     END

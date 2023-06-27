@@ -72,7 +72,7 @@ PROGRAM REDO.TEST.INV.UPD
             IF R.REDO.ITEM.STOCK.BY.DATE THEN
                 APPL.NAME = ''
                 APPL.PATH = ''
-                CALL APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH);* R22 Manual conversion - CALL method format changed
+                APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH);* R22 Manual conversion - CALL method format changed
                 DUP.APPL.NAME = ''
                 DUP.APPL.PATH = ''
                 DUP.APPL.NAME = APPL.NAME

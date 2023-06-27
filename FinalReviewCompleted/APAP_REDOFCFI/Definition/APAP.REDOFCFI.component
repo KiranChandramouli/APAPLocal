@@ -1727,4 +1727,41 @@ public method redoFiRecordControl (
     jBC: REDO.FI.RECORD.CONTROL
 }
 
+public method redoFcEval (
+    INOUT idCustLim string,
+    INOUT idNameLim string,
+    INOUT outResult string
+)
+{
+    jBC: REDO.FC.EVAL
+}
 
+public method redoFcSCollVh (
+)
+{
+    jBC: REDO.FC.S.COLL.VH
+}
+
+public method RedoFiCentralBankFile (
+    INOUT iXmlMsg string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.CENTRAL.BANK.FILE
+}
+
+public method RedoFiOrangeDdFile (
+    INOUT inDir string,
+    INOUT outErro string
+)
+{
+    jBC: REDO.FI.ORANGE.DD.FILE
+}
+
+
+public method redoFiOrangePayments (
+    INOUT yRecordId string
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS
+}

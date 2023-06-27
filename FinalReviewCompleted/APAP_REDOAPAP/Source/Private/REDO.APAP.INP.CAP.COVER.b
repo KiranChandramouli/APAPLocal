@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMzU4NzUzNjM3OkNwMTI1MjoxNjgzMDMwNjg4NTM3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:01:28
+* @ValidationCode : MjotMzU4NzUzNjM3OkNwMTI1MjoxNjg0ODM2MDQxOTUxOklUU1M6LTE6LTE6MjQ0OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 244
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -108,7 +108,7 @@ PROCESS:
         GOSUB MORT.DETAIL
         Y.OUT.AMT=''
 
-        CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,ARR.ID,Y.OUT.AMT) ;*R22 MANUAL CODE CONVERSION
+        APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,ARR.ID,Y.OUT.AMT) ;*R22 MANUAL CODE CONVERSION
         Y.SUM+=Y.OUT.AMT
         VAR1 += 1 ;*R22 AUTO CODE CONVERSION
     REPEAT
@@ -125,8 +125,8 @@ VAL.EXCESS.PERC:
 
     GOSUB READ.CPH.PARAMETER
     Y.MAT.AMT=''
-*CALL APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(ID.NEW,Y.MAT.AMT)  ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
+*APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(ID.NEW,Y.MAT.AMT)  ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
     Y.DIFF.PER=(Y.SUM-Y.MAT.AMT)*100/Y.MAT.AMT
     IF Y.DIFF.PER LT Y.EXCESS.PERC THEN
         AF=AZ.PRINCIPAL

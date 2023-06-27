@@ -157,8 +157,8 @@ MAKE.WS.CALL:
 
 
 * Invoke VisionPlus Web Service
-* CALL APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA);** R22 Manual conversion - CALL method format changed
-        CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Conversion
+* APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA);** R22 Manual conversion - CALL method format changed
+        APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Conversion
 * Credit Card exits - Info obtained OK
         IF WS.DATA<1> EQ 'OK' THEN
 

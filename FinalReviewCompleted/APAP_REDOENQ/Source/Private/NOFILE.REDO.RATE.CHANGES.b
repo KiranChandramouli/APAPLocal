@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTU0NDQxNjA5ODpDcDEyNTI6MTY4NDg1MTk2MzY5NzpJVFNTOi0xOi0xOjQ0MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:03
+* @ValidationCode : Mjo0NjgwMzQ2NDI6Q3AxMjUyOjE2ODU1NDMwOTU5MzI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:54:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 442
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE NOFILE.REDO.RATE.CHANGES(Y.RETURN.ARRAY)
@@ -40,6 +40,7 @@ SUBROUTINE NOFILE.REDO.RATE.CHANGES(Y.RETURN.ARRAY)
     $INSERT I_F.CUSTOMER
     $INSERT I_F.REDO.SUCESS.RATE.CHANGE
     $USING APAP.TAM
+    $USING APAP.AA
 *-----------------------------------------------------------------------------
     GOSUB INITIALISE
     GOSUB LOCATE.VALUES
@@ -121,7 +122,7 @@ CHECK.AA.INTEREST:
 
     Y.ARRG.ID = Y.REDO.RATE.CHANGE
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
     PROPERTY.CLASS = 'INTEREST'
@@ -131,7 +132,7 @@ CHECK.AA.INTEREST:
     R.INT.ARR.COND = ''
     Y.INT.RATE  = ''
     Y.POOL.RATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG);*R22 Manual Conversion
     Y.INTEREST.RATE = R.INT.ARR.COND<AA.INT.EFFECTIVE.RATE>
 
     Y.EFFECT.DATE = Y.CHNG.DATE

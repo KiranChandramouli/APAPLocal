@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMDMwODA0NDk1OkNwMTI1MjoxNjg0MjI2NDIwNDQzOklUU1M6LTE6LTE6ODYwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 14:10:20
+* @ValidationCode : MjotMTI2ODY4MDU3OkNwMTI1MjoxNjg1NTQzOTYzMjk4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:09:23
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 860
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE REDO.LAPAP.DEF.CUST.TYPE
@@ -53,6 +53,7 @@ SUBROUTINE REDO.LAPAP.DEF.CUST.TYPE
     $INSERT I_F.REDO.H.REPORTS.PARAM ;*AUTO R22 CODE CONVERSION - END
     $USING APAP.REDOVER
     $USING APAP.REDOCHNLS
+    $USING APAP.TAM
 
     GOSUB OPEN.FILES
     GOSUB GET.LOCAL.REF.POSITIONS
@@ -128,12 +129,12 @@ GET.PROOF.AND.PROCESS:
 *
     BEGIN CASE
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "CEDULA"
-            CALL APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*MANUAL R22 CODE CONVERSION
+            APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*MANUAL R22 CODE CONVERSION
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "RNC"
             RNC.NUMBER = COMI
             GOSUB RNC.PROOF.CHECK
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "PASAPORTE"
-            CALL APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*MANUAL R22 CODE CONVERSION
+            APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*MANUAL R22 CODE CONVERSION
     END CASE
 *
 
@@ -199,7 +200,7 @@ CHECK.RNC:
     RNC.CHK.RESULT = ''
     IF LEN(RNC.NUMBER) EQ 9 THEN
         RNC.CHK.RESULT = RNC.NUMBER
-        CALL APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*MANUAL R22 CODE CONVERSION
     END ELSE
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
         ETEXT = "EB-INCORRECT.CHECK.DIGIT"
@@ -269,7 +270,7 @@ CHECK.RNC.NON.APAP:
     END ELSE
         MON.TP = '08'
         DESC = 'El webservices no esta disponible'
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*MANUAL R22 CODE CONVERSION
     END
 RETURN
 *------------------------------------------------------------------------------------------------------------------------------------------------
@@ -294,7 +295,7 @@ CHECK.NON.RNC:
         MON.TP = '04'
         REC.CON = RNC.RESULT<2>
         DESC = RNC.RESULT<3>
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*MANUAL R22 CODE CONVERSION
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
         ETEXT = "EB-INCORRECT.RNC.NUMBER"
         CALL STORE.END.ERROR

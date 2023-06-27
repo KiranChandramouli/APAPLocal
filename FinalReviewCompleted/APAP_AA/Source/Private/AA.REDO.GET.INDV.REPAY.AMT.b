@@ -95,7 +95,7 @@ GET.PRINCIPAL.PROP:
 *-----------------------------------------
     IN.PROPERTY.CLASS = 'ACCOUNT'
     OUT.PROPERTY      = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
     Y.PRINCIPAL.PROP = OUT.PROPERTY
 
 RETURN

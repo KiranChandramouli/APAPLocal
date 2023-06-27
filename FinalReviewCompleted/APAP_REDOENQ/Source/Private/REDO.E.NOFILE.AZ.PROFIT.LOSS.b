@@ -115,7 +115,7 @@ GET.ACC.IDS:
     REPEAT
 
     FILE.NAME = FN.AZ.ACCOUNT
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AZ.ACC.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AZ.ACC.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
     CALL EB.READLIST(SEL.AZ.ACC.CMD,AZ.ACC.ID.LST,'',NO.OF.REC,SEL.ERR)
 RETURN
 
@@ -150,7 +150,7 @@ GET.CUS.IDS:
         D.LOGICAL.OPERANDS = CUS.OPERAND
         D.FIELDS = CUS.FIELD
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)	 ;*R22 Manual Conversion - Added APAP.REDOENQ
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)	 ;*R22 Manual Conversion - Added APAP.REDOENQ
         SEL.ERR = ''
         CUS.REC.CNT = ''
         CALL EB.READLIST(SEL.CUS.CMD,CUST.ID.LST,'',CUS.REC.CNT,SEL.ERR)

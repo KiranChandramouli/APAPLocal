@@ -1,0 +1,12 @@
+* I_F.REDO.NV.DUP.VERSION Created 25 MAR 13 at 02:32AM by t24uataa/TEMENOS.01
+*      PREFIX[RMP]
+       EQU RMP.AUTH.VERSION TO 1,   RedoNvDupVersion_AuthVersion TO 1,
+          RMP.RECORD.STATUS TO 2,   RedoNvDupVersion_RecordStatus TO 2,
+                RMP.CURR.NO TO 3,   RedoNvDupVersion_CurrNo TO 3,
+               RMP.INPUTTER TO 4,   RedoNvDupVersion_Inputter TO 4,
+              RMP.DATE.TIME TO 5,   RedoNvDupVersion_DateTime TO 5,
+             RMP.AUTHORISER TO 6,   RedoNvDupVersion_Authoriser TO 6,
+                RMP.CO.CODE TO 7,   RedoNvDupVersion_CoCode TO 7,
+              RMP.DEPT.CODE TO 8,   RedoNvDupVersion_DeptCode TO 8,
+           RMP.AUDITOR.CODE TO 9,   RedoNvDupVersion_AuditorCode TO 9,
+        RMP.AUDIT.DATE.TIME TO 10,  RedoNvDupVersion_AuditDateTime TO 10

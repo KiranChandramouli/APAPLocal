@@ -5121,3 +5121,613 @@ public method lapapPacsRaiseEntry (
     jBC: LAPAP.PACS.RAISE.ENTRY
 }
 
+public method lapapPlafIntListTr (
+    INOUT YARRAY string
+)
+{
+    jBC:LAPAP.PLAF.INT.LIST.TR
+}
+
+public method lapapOcusSetRt(
+   
+)
+{
+    jBC: LAPAP.OCUS.SET.RT
+}
+
+public method lApapSendRabbitMasive (
+    INOUT APP string,
+    INOUT VERSION string,
+    INOUT RECORDID string,
+    INOUT QUEUEOUT string
+    
+)
+{
+    jBC: L.APAP.SEND.RABBIT.MASIVE
+}    
+
+public method lapapPlafNotifyRt(
+    INOUT REC string
+)
+{
+    jBC: LAPAP.PLAF.NOTIFY.RT
+}
+
+public method lapapSendMonitorFromVersion(
+    INOUT id string,
+    INOUT sqlfields string,
+    INOUT datatypes string,
+    INOUT monfields string,
+    INOUT sqltable string
+    
+)
+{
+    jBC: LAPAP.SEND.MONITOR.FROM.VERSION
+}    
+public method lapapSendMonitorLoad(
+    INOUT id string,
+    INOUT sqlfields string,
+    INOUT datatypes string,
+    INOUT monfields string,
+    INOUT sqltable string
+    
+)
+{
+    jBC: LAPAP.SEND.MONITOR.LOAD
+}
+
+public method redoLGetDisbursementDetails (
+    INOUT yIdsDetails string,
+    INOUT rDisbDetails string,
+    INOUT yCommitedAmt string,
+    INOUT yPendDisb string
+)
+{
+    jBC: REDO.L.GET.DISBURSEMENT.DETAILS
+}
+
+
+
+public method lApapAzFreqPay (
+)
+{
+    jBC:L.APAP.AZ.FREQ.PAY
+}
+
+
+
+public method lApapAzPayUpdate(
+)
+{
+    jBC:L.APAP.AZ.PAY.UPDATE
+}
+
+
+
+public method lApapAzRevFreq (
+)
+{
+    jBC:L.APAP.AZ.REV.FREQ
+}
+
+
+
+
+public method lApapAzRevNewFreq (
+)
+{
+    jBC:L.APAP.AZ.REV.NEW.FREQ
+}
+
+
+
+public method lApapJavaRabitSend (
+    
+    INOUT yData string,
+    INOUT yReturn string,
+    INOUT yRabbit string,
+    INOUT yError string
+)
+{
+    jBC:L.APAP.JAVA.RABIT.SEND
+}
+
+
+
+public method redoBThirdResRecovery (
+    INOUT yArrId string
+)
+{
+    jBC: REDO.B.THIRD.RES.RECOVERY
+}
+
+
+public method lApapCastigadosRuedaPost (
+)
+{
+    jBC:LAPAP.CASTIGADOS.RUEDA.POST
+}
+
+
+
+public method lApapDesmRuedaPost (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.POST
+}
+
+
+
+public method lApapDesmRuedaTwoPost (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.TWO.POST
+}
+
+
+
+
+public method lApapRestPro (
+)
+{
+    jBC:L.APAP.REST.PRO
+}
+
+
+
+
+public method dataSegurosSingle (
+)
+{
+    jBC: DATA.SEGUROS.SINGLE
+}
+
+public method drRegCommLoanSectorExt (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.COMM.LOAN.SECTOR.EXT
+}
+
+public method drRegPepsTxnExtract (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.PEPS.TXN.EXTRACT
+}
+
+public method lapapBBcrReportGenWof (
+    INOUT yAaId string,
+    INOUT yTotalCuotas string,
+    INOUT yLastpayAmt string,
+    INOUT yLastpayDat string,
+    INOUT yFinAmt string
+)
+{
+    jBC: LAPAP.B.BCR.REPORT.GEN.WOF
+}
+
+public method redoApapNofileContOvrDet (
+    INOUT yEnqOut string
+)
+{
+    jBC: REDO.APAP.NOFILE.CONT.OVR.DET
+}
+
+public method redoBAbandonadas (
+    INOUT accountId string
+)
+{
+    jBC: REDO.B.ABANDONADAS
+}
+
+public method redoBAcctProvince (
+    INOUT provMbgl string
+)
+{
+    jBC: REDO.B.ACCT.PROVINCE
+}
+
+public method redoBBcrReportGen (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.BCR.REPORT.GEN
+}
+
+public method redoBBcrReportGenExt (
+    INOUT yAaId string,
+    INOUT yTotalCuotas string,
+    INOUT yLastpayAmt string,
+    INOUT yLastpayDat string,
+    INOUT yFinAmt string,
+    INOUT yProductoGrupo string
+)
+{
+    jBC: REDO.B.BCR.REPORT.GEN.EXT
+}
+
+public method redoBCrGuarantee (
+    INOUT yFinalArr string
+)
+{
+    jBC: REDO.B.CR.GUARANTEE
+}
+
+public method redoSConCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.CON.CALC.DISB.DATE.AMT
+}
+
+
+public method redoBConsLoanDet (
+    INOUT yAaArrId string
+)
+{
+    jBC: REDO.B.CONS.LOAN.DET
+}
+
+
+
+public method redoBCommerDebtorBal (
+    INOUT yAaCusId string
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.BAL
+}
+
+
+
+
+public method lApapEnqPortalAho (
+    INOUT yFinal string
+)
+{
+    jBC: L.APAP.ENQ.PORTAL.AHO
+}
+
+
+
+public method lapapAvoidGarnishment (
+)
+{
+    jBC: LAPAP.AVOID.GARNISHMENT
+}
+
+
+
+public method lapapCobPending (
+)
+{
+    jBC: LAPAP.COB.PENDING
+}
+
+
+
+
+public method lApapEnqPortalAhoTodas (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
+}
+
+
+
+public method lApapEnqSwiftAccounts (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
+}
+
+
+
+public method lApapGetCusProducts (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.GET.CUS.PRODUCTS
+}
+
+
+
+public method lApapValAccOwner (
+)
+{
+   jBC: L.APAP.VAL.ACC.OWNER
+}
+
+
+
+public method lapapEnqReprecio (
+   INOUT yFinal string
+)
+{
+   jBC: LAPAP.ENQ.REPRECIO
+}
+
+
+
+public method drRegRegn16ExtractPost (
+)
+{
+   jBC: DR.REG.REGN16.EXTRACT.POST
+}
+
+
+
+public method drRegRien6Extract (
+   INOUT recId string
+)
+{
+   jBC: DR.REG.RIEN6.EXTRACT
+}
+
+
+
+public method drRegRien9Extract (
+   INOUT recId string
+)
+{
+   jBC: DR.REG.RIEN9.EXTRACT
+}
+
+
+
+public method drRegn16GetProductType (
+)
+{
+   jBC: DR.REGN16.GET.PRODUCT.TYPE
+}
+
+
+
+public method lApapNofCartaSaldoPrRt (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
+}
+
+
+
+public method lApapRet10PrcRt (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.RET.10.PRC.RT
+}
+
+
+
+public method lApapSrvGetSoyBalRt (
+)
+{
+   jBC: L.APAP.SRV.GET.SOY.BAL.RT
+}
+
+
+
+public method redoBCusTaxRetentions (
+   INOUT yNcfCusId string
+)
+{
+   jBC: REDO.B.CUS.TAX.RETENTIONS
+}
+
+
+
+public method redoBInactiveAccts (
+   INOUT yAcctId string
+)
+{
+   jBC: REDO.B.INACTIVE.ACCTS
+}
+
+
+
+public method redoBMgLnsByDebtor (
+   INOUT yFinalArrangement string
+)
+{
+   jBC: REDO.B.MG.LNS.BY.DEBTOR
+}
+
+
+
+public method redoBPrevCertDeposits (
+   INOUT azAccId string
+)
+{
+   jBC: REDO.B.PREV.CERT.DEPOSITS
+}
+
+
+
+public method redoBPrevCertDepositsSelect (
+)
+{
+   jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
+}
+
+
+
+
+
+public method drBldOperDivisas (
+    INOUT conId string
+)
+{
+    jBC: DR.BLD.OPER.DIVISAS
+}
+
+
+
+public method drReg213if01TxnExtractSelect (
+)
+{
+    jBC: DR.REG.213IF01.TXN.EXTRACT.SELECT
+}
+
+
+public method drRegPasivasConcat (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.PASIVAS.CONCAT
+}
+
+public method drRegFd01LastdExtract (
+   INOUT recId string
+)
+{
+   jBC: DR.REG.FD01.LASTD.EXTRACT
+}
+
+public method lApapDateTransEnq (
+)
+{
+    jBC: L.APAP.DATE.TRANS.ENQ
+}
+
+public method lApapJavaRabitEchox (
+    INOUT yData string,
+    INOUT yReturn string,
+    INOUT yError string
+)
+{
+    jBC: L.APAP.JAVA.RABIT.ECHOX
+}
+
+public method lapapEfectivoSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.EFECTIVO.SLIP
+}
+
+public method lapapFtAutortn (
+)
+{
+    jBC: LAPAP.FT.AUTORTN
+}
+
+public method lapapLoyInfof360 (
+    INOUT rData string
+)
+{
+    jBC: LAPAP.LOY.INFOF360
+}
+
+public method lApapVunMtsAutorNv (
+)
+{
+    jBC: L.APAP.VUN.MTS.AUTOR.NV
+}
+
+public method lapapChequeSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.CHEQUE.SLIP
+}
+
+public method lapapCuetanRetSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.CUETAN.RET.SLIP
+}
+
+public method lapapTotalSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: LAPAP.TOTAL.SLIP
+}
+
+public method lapapTtpICalcAmtRt (
+)
+{
+    jBC: LAPAP.TTP.I.CALC.AMT.RT
+}
+
+public method lapapTtpVDefAcct1Rt (
+)
+{
+    jBC: LAPAP.TTP.V.DEF.ACCT1.RT
+}
+
+public method lapapTtpVQtyRt (
+)
+{
+    jBC: LAPAP.TTP.V.QTY.RT
+}
+
+public method lApapTrnDuplicada (
+)
+{
+    jBC: L.APAP.TRN.DUPLICADA
+}
+
+public method lApapValBenBank (
+)
+{
+    jBC: L.APAP.VAL.BEN.BANK
+}
+
+
+
+public method lApapNofEnqFxBlotPosn (
+    INOUT yArr string
+)
+{
+    jBC: L.APAP.NOF.ENQ.FX.BLOT.POSN
+}
+
+
+
+public method lapapRawLogger (
+    INOUT logDir string,
+    INOUT logName string,
+    INOUT logArr string
+)
+{
+    jBC: LAPAP.RAW.LOGGER
+}
+
+
+
+public method lapapTellerAutortn (
+)
+{
+    jBC: LAPAP.TELLER.AUTORTN
+}
+
+
+public method lapapLttpVTagRt (
+)
+{
+    jBC: LAPAP.LTTP.V.TAG.RT
+}
+
+
+public method lapapLyPointsEHis (
+    INOUT rData string
+)
+{
+    jBC: LAPAP.LY.POINTS.E.HIS
+}
+
+
+
+public method lapapLyInputUsmov (
+)
+{
+    jBC: LAPAP.LY.INPUT.USMOV
+}
+

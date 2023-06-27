@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMzQ5NDU5MTg1OkNwMTI1MjoxNjg0ODQyMTU0NDQ2OklUU1M6LTE6LTE6MTY1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:34
+* @ValidationCode : MjoyMDY2MjYwNzc6Q3AxMjUyOjE2ODU1NDU1MjU5MTY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:35:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 165
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE S.REDO.CCRG.LI.EVALUATOR(P.IN.CONTRACT.ID, R.IN.RCBTP, R.IN.CUSTOMER, R.IN.LI, P.OUT.RETURN)
@@ -104,7 +104,8 @@ PROCESS:
 
 *Validade data
     P.RESULT = ''
-    CALL APAP.TAM.S.REDO.CCRG.EVAL.BAL.TYP.CON(R.IN.RCBTP, P.VALUES, P.RESULT) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.sRedoCcrgEvalBalTypCon(R.IN.RCBTP, P.VALUES, P.RESULT) ;*MANUAL R22 CODE CONVERSION
+    
     P.OUT.RETURN<1> = P.RESULT<1>
     P.OUT.RETURN<5> = P.OUT.RETURN<5>
 *Id not existe records en LIMIT, dont have to process.

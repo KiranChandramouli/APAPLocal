@@ -124,7 +124,7 @@ PROCESS:
 
 *CALL S.REDO.CUS.OFS.TXN.UPDATE(Y.MSG, Y.RESULT)
 ** R22 Manual conversion
-            CALL APAP.TAM.sRedoCusOfsTxnUpdate(Y.MSG, Y.RESULT)
+            APAP.TAM.sRedoCusOfsTxnUpdate(Y.MSG, Y.RESULT)
             
         END
     END

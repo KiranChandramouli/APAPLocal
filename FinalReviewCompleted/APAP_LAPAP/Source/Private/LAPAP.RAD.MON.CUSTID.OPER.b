@@ -39,10 +39,10 @@ SUBROUTINE LAPAP.RAD.MON.CUSTID.OPER
 
         CUS.NATION = R.CUSTOMER<EB.CUS.NATIONALITY>
 
-        CALL APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
+        APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
         Y.CUS.ID = EREPLACE(OUT.ARR<2>, "-", "")
 
-        CALL APAP.LAPAP.lapapGetIdentificationType(R.CUSTOMER, OUT.ARR2) ;*Manual R22 conversion
+        APAP.LAPAP.lapapGetIdentificationType(R.CUSTOMER, OUT.ARR2) ;*Manual R22 conversion
         Y.ID.TYPE = OUT.ARR2
 
         IF Y.ID.TYPE EQ 'PAS' AND CUS.NATION NE '' THEN

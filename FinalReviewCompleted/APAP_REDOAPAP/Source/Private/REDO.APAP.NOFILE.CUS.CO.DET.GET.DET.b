@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTkzMjk5NDk5ODpDcDEyNTI6MTY4MjU3NDc4MDI1MjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:23:00
+* @ValidationCode : Mjo0MTA0ODc0ODQ6Q3AxMjUyOjE2ODU1NDQxNDAyMzc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:20
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOFILE.CUS.CO.DET.GET.DET(Y.LOAN.ID,Y.ALT.ID,Y.LOAN.STATUS,Y.AMOUNT,Y.LIMIT.ID,Y.LIMIT.AMT,Y.OFFICER,Y.PDT.TYPE,Y.LOAN.NAME,Y.POL.TYPE,Y.CUS.ID,Y.PORTF.NO)
@@ -51,6 +51,7 @@ SUBROUTINE REDO.APAP.NOFILE.CUS.CO.DET.GET.DET(Y.LOAN.ID,Y.ALT.ID,Y.LOAN.STATUS,
 *   $INSERT I_F.AA.ARRANGEMENT ;*R22 AUTO CONVERSTION
     $INSERT I_F.AA.CHARGE
     $USING APAP.TAM
+    $USING APAP.AA
 *-------------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -106,7 +107,7 @@ GET.ALT.ID:
     ERR.MSG = ''
 
     PROP.CLASS = 'ACCOUNT'
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
 
     IF Y.ALT.ID EQ '@' THEN
         Y.ALT.ID = R.REC<AA.AC.ALT.ID.TYPE>
@@ -120,7 +121,7 @@ RETURN
 GET.LOAN.STATUS:
 ****************
     PROP.CLASS = 'OVERDUE'
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
     POS.FLD = ''
     CALL MULTI.GET.LOC.REF('AA.PRD.DES.OVERDUE','L.LOAN.STATUS.1':@VM:'L.LOAN.COND',POS.FLD)
     POS.LN.STATUS = POS.FLD<1,1>
@@ -154,7 +155,7 @@ RETURN
 GET.AMOUNT:
 ***********
     PROP.CLASS = 'TERM.AMOUNT'
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
 
     IF Y.AMOUNT EQ '@' THEN
         Y.AMT.FMT = R.REC<AA.AMT.AMOUNT>
@@ -170,7 +171,7 @@ RETURN
 GET.LIMIT.ID:
 *************
     PROP.CLASS = 'LIMIT'
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
 
     IF Y.LIMIT.ID EQ '@' THEN
         Y.LMT.ID = R.REC<AA.LIM.LIMIT.REFERENCE>
@@ -209,7 +210,7 @@ RETURN
 GET.PRIM.OFFICER:
 *****************
     PROP.CLASS = 'OFFICERS'
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.REC, ERR.MSG)
 
     IF Y.OFFICER EQ '@' THEN
         Y.OFFICER = R.REC<AA.OFF.PRIMARY.OFFICER>

@@ -1,14 +1,14 @@
-* @ValidationCode : MjozMzQzOTI1OTU6Q3AxMjUyOjE2ODMwMTkwMDQ5MDc6SVRTUzotMTotMTo0NTE6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 14:46:44
+* @ValidationCode : Mjo1MzE0NTIzMTk6Q3AxMjUyOjE2ODU1NDM2MjgwOTM6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 451
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.INP.CHECK.OUTSTANDING.AMT
@@ -47,6 +47,7 @@ SUBROUTINE REDO.V.INP.CHECK.OUTSTANDING.AMT
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
     $INSERT I_F.REDO.AA.DISB.LOAN
     $USING APAP.TAM
+    $USING APAP.AA
 *-----------------------------------------------------------------------------
 *
     GOSUB INIT
@@ -111,7 +112,7 @@ CHARGE:
     PROPERTY=''
     R.Condition=''
     ERR.MSG=''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     Y.COMMITMENT.AMOUNT=R.Condition<AA.AMT.AMOUNT>
 
 *------------------------
@@ -119,8 +120,8 @@ CHARGE:
 * Here we gets the  outstanding principal from the customer
 
     OUT.PROPERTY = '' ;   OUT.ID = ''   ;  IN.ACC.ID = ''
-    CALL APAP.TAM.redoGetPropertyName(Y.ARRANGEMENT.ID,'TERM.AMOUNT',R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;* R22 Manual Conversion - CALL method format modified
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARRANGEMENT.ID,OUT.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoGetPropertyName(Y.ARRANGEMENT.ID,'TERM.AMOUNT',R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARRANGEMENT.ID,OUT.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
     Y.PRIN.BAL = 0
     BALANCE.TO.CHECK="CUR":OUT.PROPERTY
     RET.ERROR = ''

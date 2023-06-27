@@ -79,7 +79,7 @@ PROCESS:
     CUST.ID = Y.CUS.ID
     CUST.NO = ''
     CUS.ERR = ''
-    CALL APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUS.ERR) ;* R22 Manual Conversion - CALL method format modified
+    APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUS.ERR) ;* R22 Manual Conversion - CALL method format modified
     Y.CUS.ID = CUST.NO
     CALL F.READ(FN.CUSTOMER,Y.CUS.ID,R.CUSTOMER,F.CUSTOMER,CUS.ERR)
     CUS.SEGMENT = R.CUSTOMER<EB.CUS.LOCAL.REF,L.CU.SEGMENTO.POS>

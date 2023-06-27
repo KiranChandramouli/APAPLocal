@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo1NjUzMTAyMzA6Q3AxMjUyOjE2ODM2MjM2ODAxMDU6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 May 2023 14:44:40
+* @ValidationCode : MjoxMDc3Njg1MzMwOkNwMTI1MjoxNjg1NTQzNjUyOTg0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:12
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.DISPONIBLE.DI
@@ -125,7 +125,7 @@ PROCESS:
     END
 
 *Calc the REA VALUE
-    CALL APAP.TAM.redoVValReaCollateral
+    APAP.TAM.redoVValReaCollateral()
 *    CALL  REDO.V.VAL.REA.COLLATERAL
 
 RETURN
@@ -243,7 +243,7 @@ GET.AA.CURBAL:
 *
 * Get outstanding from AA
     P.TOTAL.OUT = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(VAR.CRED,TOTAL.AMT)
+    APAP.REDOSRTN.redoSGetOutBalance(VAR.CRED,TOTAL.AMT)
 *    CALL REDO.S.GET.OUT.BALANCE(VAR.CRED,TOTAL.AMT)
     P.TOTAL.OUT    += TOTAL.AMT
 *
@@ -274,7 +274,7 @@ GET.RISK.PERCENT:
         RETURN
     END
     Y.PRODUCT.ID.CUR = VAR.PRODUCTO
-    CALL APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC)
+    APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC);* R22 Manual conversion
 *    CALL REDO.COL.GET.RISK.DI (Y.PRODUCT.ID.CUR,Y.RISK.PERC)  ;*Rutina para calcular el % de riesgo
     IF NOT(Y.RISK.PERC)THEN
         Y.RISK.PERC = 100

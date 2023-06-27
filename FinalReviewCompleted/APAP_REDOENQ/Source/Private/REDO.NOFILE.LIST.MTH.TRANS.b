@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyNzM3OTkwNjc6Q3AxMjUyOjE2ODQ4NTE5ODg0Nzk6SVRTUzotMTotMToxNTc6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
+* @ValidationCode : Mjo5ODk5MjE0ODc6Q3AxMjUyOjE2ODU1NDMxMzExOTg6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 157
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.LIST.MTH.TRANS(Y.FINAL.ARRAY)
@@ -28,6 +28,7 @@ SUBROUTINE REDO.NOFILE.LIST.MTH.TRANS(Y.FINAL.ARRAY)
     $INSERT I_ENQUIRY.COMMON
 
     $INSERT I_F.REDO.CARD.BIN
+    $USING APAP.TAM
 
     GOSUB INITIALISE
     GOSUB PROCESS
@@ -101,7 +102,7 @@ PROCESS:
         WS.DATA<6> = Y.CCY
 
 * Invoke VisionPlus Web Service
-        CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
+        APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
 
 * Credit Card exits - Info obtained OK
         IF WS.DATA<1> EQ 'OK' THEN

@@ -1,0 +1,13 @@
+* I_F.REDO.AMORT.SEC.TRADE Created 07 DEC 10 at 02:33PM by apapr8/SHANKARRAJU3
+*      PREFIX[APAP.AMORT.ST]
+        EQU APAP.AMORT.ST.BUY.TXN.REF TO 1,   RedoAmortSecTrade_BuyTxnRef TO 1,
+           APAP.AMORT.ST.BUY.VALUE.DT TO 2,   RedoAmortSecTrade_BuyValueDt TO 2,
+            APAP.AMORT.ST.BUY.NOMINAL TO 3,   RedoAmortSecTrade_BuyNominal TO 3,
+        APAP.AMORT.ST.BALANCE.NOMINAL TO 4,   RedoAmortSecTrade_BalanceNominal TO 4,
+           APAP.AMORT.ST.SELL.TXN.REF TO 5,   RedoAmortSecTrade_SellTxnRef TO 5,
+          APAP.AMORT.ST.SELL.VALUE.DT TO 6,   RedoAmortSecTrade_SellValueDt TO 6,
+           APAP.AMORT.ST.SELL.NOMINAL TO 7,   RedoAmortSecTrade_SellNominal TO 7,
+             APAP.AMORT.ST.RESERVED.4 TO 8,   RedoAmortSecTrade_Reserved4 TO 8,
+             APAP.AMORT.ST.RESERVED.3 TO 9,   RedoAmortSecTrade_Reserved3 TO 9,
+             APAP.AMORT.ST.RESERVED.2 TO 10,  RedoAmortSecTrade_Reserved2 TO 10,
+             APAP.AMORT.ST.RESERVED.1 TO 11,  RedoAmortSecTrade_Reserved1 TO 11

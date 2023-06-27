@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODc4OTE3NzU4OkNwMTI1MjoxNjgyNDk2ODYyNDE2OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 13:44:22
+* @ValidationCode : MjoxNjc5NTE1NDk1OkNwMTI1MjoxNjg1NTQzNjAyNzk4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -317,8 +317,8 @@ PRE.PROCESS:
                 GOSUB GET.OTHER.INFO
 *
             CASE LOOP.CNT EQ 3
-*
-                CALL APAP.TAM.redoGetFtWaiveCateg(WAIVE.CAT) ;* R22 MANUAL CODE CONVERSION
+                CALL REDO.GET.FT.WAIVE.CATEG(WAIVE.CAT)
+*APAP.TAM.redoGetFtWaiveCateg(WAIVE.CAT) ;* R22 MANUAL CODE CONVERSION
 *
         END CASE
 *

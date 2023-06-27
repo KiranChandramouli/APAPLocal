@@ -759,7 +759,7 @@ GET.AA.CURBAL:
 * Get outstanding from AA
     Y.AA.BAL = ''
     Y.AA.ID  = Y.AA
-    CALL APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
     Y.AA.BAL = TOTAL.AMT
 *
 RETURN
@@ -769,7 +769,7 @@ GET.AA.NO.COIDS:
 *==============
 *
     COL.ID.LINKED = ''
-    CALL APAP.AA.redoColAaGetLinksCol(Y.AA,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(Y.AA,COL.ID.LINKED);* R22 Manual conversion
 *
     MMARK     = CHARX(251) ; Y.COL.IDS = ''
     Y.COL.IDS = CHANGE(COL.ID.LINKED, MMARK , @VM )
@@ -845,7 +845,7 @@ GET.AA.AMTORIG:
     GOSUB GET.AA.PRODUCT
 * Getting current AA Balance value
     Y.AA.AMOUNT = '' ; Y.AA.AMOUNT = AA.ARR
-    CALL APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
+    APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
     Y.AA.AMOUNT = ABS(Y.AA.AMOUNT)
     IF Y.AA.AMOUNT EQ 'NULO' THEN
         Y.AA.AMOUNT = 0

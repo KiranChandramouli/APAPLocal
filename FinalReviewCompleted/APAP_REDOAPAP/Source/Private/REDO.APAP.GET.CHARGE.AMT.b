@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk0MzQxODU3MjpDcDEyNTI6MTY4MjU3MjA4ODcwMjpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:38:08
+* @ValidationCode : MjotMzE0MzE5ODY5OkNwMTI1MjoxNjg1NTQ0MDk4NTA4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:11:38
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 * Version 3 02/06/00  GLOBUS Release No. 200508 30/06/05
@@ -47,6 +47,7 @@ SUBROUTINE REDO.APAP.GET.CHARGE.AMT(ARR.ID,Y.PROD.ID,Y.START.DATE,Y.END.DATE,CHA
     $INSERT I_F.REDO.APAP.PROPERTY.PARAM
     $INSERT I_F.AA.OVERDUE
 	$USING APAP.TAM
+    $USING APAP.AA
 *-----------------------------------------------------------------------------
 
     GOSUB INITIALISE
@@ -73,7 +74,7 @@ PROCESS:
     Y.BAL.TYPE.CNT=DCOUNT(Y.OVERDUE.STATUS,@FM)
     GOSUB GET.CHARGE.PROPERTY
     Y.CHRG.CNT=DCOUNT(Y.CHARGE.PROPERTY,@FM)
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,Y.ACCT.NO,ERR.TEXT)
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,Y.ACCT.NO,ERR.TEXT)
     Y.VAR1=1
     LOOP
     WHILE Y.VAR1 LE Y.CHRG.CNT
@@ -95,7 +96,7 @@ OVERDUE.STATUS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.CONDITION,ERR.MSG)
 **************** changes made 9th dec ******************
     Y.OVERDUE.STATUS=R.OVERDUE.CONDITION<AA.OD.OVERDUE.STATUS>
 ********************* changes made 9th dec ******************
@@ -105,7 +106,7 @@ GET.CHARGE.PROPERTY:
 *-----------------------------------------------------------------------------
 * This part get the charge properties for that loan
 
-    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHARGE.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHARGE.PROPERTY,OUT.ERR);* R22 Manual conversion
 
 RETURN
 *-----------------------------------------------------------------------------

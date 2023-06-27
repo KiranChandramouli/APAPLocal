@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNjk1NjI4MzQxOkNwMTI1MjoxNjgyNjkxNTE5NzQ2OklUU1M6LTE6LTE6MTM4NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:39
+* @ValidationCode : MjoxMzUwODc4MjczOkNwMTI1MjoxNjg1NTQzNjUxMTMyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1386
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *-----------------------------------------------------------------------------
@@ -57,6 +57,7 @@ SUBROUTINE REDO.V.VAL.DEF.LIM.AMT
     $INSERT I_F.EB.LOOKUP
     $INSERT I_F.EB.CONTRACT.BALANCES
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -295,7 +296,7 @@ OVERPAYRULES:
 * To calculate the MIN & MAX amount and period for an arrangement
 
     PROP.CLASS="TERM.AMOUNT"
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
     CALL F.READ(FN.ARRANGEMENT,Y.ARRANGEMENT.ID,R.ARRANGEMENT,F.ARRANGEMENT,ARR.ERR)
     Y.ARR.VALUE.DATE=R.ARRANGEMENT<AA.ARR.START.DATE>
     Y.TERM.AMOUNT=R.Condition<AA.AMT.AMOUNT>
@@ -322,7 +323,7 @@ OVERPAYRULES:
     END
     ELSE
         PROP.CLASS="PAYMENT.SCHEDULE"
-        CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
         MAX.AMT.POS1=LOC.REF.POS<3,1>
         MIN.AMT.POS1=LOC.REF.POS<3,2>
         Y.TERM.MAX.AMT=R.Condition<AA.PS.LOCAL.REF,MAX.AMT.POS1>

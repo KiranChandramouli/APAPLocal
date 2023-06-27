@@ -114,7 +114,7 @@ OPENFILES:
     FN.REDO.ITEM.SERIES = 'F.REDO.ITEM.SERIES'
     F.REDO.ITEM.SERIES  = ''
     CALL OPF(FN.REDO.ITEM.SERIES,F.REDO.ITEM.SERIES)
-    CALL APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH) ;* R22 Manual Conversion - CALL method format modified
     DUP.APPL.NAME = APPL.NAME
     DUP.APPL.PATH = APPL.PATH
 

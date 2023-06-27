@@ -644,7 +644,7 @@ GET.COLL.AA.IDS:
 ***************
 *
     Y.COL.ID.MIG = '' ; COL.ID.LINKED = ''
-    CALL APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
     MMARK = CHARX(251)
     Y.COL.ID.MIG = CHANGE(COL.ID.LINKED, MMARK , @VM )
     IF COL.ID.LINKED EQ "ERROR" THEN

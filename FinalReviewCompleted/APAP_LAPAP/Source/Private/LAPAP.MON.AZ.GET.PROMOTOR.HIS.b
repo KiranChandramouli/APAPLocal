@@ -34,7 +34,7 @@ SUBROUTINE LAPAP.MON.AZ.GET.PROMOTOR.HIS
     CALL OPF(FN.ACC,F.ACC)
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
     CALL F.READ.HISTORY(FN.ACC,ACC,R.HIS,F.ACC,ERRH)

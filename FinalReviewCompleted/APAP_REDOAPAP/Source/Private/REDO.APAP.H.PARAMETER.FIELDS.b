@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTk3OTM3NTYwOkNwMTI1MjoxNjgwNjc3NDA2NDQxOklUU1M6LTE6LTE6MDowOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:20:06
+* @ValidationCode : MjotMTk3OTM3NTYwOkNwMTI1MjoxNjg0ODM2MDQxNDcwOklUU1M6LTE6LTE6LTYzOjE6dHJ1ZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -63
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.APAP.H.PARAMETER.FIELDS
 * 17 NOV 2011      KAVITHA              PACS00164141              PACS00164141  FIX
 * 26-Nov-2018      Vignesh Kumaar M R   CI#2795720                BRD001 - FAST FUNDS SERVICES
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION FM TO @FM AND $INCLUDE GLOBUS.BP TO $INSERT
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION FM TO @FM AND $INCLUDE GLOBUS.BP TO $INSERT
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 * ----------------------------------------------------------------------------
 *** <region name= Header>

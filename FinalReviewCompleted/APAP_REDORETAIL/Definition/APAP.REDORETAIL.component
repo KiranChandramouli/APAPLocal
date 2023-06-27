@@ -3257,3 +3257,36 @@ public method redoDslipCuPrg (
 }
 
 
+public method redoColRDelUpdLoking (
+    INOUT yOption string,
+    INOUT yResponse string,
+)
+{
+    jBC: REDO.COL.R.DEL.UPD.LOCKING
+}
+
+public method redoDueFeeLoansReport (
+    INOUT yFinalArry string,
+)
+
+{
+    jBC: REDO.DUE.FEE.LOANS.REPORT
+}
+
+public method redoAcctVal (
+)
+{
+    jBC: REDO.ACCT.VAL
+}
+
+public method redoAchInwIndir (
+)
+{
+    jBC: REDO.ACH.INW.INDIR
+}
+
+public method redoCardStatus (
+)
+{
+   jBC: REDO.CARD.STATUS
+}

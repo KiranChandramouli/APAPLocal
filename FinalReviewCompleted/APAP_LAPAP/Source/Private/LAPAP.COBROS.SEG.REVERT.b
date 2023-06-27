@@ -67,7 +67,7 @@ SUBROUTINE LAPAP.COBROS.SEG.REVERT
         Y.FUNC = "D"
 *RSS<FT.CREDIT.AMOUNT> = 1234
         RSS = ""
-        CALL APAP.LAPAP.lapapBuildOfsLoad(APP,Y.FUNC,ID,RSS) ;*;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.LAPAP.lapapBuildOfsLoad(APP,Y.FUNC,ID,RSS) ;*;*R22 Manual Code Conversion-Call Method Format Modified
 
     REPEAT
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNzg4Njk1NTMwOkNwMTI1MjoxNjg1MTA2MDc3NDg4OklUU1M6LTE6LTE6LTI2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 18:31:17
+* @ValidationCode : MjoxMjYyODQ3ODg3OkNwMTI1MjoxNjg1NTQzMzcxNjM1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:59:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -26
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
 ******************************************************************************
@@ -73,18 +73,18 @@ PROCESS:
     BEGIN CASE
         CASE Y.OPTION EQ 'CREACION'
             CALL REDO.FC.CL.REGISTER.AA
-*CALL APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
+*APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
           
         CASE Y.OPTION EQ 'DESEMBOLSO'
 
-            CALL APAP.AA.redoFcClDisburstmentAa() ;*R22 Manual Conversion
+            APAP.AA.redoFcClDisburstmentAa() ;*R22 Manual Conversion
         CASE Y.OPTION EQ 'MANTENIMIENTO'
 
-            CALL APAP.REDOFCFI.redoFcClVerifyMaint() ;*R22 Manual Conversion
+            APAP.REDOFCFI.redoFcClVerifyMaint() ;*R22 Manual Conversion
            
         CASE Y.OPTION EQ 'PAGO'
 
-            CALL APAP.AA.redoFcClPaymentAa() ;*R22 Manual Conversion
+            APAP.AA.redoFcClPaymentAa(PAY.AMOUNT, PAY.AA.ID) ;*R22 Manual Conversion
            
 
     END CASE

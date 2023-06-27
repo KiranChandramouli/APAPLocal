@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODEwMTM4NDM5OkNwMTI1MjoxNjgyNjkxNTE2NDUzOklUU1M6LTE6LTE6MTc4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:36
+* @ValidationCode : MjozNDUyMTg3Njk6Q3AxMjUyOjE2ODU1NDM2NDUxODc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 178
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.ACC.IMG.SEARCH
@@ -67,7 +67,7 @@ RETURN
 PROCESS:
 *---------
     Y.ARRAY='BUSCAR_TARJETA_CUENTA.2'
-    CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY)    ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOVER.redoVWrapSunnel(Y.ARRAY)    ;*R22 MANUAL CODE CONVERSION
 
     Y.CU.CODE.POS    =LREF.POS<1,3>
     VAR.CUSTOMER=R.NEW(TT.TE.LOCAL.REF)<1,Y.CU.CODE.POS>

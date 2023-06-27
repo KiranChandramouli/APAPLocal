@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTk4ODI0MjgyMjpDcDEyNTI6MTY4MzUyODM1Mzc2MDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 08 May 2023 12:15:53
+* @ValidationCode : MjotMTk4ODI0MjgyMjpDcDEyNTI6MTY4NDg1NDA1MTE5MTpJVFNTOi0xOi0xOi04OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -8
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -48,7 +48,7 @@ VALIDA:
     AF = ARC.TP.EMAIL
 
 *CALL AI.REDO.V.EMAIL(Y.EMAIL)
-    CALL APAP.REDOCHNLS.aiRedoVEmail(Y.EMAIL)
+    APAP.REDOCHNLS.aiRedoVEmail(Y.EMAIL)
 
 RETURN
 

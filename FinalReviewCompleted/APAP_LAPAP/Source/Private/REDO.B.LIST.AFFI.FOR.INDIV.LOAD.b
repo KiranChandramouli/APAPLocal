@@ -203,7 +203,7 @@ LOG.C22:
     MON.TP   = 04
     REC.CON  = 'MV33-':ERR.MSG
     DESC     = 'MV33-':ERR.MSG
-    CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
 
 RETURN
 *-----------------------------------------------------------------------------------------------------------------

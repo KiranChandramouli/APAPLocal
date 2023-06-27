@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQwMzcwNzM3OTpDcDEyNTI6MTY4NDg0MjE0OTEzNzpJVFNTOi0xOi0xOjIyMDA6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:29
+* @ValidationCode : MjoxNDM5NTY5ODk6Q3AxMjUyOjE2ODU1NDU1MDA5ODM6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:35:00
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2200
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VCR.DISB.FILL
@@ -45,7 +45,7 @@ SUBROUTINE REDO.VCR.DISB.FILL
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
     $INSERT I_F.AA.OVERDUE
     $USING APAP.REDOVER
-    
+    $USING APAP.AA
     GOSUB INITIALISE
     GOSUB OPEN.FILES
     GOSUB CHECK.PRELIM.CONDITIONS
@@ -115,7 +115,7 @@ RETURN
 DEFAULT.COND:
 
     Y.CRD.AC = R.NEW(FT.CREDIT.ACCT.NO)
-    CALL APAP.TAM.redoConvertAccount(Y.CRD.AC,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoConvertAccount(Y.CRD.AC,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
 
     CALL F.READ(FN.AA.ARRANGEMENT,ARR.ID,R.AA.ARR,F.AA.ARRANGEMENT,AA.AER)
     IF R.AA.ARR THEN
@@ -124,7 +124,7 @@ DEFAULT.COND:
         R.Condition = ''
         ERR.MSG = ''
         EFF.DATE = ''
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
         LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
         LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
         CHANGE @SM TO @VM IN LOAN.STATUS
@@ -148,7 +148,7 @@ DEFAULT.COND:
     END
 
     IF PGM.VERSION EQ ',REDO.MULTI.AA.ACRP.DISB' THEN
-        CALL APAP.REDOVER.redoVValPdisAmt(Y.CRD.AC) ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOVER.redoVValPdisAmt(Y.CRD.AC) ;*MANUAL R22 CODE CONVERSION
     END
 
 RETURN
@@ -273,8 +273,8 @@ GET.LOAN.ST:
     IF R.AC THEN
         Y.CR.CC = R.AC<AC.CURRENCY>
     END
-    CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 

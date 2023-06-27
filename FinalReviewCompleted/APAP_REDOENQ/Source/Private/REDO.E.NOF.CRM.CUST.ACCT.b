@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTc1OTU5MTQ5ODpDcDEyNTI6MTY4NDg1MTk3Njk1NjpJVFNTOi0xOi0xOjE2MTk6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:16
+* @ValidationCode : MjotMzQ2MTEwMjQyOkNwMTI1MjoxNjg1NTQzMTE4Mjg0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:18
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1619
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.NOF.CRM.CUST.ACCT(Y.FINAL.ARR)
@@ -49,6 +49,7 @@ SUBROUTINE REDO.E.NOF.CRM.CUST.ACCT(Y.FINAL.ARR)
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $USING APAP.TAM
     $USING APAP.REDOSRTN
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB PROCESS
@@ -100,7 +101,7 @@ PROCESS:
         CUST.ID = Y.CUST.ID
         CUST.NO = ''
         CUST.ERR = ''
-        CALL APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUST.ERR);*R22 Manual Conversion
+        APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUST.ERR);*R22 Manual Conversion
         Y.CUST.ID = CUST.NO
     END
 
@@ -287,7 +288,7 @@ CHECK.AA.CATEG:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
 
     Y.AA.CATEG = R.CONDITION<AA.AC.CATEGORY>
 

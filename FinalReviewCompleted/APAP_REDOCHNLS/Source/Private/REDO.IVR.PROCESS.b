@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODIxMDY3ODA6Q3AxMjUyOjE2ODM1MzIyMzc2MTY6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 13:20:37
+* @ValidationCode : MjoxODIxMDY3ODA6Q3AxMjUyOjE2ODQ4NTQwNTU3MTI6SVRTUzotMTotMTo1MTUyOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 5152
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -211,8 +211,8 @@ REPORT.LOG:
     Y.STR = FIELD(Y.RETURN.DATA,',',2)
     IF Y.STR EQ '' THEN
         Y.ID.PROC  = 'IVR Operation No. ':Y.INTERNO
-*CALL APAP.REDOCHNLS.REDO.INTERFACE.REC.ACT(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
+*APAP.REDOCHNLS.REDO.INTERFACE.REC.ACT(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
+        APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
     END
 
 RETURN

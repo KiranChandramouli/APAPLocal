@@ -103,7 +103,7 @@ PROCESS:
 * Pago Caja Efectivo/TFR
             CASE TXN.VERSION MATCHES '...CASHIN...' OR TXN.VERSION MATCHES '...TFR...'
                 ALLOW.OFFLINE = 1
-                CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
+                APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
 
 * Pago Cheque
 * Estos pagos no se registran en linea, solo por archivo monetario
@@ -113,12 +113,12 @@ PROCESS:
     END
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
         ALLOW.OFFLINE = 1
-        CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
     END
 
     IF TXN.RESULT<1> EQ 'OFFLINE' OR TXN.RESULT<1> EQ 'ERROR' THEN
 
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;* R22 Manual Conversion - CALL method format modified
 
         EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
         IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;*R22 Auto code conversion-START

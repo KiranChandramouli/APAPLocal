@@ -65,12 +65,12 @@ RETURN  ;* Program RETURN
 PROCESS:
 *======
 
-    CALL APAP.REDOVER.redoVValValidaporcent();* R22 Manual Conversion - CALL method format modified
-    CALL APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
-    CALL APAP.REDOVER.redoVValCalctot();* R22 Manual Conversion - CALL method format modified
-    CALL APAP.TAM.redoVValReaCollateral() ;* R22 Manual Conversion - CALL method format modified
-    CALL APAP.REDOVER.redoVValDispoColl();* R22 Manual Conversion - CALL method format modified
-    CALL APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValValidaporcent();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValCalctot();* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoVValReaCollateral() ;* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValDispoColl();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
 
     GOSUB DROUND.VALUES
 RETURN

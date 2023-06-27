@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMzI3MDIwNjM2OkNwMTI1MjoxNjgzNjI0MDEzMjU2OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 May 2023 14:50:13
+* @ValidationCode : MjotMTYxNzUyMzE5MTpDcDEyNTI6MTY4NTU1NTYxNDI5NTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 23:23:34
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.DISPONIBLE.OTROS
@@ -138,7 +138,7 @@ PROCESS:
     END
 
 *Calc the REA VALUE
-    CALL APAP.TAM.redoVValReaCollateral
+    APAP.TAM.redoVValReaCollateral()
 *    CALL  REDO.V.VAL.REA.COLLATERAL
 
 RETURN
@@ -302,7 +302,7 @@ GET.AA.CURBAL:
 *
 * Get outstanding from AA
     P.TOTAL.OUT = ''
-    CALL APAP.REDOSTRN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT)
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT)
 *    CALL REDO.S.GET.OUT.BALANCE(Y.AA.ID,TOTAL.AMT)
     P.TOTAL.OUT    += TOTAL.AMT
 *

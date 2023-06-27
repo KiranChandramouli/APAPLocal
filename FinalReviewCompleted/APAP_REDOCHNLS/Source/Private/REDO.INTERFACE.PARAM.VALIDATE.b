@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo4MDEzOTU1NjU6Q3AxMjUyOjE2ODM1MzEzMDA4MDE6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 13:05:00
+* @ValidationCode : Mjo4MDEzOTU1NjU6Q3AxMjUyOjE2ODQ4NTQwNTQyNTE6SVRTUzotMTotMTotNjY6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -66
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -50,8 +50,8 @@ VALIDATE:
 *      ETEXT = 'EB-EXAMPLE.ERROR.CODE'    <== The error code
 *      CALL STORE.END.ERROR               <== Needs to be invoked per error
     IF ID.NEW[1,3] EQ "BCR" THEN
-*CALL APAP.TAM.REDO.R.INTERFACE.PARAM.VALIDATE("REDO.INTERFACE.PARAM") ;*Manual R22 conversion
-        CALL APAP.TAM.redoRInterfaceParamValidate("REDO.INTERFACE.PARAM") ;*Manual R22 conversion
+*APAP.TAM.REDO.R.INTERFACE.PARAM.VALIDATE("REDO.INTERFACE.PARAM") ;*Manual R22 conversion
+        APAP.TAM.redoRInterfaceParamValidate("REDO.INTERFACE.PARAM") ;*Manual R22 conversion
         IF ETEXT NE "" THEN
             T.TEXT = ETEXT
             E = ETEXT

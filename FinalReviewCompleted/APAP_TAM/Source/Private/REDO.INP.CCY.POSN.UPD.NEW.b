@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTMxMDYxNjk5ODpDcDEyNTI6MTY4Mzg5MjY0NzU0NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:27
+* @ValidationCode : Mjo0ODE1ODU4NjE6Q3AxMjUyOjE2ODU1NDUzMDUwNTE6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:31:45
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.INP.CCY.POSN.UPD.NEW
@@ -85,9 +85,9 @@ RETURN
 
 PROCESS:
     IF (V$FUNCTION EQ 'D' AND Y.REC.STAT EQ 'INAU') OR (V$FUNCTION EQ 'R' AND Y.REC.STAT EQ '') OR (V$FUNCTION EQ 'D' AND Y.REC.STAT EQ 'RNAU') THEN
-*       CALL APAP.TAM.REDO.TXN.INP.CCY.POSN.UPD  ;* Record will not be available when deleted from INAU, so online service will not have a r.new to use.
+*       APAP.TAM.REDO.TXN.INP.CCY.POSN.UPD  ;* Record will not be available when deleted from INAU, so online service will not have a r.new to use.
 * For delete/reversal cases call the original rtn.
-        CALL APAP.TAM.redoTxnInpCcyPosnUpd ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoTxnInpCcyPosnUpd() ;*MANUAL R22 CODE CONVERSION
         RETURN
     END
 

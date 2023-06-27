@@ -238,7 +238,7 @@ SUBROUTINE PRO.RPT.MILLAS.LIBERADA
                         Y.IN.FT.ID = Y.TXN.ID
                         Y.OU.RETORNO = ""
 
-                        CALL APAP.LAPAP.proRptMillasLiberadaMora(Y.IN.AAR.ID, Y.IN.FT.ID, Y.OU.RETORNO);* R22 Manual conversion
+                        APAP.LAPAP.proRptMillasLiberadaMora(Y.IN.AAR.ID, Y.IN.FT.ID, Y.OU.RETORNO);* R22 Manual conversion
 
                         IF Y.OU.RETORNO EQ "NO" THEN
 

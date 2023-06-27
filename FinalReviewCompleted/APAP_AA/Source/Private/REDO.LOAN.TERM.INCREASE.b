@@ -80,13 +80,13 @@ GET.INTEREST.PROP:
 *-----------------------------------------------------------------------------
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     EFF.DATE = ''
     PROP.CLASS='INTEREST'
     PROPERTY = OUT.PROP
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 
 RETURN
 
@@ -115,7 +115,7 @@ POST.OFS:
     Y.ACT.PROP<1> = PROPERTY
     Y.ACT.PROP<2> = "LENDING-CHANGE-":PROPERTY
     OFS.STRING.FINAL = ''
-    CALL APAP.AA.redoAaBuildOfs(ARR.ID,R.CONDITION,Y.ACT.PROP,OFS.STRING.FINAL);* R22 Manual conversion
+    APAP.AA.redoAaBuildOfs(ARR.ID,R.CONDITION,Y.ACT.PROP,OFS.STRING.FINAL);* R22 Manual conversion
     OFS.SRC = 'AA.INT.UPDATE'
     OPTIONS = ''
     CALL OFS.POST.MESSAGE(OFS.STRING.FINAL,OFS.MSG.ID,OFS.SRC,OPTIONS)

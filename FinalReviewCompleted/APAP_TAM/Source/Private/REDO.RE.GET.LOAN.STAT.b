@@ -87,7 +87,7 @@ PROCESS:
                 EFF.DATE = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 ** R22 Manual conversion
-                CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+                APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
                 LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 
                 IF LOAN.COND NE 'Legal' THEN

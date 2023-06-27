@@ -157,7 +157,7 @@ CHECK.FIELDS:
                         MB.SDB.STATUS.ID = R.NEW(SDB.POST.SDB.COMPANY):'.':COMI
                         R.MB.SDB.STATUS = ''
 * CALL MB.SDB.READ.SDB.STATUS(MB.SDB.STATUS.ID,R.MB.SDB.STATUS)
-                        CALL APAP.REDOEB.mbSdbReadSdbStatus(MB.SDB.STATUS.ID,R.MB.SDB.STATUS);*Manual R22 conversion
+                        APAP.REDOEB.mbSdbReadSdbStatus(MB.SDB.STATUS.ID,R.MB.SDB.STATUS);*Manual R22 conversion
                         IF R.MB.SDB.STATUS THEN
                             SDB.STATUS = 1
                         END ELSE

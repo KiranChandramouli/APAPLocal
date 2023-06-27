@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMTQ2NDA1NzI1OkNwMTI1MjoxNjgzNTMwOTgxNTE1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 12:59:41
+* @ValidationCode : MjoxMTQ2NDA1NzI1OkNwMTI1MjoxNjg0ODU0MDUyNDE1OklUU1M6LTE6LTE6MjY1OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 265
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -117,8 +117,8 @@ PROCESS:
 
         OFS.MSG = OFS.HEADER : OFS.BODY
 
-*CALL APAP.REDOCHNLS.REDO.CH.OFSPROC(OFS.MSG,OFS.SRC) ;*Manual R22 conversion
-        CALL APAP.REDOCHNLS.redoChOfsproc(OFS.MSG,OFS.SRC) ;*Manual R22 conversion
+*APAP.REDOCHNLS.REDO.CH.OFSPROC(OFS.MSG,OFS.SRC) ;*Manual R22 conversion
+        APAP.REDOCHNLS.redoChOfsproc(OFS.MSG,OFS.SRC) ;*Manual R22 conversion
 
         Y.ACTIVITY = 'ACTIVITY:1:1=INTERNET.SERVICES-UPDATE-USERRIGHTS,'
         Y.PROP.FOR.UR = 'PROPERTY:1:1=USERRIGHTS,'

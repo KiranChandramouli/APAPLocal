@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDUwOTk2ODkzOkNwMTI1MjoxNjgxODI5MDgxODcwOklUU1M6LTE6LTE6LTI6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 18 Apr 2023 20:14:41
+* @ValidationCode : Mjo1MDkwMDg1MzM6Q3AxMjUyOjE2ODU5NTExMTk4NjY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jun 2023 13:15:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -2
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 * Version 1 13/04/00  GLOBUS Release No. 200508 30/06/05
@@ -34,7 +34,8 @@ SUBROUTINE REDO.COL.DELIVERY.SELECT
 * This list contains the name of the tables to process
 * We take one by one, because we need to guarantee the ACID for eact table
     E = ''
-    CALL  REDO.COL.R.DEL.UPD.LOCKING("READ", ID.LIST)
+*CALL  REDO.COL.R.DEL.UPD.LOCKING("READ", ID.LIST)
+    CALL APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
     IF E NE '' THEN
         CALL OCOMO("OMITTING THE COLLECTOR.DELIVERY PROCESS")
         CALL OCOMO(E)

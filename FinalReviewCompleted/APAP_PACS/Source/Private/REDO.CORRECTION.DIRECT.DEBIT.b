@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMTgyMDE0OTczOkNwMTI1MjoxNjgyNTc3NDMzNjQ4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 12:07:13
+* @ValidationCode : MjotMTAxOTAzNDAzNzpDcDEyNTI6MTY4NTU0Mzc5NTA2MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:06:35
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.PACS
 *MODIFICATION HISTORY:
@@ -35,6 +35,7 @@ SUBROUTINE REDO.CORRECTION.DIRECT.DEBIT(Y.AA.ID)
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_REDO.CORRECTION.DIRECT.DEBIT.COMMON
     $USING  APAP.TAM
+    $USING APAP.AA
     CALL OCOMO("Processing the loan":Y.AA.ID)
     GOSUB PROCESS
 
@@ -59,7 +60,7 @@ GET.PAYMENT.SCHEDULE:
     PROPERTY     = ''
     R.CONDITION  = ''
     ERR.MSG      = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*MANUAL R22 CODE ADDING PACKAGE
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*MANUAL R22 CODE ADDING PACKAGE
 
     IF R.CONDITION<AA.PS.LOCAL.REF,POS.L.AA.PAY.METHD> EQ 'Direct Debit' AND R.CONDITION<AA.PS.LOCAL.REF,POS.L.AA.DEBT.AC> NE '' ELSE
         CALL OCOMO("Not a DD loan, So skipped ":Y.AA.ID)

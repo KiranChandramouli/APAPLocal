@@ -351,7 +351,7 @@ RETURN
 GET.DISB:
 
     Y.DISP.AMT = ''
-    CALL APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);* R22 Manual conversion
+    APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);* R22 Manual conversion
     Y.DISP.AMT = R.DISB.DETAILS<3>        ;* Total Disb amount.
 
 RETURN

@@ -54,7 +54,7 @@ PROCESS:
 *----------------------------------------------------------------------------------
     Y.ACC.NO = R.NEW(FT.DEBIT.CUSTOMER)
 *CALL REDO.CUST.IDENTITY.REF(Y.ACC.NO, Y.ALT.ID, Y.CUS.NAME)
-    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.ACC.NO, Y.ALT.ID, Y.CUS.NAME);* R22 Manual conversion
+    APAP.REDORETAIL.redoCustIdentityRef(Y.ACC.NO, Y.ALT.ID, Y.CUS.NAME);* R22 Manual conversion
     CUSTOMER.NAME = Y.CUS.NAME
 
 RETURN

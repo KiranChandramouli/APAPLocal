@@ -47,7 +47,7 @@ PROCESS:
     IF R.OLD(COLL.CURR.NO) EQ '' THEN
 * Nueva Garantia registrada
 
-        CALL APAP.REDOFCFI.redoFcClAccounting('NEW');* MANUAL R22 CODE CONVERSION
+        APAP.REDOFCFI.redoFcClAccounting('NEW');* MANUAL R22 CODE CONVERSION
     END
 RETURN
 * </region>

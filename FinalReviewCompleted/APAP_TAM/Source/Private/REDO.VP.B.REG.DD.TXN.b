@@ -1,14 +1,14 @@
-* @ValidationCode : MjotODQxMDY2MjMyOkNwMTI1MjoxNjg0ODQyMTUyNzk0OklUU1M6LTE6LTE6NDg2OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:32
+* @ValidationCode : MjotMTk0NjM2MTQ3OTpDcDEyNTI6MTY4NjY3NzA5NzM5MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 13 Jun 2023 22:54:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 486
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VP.B.REG.DD.TXN
@@ -27,8 +27,7 @@ SUBROUTINE REDO.VP.B.REG.DD.TXN
 *
 * Version   Date           Who            Reference         Description
 * 1.0       04.30.2013     lpazmino       -                 Initial Version
-** 19-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 19-04-2023 Skanda R22 Manual Conversion - No changes, CALL routine format modified
+* 13/06/2023      Santosh      R22 MANUAL CODE CONVERSION       Changed FUNCTION CALL into SUBROUTINE CALL
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS">
@@ -45,8 +44,7 @@ SUBROUTINE REDO.VP.B.REG.DD.TXN
     $INSERT I_RAPID.APP.DEV.COMMON
     $INSERT I_RAPID.APP.DEV.EQUATE
     $USING APAP.REDOSRTN
-    
-    DEFFUN REDO.S.GET.USR.ERR.MSG()
+*    DEFFUN REDO.S.GET.USR.ERR.MSG() ;*R22 Manual Code Conersion
 
 * </region>
     GOSUB INIT
@@ -141,7 +139,8 @@ PROCESS:
 
     IF DD.SELECTED LT 0 THEN
 * Log writing: process finished
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct ('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
+*       CALL REDO.S.NOTIFY.INTERFACE.ACT ('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '')
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
         RETURN
     END
 
@@ -166,8 +165,8 @@ PROCESS:
 
 
 * Log writing: process finished
-    CALL APAP.REDOSRTN.redoSNotifyInterfaceAct ('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
-
+*   CALL REDO.S.NOTIFY.INTERFACE.ACT ('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '')
+    APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL004', 'BATCH', '07', 'EMAIL ARCHIVO DEBITO DIRECTO', 'FIN - DEBITO DIRECTO A LAS ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
 RETURN
 
 ****************************
@@ -185,8 +184,8 @@ GET.CUST.DATA:
     WS.DATA<3> = 'DDD'
 
 * Invoke VisionPlus Web Service
-    CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*MANUAL R22 CODE CONVERSION
-  
+*   CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
+    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Code Conersion
 
 * Credit Card exits - Info obtained OK
     IF WS.DATA<1> EQ 'OK' THEN
@@ -195,11 +194,21 @@ GET.CUST.DATA:
         BEGIN CASE
             CASE ID.COMPORTAMIENTO EQ 1         ;* No Acepta Pago
                 R.REDO.VISION.PLUS.DD<VP.DD.PROCESADO> = 'ERR'
-                R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = REDO.S.GET.USR.ERR.MSG('ST-VP-NO.CARD.PAY') :  " " : CREDIT.CARD.ID
+*               R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = REDO.S.GET.USR.ERR.MSG('ST-VP-NO.CARD.PAY') :  " " : CREDIT.CARD.ID
+                
+                pErrCode = 'ST-VP-NO.CARD.PAY' ;*R22 Manual Code Conersion
+                APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+                R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = pUsrMsg :  " " : CREDIT.CARD.ID ;*R22 Manual Code Conersion
+            
                 Y.FLAG.WS = 0
             CASE ID.COMPORTAMIENTO EQ 2         ;* Acepta Pago con Autorizacion
                 R.REDO.VISION.PLUS.DD<VP.DD.PROCESADO> = 'ERR'
-                R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = REDO.S.GET.USR.ERR.MSG('ST-VP-NO.CARD.PAY') :  " " : CREDIT.CARD.ID
+*               R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = REDO.S.GET.USR.ERR.MSG('ST-VP-NO.CARD.PAY') :  " " : CREDIT.CARD.ID
+                
+                pErrCode = 'ST-VP-NO.CARD.PAY' ;*R22 Manual Code Conersion
+                APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+                R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = pUsrMsg :  " " : CREDIT.CARD.ID  ;*R22 Manual Code Conersion
+                
                 Y.FLAG.WS = 0
             CASE 1
                 Y.FLAG.WS = 1
@@ -248,7 +257,7 @@ VAL.ACCOUNT:
 * Check Account Status
     GOSUB CHECK.ACCT.STATUS
     Y.PER = TXN.PAYMENT.AMT * 0.0015
-    Y.PER += TXN.PAYMENT.AMT ;* R22 Auto conversion
+    Y.PER += TXN.PAYMENT.AMT
 
     IF Y.PER GT Y.ACCT.BALANCE AND NOT(R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES>) THEN
         ACCT.VALIDATED = 0
@@ -401,7 +410,7 @@ PROCESS.FT:
                     R.REDO.VISION.PLUS.DD<VP.DD.TXN.REF> =R.REDO.VISION.PLUS.DD<VP.DD.TXN.REF>:"-":FLD.VALUE
                 END
             END
-            Y.LP.CNT += 1 ;* R22 Auto conversion
+            Y.LP.CNT += 1
         REPEAT
 **********end of change
     END

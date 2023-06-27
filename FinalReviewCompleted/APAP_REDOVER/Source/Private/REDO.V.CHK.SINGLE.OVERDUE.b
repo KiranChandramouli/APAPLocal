@@ -102,7 +102,7 @@ PROCESS:
 * This section checks whether any bill is yet to be paid
 *-------------------------------------------------------
 
-    CALL APAP.REDOVER.redoVDefFtLoanStatusCond();* R22 Manual Conversion
+    APAP.REDOVER.redoVDefFtLoanStatusCond();* R22 Manual Conversion
     CALL F.READ(FN.AA.ACCOUNT.DETAILS,ARR.ID,R.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS,AC.DET.ERR)
     BILL.ID.LST = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID>
     CHANGE @SM TO @VM IN BILL.ID.LST

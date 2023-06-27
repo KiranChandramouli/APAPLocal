@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDU1MDI4OTYwOkNwMTI1MjoxNjgyNTg3MjEwNTAzOkhhcmlzaHZpa3JhbUM6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 14:50:10
+* @ValidationCode : MjotMTEyMDY4MTM3MjpDcDEyNTI6MTY4NTU0MzYwMDY0MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:20
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -287,7 +287,7 @@ CHECK.NOTIFICATION:
     IF (R.ACCOUNT.CL<AC.LOCAL.REF, NOTIFY.LOC.POS>) THEN
 
         Y.NOTIF.LIST = R.ACCOUNT.CL<AC.LOCAL.REF, NOTIFY.LOC.POS>
-        CALL APAP.TAM.redoSChkAcNotifOvr(Y.NOTIF.LIST, Y.NOTIF.FLAG) ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoSChkAcNotifOvr(Y.NOTIF.LIST, Y.NOTIF.FLAG) ;*MANUAL R22 CODE CONVERSION
 
         IF Y.NOTIF.FLAG EQ 'YES' THEN
             Y.RS.OFS.FLAG = 'FAIL'
@@ -308,7 +308,8 @@ CHECK.NOTIFICATION:
         IF AMOUNT.VAL THEN
             VAR.CURRENCY = R.NEW(CLEAR.OUT.CURRENCY)
             REDO.OUTWARD.RETURN.ID = ID.NEW
-            CALL APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID) ;*MANUAL R22 CODE CONVERSION
+            CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
+*APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID) ;*MANUAL R22 CODE CONVERSION
         END
     END
 

@@ -50,7 +50,7 @@ SUBROUTINE REDO.POST.PRINT.SLIP
 
     PROP.NAME = 'PRINCIPAL'
     OUT.PROP  = ''
-    CALL APAP.TAM.redoGetInterestProperty(c_aalocArrId,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(c_aalocArrId,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
 
     IF c_aalocActivityStatus EQ 'AUTH' AND c_aalocPropClassId EQ 'INTEREST' AND c_aalocPropertyId EQ OUT.PROP THEN
         IF c_aalocArrangementRec<AA.ARR.ARR.STATUS> EQ 'CURRENT' THEN
@@ -121,8 +121,8 @@ PROCESS:
     IN.ACC.ID = ''
     GOSUB GET.OLD.INT.RATE
 
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
-    CALL APAP.TAM.redoGetNextPaymentAmount(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.NEXT.PAY.AMT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoGetNextPaymentAmount(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.NEXT.PAY.AMT);* R22 Manual conversion
 
     Y.NEXT.PAY.AMT = TRIMB(FMT(Y.NEXT.PAY.AMT,'L2,#19'))
     Y.ADD.VALUE = Y.EFFECTIVE.DATE[7,2]:'/':Y.EFFECTIVE.DATE[5,2]:'/':Y.EFFECTIVE.DATE[3,2]:@FM:OUT.ID:@FM:Y.OLD.INT.RATE:@FM:Y.NEW.INT.RATE:@FM:Y.NEXT.PAY.AMT
@@ -130,8 +130,8 @@ PROCESS:
     Y.ORD.ARCIB = R.MESSAGE.ARCIB<REDO.RT.MSG.DATA.ORDER>
     Y.MSG.EMAIL = R.MESSAGE.EMAIL<REDO.RT.MSG.MESSAGE.BODY>
     Y.ORD.EMAIL = R.MESSAGE.EMAIL<REDO.RT.MSG.DATA.ORDER>
-    CALL APAP.TAM.redoFormatMessage(Y.MSG.ARCIB,Y.ORD.ARCIB,Y.ADD.VALUE,Y.FMT.MSG.ARCIB);* R22 Manual conversion
-    CALL APAP.TAM.redoFormatMessage(Y.MSG.EMAIL,Y.ORD.EMAIL,Y.ADD.VALUE,Y.FMT.MSG.EMAIL);* R22 Manual conversion
+    APAP.TAM.redoFormatMessage(Y.MSG.ARCIB,Y.ORD.ARCIB,Y.ADD.VALUE,Y.FMT.MSG.ARCIB);* R22 Manual conversion
+    APAP.TAM.redoFormatMessage(Y.MSG.EMAIL,Y.ORD.EMAIL,Y.ADD.VALUE,Y.FMT.MSG.EMAIL);* R22 Manual conversion
     CHANGE @VM TO ' ' IN Y.FMT.MSG.EMAIL
     GOSUB GET.MAIL.IDS
     IF Y.EMAIL.IDS THEN
@@ -158,7 +158,7 @@ GET.MAIL.IDS:
     R.CUST.COND = ''
     ERR.MSG     = ''
     Y.PROPERTY  = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,Y.PROPERTY,R.CUST.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,Y.PROPERTY,R.CUST.COND,ERR.MSG);* R22 Manual conversion
 
 *Y.OWNER       = R.CUST.COND<AA.CUS.OWNER>
     Y.OWNER       = R.CUST.COND<AA.CUS.CUSTOMER>;* R22 Manual conversion
@@ -252,15 +252,15 @@ UPDATE.RATE.DETAILS:
     Y.ARR.ID         = c_aalocArrId
     IN.ACC.ID = ''
 
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
-    CALL APAP.TAM.redoGetNextPaymentAmount(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.NEXT.PAY.AMT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoGetNextPaymentAmount(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.NEXT.PAY.AMT);* R22 Manual conversion
     Y.NEXT.PAY.AMT = TRIMB(FMT(Y.NEXT.PAY.AMT,'L2,#19'))
 
 
     Y.NEW.PAYMENT.AMOUNT = Y.NEXT.PAY.AMT
     Y.OLD.PAYMENT.AMOUNT = 0
 
-    CALL APAP.TAM.redoGetNextPaymentAmountOld(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.OLD.PAYMENT.AMOUNT);* R22 Manual conversion
+    APAP.TAM.redoGetNextPaymentAmountOld(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.OLD.PAYMENT.AMOUNT);* R22 Manual conversion
     Y.INT.DETAIL         = R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.INT.RT.AR,1>
     R.CONDITION.INTEREST = ''
     Y.OLD.PAYMENT.AMOUNT = TRIMB(FMT(Y.OLD.PAYMENT.AMOUNT,'L2#19'))
@@ -289,7 +289,7 @@ UPDATE.RATE.DETAILS:
     CHANGE ',' TO '' IN Y.NEXT.PAY.AMT
     IF Y.NEXT.PAY.AMT EQ Y.OLD.PAYMENT.AMOUNT THEN
         Y.OLD.PAYMENT.AMOUNT = 0
-        CALL APAP.TAM.redoGetNextPaymentAmountOld(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.OLD.PAYMENT.AMOUNT);* R22 Manual conversion
+        APAP.TAM.redoGetNextPaymentAmountOld(Y.ARR.ID,Y.EFFECTIVE.DATE,Y.OLD.PAYMENT.AMOUNT);* R22 Manual conversion
     END
 *PACS00654027 -E
 *PACS00628721 - S

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNzgwNzM3NjE6Q3AxMjUyOjE2ODQyMjQxNzE2NDY6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:32:51
+* @ValidationCode : MjoxNDQ2MjE4MDQ1OkNwMTI1MjoxNjg1OTUyODI3MDg1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Jun 2023 13:43:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE L.APAP.GET.LOAN.HIST (ENQ.DATA)
@@ -280,7 +280,7 @@ PROCESS:
                 Y.COMMITED.AMT = 0; Y.DISBURSE.DATE = ''; YMIG.STAT = ''
 
 *CALL REDO.L.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
-                CALL APAP.LAPAP.redoLGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)  ;*R22 MANAUAL CODE CONVERSION
+                APAP.LAPAP.redoLGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)  ;*R22 MANAUAL CODE CONVERSION
                 Y.DISBURSE.AMT = R.DISB.DETAILS<3>
                 Y.DISBURSE.DATE= R.DISB.DETAILS<1>
                 CHANGE @VM TO @FM IN Y.DISBURSE.DATE
@@ -437,7 +437,7 @@ GET.PROCESS.HIST.HIS:
                     Y.COMMITED.AMT = 0; Y.DISBURSE.DATE = ''; YMIG.STAT = ''
 
 *CALL REDO.L.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
-                    CALL APAP.LAPAP.redoLGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)  ;*R22 MANAUAL CODE CONVERSION
+                    APAP.LAPAP.redoLGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)  ;*R22 MANAUAL CODE CONVERSION
                     Y.DISBURSE.AMT = R.DISB.DETAILS<3>
                     Y.DISBURSE.DATE= R.DISB.DETAILS<1>
                     CHANGE @VM TO @FM IN Y.DISBURSE.DATE

@@ -186,7 +186,7 @@ PROCESS:
         MAINT.ID.AA = R.REDO.FC.LIMIT.AA
 
 
-        CALL APAP.AA.redoFcClMaintAa();*R22 Manual Conversion - Call method format changed
+        APAP.AA.redoFcClMaintAa();*R22 Manual Conversion - Call method format changed
     END ELSE
         AF = COLL.RIGHT.LIMIT.REFERENCE
         ETEXT = "EB-FC.DOES.NOT.SUFFICIENT.GUARANTEE"

@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODk5MjMzMzg1OkNwMTI1MjoxNjg0ODUxOTgwNzY5OklUU1M6LTE6LTE6MTI5NToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:20
+* @ValidationCode : MjotNjk4OTQ2NDMxOkNwMTI1MjoxNjg1NTQzMTIyODA3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1295
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.ENQ.SHOW.LOAN.PAY.ACCT(LOAN.LIST)
@@ -51,6 +51,7 @@ SUBROUTINE REDO.ENQ.SHOW.LOAN.PAY.ACCT(LOAN.LIST)
     $INSERT I_F.AI.REDO.ACCT.RESTRICT.PARAMETER
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $USING APAP.TAM
+    $USING APAP.AA
 *Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES
 *Tus End
@@ -139,7 +140,7 @@ INITIALISE:
         PROPERTY = ''
         R.CONDITION = ''
         ERR.MSG = ''
-        CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+        APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 *--------------------PACS00459919---------------------------------------------------------
 
         LOCATE CUST.ID IN R.CONDITION<AA.CUS.OTHER.PARTY,1> SETTING OTHER.POS THEN
@@ -191,7 +192,7 @@ PERFORM.FINAL.ARRAY:
             R.Condition = ''
             ERR.MSG = ''
             EFF.DATE = ''
-            CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+            APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
             LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
             LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
             GOSUB CHECK.LOAN.STATUS
@@ -261,7 +262,7 @@ READ.AA.ACCT.DETAILS:
         ARR.OPEN.DTE = R.ARR.REC<AA.ARR.START.DATE>
         ARR.PRODUCT = R.ARR.REC<AA.ARR.PRODUCT>
         ARR.STATUS.CHECK = R.ARR.REC<AA.ARR.ARR.STATUS>
-        CALL APAP.TAM.redoAaGetOutBalance(ARR.ID,Y.BALANCE)
+        APAP.TAM.redoAaGetOutBalance(ARR.ID,Y.BALANCE)
         ARR.BAL.OUT = Y.BALANCE
         Y.TERM.AMOUNT=0
         EFF.DATE = ''
@@ -269,7 +270,7 @@ READ.AA.ACCT.DETAILS:
         PROPERTY = ''
         R.CONDITION = ''
         ERR.MSG = ''
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
         ARR.TERM.AMT=R.CONDITION<AA.AMT.AMOUNT>
         PART.PAY=R.CONDITION<AA.AMT.LOCAL.REF,L.APP.PART.POS>
         PART.PCNT=R.CONDITION<AA.AMT.LOCAL.REF,L.APP.PCNT.POS>

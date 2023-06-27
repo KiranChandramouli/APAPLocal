@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo3NjU2NjgzMTg6Q3AxMjUyOjE2ODM1MzEwNDk3MzA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 13:00:49
+* @ValidationCode : Mjo3NjU2NjgzMTg6Q3AxMjUyOjE2ODQ4NTQwNTI3MDI6SVRTUzotMTotMTozNDU6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 345
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -197,7 +197,7 @@ GEN.PROFILE.REC:
 
     OFS.MSG.1 = OFS.HEADER.1 : OFS.BODY.1
 
-    CALL APAP.REDOCHNLS.redoChOfsproc(OFS.MSG.1,OFS.SRC) ;*Manual R22 conversion
+    APAP.REDOCHNLS.redoChOfsproc(OFS.MSG.1,OFS.SRC) ;*Manual R22 conversion
 
 RETURN
 

@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDg1OTc0NTQ5OkNwMTI1MjoxNjgwNjA0MTU0MDc2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:59:14
+* @ValidationCode : MjotNDg1OTc0NTQ5OkNwMTI1MjoxNjg0ODM2MDM0MzgxOklUU1M6LTE6LTE6LTE1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -15
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -38,7 +38,7 @@ SUBROUTINE REDO.APAP.CAMPAIGN.GEN
 * Date            Who                   Reference               Description
 * 24-08-2010    PRADEEP P            ODR-2010-08-0228          INITIAL VERSION
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 
 *-----------------------------------------------------------------------------

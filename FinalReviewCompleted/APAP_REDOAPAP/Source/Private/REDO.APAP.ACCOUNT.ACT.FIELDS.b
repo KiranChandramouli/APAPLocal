@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODE2NzAzOTE5OkNwMTI1MjoxNjgwNjAyMDc3ODA5OklUU1M6LTE6LTE6MDowOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:24:37
+* @ValidationCode : MjoxODE2NzAzOTE5OkNwMTI1MjoxNjg0ODM2MDMyNDc2OklUU1M6LTE6LTE6LTI1OjE6dHJ1ZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -25
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,7 +28,7 @@ SUBROUTINE REDO.APAP.ACCOUNT.ACT.FIELDS
 * 20-Jun-2013      Arundev KR            PACS00293038            Initial creation
 * 12-Feb-2014     V.P.Ashokkumar         PACS00309822            Added new field to capture curr no
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------
 *---------------------------------------------------------------------------------

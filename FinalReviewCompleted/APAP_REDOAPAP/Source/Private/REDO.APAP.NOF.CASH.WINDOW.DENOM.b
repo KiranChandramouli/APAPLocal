@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo3MzYxODg2Njg6Q3AxMjUyOjE2ODI1NzIyMTE5NTE6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:40:11
+* @ValidationCode : Mjo3MzYxODg2Njg6Q3AxMjUyOjE2ODQ4MzYwNDM5MDE6SVRTUzotMTotMToxNTE2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1516
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -414,7 +414,7 @@ RETURN
 
 GET.TELLER.DETAILS:
 
-    CALL APAP.TAM.redoRteExcess(Y.AGENCY,Y.AMT.EXCEEDED,REC.CNT)
+    APAP.TAM.redoRteExcess(Y.AGENCY,Y.AMT.EXCEEDED,REC.CNT)
 
 RETURN
 

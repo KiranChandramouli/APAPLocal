@@ -56,7 +56,7 @@ SUBROUTINE REDO.V.FX.CCY.POS
 
         IF V$FUNCTION EQ 'I' OR Y.REC.STAT EQ 'INAU' OR Y.REC.STAT EQ 'INAO' THEN   ;* PACS00240825 - S/E
             IF Y.CHANNEL.TYPE NE 'INTERNET' THEN
-                CALL APAP.TAM.redoVauFxttDslip() ;*R22 Manual Code conversion
+                APAP.TAM.redoVauFxttDslip() ;*R22 Manual Code conversion
             END
         END
 *

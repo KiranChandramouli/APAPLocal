@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTQ2MTYyMzI5MDpDcDEyNTI6MTY4MDYwNDA3MjY1NzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:57:52
+* @ValidationCode : MjotMTQ2MTYyMzI5MDpDcDEyNTI6MTY4NDgzNjAzNDA4NzpJVFNTOi0xOi0xOjE4NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 186
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.APAP.B.UPD.OUTS.PRINC.LOAD
 *DATE WHO REFERENCE DESCRIPTION
 *06.08.2010 H GANESH ODR-2009-10-0346 INITIAL CREATION
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 
 *--------------------------------------------------------

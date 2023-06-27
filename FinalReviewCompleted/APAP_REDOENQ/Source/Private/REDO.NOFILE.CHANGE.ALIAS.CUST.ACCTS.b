@@ -301,7 +301,7 @@ GET.ACCT.ID:
     IN.ACC.ID=''
     IN.ARR.ID=ACCT.ID
     OUT.ID=''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
     ACCT.ID=OUT.ID
 
 RETURN

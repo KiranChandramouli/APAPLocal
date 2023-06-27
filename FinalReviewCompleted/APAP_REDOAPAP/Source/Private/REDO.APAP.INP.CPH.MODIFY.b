@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDUzNjQ1OTEwOkNwMTI1MjoxNjgzMDMwNzA5NDYyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:01:49
+* @ValidationCode : MjoxNDUzNjQ1OTEwOkNwMTI1MjoxNjg0ODM2MDQyMTExOklUU1M6LTE6LTE6Mzk5OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 399
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -221,7 +221,7 @@ ASSIGN.VALUES:
     R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.DEP.ACT.NAME,Y.FLD.VALUE>=Y.ACT.NAME
     R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.START.DATE,Y.FLD.VALUE>=R.NEW(AZ.VALUE.DATE)
     R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.END.DATE,Y.FLD.VALUE>=R.NEW(AZ.MATURITY.DATE)
-    CALL APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
+    APAP.REDOAPAP.redoApapGetMaturityAmt(ID.NEW,Y.MAT.AMT)
     R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.MATURITY.AMT,Y.FLD.VALUE>=Y.MAT.AMT
 
 RETURN

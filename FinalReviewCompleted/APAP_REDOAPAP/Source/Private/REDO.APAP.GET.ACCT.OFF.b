@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMDc3Mzc2ODU0OkNwMTI1MjoxNjgwNjc1NjIxMDUyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 05 Apr 2023 11:50:21
+* @ValidationCode : MjoxMDc3Mzc2ODU0OkNwMTI1MjoxNjg0ODM2MDQwNzE1OklUU1M6LTE6LTE6MTk5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 199
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -30,7 +30,7 @@ SUBROUTINE REDO.APAP.GET.ACCT.OFF
 *     ------               -----               -------------              -------------
 * 20 OCT 2010              Dhamu S             ODR-2010-03-0098            Initial Creation
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *
 ***********************************************************************************************************

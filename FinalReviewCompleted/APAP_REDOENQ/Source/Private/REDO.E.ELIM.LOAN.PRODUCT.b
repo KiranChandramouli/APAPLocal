@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5MDM1NjkzMzE6Q3AxMjUyOjE2ODQ4NTE5NzQzODk6SVRTUzotMTotMTotMjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:14
+* @ValidationCode : MjotMjY2NTM5MDQ1OkNwMTI1MjoxNjg1NTQzMTE0NzUxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:14
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -20
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.ELIM.LOAN.PRODUCT(ENQ.DATA)
@@ -36,6 +36,8 @@ SUBROUTINE REDO.E.ELIM.LOAN.PRODUCT(ENQ.DATA)
     $INSERT I_F.CUSTOMER.ACCOUNT
     $INSERT I_F.AA.OVERDUE
     $USING APAP.TAM
+    $USING APAP.AA
+    
     GOSUB INITIALISE
     GOSUB GET.LOAN.DETAILS
 RETURN
@@ -85,8 +87,8 @@ GET.LOAN.DETAILS:
         REMOVE ACC.ID FROM R.CUSTOMER.ACCOUNT.REC SETTING ACCT.POS
     WHILE ACC.ID:ACCT.POS
         LOAN.FLAG=''
-        CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*R22 Auto conversion
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Auto conversion
+        APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*R22 Auto conversion
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Auto conversion
         LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
         LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
         IF ('JudicialCollection' MATCHES LOAN.STATUS) OR ('Write-off' MATCHES LOAN.STATUS) OR ('Legal' MATCHES LOAN.COND) THEN

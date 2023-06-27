@@ -227,7 +227,7 @@ FORM.OFS:
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
 *CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR)
 ** R22 Manual conversion
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR)
+    APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR)
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
 
@@ -287,7 +287,7 @@ UPDATE.SUCESS:
     R.SUCESS.CHANGE = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     Y.OLD.EFF.RATE = R.Condition<AA.INT.EFFECTIVE.RATE>
     R.SUCESS.CHANGE<REDO.SUC.DATE>              = TODAY
     R.SUCESS.CHANGE<REDO.SUC.OLD.INTEREST.RATE> = Y.OLD.EFF.RATE

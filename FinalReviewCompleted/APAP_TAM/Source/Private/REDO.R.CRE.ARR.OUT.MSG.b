@@ -42,7 +42,7 @@ SUBROUTINE REDO.R.CRE.ARR.OUT.MSG(Y.REQ)
     
 *CALL REDO.R.BULK.MAN.RESPONSE(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG)
 ** R22 Manual conversion
-    CALL APAP.AA.redoRBulkManResponse(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG)
+    APAP.AA.redoRBulkManResponse(Y.TXN.COMMITED, Y.OFS.RESPONSE, Y.OUT.ERR.MSG)
 * If an error was found, then only the error messages must be informed
     IF Y.OUT.ERR.MSG NE '' THEN
         Y.REQ = Y.REQ[",",1,1]

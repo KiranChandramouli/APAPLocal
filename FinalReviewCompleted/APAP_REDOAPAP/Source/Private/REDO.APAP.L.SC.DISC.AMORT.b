@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo1Mzg1NDQwMDI6Q3AxMjUyOjE2ODA2Nzk4MTI0Mzg6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Apr 2023 13:00:12
+* @ValidationCode : Mjo1Mzg1NDQwMDI6Q3AxMjUyOjE2ODQ4MzYwNDI5MDg6SVRTUzotMTotMTotMjc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -27
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -27,7 +27,7 @@ SUBROUTINE REDO.APAP.L.SC.DISC.AMORT
 *   ------         ------               -------------            -------------
 * 18-Feb-2013      Arundev KR             CR008 RTC-553577    Initial creation
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 * ----------------------------------------------------------------------------
 

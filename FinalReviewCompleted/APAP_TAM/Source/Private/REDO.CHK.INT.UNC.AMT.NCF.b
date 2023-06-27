@@ -80,8 +80,8 @@ RETURN
 CHECK.TXN:
 *--------------------------------------------------------------------------------
 
-* CALL APAP.TAM.REDO.CONVERT.ACCOUNT(ACC.ID,'',ARR.ID,ERR.TEXT) ;* R22 Manual conversion - CALL method format changed
-    CALL APAP.TAM.redoConvertAccount(ACC.ID,'',ARR.ID,ERR.TEXT) ;*R22 Manual Conversion
+* APAP.TAM.REDO.CONVERT.ACCOUNT(ACC.ID,'',ARR.ID,ERR.TEXT) ;* R22 Manual conversion - CALL method format changed
+    APAP.TAM.redoConvertAccount(ACC.ID,'',ARR.ID,ERR.TEXT) ;*R22 Manual Conversion
     CALL F.READ(FN.AA.REFERENCE.DETAILS,ARR.ID,R.AA.REFERENCE.DETAILS,F.AA.REFERENCE.DETAILS,AA.REF.ERR)
 *    LOCATE TXN.REF IN R.AA.REFERENCE.DETAILS<AA.REF.AAA.ID,1> SETTING POS1 THEN
     Y.AAA.ID = TXN.REF        ;*R.AA.REFERENCE.DETAILS<AA.REF.AAA.ID,POS1>

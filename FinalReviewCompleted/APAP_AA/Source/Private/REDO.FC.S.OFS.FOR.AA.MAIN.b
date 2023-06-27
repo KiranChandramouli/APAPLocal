@@ -1,12 +1,12 @@
-* @ValidationCode : MjotODM3ODkwODQwOkNwMTI1MjoxNjgzODAyODY1NTY2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 May 2023 16:31:05
+* @ValidationCode : MjotMjU4NzMxNDQ6Q3AxMjUyOjE2ODQ5MjU2NDY3NDc6SVRTUzotMTotMTotMjk6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 May 2023 16:24:06
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -29
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -62,7 +62,7 @@ PROCESS.MAIN:
 *
     STR.OFS = ""
     ID.APP.MAPPING = "AA.ACTIVITY"
-    CALL APAP.TAM.redoFcSOfsForAA(ID.APP.MAPPING, STR.OFS);* R22 Manual conversion
+    APAP.TAM.redoFcSOfsForAa(ID.APP.MAPPING, STR.OFS);* R22 Manual conversion
     TEXTO := STR.OFS
 
 * Segun el producto se ejecuta las propiedades
@@ -76,7 +76,7 @@ PROCESS.MAIN:
         STR.OFS = ""
         ID.APP.MAPPING = R.REDO.APP.MAPPING<REDO.APP.LINK.TO.RECS,I.VAR>
         Y.PROPERTY = R.REDO.APP.MAPPING<REDO.APP.ATTRIBUTE,I.VAR>
-        CALL APAP.AA.redoFcSOfsForAaProperty(ID.APP.MAPPING, Y.PROPERTY, II, STR.OFS);* MANUAL R22 CODE CONVERSION
+        APAP.AA.redoFcSOfsForAaProperty(ID.APP.MAPPING, Y.PROPERTY, II, STR.OFS);* MANUAL R22 CODE CONVERSION
         IF STR.OFS THEN
             TEXTO :=STR.OFS
             II += 1

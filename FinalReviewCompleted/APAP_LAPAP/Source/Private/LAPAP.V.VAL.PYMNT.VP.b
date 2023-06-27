@@ -122,11 +122,11 @@ PROCESS:
                         GOSUB PAYMENT
                     END
                     ELSE
-                        CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
+                        APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
                     END
                 END
                 ELSE
-                    CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
+                    APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
                 END
 
 * Pago Cheque
@@ -144,17 +144,17 @@ PROCESS:
                 GOSUB PAYMENT
             END
             ELSE
-                CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
+                APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)    ;*R22 MANUAL CODE CONVERSION
             END
         END
         ELSE
-            CALL APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)  ;*R22 MANUAL CODE CONVERSION
+            APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT)  ;*R22 MANUAL CODE CONVERSION
         END
     END
 
     IF TXN.RESULT<1> EQ 'OFFLINE' OR TXN.RESULT<1> EQ 'ERROR' THEN
 
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')    ;*R22 MANUAL CODE CONVERSION
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')    ;*R22 MANUAL CODE CONVERSION
 
         EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
         IF E EQ "EB-UNKNOWN.VARIABLE" THEN     ;*R22 AUTO CODE CONVERSION.START

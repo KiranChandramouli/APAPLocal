@@ -193,7 +193,7 @@ CHECK.PRELIM.CONDITIONS:
 *
                 IF WCATINI EQ "CURRENT.CATEGORI" OR WCATINI EQ "" AND COMI NE "" THEN
 *CALL REDO.GET.MTS.TRANS.INFO
-                    CALL APAP.TAM.redoGetMtsTransInfo() ;* R22 Manual conversion
+                    APAP.TAM.redoGetMtsTransInfo() ;* R22 Manual conversion
                     GOSUB GET.SYSTEM.VARIABLES
                 END
                 IF WTT.CHANGED EQ "YES" THEN

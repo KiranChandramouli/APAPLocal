@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4NzQ5MzgwMzg6Q3AxMjUyOjE2ODQ4NTE5ODI1NTU6SVRTUzotMTotMTo1MjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:22
+* @ValidationCode : MjotNDY0MDM2NTM2OkNwMTI1MjoxNjg1NTQzMTI0NTE3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:24
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 526
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOF.FHA.INSURANCE.REPORT.COPY(Y.FINAL.ARRAY)
@@ -58,6 +58,7 @@ SUBROUTINE REDO.NOF.FHA.INSURANCE.REPORT.COPY(Y.FINAL.ARRAY)
     $INSERT I_F.ACCT.ACTIVITY
     $INSERT I_F.APAP.H.INSURANCE.DETAILS
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB OPEN.FILES
     GOSUB GET.SELECTION.VALUES
@@ -121,7 +122,7 @@ GET.SELECTION.VALUES:
         END
         Y.VAR1 += 1
     REPEAT
-    CALL APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD);* R22 Manual Conversion - CALL method format changed
+    APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD);* R22 Manual Conversion - CALL method format changed
     SEL.CMD:= ' WITH INS.POLICY.TYPE EQ FHA'
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,SEL.ERR)
 
@@ -196,16 +197,16 @@ GET.DETAILS:
     Y.CUS.ID = R.AA.ARRANGEMENT<AA.ARR.CUSTOMER>
     IN.ACC.ID = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT);* R22 Manual Conversion - CALL method format changed
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT);* R22 Manual Conversion - CALL method format changed
     GOSUB GET.PREVIOUS.LOAN.NO
     GOSUB GET.CUSTOMER.DETAILS
     Y.CLOSING.DATE = R.APAP.H.INSURANCE.DETAILS<INS.DET.POL.EXP.DATE>
     Y.DISB.AMT = 0
-    CALL APAP.TAM.redoGetDisbursedAmt(Y.AA.ID,Y.DISB.AMT) ;* R22 Manual Conversion - CALL method format changed
+    APAP.TAM.redoGetDisbursedAmt(Y.AA.ID,Y.DISB.AMT) ;* R22 Manual Conversion - CALL method format changed
     Y.INSURED.AMOUNT = SUM(R.APAP.H.INSURANCE.DETAILS<INS.DET.INS.AMOUNT>)
     Y.CUSTODAY.DATE  = R.APAP.H.INSURANCE.DETAILS<INS.DET.FEC.SOL.RESGUAR>
     Y.CASE.NUMBER    = R.APAP.H.INSURANCE.DETAILS<INS.DET.FHA.CASE.NO>
-    CALL APAP.TAM.redoGetTotalOutstanding(Y.AA.ID,Y.PROP.AMT,Y.TOTAL.AMT) ;* R22 Manual Conversion - CALL method format changed
+    APAP.TAM.redoGetTotalOutstanding(Y.AA.ID,Y.PROP.AMT,Y.TOTAL.AMT) ;* R22 Manual Conversion - CALL method format changed
     Y.TOTAL.CAPITAL.BAL =  Y.PROP.AMT<1>
     GOSUB FORM.ARRAY
 RETURN
@@ -217,7 +218,7 @@ GET.PREVIOUS.LOAN.NO:
     PROPERTY        = ''
     R.ACC.CONDITION = ''
     ERR.MSG         = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.CONDITION,ERR.MSG);* R22 Manual conversion - CALL method format changed
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.CONDITION,ERR.MSG);* R22 Manual conversion - CALL method format changed
     Y.PREV.LOAN.NO = R.ACC.CONDITION<AA.AC.ALT.ID>
 
 RETURN

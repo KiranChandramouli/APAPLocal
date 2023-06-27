@@ -110,7 +110,7 @@ PROCESS:
     Y.REQ.COMP = R.NEW(RE.ORD.REQUEST.COMPANY)
     Y.DEL.QUL =  R.NEW(RE.ORD.RETURN.QUANTITY)
     R.NEW(RE.ORD.ORDER.STATUS) = 'Orden Recibida por Transferencia'
-    CALL APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH);* R22 Manual conversion
+    APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH);* R22 Manual conversion
     DUP.APPL.NAME = APPL.NAME
     DUP.APPL.PATH = APPL.PATH
 

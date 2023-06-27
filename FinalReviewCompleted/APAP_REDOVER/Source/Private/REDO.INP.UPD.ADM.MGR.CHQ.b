@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTMxNDMyODA4MDpDcDEyNTI6MTY4MzAxMTQ2ODcxNTpJVFNTOi0xOi0xOjE5MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 12:41:08
+* @ValidationCode : Mjo2MjEzNjE0OTI6Q3AxMjUyOjE2ODU1NDM2MDkwOTY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:29
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 191
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.INP.UPD.ADM.MGR.CHQ
@@ -59,9 +59,10 @@ PROCESS:
         CALL F.READ(FN.ACCOUNT,VAR.CR.ACCT.NO,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         VAR.CUST = R.ACCOUNT<AC.CUSTOMER>
         IF NOT(VAR.CUST) THEN
-            CALL APAP.TAM.redoVcrChequeNumber()
+            APAP.TAM.redoVcrChequeNumber()
         END ELSE
-            CALL APAP.REDOVER.redoVInpDefaultAcct();*R22 Manual Code Conversion
+            APAP.REDOVER.redoVInpDefaultAcct();*R22 Manual Code Conversion
+            
         END
     END
 

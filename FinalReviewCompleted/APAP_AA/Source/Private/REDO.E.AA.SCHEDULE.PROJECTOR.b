@@ -69,7 +69,7 @@ PROCESS:
 *--------------------------------------------------
 * Here we call the schedule projector routine to build the array
 
-    CALL APAP.AA.redoEAaScheduleProjector(SCHED.ARR);*R22 Manual conversion
+    APAP.AA.redoEAaScheduleProjector(SCHED.ARR);*R22 Manual conversion
 
     LOCATE 'ARRANGEMENT.ID' IN ENQ.SELECTION<2,1> SETTING ARRPOS THEN
         ARR.ID = ENQ.SELECTION<4,ARRPOS>    ;* Pick the Arrangement Id
@@ -132,7 +132,7 @@ GET.BILLS:
         REPEAT
         GOSUB UPDATE.OTHER.ARRAY
         LOCATE Y.PENAL.PROPERTY IN R.BILL.DETAILS<AA.BD.PROPERTY,1> SETTING POS THEN
-            CALL APAP.TAM.redoGetAdjustedAmount(Y.PENAL.PROPERTY,Y.BILL.ID,Y.PENAL.AMT);* R22 Manual conversion
+            APAP.TAM.redoGetAdjustedAmount(Y.PENAL.PROPERTY,Y.BILL.ID,Y.PENAL.AMT);* R22 Manual conversion
             IF Y.PENAL.AMT GT 0 THEN
                 GOSUB UPDATE.ARRAY
             END

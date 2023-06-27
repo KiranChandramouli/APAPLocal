@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDU2NjQ1NDU0OkNwMTI1MjoxNjgzMDEwNzYwNDg3OklUU1M6LTE6LTE6LTQ4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 12:29:20
+* @ValidationCode : MjoxODU1NDQzMDkwOkNwMTI1MjoxNjg0ODUwMTIxNjg5OklUU1M6LTE6LTE6LTQ4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 19:25:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -44,7 +44,7 @@ RETURN
 PROCESS:
 *--------
 *
-    CALL APAP.TAM.RedoVvrNostroBalance();* R22 Manual Conversion
+    APAP.TAM.redoVvrNostroBalance();* R22 Manual Conversion
 *
 RETURN
 *

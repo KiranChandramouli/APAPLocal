@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODI5NTE1OTk3OkNwMTI1MjoxNjg0ODQyMTUzNTQxOklUU1M6LTE6LTE6NDE6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:33
+* @ValidationCode : Mjo5Nzg5MDY5MzI6Q3AxMjUyOjE2ODU1NDU1MjExOTE6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:35:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 41
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VVR.CALC.AMTS.LCYFCY
@@ -88,7 +88,7 @@ PROCESS:
     R.NEW(TT.TE.AMOUNT.LOCAL.1)<1,1>  = Y.LCCY.AMT
 *
 *PACS00250002 - E
-    CALL APAP.TAM.redoHandleCommTaxFields ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoHandleCommTaxFields() ;*MANUAL R22 CODE CONVERSION
 *
 *
 RETURN

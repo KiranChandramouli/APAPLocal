@@ -1,6 +1,6 @@
-* @ValidationCode : MjoxMDA5MjQ4MzQwOlVURi04OjE2ODQyMjI4MjY4OTM6SVRTUzotMTotMToyMzQyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:26
-* @ValidationInfo : Encoding          : UTF-8
+* @ValidationCode : MjotNTIzMjI5MDY4OkNwMTI1MjoxNjg0ODU2NjAwNDc0OklUU1M6LTE6LTE6MjM0MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 21:13:20
+* @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -128,7 +128,7 @@ GET.COMMON.FIELDS:
     END
     Y.ARRAY.VAL = ''; Y.PREV.ACCOUNT = ''; YNAB.STATUS = ''
     YACCT.ALTGRP = R.ACCOUNT:"###":R.AA.ARRANGEMENT
-    CALL APAP.TAM.RedoRptAcctAltLoans(YACCT.ALTGRP,Y.PREV.ACCOUNT);*R22 Manual Conversion
+    APAP.TAM.redoRptAcctAltLoans(YACCT.ALTGRP,Y.PREV.ACCOUNT);*R22 Manual Conversion
     IF NOT(Y.PREV.ACCOUNT) THEN
         Y.PREV.ACCOUNT = Y.NROPRESTAMO
     END

@@ -128,7 +128,7 @@ POPULATE.RCA:
     R.NEW(REDO.FC.MATUR.DATE.DI)<1,Y.I> = R.COLLATERAL<COLL.LOCAL.REF,WPOSINVSDT> ;* Fecha de vencimiento del deposito
     R.NEW(REDO.FC.COLL.RE.USED.DI)<1,Y.I> = "Y"
 * Call routine to populate COLLATERAL.RIGHT
-    CALL APAP.REDOFCFI.redoFcSPopCollRight(Y.SEC.NO, Y.I);* R22 Manual conversion
+    APAP.REDOFCFI.redoFcSPopCollRight(Y.SEC.NO, Y.I);* R22 Manual conversion
 RETURN
 *------------------------------------------------------------------------------------------------------------------
 GET.LOCAL.FIELD:
@@ -223,7 +223,7 @@ GET.AA.CURBAL:
     Y.AA.BAL = ''
     GOSUB GET.AA.PRODUCT
     Y.AA.BAL = AA.ARR
-    CALL APAP.AA.redoSFcAaBal(Y.AA.ID, Y.AA.BAL);* R22 Manual conversion
+    APAP.AA.redoSFcAaBal(Y.AA.ID, Y.AA.BAL);* R22 Manual conversion
     Y.AA.BAL = ABS(Y.AA.BAL)
     IF Y.AA.BAL EQ 'NULO' THEN
         Y.AA.BAL = 0
@@ -238,7 +238,7 @@ GET.AA.AMOUNT:
 * Getting current AA Balance value
     Y.AA.AMOUNT = ''
     Y.AA.AMOUNT = AA.ARR
-    CALL APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
+    APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
     Y.AA.AMOUNT = ABS(Y.AA.AMOUNT)
     IF Y.AA.AMOUNT EQ 'NULO' THEN
         Y.AA.AMOUNT = 0

@@ -54,8 +54,8 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.FIELDS
     GOSUB DEFINE.GENERAL.FIELDS
     GOSUB DEFINE.GENERAL.FIELDS.PAYMENT.SCHEDULE
 
-*CALL APAP.TAM.REDO.CREATE.ARRANGEMENT.FIELDS.COLL.BR.VS ;** R22 Manual conversion - CALL method format changed
-    CALL APAP.TAM.redoCreateArrangementFieldsCollBrVs() ;*R22 Manual Conversion
+*APAP.TAM.REDO.CREATE.ARRANGEMENT.FIELDS.COLL.BR.VS ;** R22 Manual conversion - CALL method format changed
+    APAP.TAM.redoCreateArrangementFieldsCollBrVs() ;*R22 Manual Conversion
 
 RETURN
  

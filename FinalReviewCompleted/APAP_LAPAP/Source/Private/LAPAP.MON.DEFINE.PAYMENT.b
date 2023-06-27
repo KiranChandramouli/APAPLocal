@@ -43,7 +43,7 @@ SUBROUTINE LAPAP.MON.DEFINE.PAYMENT(ID,RS,RT)
 *ACC validation
 *---------------
     ACC = ID
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
 *---------------

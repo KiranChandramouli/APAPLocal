@@ -425,8 +425,8 @@ GET.INTEREST:
     Y.DIFF.DAYS = Y.DIFF.DAYS:'D'
     BUY.RATE = ''
     RATE = ''
-*CALL APAP.TAM.REDO.GET.POOL.RATE(AZ.CUR,Y.DIFF.DAYS,RATE);*Manual R22 conversion
-    CALL APAP.TAM.redoGetPoolRate(AZ.CUR,Y.DIFF.DAYS,RATE);*Manual R22 conversion
+*APAP.TAM.REDO.GET.POOL.RATE(AZ.CUR,Y.DIFF.DAYS,RATE);*Manual R22 conversion
+    APAP.TAM.redoGetPoolRate(AZ.CUR,Y.DIFF.DAYS,RATE);*Manual R22 conversion
     BUY.RATE = RATE<2>
 
 RETURN

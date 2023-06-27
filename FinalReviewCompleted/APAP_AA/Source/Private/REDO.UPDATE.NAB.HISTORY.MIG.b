@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMTA3NDU2NTE2OkNwMTI1MjoxNjgzODc4MTY1MjE1OklUU1M6LTE6LTE6MjA1ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 13:26:05
+* @ValidationCode : MjotMTgyNDQ3NTQyOkNwMTI1MjoxNjg1NTQyNjQ0MzkyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:47:24
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2058
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.UPDATE.NAB.HISTORY.MIG
@@ -64,6 +64,7 @@ SUBROUTINE REDO.UPDATE.NAB.HISTORY.MIG
     $INSERT I_AA.APP.COMMON
     $INSERT I_F.DATES
     $INSERT I_F.AA.PAYMENT.SCHEDULE
+    $USING APAP.TAM
 *-------------------------------------------------------------------------------------------------------------------------------
 * Main Logic
 *
@@ -373,7 +374,7 @@ GET.OVERDUE.PROPERTY:
     PROPERTY    = ''
     ERR.MSG     = ''
     R.OVERDUE.COND   = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFFEC.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFFEC.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.COND,ERR.MSG);* R22 Manual conversion
     LOCATE 'NAB' IN R.OVERDUE.COND<AA.OD.OVERDUE.STATUS,1,1> SETTING POS3 THEN
         Y.NO.NAB.DAYS = R.OVERDUE.COND<AA.OD.AGEING,1,POS3>
     END
@@ -386,7 +387,7 @@ GET.ACCOUNT.PROPERTY:
     IN.PROPERTY.CLASS = 'ACCOUNT'
     R.OUT.AA.RECORD   = ''
     Y.ACC.PROPERTY      = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
 
 RETURN
 *-----------------------------------------------------------------------------------------------------------
@@ -617,7 +618,7 @@ GET.INTEREST.PROPERTY:
     EFF.DATE = c_aalocActivityEffDate
     ERR.MSG = ''
     R.PAY.SCH.COND = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.SCH.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.SCH.COND,ERR.MSG);* R22 Manual conversion
     Y.PAYMENT.PROPERTY=R.PAY.SCH.COND<AA.PS.PROPERTY>
     CHANGE @SM TO @FM IN Y.PAYMENT.PROPERTY
     CHANGE @VM TO @FM IN Y.PAYMENT.PROPERTY

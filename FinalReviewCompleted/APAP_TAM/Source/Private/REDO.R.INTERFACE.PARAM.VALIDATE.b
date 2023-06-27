@@ -67,7 +67,7 @@ INITIALISE:
     
 *CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo)
 ** R22 Manual conversion
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo)
+    APAP.TAM.tamRGetValueByFieldName(tableName, "SEND.METHOD", MAT R.NEW, sendMethod, sendMethodNo)
 
 RETURN
 *-----------------------------------------------------------------------------
@@ -107,7 +107,7 @@ PROCESS:
         END ELSE
 *CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
 ** R22 Manual conversion
-            CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
+            APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
         END
 
         BEGIN CASE
@@ -203,7 +203,7 @@ CHECK.FIELD.MANDATORY:
     fieldNo    = 0
 *CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
 ** R22 Manual conversion
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
+    APAP.TAM.tamRGetValueByFieldName(tableName, fieldName, MAT R.NEW, fieldValue, fieldNo)
     IF fieldValue EQ "" THEN
         AF = fieldNo
         Y.E.TEXT = "ST-REDO.BCR-MANDATORY-FIELD"
@@ -222,7 +222,7 @@ CHECK.PARAMTYPE:
     fieldName          = "PARAM.TYPE"
 *CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
 ** R22 Manual conversion
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
+    APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
 
 * PARAM.VALUE field
     fieldParamValue    = ""
@@ -230,7 +230,7 @@ CHECK.PARAMTYPE:
     fieldName          = "PARAM.VALUE"
 *CALL TAM.R.GET.VALUE.BY.FIELD.NAME(tableName, fieldName,  MAT R.NEW, fieldParamType, fieldParamTypeNo)
 ** R22 Manual conversion
-    CALL APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamValue, fieldParamValueNo)
+    APAP.TAM.tamRGetValueByFieldName(tableName, fieldName,  MAT R.NEW, fieldParamValue, fieldParamValueNo)
 
 
 * Check Dup on some paramTypes
@@ -321,7 +321,7 @@ CHECK.DUP.PARAM.TYPE:
         result = 0
 * CALL TAM.R.CHECK.DUP.VALUES(paramTypeToCheck, fieldParamType, @VM, result)
 ** R22 Manual conversion
-        CALL APAP.TAM.tamRCheckDupValues(paramTypeToCheck, fieldParamType, @VM, result)
+        APAP.TAM.tamRCheckDupValues(paramTypeToCheck, fieldParamType, @VM, result)
         IF result GT 0 THEN
             AF =  fieldParamTypeNo
             AV =  result

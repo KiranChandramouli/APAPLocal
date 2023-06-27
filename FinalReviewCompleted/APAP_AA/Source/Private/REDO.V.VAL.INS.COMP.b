@@ -586,7 +586,7 @@ REDO.CRR.GET.CONDITIONS.TERM:
     PROPERTY = ''
     R.Condition=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
 RETURN
 *****************
 REDO.CRR.GET.CONDITIONS.CHARGE:
@@ -599,7 +599,7 @@ REDO.CRR.GET.CONDITIONS.CHARGE:
     PROPERTY = ''
     R.Condition.charge=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.charge,ERR.MSG) ;* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.charge,ERR.MSG) ;* R22 Manual conversion
 RETURN
 *****************
 REDO.CRR.GET.CONDITIONS.CUSTOMER:
@@ -612,7 +612,7 @@ REDO.CRR.GET.CONDITIONS.CUSTOMER:
     PROPERTY = ''
     R.Condition.customer=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.customer,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.customer,ERR.MSG);* R22 Manual conversion
 RETURN
 
 ******************
@@ -626,7 +626,7 @@ REDO.CRR.GET.CONDITIONS.LIMIT:
     PROPERTY = ''
     R.Condition.limit=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG);* R22 Manual conversion
 
 RETURN
 ******************
@@ -640,7 +640,7 @@ REDO.CRR.GET.CONDITIONS.PAYMENT.SCHEDULE:
     PROPERTY = ''
     R.Condition.schedule = ''
     ERR.MSG= ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.schedule,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.schedule,ERR.MSG);* R22 Manual conversion
 
 RETURN
 

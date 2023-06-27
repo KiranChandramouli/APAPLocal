@@ -268,8 +268,8 @@ GET.NEXT.REPAYMENT.AMT:
 * Here we will get the next repayment amount using the schedule projector routine.if deal slip is prited for the first time then we will calculate the amount using Core API else we will get the amount from concat table.
     Y.LOAN.ACC = R.DEAL.ARRAY<2,POS1>
     ARR.ID     = ""
-*CALL APAP.TAM.REDO.CONVERT.ACCOUNT(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT)
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT) ;* R22 manual conversion
+*APAP.TAM.REDO.CONVERT.ACCOUNT(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT)
+    APAP.TAM.redoConvertAccount(Y.LOAN.ACC,"",ARR.ID,ERR.TEXT) ;* R22 manual conversion
     Y.NEXT.PAY.AMT = ''
     SIMULATION.REF = ''
     NO.RESET       = '1'

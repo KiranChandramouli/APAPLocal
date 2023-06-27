@@ -844,7 +844,7 @@ public method redoInterfaceRecAct (
 public method aiPaymentLoanRefDet (
 )
 {
-   jBC: AI.PAYMENT.LOAN.REF.DET
+    jBC: AI.PAYMENT.LOAN.REF.DET
 }
 
 
@@ -852,7 +852,7 @@ public method aiPaymentLoanRefDet (
 public method aiPaymentStopEntryDet (
 )
 {
-   jBC: AI.PAYMENT.STOP.ENTRY.DET
+    jBC: AI.PAYMENT.STOP.ENTRY.DET
 }
 
 
@@ -860,7 +860,7 @@ public method aiPaymentStopEntryDet (
 public method aiRedoAcctRestrictParameter (
 )
 {
-   jBC: AI.REDO.ACCT.RESTRICT.PARAMETER
+    jBC: AI.REDO.ACCT.RESTRICT.PARAMETER
 }
 
 
@@ -868,17 +868,17 @@ public method aiRedoAcctRestrictParameter (
 public method aiRedoAcctRestrictParameterFields (
 )
 {
-   jBC: AI.REDO.ACCT.RESTRICT.PARAMETER.FIELDS
+    jBC: AI.REDO.ACCT.RESTRICT.PARAMETER.FIELDS
 }
 
 
 
 public method aiRedoCheckStoTransfer (
-   INOUT idBenToDel string,
-   INOUT yFlag string
+    INOUT idBenToDel string,
+    INOUT yFlag string
 )
 {
-   jBC: AI.REDO.CHECK.STO.TRANSFER
+    jBC: AI.REDO.CHECK.STO.TRANSFER
 }
 
 
@@ -886,7 +886,7 @@ public method aiRedoCheckStoTransfer (
 public method aiRedoAuthUpdOriginFt (
 )
 {
-   jBC: AI.REDO.AUTH.UPD.ORIGIN.FT
+    jBC: AI.REDO.AUTH.UPD.ORIGIN.FT
 }
 
 
@@ -894,7 +894,7 @@ public method aiRedoAuthUpdOriginFt (
 public method aiRedoConvertPeriodToMonths (
 )
 {
-   jBC: AI.REDO.CONVERT.PERIOD.TO.MONTHS
+    jBC: AI.REDO.CONVERT.PERIOD.TO.MONTHS
 }
 
 
@@ -902,7 +902,7 @@ public method aiRedoConvertPeriodToMonths (
 public method aiRedoDeleteMsg (
 )
 {
-   jBC: AI.REDO.DELETE.MSG
+    jBC: AI.REDO.DELETE.MSG
 }
 
 
@@ -910,7 +910,7 @@ public method aiRedoDeleteMsg (
 public method aiRedoGetReprintVer (
 )
 {
-   jBC: AI.REDO.GET.REPRINT.VER
+    jBC: AI.REDO.GET.REPRINT.VER
 }
 
 
@@ -918,7 +918,7 @@ public method aiRedoGetReprintVer (
 public method aiRedoInpSelCompDet (
 )
 {
-   jBC: AI.REDO.INP.SEL.COMP.DET
+    jBC: AI.REDO.INP.SEL.COMP.DET
 }
 
 
@@ -926,7 +926,7 @@ public method aiRedoInpSelCompDet (
 public method aiRedoKillOthSession (
 )
 {
-   jBC: AI.REDO.KILL.OTH.SESSION
+    jBC: AI.REDO.KILL.OTH.SESSION
 }
 
 
@@ -934,7 +934,7 @@ public method aiRedoKillOthSession (
 public method aiRedoKillSession (
 )
 {
-   jBC: AI.REDO.KILL.SESSION
+    jBC: AI.REDO.KILL.SESSION
 }
 
 
@@ -942,7 +942,7 @@ public method aiRedoKillSession (
 public method aiRedoPrintTxnParamFields (
 )
 {
-   jBC: AI.REDO.PRINT.TXN.PARAM.FIELDS
+    jBC: AI.REDO.PRINT.TXN.PARAM.FIELDS
 }
 
 
@@ -950,16 +950,16 @@ public method aiRedoPrintTxnParamFields (
 public method aiRedoSetPrevPage (
 )
 {
-   jBC: AI.REDO.SET.PREV.PAGE
+    jBC: AI.REDO.SET.PREV.PAGE
 }
 
 
 
 public method aiRedoSetRolePage (
-   INOUT enqData string
+    INOUT enqData string
 )
 {
-   jBC: AI.REDO.SET.ROLE.PAGE
+    jBC: AI.REDO.SET.ROLE.PAGE
 }
 
 
@@ -967,19 +967,19 @@ public method aiRedoSetRolePage (
 public method redoArcFtCalcComm (
 )
 {
-   jBC: REDO.ARC.FT.CALC.COMM
+    jBC: REDO.ARC.FT.CALC.COMM
 }
 
 
 
 public method redoArcHtmlConsult (
-   INOUT rouArgs string,
-   INOUT rouResponse string,
-   INOUT responseType string,
-   INOUT styleSheet string
+    INOUT rouArgs string,
+    INOUT rouResponse string,
+    INOUT responseType string,
+    INOUT styleSheet string
 )
 {
-   jBC: REDO.ARC.HTML.CONSULT
+    jBC: REDO.ARC.HTML.CONSULT
 }
 
 
@@ -987,38 +987,38 @@ public method redoArcHtmlConsult (
 public method redoArcOveAccept (
 )
 {
-   jBC: REDO.ARC.OVE.ACCEPT
+    jBC: REDO.ARC.OVE.ACCEPT
 }
 
 
 
 public method redoArcPdfConsult (
-   INOUT rouArgs string,
-   INOUT rouResponse string,
-   INOUT responseType string,
-   INOUT styleSheet string
+    INOUT rouArgs string,
+    INOUT rouResponse string,
+    INOUT responseType string,
+    INOUT styleSheet string
 )
 {
-   jBC: REDO.ARC.PDF.CONSULT
+    jBC: REDO.ARC.PDF.CONSULT
 }
 
 
 
 public method redoAssignNcf (
-   INOUT yNcfId string,
-   INOUT yFtChargeAmt string
+    INOUT yNcfId string,
+    INOUT yFtChargeAmt string
 )
 {
-   jBC: REDO.ASSIGN.NCF
+    jBC: REDO.ASSIGN.NCF
 }
 
 
 
 public method redoAtCatchRequest (
-   INOUT actualRequest string
+    INOUT actualRequest string
 )
 {
-   jBC: REDO.AT.CATCH.REQUEST
+    jBC: REDO.AT.CATCH.REQUEST
 }
 
 
@@ -1026,7 +1026,7 @@ public method redoAtCatchRequest (
 public method redoAtUserParms (
 )
 {
-   jBC: REDO.AT.USER.PARMS
+    jBC: REDO.AT.USER.PARMS
 }
 
 
@@ -1034,7 +1034,7 @@ public method redoAtUserParms (
 public method redoAtUserParmsFields (
 )
 {
-   jBC: REDO.AT.USER.PARMS.FIELDS
+    jBC: REDO.AT.USER.PARMS.FIELDS
 }
 
 
@@ -1042,7 +1042,7 @@ public method redoAtUserParmsFields (
 public method redoAthFldVal (
 )
 {
-   jBC: REDO.ATH.FLD.VAL
+    jBC: REDO.ATH.FLD.VAL
 }
 
 
@@ -1050,7 +1050,7 @@ public method redoAthFldVal (
 public method redoAthFldValFields (
 )
 {
-   jBC: REDO.ATH.FLD.VAL.FIELDS
+    jBC: REDO.ATH.FLD.VAL.FIELDS
 }
 
 
@@ -1058,7 +1058,7 @@ public method redoAthFldValFields (
 public method redoAthHeader (
 )
 {
-   jBC: REDO.ATH.HEADER
+    jBC: REDO.ATH.HEADER
 }
 
 
@@ -1066,7 +1066,7 @@ public method redoAthHeader (
 public method redoAthHeaderFields (
 )
 {
-   jBC: REDO.ATH.HEADER.FIELDS
+    jBC: REDO.ATH.HEADER.FIELDS
 }
 
 
@@ -1074,7 +1074,7 @@ public method redoAthHeaderFields (
 public method redoAthProcessInfoFields (
 )
 {
-   jBC: REDO.ATH.PROCESS.INFO.FIELDS
+    jBC: REDO.ATH.PROCESS.INFO.FIELDS
 }
 
 
@@ -1082,17 +1082,17 @@ public method redoAthProcessInfoFields (
 public method redoAthRepGen (
 )
 {
-   jBC: REDO.ATH.REP.GEN
+    jBC: REDO.ATH.REP.GEN
 }
 
 
 
 public method redoAthSettleWrite (
-   INOUT yId string,
-   INOUT rArray string
+    INOUT yId string,
+    INOUT rArray string
 )
 {
-   jBC: REDO.ATH.SETTLE.WRITE
+    jBC: REDO.ATH.SETTLE.WRITE
 }
 
 
@@ -1100,7 +1100,7 @@ public method redoAthSettleWrite (
 public method redoAthSettlment (
 )
 {
-   jBC: REDO.ATH.SETTLMENT
+    jBC: REDO.ATH.SETTLMENT
 }
 
 
@@ -1108,7 +1108,7 @@ public method redoAthSettlment (
 public method redoAthStlmtFileProcessSelect (
 )
 {
-   jBC: REDO.ATH.STLMT.FILE.PROCESS.SELECT
+    jBC: REDO.ATH.STLMT.FILE.PROCESS.SELECT
 }
 
 
@@ -1116,7 +1116,7 @@ public method redoAthStlmtFileProcessSelect (
 public method redoAthStlmtMapping (
 )
 {
-   jBC: REDO.ATH.STLMT.MAPPING
+    jBC: REDO.ATH.STLMT.MAPPING
 }
 
 
@@ -1124,7 +1124,7 @@ public method redoAthStlmtMapping (
 public method redoAthStlmtMappingFields (
 )
 {
-   jBC: REDO.ATH.STLMT.MAPPING.FIELDS
+    jBC: REDO.ATH.STLMT.MAPPING.FIELDS
 }
 
 
@@ -1132,7 +1132,7 @@ public method redoAthStlmtMappingFields (
 public method redoAthStlmtParam (
 )
 {
-   jBC: REDO.ATH.STLMT.PARAM
+    jBC: REDO.ATH.STLMT.PARAM
 }
 
 
@@ -1140,7 +1140,7 @@ public method redoAthStlmtParam (
 public method redoAtmAcctVerify (
 )
 {
-   jBC: REDO.ATM.ACCT.VERIFY
+    jBC: REDO.ATM.ACCT.VERIFY
 }
 
 
@@ -1148,17 +1148,17 @@ public method redoAtmAcctVerify (
 public method redoAtmAdviceMsg (
 )
 {
-   jBC: REDO.ATM.ADVICE.MSG
+    jBC: REDO.ATM.ADVICE.MSG
 }
 
 
 
 public method redoAtmChkReversalRec (
-   INOUT yyAtmTxnRef string,
-   INOUT rAtmReversal string
+    INOUT yyAtmTxnRef string,
+    INOUT rAtmReversal string
 )
 {
-   jBC: REDO.ATM.CHK.REVERSAL.REC
+    jBC: REDO.ATM.CHK.REVERSAL.REC
 }
 
 
@@ -1166,16 +1166,16 @@ public method redoAtmChkReversalRec (
 public method redoAtmErrorLogParam (
 )
 {
-   jBC: REDO.ATM.ERROR.LOG.PARAM
+    jBC: REDO.ATM.ERROR.LOG.PARAM
 }
 
 
 
 public method redoChCanalafilf360 (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.CH.CANALAFILF360
+    jBC: REDO.CH.CANALAFILF360
 }
 
 
@@ -1183,7 +1183,7 @@ public method redoChCanalafilf360 (
 public method redoChChgprofile (
 )
 {
-   jBC: REDO.CH.CHGPROFILE
+    jBC: REDO.CH.CHGPROFILE
 }
 
 
@@ -1191,7 +1191,7 @@ public method redoChChgprofile (
 public method redoChChgprofileMig (
 )
 {
-   jBC: REDO.CH.CHGPROFILE.MIG
+    jBC: REDO.CH.CHGPROFILE.MIG
 }
 
 
@@ -1199,7 +1199,7 @@ public method redoChChgprofileMig (
 public method redoChConfig (
 )
 {
-   jBC: REDO.CH.CONFIG
+    jBC: REDO.CH.CONFIG
 }
 
 
@@ -1207,7 +1207,7 @@ public method redoChConfig (
 public method redoChGenusr (
 )
 {
-   jBC: REDO.CH.GENUSR
+    jBC: REDO.CH.GENUSR
 }
 
 
@@ -1215,7 +1215,7 @@ public method redoChGenusr (
 public method redoChGenusrvald (
 )
 {
-   jBC: REDO.CH.GENUSRVALD
+    jBC: REDO.CH.GENUSRVALD
 }
 
 
@@ -1223,7 +1223,7 @@ public method redoChGenusrvald (
 public method redoChGetarrid (
 )
 {
-   jBC: REDO.CH.GETARRID
+    jBC: REDO.CH.GETARRID
 }
 
 
@@ -1231,7 +1231,7 @@ public method redoChGetarrid (
 public method redoChInpChgprof (
 )
 {
-   jBC: REDO.CH.INP.CHGPROF
+    jBC: REDO.CH.INP.CHGPROF
 }
 
 
@@ -1239,7 +1239,7 @@ public method redoChInpChgprof (
 public method redoChPinadm (
 )
 {
-   jBC: REDO.CH.PINADM
+    jBC: REDO.CH.PINADM
 }
 
 
@@ -1247,7 +1247,7 @@ public method redoChPinadm (
 public method redoChPinadmFields (
 )
 {
-   jBC: REDO.CH.PINADM.FIELDS
+    jBC: REDO.CH.PINADM.FIELDS
 }
 
 
@@ -1255,7 +1255,7 @@ public method redoChPinadmFields (
 public method redoChPrevDbcm (
 )
 {
-   jBC: REDO.CH.PREV.DBCM
+    jBC: REDO.CH.PREV.DBCM
 }
 
 
@@ -1263,7 +1263,7 @@ public method redoChPrevDbcm (
 public method redoChPrevDbcmFields (
 )
 {
-   jBC: REDO.CH.PREV.DBCM.FIELDS
+    jBC: REDO.CH.PREV.DBCM.FIELDS
 }
 
 
@@ -1271,7 +1271,7 @@ public method redoChPrevDbcmFields (
 public method redoChVChgprof (
 )
 {
-   jBC: REDO.CH.V.CHGPROF
+    jBC: REDO.CH.V.CHGPROF
 }
 
 
@@ -1279,7 +1279,7 @@ public method redoChVChgprof (
 public method redoChVEmail (
 )
 {
-   jBC: REDO.CH.V.EMAIL
+    jBC: REDO.CH.V.EMAIL
 }
 
 
@@ -1287,7 +1287,7 @@ public method redoChVEmail (
 public method redoChVEmailCorp (
 )
 {
-   jBC: REDO.CH.V.EMAIL.CORP
+    jBC: REDO.CH.V.EMAIL.CORP
 }
 
 
@@ -1295,7 +1295,7 @@ public method redoChVEmailCorp (
 public method redoChannelDef (
 )
 {
-   jBC: REDO.CHANNEL.DEF
+    jBC: REDO.CHANNEL.DEF
 }
 
 
@@ -1303,7 +1303,7 @@ public method redoChannelDef (
 public method redoChannelDefFields (
 )
 {
-   jBC: REDO.CHANNEL.DEF.FIELDS
+    jBC: REDO.CHANNEL.DEF.FIELDS
 }
 
 
@@ -1311,7 +1311,7 @@ public method redoChannelDefFields (
 public method redoClearingHouse (
 )
 {
-   jBC: REDO.CLEARING.HOUSE
+    jBC: REDO.CLEARING.HOUSE
 }
 
 
@@ -1319,7 +1319,7 @@ public method redoClearingHouse (
 public method redoClearingHouseFields (
 )
 {
-   jBC: REDO.CLEARING.HOUSE.FIELDS
+    jBC: REDO.CLEARING.HOUSE.FIELDS
 }
 
 
@@ -1327,7 +1327,7 @@ public method redoClearingHouseFields (
 public method redoClearingStatus (
 )
 {
-   jBC: REDO.CLEARING.STATUS
+    jBC: REDO.CLEARING.STATUS
 }
 
 
@@ -1335,7 +1335,7 @@ public method redoClearingStatus (
 public method redoClearingStatusFields (
 )
 {
-   jBC: REDO.CLEARING.STATUS.FIELDS
+    jBC: REDO.CLEARING.STATUS.FIELDS
 }
 
 
@@ -1343,7 +1343,7 @@ public method redoClearingStatusFields (
 public method redoInterfaceAct (
 )
 {
-   jBC: REDO.INTERFACE.ACT
+    jBC: REDO.INTERFACE.ACT
 }
 
 
@@ -1351,7 +1351,7 @@ public method redoInterfaceAct (
 public method redoInterfaceActDetails (
 )
 {
-   jBC: REDO.INTERFACE.ACT.DETAILS
+    jBC: REDO.INTERFACE.ACT.DETAILS
 }
 
 
@@ -1359,7 +1359,7 @@ public method redoInterfaceActDetails (
 public method redoInterfaceActDetailsFields (
 )
 {
-   jBC: REDO.INTERFACE.ACT.DETAILS.FIELDS
+    jBC: REDO.INTERFACE.ACT.DETAILS.FIELDS
 }
 
 
@@ -1367,7 +1367,7 @@ public method redoInterfaceActDetailsFields (
 public method redoInterfaceActFields (
 )
 {
-   jBC: REDO.INTERFACE.ACT.FIELDS
+    jBC: REDO.INTERFACE.ACT.FIELDS
 }
 
 
@@ -1375,7 +1375,7 @@ public method redoInterfaceActFields (
 public method redoInterfaceC18Param (
 )
 {
-   jBC: REDO.INTERFACE.C18.PARAM
+    jBC: REDO.INTERFACE.C18.PARAM
 }
 
 
@@ -1383,7 +1383,7 @@ public method redoInterfaceC18Param (
 public method redoInterfaceC18ParamFields (
 )
 {
-   jBC: REDO.INTERFACE.C18.PARAM.FIELDS
+    jBC: REDO.INTERFACE.C18.PARAM.FIELDS
 }
 
 
@@ -1391,7 +1391,7 @@ public method redoInterfaceC18ParamFields (
 public method redoInterfaceMonTypeFields (
 )
 {
-   jBC: REDO.INTERFACE.MON.TYPE.FIELDS
+    jBC: REDO.INTERFACE.MON.TYPE.FIELDS
 }
 
 
@@ -1399,7 +1399,7 @@ public method redoInterfaceMonTypeFields (
 public method redoInterfaceNotify (
 )
 {
-   jBC: REDO.INTERFACE.NOTIFY
+    jBC: REDO.INTERFACE.NOTIFY
 }
 
 
@@ -1407,7 +1407,7 @@ public method redoInterfaceNotify (
 public method redoInterfaceNotifyFields (
 )
 {
-   jBC: REDO.INTERFACE.NOTIFY.FIELDS
+    jBC: REDO.INTERFACE.NOTIFY.FIELDS
 }
 
 
@@ -1415,7 +1415,7 @@ public method redoInterfaceNotifyFields (
 public method redoInterfaceParam (
 )
 {
-   jBC: REDO.INTERFACE.PARAM
+    jBC: REDO.INTERFACE.PARAM
 }
 
 
@@ -1423,7 +1423,7 @@ public method redoInterfaceParam (
 public method redoInterfaceParamFields (
 )
 {
-   jBC: REDO.INTERFACE.PARAM.FIELDS
+    jBC: REDO.INTERFACE.PARAM.FIELDS
 }
 
 
@@ -1431,7 +1431,7 @@ public method redoInterfaceParamFields (
 public method redoInterfaceParamValidate (
 )
 {
-   jBC: REDO.INTERFACE.PARAM.VALIDATE
+    jBC: REDO.INTERFACE.PARAM.VALIDATE
 }
 
 
@@ -1439,7 +1439,7 @@ public method redoInterfaceParamValidate (
 public method redoInterfaceParameter (
 )
 {
-   jBC: REDO.INTERFACE.PARAMETER
+    jBC: REDO.INTERFACE.PARAMETER
 }
 
 
@@ -1447,7 +1447,7 @@ public method redoInterfaceParameter (
 public method redoInterfaceParameterFields (
 )
 {
-   jBC: REDO.INTERFACE.PARAMETER.FIELDS
+    jBC: REDO.INTERFACE.PARAMETER.FIELDS
 }
 
 
@@ -1455,7 +1455,7 @@ public method redoInterfaceParameterFields (
 public method redoInterfaceReferFields (
 )
 {
-   jBC: REDO.INTERFACE.REFER.FIELDS
+    jBC: REDO.INTERFACE.REFER.FIELDS
 }
 
 
@@ -1463,7 +1463,7 @@ public method redoInterfaceReferFields (
 public method redoInterfaceSmailAuthorise (
 )
 {
-   jBC: REDO.INTERFACE.SMAIL.AUTHORISE
+    jBC: REDO.INTERFACE.SMAIL.AUTHORISE
 }
 
 
@@ -1471,7 +1471,7 @@ public method redoInterfaceSmailAuthorise (
 public method redoInterfaceSmail (
 )
 {
-   jBC: REDO.INTERFACE.SMAIL
+    jBC: REDO.INTERFACE.SMAIL
 }
 
 
@@ -1479,7 +1479,7 @@ public method redoInterfaceSmail (
 public method redoInterfaceSmailFields (
 )
 {
-   jBC: REDO.INTERFACE.SMAIL.FIELDS
+    jBC: REDO.INTERFACE.SMAIL.FIELDS
 }
 
 
@@ -1487,7 +1487,7 @@ public method redoInterfaceSmailFields (
 public method redoInterfaceSmailValidate (
 )
 {
-   jBC: REDO.INTERFACE.SMAIL.VALIDATE
+    jBC: REDO.INTERFACE.SMAIL.VALIDATE
 }
 
 
@@ -1495,16 +1495,16 @@ public method redoInterfaceSmailValidate (
 public method redoInterfaceValId (
 )
 {
-   jBC: REDO.INTERFACE.VAL.ID
+    jBC: REDO.INTERFACE.VAL.ID
 }
 
 
 
 public method redoInternalTaxPdfGen (
-   INOUT yArray string
+    INOUT yArray string
 )
 {
-   jBC: REDO.INTERNAL.TAX.PDF.GEN
+    jBC: REDO.INTERNAL.TAX.PDF.GEN
 }
 
 
@@ -1512,7 +1512,7 @@ public method redoInternalTaxPdfGen (
 public method redoIntransitChq (
 )
 {
-   jBC: REDO.INTRANSIT.CHQ
+    jBC: REDO.INTRANSIT.CHQ
 }
 
 
@@ -1520,7 +1520,7 @@ public method redoIntransitChq (
 public method redoIntransitChqFields (
 )
 {
-   jBC: REDO.INTRANSIT.CHQ.FIELDS
+    jBC: REDO.INTRANSIT.CHQ.FIELDS
 }
 
 
@@ -1528,7 +1528,7 @@ public method redoIntransitChqFields (
 public method redoIntransitLockFields (
 )
 {
-   jBC: REDO.INTRANSIT.LOCK.FIELDS
+    jBC: REDO.INTRANSIT.LOCK.FIELDS
 }
 
 
@@ -1536,7 +1536,7 @@ public method redoIntransitLockFields (
 public method redoIntrfRepLine (
 )
 {
-   jBC: REDO.INTRF.REP.LINE
+    jBC: REDO.INTRF.REP.LINE
 }
 
 
@@ -1544,7 +1544,7 @@ public method redoIntrfRepLine (
 public method redoIntrfRepLineFields (
 )
 {
-   jBC: REDO.INTRF.REP.LINE.FIELDS
+    jBC: REDO.INTRF.REP.LINE.FIELDS
 }
 
 
@@ -1552,34 +1552,34 @@ public method redoIntrfRepLineFields (
 public method redoInvstAcctRtn (
 )
 {
-   jBC: REDO.INVST.ACCT.RTN
+    jBC: REDO.INVST.ACCT.RTN
 }
 
 
 
 public method redoIvrBaldisponible (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.BALDISPONIBLE
+    jBC: REDO.IVR.BALDISPONIBLE
 }
 
 
 
 public method redoIvrConsultaprest (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.CONSULTAPREST
+    jBC: REDO.IVR.CONSULTAPREST
 }
 
 
 
 public method redoIvrCuentaexiste (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.CUENTAEXISTE
+    jBC: REDO.IVR.CUENTAEXISTE
 }
 
 
@@ -1587,16 +1587,16 @@ public method redoIvrCuentaexiste (
 public method redoIvrEncpwd (
 )
 {
-   jBC: REDO.IVR.ENCPWD
+    jBC: REDO.IVR.ENCPWD
 }
 
 
 
 public method redoIvrEstadoctadeb (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.ESTADOCTADEB
+    jBC: REDO.IVR.ESTADOCTADEB
 }
 
 
@@ -1604,7 +1604,7 @@ public method redoIvrEstadoctadeb (
 public method redoIvrGetInvestterm (
 )
 {
-   jBC: REDO.IVR.GET.INVESTTERM
+    jBC: REDO.IVR.GET.INVESTTERM
 }
 
 
@@ -1612,7 +1612,7 @@ public method redoIvrGetInvestterm (
 public method redoIvrGetMonthint (
 )
 {
-   jBC: REDO.IVR.GET.MONTHINT
+    jBC: REDO.IVR.GET.MONTHINT
 }
 
 
@@ -1620,16 +1620,16 @@ public method redoIvrGetMonthint (
 public method redoIvrGettpdet (
 )
 {
-   jBC: REDO.IVR.GETTPDET
+    jBC: REDO.IVR.GETTPDET
 }
 
 
 
 public method redoIvrHistoricocta (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.HISTORICOCTA
+    jBC: REDO.IVR.HISTORICOCTA
 }
 
 
@@ -1637,7 +1637,7 @@ public method redoIvrHistoricocta (
 public method redoIvrInpCcard (
 )
 {
-   jBC: REDO.IVR.INP.CCARD
+    jBC: REDO.IVR.INP.CCARD
 }
 
 
@@ -1645,7 +1645,7 @@ public method redoIvrInpCcard (
 public method redoIvrParamsAlloper (
 )
 {
-   jBC: REDO.IVR.PARAMS.ALLOPER
+    jBC: REDO.IVR.PARAMS.ALLOPER
 }
 
 
@@ -1653,7 +1653,7 @@ public method redoIvrParamsAlloper (
 public method redoIvrParamsAlloperFields (
 )
 {
-   jBC: REDO.IVR.PARAMS.ALLOPER.FIELDS
+    jBC: REDO.IVR.PARAMS.ALLOPER.FIELDS
 }
 
 
@@ -1661,7 +1661,7 @@ public method redoIvrParamsAlloperFields (
 public method redoIvrParams (
 )
 {
-   jBC: REDO.IVR.PARAMS
+    jBC: REDO.IVR.PARAMS
 }
 
 
@@ -1669,7 +1669,7 @@ public method redoIvrParams (
 public method redoIvrReceptor (
 )
 {
-   jBC: REDO.IVR.RECEPTOR
+    jBC: REDO.IVR.RECEPTOR
 }
 
 
@@ -1677,25 +1677,25 @@ public method redoIvrReceptor (
 public method redoIvrReceptorFields (
 )
 {
-   jBC: REDO.IVR.RECEPTOR.FIELDS
+    jBC: REDO.IVR.RECEPTOR.FIELDS
 }
 
 
 
 public method redoIvrRespTws (
-   INOUT yResponse string
+    INOUT yResponse string
 )
 {
-   jBC: REDO.IVR.RESP.TWS
+    jBC: REDO.IVR.RESP.TWS
 }
 
 
 
 public method redoIvrRespTws2 (
-   INOUT yResponse string
+    INOUT yResponse string
 )
 {
-   jBC: REDO.IVR.RESP.TWS2
+    jBC: REDO.IVR.RESP.TWS2
 }
 
 
@@ -1703,7 +1703,7 @@ public method redoIvrRespTws2 (
 public method redoIvrVAccbaldr (
 )
 {
-   jBC: REDO.IVR.V.ACCBALDR
+    jBC: REDO.IVR.V.ACCBALDR
 }
 
 
@@ -1711,7 +1711,7 @@ public method redoIvrVAccbaldr (
 public method redoIvrVAccstabal (
 )
 {
-   jBC: REDO.IVR.V.ACCSTABAL
+    jBC: REDO.IVR.V.ACCSTABAL
 }
 
 
@@ -1719,16 +1719,16 @@ public method redoIvrVAccstabal (
 public method redoIvrVAccstabaldr (
 )
 {
-   jBC: REDO.IVR.V.ACCSTABALDR
+    jBC: REDO.IVR.V.ACCSTABALDR
 }
 
 
 
 public method redoIvrProcess (
-   INOUT rData string
+    INOUT rData string
 )
 {
-   jBC: REDO.IVR.PROCESS
+    jBC: REDO.IVR.PROCESS
 }
 
 
@@ -1736,6 +1736,12 @@ public method redoIvrProcess (
 public method redoChSentEmail (
 )
 {
-   jBC: REDO.CH.SENT.EMAIL
+    jBC: REDO.CH.SENT.EMAIL
 }
 
+
+public method redoChNewpwd (
+)
+{
+    jBC: REDO.CH.NEWPWD
+}

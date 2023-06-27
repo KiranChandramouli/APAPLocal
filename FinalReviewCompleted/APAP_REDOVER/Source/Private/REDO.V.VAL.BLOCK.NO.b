@@ -1,14 +1,14 @@
-* @ValidationCode : MjozNTM0MDA2NDc6Q3AxMjUyOjE2ODI2OTE1MTc1NTY6SVRTUzotMTotMTozNDM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:37
+* @ValidationCode : MjoxMTQ4Njg2NDc0OkNwMTI1MjoxNjg1NTQzNjQ3OTYxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 343
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.BLOCK.NO
@@ -155,7 +155,8 @@ PROCESS:
 *******************************************
 *If the customer set a credit number
 ******************************************
-    CALL APAP.REDOVER.REDO.V.VAL.DISPO.COLL     ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOVER.redoVValDispoColl()     ;*R22 MANUAL CODE CONVERSION
+  
 *****************************************
 
 RETURN

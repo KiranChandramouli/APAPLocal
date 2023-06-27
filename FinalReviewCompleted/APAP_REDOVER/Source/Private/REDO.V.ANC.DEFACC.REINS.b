@@ -126,7 +126,7 @@ PROCEED.NEXT.PARA:
     IF R.TELLER THEN
 *
         R.NEW(TT.TE.AMOUNT.LOCAL.1) = R.TELLER<TT.TE.AMOUNT.LOCAL.1>
-        CALL APAP.TAM.redoHandleCommTaxFields();* R22 Manual conversion
+        APAP.TAM.redoHandleCommTaxFields();* R22 Manual conversion
         R.NEW(TT.TE.TELLER.ID.1)    = R.TEL.US
         R.NEW(TT.TE.CURRENCY.1)     = R.TELLER<TT.TE.CURRENCY.1>
         R.NEW(TT.TE.CHEQUE.NUMBER)  = R.TELLER<TT.TE.CHEQUE.NUMBER>
@@ -160,7 +160,7 @@ COND.ELSE.PARAT:
     CALL F.READ(FN.TELLER,Y.HIST.ID,R.TELLER,F.TELLER,TEL.ERRR)
     IF R.TELLER NE "" THEN
         R.NEW(TT.TE.AMOUNT.LOCAL.1) = R.TELLER<TT.TE.AMOUNT.LOCAL.1>
-        CALL APAP.TAM.redoHandleCommTaxFields();* R22 Manual conversion
+        APAP.TAM.redoHandleCommTaxFields();* R22 Manual conversion
         R.NEW(TT.TE.TELLER.ID.1)    = R.TEL.US
         R.NEW(TT.TE.CURRENCY.1)     = R.TELLER<TT.TE.CURRENCY.1>
         R.NEW(TT.TE.ACCOUNT.1)      = R.TELLER<TT.TE.ACCOUNT.1>

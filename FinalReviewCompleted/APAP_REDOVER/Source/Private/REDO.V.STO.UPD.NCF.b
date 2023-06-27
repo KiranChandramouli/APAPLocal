@@ -51,7 +51,7 @@ INIT:
     Y.ID.NEW=ID.NEW
 
 * PACS00313543 - STO Fix
-* CALL APAP.TAM.REDO.STO.NCF(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
+* APAP.TAM.REDO.STO.NCF(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
 * PACS00313543 - STO Fix
 
 

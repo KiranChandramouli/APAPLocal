@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4NDYxMTU0NDI6Q3AxMjUyOjE2ODI1NzQ4MjIxNTc6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:23:42
+* @ValidationCode : MjotNjM5NTE4NzA6Q3AxMjUyOjE2ODU1NDQxNDI5MDk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOFILE.GTEE.MVMT.RPT(Y.OUT.ARRAY)
@@ -47,6 +47,7 @@ SUBROUTINE REDO.APAP.NOFILE.GTEE.MVMT.RPT(Y.OUT.ARRAY)
     $INSERT I_F.AA.ACCOUNT.DETAILS
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $USING APAP.TAM
+    $USING APAP.AA
 *-------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -267,7 +268,7 @@ GET.AA.ARR.TERM.AMOUNT:
     PROPERTY.AMT    = ''
     R.AMT.CONDITION = ''
     ERR.AMT.MSG     = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.AMT.ID,EFF.AMT.DATE,PROP.AMT.CLASS,PROPERTY.AMT,R.AMT.CONDITION,ERR.AMT.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.AMT.ID,EFF.AMT.DATE,PROP.AMT.CLASS,PROPERTY.AMT,R.AMT.CONDITION,ERR.AMT.MSG)
     Y.AMT.COLL.ID = R.AMT.CONDITION<AA.AMT.LOCAL.REF,L.AA.COL.POS>
     IF Y.AMT.COLL.ID EQ COLLATERAL.ID THEN
         Y.CONT.FLAG = 1
@@ -299,7 +300,7 @@ GET.AA.ARR.ACCOUNT:
         R.CONDITION = ''
         ERR.MSG     = ''
 
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.ACCOUNT,ERR.MSG)
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.ACCOUNT,ERR.MSG)
 
         IF SEL.AA.ID THEN
             Y.LOAN.NUMBER<-1> = SEL.AA.ID

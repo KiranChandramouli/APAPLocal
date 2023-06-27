@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxODEzMzAyMzM3OkNwMTI1MjoxNjgzMDMzNjEzNzM1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:50:13
+* @ValidationCode : MjoxODEzMzAyMzM3OkNwMTI1MjoxNjg0ODM2MDQ3NTA5OklUU1M6LTE6LTE6LTkwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -90
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -81,8 +81,8 @@ RETURN
 ********************
 GET.CASH.TELLER.TXN:
 ********************
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.CTT(Y.CCY.LIST,Y.AGENCY,Y.FINAL.ARRAY)
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitCtt(Y.CCY.LIST,Y.AGENCY,Y.FINAL.ARRAY)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.CTT(Y.CCY.LIST,Y.AGENCY,Y.FINAL.ARRAY)
+    APAP.REDOAPAP.redoApapNofCashWindowWitCtt(Y.CCY.LIST,Y.AGENCY,Y.FINAL.ARRAY)
 RETURN
 *--------------------------------------------------------------------------------------------------------
 ***************************
@@ -91,8 +91,8 @@ GET.SAV.CURR.DEBIT.DETAILS:
 * In this para of the code, the TELLER TRANSACTION details are read and checked if the transaction can be
 ** consdiered or not for calculations and display
 
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.SAV.CUR(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitSavCur(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.SAV.CUR(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowWitSavCur(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
 RETURN
 *--------------------------------------------------------------------------------------------------------
 *****************
@@ -108,8 +108,8 @@ ADD.STATIC.TEXT:
 ****************
 * In this para of the code, a CALL is made to an routine to add the static text in the report for display
 
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.TEXT.R32(Y.CCY.LIST,Y.FINAL.ARRAY) ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitTextR32(Y.CCY.LIST,Y.FINAL.ARRAY)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.TEXT.R32(Y.CCY.LIST,Y.FINAL.ARRAY) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitTextR32(Y.CCY.LIST,Y.FINAL.ARRAY)
     Y.CNT.FIN = DCOUNT(Y.FINAL.ARRAY,@FM)
     Y.CNTT = 0
     LOOP

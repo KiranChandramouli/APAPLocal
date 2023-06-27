@@ -111,7 +111,7 @@ RETURN
 CHECK.REPAYMENT.SCHEDULE:
 ***********************
 
-    CALL APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion-Call Method Format Modified
     R.AA.PAYMENT.SCHEDULE.APP = FIELD(OUT.RECORD,"*",3)
 
     Y.PAYMENT.TYPE =  R.AA.PAYMENT.SCHEDULE.APP<AA.PS.PAYMENT.TYPE>

@@ -68,7 +68,7 @@ PROCESS:
         END ELSE
             CHECK.NUMERIC = NUM(Y.L.CU.NOUNICO)
             IF CHECK.NUMERIC EQ 1 THEN
-                CALL APAP.LAPAP.lapapSCalcDigitPadron(Y.L.CU.NOUNICO)    ;*R22 MANUAL CODE CONVERSION
+                APAP.LAPAP.lapapSCalcDigitPadron(Y.L.CU.NOUNICO)    ;*R22 MANUAL CODE CONVERSION
             END ELSE
                 GOSUB CHECK.COUNT
             END

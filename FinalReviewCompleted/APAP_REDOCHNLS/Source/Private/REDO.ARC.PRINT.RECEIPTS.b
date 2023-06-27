@@ -1,12 +1,12 @@
-* @ValidationCode : MjotOTE4NDQ2ODE0OkNwMTI1MjoxNjgzNTI4NjQxODY3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 12:20:41
+* @ValidationCode : MjotOTE4NDQ2ODE0OkNwMTI1MjoxNjg0ODU0MDUxMzQ5OklUU1M6LTE6LTE6Mjg5OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 289
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -59,8 +59,8 @@ SUBROUTINE REDO.ARC.PRINT.RECEIPTS(ROU.ARGS,ROU.RESPONSE,RESPONSE.TYPE,STYLE.SHE
     FOOTER.FLD = ''
     Y.XSL = ''
 
-*CALL APAP.REDOCHNLS.AI.REDO.PRINT.RECEIPTS(PDF.VER.ID,PDF.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
-    CALL APAP.REDOCHNLS.aiRedoPrintReceipts(PDF.VER.ID,PDF.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
+*APAP.REDOCHNLS.AI.REDO.PRINT.RECEIPTS(PDF.VER.ID,PDF.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
+    APAP.REDOCHNLS.aiRedoPrintReceipts(PDF.VER.ID,PDF.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
     IF Y.XSL EQ '' THEN
         E = "AI-PRINT.PDF"
         RETURN

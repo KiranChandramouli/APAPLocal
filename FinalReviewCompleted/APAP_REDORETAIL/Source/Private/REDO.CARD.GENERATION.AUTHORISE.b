@@ -229,8 +229,8 @@ PROCESS.PARA:
             CALL F.RELEASE(FN.REDO.CARD.REG.STK,Y.STOCK.ID,F.REDO.CARD.REG.STK)
         END
 
-*CALL APAP.REDORETAIL.REDO.CARD.GENERATION.WS
-        CALL APAP.REDORETAIL.redoCardGenerationWs();*MANUAL R22 CODE CONVERSION
+*APAP.REDORETAIL.REDO.CARD.GENERATION.WS
+        APAP.REDORETAIL.redoCardGenerationWs();*MANUAL R22 CODE CONVERSION
 
 ****************************************************************************************************************
         IF R.NEW(REDO.CARD.GEN.RESPONSE.MSG) EQ 'ERROR' THEN

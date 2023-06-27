@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTE3OTgzMTA4OkNwMTI1MjoxNjgyNTk4OTkzMTgxOmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 18:06:33
+* @ValidationCode : MjotMTE3OTgzMTA4OkNwMTI1MjoxNjg0ODU2ODcwMjIwOklUU1M6LTE6LTE6MTk0NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 21:17:50
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1947
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -359,12 +359,12 @@ GET.CUSTOMER.DETAILS:
 *-------------------*
 *
     CUSTOMER.TYPE = R.CUSTOMER
-    CALL APAP.LAPAP.drReg213if02GetCustType(CUSTOMER.TYPE,TIPO.CL.POS);*R22 MANUAL CODE CONVERSION
+    APAP.LAPAP.drReg213if02GetCustType(CUSTOMER.TYPE,TIPO.CL.POS);*R22 MANUAL CODE CONVERSION
     
     CUST.TYPE = FMT(CUSTOMER.TYPE,'2L')
     CUSTOMER.CODE = R.CUSTOMER
-*CALL APAP.DRREG.DR.REG.213IF02.GET.CUST.CODE(CUSTOMER.CODE,CIDENT.POS,RNC.POS)
-    CALL APAP.DRREG.drReg213if02GetCustCode(CUSTOMER.CODE,CIDENT.POS,RNC.POS) ;*R22 MANUAL CODE CONVERSION
+*APAP.DRREG.DR.REG.213IF02.GET.CUST.CODE(CUSTOMER.CODE,CIDENT.POS,RNC.POS)
+    APAP.DRREG.drReg213if02GetCustCode(CUSTOMER.CODE,CIDENT.POS,RNC.POS) ;*R22 MANUAL CODE CONVERSION
     CUST.CODE = FMT(CUSTOMER.CODE,'17L')
     GOSUB GET.NAMES
     CUST.NAME = FMT(NAMES,'50L')

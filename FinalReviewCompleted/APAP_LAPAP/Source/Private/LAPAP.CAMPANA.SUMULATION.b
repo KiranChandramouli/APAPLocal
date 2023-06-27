@@ -29,7 +29,7 @@ RETURN
 GET.CAMPANA.CUSTOMER:
 ********************
     AA.ID = COMI
-    CALL APAP.AA.redoBConLnsByDebtorAaRecs(AA.ID,OUT.RECORD) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.AA.redoBConLnsByDebtorAaRecs(AA.ID,OUT.RECORD) ;*R22 Manual Code Conversion-Call Method Format Modified
     R.AA.CUSTOMER             = FIELD(OUT.RECORD,"*",9)
 RETURN
 GET.TIPO.CAMPANA:

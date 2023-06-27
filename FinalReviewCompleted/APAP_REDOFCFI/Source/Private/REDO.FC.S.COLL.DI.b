@@ -82,7 +82,7 @@ PROCESS:
 
     GOSUB TIPO.GARANTIA
     GOSUB EXTRACT.PRODUCT.DET
-    CALL APAP.REDOFCFI.redoFcSCollDiMontDisp() ;*R22 Manual Conversion - Added APAP.REDOFCFI
+    APAP.REDOFCFI.redoFcSCollDiMontDisp() ;*R22 Manual Conversion - Added APAP.REDOFCFI
      
     Y.I = 1
     LOOP

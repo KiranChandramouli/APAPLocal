@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMjY0NzgwMDk4OkNwMTI1MjoxNjgzODc3OTgxNDM4OklUU1M6LTE6LTE6MTEwODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 13:23:01
+* @ValidationCode : MjoxNjU0NDIxMzE0OkNwMTI1MjoxNjg0ODU3MzA3MzcwOklUU1M6LTE6LTE6MTEwODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 21:25:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -102,7 +102,7 @@ CHK.AA.ARR.ID:
     END
 
     ARRAY.VAL = ''; Y.LOAN.STATUS = ''; Y.CLOSE.LN.FLG = 0
-    CALL APAP.TAM.RedoRptClseWriteLoans(Y.AA.ARR.ID,R.AA.ARRANGEMENT,ARRAY.VAL);* R22 Manual conversion
+    APAP.TAM.redoRptClseWriteLoans(Y.AA.ARR.ID,R.AA.ARRANGEMENT,ARRAY.VAL);* R22 Manual conversion
     Y.LOAN.STATUS = ARRAY.VAL<1>
     Y.CLOSE.LN.FLG = ARRAY.VAL<2>
     IF Y.LOAN.STATUS EQ "Write-off" THEN
@@ -135,7 +135,7 @@ GET.COMMON.FIELDS:
     END
     Y.ARRAY.VAL = ''; Y.PREV.ACCOUNT = ''
     YACCT.GRP = R.ACCOUNT:"###":R.AA.ARRANGEMENT
-    CALL APAP.TAM.RedoRptAcctAltLoans(YACCT.GRP,Y.PREV.ACCOUNT);* R22 Manual conversion
+    APAP.TAM.redoRptAcctAltLoans(YACCT.GRP,Y.PREV.ACCOUNT);* R22 Manual conversion
     IF NOT(Y.PREV.ACCOUNT) THEN
         Y.PREV.ACCOUNT = Y.NROPRESTAMO
     END
@@ -425,7 +425,7 @@ RAISE.ERR.C.22:
     ID.PROC   = ''
     EX.USER   = ''
     EX.PC     = ''
-    CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - Modified CALL routine format
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - Modified CALL routine format
 *
 RETURN
 *------------------------------------------------------------------Final End-------------------------------------------

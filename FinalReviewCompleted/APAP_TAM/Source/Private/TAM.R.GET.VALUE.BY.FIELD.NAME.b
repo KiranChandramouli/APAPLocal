@@ -41,7 +41,7 @@ PROCESS:
 *CALL TAM.R.FIELD.NAME.TO.NUMBER(tableName, fieldName, fieldNo)
 *R22 MANUAL CONVERSION
 *CALL TAM.BP.TAM.R.FIELD.NAME.TO.NUMBER(tableName, fieldName, fieldNo) ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.TAM.tamRFieldNameToNumber(tableName, fieldName, fieldNo) ;*R22 MANUAL CODE CONVERSION
+    APAP.TAM.tamRFieldNameToNumber(tableName, fieldName, fieldNo) ;*R22 MANUAL CODE CONVERSION
     IF fieldNo GT 0 THEN
         fieldValue = recSource(fieldNo)
     END

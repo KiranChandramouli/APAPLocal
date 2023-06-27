@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDkwNjE4NjQ2OkNwMTI1MjoxNjgzMDM1NTM5NzE5OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 19:22:19
+* @ValidationCode : MjotNDkwNjE4NjQ2OkNwMTI1MjoxNjg0ODQ1NjI0OTYwOklUU1M6LTE6LTE6NzY0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 18:10:24
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 764
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -70,14 +70,14 @@ PROCESS:
     IF NUM(Y.AA.ID[1,2]) THEN
         IN.ARR.ID = ''
         
-        CALL APAP.TAM.redoConvertAccount(Y.AA.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(Y.AA.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
 *        CALL REDO.CONVERT.ACCOUNT(Y.AA.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)   ;*R22 MANUAL CODE CONVERSION
         ARR.ID   = OUT.ID
         Y.ACC.ID = Y.AA.ID
     END ELSE
         IN.ACC.ID = ''
         
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT)
 *        CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT)   ;*R22 MANUAL CODE CONVERSION
         ARR.ID   = Y.AA.ID
         Y.ACC.ID = OUT.ID

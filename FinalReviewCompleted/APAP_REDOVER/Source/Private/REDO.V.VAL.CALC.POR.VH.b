@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNTQ2MTgxMzA2OkNwMTI1MjoxNjgyNDEyMzU2OTIxOkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:56
+* @ValidationCode : MjotMjAwNDQxMTUxMzpDcDEyNTI6MTY4NTU0MzY0ODEwNzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -151,7 +151,7 @@ PROCESS:
 ***********************************
 *If the customer chuse a credit number
 ***************************************
-    CALL APAP.REDOVER.REDO.V.VAL.DISPO.COLL ;* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValDispoColl() ;* R22 Manual Conversion - CALL method format modified
 **************************************
 
 

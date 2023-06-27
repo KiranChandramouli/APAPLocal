@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNjg3NzM1NzE0OkNwMTI1MjoxNjgzNTI4NzA2MzAxOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 12:21:46
+* @ValidationCode : MjotNjg3NzM1NzE0OkNwMTI1MjoxNjg0ODU0MDUxNTU5OklUU1M6LTE6LTE6LTEwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -10
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -47,8 +47,8 @@ INIT:
 *------------------------------------------------------------------------------------
 
 
-*CALL APAP.REDOCHNLS.REDO.ATH.VAL.DELAY ;*Manual R22 conversion
-    CALL APAP.REDOCHNLS.redoAthValDelay();*Manual R22 conversion
+*APAP.REDOCHNLS.REDO.ATH.VAL.DELAY ;*Manual R22 conversion
+    APAP.REDOCHNLS.redoAthValDelay();*Manual R22 conversion
 
 
     IF NOT(Y.FIELD.VALUE) THEN

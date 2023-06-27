@@ -70,7 +70,7 @@ SUBROUTINE LAPAP.VERIFY.AZ.STATUS2
     FLD1 = R.ACC<AC.LOCAL.REF,POS1>
     FLD2 = R.ACC<AC.LOCAL.REF,POS2>
 
-    CALL APAP.LAPAP.lapapVerifyCategory(ACC,CTG);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyCategory(ACC,CTG);* R22 Manual conversion
     IF CTG EQ 2 THEN
 
         IF FLD2 NE "" THEN        ;*R22 AUTO CODE CONVERSION

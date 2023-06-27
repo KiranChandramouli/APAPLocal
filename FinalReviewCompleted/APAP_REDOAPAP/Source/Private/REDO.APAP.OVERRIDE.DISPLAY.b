@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTUwMTYxMjE4OTpDcDEyNTI6MTY4MjU3Mjg0NjY3ODpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:50:46
+* @ValidationCode : MjotNzY4MTAwMjM2OkNwMTI1MjoxNjg1NTQ0MTQ4MDEyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -122,7 +122,7 @@ PROCESS:
         END
     END
 
-    CALL APAP.REDOENQ.RedoEFormSelStmt(FN.ACCOUNT.CLOSURE, '', '', SEL.ACC.CLOSE)
+    APAP.REDOENQ.redoEFormSelStmt(FN.ACCOUNT.CLOSURE, '', '', SEL.ACC.CLOSE);* R22 Manual conversion
     CALL EB.READLIST(SEL.ACC.CLOSE,ACC.LIST,'',NO.OF.REC,SEL.ERR)
 *PACS00164629 - E
 

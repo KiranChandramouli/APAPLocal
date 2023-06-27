@@ -245,18 +245,18 @@ UPDATE.LOAN.RETURN.CHQ:
 
     IN.ARR.ID = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
     ARR.ID = OUT.ID
 
     IN.PROPERTY.CLASS='OVERDUE'
     PROPERTY=''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR);* R22 Manual conversion
 
     EFF.DATE = ''
     PROP.CLASS='OVERDUE'
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Conversion- CALL routine format changed
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Conversion- CALL routine format changed
     Y.STATUS = 'ThreeReturnedChecks'
     LOCATE Y.STATUS IN R.CONDITION<AA.OD.LOCAL.REF,POS.L.LOAN.COND,1> SETTING COND.POS ELSE
         ACT.ID = "LENDING-UPDATE-":PROPERTY
@@ -299,7 +299,7 @@ POST.OFS:
 
     IN.ARR.ID = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
     ARR.ID = OUT.ID
     IF Y.RET.CHQ.PROP THEN
         APP.NAME       = 'AA.ARRANGEMENT.ACTIVITY'

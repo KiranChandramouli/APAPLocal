@@ -92,7 +92,7 @@ VALIDATE:
 *
 
 *CALL REDO.FC.S.VALID.COLL
-    CALL APAP.TAM.redoFcSValidColl() ;*R22 Manual Conversion
+    APAP.TAM.redoFcSValidColl() ;*R22 Manual Conversion
 
 RETURN
 *-----------------------------------------------------------------------------

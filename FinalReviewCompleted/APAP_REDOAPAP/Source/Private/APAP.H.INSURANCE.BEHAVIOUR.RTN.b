@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMzc5Nzc5NDYxOkNwMTI1MjoxNjgzMDMwNDI2NDIyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 17:57:06
+* @ValidationCode : MjoxMzc5Nzc5NDYxOkNwMTI1MjoxNjg0ODM2MDMxMTQ2OklUU1M6LTE6LTE6NTI2OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 526
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -68,8 +68,8 @@ SUBROUTINE APAP.H.INSURANCE.BEHAVIOUR.RTN
     GOSUB CHECK.PRELIM.CONDITIONS
     IF PROCESS.GOAHEAD THEN
         GOSUB PROCESS
-        CALL APAP.REDOAPAP.apapActivarTipo2() ;*R22 MANUAL CODE CONVERSION
-*       CALL APAP.REDOAPAP.APAP.ACTIVAR.TIPO.2
+        APAP.REDOAPAP.apapActivarTipo2() ;*R22 MANUAL CODE CONVERSION
+*       APAP.REDOAPAP.APAP.ACTIVAR.TIPO.2
     END
 
 *
@@ -96,8 +96,8 @@ PROCESS:
     END
     FIELD.NO.TEMP1=FIELD.NO
 
-*CALL APAP.REDOAPAP.APAP.H.INS.BEHA.CHECK.RTN(CLASS.POLICY, POLICY.TYPE) ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.apapHInsBehaCheckRtn(CLASS.POLICY, POLICY.TYPE)
+*APAP.REDOAPAP.APAP.H.INS.BEHA.CHECK.RTN(CLASS.POLICY, POLICY.TYPE) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.apapHInsBehaCheckRtn(CLASS.POLICY, POLICY.TYPE)
     COMI=CLASS.POLICY
     R.NEW(FIELD.NO.TEMP)=POLICY.TYPE
 

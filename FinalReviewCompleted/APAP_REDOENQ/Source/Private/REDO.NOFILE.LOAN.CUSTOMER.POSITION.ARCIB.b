@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNzgwODIyMzE0OkNwMTI1MjoxNjg0ODUxOTg4NTU2OklUU1M6LTE6LTE6MTEzMDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
+* @ValidationCode : Mjo1ODUxNDI2OTY6Q3AxMjUyOjE2ODU1NDMxMzEzNDk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1130
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.LOAN.CUSTOMER.POSITION.ARCIB(Y.ARRAY.OUT)
@@ -46,6 +46,7 @@ SUBROUTINE REDO.NOFILE.LOAN.CUSTOMER.POSITION.ARCIB(Y.ARRAY.OUT)
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $INSERT I_System
     $USING APAP.TAM
+    $USING APAP.AA
 
 
     GOSUB INIT
@@ -148,7 +149,7 @@ GET.ARRANGEMENT:
                 Y.ARRAY:='*':Y.PRODUCT
                 Y.ARRAY:='*':Y.ROLE.CUS
                 Y.ARRAY:='*':Y.TERM.AMOUNT
-                CALL APAP.TAM.redoAaGetOutBalance(Y.ARR.ID,Y.BALANCE)
+                APAP.TAM.redoAaGetOutBalance(Y.ARR.ID,Y.BALANCE)
                 Y.ARRAY:='*':Y.BALANCE
 *GOSUB GET.NEXT.PAYMENT
                 Y.ARRAY:='*':Y.NEXT.PAY.AMT
@@ -200,7 +201,7 @@ CHECK.AA:
             Y.ARRAY:='*':Y.PROD.DESC
             Y.ARRAY:='*':Y.ROLE.CUS
             Y.ARRAY:='*':Y.TERM.AMOUNT
-            CALL APAP.TAM.redoAaGetOutBalance(Y.ARR.ID,Y.BALANCE)
+            APAP.TAM.redoAaGetOutBalance(Y.ARR.ID,Y.BALANCE)
             Y.ARRAY:='*':Y.BALANCE
             Y.NEXT.PAY.AMT=''
 *GOSUB GET.NEXT.PAYMENT
@@ -222,7 +223,7 @@ GET.TERM.AMOUNT:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
     Y.TERM.AMOUNT=R.CONDITION<AA.AMT.AMOUNT>
 RETURN
 
@@ -233,7 +234,7 @@ GET.ROLE:
     IN.ACC.ID=''
     IN.ARR.ID=Y.ARR.ID
     OUT.ID=''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
     Y.ROLE.CUS=OUT.ID
 
 
@@ -245,7 +246,7 @@ GET.INT.RATE:
     PROP.NAME='PRINCIPAL'
     OUT.PROP=''
     ERR=''
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR);*R22 Manual Conversion
+    APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,OUT.PROP,ERR);*R22 Manual Conversion
     Y.INT.ID=Y.ARR.ID:'-':OUT.PROP
     CALL F.READ(FN.AA.INTEREST.ACCRUALS,Y.INT.ID,R.INT.ACCRUAL,F.AA.INTEREST.ACCRUALS,INT.ACC.ERR)
     Y.INTEREST.RATE=R.INT.ACCRUAL<AA.INT.ACC.RATE,1,1>

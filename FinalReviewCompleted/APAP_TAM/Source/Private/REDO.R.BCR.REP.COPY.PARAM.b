@@ -47,14 +47,14 @@ PROCESS:
     WHILE fieldName : yPos
         fieldValue = ""
         fieldNoFrom    = 0
-        CALL APAP.TAM.tamRFieldNameToNumber("REDO.INTERFACE.PARAM", fieldName, fieldNoFrom)   ;* R22 Manual conversion
+        APAP.TAM.tamRFieldNameToNumber("REDO.INTERFACE.PARAM", fieldName, fieldNoFrom)   ;* R22 Manual conversion
         IF fieldNoFrom EQ 0 THEN
             E    = "ST-REDO.BCR.FIELD.NON.EXIST"
             E<2> = fieldName : @VM : "REDO.INTERFACE.PARAM"
             RETURN
         END
         fieldNoTo = 0
-        CALL APAP.TAM.tamRFieldNameToNumber(APPLICATION, fieldName, fieldNoTo)              ;* R22 Manual conversion
+        APAP.TAM.tamRFieldNameToNumber(APPLICATION, fieldName, fieldNoTo)              ;* R22 Manual conversion
         IF fieldNoTo EQ 0 THEN
             E    = "ST-REDO.BCR.FIELD.NON.EXIST"
             E<2> = fieldNoTo : @VM : APPLICATION

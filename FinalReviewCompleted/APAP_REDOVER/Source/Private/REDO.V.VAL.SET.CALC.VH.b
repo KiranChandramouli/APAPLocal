@@ -99,7 +99,7 @@ PROCESS:
 *     END
 
 *CALC THE REA VALUE FOR NEW VALUE
-    CALL APAP.TAM.redoVValReaCollateral() ;*R22 Manual Code conversion
+    APAP.TAM.redoVValReaCollateral() ;*R22 Manual Code conversion
 
 RETURN
 

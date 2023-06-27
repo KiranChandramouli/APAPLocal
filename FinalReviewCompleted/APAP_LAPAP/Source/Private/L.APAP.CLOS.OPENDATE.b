@@ -35,8 +35,8 @@ SUBROUTINE L.APAP.CLOS.OPENDATE
     CALL OPF(FN.ACL,F.ACL)
 
     ACC = COMI
-*CALL APAP.LAPAP.LAPAP.VERIFY.ACC(ACC,RES)
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion - CALL method format changed
+*APAP.LAPAP.LAPAP.VERIFY.ACC(ACC,RES)
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion - CALL method format changed
     Y.ACC.ID = RES
 
 

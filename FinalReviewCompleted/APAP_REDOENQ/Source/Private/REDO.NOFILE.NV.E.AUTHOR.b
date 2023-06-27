@@ -73,7 +73,7 @@ RETURN
 PROCESS:
 *-----------------------------------------------------
     Y.FINAL.ARRAY = ''
-    CALL APAP.REDOENQ.redoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FN.REDO.TRANSACTION.CHAIN, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     IF D.RANGE.AND.VALUE THEN
         SEL.CMD := " AND TRANS.AUTH EQ 'U' AND TRANS.DATE EQ "
         SEL.CMD := TODAY : " AND BRANCH.CODE EQ " : ID.COMPANY : " BY.DSND TRANS.DATE"

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0MjAyMjcyNDA6Q3AxMjUyOjE2ODM4MDk5Mzc4MzA6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 May 2023 18:28:57
+* @ValidationCode : MjoxNjkwNDg2NjI2OkNwMTI1MjoxNjg1NTQyNjE2NTcyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:46:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.APAP.NOFILE.AA.LOAN.RATES.REVIEW(OUT.ARRAY)
@@ -167,7 +167,7 @@ PRIMARY.SELECTION:
 
 
     FILE.NAME = FN.AA.ARRANGEMENT
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.PRIM.CMD);* R22 Manual conversion
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.PRIM.CMD);* R22 Manual conversion
     CALL EB.READLIST(SEL.AA.PRIM.CMD,SEL.PRIM.LIST,'',NO.OF.REC.PRIM,SEL.ERR)
 
     IF SEL.PRIM.LIST ELSE
@@ -278,14 +278,14 @@ GET.INTEREST.COND:
 *--------------------------------------------
     Y.INT.SUCCESS.FLAG = 'SUCCESS'
     PROP.NAME = 'PRINCIPAL'
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,PRIN.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.ARR.ID,PROP.NAME,PRIN.PROP,ERR);* R22 Manual conversion
 
     EFF.DATE        = ''
     PROP.CLASS      = 'INTEREST'
     PROPERTY        = PRIN.PROP
     R.CONDITION.INT = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INT,ERR.MSG);* R22 Manual conversion - CALL routine format changed
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INT,ERR.MSG);* R22 Manual conversion - CALL routine format changed
 
     Y.INT.FIRST.REV.DATE = R.CONDITION.INT<AA.INT.LOCAL.REF,POS.L.AA.FIR.REV.DT>
     Y.INT.NEXT.REV.DATE  = R.CONDITION.INT<AA.INT.LOCAL.REF,POS.L.AA.NXT.REV.DT>
@@ -385,7 +385,7 @@ GET.CUSTOMER.PROD.COND:
     PROPERTY        = ''
     R.CONDITION.CUS = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG);* R22 Manual conversion - CALL routine format changed
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG);* R22 Manual conversion - CALL routine format changed
     Y.CUS.AFF.COMP  = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.AFF.COM>
     Y.CUS.CAMP.TYPE = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.CAMP.TY>
 
@@ -428,7 +428,7 @@ GET.TERM.PRODUCT.COND:
     PROPERTY        = ''
     R.CONDITION.TERM = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion - CALL routine format changed
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion - CALL routine format changed
     Y.TERM.MATURITY.DATE = R.CONDITION.TERM<AA.AMT.MATURITY.DATE>
     Y.COLL.IDS           = R.CONDITION.TERM<AA.AMT.LOCAL.REF,POS.L.AA.COL>
     Y.TERM.COLL.CODES = ''
@@ -499,7 +499,7 @@ CHECK.AGING.STATUS:
     WHILE Y.VAR6 LE Y.TERM.ARR.CNT
         Y.ARR.ID   = Y.TERM.FINAL.ARR.IDS<Y.VAR6>
         Y.LOAN.ACC = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.LOAN.ACC,ERR.TEXT);* R22 Manual conversion
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.LOAN.ACC,ERR.TEXT);* R22 Manual conversion
         CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         Y.LOAN.AGING.STATUS = R.ACCOUNT<AC.LOCAL.REF,POS.L.OD.STATUS>
         IF Y.LOAN.AGING.STATUS EQ Y.AGING.VALUE THEN
@@ -545,7 +545,7 @@ GET.OVERDUE.COND:
     PROPERTY        = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion - CALL routine format changed
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion - CALL routine format changed
     Y.AA.LOAN.STATUS = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS.1,1>
 RETURN
 *------------------------------------------------
@@ -574,7 +574,7 @@ RETURN
 FETCH.REPORT.DATE:
 *------------------------------------------------
     OUT.ARRAY = ''
-    CALL APAP.AA.redoApapNofileAaLoanRatesReview(Y.FINAL.AA.IDS,OUT.ARRAY);* R22 Manual conversion - CALL routine format changed
+    APAP.AA.redoApapNofileAaLoanRatesReviewGet(Y.FINAL.AA.IDS,OUT.ARRAY);* R22 Manual conversion - CALL routine format changed
 
 RETURN
 *--------------------------------------------

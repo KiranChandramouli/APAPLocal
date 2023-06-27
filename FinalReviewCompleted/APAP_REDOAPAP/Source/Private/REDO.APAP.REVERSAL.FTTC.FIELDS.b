@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNDAyNDM1MTc4OkNwMTI1MjoxNjgwNzU5OTU3MTc3OklUU1M6LTE6LTE6MDowOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 06 Apr 2023 11:15:57
+* @ValidationCode : MjotNDAyNDM1MTc4OkNwMTI1MjoxNjg0ODM2MDUyMDIzOklUU1M6LTE6LTE6LTU6MTp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -5
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -35,7 +35,7 @@ SUBROUTINE REDO.APAP.REVERSAL.FTTC.FIELDS
 *   Date               who           Reference            Description
 * 17-OCT-2010        Prabhu.N       ODR-2010-08-0031     Initial Creation
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION FM TO @FM
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION FM TO @FM
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
 *** <desc>Inserts and control logic</desc>

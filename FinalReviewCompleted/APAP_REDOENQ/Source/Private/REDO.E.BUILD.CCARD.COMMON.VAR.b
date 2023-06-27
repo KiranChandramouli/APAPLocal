@@ -85,7 +85,7 @@ PROCESS:
 
             END ELSE
                 ENQ.ERROR = 'OF-SECURITY.VIOLATION'
-                CALL APAP.REDOCHNLS.aiRedoKillSession();* R22 Manual conversion
+                APAP.REDOCHNLS.aiRedoKillSession();* R22 Manual conversion
             END
         END
 
@@ -93,13 +93,13 @@ PROCESS:
             LOCATE Y.CURRENT.CARD.LIST IN CARD.DATA SETTING CUS.ACCT.POS THEN
             END ELSE
                 ENQ.ERROR = 'OF-SECURITY.VIOLATION'
-                CALL APAP.REDOCHNLS.aiRedoKillSession() ;* R22 Manual conversion
+                APAP.REDOCHNLS.aiRedoKillSession() ;* R22 Manual conversion
             END
         END
 
     END ELSE
         ENQ.ERROR = 'OF-SECURITY.VIOLATION'
-        CALL APAP.REDOCHNLS.aiRedoKillSession();* R22 Manual conversion
+        APAP.REDOCHNLS.aiRedoKillSession();* R22 Manual conversion
     END
 RETURN
 END

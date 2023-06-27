@@ -103,12 +103,12 @@ DIRECCION:
     Y.DUP.NAME.LIST = Y.FINAL.NAME
     Y.FINAL.NAME = Y.DUP.NAME.LIST
 *    CALL REDO.DS.AZ.MAIL.ADD(Y.ACCT.NO,Y.ADDRESS.DET)
-    CALL APAP.REDORETAIL.redoDsAzMailAdd(Y.ACCT.NO,Y.ADDRESS.DET) ;*R22 Manual Conversion
+    APAP.REDORETAIL.redoDsAzMailAdd(Y.ACCT.NO,Y.ADDRESS.DET) ;*R22 Manual Conversion
     GOSUB ADDRESS.PROCESS
     Y.FINAL.NAME = Y.FINAL.NAME:@VM:@VM:SPACE(18):'REF : CHEQUE NUMERO ':Y.CHEQUE.NO
     Y.DATE = TODAY
 *    CALL REDO.GET.DATE.INT.FORM(Y.DATE)
-    CALL APAP.TAM.redoGetDateIntForm(Y.DATE) ;*R22 Manual Conversion
+    APAP.TAM.redoGetDateIntForm(Y.DATE) ;*R22 Manual Conversion
     Y.DATES = Y.DATE[3,4]:'/':Y.DATE[8,4]
 
     Y.FINAL.NAME = Y.FINAL.NAME:@VM:@VM:SPACE(18):'Estimado (s) senor (es):':@VM:@VM:SPACE(18):'Anexo a la presente le remitimos el cheque de referencia por concepto de los intereses'
@@ -118,8 +118,8 @@ DIRECCION:
     Y.FINAL.NAME := @VM:SPACE(18):'':FMT('CERTIFICADO NUMERO','L#20'):FMT('FECHA APERTURA','L#20'):FMT('MONTO DEL CERTIFICADO','L#24'):FMT('TASA DE INTERES(%)','L#20'):FMT('INTERES DEL MES','L#20')
     Y.FINAL.NAME := @VM:SPACE(18):'--------------------------------------------------------------------------------------------------------'
 
-*    CALL APAP.TAM.REDO.GET.COVER.DETAILS(Y.SEC.ARR) ;* R22 Manual Conversion
-    CALL APAP.TAM.redoGetCoverDetails(Y.SEC.ARR) ;* R22 Manual Conversion
+*    APAP.TAM.REDO.GET.COVER.DETAILS(Y.SEC.ARR) ;* R22 Manual Conversion
+    APAP.TAM.redoGetCoverDetails(Y.SEC.ARR) ;* R22 Manual Conversion
 
     Y.FINAL.NAME := @VM:Y.SEC.ARR
 

@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTQyMDE4ODgwNzpDcDEyNTI6MTY4MzAzMDU5NzYxNzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 17:59:57
+* @ValidationCode : MjotMTQyMDE4ODgwNzpDcDEyNTI6MTY4NDgzNjAzNDEzNTpJVFNTOi0xOi0xOjM3MDoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 370
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -54,7 +54,7 @@ PROCESS:
     CALL F.READ(FN.REDO.APAP.MORTGAGES.DETAIL,REDO.APAP.MORTGAGES.DETAILS.ID,R.REDO.APAP.MORTGAGES.DETAIL,F.REDO.APAP.MORTGAGES.DETAIL,MRTG.ERR)
     ARR.ID=R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.ARR.ID>
     Y.AMT=''
-    CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,ARR.ID,Y.AMT)
+    APAP.REDOAPAP.redoApapGetOutstandingAmt(TODAY,ARR.ID,Y.AMT)
     Y.AMT=ABS(Y.AMT)
     R.REDO.APAP.MORTGAGES.DETAIL<MG.DET.OUTS.PRINCIPLE>=Y.AMT
     GOSUB GET.CONDITIONS

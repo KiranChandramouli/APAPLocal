@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTUzNjU3OTk5OkNwMTI1MjoxNjg0ODQyMDkzNjM1OklUU1M6LTE6LTE6NjEwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:11:33
+* @ValidationCode : MjotMTIzODgyMjUxNTpDcDEyNTI6MTY4NjY3NzAyODQ5NzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 13 Jun 2023 22:53:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 610
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CREDIT.CUSTOMER.POSITION.VP(DATA.RECORD)
@@ -26,9 +26,7 @@ SUBROUTINE REDO.CREDIT.CUSTOMER.POSITION.VP(DATA.RECORD)
 *
 * Version   Date           Who            Reference         Description
 * 1.0       04.30.2013     lpazmino       -                 Initial Version
-* 05.04.2023       Conversion Tool       R22            Auto Conversion     - VM TO @VM, I TO I.VAR, FM TO @FM, New condition added
-* 05.04.2023       Shanmugapriya M       R22            Manual Conversion   - Add call routine prefix
-*
+* 13/06/2023      Santosh      R22 MANUAL CODE CONVERSION       Changed FUNCTION CALL into SUBROUTINE CALL
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS">
@@ -41,9 +39,9 @@ SUBROUTINE REDO.CREDIT.CUSTOMER.POSITION.VP(DATA.RECORD)
 
     $INSERT I_System
     $INSERT I_ENQUIRY.COMMON
-    $USING APAP.REDOCHNLS
+    $USING APAP.REDOSRTN
 
-    DEFFUN REDO.S.GET.USR.ERR.MSG()
+*   DEFFUN REDO.S.GET.USR.ERR.MSG()  ;*R22 Manual Code Conersion
 
 * </region>
 
@@ -94,9 +92,9 @@ RETURN
 PROCESS:
 ***********************
     EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
-    IF E EQ "EB-UNKNOWN.VARIABLE" THEN      ;** R22 Auto Conversion - Start
+    IF E EQ "EB-UNKNOWN.VARIABLE" THEN
         EXT.USER.ID = ""
-    END                                     ;** R22 Auto Conversion - End
+    END
 
     IF EXT.USER.ID NE "EXT.EXTERNAL.USER" THEN
         CALL CACHE.READ(FN.EB.EXTERNAL.USER, EXT.USER.ID, R.EB.EXTERNAL.USER, Y.ERR)
@@ -115,10 +113,11 @@ PROCESS:
     END
 
     IF NOT(CUSTOMER.ID) THEN
-        ENQ.ERROR<1> = REDO.S.GET.USR.ERR.MSG('ST-VP-ERR.CUST.REG')
-*CALL APAP.TAM.AI.REDO.KILL.SESSION ;** R22 Manual conversion - CALL method format changed
-
-        CALL APAP.REDOCHNLS.aiRedoKillSession() ;*R22 Manual Conversion
+*       ENQ.ERROR<1> = REDO.S.GET.USR.ERR.MSG('ST-VP-ERR.CUST.REG')
+        pErrCode = 'ST-VP-ERR.CUST.REG' ;*R22 Manual Code Conersion
+        APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+        ENQ.ERROR<1> = pUsrMsg ;*R22 Manual Code Conersion
+        CALL AI.REDO.KILL.SESSION
     END ELSE
         GOSUB INVOKE.VP.WS.CXC
     END
@@ -156,9 +155,8 @@ INVOKE.VP.WS.CXC:
     WS.DATA<2> = CUSTOMER.ID
 
 * Invoke VisionPlus Web Service
-*  CALL APAP.REDOCHNLS.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA) ;** R22 Manual conversion - CALL method format changed
-    CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Conversion
-    
+*   CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
+    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Code Conersion
     BEGIN CASE
         CASE WS.DATA<1> EQ 'OK'
             GOSUB SET.ENQ.DATA
@@ -176,26 +174,26 @@ SET.ENQ.DATA:
     Y.TIPO.PRODUCTO = WS.DATA<2>
     Y.CC.NUM = DCOUNT(Y.TIPO.PRODUCTO,@VM) - 1
 
-    FOR I.VAR = 1 TO Y.CC.NUM    ;** R22 Auto conversion - I TO I.VAR
+    FOR I.VAR = 1 TO Y.CC.NUM
         CUST.DATA = ''
 * Numero_Plastico
-        CCARD.NUM = FIELD(WS.DATA<4>,@VM,I.VAR)       ;** R22 Auto conversion - I TO I.VAR
+        CCARD.NUM = FIELD(WS.DATA<4>,@VM,I.VAR)
         CCARD.NUM = CCARD.NUM[4,LEN(CCARD.NUM)]
         CUST.DATA<5> = CCARD.NUM
 * Balance_total_RD
-        CUST.DATA<10> = FIELD(WS.DATA<7>,@VM,I.VAR)     ;** R22 Auto conversion - I TO I.VAR
+        CUST.DATA<10> = FIELD(WS.DATA<7>,@VM,I.VAR)
 * Tipo_producto
-        CUST.DATA<11> = FIELD(WS.DATA<2>,@VM,I.VAR)      ;** R22 Auto conversion - I TO I.VAR
+        CUST.DATA<11> = FIELD(WS.DATA<2>,@VM,I.VAR)
 * Balance_DisponibleRD
-        CUST.DATA<12> = FIELD(WS.DATA<9>,@VM,I.VAR)      ;** R22 Auto conversion - I TO I.VAR
+        CUST.DATA<12> = FIELD(WS.DATA<9>,@VM,I.VAR)
 * Balance_Total_US
-        CUST.DATA<13> = FIELD(WS.DATA<8>,@VM,I.VAR)       ;** R22 Auto conversion - I TO I.VAR
+        CUST.DATA<13> = FIELD(WS.DATA<8>,@VM,I.VAR)
 * Balance_DisponibleUS
-        CUST.DATA<15> = FIELD(WS.DATA<10>,@VM,I.VAR)      ;** R22 Auto conversion - I TO I.VAR
+        CUST.DATA<15> = FIELD(WS.DATA<10>,@VM,I.VAR)
 
 ** Remaining fields from WS Invocation not used
 * NUMERO_CUENTA
-        CACCT.NUM = FIELD(WS.DATA<3>,@VM,I.VAR)          ;** R22 Auto conversion - I TO I.VAR
+        CACCT.NUM = FIELD(WS.DATA<3>,@VM,I.VAR)
         CACCT.NUM = CACCT.NUM[4,LEN(CACCT.NUM)]
         CUST.DATA<16> = CACCT.NUM
 
@@ -210,7 +208,7 @@ SET.ENQ.DATA:
 * Temporal - Para mantener la sesion entre enquiries
 * Borrar cuando finalice todo el refactoring de rutinas de ARC-IB
         CUSTOMER.CARD.LIST<-1> = CCARD.NUM
-    NEXT I.VAR       ;** R22 Auto conversion - I TO I.VAR
+    NEXT I.VAR
 
 * Temporal - Para mantener la sesion entre enquiries
 * Borrar cuando finalice todo el refactoring de rutinas de ARC-IB

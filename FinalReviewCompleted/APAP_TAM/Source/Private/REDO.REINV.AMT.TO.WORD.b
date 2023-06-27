@@ -81,7 +81,7 @@ PROCESS.PARA:
     IN.AMT = Y.FULL.AMT
 *CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;* R22 Manual conversion
 ** R22 Manual conversion
-    CALL APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;* R22 Manual conversion
+    APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;* R22 Manual conversion
 
 
     Y.AMT.IN.WORDS = "( ":UPCASE(OUT.AMT):" ) PARA SER"

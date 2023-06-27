@@ -59,6 +59,6 @@ FORM.OFS.STR:
     WRITE STRING.ID TO F.SL,'STRING.IDS'
     Y.LIST.NAME = 'STRING.IDS'
     Y.LIST.NAME.EB = 'AA.ADJ.BAL'
-    CALL APAP.LAPAP.lapapTrgOfsString(Y.LIST.NAME) ;*R22 Manual code conversion
-    CALL APAP.LAPAP.lapapPacsRaiseEntry(Y.LIST.NAME.EB) ;*R22 Manual code conversion
+    APAP.LAPAP.lapapTrgOfsString(Y.LIST.NAME) ;*R22 Manual code conversion
+    APAP.LAPAP.lapapPacsRaiseEntry(Y.LIST.NAME.EB) ;*R22 Manual code conversion
 RETURN

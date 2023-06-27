@@ -55,7 +55,7 @@ PROCESS:
     D.RANGE.AND.VALUE   = Y.CUST.ID:@FM:'1'
     D.LOGICAL.OPERANDS  = '1':@FM:'1'
 
-    CALL APAP.TAM.redoCreditCustomerPositionVp(Y.CC.LIST);*R22 Manual Conversion
+    APAP.TAM.redoCreditCustomerPositionVp(Y.CC.LIST);*R22 Manual Conversion
 
     Y.CARD.LIST = FIELDS(Y.CC.LIST,'*',5,1)
 

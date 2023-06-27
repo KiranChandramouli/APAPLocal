@@ -74,7 +74,7 @@ PROCESS:
     CUST.ID = Y.CUST.NO
     CUST.NO = ''
     CUST.ERR = ''
-    CALL APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUST.ERR) ;*R22 Manual Code conversion
+    APAP.REDOSRTN.redoSCustIdVal(CUST.ID,CUST.NO,CUST.ERR) ;*R22 Manual Code conversion
     Y.CUST.NO = CUST.NO
     Y.ACCT.NO = R.NEW(FR.CL.ACCOUNT.ID)
     Y.CARD.NO = R.NEW(FR.CL.CARD.NO)

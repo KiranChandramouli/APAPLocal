@@ -109,7 +109,7 @@ OFS.PROCESS:
 * error
     END ELSE
 *CALL REDO.FC.E.MAIN(Y.CUS.ID,DATA.ENQ)
-        CALL APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ);* R22 Manual conversion
+        APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ);* R22 Manual conversion
         IF DATA.ENQ THEN
             GOSUB Y.DATA.ENQ
         END
@@ -136,7 +136,7 @@ RETURN
 DISPONIB:
 *======
 
-    CALL APAP.REDOSRTN.redoSFcLimiteTopeVinc(Y.CUS.ID, CUST.OUT) ;* R22 Manual Conversion - CALL method format modified
+    APAP.REDOSRTN.redoSFcLimiteTopeVinc(Y.CUS.ID, CUST.OUT) ;* R22 Manual Conversion - CALL method format modified
     Y.TOPE.TOT= CUST.OUT
 
     LOCATE  "RISK.INDIV.TOTAL" IN Y.DATA.ENQ.AUX<1,1> SETTING Y.RISK.IN.T THEN

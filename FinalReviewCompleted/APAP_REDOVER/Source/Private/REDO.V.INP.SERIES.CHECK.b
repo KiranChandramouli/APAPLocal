@@ -145,7 +145,7 @@ PROCESS:
     Y.STATUS.LIST.DUP = FIELDS(R.REDO.ITEM.SERIES,'*',2,1)
     Y.BATCH.LIST.DUP = FIELDS(R.REDO.ITEM.SERIES,'*',3,1)
 
-    CALL APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoCheckApplication(Y.INV.MNT.ID,APPL.NAME,APPL.PATH) ;* R22 Manual Conversion - CALL method format modified
     CALL OPF(APPL.NAME,APPL.PATH)
     SEQ.COUNT = DCOUNT(R.NEW(RE.ORD.SERIES.FROM),@VM)
     Y.CNT = 1

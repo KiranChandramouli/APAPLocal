@@ -130,7 +130,7 @@ RETURN
 PROCESS.FILES:
 *------------------------------------------------------------------------------------
 *CALL REDO.FRAME.FILE.HEADER
-    CALL APAP.TAM.redoFrameFileHeader() ;* R22 Manual conversion
+    APAP.TAM.redoFrameFileHeader() ;* R22 Manual conversion
     FILE.HEADER =FILE.HEADER:CHARX(13)
 
     WRITESEQ FILE.HEADER TO Y.FILE ELSE
@@ -148,7 +148,7 @@ PROCESS.FILES:
     BATCH.NUMBER += 1 ;* R22 Auto conversion
     TC.CODE=91
 *CALL REDO.FRAME.BATCH.TRAILER
-    CALL APAP.TAM.redoFrameBatchTrailer() ;* R22 Manual conversion
+    APAP.TAM.redoFrameBatchTrailer() ;* R22 Manual conversion
     BATCH.TRAILER=BATCH.TRAILER:CHARX(13)
     WRITESEQ BATCH.TRAILER TO Y.FILE ELSE
         CALL OCOMO("Unable to write into the file ":Y.FILE)
@@ -166,7 +166,7 @@ PROCESS.FILES:
 
     TC.CODE=92
 *CALL REDO.FRAME.FILE.TRAILER
-    CALL APAP.TAM.redoFrameFileTrailer() ;* R22 Manual conversion
+    APAP.TAM.redoFrameFileTrailer() ;* R22 Manual conversion
 
     FILE.TRAILER=FILE.TRAILER:CHARX(13)
     WRITESEQ FILE.TRAILER TO Y.FILE ELSE
@@ -186,7 +186,7 @@ PROCESS.EACH.FILE:
         BATCH.NUMBER += 1 ;* R22 Auto conversion
         TC.CODE=91
 *CALL REDO.FRAME.BATCH.TRAILER
-        CALL APAP.TAM.redoFrameBatchTrailer() ;* R22 Manual conversion
+        APAP.TAM.redoFrameBatchTrailer() ;* R22 Manual conversion
         BATCH.TRAILER=BATCH.TRAILER:CHARX(13)
         WRITESEQ BATCH.TRAILER TO Y.FILE ELSE
             CALL OCOMO("Unable to write into the file ":Y.FILE)

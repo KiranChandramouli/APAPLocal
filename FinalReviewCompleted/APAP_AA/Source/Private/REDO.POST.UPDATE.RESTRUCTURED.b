@@ -60,7 +60,7 @@ GET.OVERDUE.DETAILS:
     PROPERTY         = ''
     ERR.MSG          = ''
     R.OVERDUE.COND   = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.OVERDUE.COND,ERR.MSG);* R22 Manual conversion
 
     Y.LOAN.STATUS           = R.OVERDUE.COND<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS.1,1>
     Y.LOAN.COND             = R.OVERDUE.COND<AA.OD.LOCAL.REF,POS.L.LOAN.COND>
@@ -86,11 +86,11 @@ GET.LOCAL.REF.POS:
 
     Y.ACC.PROPERTY = ''
     OUT.ERR = ''
-    CALL APAP.TAM.redoGetPropertyName(c_aalocArrId,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(c_aalocArrId,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
 
     Y.OVERDUE.PROPERTY = ''
     OUT.ERR = ''
-    CALL APAP.TAM.redoGetPropertyName(c_aalocArrId,'OVERDUE','',Y.OVERDUE.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(c_aalocArrId,'OVERDUE','',Y.OVERDUE.PROPERTY,OUT.ERR);* R22 Manual conversion
 
 RETURN
 *** </region>

@@ -256,7 +256,7 @@ PROCESS.2:
 *
 *PACS00250002 - E
 
-    CALL APAP.TAM.redoHandleCommTaxFields() ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.TAM.redoHandleCommTaxFields() ;*R22 Manual Code Conversion-Call Method Format Modified
 *
 *
 RETURN

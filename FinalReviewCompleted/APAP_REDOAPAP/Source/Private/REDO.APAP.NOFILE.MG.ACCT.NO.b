@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTY0NTk5Njg0OTpDcDEyNTI6MTY4MzAzMTg4MTkxNTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 18:21:21
+* @ValidationCode : MjotMTY0NTk5Njg0OTpDcDEyNTI6MTY4NDgzNjA1MTQyNjpJVFNTOi0xOi0xOjMyODoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 328
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -120,15 +120,15 @@ GET.LOAN.OUT.AMT:
 
     IN.ACC.ID=Y.ID
     IN.ARR.ID=''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
     Y.ARR.ID=OUT.ID
     Y.MAT.DATE = System.getVariable("CURRENT.MAT.DATE")
     IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;* R22 AUTO CODE CONVERSION-START
         Y.MAT.DATE = ""
     END ;*R22 AUTO CODE CONVERSION - END
     Y.TEMP.ENQ.SELECTION = ENQ.SELECTION
-* CALL APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(Y.MAT.DATE,Y.ARR.ID,Y.AMT)
-    CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,Y.ARR.ID,Y.AMT)
+* APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(Y.MAT.DATE,Y.ARR.ID,Y.AMT)
+    APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,Y.ARR.ID,Y.AMT)
     ENQ.SELECTION = Y.TEMP.ENQ.SELECTION
 
     LOAN.OUT.AMT =Y.AMT
@@ -144,8 +144,8 @@ GET.LOAN.MAT.AMT:
     VAR3=1
     LOOP
     WHILE VAR3 LE Y.DEP.NO.CNT
-*CALL APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(Y.DEP.NO<1,VAR3>,MATURE.AMT)
-        CALL APAP.REDOAPAP.redoApapGetMaturityAmt(Y.DEP.NO<1,VAR3>,MATURE.AMT)
+*APAP.REDOAPAP.REDO.APAP.GET.MATURITY.AMT(Y.DEP.NO<1,VAR3>,MATURE.AMT)
+        APAP.REDOAPAP.redoApapGetMaturityAmt(Y.DEP.NO<1,VAR3>,MATURE.AMT)
         Y.MATURE.AMT+=MATURE.AMT
         VAR3 += 1 ;*R22 AUTO CODE CONVERSION
     REPEAT

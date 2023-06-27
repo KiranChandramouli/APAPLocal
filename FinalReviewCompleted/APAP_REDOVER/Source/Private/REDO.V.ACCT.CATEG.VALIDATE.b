@@ -88,7 +88,7 @@ PROCESS:
         END
     END
 
-    CALL APAP.REDOVER.redoVInpTtAcVal();* R22 Manual conversion
+    APAP.REDOVER.redoVInpTtAcVal();* R22 Manual conversion
 
 RETURN
 *

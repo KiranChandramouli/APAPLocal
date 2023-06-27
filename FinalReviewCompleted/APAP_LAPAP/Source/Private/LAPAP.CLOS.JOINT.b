@@ -33,7 +33,7 @@ SUBROUTINE LAPAP.CLOS.JOINT
     CALL OPF(FN.ACL,F.ACL)
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
     IF ACC NE Y.ACC.ID THEN

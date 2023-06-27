@@ -268,14 +268,14 @@ RETURN
 *==================================
 GET.AA.CURBAL:
 *==================================
-    CALL APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
     Y.AA.BAL += TOTAL.AMT
 RETURN
 
 *==================================
 GET.RISK.PERCENT:
 *==================================
-    CALL APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC)  ;*Rutina para calcular el % de riesgo, R22 Manual conversion
+    APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC)  ;*Rutina para calcular el % de riesgo, R22 Manual conversion
     IF NOT(Y.RISK.PERC) THEN
         Y.RISK.PERC = 100
     END

@@ -110,7 +110,7 @@ GET.LOAN.OUTSTANDING.BALANCE:
 * Here  we get the amount excluding the UNC balances.
     Y.PROP.AMT  = 0
     Y.TOTAL.AMT = 0
-    CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT) ;*R22 MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoGetTotalOutstandingSinUncUnd(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT) ;*R22 MANUAL R22 CODE CONVERSION
 
 RETURN
 *-------------------------------------------------------------
@@ -119,11 +119,11 @@ GET.UNC.BALANCES:
 * Here we get the UNC balance of the Loan.
 
     Y.ACCOUNT.PROPERTY = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);* R22 Manual Conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);* R22 Manual Conversion
 
     BALANCE.TO.CHECK = 'UNC':Y.ACCOUNT.PROPERTY
     BALANCE.AMOUNT   = ''
-    CALL APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,BALANCE.TO.CHECK,TODAY,BALANCE.AMOUNT,RET.ERROR) ;*R22 MANUAL R22 CODE CONVERSION
+    APAP.AA.redoAaGetEcbBalanceAmount(Y.LOAN.ACC,BALANCE.TO.CHECK,TODAY,BALANCE.AMOUNT,RET.ERROR) ;*R22 MANUAL R22 CODE CONVERSION
     Y.UNC.BALANCE = ABS(BALANCE.AMOUNT)
 RETURN
 *-------------------------------------------------------------

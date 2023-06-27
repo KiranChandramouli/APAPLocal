@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMTA0ODg0MTIzOkNwMTI1MjoxNjgyNDEyMzU1Njg5OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:55
+* @ValidationCode : MjotMTcwMTI3NDk3MTpDcDEyNTI6MTY4NTk1MjEyNzQ0MzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Jun 2023 13:32:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -62,7 +62,8 @@ INIT:
     LREF.APP = APPLICATION
     LREF.POS = ''
     IF APPLICATION EQ 'TELLER' THEN
-        CALL APAP.REDOVER.REDO.V.VAL.ACCT.CREDIT.VP ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVValAcctCreditVp() ;* R22 Manual Conversion - CALL method format modified
+       
         LREF.FIELDS='L.TT.CR.CARD.NO':@VM:'L.TT.AC.STATUS'
         CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
         Y.CARD.NO.POS      = LREF.POS<1,1>
@@ -75,7 +76,7 @@ INIT:
         Y.CARD.ACCT.ST = R.NEW(TT.TE.LOCAL.REF)<1,Y.CARD.ACCT.ST.POS>
     END
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
-        CALL APAP.REDOVER.REDO.V.VAL.ACCT.CREDIT.VP ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVValAcctCreditVp() ;* R22 Manual Conversion - CALL method format modified
         LREF.FIELDS = 'L.FT.CR.CARD.NO':@VM:'L.FT.AC.STATUS'
         CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
         Y.CARD.NO.POS      = LREF.POS<1,1>
@@ -93,7 +94,7 @@ INIT:
 *            RETURN
 *        END
 *        Y.ARRAY = "BUSCAR_TARJETA_TFS_CA"
-*        CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;* R22 Manual Conversion - CALL method format modified
+*        APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;* R22 Manual Conversion - CALL method format modified
 *        LREF.FIELDS = 'L.TT.CR.CARD.NO':VM:'L.TT.AC.STATUS'
 *        CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
 *        Y.CARD.NO.POS      = LREF.POS<1,1>
@@ -114,7 +115,7 @@ RETURN
 *    Y.CARD.TYPE = ''
 *    CALL F.READ(FN.SUNNEL.DETAILS,Y.ACCT,R.SUNNEL.DETAILS,F.SUNNEL.DETAILS,SUNNEL.ERR)
 *    IF NOT(R.SUNNEL.DETAILS) THEN
-*        CALL APAP.TAM.REDO.GET.CARD.TYPE(VAR.CARD.NO,Y.ACCT,Y.CARD.TYPE) ;* R22 Manual Conversion - CALL method format modified
+*        APAP.TAM.REDO.GET.CARD.TYPE(VAR.CARD.NO,Y.ACCT,Y.CARD.TYPE) ;* R22 Manual Conversion - CALL method format modified
 *        R.SUNNEL.DETAILS<SUN.CARD.TYPE> = Y.CARD.TYPE
 *        CALL F.WRITE(FN.SUNNEL.DETAILS,Y.ACCT,R.SUNNEL.DETAILS)
 *    END

@@ -86,7 +86,7 @@ RETURN  ;* Program RETURN
 *-----------------------------------------------------------------------------------
 PROCESS.MAIN:
 *============
-    CALL APAP.TAM.redoFcSCustomerEval() ;*R22 Manual Conversion
+    APAP.TAM.redoFcSCustomerEval() ;*R22 Manual Conversion
 
     GOSUB SET.DAO
 

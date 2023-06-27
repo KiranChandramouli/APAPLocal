@@ -167,11 +167,11 @@ PROCESS:
     END
 
 * OFAC
-    CALL APAP.TAM.redoFindCustOfac(OFAC.TIPO.CL,Y.CUST.NAME,OFAC.GIVEN.NAMES,OFAC.FAMILY.NAME,OFAC.CUS.NAME1,OFAC.CUS.NAME2,OFAC.CUS.TEXT,OFAC.RET) ;*Manual R22 conversion
+    APAP.TAM.redoFindCustOfac(OFAC.TIPO.CL,Y.CUST.NAME,OFAC.GIVEN.NAMES,OFAC.FAMILY.NAME,OFAC.CUS.NAME1,OFAC.CUS.NAME2,OFAC.CUS.TEXT,OFAC.RET) ;*Manual R22 conversion
     Y.DATA<2> = OFAC.RET
     IF OFAC.RET EQ '' THEN
 * Log writing: OFAC did not return valid value YES/NO
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL007', 'ONLINE', '04', 'OFAC', 'ERROR EN LISTAS RESTRICTIVAS A LAS ' : TIMEDATE(), '', '', '', '', '', '', '') ;*Manual R22 conversion
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL007', 'ONLINE', '04', 'OFAC', 'ERROR EN LISTAS RESTRICTIVAS A LAS ' : TIMEDATE(), '', '', '', '', '', '', '') ;*Manual R22 conversion
     END
 
 * Tasador

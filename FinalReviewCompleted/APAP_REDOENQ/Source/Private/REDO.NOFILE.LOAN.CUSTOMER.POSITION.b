@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODUyNDcwMzE0OkNwMTI1MjoxNjg0ODUxOTg4NjQxOklUU1M6LTE6LTE6MTc3MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
+* @ValidationCode : MjoxODQ0MzUyMTc4OkNwMTI1MjoxNjg1NTQzMTMxNDM2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1770
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.LOAN.CUSTOMER.POSITION(Y.ARRAY.OUT)
@@ -46,6 +46,7 @@ SUBROUTINE REDO.NOFILE.LOAN.CUSTOMER.POSITION(Y.ARRAY.OUT)
     $INSERT I_F.AA.ACCOUNT.DETAILS
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB PROCESS
@@ -221,7 +222,7 @@ GET.ARRANGEMENT:
             Y.ARRAY:='*'
             Y.ARRAY:='*':Y.TERM.AMOUNT
 * CALL REDO.AA.GET.OUT.BALANCE(Y.ARR.ID,Y.BALANCE)
-            CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.BAL,Y.TOT.BAL) ;*Manual R22 conversion
+            APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.BAL,Y.TOT.BAL) ;*Manual R22 conversion
             Y.BALANCE = Y.BAL<1>
             Y.ARRAY:='*':Y.BALANCE
             GOSUB GET.NEXT.PAYMENT
@@ -250,7 +251,7 @@ GET.ARRANGEMENT:
             Y.ARRAY:='*':Y.ROLE.CUS
             Y.ARRAY:='*':Y.TERM.AMOUNT
 *    CALL REDO.AA.GET.OUT.BALANCE(Y.ARR.ID,Y.BALANCE)
-            CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.BAL,Y.TOT.BAL) ;*Manual R22 conversion
+            APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.BAL,Y.TOT.BAL) ;*Manual R22 conversion
             Y.BALANCE = Y.BAL<1>
             Y.ARRAY:='*':Y.BALANCE
             GOSUB GET.NEXT.PAYMENT
@@ -283,7 +284,7 @@ GET.TERM.AMOUNT:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*Manual R22 conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*Manual R22 conversion
     Y.TERM.AMOUNT=R.CONDITION<AA.AMT.AMOUNT>
 RETURN
 *------------------------------------------------------------------------
@@ -356,7 +357,7 @@ GET.ROLE:
     PROPERTY = ''
     R.CONDITION.CUSTOMER = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUSTOMER,ERR.MSG) ;*Manual R22 conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUSTOMER,ERR.MSG) ;*Manual R22 conversion
     Y.OTHER.PARTY=R.CONDITION.CUSTOMER<AA.CUS.OTHER.PARTY>
     Y.ROLE=R.CONDITION.CUSTOMER<AA.CUS.ROLE>
     LOCATE Y.CUSTOMER.ID IN Y.OTHER.PARTY<1,1> SETTING POS1 THEN
@@ -397,7 +398,7 @@ GET.ACCT.NO:
     IN.ARR.ID = Y.ARR.ID
     OUT.ID    = ''
     ERR.TEXT  = ''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*Manual R22 conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*Manual R22 conversion
     IF NOT(ERR.TEXT) THEN
         Y.AA.ACCT.ID = OUT.ID
     END

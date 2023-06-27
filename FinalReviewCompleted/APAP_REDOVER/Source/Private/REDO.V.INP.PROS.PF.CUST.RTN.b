@@ -344,12 +344,12 @@ FAIL.PADRONE:
 
         MON.TP = '08'
         DESC = 'El webservices no esta disponible'
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
 
     END ELSE
         FLAG.OVERRIDE = 1
         MON.TP = '04'
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
     END
 RETURN
 *-------------------------------------------END OF RECORD---------------------------------------------------------

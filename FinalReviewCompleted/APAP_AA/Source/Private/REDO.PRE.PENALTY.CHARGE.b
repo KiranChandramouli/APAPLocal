@@ -234,7 +234,7 @@ CALC.NO.OF.CYCLES:
 
 
 
-    CALL APAP.AA.redoPenaltyNextCycledate(Y.ID.DETAILS,Y.DETAILS,R.PAY.SCH,Y.CYCLE,Y.CHARGE.AMT);* R22 Manual conversion
+    APAP.AA.redoPenaltyNextCycledate(Y.ID.DETAILS,Y.DETAILS,R.PAY.SCH,Y.CYCLE,Y.CHARGE.AMT);* R22 Manual conversion
 *Y.LEN = LEN(Y.CHARGE.FREQ)
 *Y.FREQ = Y.CHARGE.FREQ[Y.LEN,1]
 *Y.FREQ.NUM = Y.CHARGE.FREQ[1,Y.LEN-1]
@@ -364,7 +364,7 @@ GET.CHARGE.DETAILS:
     PROPERTY = Y.PENAL.PROPERTY
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
     IF ERR.MSG THEN
         GOSUB END1
     END
@@ -375,7 +375,7 @@ GET.CHARGE.DETAILS:
     PROPERTY = ''
     ERR.MSG = ''
     R.PAY.SCH = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PAY.SCH,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PAY.SCH,ERR.MSG);* R22 Manual conversion
 
 RETURN
 *------------------------------------------------------------------------

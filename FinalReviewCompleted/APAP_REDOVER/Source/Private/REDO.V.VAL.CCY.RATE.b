@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2MjM1MDQyMTI6Q3AxMjUyOjE2ODI2OTE1MTc5MjQ6SVRTUzotMTotMToxNDc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:37
+* @ValidationCode : MjoxMDc3MzIzNTgzOkNwMTI1MjoxNjg1NTQzNjQ4NDI2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:08
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 147
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.CCY.RATE
@@ -167,7 +167,8 @@ PROCESS.FUNDS.TRANSFER:
 * END
 *This part is used for charge and commision calculation
     IF PGM.VERSION EQ ",REDO.BUY.ACTR" OR PGM.VERSION EQ ",REDO.SELL.ACTR" THEN
-        CALL APAP.REDOVER.REDO.V.FT.CALC.COMM    ;*R22 MANUAL CODE CONVERSION
+        APAP.REDOVER.redoVFtCalcComm()    ;*R22 MANUAL CODE CONVERSION
+        
         IF R.NEW(FT.DEBIT.CUSTOMER) THEN
             R.NEW(FT.PROFIT.CENTRE.CUST) = R.NEW(FT.DEBIT.CUSTOMER)
             RETURN

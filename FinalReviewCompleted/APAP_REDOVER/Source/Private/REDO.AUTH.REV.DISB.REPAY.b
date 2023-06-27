@@ -100,7 +100,7 @@ REVERSE.REPAY.FT:
 
     Y.ACC.ID = R.NEW(FT.DEBIT.ACCT.NO)
     Y.AA.ID  = ''
-    CALL APAP.TAM.redoConvertAccount(Y.ACC.ID,'',Y.AA.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoConvertAccount(Y.ACC.ID,'',Y.AA.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
 
     IF Y.AA.ID ELSE
         Y.ERROR.MSG := ' Arrangement id missing'
@@ -160,7 +160,7 @@ REVERSE.DISB.FT:
 
     Y.ACC.ID = R.NEW(FT.CREDIT.ACCT.NO)
     Y.AA.ID  = ''
-    CALL APAP.TAM.redoConvertAccount(Y.ACC.ID,'',Y.AA.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoConvertAccount(Y.ACC.ID,'',Y.AA.ID,ERR.TEXT) ;*MANUAL R22 CODE CONVERSION
     IF Y.AA.ID ELSE
         Y.ERROR.MSG := ' Arrangement id missing'
         RETURN

@@ -219,7 +219,7 @@ CHECK.MONTHS:
             Y.AC.ST.POS<1>=REF.POS
             Y.AC.ST.POS<2>=STATUS2.POS
 
-            CALL APAP.REDOBATCH.redoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*Manual R22 conversion
+            APAP.REDOBATCH.redoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*Manual R22 conversion
         END ELSE
             V = AC.AUDIT.DATE.TIME
             CALL F.LIVE.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)

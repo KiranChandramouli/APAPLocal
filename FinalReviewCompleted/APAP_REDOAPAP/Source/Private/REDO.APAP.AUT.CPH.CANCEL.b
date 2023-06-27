@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTM0OTg5MTUzMjpDcDEyNTI6MTY4MzAyMjYwOTQ5MDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 15:46:49
+* @ValidationCode : MjotNzAwMDY3MjY3OkNwMTI1MjoxNjg1NTQ0MDc1Nzc5OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:11:15
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.AUT.CPH.CANCEL
@@ -47,6 +47,7 @@ SUBROUTINE REDO.APAP.AUT.CPH.CANCEL
     $INSERT I_F.REDO.APAP.CPH.PARAMETER
     $INSERT I_F.REDO.OFS.PARAM
     $USING APAP.TAM
+    $USING APAP.AA
 *--------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -139,7 +140,7 @@ WRITE.TRANSF.STATUS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
     R.CONDITION<AA.AC.LOCAL.REF,POS.L.TRANSF.STATUS>=Y.TRANSFER.STATUS
 
 
@@ -177,7 +178,7 @@ WRITE.TRANSF.STATUS:
     R.OUT.AA.RECORD=''
     OUT.ERR=''
 
-    CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
     CALL F.READ(FN.AA.ARRANGEMENT,ARR.ID,R.AA.ARRANGEMENT,F.AA.ARRANGEMENT,ARR.ERR)
     OFS.STRING.FINAL='AA.ARRANGEMENT.ACTIVITY,APAP/I/PROCESS,':Y.USERNAME:'/':Y.PASSWORD:",,ARRANGEMENT:1:1=":ARR.ID:",ACTIVITY:1:1=LENDING-UPDATE-ACCOUNT,EFFECTIVE.DATE:1:1=":TODAY:',CUSTOMER:1:1=':R.AA.ARRANGEMENT<AA.ARR.CUSTOMER>:',CURRENCY:1:1=':R.AA.ARRANGEMENT<AA.ARR.CURRENCY>:',PRODUCT:1:1=':R.AA.ARRANGEMENT<AA.ARR.PRODUCT>:',PROPERTY:1:1=':OUT.PROPERTY:',':OFS.STRING
     CALL OFS.POST.MESSAGE(OFS.STRING.FINAL,OFS.MSG.ID,OFS.SRC,OPTIONS)

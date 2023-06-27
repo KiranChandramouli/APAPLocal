@@ -106,7 +106,7 @@ INTERFACE.UPD:
 
     MATBUILD R.FUNDS.TRANSFER FROM R.NEW
     Y.ID.NEW=ID.NEW
-    CALL APAP.TAM.redoStoNcf(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoStoNcf(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
 
 RETURN
 *-------------
@@ -209,7 +209,7 @@ CONNECTION.FAIL:
         REC.CON = ''
         EX.USER = ''
         EX.PC = ''
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
         ETEXT = "EB-TP.CONNECT.FAIL"
         CALL STORE.END.ERROR
     END

@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTMwNDYxMjQ3NzpDcDEyNTI6MTY4MDY3NjY0ODU3NzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:07:28
+* @ValidationCode : MjotMTMwNDYxMjQ3NzpDcDEyNTI6MTY4NDgzNjA0MTE4NDpJVFNTOi0xOi0xOjkyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 92
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -23,7 +23,7 @@ SUBROUTINE REDO.APAP.GET.OVERRIDE
 *  DATE             WHO         REFERENCE         DESCRIPTION
 * 26-02-2011      H GANESH      PACS00034162    Initial Draft
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION VM TO @VM AND FM TO @FM AND ++ TO += 1 
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION VM TO @VM AND FM TO @FM AND ++ TO += 1 
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 * ----------------------------------------------------------------------------
 *** <region name= Header>

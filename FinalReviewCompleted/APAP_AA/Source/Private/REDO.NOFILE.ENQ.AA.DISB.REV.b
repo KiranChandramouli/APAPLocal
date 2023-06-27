@@ -102,12 +102,12 @@ PROCESS:
 
     IF NUM(Y.AA.ID[1,2]) THEN
         IN.ARR.ID = ''
-        CALL APAP.TAM.redoConvertAccount(Y.AA.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+        APAP.TAM.redoConvertAccount(Y.AA.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
         ARR.ID   = OUT.ID
         Y.ACC.ID = Y.AA.ID
     END ELSE
         IN.ACC.ID = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
         ARR.ID   = Y.AA.ID
         Y.ACC.ID = OUT.ID
     END
@@ -312,7 +312,7 @@ GET.TERM.AMOUNT.PROPERTY:
 *--------------------------------------------------------
     IN.PROPERTY.CLASS = 'TERM.AMOUNT'
     R.OUT.AA.RECORD   = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
     TERM.AMOUNT.PROP  = OUT.PROPERTY
 
 RETURN

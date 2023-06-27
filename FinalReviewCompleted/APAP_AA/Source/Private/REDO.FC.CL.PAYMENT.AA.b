@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNTY2Mjc3Mzg5OkNwMTI1MjoxNjgzODc4MDUxMjQxOklUU1M6LTE6LTE6NDA1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 13:24:11
+* @ValidationCode : MjoxMTY2MjE0NTE5OkNwMTI1MjoxNjg1NTQyODM1MzA1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:50:35
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 405
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.FC.CL.PAYMENT.AA(PAY.AMOUNT, PAY.AA.ID)
@@ -159,7 +159,7 @@ RETURN
 GET.AA.LINKED.COIDS:
 * ==================
 * Get all collateral linked to AA - TERM.AMOUNT
-    CALL APAP.AA.redoColAaGetLinksCol(PAY.AA.ID,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(PAY.AA.ID,COL.ID.LINKED);* R22 Manual conversion
     MMARK = CHARX(251) ; Y.COL.ID.MIG = CHANGE(COL.ID.LINKED, MMARK , @VM )
 RETURN
 
@@ -308,7 +308,7 @@ AA.BAL:
 * =====
 * Getting current AA Outstanding Balance value
     TOTAL.AMT = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(PAY.AA.ID,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(PAY.AA.ID,TOTAL.AMT);* R22 Manual conversion
 RETURN
 
 * =========

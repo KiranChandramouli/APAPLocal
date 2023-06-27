@@ -121,7 +121,7 @@ PROCESS:
     PROPERTY     = ''
     R.CONDITION  = ''
     ERR.MSG      = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,Y.PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,Y.PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
     Y.LIMIT.REFERENCE = R.CONDITION<AA.LIM.LIMIT.REFERENCE>
     Y.LIMIT.SERIAL = R.CONDITION<AA.LIM.LIMIT.SERIAL>
 
@@ -255,7 +255,7 @@ RETURN
 GET.HIGH.ACI:
 *----------------------------------------------------------------------------
 
-    CALL APAP.TAM.redoGetHighAci(Y.ACI.ID,Y.ACI.CUR,Y.RATE.ACI);* R22 Manual conversion
+    APAP.TAM.redoGetHighAci(Y.ACI.ID,Y.ACI.CUR,Y.RATE.ACI);* R22 Manual conversion
     Y.TOTAL.INT.RATE<-1> = Y.RATE.ACI
 
 RETURN
@@ -263,7 +263,7 @@ RETURN
 *----------------------------------------------------------------------------
 GET.HIGH.GCI:
 *----------------------------------------------------------------------------
-    CALL APAP.TAM.redoGetHighGci(Y.GCI.ID,Y.GCI.CUR,Y.RATE.GCI);* R22 Manual conversion
+    APAP.TAM.redoGetHighGci(Y.GCI.ID,Y.GCI.CUR,Y.RATE.GCI);* R22 Manual conversion
     Y.TOTAL.INT.RATE<-1> = Y.RATE.GCI
 
 RETURN

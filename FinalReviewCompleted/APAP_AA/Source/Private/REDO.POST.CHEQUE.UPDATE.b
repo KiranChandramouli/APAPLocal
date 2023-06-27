@@ -100,7 +100,7 @@ PROCESS:
         LOCATE c_aalocCurrActivity IN Y.PAYOFF.ACTIVITY<1,1> SETTING POS.PA THEN
         
             IF c_aalocActivityStatus MATCHES 'UNAUTH':@VM:'UNAUTH-CHG' THEN ;*AUTO R22 CODE CONVERSION
-                CALL APAP.AA.redoPostPayoffRemPaysch()  ;* This routine to remove the scheduled charge after payoff. ;* R22 Manual conversion
+                APAP.AA.redoPostPayoffRemPaysch()  ;* This routine to remove the scheduled charge after payoff. ;* R22 Manual conversion
             END
             IF c_aalocActivityStatus EQ 'AUTH' THEN
                 GOSUB CHECK.UNC
@@ -116,7 +116,7 @@ PROCESS:
     Y.TRANSACTION.AMOUNT = c_aalocArrActivityRec<AA.ARR.ACT.ORIG.TXN.AMT>
     IF c_aalocActivityEffDate GE Y.MATURITY.DATE THEN
         VAR.ARR.ID = c_aalocArrId
-        CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(VAR.ARR.ID,PROP.AMT,TOTAL.AMT);* R22 Manual conversion
+        APAP.TAM.redoGetTotalOutstandingSinUncUnd(VAR.ARR.ID,PROP.AMT,TOTAL.AMT);* R22 Manual conversion
         IF Y.TRANSACTION.AMOUNT GE TOTAL.AMT THEN
             GOSUB UPDATE.POST.RESTRICT
             GOSUB UPDATE.PAYOFF.DATE    ;* This is for B.43 Letter's.
@@ -187,7 +187,7 @@ GET.ACCOUNT.PROPERTY:
     IN.AA.ID = c_aalocArrId
     IN.PROPERTY.CLASS = 'ACCOUNT'
     OUT.PROPERTY = ''
-    CALL APAP.TAM.redoGetPropertyName(IN.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(IN.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
 RETURN
 *-----------------------------------------------------------
 GET.MATURITY.DATE:
@@ -199,7 +199,7 @@ GET.MATURITY.DATE:
     R.CONDITION.TERM.AMOUNT = ''
     ERR.MSG = ''
     VAR.ID = c_aalocArrId
-    CALL APAP.AA.redoCrrGetConditions(VAR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM.AMOUNT,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(VAR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM.AMOUNT,ERR.MSG);* R22 Manual conversion
     Y.MATURITY.DATE = R.CONDITION.TERM.AMOUNT<AA.AMT.MATURITY.DATE>
 
 RETURN
@@ -236,7 +236,7 @@ PROCESS.REVERSAL:
     END
     Y.PROCESSED.CHARGE.PROP = ''
     Y.CHRG.PROPERTY = ''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR);* R22 Manual conversion
     Y.PROPERTY.LIST = Y.CHRG.PROPERTY
     Y.CHARGE.PROP.CNT = DCOUNT(Y.PROPERTY.LIST,@FM) ;*AUTO R22 CODE CONVERSION
     Y.VAR1 = 1
@@ -248,7 +248,7 @@ PROCESS.REVERSAL:
         PROPERTY = Y.PROPERTY.LIST<Y.VAR1>
         R.CONDITION.CHARGE = ''
         ERR.MSG = ''
-        CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG);* R22 Manual conversion
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG);* R22 Manual conversion
         Y.POLICY.NO = ''
         Y.POLICY.NO = R.CONDITION.CHARGE<AA.CHG.LOCAL.REF,POS.POL.NUMBER>
 

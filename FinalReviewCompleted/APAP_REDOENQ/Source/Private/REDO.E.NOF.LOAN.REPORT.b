@@ -1,14 +1,14 @@
-* @ValidationCode : MjotOTY2NDEyMTgyOkNwMTI1MjoxNjg0ODUxOTc4MDQ1OklUU1M6LTE6LTE6NjAyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:18
+* @ValidationCode : MjotNjY4MDI1MDc4OkNwMTI1MjoxNjg1NTQzMTE5MzE4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 602
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.NOF.LOAN.REPORT(Y.FINAL.ARRAY)
@@ -46,6 +46,7 @@ SUBROUTINE REDO.E.NOF.LOAN.REPORT(Y.FINAL.ARRAY)
     $INSERT I_F.REDO.AA.DISBURSE.METHOD
     $INSERT I_F.REDO.FC.FORM.DISB
     $USING APAP.TAM
+    $USING APAP.AA
 *---------------------------------------------------------------------------------------------------------
 
 
@@ -124,7 +125,7 @@ PROCESS:
         END
         FILE.NAME = FN.AA.ARRANGEMENT
         D.RANGE.AND.VALUE<-1> = "LENDING" ; D.LOGICAL.OPERANDS<-1> = 1 ; D.FIELDS<-1> = "PRODUCT.LINE"
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.ARR.CMD) ;*R22 Auto conversion
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.ARR.CMD) ;*R22 Auto conversion
         SEL.AA.ARR.CMD := " AND WITH ARR.STATUS NE AUTH AND WITH ARR.STATUS NE UNAUTH"
         CALL EB.READLIST(SEL.AA.ARR.CMD,AA.ARR.ID.LST,'',NO.OF.REC.ARR,SEL.ERR)
 
@@ -172,7 +173,7 @@ GET.DETAILS.DISB:
     WHILE Y.VAR1 LE NO.OF.REC.ARR
         Y.AA.ID = AA.ARR.ID.LST<Y.VAR1>
         Y.SKIP.FLAG = "YES"
-        CALL APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB) ;*;*R22 Manual conversion
+        APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB) ;*;*R22 Manual conversion
         GOSUB VALIDATE.DISB.SELECTION
         IF Y.SKIP.FLAG EQ "NO" THEN
             GOSUB GET.REMAINING.DETAILS
@@ -188,7 +189,7 @@ GET.DETAILS.WITHOUT.DISB:
     LOOP
     WHILE Y.VAR1 LE NO.OF.REC.ARR
         Y.AA.ID = AA.ARR.ID.LST<Y.VAR1>
-        CALL APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*;*R22 Manual conversion
+        APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*;*R22 Manual conversion
         GOSUB GET.REMAINING.DETAILS
         Y.VAR1 += 1
     REPEAT
@@ -242,10 +243,10 @@ GET.REMAINING.DETAILS:
 
 
     R.CONDITION.ACCOUNT = ""
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,"","ACCOUNT","",R.CONDITION.ACCOUNT,"") ;*R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,"","ACCOUNT","",R.CONDITION.ACCOUNT,"") ;*R22 Manual conversion
     Y.ALT.ID = R.CONDITION.ACCOUNT<AA.AC.ALT.ID>
     R.CONDITION.CUSTOMER = ""
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,"","CUSTOMER","",R.CONDITION.CUSTOMER,"") ;*R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,"","CUSTOMER","",R.CONDITION.CUSTOMER,"") ;*R22 Manual conversion
     Y.CAMP.TYPE = R.CONDITION.CUSTOMER<AA.CUS.LOCAL.REF,POS.L.AA.CAMP.TY>
 
     Y.COMMITED.AMOUNT  = Y.COMMITED.AMT

@@ -69,7 +69,7 @@ PROCESS:
         END ELSE
             R.NEW(TT.TE.AMOUNT.FCY.1) = CASH.BALANCE
         END
-        CALL APAP.TAM.redoHandleCommTaxFields() ;* R22 Manual conversion
+        APAP.TAM.redoHandleCommTaxFields() ;* R22 Manual conversion
         CALL System.setVariable("CURRENT.WTM.RESULT","0")
         CALL System.setVariable("CURRENT.WTM.MONEDA",WCCY)
         CALL System.setVariable("CURRENT.WTM.TYPE","CASH")

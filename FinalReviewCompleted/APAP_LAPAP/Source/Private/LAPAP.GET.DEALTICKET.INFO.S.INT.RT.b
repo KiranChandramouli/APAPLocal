@@ -310,7 +310,7 @@ PROCESS.2:
 *MSG<-1> = R.NEW(TT.TE.AMOUNT.FCY.1)<1,1>
 *CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
 
-    CALL APAP.TAM.redoHandleCommTaxFields() ;*Manual R22 conversion
+    APAP.TAM.redoHandleCommTaxFields() ;*Manual R22 conversion
 *
 *
 RETURN

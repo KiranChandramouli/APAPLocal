@@ -60,7 +60,7 @@ RETURN
 POPULATE.COMMONS:
 
 *CALL REDO.FC.S.POPVALUES(ID.PARAMS)
-    CALL APAP.TAM.redoFcSPopvalues(ID.PARAMS) ;*R22 Manual Conversion
+    APAP.TAM.redoFcSPopvalues(ID.PARAMS) ;*R22 Manual Conversion
 RETURN
 *-----------------------------------------------------------------------------
 INITIALIZE:

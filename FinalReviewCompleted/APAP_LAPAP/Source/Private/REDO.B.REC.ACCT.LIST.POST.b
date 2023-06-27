@@ -112,7 +112,7 @@ GET.REPORT.LINES:
         MON.TP   = 04
         REC.CON  = 'MV33-':ERR.MSG
         DESC     = 'MV33-':ERR.MSG
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
     END
 
     SEL.CMD = 'SSELECT ':TEMP.PATH:' LIKE ':FILE.NAME:'...'
@@ -144,7 +144,7 @@ GET.REPORT.LINES:
             MON.TP   = 04
             REC.CON  = 'MV33-':ERR.MSG
             DESC     = 'MV33-':ERR.MSG
-            CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
         END
 
         REPORT.LINES = R.TEMP.PATH
@@ -182,7 +182,7 @@ C22.LOG:
     MON.TP   = 04
     REC.CON  = 'RECONRPT':ERR.MSG
     DESC     = 'RECONRPT':ERR.MSG
-    CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 **************************
@@ -209,7 +209,7 @@ WRITE.TO.FILE:
         MON.TP   = 04
         REC.CON  = 'RECONRPT':ERR.MSG
         DESC     = 'RECONRPT':ERR.MSG
-        CALL APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*R22 Manual Conversion
     END
 
 RETURN

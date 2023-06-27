@@ -50,7 +50,7 @@ SUBROUTINE  REDO.V.VAL.CUSTACC
         GOSUB PROCESS
     END
 
-    CALL APAP.REDOVER.redoVInpTtAcVal();*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.REDOVER.redoVInpTtAcVal();*R22 Manual Code Conversion-Call Method Format Modified
 *
 RETURN
 *---------------------------------------------------------------------------

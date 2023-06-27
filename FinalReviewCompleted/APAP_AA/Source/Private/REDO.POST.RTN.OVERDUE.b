@@ -114,12 +114,12 @@ GET.OVERDUE:
     PROPERTY = ''
     OVERDUE.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,OVERDUE.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,OVERDUE.CONDITION,ERR.MSG);* R22 Manual conversion
 RETURN
 *----------------------------------------------------------------------
 CALC.BALANCE:
 *----------------------------------------------------------------------
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
 
 *TUS change START
 *   SEL.CMD='SSELECT ':FN.ACCT.ACTIVITY:' WITH @ID LIKE ':OUT.ID:'.':Y.BAL.FIELD:'ACCOUNT...'
@@ -154,7 +154,7 @@ GET.INTEREST:
     PROPERTY = 'PENALTYINT'
     INTEREST.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,INTEREST.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,INTEREST.CONDITION,ERR.MSG);* R22 Manual conversion
     Y.DAY.BASIS=INTEREST.CONDITION<AA.INT.DAY.BASIS>
     IF Y.DAY.BASIS EQ 'A' OR Y.DAY.BASIS EQ 'B' THEN
         Y.CALC.DAYS='360'

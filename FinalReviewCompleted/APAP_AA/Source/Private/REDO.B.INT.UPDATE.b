@@ -196,7 +196,7 @@ GET.ACI.RATE:
 *----------------------------------------------------------------------------
 
     Y.ACI.CUR=R.ACCOUNT<AC.CURRENCY>
-    CALL APAP.TAM.redoGetHighAci(Y.ACI.ID,Y.ACI.CUR,Y.RATE.ACI);* R22 Manual conversion
+    APAP.TAM.redoGetHighAci(Y.ACI.ID,Y.ACI.CUR,Y.RATE.ACI);* R22 Manual conversion
     Y.INT.DETAILS<1,-1> =  Y.RATE.ACI
     Y.INT.DETAILS<2,-1> =  FIELD(Y.ACI.ID,'-',2)
 
@@ -231,7 +231,7 @@ RETURN
 GET.GCI.RATE:
 *----------------------------------------------------------------------------
 
-    CALL APAP.TAM.redoGetHighGci(Y.GCI.ID,Y.GCI.CUR,Y.RATE.GCI);* R22 Manual conversion
+    APAP.TAM.redoGetHighGci(Y.GCI.ID,Y.GCI.CUR,Y.RATE.GCI);* R22 Manual conversion
     Y.INT.DETAILS<1,-1> =  Y.RATE.GCI
     Y.INT.DETAILS<2,-1> =  Y.GCI.REC.DATE
 
@@ -337,7 +337,7 @@ PRINCIPAL.UPDATE:
         Y.ACT.PROP=''
         Y.ACT.PROP<1> = PRINCIPAL.PROP
         Y.ACT.PROP<2> = "LENDING-CHANGE-":PRINCIPAL.PROP
-        CALL APAP.AA.redoAaBuildOfs(ARR.ID,R.PRIN.INT.COND.OFS,Y.ACT.PROP,PRIN.OFS.MSG);* R22 Manual conversion
+        APAP.AA.redoAaBuildOfs(ARR.ID,R.PRIN.INT.COND.OFS,Y.ACT.PROP,PRIN.OFS.MSG);* R22 Manual conversion
         PRIN.OFS.MSG:='EFFECTIVE.DATE=':Y.MAX.DATE
         OFS.SRC = 'AA.INT.UPDATE'
         OPTIONS = ''
@@ -366,7 +366,7 @@ PENALTY.UPDATE:
         Y.ACT.PROP=''
         Y.ACT.PROP<1> = PENALTY.PROP
         Y.ACT.PROP<2> = "LENDING-CHANGE-":PENALTY.PROP
-        CALL APAP.AA.redoAaBuildOfs(ARR.ID,R.PENAL.INT.COND.OFS,Y.ACT.PROP,PENAL.OFS.MSG);* R22 Manual conversion
+        APAP.AA.redoAaBuildOfs(ARR.ID,R.PENAL.INT.COND.OFS,Y.ACT.PROP,PENAL.OFS.MSG);* R22 Manual conversion
         PENAL.OFS.MSG:='EFFECTIVE.DATE=':Y.MAX.DATE
         OFS.SRC = 'AA.INT.UPDATE'
         OPTIONS = ''
@@ -387,7 +387,7 @@ GET.LIMIT.REF:
     PROPERTY   = ''
     R.CONDITION = ''
     ERR.MSG    = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
     Y.LIMIT.REFERENCE = R.CONDITION<AA.LIM.LIMIT.REFERENCE>
 *AA Changes 20161013
     Y.LIMIT.SERIAL = R.CONDITION<AA.LIM.LIMIT.SERIAL>
@@ -398,21 +398,21 @@ GET.RATE.REVIEW.TYPE:
 *----------------------------------------------------------------------------
 
     PROP.NAME   = 'PRINCIPAL'
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,PRINCIPAL.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,PRINCIPAL.PROP,ERR);* R22 Manual conversion
     EFF.DATE    = ''
     PROP.CLASS  = 'INTEREST'
     R.PRIN.INT.COND=''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PRINCIPAL.PROP,R.PRIN.INT.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PRINCIPAL.PROP,R.PRIN.INT.COND,ERR.MSG);* R22 Manual conversion
     Y.PRIN.RATE.REV.TYPE=R.PRIN.INT.COND<AA.INT.LOCAL.REF,POS.L.AA.REV.RT.TY>
 
     PROP.NAME='PENALTY'
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,PENALTY.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,PENALTY.PROP,ERR);* R22 Manual conversion
     EFF.DATE = ''
     PROP.CLASS='INTEREST'
     R.PENAL.INT.COND=''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PENALTY.PROP,R.PENAL.INT.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PENALTY.PROP,R.PENAL.INT.COND,ERR.MSG);* R22 Manual conversion
 
 RETURN
 END1:

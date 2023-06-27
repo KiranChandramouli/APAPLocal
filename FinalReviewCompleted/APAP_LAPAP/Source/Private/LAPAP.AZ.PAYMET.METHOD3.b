@@ -23,7 +23,7 @@ SUBROUTINE LAPAP.AZ.PAYMET.METHOD3
 
 
     ID = COMI
-    CALL APAP.LAPAP.lapapMonDefinePayment(ID,RS,RT) ;*R22 Manual code conversion
+    APAP.LAPAP.lapapMonDefinePayment(ID,RS,RT) ;*R22 Manual code conversion
     IF RS EQ "FROM.CUST.ACC" THEN
         COMI = "" ;* RT
     END ELSE

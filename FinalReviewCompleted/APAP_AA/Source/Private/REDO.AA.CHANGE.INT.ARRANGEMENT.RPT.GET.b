@@ -176,7 +176,7 @@ GET.ARR.ACC.ID:
     PROPERTY=''
     R.CONDITION =''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
 
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ GET.AA.INTEREST.ACCRUALS.DETAILS:
     REPEAT
 
     PROP.NAME = 'PRINCIPAL'
-    CALL APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,INT.PROPERTY,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,INT.PROPERTY,ERR);* R22 Manual conversion
     CHANGE @FM TO '*' IN INT.PROPERTY ;*R22 Auto Code  Conversion
     Y.COUNT.PROP = DCOUNT(INT.PROPERTY,'*')
     INIT = 1

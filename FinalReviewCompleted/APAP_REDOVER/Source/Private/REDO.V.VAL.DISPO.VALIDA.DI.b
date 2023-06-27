@@ -302,7 +302,7 @@ GET.AA.CURBAL:
 *
 * Get outstanding from AA
     P.TOTAL.OUT = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT) ;*R22 Manual Code Conversion-Call Method Format Modified
     P.TOTAL.OUT    += TOTAL.AMT
 *
 RETURN

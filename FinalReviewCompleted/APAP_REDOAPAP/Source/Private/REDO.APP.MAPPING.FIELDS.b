@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTc0NzI4MDQ0NzpDcDEyNTI6MTY4MDc2MzE1ODY1NzpJVFNTOi0xOi0xOjA6MDp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 12:09:18
+* @ValidationCode : MjotMTc0NzI4MDQ0NzpDcDEyNTI6MTY4NDgzNjA1NTAzNjpJVFNTOi0xOi0xOi0xNDoxOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -14
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -27,7 +27,7 @@ SUBROUTINE REDO.APP.MAPPING.FIELDS
 * --------------------
 * 07.01.2011 - Initial Version
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
 *** <region name= Header>

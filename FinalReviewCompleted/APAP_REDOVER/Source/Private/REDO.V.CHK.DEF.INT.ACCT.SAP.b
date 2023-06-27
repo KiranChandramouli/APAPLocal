@@ -152,7 +152,7 @@ READ.ALL.ACCOUNT:
             Y.ACCOUNT = Y.ACCT.ID
             R.NEW(FT.CREDIT.ACCT.NO) = Y.ACCOUNT
 
-            CALL APAP.REDOVER.redoVValItemCode();* R22 Manual Conversion
+            APAP.REDOVER.redoVValItemCode();* R22 Manual Conversion
 
             BREAK
         END

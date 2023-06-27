@@ -362,7 +362,7 @@ GET.AA.AMT.COLL:
 * Getting current AA Balance value
     Y.AA.AMOUNT = ''
     Y.AA.AMOUNT = AA.ARR
-    CALL APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
+    APAP.AA.redoSFcAaAmount(Y.AA.ID, Y.AA.AMOUNT);* R22 Manual conversion
     Y.AA.AMOUNT = ABS(Y.AA.AMOUNT)
     IF Y.AA.AMOUNT EQ 'NULO' THEN
         Y.AA.AMOUNT = 0
@@ -378,7 +378,7 @@ GET.COLL.AA.IDS:
 ***
 *
     COL.ID.LINKED = ''
-    CALL APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
     IF COL.ID.LINKED EQ "ERROR" THEN
         COL.ID.LINKED = ''
     END
@@ -500,7 +500,7 @@ GET.CL.DATA.MIG:
 * /////////////////
 * Plazo
     Y.ARR.ID = Y.RCA.ID ; Y.AA.TERM = AA.ARR
-    CALL APAP.AA.redoSFcAaTerm(Y.ARR.ID, Y.AA.TERM);* R22 Manual conversion
+    APAP.AA.redoSFcAaTerm(Y.ARR.ID, Y.AA.TERM);* R22 Manual conversion
     Y.CUST.AA<11> = Y.AA.TERM
 * Valor Nominal
     Y.CL.NOMINAL.VAL = R.COLLATERAL<COLL.NOMINAL.VALUE>
@@ -733,7 +733,7 @@ GET.AA.CURBAL:
 ***
 * Get outstanding from AA
     Y.AA.BAL = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
     Y.AA.BAL    = TOTAL.AMT
     IF Y.CUST.AA<8> LT Y.AA.BAL THEN
         Y.AA.BAL = Y.CUST.AA<8>

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTAyMDA5MTQyMjpDcDEyNTI6MTY4MjY5MTUwNjkxNDpJVFNTOi0xOi0xOjE3OToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:26
+* @ValidationCode : MjoxMjMyMDI2NDUyOkNwMTI1MjoxNjg1NTQzNjIzMjEyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 179
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.DEF.ARC.LOAN.STATUS.COND
@@ -46,6 +46,7 @@ SUBROUTINE REDO.V.DEF.ARC.LOAN.STATUS.COND
     $INSERT I_GTS.COMMON
     $INSERT I_EB.TRANS.COMMON
     $USING APAP.TAM
+    $USING APAP.AA
 
 
     GOSUB GET.LRF.POS
@@ -90,7 +91,7 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code conversion
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS

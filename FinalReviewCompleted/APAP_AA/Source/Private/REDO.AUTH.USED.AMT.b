@@ -198,7 +198,7 @@ CHECK.APPLICATION:
         CASE APPLICATION EQ 'AA.ARR.TERM.AMOUNT'
             ARR.ID = c_aalocArrId
             PROPERTY.CLASS = 'CUSTOMER'
-            CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.CUS,ERR.MSG);* R22 Manual conversion
+            APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.CUS,ERR.MSG);* R22 Manual conversion
 *CUST.ID = R.CUS<AA.CUS.PRIMARY.OWNER>
             CUST.ID = R.CUS<AA.CUS.CUSTOMER>;* R22 Manual conversion
             VAR.AMOUNT = R.NEW(AA.AMT.AMOUNT)

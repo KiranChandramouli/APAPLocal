@@ -59,9 +59,9 @@ RETURN  ;* Program RETURN
 *-----------------------------------------------------------------------------------
 PROCESS:
 *======
-    CALL APAP.REDOVER.redoVValNominalValue();*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOVER.redoVValMaximumValue();*R22 MANUAL CODE CONVERSION
-    CALL APAP.TAM.redoVValReaCollateral()   ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOVER.redoVValNominalValue();*R22 MANUAL CODE CONVERSION
+    APAP.REDOVER.redoVValMaximumValue();*R22 MANUAL CODE CONVERSION
+    APAP.TAM.redoVValReaCollateral()   ;*R22 MANUAL CODE CONVERSION
     GOSUB DROUND.VALUES
 RETURN
 *----------------------------------------------------------------------------

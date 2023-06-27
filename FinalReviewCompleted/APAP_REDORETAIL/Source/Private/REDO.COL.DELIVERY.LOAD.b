@@ -1,14 +1,14 @@
-* @ValidationCode : MjozMzc0NDU3MzpDcDEyNTI6MTY4MjU5ODAxNzIzOTpzYW1hcjotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:17
+* @ValidationCode : Mjo4NDczMDc1MDk6Q3AxMjUyOjE2ODU5NTExMTk4NDA6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jun 2023 13:15:19
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 * Version 1 13/04/00  GLOBUS Release No. 200508 30/06/05
@@ -41,7 +41,9 @@ SUBROUTINE REDO.COL.DELIVERY.LOAD
     END
 *
     E = ''
-    CALL  REDO.COL.R.DEL.UPD.LOCKING("CREATE", Y.REPONSE)
+*CALL  REDO.COL.R.DEL.UPD.LOCKING("CREATE", Y.REPONSE)
+   
+    CALL APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
     IF E NE '' THEN
         CALL OCOMO(E)
     END
@@ -63,8 +65,8 @@ SUBROUTINE REDO.COL.DELIVERY.LOAD
 * Load String connection on Common Variable
     Y.CONNECTION = ''
     E = ''
-*CALL APAP.REDORETAIL.REDO.COL.R.GET.CONNECTION(REDO.INTERFACE.PARAM.ID, R.REDO.INTERFACE.PARAM, Y.CONNECTION)
-    CALL APAP.REDORETAIL.redoColRGetConnection(REDO.INTERFACE.PARAM.ID, R.REDO.INTERFACE.PARAM, Y.CONNECTION);* MANUAL R22 CODE CONVERSION
+*APAP.REDORETAIL.REDO.COL.R.GET.CONNECTION(REDO.INTERFACE.PARAM.ID, R.REDO.INTERFACE.PARAM, Y.CONNECTION)
+    APAP.REDORETAIL.redoColRGetConnection(REDO.INTERFACE.PARAM.ID, R.REDO.INTERFACE.PARAM, Y.CONNECTION);* MANUAL R22 CODE CONVERSION
     IF E NE '' THEN
         TEXT = E
         CALL FATAL.ERROR("REDO.COL.DELIVERY.LOAD")

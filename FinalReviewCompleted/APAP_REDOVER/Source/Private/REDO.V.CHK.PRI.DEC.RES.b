@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTIwNjk0OTU1NDpDcDEyNTI6MTY4MzAxMDc2MDU1OTpJVFNTOi0xOi0xOi00OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 12:29:20
+* @ValidationCode : MjotNzU2NjQ4NDkyOkNwMTI1MjoxNjg1NTQzNjIyMTM5OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -4
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.CHK.PRI.DEC.RES
@@ -42,6 +42,7 @@ SUBROUTINE REDO.V.CHK.PRI.DEC.RES
     $INSERT I_GTS.COMMON
     $INSERT I_EB.TRANS.COMMON
     $USING APAP.TAM
+    $USING APAP.AA
 
 
     IF MESSAGE EQ 'VAL' THEN
@@ -63,7 +64,7 @@ SUBROUTINE REDO.V.CHK.PRI.DEC.RES
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
 
     IF R.Condition NE '' THEN
         V$ERROR = 1
@@ -72,8 +73,8 @@ SUBROUTINE REDO.V.CHK.PRI.DEC.RES
         ETEXT := "(estos mensajes deben poder mantenerse)"
         CALL STORE.END.ERROR
     END ELSE
-        CALL APAP.REDOVER.redoVDefFtLoanStatusCond();* R22 Manual Conversion - CALL method format modified
-        CALL APAP.REDOVER.redoVChkNoOverdue();* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVDefFtLoanStatusCond();* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVChkNoOverdue();* R22 Manual Conversion - CALL method format modified
     END
 RETURN
 

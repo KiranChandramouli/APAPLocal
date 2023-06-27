@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTM3MjgwMDIwOkNwMTI1MjoxNjgzMDEwNzYyNjYwOklUU1M6LTE6LTE6MTc1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 12:29:22
+* @ValidationCode : Mjo2Mzc4MjY0NjQ6Q3AxMjUyOjE2ODU1NDM2MjM2NjY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 175
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.DEF.IVR.LOAN.STATUS.COND
@@ -50,7 +50,7 @@ SUBROUTINE REDO.V.DEF.IVR.LOAN.STATUS.COND
     $INSERT I_EB.TRANS.COMMON
     $INSERT I_F.AA.TERM.AMOUNT
     $USING APAP.TAM
-
+    $USING APAP.AA
     IF VAL.TEXT THEN
         RETURN
     END
@@ -92,7 +92,7 @@ PROCESS:
 * This section gets the latest overdue record for the arrangement id and stores the value of loan status and condition in R.NEW of FT
 *------------------------------------------------------------------------------------------------------------------------------------
 
-    CALL APAP.REDOVER.redoVValDefaultAmt();* R22 Manual Code conversion
+    APAP.REDOVER.redoVValDefaultAmt();* R22 Manual Code conversion
 
     Y.ACCT.NO=COMI
     CALL F.READ(FN.ACCOUNT,Y.ACCT.NO,R.ACCOUNT,F.ACCOUNT,ERR)
@@ -102,7 +102,7 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Code conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Code conversion
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 

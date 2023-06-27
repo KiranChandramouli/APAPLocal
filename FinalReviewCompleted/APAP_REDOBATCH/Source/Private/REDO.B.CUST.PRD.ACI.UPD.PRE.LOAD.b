@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMDg3OTk0NjQ4OkNwMTI1MjoxNjg1MTA3MzczNTc0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 18:52:53
+* @ValidationCode : MjoxMDg3OTk0NjQ4OkNwMTI1MjoxNjg1NTQzNzQxMjY0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:05:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -35,8 +35,8 @@ SUBROUTINE REDO.B.CUST.PRD.ACI.UPD.PRE.LOAD
     $INSERT I_REDO.B.CUST.PRD.ACI.UPD.COMMON
 
 
-*CALL APAP.REDOBATCH.REDO.B.CUST.PRD.ACI.UPD.LOAD  ;*R22 MANUAL CONVERSTION ADDING PACKAGE NAME APAP.REDOBATCH
-    CALL APAP.REDOBATCH.redoBCustPrdAciUpdLoad();* R22 Manual conversion
+*APAP.REDOBATCH.REDO.B.CUST.PRD.ACI.UPD.LOAD  ;*R22 MANUAL CONVERSTION ADDING PACKAGE NAME APAP.REDOBATCH
+    APAP.REDOBATCH.redoBCustPrdAciUpdLoad();* R22 Manual conversion
 
 
 RETURN

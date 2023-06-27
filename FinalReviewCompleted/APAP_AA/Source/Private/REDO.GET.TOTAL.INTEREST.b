@@ -45,13 +45,13 @@ PROCESS:
 *---------------------------------------------------------------------------------
 
     INT.AMT=''
-    CALL APAP.AA.redoTempStoreCommon('STORE');* R22 Manual conversion
+    APAP.AA.redoTempStoreCommon('STORE');* R22 Manual conversion
     NO.RESET='1'
     DATE.RANGE=''
     SIMULATION.REF=''
     CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, PAYMENT.DATES, DUE.DEFER.DATES, PAYMENT.TYPES, DUE.METHODS,DUE.TYPE.AMTS, PAYMENT.PROPERTIES, PAYMENT.PROPERTIES.AMT, DUE.OUTS)
 
-    CALL APAP.AA.redoTempStoreCommon('RESTORE');* R22 Manual conversion
+    APAP.AA.redoTempStoreCommon('RESTORE');* R22 Manual conversion
     GOSUB INTEREST.CALC
 
 RETURN

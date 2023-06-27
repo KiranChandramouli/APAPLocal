@@ -157,7 +157,7 @@ ANALIZE.GENERATE.TAX.NCF:
     END
 
     IF Y.NCF.CNT NE 0 THEN
-        CALL APAP.TAM.redoNcfPerfRtn(Y.NCF.CNT,Y.NCF.LIST) ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoNcfPerfRtn(Y.NCF.CNT,Y.NCF.LIST) ;* R22 Manual Conversion - CALL method format modified
     END
 
     BEGIN CASE

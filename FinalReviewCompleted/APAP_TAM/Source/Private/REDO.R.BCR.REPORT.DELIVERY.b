@@ -270,7 +270,7 @@ PROCESS_MAIL:
 
     Y.PATH.TO.MOVE = Y.PATH.SUCCESS
 
-    CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR)              ;* R22 Manual conversion
+    APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR)              ;* R22 Manual conversion
     IF Y.ERROR NE '' THEN
         E = Y.ERROR
         Y.PATH.TO.MOVE = Y.PATH.FAILURE

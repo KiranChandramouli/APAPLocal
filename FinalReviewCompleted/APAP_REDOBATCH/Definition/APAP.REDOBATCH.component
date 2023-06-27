@@ -1838,8 +1838,6 @@ public method redoBPenaltyCharge (
     jBC:REDO.B.PENALTY.CHARGE
 }
 
-
-
 public method redoBPendingSchProjector (
     INOUT YProcessId string
 )
@@ -1847,15 +1845,11 @@ public method redoBPendingSchProjector (
     jBC:REDO.B.PENDING.SCH.PROJECTOR
 }
 
-
-
 public method redoBPendingSchProjectorLoad (
 )
 {
     jBC:REDO.B.PENDING.SCH.PROJECTOR.LOAD
 }
-
-
 
 public method redoBPolicyAutoCancel (
     INOUT InsId string
@@ -1864,15 +1858,11 @@ public method redoBPolicyAutoCancel (
     jBC:REDO.B.POLICY.AUTO.CANCEL
 }
 
-
-
 public method redoBPolicyAutoCancelLoad (
 )
 {
     jBC:REDO.B.POLICY.AUTO.CANCEL.LOAD
 }
-
-
 
 public method redoBPolicyAutoCancelSelect (
 )
@@ -1880,15 +1870,11 @@ public method redoBPolicyAutoCancelSelect (
     jBC:REDO.B.POLICY.AUTO.CANCEL.SELECT
 }
 
-
-
 public method redoBPreDelProcess (
 )
 {
     jBC:REDO.B.PRE.DEL.PROCESS
 }
-
-
 
 public method redoBPrevalanceStatus (
     INOUT YPgmId string
@@ -1897,23 +1883,17 @@ public method redoBPrevalanceStatus (
     jBC:REDO.B.PREVALANCE.STATUS
 }
 
-
-
 public method redoBPrevalanceStatusLoad (
 )
 {
     jBC:REDO.B.PREVALANCE.STATUS.LOAD
 }
 
-
-
 public method redoBPrevalanceStatusSelect (
 )
 {
     jBC:REDO.B.PREVALANCE.STATUS.SELECT
 }
-
-
 
 public method redoBPrevelenceStatusUpd (
     INOUT Id string,
@@ -1927,15 +1907,12 @@ public method redoBPrevelenceStatusUpd (
 }
 
 
-
 public method redoBPrinIntUpdate (
     INOUT MsgId string
 )
 {
     jBC:REDO.B.PRIN.INT.UPDATE
 }
-
-
 
 public method redoBPurdgeInvFile (
 )
@@ -4567,3 +4544,16 @@ public method redoCcrgBPopLoad (
 {
     jBC: REDO.CCRG.B.POP.LOAD
 }
+
+public method redoBPrinIntUpdateLoad (
+)
+{
+    jBC: REDO.B.PRIN.INT.UPDATE.LOAD
+}
+
+public method redoBPrinIntUpdateSelect (
+)
+{
+    jBC: REDO.B.PRIN.INT.UPDATE.SELECT
+}
+

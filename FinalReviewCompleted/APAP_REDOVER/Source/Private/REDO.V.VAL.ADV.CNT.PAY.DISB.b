@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTczMTcxOTQyMzpDcDEyNTI6MTY4MjY5MTUxNjkxOTpJVFNTOi0xOi0xOjc1NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:36
+* @ValidationCode : MjotMTkyNTY0Mjc2OTpDcDEyNTI6MTY4NTU0MzY0NjAxNTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:06
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 757
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -45,6 +45,7 @@ SUBROUTINE REDO.V.VAL.ADV.CNT.PAY.DISB
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_F.FUNDS.TRANSFER
     $USING APAP.TAM
+    $USING APAP.AA
 
 MAIN:
 
@@ -144,7 +145,7 @@ PROCESS:
 *       CALL STORE.END.ERROR
 *   END ELSE
     PROP.CLASS='PAYMENT.SCHEDULE'
-    CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     VAR.CALC.AMOUNT.LIST=R.CONDITION<AA.PS.CALC.AMOUNT>
     VAR.ACC.LIST   =R.CONDITION<AA.PS.PROPERTY>
     CHANGE @VM TO @FM IN VAR.CALC.AMOUNT.LIST

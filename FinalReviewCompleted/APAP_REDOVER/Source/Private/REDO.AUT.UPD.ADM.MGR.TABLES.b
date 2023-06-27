@@ -58,9 +58,9 @@ PROCESS:
         CALL F.READ(FN.ACCOUNT,VAR.CR.ACCT.NO,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         VAR.CUST = R.ACCOUNT<AC.CUSTOMER>
         IF NOT(VAR.CUST) THEN
-            CALL APAP.REDOVER.redoVAutUpdTables();*Manual R22 Code Conversion
+            APAP.REDOVER.redoVAutUpdTables();*Manual R22 Code Conversion
         END ELSE
-            CALL APAP.REDOVER.redoVAutUpdMgrtables();*Manual R22 Code Conversion
+            APAP.REDOVER.redoVAutUpdMgrtables();*Manual R22 Code Conversion
         END
     END
 

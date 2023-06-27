@@ -92,7 +92,7 @@ INIT:
 
     IF APPLICATION EQ 'TELLER' THEN
         GOSUB GET.BILL.DETAILS
-        CALL APAP.REDOVER.redoVDefTtLoanStatusCond();*R22 MANUAL CODE CONVERSION
+        APAP.REDOVER.redoVDefTtLoanStatusCond();*R22 MANUAL CODE CONVERSION
 * PACS00085210 -S
         Y.LOAN.STATUS = R.NEW(TT.TE.LOCAL.REF)<1,VAR.TT.LOAN.STAT>
         Y.LOAN.COND = R.NEW(TT.TE.LOCAL.REF)<1,VAR.TT.LOAN.COND>
@@ -153,7 +153,7 @@ PROCESS.FT:
 
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
         GOSUB GET.BILL.DETAILS
-        CALL APAP.REDOVER.redoVDefFtLoanStatusCond();*R22 MANUAL CODE CONVERSION
+        APAP.REDOVER.redoVDefFtLoanStatusCond();*R22 MANUAL CODE CONVERSION
         IF Y.PRINCIPAL.AMOUNT EQ '' THEN
             Y.PRINCIPAL.AMOUNT  = 0
         END
@@ -173,7 +173,7 @@ PROCESS.FT:
             Y.AV   = AV
             Y.AS   = AS
             COMI = R.NEW(FT.CREDIT.AMOUNT)
-            CALL APAP.TAM.redoValMtsAmountFt()    ;*R22 MANUAL CODE CONVERSION
+            APAP.TAM.redoValMtsAmountFt()    ;*R22 MANUAL CODE CONVERSION
             COMI  =     Y.COMI
             AF    =     Y.AF
             AV    =     Y.AV

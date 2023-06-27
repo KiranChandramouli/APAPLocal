@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo2Mjg2MDE3NjA6Q3AxMjUyOjE2ODMwMzYzMDgxMDg6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 19:35:08
+* @ValidationCode : Mjo2Mjg2MDE3NjA6Q3AxMjUyOjE2ODQ4NDc4NTY3NTc6SVRTUzotMTotMTozNTI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 18:47:36
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 352
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -112,11 +112,11 @@ PROCESS:
         Y.CALC.METHOD = R.PRICE.TYPE<SC.PRT.CALCULATION.METHOD>
         BEGIN CASE
             CASE Y.CALC.METHOD EQ 'DPRICE' AND Y.YR.DENOM EQ '365' OR Y.YR.DENOM EQ '366' ;* PACS00206989
-                CALL APAP.TAM.redoScCalculatePrice(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,Y.ISSUE.DATE)
+                APAP.TAM.redoScCalculatePrice(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,Y.ISSUE.DATE)
 *                CALL REDO.SC.CALCULATE.PRICE(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,Y.ISSUE.DATE)    ;*R22 MANUAL CODE CONVERSION
                 GOSUB UPD.PRICE
             CASE Y.CALC.METHOD EQ 'DPRICE' AND Y.YR.DENOM EQ '360' ;* PACS00206989
-                CALL APAP.TAM.redoScCalculateDprice(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1)
+                APAP.TAM.redoScCalculateDprice(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1)
 *               CALL REDO.SC.CALCULATE.DPRICE(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1)    ;*R22 MANUAL CODE CONVERSION
                 GOSUB UPD.PRICE
         END CASE

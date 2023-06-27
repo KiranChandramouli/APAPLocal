@@ -206,7 +206,7 @@ CALC.NO.OF.CYCLES:
     Y.ID.DETAILS = ''
     Y.ID.DETAILS = ARR.ID:'*':Y.PROCESS.BILL.ID
 
-    CALL APAP.AA.redoPenaltyNextCycledate(Y.ID.DETAILS,Y.DETAILS,R.PAY.SCH,Y.CYCLE,Y.CHARGE.AMT);* R22 Manual conversion
+    APAP.AA.redoPenaltyNextCycledate(Y.ID.DETAILS,Y.DETAILS,R.PAY.SCH,Y.CYCLE,Y.CHARGE.AMT);* R22 Manual conversion
 
 RETURN
 *------------------------------------------------------------------------
@@ -277,7 +277,7 @@ GET.PRODUCT.DETAILS:
     PROPERTY = Y.PENAL.PROPERTY
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
 
     Y.CHARGE.PER  = R.CONDITION<AA.CHG.CHARGE.RATE,1>         ;* Charge Percentage
     Y.CHARGE.FREQ = R.CONDITION<AA.CHG.LOCAL.REF,POS.L.PENALTY.FREQ>    ;* Charge Calculating Frequency
@@ -291,7 +291,7 @@ GET.PRODUCT.DETAILS:
     PROPERTY = ''
     ERR.MSG = ''
     R.PAY.SCH = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PAY.SCH,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PAY.SCH,ERR.MSG);* R22 Manual conversion
 
     LOCATE Y.PENAL.PROPERTY IN c_aalocProductRecord<AA.PRD.CALC.PROPERTY,1> SETTING POS THEN
         Y.SOURCE.BALANCE = c_aalocProductRecord<AA.PRD.SOURCE.BALANCE,POS>          ;* Source Balance for Penalty Charge

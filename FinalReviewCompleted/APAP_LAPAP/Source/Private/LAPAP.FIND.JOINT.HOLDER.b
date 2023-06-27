@@ -34,7 +34,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER
 *-----------------------
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
 * DEBUG
@@ -55,7 +55,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER
         END ELSE
 *           COMI = ""
 
-            CALL APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
+            APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
             COMI = RES
         END
 
@@ -76,7 +76,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER
             COMI = JOINT.HOLDER
         END ELSE
 *           COMI = ""
-            CALL APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
+            APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
             COMI = RES
         END
 
@@ -97,7 +97,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER
             END ELSE
 *               COMI = ""
                 ACC = ACC[1,10]
-                CALL APAP.LAPAP.lapapCustomerNonJointHolder(ACC,RES) ;*R22 Manual Code Conversion
+                APAP.LAPAP.lapapCustomerNonJointHolder(ACC,RES) ;*R22 Manual Code Conversion
                 COMI = RES
             END
         END
@@ -108,7 +108,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER
 *   if ACC is reinvest and category type 6601 != 6010-6020
     IF NOT(ERR) AND ERR.noreinv AND ERRH THEN
         Y.ACC = Y.ACC.ID[1,10]
-        CALL APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
+        APAP.LAPAP.lapapCustomerNonJointHolder(Y.ACC.ID,RES) ;*R22 Manual Code Conversion
     END
 
 

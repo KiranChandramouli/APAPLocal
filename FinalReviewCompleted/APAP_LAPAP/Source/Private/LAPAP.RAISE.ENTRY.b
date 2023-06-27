@@ -59,7 +59,7 @@ SUBROUTINE LAPAP.RAISE.ENTRY
     EXECUTE 'COMO OFF'
 
 * Call routine for closed loand
-    CALL APAP.LAPAP.lapapCloseArrangement() ;* R22 Manual Conversion
+    APAP.LAPAP.lapapCloseArrangement() ;* R22 Manual Conversion
 
 RETURN
 

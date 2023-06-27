@@ -82,12 +82,12 @@ PROCESS:
 
     IF APPLICATION EQ 'REDO.FT.TT.TRANSACTION' THEN
         ALLOW.OFFLINE = 1
-        CALL APAP.TAM.redoVpTempCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoVpTempCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
     END
 
     IF TXN.RESULT<1> EQ 'OFFLINE' OR TXN.RESULT<1> EQ 'ERROR' THEN
 
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;* R22 Manual Conversion - CALL method format modified
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;* R22 Manual Conversion - CALL method format modified
 
         EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
         IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;*R22 Auto code conversion-START

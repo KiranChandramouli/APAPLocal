@@ -125,7 +125,7 @@ PROCESS:
     PROPERTY=''
     R.Condition.Pay=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.Pay,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.Pay,ERR.MSG);* R22 Manual conversion
 
     IF R.Condition.Pay<AA.PS.LOCAL.REF,POS.PAY.METHOD> NE 'Direct Debit' THEN
         RETURN
@@ -209,7 +209,7 @@ UPDATE.STO.END.DATE:
     PROPERTY=''
     R.Condition.Term=''
     ERR.MSG.TERM =''
-    CALL APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.Term,ERR.MSG.TERM);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.Term,ERR.MSG.TERM);* R22 Manual conversion
     R.STANDING.ORDER<STO.CURRENT.END.DATE> = R.Condition.Term<AA.AMT.MATURITY.DATE>
 RETURN
 

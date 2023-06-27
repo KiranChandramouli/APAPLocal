@@ -180,7 +180,7 @@ GET.DISB.DETAILS:
     Y.ACTY.REF = R.AA.HIS<AA.AH.ACTIVITY.REF> ; Y.ACTY.REF = CHANGE(Y.ACTY.REF,@SM,@VM); Y.ACTY.REF.DUP = Y.ACTY.REF
     Y.ACT.STS = R.AA.HIS<AA.AH.ACT.STATUS> ; Y.ACT.STS = CHANGE(Y.ACT.STS,@SM,@VM) ; Y.ACT.STS.DUP = Y.ACT.STS
 * PACS00313081 - 2015APR29 - Sandra's email - S
-    CALL APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*Manual R22 conversion
+    APAP.TAM.redoGetDisbursementDetails(Y.AA.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*Manual R22 conversion
     Y.DESB.DD = R.DISB.DETAILS<1,1>       ;* Disbursement Date.
     Y.TOT.DIS.AMT = R.DISB.DETAILS<3>     ;* Total Disb amount.
 * PACS00313081 - 2015APR29 - Sandra's email - E

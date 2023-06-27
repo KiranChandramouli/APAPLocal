@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTY3NTI2NTc0NTpDcDEyNTI6MTY4MzAyOTcwNjQ3NzpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 17:45:06
+* @ValidationCode : MjotMTY3NTI2NTc0NTpDcDEyNTI6MTY4NDg0NTYxOTY2MTpJVFNTOi0xOi0xOjYxMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 18:10:19
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 613
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -109,7 +109,7 @@ CHECK.DISBURSEMENT:
         Y.DISB.AMT = R.NEW(AZ.LOCAL.REF)<1,POS.AZ.AMOUNT,DIS.POS>
         VAR.DISB.AMT.LIST = '' ; SEL.LIST = ''
 *PACS00269502-S
-        CALL APAP.REDORETAIL.redoCustIdentityRef(VAR.CUSTOMER,VAR.CUST.ALTER.ID,VAR.CUST.NAME)
+        APAP.REDORETAIL.redoCustIdentityRef(VAR.CUSTOMER,VAR.CUST.ALTER.ID,VAR.CUST.NAME)
 *        CALL REDO.CUST.IDENTITY.REF(VAR.CUSTOMER,VAR.CUST.ALTER.ID,VAR.CUST.NAME)    ;*R22 MANUAL CODE CONVERSION
 *SEL.CMD = "SELECT ":FN.REDO.MTS.DISBURSE:" WITH CUSTOMER.NO EQ ":VAR.CUSTOMER:" AND TRAN.TYPE EQ DEPOSIT"
         SEL.CMD = "SELECT ":FN.REDO.MTS.DISBURSE:" WITH IDENTITY.DOC EQ ":VAR.CUST.ALTER.ID:" AND TRAN.TYPE EQ DEPOSIT AND AZ.ACCOUNT EQ ''"

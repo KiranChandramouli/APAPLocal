@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMjIwOTI1MjY5OkNwMTI1MjoxNjgwNzU5ODcwNzI0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 11:14:30
+* @ValidationCode : MjoxMjIwOTI1MjY5OkNwMTI1MjoxNjg0ODM2MDUyMDQ3OklUU1M6LTE6LTE6LTE1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -15
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.APAP.REVERSAL.FTTC
 *-------------------------------------------------------------------------------------
 *Modification
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------------
 * ----------------------------------------------------------------------------

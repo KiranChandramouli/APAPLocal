@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMTQwMjQ3MzM6Q3AxMjUyOjE2ODI1NzM5MTM2NzU6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:08:33
+* @ValidationCode : MjoxODM1OTk5OTgzOkNwMTI1MjoxNjg1NTQ0MTAwMjQ1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:11:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.GET.LATEST.OVERDUE.IDS(Y.LOAN.STATUS,Y.LOAN.COND,Y.OVR.IDS)
@@ -41,6 +41,7 @@ SUBROUTINE REDO.APAP.GET.LATEST.OVERDUE.IDS(Y.LOAN.STATUS,Y.LOAN.COND,Y.OVR.IDS)
     $INSERT I_EQUATE
     $INSERT I_F.AA.OVERDUE
     $USING APAP.TAM
+    $USING APAP.AA
 *-------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -113,7 +114,7 @@ CHECK.LOAN.STATUS:
     R.CONDITION = ''
     ERR.MSG      = ''
 
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 
     Y.LN.STATUS = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.STATUS.1.POS>
     IF NOT(Y.LN.STATUS) THEN
@@ -138,7 +139,7 @@ CHECK.LOAN.COND:
     R.CONDITION = ''
     ERR.MSG      = ''
 
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 
     Y.LN.COND = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.COND.POS>
     IF NOT(Y.LN.COND) THEN
@@ -163,7 +164,7 @@ CHECK.LOAN.STATUS.COND:
     R.CONDITION = ''
     ERR.MSG      = ''
 
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 
     Y.LN.STATUS = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.STATUS.1.POS>
     Y.LN.COND   = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.COND.POS>

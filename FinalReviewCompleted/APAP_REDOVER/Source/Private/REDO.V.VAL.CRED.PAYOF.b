@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTYxMTA5Njk1MTpDcDEyNTI6MTY4MjY5MTUxODc3NTpJVFNTOi0xOi0xOjY1NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:38
+* @ValidationCode : MjotMTIwODY4MjA4NTpDcDEyNTI6MTY4NTU0MzY0OTcxNTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:09
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 656
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE  REDO.V.VAL.CRED.PAYOF
@@ -40,6 +40,7 @@ SUBROUTINE  REDO.V.VAL.CRED.PAYOF
     $INSERT I_F.AA.PROPERTY
     $INSERT I_F.FUNDS.TRANSFER
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB OPEN.FILES
     GOSUB INIT
@@ -96,7 +97,7 @@ PROCESS.FT:
         ERR.MSG = ''
         EFF.DATE = ''
 
-        CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)   ;*R22 MANUAL CODE CONVERSION
+        APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)   ;*R22 MANUAL CODE CONVERSION
         LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.ST>
         LOAN.COND = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.CON>
 

@@ -214,7 +214,7 @@ PROCESS:
 *    Y.CURR.BILL     = BILL.DETAILS<AA.BD.CURRENCY>
 
     IF Y.CURR.CONTRACT NE LCCY THEN
-        CALL APAP.TAM.sRedoConvLocalCurr(Y.CURR.CONTRACT,1,P.REV.RATE);* R22 Manual conversion
+        APAP.TAM.sRedoConvLocalCurr(Y.CURR.CONTRACT,1,P.REV.RATE);* R22 Manual conversion
         Y.BD = Y.BD * P.REV.RATE
         Y.CB = Y.CB * P.REV.RATE
         CALL EB.ROUND.AMOUNT(LCCY, Y.BD, "", "")
@@ -262,7 +262,7 @@ GET.BILL.AMT:
 
     IF  Y.CURR.BILL NE LCCY THEN          ;*
         P.REV.RATE = 1
-        CALL APAP.TAM.sRedoConvLocalCurr(Y.CURR.BILL,1,P.REV.RATE);* R22 Manual conversion
+        APAP.TAM.sRedoConvLocalCurr(Y.CURR.BILL,1,P.REV.RATE);* R22 Manual conversion
         Y.RB = Y.RB * P.REV.RATE
         CALL EB.ROUND.AMOUNT(LCCY,Y.RB, "", "")
     END

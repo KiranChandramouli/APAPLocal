@@ -63,7 +63,7 @@ PROCESS:
     R.NEW(TT.TE.AMOUNT.LOCAL.1)  = Y.AMOUNT
     R.NEW(WPOS.LR)<1,Y.TT.BENEF> = Y.BENEFICIARY
 *
-    CALL APAP.TAM.redoHandleCommTaxFields();*R22 Manual Code conversion
+    APAP.TAM.redoHandleCommTaxFields();*R22 Manual Code conversion
 *
 RETURN
 *

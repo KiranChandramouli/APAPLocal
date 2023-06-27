@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTI1ODcxNTkwMTpDcDEyNTI6MTY4Mzg5MjY2NTQ4NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:45
+* @ValidationCode : MjotMTQwNzkzNzEyNDpDcDEyNTI6MTY4NTU0NTMyMDUwNjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:32:00
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.LOYALTY.CCARD(Y.FINAL.ARRAY)
@@ -102,7 +102,7 @@ PROCESS:
         D.FIELDS= 'CARD.NO':@FM:'COMPANY.CODE':@FM:'START.DATE':@FM:'END.DATE':@FM:'CURRENCY'
         D.RANGE.AND.VALUE=Y.CARD.LIST<Y.CARD.CNT>:@FM:Y.COMPANY.CODE:@FM:Y.DATE.MONTH:@FM:Y.DATE.YEAR:@FM:Y.CURRENCY
 *      CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
-        CALL APAP.REDOVER.redoVWrapSunnel ;*R22 Manual Conversion
+        APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;*R22 Manual Conversion
 
         Y.MSG.DESC=Y.ARRAY<29>
         Y.ALL.DATA=Y.ARRAY<25>

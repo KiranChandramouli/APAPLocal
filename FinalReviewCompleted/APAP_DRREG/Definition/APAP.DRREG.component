@@ -1444,3 +1444,9 @@ public method drRegrepParamFields (
 {
     jBC: DR.REGREP.PARAM.FIELDS
 }
+
+public method drRegRegn16AcOpenRate (
+)
+{
+    jBC: DR.REG.REGN16.AC.OPEN.RATE
+}

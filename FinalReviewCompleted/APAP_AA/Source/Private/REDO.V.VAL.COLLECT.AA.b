@@ -207,7 +207,7 @@ PROCESS:
     R.Condition = ''
     ERR.MSG     = ''
     EFF.DATE    = ''
-    CALL APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
 
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND   = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
@@ -294,7 +294,7 @@ GET.DESCRIPTIONS.ST:
         Y.FL.ST += 1
         Y.LOOOKUP.VAL = LOAN.STATUS<1,Y.FL.ST>
         Y.DESC.VAL    = ''
-        CALL APAP.REDOEB.redoEbLookupList(Y.LOOKUP.ID,Y.LOOOKUP.VAL,Y.DESC.VAL,RES1,RES2);* R22 Manual conversion
+        APAP.REDOEB.redoEbLookupList(Y.LOOKUP.ID,Y.LOOOKUP.VAL,Y.DESC.VAL,RES1,RES2);* R22 Manual conversion
         IF LOAN.STATUS.DUP EQ '' THEN
             LOAN.STATUS.DUP = Y.DESC.VAL
         END ELSE
@@ -313,7 +313,7 @@ GET.DESCRIPTIONS.ST:
         Y.FL.CD += 1
         Y.LOOOKUP.VAL = LOAN.COND<1,Y.FL.CD>
         Y.DESC.VAL    = ''
-        CALL APAP.REDOEB.redoEbLookupList(Y.LOOKUP.ID,Y.LOOOKUP.VAL,Y.DESC.VAL,RES1,RES2);* R22 Manual conversion
+        APAP.REDOEB.redoEbLookupList(Y.LOOKUP.ID,Y.LOOOKUP.VAL,Y.DESC.VAL,RES1,RES2);* R22 Manual conversion
         IF LOAN.COND.DUP EQ '' THEN
             LOAN.COND.DUP = Y.DESC.VAL
         END ELSE

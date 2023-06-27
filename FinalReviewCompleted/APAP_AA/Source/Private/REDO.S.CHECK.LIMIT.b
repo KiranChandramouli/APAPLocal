@@ -209,7 +209,7 @@ REDO.CRR.GET.CONDITIONS.TERM:
     PROPERTY = ''
     R.Condition = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
 RETURN
 ******************
 MULTI.GET.LOC.REF:
@@ -232,6 +232,6 @@ REDO.CRR.GET.CONDITIONS.LIMIT:
     PROPERTY = ''
     R.Condition.limit = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID.LIMIT,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID.LIMIT,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.limit,ERR.MSG);* R22 Manual conversion
 RETURN
 END

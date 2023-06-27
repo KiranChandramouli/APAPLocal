@@ -149,7 +149,7 @@ LOOK.FOR.DELETION:
             ID.ACCT.TO.DEL=R.NEW(ARC.BEN.BEN.ACCT.NO)
             FINAL.ID.DEL = ID.ACCT.TO.DEL:"*":ID.BEN.TO.DEL
             Y.FLAG = ''
-            CALL APAP.REDOCHNLS.aiRedoCheckStoTransfer(ID.BEN.TO.DEL,Y.FLAG);* R22 Manual conversion
+            APAP.REDOCHNLS.aiRedoCheckStoTransfer(ID.BEN.TO.DEL,Y.FLAG);* R22 Manual conversion
 
             IF Y.FLAG EQ '1' THEN
                 ETEXT ='EB-DEL.BENEFICIARY.STO'
@@ -162,7 +162,7 @@ LOOK.FOR.DELETION:
             ID.ACCT.TO.DEL = OTHER.BANK.BEN
             FINAL.ID.DEL = ID.ACCT.TO.DEL:"*":ID.BEN.TO.DEL
             Y.FLAG = ''
-            CALL APAP.REDOCHNLS.aiRedoCheckStoTransfer(ID.BEN.TO.DEL,Y.FLAG);* R22 Manual conversion
+            APAP.REDOCHNLS.aiRedoCheckStoTransfer(ID.BEN.TO.DEL,Y.FLAG);* R22 Manual conversion
 
             IF Y.FLAG EQ '1' THEN
                 ETEXT ='EB-DEL.BENEFICIARY.STO'

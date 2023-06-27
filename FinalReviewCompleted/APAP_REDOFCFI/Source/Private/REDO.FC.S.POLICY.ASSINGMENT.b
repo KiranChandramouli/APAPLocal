@@ -151,7 +151,7 @@ PROCESS.POLIZA.PRESTAMO:
     FOR Y.K = 1 TO Y.CONT.POLIZAS
 
         IF NOT( R.NEW(REDO.FC.POLICY.NUMBER.AUX)<1,Y.K>) AND R.NEW(REDO.FC.INS.POLICY.TYPE)<1,Y.I> AND  R.NEW(REDO.FC.CLASS.POLICY)<1,Y.I>  THEN
-            CALL APAP.REDOFCFI.redoFcGenPolId(Y.ID);* R22 Manual conversion - CALL method format changed
+            APAP.REDOFCFI.redoFcGenPolId(Y.ID);* R22 Manual conversion - CALL method format changed
             Y.ID.AUX = Y.ID
             R.NEW(REDO.FC.POLICY.NUMBER.AUX)<1,Y.K> = Y.ID.AUX
         END
@@ -313,7 +313,7 @@ ASIGNA.AUX:
     END
 
     LOCATE Y.POL.T IN Y.POL.TYPE<1> SETTING K.VAR THEN
-        CALL APAP.REDOFCFI.redoFcGenPolId(Y.ID);* R22 Manual conversion - Call method format changed
+        APAP.REDOFCFI.redoFcGenPolId(Y.ID);* R22 Manual conversion - Call method format changed
         Y.ID.AUX = Y.ID
         R.NEW(REDO.FC.POLICY.NUMBER.AUX)<1,K.POS.TYPE> = Y.ID.AUX
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMzc2NDE5MjM2OkNwMTI1MjoxNjgyNjkxNTE1MzE4OklUU1M6LTE6LTE6MTkwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:35
+* @ValidationCode : MjotMTg5MDYyMTU3NDpDcDEyNTI6MTY4NTU0MzY0Mjc4NjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:02
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 190
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.STO.UPD.SUNNEL(Y.FT.ID,Y.FT.STATUS)
@@ -54,9 +54,10 @@ INIT:
     END
     PGM.VERSION='FUNDS.TRANSFER'
     APPLICATION='FUNDS.TRANSFER'
-    CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;* R22 Manual Conversion - CALL method format modified
+    
     MATBUILD R.FUNDS.TRANSFER FROM R.NEW
     Y.ID.NEW=ID.NEW
-    CALL APAP.TAM.redoStoNcf(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoStoNcf(Y.ID.NEW,R.FUNDS.TRANSFER) ;* R22 Manual Conversion - CALL method format modified
 RETURN
 END

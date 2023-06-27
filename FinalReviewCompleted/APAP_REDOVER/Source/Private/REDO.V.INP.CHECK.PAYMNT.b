@@ -289,7 +289,7 @@ PROCESSFT:
     IN.ARR.ID = ''
     OUT.ID    = ''
     ERR.TEXT  = ''
-    CALL APAP.TAM.redoConvertAccount(CREDIT.ACCOUNT,IN.ARR.ID,OUT.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoConvertAccount(CREDIT.ACCOUNT,IN.ARR.ID,OUT.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
     AA.ARRANGEMENT.ID = OUT.ID
 
 ** PACS00082427 - S

@@ -77,7 +77,7 @@ SUBROUTINE REDO.POST.POOL.RATE.UPDATION
         FREQ = Y.FREQ.REVIEW
         Y.DATE = c_aalocActivityEffDate
         Y.OUT.DATE = ''
-        CALL APAP.TAM.redoGetNextCycledate(ARR.ID,FREQ,Y.DATE,Y.OUT.DATE);* R22 Manual conversion
+        APAP.TAM.redoGetNextCycledate(ARR.ID,FREQ,Y.DATE,Y.OUT.DATE);* R22 Manual conversion
 * PACS00585816 - start
         R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.NXT.REV.DT> = Y.OUT.DATE
 *        R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.NXT.REV.DT> = Y.DATE
@@ -154,7 +154,7 @@ GET.INTEREST.DATA:
     Y.REVIEW.FREQ =  R.NEW(AA.INT.LOCAL.REF)<1,Y.RATE.REV.FREQ.POS>
     IF Y.REVIEW.FREQ NE '' THEN
         Y.RATE = ''
-        CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE);* R22 Manual conversion
+        APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE);* R22 Manual conversion
         IF Y.RATE<1> THEN
             Y.FLAG = 1
             GOSUB MULTI.IF
@@ -237,7 +237,7 @@ GET.PAY.SCH:
     PROPERTY     = ''
     R.CONDITION  = ''
     ERR.MSG      = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
 
 RETURN
 *---------------------------------------------------
@@ -277,7 +277,7 @@ GET.BACK.TO.BANK.RATE:
     PROPERTY    = ''
     R.LIMIT.CONDITION = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG);* R22 Manual conversion
     Y.LIMIT.REFERENCE = R.LIMIT.CONDITION<AA.LIM.LIMIT.REFERENCE>
 *AA Changes 20161013
     Y.LIMIT.SERIAL = R.LIMIT.CONDITION<AA.LIM.LIMIT.SERIAL>
@@ -376,7 +376,7 @@ GET.AZ.RATE:
     IF YDAYS THEN
         Y.REVIEW.FREQ = YDAYS:'D'
         Y.AZ.RATE = ''
-        CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.AZ.RATE);* R22 Manual conversion
+        APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.AZ.RATE);* R22 Manual conversion
         Y.ACC.RATE = Y.AZ.RATE<1>
         Y.HIGH.AZ.RATE = Y.AZ.INTEREST
         Y.OLD.TERM     = YDAYS
@@ -390,7 +390,7 @@ GET.SAVINGS.RATE:
     Y.CURRENCY    = c_aalocArrCurrency
     Y.REVIEW.FREQ = Y.LOAN.TERM
     Y.RATE.VALUE  = ''
-    CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
+    APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
     Y.ACC.RATE = Y.RATE.VALUE<1>
 
 RETURN
@@ -403,7 +403,7 @@ GET.FIXED.LOAN.RATE:
     Y.CURRENCY    = c_aalocArrCurrency
     Y.REVIEW.FREQ = Y.LOAN.TERM
     Y.RATE.VALUE  = ''
-    CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
+    APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
     Y.RATE = Y.RATE.VALUE
 
 RETURN
@@ -412,7 +412,7 @@ GET.LOAN.TERM:
 *---------------------------------------------------------
 * Get the Term of the Loan
 
-    CALL APAP.TAM.redoGetLoanTerm(c_aalocArrId,c_aalocActivityEffDate,Y.LOAN.TERM);* R22 Manual conversion
+    APAP.TAM.redoGetLoanTerm(c_aalocArrId,c_aalocActivityEffDate,Y.LOAN.TERM);* R22 Manual conversion
 
 RETURN
 END

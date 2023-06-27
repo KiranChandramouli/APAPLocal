@@ -39,7 +39,7 @@ SUBROUTINE REDO.V.VAL.GET.CTENAME
     GOSUB INIT
 *----------------------------------
 *PACS00203353-S
-    CALL APAP.TAM.redoChkDebitCardNumber()    ;*R22 MANUAL CODE CONVERSION
+    APAP.TAM.redoChkDebitCardNumber()    ;*R22 MANUAL CODE CONVERSION
 *PACS00203353-E
 *----------------------------------
     GOSUB CHECK.PRELIM.CONDITIONS

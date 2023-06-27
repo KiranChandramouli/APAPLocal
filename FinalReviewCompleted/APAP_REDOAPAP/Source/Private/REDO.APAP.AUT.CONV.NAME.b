@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo3NjQ4NjQ5MTU6Q3AxMjUyOjE2ODA2MDI0NDgwNTg6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:30:48
+* @ValidationCode : Mjo3NjQ4NjQ5MTU6Q3AxMjUyOjE2ODQ4MzYwMzI3Mjg6SVRTUzotMTotMToxOTA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 190
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -21,7 +21,7 @@ SUBROUTINE REDO.APAP.AUT.CONV.NAME
 
 *DESCRIPTION       :This program is used to get the name and format them
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *
 *LINKED WITH       :

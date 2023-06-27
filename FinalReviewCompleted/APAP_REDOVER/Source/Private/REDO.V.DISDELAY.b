@@ -55,10 +55,10 @@ PROCESS:
 
     IF VAL.TEXT EQ '' THEN
         VAL.TEXT = 'VALIDATED'
-        CALL APAP.REDOVER.redoVAvailProgram();* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVAvailProgram();* R22 Manual Conversion - CALL method format modified
         VAL.TEXT = ''
     END ELSE
-        CALL APAP.REDOVER.redoVAvailProgram();* R22 Manual Conversion - CALL method format modified
+        APAP.REDOVER.redoVAvailProgram();* R22 Manual Conversion - CALL method format modified
     END
 
     IF Y.DIS.DELAY EQ 'NO' THEN

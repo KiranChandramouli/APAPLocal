@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQ2NTQ1MDM2MzpDcDEyNTI6MTY4MzAzMTYwMDgzMzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 18:16:40
+* @ValidationCode : Mjo5ODk4NTQxODU6Q3AxMjUyOjE2ODU5NDk0MjE4NDc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jun 2023 12:47:01
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.OUTSTANDING.LOANS(ENQ.OUT)
@@ -48,6 +48,7 @@ SUBROUTINE REDO.APAP.OUTSTANDING.LOANS(ENQ.OUT)
     $INSERT I_F.AA.ARRANGEMENT
     $INSERT I_F.AA.ACCOUNT.DETAILS
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -121,8 +122,8 @@ PROCESS:
             D.RANGE.AND.VALUE  = Y.VALUE
             D.LOGICAL.OPERANDS = Y.OPERANDS
             D.FIELDS           = Y.FIELDS
-            CALL APAP.REDOAPAP.REDO.APAP.OUTSTANDING.LOAN.DETAILS(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
-    
+*CALL REDO.APAP.OUTSTANDING.LOAN.DETAILS(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
+            CALL APAP.REDOAPAP.redoApapOutstandingLoanDetails(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
         END
     END
 RETURN
@@ -297,7 +298,7 @@ GET.CUSTOMER.CONDITIONS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 RETURN
 *----------------------------------------------------------------------
 AA.ARR.FORM.ID:
@@ -315,7 +316,7 @@ AA.ARR.FORM.ID:
         LOOP
         WHILE VAR3 LE Y.COM.ARY.CNT
             Y.ARR.ID=Y.COMMON.ARRAY.ONE<VAR3>
-            CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT)
+            APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT)
             CALL F.READ(FN.ACCOUNT,OUT.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
             Y.DAO=R.ACCOUNT<AC.ACCOUNT.OFFICER>
             IF Y.DAO EQ Y.SEL.DEPT.OFF THEN
@@ -368,7 +369,7 @@ CHECK.AGING.STATUS:
         Y.AA.ID = Y.COMMON.ARRAY.TWO<Y.AGE.VAR>
         IN.ACC.ID  = ''
         Y.LOAN.ACC = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
         CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         IF R.ACCOUNT<AC.LOCAL.REF,POS.L.OD.STATUS> EQ Y.AGING.STATUS.VALUE THEN
             Y.FINAL.ARR.ID.LIST<-1> = Y.AA.ID
@@ -404,7 +405,7 @@ CHECK.LOAN.AGING.STATUS:
         Y.AA.ID    = Y.COMMON.ARRAY.TWO<Y.AGE.VAR>
         IN.ACC.ID  = ''
         Y.LOAN.ACC = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
         CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         GOSUB GET.OVERDUE.COND
         IF R.ACCOUNT<AC.LOCAL.REF,POS.L.OD.STATUS> EQ Y.AGING.STATUS.VALUE AND Y.AA.LOAN.STATUS EQ Y.LOAN.STATUS.VALUE THEN
@@ -425,7 +426,7 @@ GET.OVERDUE.COND:
     PROPERTY        = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
     Y.AA.LOAN.STATUS = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS.1,1>
 
 RETURN

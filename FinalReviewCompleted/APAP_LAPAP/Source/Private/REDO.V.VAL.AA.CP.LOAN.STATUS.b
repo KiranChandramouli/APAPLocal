@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMDExODA1MTg0OlVURi04OjE2ODQyMjI4MzY1NDE6SVRTUzotMTotMTo2NjE6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:36
-* @ValidationInfo : Encoding          : UTF-8
+* @ValidationCode : MjoxNzQ2Nzk5ODA0OkNwMTI1MjoxNjg1NTQzOTc0MzQ2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:09:34
+* @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 661
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE REDO.V.VAL.AA.CP.LOAN.STATUS
@@ -38,6 +38,7 @@ SUBROUTINE REDO.V.VAL.AA.CP.LOAN.STATUS
     $INSERT I_F.AA.ARRANGEMENT ;*R22 AUTO CONVERSION END
     $USING APAP.REDOVER
     $USING APAP.TAM
+    $USING APAP.AA
 
 
     IF cTxn_CommitRequests EQ '1' THEN
@@ -133,14 +134,14 @@ PROCESS:
     R.NEW(FT.CREDIT.CURRENCY) = R.ACCOUNT<AC.CURRENCY>
 *CALL REDO.V.VAL.DEFAULT.AMT
 *R22 MANUAL CONVERSION
-    CALL APAP.REDOVER.redoVValDefaultAmt() ;*R22 MANUAL CONVERSION
-*CALL APAP.TAM.REDO.CK.PO.NORMAL.REP
+    APAP.REDOVER.redoVValDefaultAmt() ;*R22 MANUAL CONVERSION
+*APAP.TAM.REDO.CK.PO.NORMAL.REP
 *R22 MANUAL CONVERSION
-    CALL APAP.TAM.redoCkPoNormalRep();*R22 MANUAL CONVERSION
+    APAP.TAM.redoCkPoNormalRep();*R22 MANUAL CONVERSION
     PROP.CLASS = 'OVERDUE'; PROPERTY = ''; R.Condition = ''; ERR.MSG = ''; EFF.DATE = ''
 *CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 *R22 MANUAL CONVERSION
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*R22 MANUAL CONVERSION
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*R22 MANUAL CONVERSION
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS ;*R22 AUTO CONVERSION START

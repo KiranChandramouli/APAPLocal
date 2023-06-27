@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNjU1Mzk2MTM1OkNwMTI1MjoxNjgzMDEwNzU3NDM2OklUU1M6LTE6LTE6MTcwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 12:29:17
+* @ValidationCode : MjoxODQxMDAzMjcxOkNwMTI1MjoxNjg0ODQ4NDcwNTM5OklUU1M6LTE6LTE6MTcwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 18:57:50
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -321,7 +321,7 @@ PRE.PROCESS:
 *
             CASE LOOP.CNT EQ 3
 *
-                CALL APAP.TAM.RedoGetWaiveCateg(WAIVE.CAT);*R22 Manual Code conversion
+                APAP.TAM.redoGetWaiveCateg(WAIVE.CAT);*R22 Manual Code conversion
 *
         END CASE
 *

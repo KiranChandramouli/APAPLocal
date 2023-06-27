@@ -32,7 +32,7 @@ SUBROUTINE LAPAP.INTERES.SIMULATION
     $USING APAP.AA
     
     AA.ID = COMI
-    CALL APAP.AA.redoBConLnsByDebtorAaRecs(AA.ID,OUT.RECORD) ;*Manual R22 conversion
+    APAP.AA.redoBConLnsByDebtorAaRecs(AA.ID,OUT.RECORD) ;*Manual R22 conversion
     R.AA.INTEREST.APP         = FIELD(OUT.RECORD,"*",7)
     Y.RATE= R.AA.INTEREST.APP<AA.INT.FIXED.RATE,1>
     COMI = Y.RATE

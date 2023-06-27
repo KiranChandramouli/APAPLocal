@@ -4180,3 +4180,35 @@ public method redoNofileCrbReportRegl (
 {
     jBC: REDO.NOFILE.CRB.REPORT.REGL
 }
+
+
+public method redoApapNofileCancLoanDet (
+    INOUT yLnArray string,
+
+)
+{
+    jBC: REDO.APAP.NOFILE.CANC.LOAN.DET
+}
+
+public method redoApapOutstandingLoanDetails (
+    INOUT yFinalArry string,
+    INOUT yEndDate string,
+    INOUT yCritSel string,
+    INOUT yEnqOut string,
+
+)
+{
+    jBC: REDO.APAP.OUTSTANDING.LOAN.DETAILS
+}
+
+public method redoApapVAutMmCusProvUpd (
+)
+{
+   jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
+}
+
+public method redoApplAudit (
+)
+{
+    jBC: REDO.APPL.AUDIT
+}

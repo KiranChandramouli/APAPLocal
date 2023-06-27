@@ -95,7 +95,7 @@ PROCESS:
 *--------*
 
     PROP.CLASS='CUSTOMER'
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
 
 *CUST.ID = R.Condition<AA.CUS.PRIMARY.OWNER>
     CUST.ID = R.Condition<AA.CUS.CUSTOMER>;* R22 Manual conversion

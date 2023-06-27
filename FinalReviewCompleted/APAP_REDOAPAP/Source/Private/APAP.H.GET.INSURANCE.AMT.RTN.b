@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTM0MzMxMTc0NjpDcDEyNTI6MTY4MzAzMDI5NTI2MTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 17:54:55
+* @ValidationCode : MjotMTM0MzMxMTc0NjpDcDEyNTI6MTY4NDgzNjAzMDkzMzpJVFNTOi0xOi0xOjYyNDoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:30
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 624
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -269,7 +269,7 @@ GET.REVIEW.0:
         FIELD.BEHAVIOUR=R.BEHA.FLDS<FIELD.NAME.BEHA,POSSITION,ITR>
         FIELD.VALUE=R.BEHA.FLDS<FIELD.NAME.VALU,POSSITION,ITR>
 
-        CALL APAP.REDOAPAP.apapHGetCollAmtRtn(FIELD.VALUE, AMOUNT, R.BEHA.FLDS, FIELD.NAME)
+        APAP.REDOAPAP.apapHGetCollAmtRtn(FIELD.VALUE, AMOUNT, R.BEHA.FLDS, FIELD.NAME)
     NEXT
 
 RETURN
@@ -293,7 +293,7 @@ GET.EXP.DATE:
                 FIELD.BEHAVIOUR=R.BEHA.FLDS<FIELD.NAME.BEHA,POSSITION,1>
                 FIELD.VALUE=R.BEHA.FLDS<FIELD.NAME.VALU,POSSITION,1>
 
-                CALL APAP.REDOAPAP.apapHGetCollAmtRtn(FIELD.VALUE, POL.EXP.DATE.VALUE,R.BEHA.FLDS, FIELD.NAME)
+                APAP.REDOAPAP.apapHGetCollAmtRtn(FIELD.VALUE, POL.EXP.DATE.VALUE,R.BEHA.FLDS, FIELD.NAME)
                 R.NEW(FIELD.NO)=POL.EXP.DATE.VALUE
             END
         END

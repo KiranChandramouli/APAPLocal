@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjY3MjU1MzA6Q3AxMjUyOjE2ODMwMTA3OTExNjQ6SVRTUzotMTotMToyMTY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 12:29:51
+* @ValidationCode : MjotMjk3NDkzOTg5OkNwMTI1MjoxNjg1NTU1NjQ3MDQ0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 23:24:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 216
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.NARRATIVE
@@ -195,7 +195,7 @@ PROCESS:
     R.NEW(WPOS.LR)<1,Y.TT.BENEF>      = R.CERT.CHEQ.DET<CERT.DET.BENEFICIARY,1>
     R.NEW(TT.TE.AMOUNT.LOCAL.1)       = R.CERT.CHEQ.DET<CERT.DET.AMOUNT>
 *
-    CALL APAP.TAX.redoHandleCommTaxFields();*R22 MANUAL CODE CONVERSION
+    APAP.TAM.redoHandleCommTaxFields();*R22 MANUAL CODE CONVERSION
 *
     Y.CHEQUE.NO = Y.CERT.CHEQUE.NO[1,1]
 *

@@ -203,7 +203,7 @@ GET.CONDITION:
     PROPERTY=''
     R.CONDITION =''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
 RETURN
 *--------------------------------------------------------------------------------------------------------
 GET.CUSTOMER.SELECTION:
@@ -540,7 +540,7 @@ GET.DETAILS:
 *--------------------------------------------------------------------------------------------------------
 
 *CALL REDO.AA.CHANGE.INT.ARRANGEMENT.RPT.GET(Y.PROCESSED.IDS,Y.OUT.ARRAY)
-    CALL APAP.AA.redoAaChangeIntArrangementRptGet(Y.PROCESSED.IDS,Y.OUT.ARRAY) ;*R22 Manual Code conversion
+    APAP.AA.redoAaChangeIntArrangementRptGet(Y.PROCESSED.IDS,Y.OUT.ARRAY) ;*R22 Manual Code conversion
    
 RETURN
 *--------------------------------------------------------------------------------------------------------

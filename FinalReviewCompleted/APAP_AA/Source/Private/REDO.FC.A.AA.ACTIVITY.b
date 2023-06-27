@@ -115,9 +115,9 @@ PROCESS.MAIN:
 *
 *JPA this is happening ONLY if it is SECURED
     IF R.REDO.CREATE.ARRANGEMENT<REDO.FC.SECURED> EQ 'SI' THEN
-        CALL APAP.REDOFCFI.redoFcArrangementAuth();* R22 Manual conversion
+        APAP.REDOFCFI.redoFcArrangementAuth();* R22 Manual conversion
         IF R.REDO.CREATE.ARRANGEMENT<REDO.FC.TYPE.OF.SEC.DI> EQ '' ELSE
-            CALL APAP.TAM.redoFcSPictoracion();* R22 Manual conversion
+            APAP.TAM.redoFcSPictoracion();* R22 Manual conversion
         END
     END
 

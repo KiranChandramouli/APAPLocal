@@ -84,7 +84,7 @@ PROCESS:
 *logic changed to avoid looping of CHANGE-INTEREST activity. Because inside CHANGE-INTEREST another CHANGE-INTEREST activity getting trigered.
 *So update directly will happen in R.NEW and no need to post OFS
     INT.AMT = ''
-    CALL APAP.AA.redoGetTotalInterest(Y.ARRANGEMENT.ID,PROPERTY,INT.AMT);* R22 Manual conversion
+    APAP.AA.redoGetTotalInterest(Y.ARRANGEMENT.ID,PROPERTY,INT.AMT);* R22 Manual conversion
 
     IF R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.INT.AMTNEW> NE INT.AMT THEN
 

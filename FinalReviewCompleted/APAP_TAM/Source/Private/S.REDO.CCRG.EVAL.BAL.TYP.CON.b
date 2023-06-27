@@ -110,7 +110,7 @@ PROCESS:
         E = ''
 *CALL S.REDO.CONDITION.EVALUATOR(R.COND.DEF, P.VALUES, P.TRUE)
 ** R22 Manual conversion
-        CALL APAP.TAM.sRedoConditionEvaluator(R.COND.DEF, P.VALUES, P.TRUE)
+        APAP.TAM.sRedoConditionEvaluator(R.COND.DEF, P.VALUES, P.TRUE)
        
 *
 * Check if an error occured

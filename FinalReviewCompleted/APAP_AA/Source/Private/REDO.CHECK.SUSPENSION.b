@@ -171,7 +171,7 @@ GET.PREVIOUS.LOAN.STATUS:
 
     PREV.LOAN.STATUS = R.PREV.PROP.REC<AA.AC.LOCAL.REF,L.OD.STATUS.POS>
 
-    CALL APAP.TAM.redoGetOverduePosition(ARR.ID,PREV.LOAN.STATUS, PREV.POS, OD.COUNT)   ;* Get the Previous OD postion, R22 Manual conversion
+    APAP.TAM.redoGetOverduePosition(ARR.ID,PREV.LOAN.STATUS, PREV.POS, OD.COUNT)   ;* Get the Previous OD postion, R22 Manual conversion
 
 RETURN
 
@@ -182,7 +182,7 @@ GET.CURRENT.LOAN.STATUS:
 
     CURRENT.LOAN.STATUS = R.NEW(AA.AC.LOCAL.REF)<1,L.OD.STATUS.POS>
 
-    CALL APAP.TAM.redoGetOverduePosition(ARR.ID, CURRENT.LOAN.STATUS, CUR.POS, OD.COUNT);*Get the Current OD postion, R22 Manual conversion
+    APAP.TAM.redoGetOverduePosition(ARR.ID, CURRENT.LOAN.STATUS, CUR.POS, OD.COUNT);*Get the Current OD postion, R22 Manual conversion
 
 RETURN
 *----------------------------------------------------------------------------------------------------------------------------

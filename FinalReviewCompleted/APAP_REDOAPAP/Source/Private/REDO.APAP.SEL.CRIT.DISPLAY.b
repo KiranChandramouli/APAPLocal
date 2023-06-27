@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTIyNzc2MDc0ODpDcDEyNTI6MTY4MDc2MTEwMDQ1OTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 06 Apr 2023 11:35:00
+* @ValidationCode : MjotMTIyNzc2MDc0ODpDcDEyNTI6MTY4NDgzNjA1MjkwMzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:52
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,7 +28,7 @@ SUBROUTINE REDO.APAP.SEL.CRIT.DISPLAY
 *   ------         ------           -------------     ------------------
 * 24 DEC 2010    Satish@Contractor  ODR-2011-03-0083  Initial Creation
 * Date                  who                   Reference              
-* 06-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION SM TO @SM
+* 06-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION SM TO @SM
 * 06-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 
 *--------------------------------------------------------------------------------------------------------

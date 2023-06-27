@@ -357,7 +357,7 @@ CHECK.WHETHER.ALL.SETTLED:
 * So we shouldnot blindly make the fund available in limit.
 
     Y.ID.DETAILS = c_aalocArrId:"*":c_aalocActivityEffDate
-    CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ID.DETAILS,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
+    APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ID.DETAILS,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
 
 RETURN
 *------------------------------------------------------
@@ -378,7 +378,7 @@ GET.ACCOUNT.REPAID.BALANCE:
     Y.ACCOUNT.PROP.AMOUNT = 0
     IN.PROPERTY.CLASS = 'ACCOUNT'
     OUT.PROPERTY      = ''
-    CALL APAP.TAM.redoGetPropertyName(c_aalocArrId,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(c_aalocArrId,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual conversion
     Y.ACCOUNT.PROP = OUT.PROPERTY
 
 *Y.AAA.IDS =  c_aalocArrActivityId:VM:c_aalocArrActivityRec<AA.ARR.ACT.CHILD.ACTIVITY>
@@ -424,7 +424,7 @@ GET.LIMIT.PROD.COND:
     PROPERTY    = ''
     R.LIMIT.CONDITION = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG);* R22 Manual conversion
 *AA Changes 20161013
     Y.LIMIT.REF = R.LIMIT.CONDITION<AA.LIM.LIMIT.REFERENCE>
     Y.LIMIT.SERIAL = R.LIMIT.CONDITION<AA.LIM.LIMIT.SERIAL>

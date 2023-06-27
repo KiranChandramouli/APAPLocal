@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTk2MDYwMjYzMjpDcDEyNTI6MTY4MDY3MjE3NDQ3MTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Apr 2023 10:52:54
+* @ValidationCode : MjotMTk2MDYwMjYzMjpDcDEyNTI6MTY4NDgzNjAzNjc5NjpJVFNTOi0xOi0xOi0xMDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:36
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -10
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -27,7 +27,7 @@ SUBROUTINE REDO.APAP.DEAL.CONV.DATE(SYS.DATE)
 * DATE            WHO             REFERENCE              DESCRIPTION
 * 20 JUL 2012     Pradeep S       PACS00209521           Date format changed
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------
     $INSERT I_COMMON

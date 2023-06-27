@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4OTYxMTgwOTE6Q3AxMjUyOjE2ODI2OTE1MDcyNjU6SVRTUzotMTotMToxNzg6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:27
+* @ValidationCode : MjoxMjU2MjU4MTExOkNwMTI1MjoxNjg1NTQzNjIzOTI2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:03:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 178
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.DEF.TT.LOAN.STATUS.COND
@@ -46,6 +46,7 @@ SUBROUTINE REDO.V.DEF.TT.LOAN.STATUS.COND
     $INSERT I_EB.TRANS.COMMON
     $INSERT I_F.AA.ARRANGEMENT
     $USING APAP.TAM
+    $USING APAP.AA
 
 
 *    IF OFS$OPERATION EQ 'VALIDATE' THEN
@@ -107,8 +108,8 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS

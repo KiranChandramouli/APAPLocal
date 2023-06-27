@@ -76,7 +76,7 @@ RETURN
 PROCESS.MAIN:
 *=============
 
-    CALL APAP.AA.redoFcSOfsForAaMain(ID.PRODUCT, Y.OFS.MSG.REQ);* MANUAL R22 CODE CONVERSION
+    APAP.AA.redoFcSOfsForAaMain(ID.PRODUCT, Y.OFS.MSG.REQ);* MANUAL R22 CODE CONVERSION
     GOSUB WRITE.FILES
     CALL System.setVariable("CURRENT.RCA",Y.ID.RCA)
     CALL F.MATWRITE(FN.RCA.R.NEW, Y.ID.RCA, MAT R.NEW, 500)
@@ -99,7 +99,7 @@ PROCESS.MAIN:
             CALL EB.SET.NEW.TASK(NEW.TASK)
         END
     END ELSE
-        CALL APAP.TAM.redoUtilProcessOfs(Y.OFS.MSG.REQ, Y.OFS.MSG.RES);* R22 Manual conversion
+        APAP.TAM.redoUtilProcessOfs(Y.OFS.MSG.REQ, Y.OFS.MSG.RES);* R22 Manual conversion
 *        GOSUB CHECK.OFS.RESPONSE.TWS
     END
 

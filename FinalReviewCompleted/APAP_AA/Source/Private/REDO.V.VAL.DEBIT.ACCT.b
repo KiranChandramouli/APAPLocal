@@ -106,7 +106,7 @@ PROCESS3:
 *---------------------------------------------------------------------------------------------------------------
 *TUS change IF condition
     IF R.NEW(AA.PS.LOCAL.REF)<1,Y.DEBITAC.POS> NE '' AND NOT(ETEXT) THEN
-        CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
         Y.CUS.ID=DCOUNT(R.CONDITION<AA.CUS.OWNER>,@VM) ;*AUTO R22 CODE CONVERSION
 
         FOR Y.INITIAL=1 TO Y.CUS.ID

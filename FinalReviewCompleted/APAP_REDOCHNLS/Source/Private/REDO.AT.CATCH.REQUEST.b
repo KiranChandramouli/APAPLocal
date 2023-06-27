@@ -1,12 +1,12 @@
-* @ValidationCode : MjozMjU3MzA5NDc6Q3AxMjUyOjE2ODM1MzE1NTA0OTE6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 13:09:10
+* @ValidationCode : MjozMjU3MzA5NDc6Q3AxMjUyOjE2ODQ4NTQwNTE0OTA6SVRTUzotMTotMTotMzoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -3
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -35,8 +35,8 @@ SUBROUTINE REDO.AT.CATCH.REQUEST(ACTUAL.REQUEST)
     SIGNONUSER = FIELD(USERINFO,'/',1)
 
     NEWPASSUSER = SIGNONUSER
-*CALL APAP.REDOSRTN.REDO.S.GET.PASS(NEWPASSUSER);*Manual R22 conversion
-    CALL APAP.REDOSRTN.redoSGetPass(NEWPASSUSER);*Manual R22 conversion
+*APAP.REDOSRTN.REDO.S.GET.PASS(NEWPASSUSER);*Manual R22 conversion
+    APAP.REDOSRTN.redoSGetPass(NEWPASSUSER);*Manual R22 conversion
 
     IF NEWPASSUSER THEN
         CHANGE PASSUSER TO NEWPASSUSER IN AUXREQUEST

@@ -119,7 +119,7 @@ PROCESS:
         IF LCCY NE Y.SEC.CCY THEN                                    ;** R22 Auto conversion - <> TO NE
 *CALL S.REDO.CONV.LOCAL.CURR(Y.SEC.CCY,"1",Y.CCY.RATE)
 ** R22 Manual conversion
-            CALL APAP.TAM.sRedoConvLocalCurr(Y.SEC.CCY,"1",Y.CCY.RATE)
+            APAP.TAM.sRedoConvLocalCurr(Y.SEC.CCY,"1",Y.CCY.RATE)
             Y.AMT.SC = Y.AMT.SC * Y.CCY.RATE
             CALL EB.ROUND.AMOUNT(LCCY, Y.AMT.SC, "", "")
         END
@@ -178,7 +178,7 @@ CHECK.AND.ADD.RB:
                 Y.CCY.RATE = 1
 * CALL S.REDO.CONV.LOCAL.CURR(R.ENTITLEMENT$NAU<SC.ENT.CURRENCY>,"1",Y.CCY.RATE)
 ** R22 Manual conversion
-                CALL APAP.TAM.sRedoConvLocalCurr(R.ENTITLEMENT$NAU<SC.ENT.CURRENCY>,"1",Y.CCY.RATE)
+                APAP.TAM.sRedoConvLocalCurr(R.ENTITLEMENT$NAU<SC.ENT.CURRENCY>,"1",Y.CCY.RATE)
                 Y.AMT.ENT = Y.AMT.ENT * Y.CCY.RATE
                 CALL EB.ROUND.AMOUNT(LCCY, Y.AMT.ENT, "", "")
             END

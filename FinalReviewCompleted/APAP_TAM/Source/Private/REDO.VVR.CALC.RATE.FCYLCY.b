@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMDQwODcyMTc0OkNwMTI1MjoxNjg0ODQyMTUzNTY5OklUU1M6LTE6LTE6LTUxOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:33
+* @ValidationCode : MjoyOTk1MDU1Mzk6Q3AxMjUyOjE2ODU1NDU1MjEzMTQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:35:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -51
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VVR.CALC.RATE.FCYLCY
@@ -74,7 +74,7 @@ PROCESS:
 *
     R.NEW(TT.TE.AMOUNT.LOCAL.2)<1,1> = R.NEW(TT.TE.AMOUNT.FCY.1)<1,1> * Y.DEAL
 *
-    CALL APAP.TAM.redoHandleCommTaxFields ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.redoHandleCommTaxFields() ;*MANUAL R22 CODE CONVERSION
 *
 RETURN
 *

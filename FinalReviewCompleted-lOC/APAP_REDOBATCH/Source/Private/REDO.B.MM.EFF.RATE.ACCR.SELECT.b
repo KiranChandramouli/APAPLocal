@@ -1,0 +1,59 @@
+* @ValidationCode : MjotMTU3NTMyNTc1MTpDcDEyNTI6MTY4NDg1NDM5MjcwOTpJVFNTOi0xOi0xOi0xNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : -14
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOBATCH
+SUBROUTINE REDO.B.MM.EFF.RATE.ACCR.SELECT
+*--------------------------------------------------------------------------------------------------------
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.B.MM.EFF.RATE.ACCR.SELECT
+*--------------------------------------------------------------------------------------------------------
+*Description  : REDO.B.MM.EFF.RATE.ACCR.SELECT is the select routine to make a select on the
+*               MM.MONEY.MARKET file with local reference field L.MM.ACCRUE.MET equal to .EFFECTIVE RATE
+*Linked With  : REDO.B.MM.EFF.RATE.ACCR
+*In Parameter : N/A
+*Out Parameter: N/A
+*--------------------------------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+* Date           Who                  Reference           Description
+* ------         ------               -------------       -------------
+* 12 FEB 2013    Balagurunathan B     RTC-553577          Initial Creation
+* 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
+* 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+*--------------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.DATES
+    $INSERT I_F.MM.MONEY.MARKET
+    $INSERT I_REDO.B.MM.EFF.RATE.ACCR.COMMON
+
+*--------------------------------------------------------------------------------------------------------
+**********
+MAIN.PARA:
+**********
+    GOSUB PROCESS.PARA
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+*************
+PROCESS.PARA:
+*************
+
+    SEL.CMD = "SELECT ":FN.MM.MONEY.MARKET:" WITH L.MM.ACCRUE.MET EQ 'EFFECTIVE RATE' AND WITH INT.PERIOD.END GE ":TODAY
+    CALL EB.READLIST(SEL.CMD,SEL.LIST,"",NO.OF.REC,SEL.ERR)
+
+    CALL BATCH.BUILD.LIST("",SEL.LIST)
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+END

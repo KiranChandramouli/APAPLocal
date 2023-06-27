@@ -127,7 +127,7 @@ CHECK.CLAIMS:
 *************
 
     FILE.NAME = FN.REDO.ISSUE.CLAIMS
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CLAIM.FLAG = '1'
     GOSUB GET.VALUES
 RETURN
@@ -136,7 +136,7 @@ CHECK.REQUESTS:
 ***************
     CLAIM.FLAG = '' ;
     FILE.NAME = FN.REDO.ISSUE.REQUESTS
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     RETURN.FLAG = '1'
     GOSUB GET.VALUES
 RETURN
@@ -145,7 +145,7 @@ CHECK.COMPLAINTS:
 *****************
     CLAIM.FLAG = '';RETURN.FLAG = ''
     FILE.NAME = FN.REDO.ISSUE.COMPLAINTS
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     COMPLAINT.FLAG = '1'
     GOSUB GET.VALUES
 RETURN

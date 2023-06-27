@@ -99,7 +99,7 @@ PROCESS:
         YCUS.LEGAL = R.CUSTOMER<EB.CUS.LEGAL.ID,1>
 
 *ESTA FUNCION DEVULEVE LA IDENTIFICACION DEL CLIENTE SEA CUAL SEA.
-        CALL APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
+        APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
         Y.CUS.ID = EREPLACE(OUT.ARR<2>, "-", "")
 
 *---------------------------GDC-314---------------------------------------
@@ -156,7 +156,7 @@ VALIDAR.CUS.CEDULA.RNC:
                 IF Y.RELATION.CODE EQ 500 OR Y.RELATION.CODE EQ 501 OR Y.RELATION.CODE EQ 510 THEN
 
                     CALL F.READ(FN.CUSTOMER,Y.JOINT.HOLDER,R.CUSTOMER,F.CUSTOMER,Y.ERR.CUS)
-                    CALL APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion - CALL method format changed
+                    APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion - CALL method format changed
                     Y.CUS.ID = EREPLACE(OUT.ARR<2>, "-", "")
 
                     IF Y.ACH.CUS.ID EQ Y.CUS.ID THEN
@@ -200,7 +200,7 @@ VALIDAR.CUS.PASAPORTE:
                 IF Y.RELATION.CODE EQ 500 OR Y.RELATION.CODE EQ 501 OR Y.RELATION.CODE EQ 510 THEN
 
                     CALL F.READ(FN.CUSTOMER,Y.JOINT.HOLDER,R.CUSTOMER,F.CUSTOMER,Y.ERR.CUS)
-                    CALL APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
+                    APAP.LAPAP.drRegGetCustType(R.CUSTOMER, OUT.ARR);* R22 Manual conversion
                     Y.CUS.ID = EREPLACE(OUT.ARR<2>, "-", "")
 
                     IF Y.ACH.CUS.ID EQ Y.CUS.ID THEN

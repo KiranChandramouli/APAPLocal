@@ -60,7 +60,7 @@ SUBROUTINE TAM.EMAIL.SEND.TEST
 
 *CALL TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
 ** R22 Manual conversion
-    CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR)
+    APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR)
     
     CRT ""
     

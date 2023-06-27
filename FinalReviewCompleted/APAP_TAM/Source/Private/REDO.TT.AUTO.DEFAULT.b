@@ -70,13 +70,13 @@ PROCESS:
         IN.ACC.ID=COMI
 *  CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
 **R22 Manual Convarsion
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
         GOSUB GET.OVERDUE
     END
 
 *   CALL REDO.V.VAL.DEFAULT.AMT
 **R22 Manual Convarsion
-    CALL APAP.REDOVER.redoVValDefaultAmt()
+    APAP.REDOVER.redoVValDefaultAmt()
 
 RETURN
 *----------------------------------------------------------------------
@@ -90,7 +90,7 @@ GET.OVERDUE:
     EFF.DATE = ''
 *CALL REDO.CRR.GET.CONDITIONS(OUT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 **R22 Manual Convarsion
-    CALL APAP.AA.redoCrrGetConditions(OUT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(OUT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS

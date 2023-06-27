@@ -106,7 +106,7 @@ PROCESS:
     P.RESULT = ''
 *CALL S.REDO.CCRG.EVAL.BAL.TYP.CON(R.IN.RCBTP, P.VALUES, P.RESULT)
 ** R22 Manual conversion
-    CALL APAP.TAM.sRedoCcrgEvalBalTypCon(R.IN.RCBTP, P.VALUES, P.RESULT)
+    APAP.TAM.sRedoCcrgEvalBalTypCon(R.IN.RCBTP, P.VALUES, P.RESULT)
 
 * Get result process
     P.OUT.RETURN<1> = P.RESULT<1>

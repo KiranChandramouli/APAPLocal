@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo4ODcwNjk5MjE6Q3AxMjUyOjE2ODM1Mjg0OTQ1MTI6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 08 May 2023 12:18:14
+* @ValidationCode : Mjo4ODcwNjk5MjE6Q3AxMjUyOjE2ODQ4NTQwNTA4NjI6SVRTUzotMTotMTo5MTUzOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:50
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 9153
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -113,8 +113,8 @@ PROCESS:
 
     BEGIN CASE
         CASE Y.APP.VER EQ "EB.SECURE.MESSAGE,AI.REDO.CLAIM.NEW.CONFIRM"
-*CALL APAP.REDOCHNLS.AI.REDO.PRINT.RECEIPTS.PROCESS.CLAIM(Y.APP.VER,Y.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
-            CALL APAP.REDOCHNLS.aiRedoPrintReceiptsProcessClaim(Y.APP.VER,Y.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
+*APAP.REDOCHNLS.AI.REDO.PRINT.RECEIPTS.PROCESS.CLAIM(Y.APP.VER,Y.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
+            APAP.REDOCHNLS.aiRedoPrintReceiptsProcessClaim(Y.APP.VER,Y.REC.ID,HEADER.FLD,DATA.FLD,FOOTER.FLD,Y.XSL) ;*Manual R22 conversion
         CASE Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.REQ.LETTER.CONFIRM" OR Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.REQ.LETTER.REPRINT"
             GOSUB PROCESS.LETTER
         CASE Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.AA.AC.PRIN.PAY.CONFIRM" OR Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.AA.AC.PRIN.PAY.REPRINT" OR Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.LOAN.BEN.PAY.CONFIRM" OR Y.APP.VER EQ "FUNDS.TRANSFER,AI.REDO.LOAN.BEN.PAY.REPRINT"
@@ -1008,8 +1008,8 @@ PROCESS.STO.LN:
     HEADER.FLD = "FD1=":Y.HEADER:"^^FD2=":Y.HEADER:"^^FD3=":Y.SUBHEADER:"^^FD6="
     ACC.ID = R.REC<REDO.SO.ORIGIN.ACCT.NO>
     LOAN.ACC.ID = R.REC<REDO.SO.LOAN.ACCT.NO>
-*CALL APAP.TAM.REDO.CONVERT.ACCOUNT(LOAN.ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
-    CALL APAP.TAM.redoConvertAccount(LOAN.ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
+*APAP.TAM.REDO.CONVERT.ACCOUNT(LOAN.ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
+    APAP.TAM.redoConvertAccount(LOAN.ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT) ;*Manual R22 conversion
 *    DATA.FLD = DESC.TXN.REFERENCE:SEP.DATA:Y.REC.ID:SEP.DATA:SEP.LINE
     DATA.FLD := DESC.DR.ACCT.NO:SEP.DATA:ACC.ID:SEP.DATA:SEP.LINE
     DATA.FLD := DESC.CR.ACCT.NO:SEP.DATA:LOAN.ACC.ID:SEP.DATA:SEP.LINE

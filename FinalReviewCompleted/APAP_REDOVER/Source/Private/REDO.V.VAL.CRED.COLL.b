@@ -392,7 +392,7 @@ GET.AVAL.USE:
 *==================================
     IF R.NEW(COLL.COLLATERAL.CODE) EQ 150 THEN
         Y.RISK.PERC = ''
-        CALL APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC) ;*R22 Manual code conversion      ;*Rutina para calcular el % de riesgo
+        APAP.TAM.redoColGetRiskDi(Y.PRODUCT.ID.CUR,Y.RISK.PERC) ;*R22 Manual code conversion      ;*Rutina para calcular el % de riesgo
         IF NOT(Y.RISK.PERC)THEN
             Y.RISK.PERC = 1
         END

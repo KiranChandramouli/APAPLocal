@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNTk0OTYzMDY1OkNwMTI1MjoxNjgzMDMwOTEwNzc3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:05:10
+* @ValidationCode : MjotNTk0OTYzMDY1OkNwMTI1MjoxNjg0ODM2MDQ1OTgzOklUU1M6LTE6LTE6MjU2OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 256
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -97,8 +97,8 @@ GET.SAV.CURR.DEBIT.DETAILS:
 * In this para of the code, the TELLER TRANSACTION details are read and checked if the transaction can be
 ** consdiered or not for calculations and display
 
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.SAV.CUR(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDepSavCur(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.SAV.CUR(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowDepSavCur(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.COMPANY.LIST,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
 *    CALL REDO.APAP.NOF.CASH.WINDOW.DEP.SAV.CUR(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,VAR.RE.INV.CATEG,Y.COMPANY.LIST,Y.FINAL.ARRAY)
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -135,8 +135,8 @@ ADD.STATIC.TEXT:
 ****************
 * In this para of the code, a CALL is made to an routine to add the static text in the report for display
 
-*CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.TEXT.R32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY)
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDepTextR32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY)
+*APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.DEP.TEXT.R32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY)
+    APAP.REDOAPAP.redoApapNofCashWindowDepTextR32(Y.CCY.LIST,Y.COMPANY.LIST,Y.FINAL.ARRAY)
     Y.CNT.FIN = DCOUNT(Y.FINAL.ARRAY,@FM)
     Y.CNTT = 0
     LOOP

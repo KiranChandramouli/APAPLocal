@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxOTcxNzM0NTk5OkNwMTI1MjoxNjgyNTk0MzkzMjEyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:53
+* @ValidationCode : MjoxOTgzNTgwOTE0OkNwMTI1MjoxNjg1NTQ1MzM3NDAzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:32:17
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.MASSIVE.FILE.PROCESS.POST
@@ -54,7 +54,7 @@ RETURN
 *------------------------------------------------------------------------------------------
 OPENFILES:
 *------------------------------------------------------------------------------------------
-    CALL APAP.TAM.redoMassiveFileProcessLoad ;* R22 Manual conversion
+    APAP.TAM.redoMassiveFileProcessLoad() ;* R22 Manual conversion
 
     FN.L.REDO.MASSIVE.CONCAT = 'FBNK.REDO.MASSIVE.CONCAT'
     F.L.REDO.MASSIVE.CONCAT = ''

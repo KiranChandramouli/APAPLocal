@@ -56,7 +56,7 @@ PROCESS:
                 MB.SDB.STATUS.ID = R.NEW(SDB.POST.SDB.COMPANY):'.':R.NEW(SDB.POST.SDB.NUMBER)
                 R.MB.SDB.STATUS = ''
 *CALL MB.SDB.READ.SDB.STATUS(MB.SDB.STATUS.ID,R.MB.SDB.STATUS) ;*Manual R22 conversion
-                CALL APAP.REDOEB.mbSdbReadSdbStatus(MB.SDB.STATUS.ID,R.MB.SDB.STATUS);
+                APAP.REDOEB.mbSdbReadSdbStatus(MB.SDB.STATUS.ID,R.MB.SDB.STATUS);
                 IF R.MB.SDB.STATUS THEN
                     SDB.STATUS = 1
                 END ELSE

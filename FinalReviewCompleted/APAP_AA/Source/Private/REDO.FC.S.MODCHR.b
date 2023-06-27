@@ -97,7 +97,7 @@ PROCESS:
 *         END
 
         R.DATA = Y.PRODUCT
-        CALL APAP.REDOFCFI.redoFcNofileChargesDis(R.DATA);* R22 Manual conversion
+        APAP.REDOFCFI.redoFcNofileChargesDis(R.DATA);* R22 Manual conversion
 
         Y.OCUR = INDEX(R.DATA, Y.ID.NEW, 1)
 

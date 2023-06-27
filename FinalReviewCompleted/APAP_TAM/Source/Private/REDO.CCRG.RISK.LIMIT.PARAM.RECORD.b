@@ -54,8 +54,8 @@ SET.ENRICHMENTS:
 * MAX VALUE
     IF Y.FLAG NE 'S' THEN
         IF R.NEW(REDO.CCRG.RLP.PERCENTAGE) THEN       ;*This is because, the firts inputed it field will be empty
-* CALL APAP.TAM.REDO.CCRG.CAL.MAX.AMOUNT('RECORD') ;* R22 Manual Conversion
-            CALL APAP.TAM.redoCcrgCalMaxAmount('RECORD') ;*R22 Manual Conversion
+* APAP.TAM.REDO.CCRG.CAL.MAX.AMOUNT('RECORD') ;* R22 Manual Conversion
+            APAP.TAM.redoCcrgCalMaxAmount('RECORD') ;*R22 Manual Conversion
         END
     END ELSE
         Y.AMOUNT.TEC.RES =R.TECH.RES<REDO.CCRG.TR.TECH.RES.AMOUNT>

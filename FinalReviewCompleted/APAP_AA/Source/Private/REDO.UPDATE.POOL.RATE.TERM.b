@@ -124,7 +124,7 @@ FIXED.TYPE.PROCESS:
     Y.CURRENCY    = c_aalocArrCurrency
     Y.REVIEW.FREQ = Y.LOAN.TERM
     Y.RATE.VALUE  = ''
-    CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
+    APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
     Y.ACC.RATE    = Y.RATE.VALUE<1>
     GOSUB UPDATE.POOL.RATE
 
@@ -207,7 +207,7 @@ GET.AZ.RATE:
     IF YDAYS THEN
         Y.REVIEW.FREQ = YDAYS:'D'
         Y.AZ.RATE = ''
-        CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.AZ.RATE);* R22 Manual conversion
+        APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.AZ.RATE);* R22 Manual conversion
         Y.ACC.RATE = Y.AZ.RATE<1>
         Y.HIGH.AZ.RATE = Y.AZ.INTEREST
         Y.OLD.TERM     = YDAYS
@@ -223,7 +223,7 @@ GET.SAVINGS.RATE:
     Y.CURRENCY    = c_aalocArrCurrency
     Y.REVIEW.FREQ = Y.LOAN.TERM
     Y.RATE.VALUE  = ''
-    CALL APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
+    APAP.TAM.redoGetPoolRate(Y.CURRENCY,Y.REVIEW.FREQ,Y.RATE.VALUE);* R22 Manual conversion
     Y.ACC.RATE = Y.RATE.VALUE<1>
 RETURN
 
@@ -244,7 +244,7 @@ GET.LIMIT.REF:
     PROPERTY    = ''
     R.LIMIT.CONDITION = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(c_aalocArrId,EFF.DATE,PROP.CLASS,PROPERTY,R.LIMIT.CONDITION,ERR.MSG)
     Y.LIMIT.REFERENCE = R.LIMIT.CONDITION<AA.LIM.LIMIT.REFERENCE>
 *AA Chnages 20161013
     Y.LIMIT.SERIAL = R.LIMIT.CONDITION<AA.LIM.LIMIT.SERIAL>
@@ -258,26 +258,26 @@ GET.INTEREST.PROP:
     PROP.NAME   = 'PRINCIPAL'
     Y.PRIN.PROP = ''
     ERR         = ''
-    CALL APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,Y.PRIN.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,Y.PRIN.PROP,ERR);* R22 Manual conversion
 
     PROP.NAME      = 'PENALTY'
     Y.PENALTY.PROP = ''
     ERR            = ''
-    CALL APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,Y.PENALTY.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,Y.PENALTY.PROP,ERR);* R22 Manual conversion
 
     EFF.DATE           = c_aalocActivityEffDate
     PROP.CLASS         = 'INTEREST'
     PROPERTY           = Y.PRIN.PROP
     R.PRIN.COND        = ''
     ERR.MSG            = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PRIN.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PRIN.COND,ERR.MSG);* R22 Manual conversion
 
     EFF.DATE           = c_aalocActivityEffDate
     PROP.CLASS         = 'INTEREST'
     PROPERTY           = Y.PENALTY.PROP
     R.PENAL.COND       = ''
     ERR.MSG            = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PENAL.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.PENAL.COND,ERR.MSG);* R22 Manual conversion
 
 RETURN
 *------------------------------------------------------------

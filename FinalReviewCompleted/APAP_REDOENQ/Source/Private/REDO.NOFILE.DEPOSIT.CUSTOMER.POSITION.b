@@ -129,7 +129,7 @@ PROCESS:
     IF Y.TEMP.D.RANGE.AND.VALUE EQ '' THEN
         RETURN
     END
-    CALL APAP.REDOENQ.redoEFormSelStmt(FN.CUSTOMER, '', '', SEL.CMD.CUS)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FN.CUSTOMER, '', '', SEL.CMD.CUS)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CALL EB.READLIST(SEL.CMD.CUS,SEL.LIST.CUS,'',NO.OF.REC.CUS,SEL.ERR)
     IF SEL.LIST.CUS THEN
         Y.CUSTOMER.ID=SEL.LIST.CUS<1>
@@ -402,7 +402,7 @@ GETLOCREF:
     POS.L.AZ.RE.INV.CAT=LOC.REF.POS<3,1>
     APPL='ACCOUNT'
 
-    CALL APAP.TAM.redoGetVirtualTable(APPL,POS.L.AC.STATUS1,Y.VIRTUAL.TABLE,ERR);*R22 Manual Conversion
+    APAP.TAM.redoGetVirtualTable(APPL,POS.L.AC.STATUS1,Y.VIRTUAL.TABLE,ERR);*R22 Manual Conversion
  
 RETURN
 *--------------------------------------------------------------------------

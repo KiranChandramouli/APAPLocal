@@ -50,7 +50,7 @@ PROCESS:
     Y.ARRAY = ''
     FILE.NAME = FN.REDO.NOTIFY.RATE.CHANGE
 
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
     CALL EB.READLIST(SEL.CMD,ID.LST,'',NO.OF.REC,SEL.ERR)
 
     IF ID.LST THEN

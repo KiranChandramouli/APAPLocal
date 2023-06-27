@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDY0Mzk3NDY6Q3AxMjUyOjE2ODQ4NTE5ODg2ODA6SVRTUzotMTotMToxNjU6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:28
+* @ValidationCode : Mjo4MTU2MTMzOkNwMTI1MjoxNjg1NTQzMTMxNDg4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 165
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.MASSIVE.RATE(Y.OUT.ARRAY)
@@ -67,10 +67,11 @@ PROCESS:
 
     END
 
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.CMD) ;*Manual R22 conversion
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.CMD) ;*Manual R22 conversion
     SEL.AA.CMD :=' AND (ARR.STATUS EQ AUTH OR ARR.STATUS EQ CURRENT)'
     CALL EB.READLIST(SEL.AA.CMD,AA.IDS,'',NO.OF.REC,SEL.ERR)
-    CALL APAP.AA.redoCheckAaIds(AA.IDS,Y.MARGIN.ID,RETURN.AA.IDS) ;*Manual R22 conversion
+    APAP.AA.redoCheckAaIds(AA.IDS,RETURN.AA.IDS) ;*Manual R22 conversion
+    APAP.AA.redoCheckAaIds(aaIds, returnAaIds)
 
     GOSUB FORM.ARRAY
 
@@ -101,7 +102,7 @@ GET.INTEREST.DET:
 *-----------------------------------------------------------------
     OUT.PROP = ''
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,OUT.PROP,ERR) ;*Manual R22 conversion
+    APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,OUT.PROP,ERR) ;*Manual R22 conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
     Y.ARRG.ID = Y.AA.ID
@@ -110,13 +111,13 @@ GET.INTEREST.DET:
     EFF.DATE = TODAY
     ERR.MSG = ''
     R.INT.ARR.COND = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;*Manual R22 conversion
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;*Manual R22 conversion
 
     Y.EFFECTIVE.RATE = R.INT.ARR.COND<AA.INT.EFFECTIVE.RATE,1>
 
     IN.ACC.ID = ''
     IN.ARR.ID = Y.AA.ID
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*Manual R22 conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*Manual R22 conversion
     Y.AA.AC.ID = OUT.ID
 
     CALL F.READ(FN.AA.ARRANGEMENT,Y.ARRG.ID,R.ARRANGEMENT,F.AA.ARRANGEMENT,AA.ERR)

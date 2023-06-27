@@ -9,9 +9,6 @@ public method redoEBuildRegoff (
     jBC: REDO.E.BUILD.REGOFF
 }
 
-
-
-
 public method redoECnvBillType (
 )
 {
@@ -5400,3 +5397,66 @@ public method eAcBalRtn (
     jBC: E.AC.BAL.RTN
 }
 
+
+
+public method redoNofFhaInsuranceReport (
+    INOUT yFinArr string
+)
+{
+    jBC:REDO.NOF.FHA.INSURANCE.REPORT
+}
+
+
+public method redoECnvReinvCusName (
+
+)
+{
+    jBC:REDO.E.CNV.REINV.CUS.NAME
+}
+
+
+
+public method redoENofLoanOverdueReport(
+    INOUT yOutData string
+)
+{
+    jBC:REDO.E.NOF.LOAN.OVERDUE.REPORT
+}
+
+
+
+public method redoNofPrdClientRpt(
+    INOUT yResArray string
+)
+{
+    jBC:REDO.NOF.PRD.CLIENT.RPT
+}
+
+public method redoELoanStatusCond (
+    INOUT yOutEnq string
+)
+{
+    jBC:REDO.E.LOAN.STATUS.COND
+}
+
+public method redoConvIntLiqAccount (
+)
+{
+    jBC:REDO.CONV.INT.LIQ.ACCOUNT
+}
+
+
+public method nofileRedoLoanDets (
+    INOUT ArrgArray string
+)
+{
+    jBC:NOFILE.REDO.LOAN.DETS
+}
+
+
+public method redoEGetStmtPeriod (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.E.GET.STMT.PERIOD
+}

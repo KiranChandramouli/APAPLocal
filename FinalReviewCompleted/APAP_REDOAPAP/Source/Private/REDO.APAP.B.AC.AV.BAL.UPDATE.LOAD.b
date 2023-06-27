@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMjA3Mjk0OTEyMDpDcDEyNTI6MTY4MDYwMzM1MDk5ODpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:45:50
+* @ValidationCode : MjotMjA3Mjk0OTEyMDpDcDEyNTI6MTY4NDgzNjAzMzUxNDpJVFNTOi0xOi0xOjY1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:33
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 65
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE REDO.APAP.B.AC.AV.BAL.UPDATE.LOAD
 * 24 Nov 2010 Shiva Prasad Y ODR-2010-11-0196 CR012 Initial Creation
 * 27-Jan-2012 Gangadhar.S.V. Performance Tuning Changed MULTI.GET.LOC.REF to GET.LOC.REF
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *********************************************************************************************************
     $INSERT I_COMMON

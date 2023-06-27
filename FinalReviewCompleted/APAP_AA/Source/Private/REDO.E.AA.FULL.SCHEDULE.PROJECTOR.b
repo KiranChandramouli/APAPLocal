@@ -118,7 +118,7 @@ FINAL.PROCESS:
         GOSUB GET.RESPECTIVES.AMOUNT
         LOCATE Y.PENAL.PROPERTY IN R.BILL.DETAILS<AA.BD.PROPERTY,1> SETTING POS THEN
 
-            CALL APAP.TAM.redoGetAdjustedAmount(Y.PENAL.PROPERTY,Y.BILL.ID,Y.PENAL.AMT);* R22 Manual conversion
+            APAP.TAM.redoGetAdjustedAmount(Y.PENAL.PROPERTY,Y.BILL.ID,Y.PENAL.AMT);* R22 Manual conversion
             IF Y.PENAL.AMT GT 0 THEN
                 Y.CHG.PROPERTY = Y.PENAL.PROPERTY
                 Y.CHG.AMT      = Y.PENAL.AMT
@@ -126,7 +126,7 @@ FINAL.PROCESS:
             END
         END
         LOCATE Y.CHQ.RET.PROP IN R.BILL.DETAILS<AA.BD.PROPERTY,1> SETTING POS THEN
-            CALL APAP.TAM.redoGetAdjustedAmount(Y.CHQ.RET.PROP,Y.BILL.ID,Y.CHQ.RET.AMT);* R22 Manual conversion
+            APAP.TAM.redoGetAdjustedAmount(Y.CHQ.RET.PROP,Y.BILL.ID,Y.CHQ.RET.AMT);* R22 Manual conversion
             IF Y.CHQ.RET.AMT GT 0 THEN
                 Y.CHG.PROPERTY = Y.CHQ.RET.PROP
                 Y.CHG.AMT      = Y.CHQ.RET.AMT

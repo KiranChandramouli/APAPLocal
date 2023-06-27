@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTk3MTkwNzAzNzpDcDEyNTI6MTY4MzAzMDgxMTUzMzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 18:03:31
+* @ValidationCode : MjotMTk3MTkwNzAzNzpDcDEyNTI6MTY4NDgzNjA0MjM5NzpJVFNTOi0xOi0xOjgwOToxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 809
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -102,16 +102,16 @@ PROCESS.PARA:
             ETEXT = 'CO-DOC.REC.NOT.AMEND'
             CALL STORE.END.ERROR
         END
-*CALL APAP.REDOAPAP.REDO.APAP.VAL.REASN.MVMT.M
-        CALL APAP.REDOAPAP.redoApapValReasnMvmtM()
-* CALL APAP.REDOAPAP.REDO.APAP.VAL.DATE.MVMT.M
-        CALL APAP.REDOAPAP.redoApapValDateMvmtM()
+*APAP.REDOAPAP.REDO.APAP.VAL.REASN.MVMT.M
+        APAP.REDOAPAP.redoApapValReasnMvmtM()
+* APAP.REDOAPAP.REDO.APAP.VAL.DATE.MVMT.M
+        APAP.REDOAPAP.redoApapValDateMvmtM()
     END
     IF PGM.VERSION EQ ",DOC.RECEPTION" THEN
-*CALL APAP.REDOAPAP.REDO.APAP.V.RECEP.DATE
-        CALL APAP.REDOAPAP.redoApapVRecepDate()
-*CALL APAP.REDOAPAP.REDO.APAP.VAL.REG.TITLE.DATE
-        CALL APAP.REDOAPAP.redoApapValRegTitleDate()
+*APAP.REDOAPAP.REDO.APAP.V.RECEP.DATE
+        APAP.REDOAPAP.redoApapVRecepDate()
+*APAP.REDOAPAP.REDO.APAP.VAL.REG.TITLE.DATE
+        APAP.REDOAPAP.redoApapValRegTitleDate()
 
     END
 *PACS00054322 -E

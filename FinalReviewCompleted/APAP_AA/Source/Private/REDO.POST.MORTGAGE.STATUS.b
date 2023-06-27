@@ -135,7 +135,7 @@ PRELIM.CONDITIONS:
     OUT.ID = ''
     ERR.TEXT = ''
 
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
 
     IF ERR.TEXT THEN
         PROCESS.GOHEAD = @FALSE

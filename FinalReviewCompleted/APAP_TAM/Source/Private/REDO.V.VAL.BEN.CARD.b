@@ -75,7 +75,7 @@ PROCESS:
 *-------
     CALL MULT.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
     Y.ARRAY='BUSCAR_TARJETA_CUENTA.2'
-*CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY);* R22 Manual conversion - CALL method format changed
-    CALL APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;* R22 Manual conversion
+*APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY);* R22 Manual conversion - CALL method format changed
+    APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;* R22 Manual conversion
 RETURN
 END

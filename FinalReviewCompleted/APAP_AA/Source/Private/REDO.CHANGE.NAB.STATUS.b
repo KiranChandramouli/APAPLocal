@@ -502,7 +502,7 @@ GET.INTEREST.PROPERTY:
     ARR.INFO    = '' ;   ARR.INFO<1> = ARR.ID ; ARR.INFO<2> = c_aalocActivityEffDate
     PROP.NAME   = 'PRINCIPAL'
     OUT.PROP    = ''
-    CALL APAP.TAM.redoGetInterestProperty(ARR.INFO,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(ARR.INFO,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     INT.PROPERTY = OUT.PROP
 
 * Following lines are commented because AA.INTEREST.ACCRUALS doesn't have the END date for migrated expired contracts.

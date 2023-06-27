@@ -64,7 +64,7 @@ SUBROUTINE REDO.V.INP.SUNNEL.UPDATE
             Y.PRESENT.CARD.ID = ""
         END ;*R22 Auto code conversion-END
 
-        CALL APAP.TAM.redoGetCardType(Y.PRESENT.CARD.ID,Y.ACCT,Y.CARD.TYPE) ;*R22 Manual code conversion
+        APAP.TAM.redoGetCardType(Y.PRESENT.CARD.ID,Y.ACCT,Y.CARD.TYPE) ;*R22 Manual code conversion
         R.SUNNEL.DETAILS<SUN.CARD.TYPE> = Y.CARD.TYPE
         CALL F.WRITE(FN.SUNNEL.DETAILS,Y.ACCT,R.SUNNEL.DETAILS)
     END

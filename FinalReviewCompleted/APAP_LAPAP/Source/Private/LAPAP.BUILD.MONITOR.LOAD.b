@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTgxNDk3Mzg5ODpDcDEyNTI6MTY4NDIzMzQ1MTU2NDpJVFNTOi0xOi0xOi0yOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 16:07:31
+* @ValidationCode : MjotMTQ5NjE3NDM4OkNwMTI1MjoxNjg1NTQ5NTMxNzE5OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 21:42:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -2
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *========================================================================
@@ -69,7 +69,7 @@ SUBROUTINE LAPAP.BUILD.MONITOR.LOAD(ARR)
     MON.FIELDS = FN.ARR<4>
     SQL.TABLE = FN.ARR<5>
 *DEBUG
-    CALL APAP.LAPAP.lapapSendMonitorLoad(ID,SQL.FIELDS,DATA.TYPES,MON.FIELDS,SQL.TABLE);* R22 Manual conversion
+    APAP.LAPAP.lapapSendMonitorLoad(ID,SQL.FIELDS,DATA.TYPES,MON.FIELDS,SQL.TABLE);* R22 Manual conversion
 RETURN
 
 END

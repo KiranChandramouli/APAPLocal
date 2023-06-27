@@ -48,7 +48,7 @@ PROCESS:
     Y.OUT.ARRAY = ''
     FILE.NAME = FN.ACCOUNT.OVERDRAWN
 
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD)	;*R22 Manual Conversion - Added APAP.REDOENQ
 
 
     IF D.RANGE.AND.VALUE ELSE

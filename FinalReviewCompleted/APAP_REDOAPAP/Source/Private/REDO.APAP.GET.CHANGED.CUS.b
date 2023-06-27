@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMTQ3MzM4ODYwOkNwMTI1MjoxNjgwNjc2NDU4OTgwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:04:18
+* @ValidationCode : MjoxMTQ3MzM4ODYwOkNwMTI1MjoxNjg0ODM2MDQwNzg1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -33,7 +33,7 @@ SUBROUTINE REDO.APAP.GET.CHANGED.CUS
 * Date            Who                 Reference
 * 06-SEP-10    Kishore.SP            INITIALVERSION
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION VM TO @VM AND ! TO *
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION VM TO @VM AND ! TO *
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON

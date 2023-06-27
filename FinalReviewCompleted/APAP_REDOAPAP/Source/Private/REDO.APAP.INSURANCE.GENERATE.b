@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTgwMzc0NDg2NjpDcDEyNTI6MTY4MDY3OTI5MjYwMTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:51:32
+* @ValidationCode : MjotMTgwMzc0NDg2NjpDcDEyNTI6MTY4NDgzNjA0MjY1MjpJVFNTOi0xOi0xOjY5NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 697
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -19,7 +19,7 @@ SUBROUTINE REDO.APAP.INSURANCE.GENERATE
 *-----------------------------------------------------------------------------------------------------------------
 * Modification History
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION FM TO @FM 
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION FM TO @FM 
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *
 *-----------------------------------------------------------------------------------------------------------------

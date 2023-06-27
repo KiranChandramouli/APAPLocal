@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTU3MDgwNzc3OkNwMTI1MjoxNjgzODc4MDY4NjgzOklUU1M6LTE6LTE6NzY4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 12 May 2023 13:24:28
+* @ValidationCode : MjotOTkwMzM5MzI1OkNwMTI1MjoxNjg1NTQyODM2MzQ1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:50:36
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 768
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.FC.S.REPAYMENT
@@ -74,17 +74,17 @@ SUBROUTINE REDO.FC.S.REPAYMENT
             YERR = ''
             CALL F.READ(FN.REDO.FC.CL.BALANCE,c_aalocArrId,R.REDO.FC.CL.BALANCE,F.REDO.FC.CL.BALANCE,YERR)
             IF R.REDO.FC.CL.BALANCE THEN
-                CALL APAP.AA.redoFcClPaymentAa(TOTAL.ACC.AMT, c_aalocArrId);* R22 Manual conversion
+                APAP.AA.redoFcClPaymentAa(TOTAL.ACC.AMT, c_aalocArrId);* R22 Manual conversion
             END ELSE      ;* For Migrated contracts
-                CALL APAP.AA.redoFcClPaymentAa(TOTAL.ACC.AMT, c_aalocArrId);* PACS00350509 - S/E, ;* R22 Manual conversion
+                APAP.AA.redoFcClPaymentAa(TOTAL.ACC.AMT, c_aalocArrId);* PACS00350509 - S/E, ;* R22 Manual conversion
             END
 *
         END ELSE
             CALL F.READ(FN.REDO.FC.CL.BALANCE,c_aalocArrId,R.REDO.FC.CL.BALANCE,F.REDO.FC.CL.BALANCE,YERR)
             IF R.REDO.FC.CL.BALANCE THEN
-                CALL APAP.AA.redoFcSPaymentAa();* R22 Manual conversion
+                APAP.AA.redoFcSPaymentAa();* R22 Manual conversion
             END ELSE      ;* For Migrated contracts
-                CALL APAP.AA.redoFcSPaymentAa();* PACS00350509 - S/E, ;* R22 Manual conversion
+                APAP.AA.redoFcSPaymentAa();* PACS00350509 - S/E, ;* R22 Manual conversion
             END
 
         END
@@ -127,11 +127,11 @@ GET.PROPERTY:
 *-----------------------------------------------------------------------
     VAR.ARR.ID =  c_aalocArrId
     IN.PROPERTY.CLASS='ACCOUNT'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);* R22 Manual conversion
     IN.PROPERTY.CLASS='INTEREST'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR);* R22 Manual conversion
     IN.PROPERTY.CLASS='TERM.AMOUNT'
-    CALL APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.TERM.PROPERTY,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(VAR.ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.TERM.PROPERTY,OUT.ERR);* R22 Manual conversion
 RETURN
 
 *----------------------------------------------------------------------------------------
@@ -145,7 +145,7 @@ GET.ACCOUNT:
 *----------------------------------------------------------------------------------------------------
 
     Y.ARR.ID = c_aalocArrId
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,Y.ACCOUNT.ID,ERR.TEXT);* R22 Manual conversion
     CALL F.READ(FN.ACCOUNT,Y.ACCOUNT.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
     CU  = R.ACCOUNT<AC.CUSTOMER>
 RETURN

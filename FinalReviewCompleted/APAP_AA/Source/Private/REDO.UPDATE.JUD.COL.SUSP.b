@@ -112,7 +112,7 @@ GET.AGING.STATUS:
     PROPERTY    = ''
     R.ACC.COND  = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.COND,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.COND,ERR.MSG);* R22 Manual conversion
 
     Y.L.OD.STATUS = R.ACC.COND<AA.AC.LOCAL.REF,POS.L.OD.STATUS>
 

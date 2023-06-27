@@ -1,14 +1,14 @@
-* @ValidationCode : MjozMjY5NjQyMTA6Q3AxMjUyOjE2ODQ4NTE5NzUzMDE6SVRTUzotMTotMTotMzQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:15
+* @ValidationCode : MjozODIxOTYwMzI6Q3AxMjUyOjE2ODU1NDMxMTYxNzQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:16
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -34
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.GET.OUT.BALANCE
@@ -31,6 +31,7 @@ SUBROUTINE REDO.E.GET.OUT.BALANCE
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.ACCT.ACTIVITY
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB PROCESS
 RETURN
@@ -43,7 +44,7 @@ PROCESS:
     Y.ARR.ACC.ID  = ''
     Y.TOTAL.AMT   = ''
     IN.ARR.ID = O.DATA
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,Y.ARR.ACC.ID,ERR.TEXT) ;*R22 Manual Conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,Y.ARR.ACC.ID,ERR.TEXT) ;*R22 Manual Conversion
 
     IF Y.ARR.ACC.ID ELSE
         RETURN
@@ -63,7 +64,7 @@ GET.OVERDUE.STATUS:
     PROPERTY = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(IN.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(IN.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);*R22 Manual Conversion
     Y.OVERDUE.STATUS = R.CONDITION.OVERDUE<AA.OD.OVERDUE.STATUS>
 *  CHANGE VM TO FM IN Y.OVERDUE.STATUS
     CHANGE @SM TO @FM IN Y.OVERDUE.STATUS
@@ -76,7 +77,7 @@ GET.ACCOUNT.PROP.BALANCE:
 
     Y.ACC.BAL = 0
     Y.ACCOUNT.PROPERTY = ''
-    CALL APAP.TAM.redoGetPropertyName(IN.ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);*R22 Manual Conversion
+    APAP.TAM.redoGetPropertyName(IN.ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR);*R22 Manual Conversion
 
     ACC.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.OVERDUE.STATUS
     Y.PROPERTY.LIST = Y.ACCOUNT.PROPERTY

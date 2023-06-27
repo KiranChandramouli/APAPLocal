@@ -87,7 +87,7 @@ PROCESS:
 
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.REDO.OUTWARD.RETURN
-        CALL APAP.TAM.redoFormFileEnqSelStmt(FILE.NAME,SEL.CMD);*R22 Manual Conversion
+        APAP.TAM.redoFormFileEnqSelStmt(FILE.NAME,SEL.CMD);*R22 Manual Conversion
     END ELSE
         SEL.CMD = "SELECT ":FN.REDO.OUTWARD.RETURN
     END

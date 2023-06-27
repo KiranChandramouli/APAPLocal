@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTI2NDE2MDExNTpDcDEyNTI6MTY4NDIyODMyMzUwMTpJVFNTOi0xOi0xOjM3NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 16 May 2023 14:42:03
+* @ValidationCode : MjotNTM2MzU1NTQzOkNwMTI1MjoxNjg1NTQzOTI4NjQwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:08:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 377
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.DEL.COND.RESTRUCTURE(ARR.ID)
@@ -63,6 +63,7 @@ SUBROUTINE LAPAP.DEL.COND.RESTRUCTURE(ARR.ID)
     $INSERT I_F.DATES
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INIT
     IF R.Condition THEN
@@ -85,7 +86,7 @@ INIT:
     ERR.MSG=''
     EFF.DATE = ''
     Y.RES.FALG.UPD = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
     OVERDUE.R.CONDITION=R.Condition
     LOAN.STATUS.LST = R.Condition<AA.OD.LOCAL.REF,AA.LOAN.STATUS.POS>
     LOAN.COND.LST = R.Condition<AA.OD.LOCAL.REF,AA.LOAN.COND.POS>
@@ -102,7 +103,7 @@ INIT:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
 
     Y.MIG.LOAN = R.Condition<AA.PS.LOCAL.REF,AA.MIG.POS>
 
@@ -523,7 +524,7 @@ RETURN
 GET.PROPERTY:
 ***********************
     IN.PROPERTY.CLASS = 'OVERDUE'
-    CALL APAP.TAM.redoGetPropertyName(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OD.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion-Call Method Format Modified
+    APAP.TAM.redoGetPropertyName(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OD.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion-Call Method Format Modified
 
 RETURN
 END

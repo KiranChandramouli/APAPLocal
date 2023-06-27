@@ -224,7 +224,7 @@ RETURN
 CHECK.FIELDS:
 
 *CALL MB.SDB.PARAM.CHECK.FIELDS
-    CALL APAP.REDOEB.mbSdbParamCheckFields();*Manual R22 conversion
+    APAP.REDOEB.mbSdbParamCheckFields();*Manual R22 conversion
     IF E THEN
         T.SEQU = "IFLD"
         CALL ERR
@@ -372,7 +372,7 @@ RETURN
 DEFINE.PARAMETERS:
 
 *CALL MB.SDB.PARAM.FLD.DEFINITIONS
-    CALL APAP.REDOEB.mbSdbParamFldDefinitions() ;*Manual R22 conversion
+    APAP.REDOEB.mbSdbParamFldDefinitions() ;*Manual R22 conversion
 RETURN
 
 *************************************************************************

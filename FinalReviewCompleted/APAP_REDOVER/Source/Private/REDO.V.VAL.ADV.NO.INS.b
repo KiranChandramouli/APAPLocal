@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTIwMjk1NTY5OkNwMTI1MjoxNjgzMDE3ODgwOTYyOklUU1M6LTE6LTE6MTAyMjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 14:28:00
+* @ValidationCode : MjoxNzk1MDQ4NDIzOkNwMTI1MjoxNjg1NTQzNjQ3MjAyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1022
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -49,6 +49,7 @@ SUBROUTINE REDO.V.VAL.ADV.NO.INS
     $INSERT I_System
     $INSERT I_F.VERSION
     $USING APAP.TAM
+    $USING APAP.AA
 MAIN:
 
     GOSUB OPENFILES
@@ -164,7 +165,7 @@ PROCESS1:
     YMAT.DATE = ''
     IF Y.ADV.CNT EQ '' AND (Y.PART.CON EQ 'YES' OR Y.PART.CON EQ 'SI') THEN
         PROP.CLASS='TERM.AMOUNT'
-        CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+        APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
         Y.PARTIAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.PERC>
         Y.PART.VAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.FT.PART>
 * FIX R15 20170802
@@ -240,7 +241,7 @@ PROCESS2:
         Y.AV   = AV
         Y.AS   = AS
         COMI = R.NEW(FT.CREDIT.AMOUNT)
-        CALL APAP.TAM.redoValMtsAmountFt() ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoValMtsAmountFt() ;* R22 Manual Conversion - CALL method format modified
         COMI  =     Y.COMI
         AF    =     Y.AF
         AV    =     Y.AV

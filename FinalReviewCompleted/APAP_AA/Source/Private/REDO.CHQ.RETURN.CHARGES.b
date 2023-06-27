@@ -107,7 +107,7 @@ PROCESS.PARA:
 
             CALL OFS.POST.MESSAGE(OFS.MESSAGE,OFS.MSG.ID,OFS.SOURCE.ID,OFS.ERR)
 
-            CALL APAP.AA.redoUpdateChqReturn(Y.ARR.ID);* R22 Manual conversion
+            APAP.AA.redoUpdateChqReturn(Y.ARR.ID);* R22 Manual conversion
         END
 
     END

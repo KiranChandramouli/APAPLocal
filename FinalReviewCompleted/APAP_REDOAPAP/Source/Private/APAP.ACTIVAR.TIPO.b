@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo0NzUzNjExOTc6Q3AxMjUyOjE2ODMwMzAxNjY0MDQ6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 17:52:46
+* @ValidationCode : Mjo0NzUzNjExOTc6Q3AxMjUyOjE2ODQ4MzYwMjg5NDQ6SVRTUzotMTotMTotNzM6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -73
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -70,8 +70,8 @@ PROCESS:
 *======
 
     VAR.DATO = COMI
-* CALL APAP.REDOAPAP.H.INSURANCE.BEHAVIOUR.RTN ;*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.apapHInsuranceBehaviourRtn()
+* APAP.REDOAPAP.H.INSURANCE.BEHAVIOUR.RTN ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.apapHInsuranceBehaviourRtn()
     COMI = VAR.DATO
 
 *Choose the conditions for the field

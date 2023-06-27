@@ -69,7 +69,7 @@ PROCESS:
 
 *CALL REDO.CUST.IDENTITY.REF(Y.CUS.ID,Y.ALT.ID,Y.CUS.NAME)
 ** R22 Manual conversion
-    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.CUS.ID,Y.ALT.ID,Y.CUS.NAME) ;*R22 Manual Conversion
+    APAP.REDORETAIL.redoCustIdentityRef(Y.CUS.ID,Y.ALT.ID,Y.CUS.NAME) ;*R22 Manual Conversion
     GOSUB FORMAT.NAME
 
 RETURN

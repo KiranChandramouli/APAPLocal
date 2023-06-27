@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTEzMjM4MzE4OkNwMTI1MjoxNjgzNjk4NDI4MzkxOklUU1M6LTE6LTE6NTA3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 10 May 2023 11:30:28
+* @ValidationCode : MjotNTgxMzcwMDk0OkNwMTI1MjoxNjg1NTQyNjIzNDczOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:47:03
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 507
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.CR.S.STATUS.VALUE
@@ -266,7 +266,7 @@ GET.COLL.AA.IDS:
     Y.AA.ID.FND = AA.LINK.LIMIT<1,NUM.AA.ID>
 *
     COL.ID.LINKED = ''
-    CALL APAP.AA.RedoColAaGetLinksCol(Y.AA.ID.FND,COL.ID.LINKED);*MANUAL R22 CODE CONVERSION - Changed CALL format
+    APAP.AA.redoColAaGetLinksCol(Y.AA.ID.FND,COL.ID.LINKED);*MANUAL R22 CODE CONVERSION - Changed CALL format
     MMARK = CHARX(251) ;*AUTO R22 CODE CONVERSION
     IF COL.ID.LINKED EQ "ERROR" THEN
         COL.ID.LINKED = ''

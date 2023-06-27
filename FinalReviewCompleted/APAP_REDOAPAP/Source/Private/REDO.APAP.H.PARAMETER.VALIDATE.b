@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyMDIwMDI3OTExOkNwMTI1MjoxNjgwNjc3NDkzMDQyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 05 Apr 2023 12:21:33
+* @ValidationCode : MjoyMDIwMDI3OTExOkNwMTI1MjoxNjg0ODM2MDQxNTAzOklUU1M6LTE6LTE6LTY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -6
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -31,7 +31,7 @@ SUBROUTINE  REDO.APAP.H.PARAMETER.VALIDATE
 * -------            ----                   ----------           --------
 * 26-Nov-2018        Vignesh Kumaar M R     CI#2795720           BRD001 - FAST FUNDS SERVICES
 * Date                  who                   Reference              
-* 05-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION VM TO @VM AND I TO I.VAR AND ++ TO += 1
+* 05-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION VM TO @VM AND I TO I.VAR AND ++ TO += 1
 * 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------------------
 

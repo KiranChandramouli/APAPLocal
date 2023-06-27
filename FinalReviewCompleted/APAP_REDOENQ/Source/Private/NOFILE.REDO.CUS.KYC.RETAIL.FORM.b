@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTcyOTU4MTc6Q3AxMjUyOjE2ODQ4NTE5NjMwOTc6SVRTUzotMTotMTo1OTMwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:03
+* @ValidationCode : MjotMTQyMTQ0MTA5NDpDcDEyNTI6MTY4NTU0MzA5NDkyMTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 19:54:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 5930
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE NOFILE.REDO.CUS.KYC.RETAIL.FORM(CUS.DET.ARR)
@@ -204,7 +204,7 @@ FORM.SELECT.STATEMENT:
 * It forms the selects statement
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD);*R22 Manual Conversion
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD);*R22 Manual Conversion
         SEL.CMD1 = SEL.CUS.CMD:" AND (L.CU.TIPO.CL NE 'PERSONA JURIDICA')"
     END ELSE
         SEL.CMD1 = "SELECT ":FN.CUSTOMER:" WITH (L.CU.TIPO.CL NE 'PERSONA JURIDICA')"
@@ -234,7 +234,7 @@ PROCESS.EXTRACT:
     CALL CACHE.READ(FN.DEPT.ACCT.OFFICER, VAR.EXEC.RESPONSIBLE, R.DEPT.ACCT.OFFICER, DEPT.ERR)
     EXEC.RESPONSIBLE  = R.DEPT.ACCT.OFFICER<EB.DAO.NAME>
 *  EXEC.SECONDARY           = ''       ;************This field is removed as discussion with client
-    CALL APAP.TAM.redoRelcusEduLvl(CUST.ID,EDU.LVEL);*R22 Manual Conversion
+    APAP.TAM.redoRelcusEduLvl(CUST.ID,EDU.LVEL);*R22 Manual Conversion
     EDU.LEVEL                = EDU.LVEL
     GOSUB GET.SEGMENTO
     GOSUB GET.CUS.AC.DET
@@ -245,18 +245,19 @@ RETURN
 FIRST.SET:
 *------------
 * It is used get first set of values
-    CALL APAP.REDOENQ.REDO.EXEC.SEC.INFO(CUST.ID,OTH.OFFICER) ;*R22 Manual Conversion
+*APAP.REDOENQ.REDO.EXEC.SEC.INFO(CUST.ID,OTH.OFFICER) ;*R22 Manual Conversion
+    APAP.REDOENQ.redoExecSecInfo(CUST.ID,OTH.OFFICER) ;*R22 Manual Conversion
     BRANCH                   = OTH.OFFICER
     CUSTOMER.CODE            = CUST.ID
 *    ALTERNATE.CUSTOMER.NO    = R.CUST<EB.CUS.LOCAL.REF,L.CU.ALT.CU.COD.POS>     ;*******This field is removed as discussion with client
     Y.DATE                   = TODAY
-    CALL APAP.TAM.redoShowCustDesc(CUST.ID,STATUS.DESC);*R22 Manual Conversion
+    APAP.TAM.redoShowCustDesc(CUST.ID,STATUS.DESC);*R22 Manual Conversion
     Y.STATUS                 = STATUS.DESC
     SURNAMES                 = R.CUST<EB.CUS.FAMILY.NAME>
     NAMES                    = R.CUST<EB.CUS.GIVEN.NAMES>
-    CALL APAP.REDORETAIL.redoDsFmtTypCust(CUST.ID,CUS.TYPE);*R22 Manual Conversion
+    APAP.REDORETAIL.redoDsFmtTypCust(CUST.ID,CUS.TYPE);*R22 Manual Conversion
     TYPE.OF.IDENTIFICATION   = CUS.TYPE
-    CALL APAP.TAM.redoIdentityNumber(CUST.ID,ID.NUM);*R22 Manual Conversion
+    APAP.TAM.redoIdentityNumber(CUST.ID,ID.NUM);*R22 Manual Conversion
     ID.NR                    = ID.NUM
     EXPIRATION.DATE          = R.CUST<EB.CUS.LEGAL.EXP.DATE>
     VAR.GENDER               = R.CUST<EB.CUS.GENDER>
@@ -362,7 +363,7 @@ THIRD.SET:
     ZIP.CODE                 = R.CUST<EB.CUS.POST.CODE>
     PO.BOX                   = R.CUST<EB.CUS.OFF.PHONE>
     E.MAIL                   = R.CUST<EB.CUS.EMAIL.1>
-    CALL APAP.TAM.redoRelcusTelType(CUST.ID,VAR.TEL.TYPE,VAR.TEL.AREA,VAR.TEL.NUMBER,VAR.TEL.EXT,VAR.TEL.CONTACT);*R22 Manual Conversion
+    APAP.TAM.redoRelcusTelType(CUST.ID,VAR.TEL.TYPE,VAR.TEL.AREA,VAR.TEL.NUMBER,VAR.TEL.EXT,VAR.TEL.CONTACT);*R22 Manual Conversion
     TIPO                     = VAR.TEL.TYPE
     AREA                     = VAR.TEL.AREA
     NUMBER                   = VAR.TEL.NUMBER
@@ -384,7 +385,7 @@ JAVA.VALIDATION1:
     COMPANY.NAME             = R.CUST<EB.CUS.EMPLOYERS.NAME>
     SINCE.DATE               = R.CUST<EB.CUS.EMPLOYMENT.START>
     MONTHLY.INCOME           = R.CUST<EB.CUS.SALARY>
-    CALL APAP.REDORETAIL.redoDsSpouseDetails(CUST.ID,SPOUSE.IDENT,SPOUSE.ID,FAM.NAME,GIV.NAME);*R22 Manual Conversion
+    APAP.REDORETAIL.redoDsSpouseDetails(CUST.ID,SPOUSE.IDENT,SPOUSE.ID,FAM.NAME,GIV.NAME);*R22 Manual Conversion
     SPOUSE.IDENTIFICATION    = SPOUSE.IDENT
     SPOUSE.ID.NR             = SPOUSE.ID
     SPOUSE.SURNAMES          = FAM.NAME

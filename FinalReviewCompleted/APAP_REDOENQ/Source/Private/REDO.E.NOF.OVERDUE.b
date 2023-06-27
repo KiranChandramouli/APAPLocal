@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTUzMTA5MzA3MTpDcDEyNTI6MTY4NDg1MTk3ODUyOTpJVFNTOi0xOi0xOjM1NzA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:18
+* @ValidationCode : MjoxOTA4ODM2MjU5OkNwMTI1MjoxNjg1NTQzMTIwMDEwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:20
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 3570
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.NOF.OVERDUE(Y.OUT.ARRAY)
@@ -55,6 +55,7 @@ SUBROUTINE REDO.E.NOF.OVERDUE(Y.OUT.ARRAY)
     $INSERT I_F.REDO.PRODUCT.GROUP
     $INSERT I_F.REDO.LOAN.STATUS
     $USING APAP.TAM
+    $USING APAP.AA
 *----------------------------------------------------------------------------------------
 MAIN.LOGIC:
 
@@ -213,7 +214,7 @@ GET.LOAN.STATUS:
     ERR.MSG = ''
     EFF.DATE = ''
     LS.LC.FLAG.WR = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*R22 Manual Conversion
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     GOSUB CASE.LOAN.VALUE
 RETURN

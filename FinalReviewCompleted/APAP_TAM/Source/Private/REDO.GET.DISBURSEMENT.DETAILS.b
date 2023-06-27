@@ -103,7 +103,7 @@ GET.TERM.AMOUNT.PROP:
     R.OUT.AA.RECORD           = ''
     TERM.AMOUNT.PROPERTY      = ''
 *    CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,TERM.AMOUNT.PROPERTY,OUT.ERR)
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,TERM.AMOUNT.PROPERTY,OUT.ERR) ;*R22 Manual Converison
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,TERM.AMOUNT.PROPERTY,OUT.ERR) ;*R22 Manual Converison
 
 RETURN
 *------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ GET.ACCOUNT.NO:
     IN.ACC.ID = ''
     OUT.ID    = ''
 *   CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT)
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT) ;*R22 Manual Conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT) ;*R22 Manual Conversion
     Y.ARR.ACC.ID = OUT.ID
 
 RETURN
@@ -207,7 +207,7 @@ GET.TOT.COMMITMENT:
     R.TERM.CONDITION = ''
     ERR.MSG          = ''
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG)
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG) ;*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG) ;*R22 Manual Conversion
     Y.TOTCOMMIT.AMT  = R.TERM.CONDITION<AA.AMT.AMOUNT>
 
     IF Y.TOTCOMMIT.AMT ELSE     ;* For migrated contracts which are expired in legacy. then we will takeover with amount as 0. then we will do amend history with original contract date.

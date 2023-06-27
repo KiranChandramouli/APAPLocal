@@ -43,7 +43,7 @@ RETURN
 PROCESS:
 * Validate application value inputted
     Y.APPLICATION = COMI
-* CALL APAP.TAM.REDO.CCRG.ALLOWED.APP('VAL.RTN',Y.APPLICATION) ;** R22 Manual conversion - CALL method format changed
-    CALL APAP.TAM.redoCcrgAllowedApp('VAL.RTN',Y.APPLICATION) ;*R22 Manual Conversion
+* APAP.TAM.REDO.CCRG.ALLOWED.APP('VAL.RTN',Y.APPLICATION) ;** R22 Manual conversion - CALL method format changed
+    APAP.TAM.redoCcrgAllowedApp('VAL.RTN',Y.APPLICATION) ;*R22 Manual Conversion
 RETURN
 END

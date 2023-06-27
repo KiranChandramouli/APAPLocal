@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0Mjg5NDg5NzpDcDEyNTI6MTY4MzAxNzg3ODE4NjpJVFNTOi0xOi0xOjk0NToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 14:27:58
+* @ValidationCode : MjotNjYzODA3MTA3OkNwMTI1MjoxNjg1NTQzNjQzMzgxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:03
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 945
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.TEMP.ADV.CNT.PAY
@@ -47,6 +47,7 @@ SUBROUTINE REDO.V.TEMP.ADV.CNT.PAY
     $INSERT I_F.AA.TERM.AMOUNT
     $INSERT I_F.VERSION
     $USING APAP.TAM
+    $USING APAP.AA
 
 MAIN:
 
@@ -132,7 +133,7 @@ PROCESS:
         CALL STORE.END.ERROR
     END ELSE
         PROP.CLASS='TERM.AMOUNT'
-        CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+        APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
         Y.PARTIAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.PERC>
         Y.PART.AA = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART>
         Y.PART.VAL = R.NEW(FT.TN.AA.PART.ALLOW)
@@ -155,7 +156,7 @@ PROCESS:
         Y.AV   = AV
         Y.AS   = AS
         COMI = R.NEW(FT.TN.CREDIT.AMOUNT)
-        CALL APAP.TAM.redoValMtsAmountFt() ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoValMtsAmountFt() ;* R22 Manual Conversion - CALL method format modified
         COMI  =     Y.COMI
         AF    =     Y.AF
         AV    =     Y.AV

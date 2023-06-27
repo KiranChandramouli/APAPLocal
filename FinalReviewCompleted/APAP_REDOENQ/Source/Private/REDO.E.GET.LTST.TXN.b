@@ -42,7 +42,7 @@ SUBROUTINE REDO.E.GET.LTST.TXN(Y.FINAL.ARRAY)
     END
 
     IF Y.FINAL.ARRAY THEN
-        CALL APAP.TAM.redoClearHtmlDataProcess();*R22 Manual Conversion
+        APAP.TAM.redoClearHtmlDataProcess();*R22 Manual Conversion
         HTML.FOOTER = '^^FD30=':Y.TOT.DEB.USD:'^^FD31=':Y.TOT.CRE.USD:'^^FD33=':Y.TOT.DEB.DOP:'^^FD34=':Y.TOT.CRE.DOP
         Y.USR.VAR = System.getVariable("EXT.EXTERNAL.USER")
         IF E EQ "EB-UNKNOWN.VARIABLE" THEN   ;*R22 Auto Conversion  - Added IF E EQ "EB-UNKNOWN.VARIABLE" THEN
@@ -103,7 +103,7 @@ PROCESS:
     WS.DATA<6> = '3'
 
 * Invoke VisionPlus Web Service
-    CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
+    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);*R22 Manual Conversion
 
 * Credit Card exits - Info obtained OK
     IF WS.DATA<1> EQ 'OK' THEN

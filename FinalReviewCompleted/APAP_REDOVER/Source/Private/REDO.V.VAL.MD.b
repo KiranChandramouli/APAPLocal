@@ -186,13 +186,13 @@ INVOKE.VP.WS.CB:
     WS.DATA = ''
     WS.DATA<1> = 'CONSULTA_BALANCE'
     WS.DATA<2> = CREDIT.CARD.ID
-    CALL APAP.TAM.redoSVpSelChannel(APPLICATION,PGM.VERSION,TRANS.CODE,Y.CHANNEL,Y.MON.CHANNEL) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoSVpSelChannel(APPLICATION,PGM.VERSION,TRANS.CODE,Y.CHANNEL,Y.MON.CHANNEL) ;* R22 Manual Conversion - CALL method format modified
     WS.DATA<3> = Y.CHANNEL
 
 * Invoke VisionPlus Web Service
 
 
-    CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;* R22 Manual Conversion - CALL method format modified
 
 * Credit Card exits - Info obtained OK
     IF WS.DATA<1> NE 'OK' THEN
@@ -291,7 +291,7 @@ INVOKE.VP.WS.OI:
         WS.DATA<4> = MERCHANT.NUMBER
 
 * Invoke VisionPlus Web Service
-        CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;* R22 Manual Conversion - CALL method format modified
+        APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;* R22 Manual Conversion - CALL method format modified
     END ELSE
         WS.DATA = ''
         WS.DATA<1> = 'ERROR'

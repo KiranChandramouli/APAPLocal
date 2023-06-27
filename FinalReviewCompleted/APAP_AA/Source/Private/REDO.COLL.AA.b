@@ -241,7 +241,7 @@ RETURN
 GET.AA.CUR.BAL:
 * Get outstanding from AA
     Y.AA.BAL = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(VAR.CRED,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(VAR.CRED,TOTAL.AMT);* R22 Manual conversion
     Y.AA.BAL    = TOTAL.AMT
 *
 RETURN

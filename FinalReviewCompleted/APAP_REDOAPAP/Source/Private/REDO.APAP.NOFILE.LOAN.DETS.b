@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMjI0Nzc4OTM3OkNwMTI1MjoxNjgyNTc0ODUxMTgyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:24:11
+* @ValidationCode : Mjo5Nzc0OTg4Mjc6Q3AxMjUyOjE2ODU1NDQxNDU5ODk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOFILE.LOAN.DETS(Y.FINAL.ARR)
@@ -51,6 +51,7 @@ SUBROUTINE REDO.APAP.NOFILE.LOAN.DETS(Y.FINAL.ARR)
     $INSERT I_F.AA.ARRANGEMENT
     $INSERT I_ENQUIRY.COMMON
     $USING APAP.TAM
+    $USING APAP.AA
 *--------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -168,7 +169,7 @@ GET.AMOUNT:
     ERR.MSG = ''
     PROP.CLASS = 'TERM.AMOUNT'
 
-    CALL APAP.TAM.redoCrrGetConditions(AAR.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.CONDITION, ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AAR.ID,EFF.DATE,PROP.CLASS, PROPERTY, R.CONDITION, ERR.MSG)
     Y.AMOUNT =  R.CONDITION<AA.AMT.AMOUNT>
 
 RETURN

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNjQ3NDExMTEwOkNwMTI1MjoxNjgyNTc0NjMwMDEzOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 11:20:30
+* @ValidationCode : MjotMTY3NzYwNjY4MDpDcDEyNTI6MTY4NTU0NDEwMDMxNzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:11:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.GET.OUTSTANDING.AMT(Y.DATE,ARRANGEMENT.ID,Y.AMT)
@@ -43,6 +43,7 @@ SUBROUTINE REDO.APAP.GET.OUTSTANDING.AMT(Y.DATE,ARRANGEMENT.ID,Y.AMT)
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.AA.TERM.AMOUNT
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB PROCESS.PARA
 RETURN
@@ -110,7 +111,7 @@ CHECK.AA.TERM.AMOUNT:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
     Y.AMT=R.CONDITION<AA.AMT.AMOUNT>
 
 RETURN

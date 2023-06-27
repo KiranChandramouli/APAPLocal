@@ -227,7 +227,7 @@ INVOKE.VP.WS.OP:
         WS.DATA<6> = MERCHANT.NUMBER
 *CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 ** R22 Manual conversion
-        CALL APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)
+        APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)
         CRT "WS.DATA: " WS.DATA
     END ELSE
         WS.DATA = ''

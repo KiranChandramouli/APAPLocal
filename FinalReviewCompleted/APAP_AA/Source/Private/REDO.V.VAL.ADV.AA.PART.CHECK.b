@@ -168,7 +168,7 @@ PROCESS:
         Y.AS   = AS
         COMI = R.NEW(FT.CREDIT.AMOUNT)
 
-        CALL APAP.TAM.redoValMtsAmountFt();* R22 Manual conversion
+        APAP.TAM.redoValMtsAmountFt();* R22 Manual conversion
         COMI  =     Y.COMI
         AF    =     Y.AF
         AV    =     Y.AV
@@ -235,7 +235,7 @@ GET.PAY.DETAILS:
     END
 
     PROP.CLASS='TERM.AMOUNT'; YMAT.DATE = ''
-    CALL APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual conversion
     Y.PARTIAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.PERC>
     Y.PART = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART>
 * FIX R15 20170802

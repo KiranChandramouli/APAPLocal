@@ -57,8 +57,8 @@ INIT:
 *------------------------------------------------------------------------------------
 
 
-*CALL APAP.TAM.REDO.STLMT.VAL.DELAY ;* R22 Manual conversion - CALL method format changed
-    CALL APAP.TAM.redoStlmtValDelay() ;* R22 Manual conversion
+*APAP.TAM.REDO.STLMT.VAL.DELAY ;* R22 Manual conversion - CALL method format changed
+    APAP.TAM.redoStlmtValDelay() ;* R22 Manual conversion
     Y.FIELD.VALUE=TRIM(Y.FIELD.VALUE,' ','B')
     IF Y.FIELD.VALUE EQ '' THEN
         ERROR.MESSAGE="NO.AUTH.CODE"

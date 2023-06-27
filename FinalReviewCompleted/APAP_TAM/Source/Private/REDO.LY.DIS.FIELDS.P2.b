@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNjcxOTQzNTY2OkNwMTI1MjoxNjgzODkyNjY3NzY5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 17:27:47
+* @ValidationCode : MjotMjA5NzQ0OTA5MjpDcDEyNTI6MTY4NTU0NTMyMTMyNzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:32:01
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.LY.DIS.FIELDS.P2
@@ -60,23 +60,23 @@ PROCESS:
     IF VAL.TEXT EQ '' THEN
         VAL.TEXT = 'VALIDATED'
 *       CALL REDO.V.AVAIL.PROGRAM
-        CALL APAP.REDOVER.redoVAvailProgram ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOVER.redoVAvailProgram() ;*MANUAL R22 CODE CONVERSION
 *       CALL REDO.V.DISDELAY
-        CALL APAP.REDOVER.redoVDisdelay ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOVER.redoVDisdelay() ;*MANUAL R22 CODE CONVERSION
 *       CALL REDO.LY.DIS.FIELDS.T
-        CALL APAP.TAM.redoLyDisFieldsT ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoLyDisFieldsT() ;*MANUAL R22 CODE CONVERSION
 *        CALL REDO.LY.DIS.FIELDS.P
-        CALL APAP.TAM.redoLyDisFieldsP ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoLyDisFieldsP() ;*MANUAL R22 CODE CONVERSION
         VAL.TEXT = ''
     END ELSE
 *       CALL REDO.V.AVAIL.PROGRAM
-        CALL APAP.REDOVER.redoVAvailProgram ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOVER.redoVAvailProgram() ;*MANUAL R22 CODE CONVERSION
 *       CALL REDO.V.DISDELAY
-        CALL APAP.REDOVER.redoVDisdelay ;*MANUAL R22 CODE CONVERSION
+        APAP.REDOVER.redoVDisdelay() ;*MANUAL R22 CODE CONVERSION
 *       CALL REDO.LY.DIS.FIELDS.T
-        CALL APAP.TAM.redoLyDisFieldsT ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoLyDisFieldsT() ;*MANUAL R22 CODE CONVERSION
 *       CALL REDO.LY.DIS.FIELDS.P
-        CALL APAP.TAM.redoLyDisFieldsP ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoLyDisFieldsP() ;*MANUAL R22 CODE CONVERSION
     END
 
     VAR.COND.TYPE.EXINC=R.NEW(REDO.PROG.COND.TYPE.EXINC)

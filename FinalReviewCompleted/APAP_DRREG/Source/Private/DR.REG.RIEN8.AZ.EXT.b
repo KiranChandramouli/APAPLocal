@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo0NjYxMzM5OTU6Q3AxMjUyOjE2ODI0ODM0MTI0MzY6YWppdGg6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Apr 2023 10:00:12
+* @ValidationCode : Mjo0NjYxMzM5OTU6Q3AxMjUyOjE2ODQ4NTY4NzgyOTM6SVRTUzotMTotMToyMzcyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 21:17:58
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 2372
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -193,8 +193,8 @@ GET.CUSTOMER.INFO:
     END ;*Tus End
     IF R.CUSTOMER THEN
         CUSTOMER.CODE = R.CUSTOMER
-* CALL APAP.DRREG.DR.REGREP.GET.CUSTOMER.CODE(CUSTOMER.CODE, CUS.LOC.POS) ;*R22 MANUAL CODE CONVERSION
-        CALL APAP.DRREG.drRegrepGetCustomerCode(CUSTOMER.CODE, CUS.LOC.POS);*R22 MANUALCODE CONVERSION
+* APAP.DRREG.DR.REGREP.GET.CUSTOMER.CODE(CUSTOMER.CODE, CUS.LOC.POS) ;*R22 MANUAL CODE CONVERSION
+        APAP.DRREG.drRegrepGetCustomerCode(CUSTOMER.CODE, CUS.LOC.POS);*R22 MANUALCODE CONVERSION
     END
 
 RETURN

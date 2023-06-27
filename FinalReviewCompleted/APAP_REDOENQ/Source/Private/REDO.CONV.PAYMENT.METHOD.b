@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDQyMDYxNDczOkNwMTI1MjoxNjg0ODUxOTY2NTUwOklUU1M6LTE6LTE6MTgyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:06
+* @ValidationCode : MjoyMDE4NDQ2MjIxOkNwMTI1MjoxNjg1NTQzMTAxNTY4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:01
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 182
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.CONV.PAYMENT.METHOD
@@ -28,6 +28,7 @@ SUBROUTINE REDO.CONV.PAYMENT.METHOD
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_F.DYNAMIC.TEXT
+    $USING APAP.AA
 
     GOSUB PROCESS
 RETURN
@@ -54,7 +55,7 @@ PROCESS:
     PROPERTY   = ''
     R.CONDITION= ''
     ERR.MSG    = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
     Y.PAYMENT.METHOD = R.CONDITION<AA.PS.LOCAL.REF,POS.L.AA.PAY.METHD>
     GOSUB GET.TEXT
 RETURN

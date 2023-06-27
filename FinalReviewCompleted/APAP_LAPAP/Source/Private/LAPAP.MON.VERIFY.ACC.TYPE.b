@@ -29,7 +29,7 @@ SUBROUTINE LAPAP.MON.VERIFY.ACC.TYPE
     $INSERT I_F.ACCOUNT ;*R22 Auto conversion - END
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     COMI = RES
 
 RETURN

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotODI5NjU2NzU4OkNwMTI1MjoxNjgyNjkxNTE2ODQzOklUU1M6LTE6LTE6NTk0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:36
+* @ValidationCode : MjoxMjcyNzgyMzkyOkNwMTI1MjoxNjg1NTQzNjQ1ODU3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 594
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -40,7 +40,7 @@ SUBROUTINE REDO.V.VAL.ADV.AMT
     $INSERT I_F.ACCOUNT
     $INSERT I_F.AA.ARRANGEMENT
     $USING APAP.TAM
-
+    $USING APAP.AA
 
 
     FN.AA.ACCOUNT.DETAILS='F.AA.ACCOUNT.DETAILS'
@@ -82,7 +82,7 @@ PROCESS:
     CHANGE @SM TO @FM IN  VAR.SET.LIST
     LOCATE 'UNPAID' IN  VAR.SET.LIST SETTING POS ELSE
         PROP.CLASS='PAYMENT.SCHEDULE'
-        CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+        APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
         VAR.CALC.AMOUNT.LIST=R.CONDITION<AA.PS.CALC.AMOUNT>
         VAR.ACC.LIST   =R.CONDITION<AA.PS.PROPERTY>
         CHANGE @VM TO @FM IN VAR.CALC.AMOUNT.LIST

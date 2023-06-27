@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo3ODE1Njc1Njg6Q3AxMjUyOjE2ODQ4NTE5NjIyMzg6SVRTUzotMTotMTo4NjI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:02
+* @ValidationCode : Mjo3NDI5NDg4MTg6Q3AxMjUyOjE2ODU1NDMwOTM0MDQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:54:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 862
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE NOFILE.ARR.POOL.RATE(Y.RETURN.ARRAY)
@@ -43,6 +43,7 @@ SUBROUTINE NOFILE.ARR.POOL.RATE(Y.RETURN.ARRAY)
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
     $INSERT I_F.REDO.SUCESS.RATE.CHANGE.COB
     $USING APAP.TAM
+    $USING APAP.AA
 *-----------------------------------------------------------------------------
     GOSUB INITIALISE
     GOSUB LOCATE.VALUES
@@ -220,7 +221,7 @@ AA.INTEREST.PROCESS:
     Y.ARRG.ID = Y.AA.ID
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Conversion - Call routine modified
+    APAP.TAM.redoGetInterestProperty(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Conversion - Call routine modified
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
     PROPERTY.CLASS = 'INTEREST'
@@ -230,7 +231,7 @@ AA.INTEREST.PROCESS:
     R.INT.ARR.COND = ''
     Y.INT.RATE.NEW  = ''
     Y.POOL.RATE = ''
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;*R22 Manual Conversion - Call routine modified
+    APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;*R22 Manual Conversion - Call routine modified
     Y.LOAN.NUMBER    = Y.ARRG.ID
     Y.INT.RATE.NEW   = R.INT.ARR.COND<AA.INT.EFFECTIVE.RATE>
     Y.POOL.RATE      = R.INT.ARR.COND<AA.INT.LOCAL.REF><1,Y.POOL.RATE.POS>
@@ -240,7 +241,7 @@ AA.INTEREST.PROCESS:
 
     IN.ACC.ID = ''
     IN.ARR.ID = Y.ARRG.ID
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.AC.ID,ERR.TEXT);*R22 Manual Conversion - Call routine modified
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.AC.ID,ERR.TEXT);*R22 Manual Conversion - Call routine modified
     Y.AA.ACC.ID = OUT.AC.ID
     GOSUB GET.OLD.INT.RATE
     GOSUB GET.AUDIT.DETAILS

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5Njk2NzQzMzI6Q3AxMjUyOjE2ODM4Nzc5NzcwNDU6SVRTUzotMTotMTo1NDk6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 12 May 2023 13:22:57
+* @ValidationCode : MjotNDM0MDA0NjY4OkNwMTI1MjoxNjg1NTQyNjE2MTU3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 19:46:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 549
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.APAP.NOFILE.AA.LAON.STATUS.RPT(Y.OUT.ARRAY)
@@ -217,7 +217,7 @@ CHECK.LDST.OVERD:
     PROPERTY     = ''
     R.CONDITION  = ''
     ERR.MSG      = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Converison - Modified CALL routine format
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Converison - Modified CALL routine format
 
     Y.LN.STATUS = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.STATUS.1.POS>
     Y.LN.COND   = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.COND.POS>
@@ -473,7 +473,7 @@ RETURN
 GET.COLL.AA.IDS:
 ***************
     COL.ID.LINKED = ''
-    CALL APAP.AA.RedoColAaGetLinksCol(Y.COL.ID,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(Y.COL.ID,COL.ID.LINKED);* R22 Manual conversion
 
     MMARK = CHARX(251) ;*R22 Auto conversion
 *
@@ -525,7 +525,7 @@ RETURN
 GET.DETAILS:
 ************
  
-    CALL APAP.AA.redoApapNofileAaLaonStatusRptSplit1(Y.PROCESSED.IDS,Y.LOAN.STATUS,Y.LOAN.COND,Y.OUT.ARRAY);*Manual R22 Conversion
+    APAP.AA.redoApapNofileAaLaonStatusRptSplit1(Y.PROCESSED.IDS,Y.LOAN.STATUS,Y.LOAN.COND,Y.OUT.ARRAY);*Manual R22 Conversion
         
 RETURN
 *--------------------------------------------------------------------------------------------------------

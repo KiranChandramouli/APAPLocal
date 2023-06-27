@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY0NzEyMDQzNDpDcDEyNTI6MTY4NDIzMzQyNDA4MjpJVFNTOi0xOi0xOjI4NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 16 May 2023 16:07:04
+* @ValidationCode : MjoxNDAwMjIzMDA0OkNwMTI1MjoxNjg1NTQ5NTI4ODQ4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 21:42:08
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 287
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * @(#) L.APAP.RTN.VAL.REST.LIST Ported to jBASE 16:16:59  28 NOV 2017
@@ -57,7 +57,8 @@ SUBROUTINE L.APAP.RTN.VAL.REST.LIST
 
     APP.NOTIFY      = "RESTRICTIVA"
     IF RL.SELECTED GT 0 THEN
-        CALL APAP.LAPAP.lapapPlafIntListTr(Y.NUMERO.DOC);* R22 Manual conversion
+        APAP.LAPAP.lapapPlafIntListTr(Y.NUMERO.DOC);* R22 Manual conversion
+        
         TEXT = "PERSONA EN LISTA RESTRICTIVA T24"
         ETEXT = TEXT
         E = TEXT
@@ -97,15 +98,15 @@ SUBROUTINE L.APAP.RTN.VAL.REST.LIST
 
 * Rutina previamente invocada por la version
 *CALL REDO.DEF.CUSTOMER.TYPE
-        CALL APAP.LAPAP.lapapDefCustomerType() ;*R22 Manual Conversion
+        APAP.LAPAP.lapapDefCustomerType() ;*R22 Manual Conversion
         IF R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) EQ 'NO CLIENTE APAP' THEN
             TEXT = 'NO ES CLIENTE APAP, LLENAR CAMPOS CLIENTE OCASIONAL'
             CALL DISPLAY.MESSAGE(TEXT, '')  ;*R22 Auto Conversion  - REM to DISPLAY.MESSAGE
 
-            CALL APAP.LAPAP.lapapOcusSetRt();* R22 Manual conversion
+            APAP.LAPAP.lapapOcusSetRt();* R22 Manual conversion
         END ELSE
 *Call check record routine to set occasional cus. fields as no input.
-            CALL APAP.LAPAP.lapapChkOccCustomer() ;*R22 Manual Conversion
+            APAP.LAPAP.lapapChkOccCustomer() ;*R22 Manual Conversion
         END
     END
 

@@ -46,7 +46,7 @@ RETURN
 PROCESS:
 *--------
 *
-    CALL APAP.TAM.redoVvrInterCrAcbal() ;* R22 Manual Code Conversion
+    APAP.TAM.redoVvrInterCrAcbal() ;* R22 Manual Code Conversion
 *
 RETURN
 *

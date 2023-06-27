@@ -296,7 +296,7 @@ CHECK.AA.PAYMENT:
     Y.PROC.TYPE     = ''
     Y.RECEP.METHOD  = ''
 
-    CALL APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;*R22 Manual Conversion
+    APAP.TAM.redoGetNvVersionTypes(Y.TRANS.ID,Y.VERSION.NAMES,Y.VERSION.TYPES,Y.PROC.TYPE,Y.RECEP.METHOD) ;*R22 Manual Conversion
 
     LOCATE 'AA.PAYMENT' IN Y.VERSION.TYPES SETTING POS1 THEN
         Y.AA.PAYMENT = 'YES'
@@ -574,7 +574,7 @@ GET.CUST.DETAILS:
     CALL F.READ(FN.CUS,Y.CUST.ID,R.CUST,F.CUS,CUS.ERR)
     Y.CUST.NAME = R.CUST<EB.CUS.SHORT.NAME>
 
-    CALL APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*R22 Manual Conversion
+    APAP.REDORETAIL.redoCustIdentityRef(Y.CUST.ID,Y.ALT.ID,Y.CUS.NAME) ;*R22 Manual Conversion
     Y.NAME.1         = Y.CUS.NAME[1,35]
     Y.NAME.2         = Y.CUS.NAME[36,LEN(Y.CUS.NAME)]
 
@@ -602,8 +602,8 @@ GET.AA.PROP.AMTS:
     Y.LOAN.ACC = R.FT<FT.CREDIT.ACCT.NO>
     IN.ARR.ID = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*R22 Manual Conversion
-    CALL APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*R22 Manual Conversion
+    APAP.TAM.redoConvertAccount(Y.LOAN.ACC,IN.ARR.ID,ARR.ID,ERR.TEXT) ;*R22 Manual Conversion
+    APAP.TAM.redoGetIndvRepayAmt(Y.AA.PAYMENT.TXNS<Y.VAR2>,ARR.ID,TOTAL.AMT,Y.BILL.PAY.DATE) ;*R22 Manual Conversion
 
     IF OFS$SOURCE.ID EQ 'FASTPATH' THEN
         WTT.ID = System.getVariable("CURRENT.TID.ID")
@@ -663,7 +663,7 @@ GET.CAPITAL.BALANCE:
 *-------------------------------------------------------------
 
     IN.PROPERTY.CLASS = 'ACCOUNT'
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*R22 Manual Conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*R22 Manual Conversion
 
     BALANCE.AMOUNT=''
 

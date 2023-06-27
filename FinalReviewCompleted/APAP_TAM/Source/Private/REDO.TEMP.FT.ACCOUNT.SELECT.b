@@ -98,7 +98,7 @@ PROCESS:
         ERR.TEXT = ''
 * CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
 ** R22 Manual conversion
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
         Y.ACCT = OUT.ID
     END ELSE
         IN.ACC.ID = Y.ARR.ID
@@ -108,7 +108,7 @@ PROCESS:
         Y.ACCT = Y.ARR.ID
 *CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
 ** R22 Manual conversion
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
         Y.ARR.ID = OUT.ID
     END
 

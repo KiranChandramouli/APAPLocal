@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTIzMTE4NjAxMjpDcDEyNTI6MTY4NDg0MjE1MzA4NzpJVFNTOi0xOi0xOjMyMjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:33
+* @ValidationCode : Mjo1NjUxNTY1MjY6Q3AxMjUyOjE2ODY2NzcwOTc4NjI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 13 Jun 2023 22:54:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 322
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
@@ -26,10 +26,7 @@ SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 *
 * Version   Date           Who            Reference         Description
 * 1.0       04.23.2013     lpazmino       -                 Initial Version
-*Modification History:
-*DATE                 WHO                  REFERENCE                     DESCRIPTION
-*19/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             VM TO @VM
-*19/04/2023         SURESH           MANUAL R22 CODE CONVERSION        CALL routine format modified
+* 13/06/2023      Santosh      R22 MANUAL CODE CONVERSION       Changed FUNCTION CALL into SUBROUTINE CALL
 *-----------------------------------------------------------------------------
 * Input:
 * ACTIVATION
@@ -238,13 +235,13 @@ SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 
     $INSERT JBC.h
     $USING APAP.REDOSRTN
-    
+
     EQUATE WS_MASTER_DATA TO 'VP_MASTER_DATA'
     EQUATE WS_ONLINE_PAYMENT TO 'ONLINE_PAYMENT'
     EQUATE WS_ONLINE_INFO TO 'ONLINE_INFO'
     EQUATE WS_T24_VPLUS TO 'WS_T24_VPLUS'
 
-    DEFFUN REDO.S.GET.USR.ERR.MSG()
+*   DEFFUN REDO.S.GET.USR.ERR.MSG() ;*R22 Manual Code Conersion
 
 * </region>
     GOSUB INIT
@@ -340,9 +337,13 @@ PROCESS:
 
     IF NOT(ERROR.CODE) AND NOT(WS.DATA<1>) THEN
         WS.DATA<1> = 'ERROR'
-        WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-NO.WS.AVAIL')   ;* Probablemente por TimeOut
+*        WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-NO.WS.AVAIL')   ;* Probablemente por TimeOut
+        pErrCode = 'ST-VP-NO.WS.AVAIL' ;*R22 Manual Code Conersion
+        APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+        WS.DATA<2> = '(-99) - ' : pUsrMsg  ;*R22 Manual Code Conersion
 * Log writing: abnormal error that must be notified
-        CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA - ' : WS.DATA<2>, 'TIMEOUT EN TRANSACCION EN LINEA ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
+*       CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA - ' : WS.DATA<2>, 'TIMEOUT EN TRANSACCION EN LINEA ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '')
+        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA - ' : WS.DATA<2>, 'TIMEOUT EN TRANSACCION EN LINEA ' : TIMEDATE(), '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
     END
 
 RETURN
@@ -351,14 +352,25 @@ ONLINE.PAY.ERR.CHECK:
     BEGIN CASE
         CASE ERROR.CODE EQ -1
             WS.DATA<1> = 'ERROR'
-            WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('EB-CARD.NO.EXIST')
+*           WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('EB-CARD.NO.EXIST')
+            pErrCode = 'EB-CARD.NO.EXIST' ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = ERR.ID : pUsrMsg ;*R22 Manual Code Conersion
         CASE ERROR.CODE MATCHES -2 : @VM : -3
             WS.DATA<1> = 'ERROR'
-            WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+*           WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+            pErrCode = 'ST-VP-MSG.' : ERROR.CODE ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = ERR.ID : pUsrMsg ;*R22 Manual Code Conersion
+            
         CASE 1
             WS.DATA<1> = 'OFFLINE'
-            WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.-99')
-            CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email RESPUESTA DE WEBSERVICE [' : WS.DATA<1> : '] - ' : WS.DATA<2>, ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
+*           WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.-99')
+            pErrCode = 'ST-VP-MSG.-99' ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = '(-99) - ' : pUsrMsg ;*R22 Manual Code Conersion
+*           CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email RESPUESTA DE WEBSERVICE [' : WS.DATA<1> : '] - ' : WS.DATA<2>, ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
+            APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email RESPUESTA DE WEBSERVICE [' : WS.DATA<1> : '] - ' : WS.DATA<2>, ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
     END CASE
 
 RETURN
@@ -367,17 +379,27 @@ ONLINE.INFO.ERR.CHECK:
     BEGIN CASE
         CASE ERROR.CODE EQ -1
             WS.DATA<1> = 'ERROR'
-            WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('EB-CARD.NO.EXIST')
+*           WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('EB-CARD.NO.EXIST')
+            pErrCode = 'EB-CARD.NO.EXIST' ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = ERR.ID : pUsrMsg ;*R22 Manual Code Conersion
         CASE ERROR.CODE MATCHES -2 : @VM : -3
             WS.DATA<1> = 'ERROR'
-            WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+*           WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+            pErrCode = 'ST-VP-MSG.' : ERROR.CODE ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = ERR.ID : pUsrMsg ;*R22 Manual Code Conersion
     END CASE
 
 RETURN
 
 MASTER.DATA.ERR.CHECK:
     WS.DATA<1> = 'ERROR'
-    WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-NO.INSERT.MD')
+*   WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-NO.INSERT.MD')
+   
+    pErrCode = 'ST-VP-NO.INSERT.MD' ;*R22 Manual Code Conersion
+    APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+    WS.DATA<2> = ERR.ID : pUsrMsg  ;*R22 Manual Code Conersion
 
 RETURN
 
@@ -385,14 +407,23 @@ GENERAL.ERR.CHECK:
     BEGIN CASE
         CASE ERROR.CODE MATCHES 1 : @VM : 2 : @VM : 4 : @VM : 101 : @VM : 102
             WS.DATA<1> = 'ERROR'
-            WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+*           WS.DATA<2> = ERR.ID : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.' : ERROR.CODE)
+            
+            pErrCode = 'ST-VP-MSG.' : ERROR.CODE ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = ERR.ID : pUsrMsg ;*R22 Manual Code Conersion
 * Log writing: abnormal error that must be notified
-            CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
+*           CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
+            APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
         CASE 1
             WS.DATA<1> = 'ERROR'  ;* y se devuelve el error
-            WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.-99')
+*           WS.DATA<2> = '(-99) - ' : REDO.S.GET.USR.ERR.MSG('ST-VP-MSG.-99')
+            pErrCode = 'ST-VP-MSG.-99' ;*R22 Manual Code Conersion
+            APAP.REDOSRTN.redoSGetUsrErrMsg(pErrCode, pUsrMsg) ;*R22 Manual Code Conersion
+            WS.DATA<2> = '(-99) - ' : pUsrMsg ;*R22 Manual Code Conersion
 * S - 4/03/2015 - RM - Adding logic to report to C.22 in case of error code unknown returned by WS.
-            CALL APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*MANUAL R22 CODE CONVERSION
+*           CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
+            APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL008', 'ONLINE', '04', 'Email ERROR WS EN LINEA [' : WS.DATA<1> : '] - ' : WS.DATA<2>, 'ERROR EN TRANSACCION EN LINEA ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;*R22 Manual Code Conersion
 * E - 4/03/2015 - RM
     END CASE
 

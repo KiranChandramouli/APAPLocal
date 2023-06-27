@@ -84,7 +84,7 @@ PROCESS:
 *
 *   Validate File
 
-    CALL APAP.REDOFCFI.redoFiPayrollValidate(IN.TXT.MSG,Y.VAR.WORK,Y.NEW.TXT.MSG,Y.ERR.MSG);*R22 Manual Conversion
+    APAP.REDOFCFI.redoFiPayrollValidate(IN.TXT.MSG,Y.VAR.WORK,Y.NEW.TXT.MSG,Y.ERR.MSG);*R22 Manual Conversion
 *   Message Error
 
     GOSUB CONTROL.MSG.ERROR
@@ -100,7 +100,7 @@ PROCESS:
     IF Y.ERR.MSG EQ ''  THEN
         GOSUB SAVE.FILE.IN.DIR
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.PROC.STATUS>       = Y.FINAL.STATUS
-        CALL APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*R22 Manual Conversion
+        APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*R22 Manual Conversion
         CALL F.WRITE(FN.REDO.NOMINA.TEMP,FI.W.REDO.FI.CONTROL.ID,R.REDO.NOMINA.TEMP)
         CALL F.WRITE(FN.REDO.NOMINA.DET,FI.W.REDO.FI.CONTROL.ID,R.REDO.NOMINA.DET)
     END
@@ -122,7 +122,7 @@ MAIL.GENERATION:
     Y.ATTACH.FILENAME = 'ATTACHMENT':'_':Y.UNIQUE.ID:'.TXT'
     R.RECORD1 = ''
     Y.REF.FILE.NAME =  'INTERNAL NOMINA STATUS'
-    CALL APAP.REDOFCFI.redoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION);*R22 Manual Conversion
+    APAP.REDOFCFI.redoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION);*R22 Manual Conversion
     R.RECORD1 = Y.FROM.MAIL.ADD.VAL:"#":Y.TO.MAIL.VALUE:'#':Y.REF.FILE.NAME:'#':Y.REF.FILE.NAME
     IF Y.MAIL.MSG THEN
         WRITE Y.MAIL.DESCRIPTION TO F.HRMS.ATTACH.FILE,Y.ATTACH.FILENAME
@@ -166,7 +166,7 @@ RECORD.FI.CONTROL:
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.AMOUNT.PROC.FAIL> = 0
     END
 *   Save in Redo.Fi.Control
-    CALL APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*R22 Manual Conversion
+    APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*R22 Manual Conversion
 
 RETURN
 *
@@ -209,7 +209,7 @@ SAVE.FILE.IN.DIR:
     Y.STT.REC        = ""
     Y.IN.MSG         = FI.CTA.DESTINO:",":FI.DATO.MONTO.TOTAL:",DOP,-"
     Y.NEW.TXT.MSG<CONTADO.EXTRA> = Y.IN.MSG:",":W.ADDITIONAL.INFO
-    CALL APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*R22 Manual Conversion
+    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*R22 Manual Conversion
 
     IF W.TOL.FILE.AMT GT 0 THEN
         GOSUB FT.PROCESS
@@ -283,7 +283,7 @@ MESSAGE.FORMAT:
     Y.STT.REC        = ""
     Y.IN.MSG         = Y.NEW.TXT.MSG<I.VAR>
     Y.NEW.TXT.MSG<I.VAR> = Y.NEW.TXT.MSG<I.VAR>:",":W.ADDITIONAL.INFO
-    CALL APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*R22 Manual Conversion
+    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*R22 Manual Conversion
     R.PARAM<1>  = "NULL"
     R.PARAM<2>  = "N"
     R.PARAM<3>  = FIELD(DATO.OUT,"|",3)
@@ -413,8 +413,8 @@ FT.PROCESS:
 * Paragraph that record the error message and move the file to the rejected directory renaming the file
 *
 
-* CALL APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-    CALL APAP.TAM.redoFiExtDebitProces(R.PARAM, OUT.RESP, OUT.ERR);* R22 Manual conversion
+* APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
+    APAP.TAM.redoFiExtDebitProces(R.PARAM, OUT.RESP, OUT.ERR);* R22 Manual conversion
 
     IF FIELD(OUT.ERR,'/',1)[1,2] NE 'FT' THEN
         Y.ERR.MSG = OUT.ERR
@@ -431,7 +431,7 @@ RETURN
 TXN.DETAILS.UPD:
 * ==============
 
-    CALL APAP.REDOFCFI.redoFiRecordTxnDetails(R.PARAM,OUT.ERR,OUT.RESP,OUT.ARRAY);* R22 Manual conversion
+    APAP.REDOFCFI.redoFiRecordTxnDetails(R.PARAM,OUT.ERR,OUT.RESP,OUT.ARRAY);* R22 Manual conversion
 
 RETURN
 

@@ -316,7 +316,7 @@ EVAL.CHAR.UNKW:
 *==============
 *
     Y.AA.COL.IDS = '' ; COL.ID.LINKED = ''
-    CALL APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
+    APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED);* R22 Manual conversion
     W.VALCHR = CHARX(251) ;*AUTO R22 CODE CONVERSION
     Y.AA.COL.IDS = CHANGE(COL.ID.LINKED, W.VALCHR , @VM ) ;*AUTO R22 CODE CONVERSION
     IF COL.ID.LINKED EQ "ERROR" THEN
@@ -406,7 +406,7 @@ GET.AA.AMOUNT:
 *=============
 
     Y.AA.BAL = ''
-    CALL APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
+    APAP.REDOSRTN.redoSGetOutBalance(Y.AA.ID,TOTAL.AMT);* R22 Manual conversion
     Y.AA.BAL    = TOTAL.AMT
 *
     Y.COL.LOAN.AMT = Y.AA.BAL
@@ -476,9 +476,9 @@ REBUILD.COL.IDS:
             Y.AA.REQUEST<AA.ARR.ACT.FIELD.VALUE,1,-1> = 'NULL'
 * PACS00308600 - S
             Y.ID.COLLATERAL = Y.AA.COL.IDS<1,I.COLL.CNT>
-            CALL APAP.TAM.redoDelClBalance(Y.AA.ID, Y.ID.COLLATERAL);* R22 Manual conversion
+            APAP.TAM.redoDelClBalance(Y.AA.ID, Y.ID.COLLATERAL);* R22 Manual conversion
 *
-            CALL APAP.REDOFCFI.redoFcSCoStatus(Y.ID.COLLATERAL);* Change CO Status to ACTIVE, R22 Manual conversion
+            APAP.REDOFCFI.redoFcSCoStatus(Y.ID.COLLATERAL);* Change CO Status to ACTIVE, R22 Manual conversion
 * PACS00308600 - E
 *
 

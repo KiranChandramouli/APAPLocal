@@ -82,7 +82,7 @@ PROCESS:
     Y.ARRANGEMENT.ID=c_aalocArrId
     GOSUB GET.INTEREST.PROP
 
-    CALL APAP.AA.redoGetTotalInterest(Y.ARRANGEMENT.ID,PROPERTY,INT.AMT);* R22 Manual conversion
+    APAP.AA.redoGetTotalInterest(Y.ARRANGEMENT.ID,PROPERTY,INT.AMT);* R22 Manual conversion
 
 
     IF c_aalocPropClassId EQ 'INTEREST' THEN
@@ -92,7 +92,7 @@ PROCESS:
             R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.DIFF.AMT>= R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.INT.AMTOLD>-R.NEW(AA.INT.LOCAL.REF)<1,POS.L.AA.INT.AMTNEW>     ;* Both Old and New amounts are same, so obviously zero
         END
     END ELSE
-        CALL APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,'','INTEREST',PROPERTY,R.INT.COND,RET.ERR);* R22 Manual conversion
+        APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,'','INTEREST',PROPERTY,R.INT.COND,RET.ERR);* R22 Manual conversion
         Y.GET.NEW.AMT=R.INT.COND<AA.INT.LOCAL.REF,POS.L.AA.INT.AMTNEW>
         IF Y.GET.NEW.AMT NE INT.AMT THEN
 *GOSUB POST.OFS
@@ -107,7 +107,7 @@ GET.INTEREST.PROP:
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
     OUT.PROP=''
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     PROPERTY=OUT.PROP
 RETURN
 
@@ -121,7 +121,7 @@ POST.OFS:
     Y.PROP.ACTIVITY    = ''
     Y.PROP.ACTIVITY<1> = PROPERTY
     Y.PROP.ACTIVITY<2> = 'LENDING-CHANGE-':PROPERTY
-    CALL APAP.AA.redoAaBuildOfs(c_aalocArrId,R.INT.CONDITION,Y.PROP.ACTIVITY,OFS.MSG);* R22 Manual conversion
+    APAP.AA.redoAaBuildOfs(c_aalocArrId,R.INT.CONDITION,Y.PROP.ACTIVITY,OFS.MSG);* R22 Manual conversion
     OFS.SRC = 'AA.INT.UPDATE'
     OPTIONS = ''
     OFS.STRING.FINAL = ''

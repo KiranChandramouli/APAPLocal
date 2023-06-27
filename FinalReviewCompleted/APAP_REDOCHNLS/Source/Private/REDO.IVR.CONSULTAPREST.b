@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODYwNzkwNzgxOkNwMTI1MjoxNjgzNTMxNDQ4Mzg4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 08 May 2023 13:07:28
+* @ValidationCode : Mjo2MDI1OTg3MTM6Q3AxMjUyOjE2ODU1NDM3MDQyNTY6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:05:04
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.IVR.CONSULTAPREST(R.DATA)
@@ -47,6 +47,8 @@ SUBROUTINE REDO.IVR.CONSULTAPREST(R.DATA)
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.ACCOUNT
     $USING APAP.TAM
+    $USING APAP.AA
+    
 * </region>
 *-----------------------------------------------------------------------------
 
@@ -157,8 +159,8 @@ PROCESS:
     Y.RESULT := Y.AA.RATE:"*"
 
     Y.AA.BAL = "N/A"
-*CALL APAP.TAM.REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND(Y.ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);*Manual R22 conversion
-    CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);*Manual R22 conversion
+*APAP.TAM.REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND(Y.ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);*Manual R22 conversion
+    APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT);*Manual R22 conversion
     Y.AA.BAL = FIELD(Y.PROP.AMT,@FM,1)
     Y.RESULT := Y.AA.BAL:"*"
 
@@ -187,8 +189,8 @@ PROCESS:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-* CALL APAP.TAM.REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
-    CALL APAP.TAM.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
+* APAP.TAM.REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
+    APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
     Y.AA.LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS>
     Y.RESULT := Y.AA.LOAN.STATUS:"*"
 

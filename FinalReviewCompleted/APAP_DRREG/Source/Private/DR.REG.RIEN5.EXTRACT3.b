@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNzk3Mzc3NzU1OkNwMTI1MjoxNjgxMTEyODAzMjkxOmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 10 Apr 2023 13:16:43
+* @ValidationCode : MjotNzk3Mzc3NzU1OkNwMTI1MjoxNjg0ODU2ODc3MjM0OklUU1M6LTE6LTE6NDQ0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 21:17:57
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 444
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -25,7 +25,7 @@ SUBROUTINE DR.REG.RIEN5.EXTRACT3
 * Modification History :
 * ----------------------
 *   Date       Author              Modification Description
-* 24/07/2014  Ashokkumar           PACS00309203 - Fixed “Indeterminado” column and removed value with
+* 24/07/2014  Ashokkumar           PACS00309203 - Fixed ï¿½Indeterminadoï¿½ column and removed value with
 * 26/02/2015  Ashokkumar.V.P       PACS00309203 - Just for compilatio
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *10-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   VM to @VM , IF CONDITION MODIFY

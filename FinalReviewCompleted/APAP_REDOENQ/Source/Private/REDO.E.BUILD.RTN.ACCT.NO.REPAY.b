@@ -52,7 +52,7 @@ SUBROUTINE REDO.E.BUILD.RTN.ACCT.NO.REPAY(ENQ.DATA)
         IN.ARR.ID = ''
         OUT.ID = ''
         ERR.TEXT = ''
-        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
+        APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT);*R22 Manual Conversion
         Y.AA.ID = OUT.ID
     END
 

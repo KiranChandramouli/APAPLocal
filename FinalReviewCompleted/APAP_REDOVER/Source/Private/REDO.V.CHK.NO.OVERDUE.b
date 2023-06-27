@@ -61,7 +61,7 @@ SUBROUTINE REDO.V.CHK.NO.OVERDUE
         RETURN
     END
 
-    CALL APAP.REDOVER.redoVDefFtLoanStatusCond() ;* R22 Manual conversion
+    APAP.REDOVER.redoVDefFtLoanStatusCond() ;* R22 Manual conversion
     IF ETEXT NE '' THEN
         RETURN
     END
@@ -76,7 +76,7 @@ SUBROUTINE REDO.V.CHK.NO.OVERDUE
         ETEXT = 'EB-OVERDUE'
         CALL STORE.END.ERROR
     END ELSE
-        CALL APAP.REDOVER.redoVValDefaultAmt();* R22 Manual Conversion
+        APAP.REDOVER.redoVValDefaultAmt();* R22 Manual Conversion
     END
 RETURN
 END

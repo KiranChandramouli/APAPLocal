@@ -122,7 +122,7 @@ GET.CLAIM.IDS:
 
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.REDO.ISSUE.CLAIMS
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CLAIM.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CLAIM.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
         CALL EB.READLIST(SEL.CLAIM.CMD,CLAIM.ID.LST,'',NO.OF.REC.CLAIM,SEL.ERR)
         Y.CLAIM.ARR.ID = CLAIM.ID.LST
     END
@@ -148,7 +148,7 @@ GET.CUS.IDS:
     REPEAT
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD)   ;*R22 Manual Conversion - Added APAP.REDOENQ
         CALL EB.READLIST(SEL.CUS.CMD,CUS.ID.LST,'',NO.OF.REC.CUS,SEL.CUS.ERR)
         Y.CUS.ARR.ID = CUS.ID.LST
     END

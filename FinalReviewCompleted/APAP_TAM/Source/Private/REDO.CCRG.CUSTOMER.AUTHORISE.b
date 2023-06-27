@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjczMjg0MzEzOkNwMTI1MjoxNjg0ODQxODg1OTcxOklUU1M6LTE6LTE6NTMxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:08:05
+* @ValidationCode : MjotMTc5NzE1NDY0MTpDcDEyNTI6MTY4NTU0NTE2OTE0MDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:29:29
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 531
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CCRG.CUSTOMER.AUTHORISE
@@ -73,8 +73,8 @@ PROCESS:
 
 * Delete Log from process for the customer
 
-* CALL APAP.TAM.S.REDO.CCRG.RL.DEL.LOG(R.NEW(REDO.CCRG.CUS.CUSTOMER.ID))
-    CALL APAP.TAM.sRedoCcrgRlDelLog(R.NEW(REDO.CCRG.CUS.CUSTOMER.ID)) ;* R22 manual conversion
+* APAP.TAM.S.REDO.CCRG.RL.DEL.LOG(R.NEW(REDO.CCRG.CUS.CUSTOMER.ID))
+    APAP.TAM.sRedoCcrgRlDelLog(R.NEW(REDO.CCRG.CUS.CUSTOMER.ID)) ;* R22 manual conversion
 * Register Consulted Customer of REDO.CCRG.CUSTOMER application in REDO.CCRG.EVA.QUEUE
 
     GOSUB EVALUATION.QUEUE
@@ -189,8 +189,8 @@ CHECK.PRELIM.CONDITIONS:
 * Get effective date for the consulted customer in routine S.REDO.CCRG.CALC.END.DATE by parameters
 
             Y.EFFECTIVE.DATE = ''
-* CALL APAP.TAM.S.REDO.CCRG.CALC.END.DATE(Y.EFFECTIVE.DATE,Y.START.DATE)
-            CALL APAP.TAM.SRedoCcrgCalcEndDate(Y.EFFECTIVE.DATE,Y.START.DATE) ;* R22 manual concersion
+* APAP.TAM.S.REDO.CCRG.CALC.END.DATE(Y.EFFECTIVE.DATE,Y.START.DATE)
+            APAP.TAM.sRedoCcrgCalcEndDate(Y.EFFECTIVE.DATE,Y.START.DATE) ;* R22 manual concersion
 * Validate date and time of Y.EFFECTIVE.DATE
 
             IF Y.EFFECTIVE.DATE GT Y.DATE THEN

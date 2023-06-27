@@ -73,7 +73,7 @@ PROCESS:
 ***************
 
 
-    CALL APAP.REDOFCFI.redoFcSGetCollTypeCg(Y.INFO,ENQ.DATA) ;* R22 Manual Conversion
+    APAP.REDOFCFI.redoFcSGetCollTypeCg(Y.INFO,ENQ.DATA) ;* R22 Manual Conversion
 RETURN
 
 

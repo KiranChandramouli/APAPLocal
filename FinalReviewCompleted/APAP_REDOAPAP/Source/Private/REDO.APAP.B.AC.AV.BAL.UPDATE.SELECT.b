@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMjE1NDk4NDkxOkNwMTI1MjoxNjgwNjAzNDE3NjgxOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Apr 2023 15:46:57
+* @ValidationCode : MjotMjE1NDk4NDkxOkNwMTI1MjoxNjg0ODM2MDMzNTM3OklUU1M6LTE6LTE6NDcwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:33
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 470
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -32,7 +32,7 @@ SUBROUTINE REDO.APAP.B.AC.AV.BAL.UPDATE.SELECT
 * 27-Jan-2012       Gangadhar.S.V.         Performance Tuning           Select condition removed
 * 05-Feb-2013       Shekar                Performance tuning            select acct.ent.lwork.day and account from ac.locked.events
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION // TO *
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION // TO *
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 
 *********************************************************************************************************

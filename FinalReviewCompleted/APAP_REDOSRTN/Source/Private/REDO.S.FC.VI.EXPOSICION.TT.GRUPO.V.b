@@ -110,7 +110,7 @@ OFS.PROCESS:
 * error
     END ELSE
 *CALL REDO.FC.E.MAIN(Y.CUS.ID,DATA.ENQ)
-        CALL APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ);* R22 Manual conversion
+        APAP.REDOFCFI.redoFcEMain(Y.CUS.ID,DATA.ENQ);* R22 Manual conversion
         IF DATA.ENQ THEN
             GOSUB Y.DATA.ENQ
         END

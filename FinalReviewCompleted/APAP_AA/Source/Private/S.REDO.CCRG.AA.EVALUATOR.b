@@ -150,7 +150,7 @@ PROCESS:
 * Evaluate conditions, and get balance type associated
 *
     P.BAL.TYPES = ''
-    CALL APAP.TAM.sRedoCcrgEvalBalTypCon(R.RCBTP, P.VALUES, P.BAL.TYPES);* R22 Manual conversion
+    APAP.TAM.sRedoCcrgEvalBalTypCon(R.RCBTP, P.VALUES, P.BAL.TYPES);* R22 Manual conversion
 
     P.RETURN<1> = P.BAL.TYPES ;* balance type associated with this AA
     P.RETURN<2> = R.AA.ARR.CUSTOMER<AA.CUS.OTHER.PARTY> ;* Other party customer list

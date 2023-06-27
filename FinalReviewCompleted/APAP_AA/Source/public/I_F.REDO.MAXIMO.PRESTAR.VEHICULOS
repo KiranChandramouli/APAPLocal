@@ -1,0 +1,15 @@
+* I_F.REDO.MAXIMO.PRESTAR.VEHICULOS Created 01 JUN 11 at 06:21PM by t24bqa04/TEM.PGARZON.02
+*      PREFIX[R.MPV]
+      EQU R.MPV.PRODUCT.GROUP TO 1,   RedoMaximoPrestarVehiculos_ProductGroup TO 1,
+           R.MPV.VEH.USE.TIME TO 2,   RedoMaximoPrestarVehiculos_VehUseTime TO 2,
+      R.MPV.PERC.MAX.AMT.LOAN TO 3,   RedoMaximoPrestarVehiculos_PercMaxAmtLoan TO 3,
+          R.MPV.VEH.USE.YEARS TO 4,   RedoMaximoPrestarVehiculos_VehUseYears TO 4,
+          R.MPV.RECORD.STATUS TO 5,   RedoMaximoPrestarVehiculos_RecordStatus TO 5,
+                R.MPV.CURR.NO TO 6,   RedoMaximoPrestarVehiculos_CurrNo TO 6,
+               R.MPV.INPUTTER TO 7,   RedoMaximoPrestarVehiculos_Inputter TO 7,
+              R.MPV.DATE.TIME TO 8,   RedoMaximoPrestarVehiculos_DateTime TO 8,
+             R.MPV.AUTHORISER TO 9,   RedoMaximoPrestarVehiculos_Authoriser TO 9,
+                R.MPV.CO.CODE TO 10,  RedoMaximoPrestarVehiculos_CoCode TO 10,
+              R.MPV.DEPT.CODE TO 11,  RedoMaximoPrestarVehiculos_DeptCode TO 11,
+           R.MPV.AUDITOR.CODE TO 12,  RedoMaximoPrestarVehiculos_AuditorCode TO 12,
+        R.MPV.AUDIT.DATE.TIME TO 13,  RedoMaximoPrestarVehiculos_AuditDateTime TO 13

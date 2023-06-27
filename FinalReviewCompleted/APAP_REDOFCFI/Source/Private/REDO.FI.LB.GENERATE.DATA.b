@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNjExNTU5MTc2OlVURi04OjE2ODM2MTYwOTczMTY6SVRTUzotMTotMToxMzQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:17
-* @ValidationInfo : Encoding          : UTF-8
+* @ValidationCode : Mjo1MjY3NTUzMTQ6Q3AxMjUyOjE2ODU1NDMxOTc5NjQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:56:37
+* @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 134
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.LB.GENERATE.DATA(AA.PAY.SCH.ID)
@@ -57,6 +57,7 @@ SUBROUTINE REDO.FI.LB.GENERATE.DATA(AA.PAY.SCH.ID)
     $INSERT I_F.REDO.FI.LB.BPROC.DET
     $INSERT I_F.REDO.INTERFACE.PARAM
     $USING APAP.TAM
+    $USING APAP.AA
 *
 *************************************************************************
 *
@@ -89,8 +90,8 @@ PROCESS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-*  CALL APAP.TAM.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
+*  APAP.TAM.REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);*R22 Manual Conversion
     Y.AFF.COMP = R.CONDITION<AA.PS.LOCAL.REF,L.AA.FORM.POS>
     Y.PAYMENT.METH = R.CONDITION<AA.PS.LOCAL.REF,L.AA.PAY.METHD.POS>
 
@@ -106,7 +107,7 @@ PROCESS:
             END
             GOSUB LOAN.COMPANY.HEAD
             IF SERVICE.CONTROL EQ 'ACTIVE' THEN
-                CALL APAP.REDOFCFI.redoFiLbGenerateAmnts(COMP.TYPE,ARR.ID,DATA.OUT);*R22 Manual Conversion
+                APAP.REDOFCFI.redoFiLbGenerateAmnts(COMP.TYPE,ARR.ID,DATA.OUT);*R22 Manual Conversion
                 IF DATA.OUT<9> EQ 'S' THEN
                     GOSUB B310.WRITE.DETAIL
                 END

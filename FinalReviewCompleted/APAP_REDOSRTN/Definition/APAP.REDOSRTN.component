@@ -1222,3 +1222,100 @@ public method redoSWorkLimit (
     jBC: REDO.S.WORK.LIMIT
 }
 
+public method redoSColGetPayFreq (
+    INOUT pInAaId string,
+    INOUT pInRStaticMapping string,
+    INOUT pInProcessDate string,
+    INOUT pOutPayFreq string
+)
+{
+    jBC: REDO.S.COL.GET.PAY.FREQ
+}
+
+public method redoSColGetPayType (
+    INOUT pInAaId string,
+    INOUT pInRStaticMapping string,
+    INOUT pInProcessDate string,
+    INOUT pOutPayType string
+)
+{
+    jBC: REDO.S.COL.GET.PAY.TYPE
+}
+
+public method redoSColGetBillDetails (
+    INOUT AAiD string,
+    INOUT rAaAccountDetails string,
+    INOUT yProcessDate string,
+    INOUT yMoraCtaVen string,
+    INOUT yTmpcreditodiasatraso string,
+    INOUT yTmpcreditocuotasvencidas string,
+    INOUT yTmpcreditocuotaspagadas string,
+    INOUT yTmpcreditomontomoroso string
+)
+{
+    jBC: REDO.S.COL.GET.BILL.DETAILS
+}
+
+public method redoSColGetPeriodBalance (
+    INOUT yAccountId string,
+    INOUT yProcessDate string,
+    INOUT rStaticMapping string,
+    INOUT yAaStatus string,
+    INOUT yAaProperty string,
+    INOUT yOutAaAmount string
+)
+{
+    jBC: REDO.S.COL.GET.PERIOD.BALANCE
+}
+
+public method redoSComCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.COM.CALC.DISB.DATE.AMT
+}
+public method redoSGetPeriodAmts(
+    INOUT yAccountId string,
+    INOUT yStartDate string, 
+    INOUT yProcessDate string, 
+    INOUT yAABalanceList string, 
+    INOUT yOutAAAMtList string
+    
+)
+{
+    jBC: REDO.S.GET.PERIOD.AMTS
+}
+
+
+
+public method redoSFetchSatus(
+)
+{
+    jBC: REDO.S.FETCH.STATUS
+}
+
+
+public method redoSGetCusAccName (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.CUS.ACC.NAME
+}
+
+public method redoSByMthIncAvgBal (
+    INOUT acctId string,
+    INOUT chkVal string
+)
+{
+    jBC: REDO.S.BY.MTH.INC.AVG.BAL
+}
+
+
+public method redoSGetUsrErrMsg (
+   INOUT pErrCode string,
+   INOUT pUsrMsg string
+)
+{
+   jBC: REDO.S.GET.USR.ERR.MSG
+}

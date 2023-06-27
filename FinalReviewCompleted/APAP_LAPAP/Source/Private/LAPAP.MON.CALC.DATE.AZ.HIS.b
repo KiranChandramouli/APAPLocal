@@ -35,7 +35,7 @@ SUBROUTINE LAPAP.MON.CALC.DATE.AZ.HIS
     CALL OPF(FN.AZ,F.AZ)
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
     CALL F.READ.HISTORY(FN.AZ,Y.ACC.ID,R.HIS,F.AZ,ERRH)

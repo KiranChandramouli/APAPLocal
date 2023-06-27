@@ -64,7 +64,7 @@ SUBROUTINE L.APAP.RTN.VAL.PASS.DO
 
 * Previous routine called in field Validation Rtn.4 before this change
 
-    CALL APAP.REDOVER.redoVCheckPassportCountry() ;*R22 Manual Conversion
+    APAP.REDOVER.redoVCheckPassportCountry() ;*R22 Manual Conversion
 RETURN
 
 END

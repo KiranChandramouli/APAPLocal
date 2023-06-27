@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQxNDUwOTQ4NTpDcDEyNTI6MTY4Mzg3ODA4NzMzNDpJVFNTOi0xOi0xOi0zODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 13:24:47
+* @ValidationCode : Mjo5NjE0MjAzODk6Q3AxMjUyOjE2ODU1NDI2MzM4Mjk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:47:13
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -38
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA ;*Manual R22 code conversion
 SUBROUTINE REDO.POST.PAYOFF.REM.PAYSCH.INT
@@ -44,8 +44,8 @@ PROCESS:
     Y.AA.ID = c_aalocArrId
     Y.ACCOUNT.PROP  = ''
     Y.INTEREST.PROP = ''
-    CALL APAP.TAM.redoGetPropertyName(Y.AA.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROP,OUT.ERR);* R22 Manual conversion
-    CALL APAP.TAM.redoGetPropertyName(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INTEREST.PROP,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(Y.AA.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROP,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INTEREST.PROP,OUT.ERR);* R22 Manual conversion
 
     Y.IMPORTANT.PROPERTY     = Y.ACCOUNT.PROP:@FM:Y.INTEREST.PROP ;*AUTO R22 CODE CONVERSION
     Y.IMPORTANT.PROPERTY.CNT = DCOUNT(Y.IMPORTANT.PROPERTY,@FM) ;*AUTO R22 CODE CONVERSION
@@ -119,7 +119,7 @@ PROCESS.DEL.COMMAND:
 * DEL R.NEW(AA.PS.RESERVED.15)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
 **********MANUAL R22 CODE CONVERSION*******
     DEL R.NEW(AA.PS.BASE.DAY)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
-    DEL R.NEW(AA.PS.RESERVED.14)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
+*DEL R.NEW(AA.PS.RESERVED.14)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
     DEL R.NEW(AA.PS.RESERVED.13)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
     DEL R.NEW(AA.PS.RESERVED.12)<1,Y.DELETE.PAYPOS<Y.LOOP1>>
     DEL R.NEW(AA.PS.RESERVED.11)<1,Y.DELETE.PAYPOS<Y.LOOP1>>

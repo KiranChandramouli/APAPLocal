@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTc3NDI5OTk3NjpDcDEyNTI6MTY4Mzg3Nzk5NjExOTpJVFNTOi0xOi0xOjc3MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 May 2023 13:23:16
+* @ValidationCode : MjotMjExMTA3NzE2MDpDcDEyNTI6MTY4NDg1NzMxMDEzOTpJVFNTOi0xOi0xOjc3MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 21:25:10
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -126,7 +126,7 @@ RETURN
 GET.INT.PROPERTY:
 *---------------------------------------------------------
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(ARR.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 RETURN
 *---------------------------------------------------------
@@ -155,7 +155,7 @@ GET.TERM.AMOUNT:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion
     Y.LOAN.AMOUNT=R.CONDITION.TERM<AA.AMT.AMOUNT>
     Y.MAT.DATE   =R.CONDITION.TERM<AA.AMT.MATURITY.DATE>
 RETURN
@@ -206,7 +206,7 @@ GET.INTEREST.RATE:
 *CALL F.READ(FN.AA.INTEREST.ACCRUALS,Y.INT.ID,R.INT.ACCRUAL,F.AA.INTEREST.ACCRUALS,INT.ACC.ERR)
 *Y.INTEREST.RATE=R.INT.ACCRUAL<AA.INT.ACC.RATE,1,1>
 
-    CALL APAP.TAM.RedoGetInterestRate(ARR.ID,Y.INTEREST.RATE);* R22 Manual conversion
+    APAP.TAM.redoGetInterestRate(ARR.ID,Y.INTEREST.RATE);* R22 Manual conversion
 
 RETURN
 *-----------------------------------------------------------------------------
@@ -214,9 +214,9 @@ ORIG.AMT.CHECK:
 *-----------------------------------------------------------------------------
 
     OUT.PROP.ACC=''
-    CALL APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,OUT.PROP.ACC,OUT.ERR);* R22 Manual conversion
+    APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,OUT.PROP.ACC,OUT.ERR);* R22 Manual conversion
     IN.ACC.ID=''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
     BALANCE.TO.CHECK='CUR':OUT.PROP.ACC
     BALANCE.AMOUNT=''
     Y.TODAY = TODAY
@@ -288,7 +288,7 @@ GET.OVERDUE.DETAILS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion
     Y.LOAN.STATUS = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,Y.LOAN.STATUS.1.POS>
     Y.LOAN.COND   = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,Y.LOAN.COND.POS>
 

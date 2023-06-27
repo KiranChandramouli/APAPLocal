@@ -73,8 +73,8 @@ SUBROUTINE REDO.FT.DEF.COMM.CHG
         NEXT AV
     END
     COMI=(COMI-COND.DATA.CHG<1>-COND.DATA.TAX<1>)/((COND.DATA.CHG<2>/100)+(COND.DATA.TAX<2>/100)+1)
-*CALL APAP.REDOVER.REDO.V.FT.CALC.COMM ;*MANUAL R22 CODE CONVERSION
-    CALL APAP.REDOVER.redoVFtCalcComm();* R22 Manual conversion
+*APAP.REDOVER.REDO.V.FT.CALC.COMM ;*MANUAL R22 CODE CONVERSION
+    APAP.REDOVER.redoVFtCalcComm();* R22 Manual conversion
 RETURN
 *
 *------------------------------------------------------------------------

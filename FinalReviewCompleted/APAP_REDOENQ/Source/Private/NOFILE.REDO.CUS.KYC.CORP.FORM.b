@@ -184,8 +184,8 @@ PROCESS:
     REPEAT
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.CUSTOMER
-*CALL APAP.REDOENQ.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '', SEL.CUS.CMD)
-        CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*R22 Manual Conversion - Added APAP.REDOFCFI
+*APAP.REDOENQ.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '', SEL.CUS.CMD)
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CUS.CMD) ;*R22 Manual Conversion - Added APAP.REDOFCFI
         SEL.CMD1 = SEL.CUS.CMD:" AND (L.CU.TIPO.CL EQ 'PERSONA JURIDICA')"
     END  ELSE
         SEL.CMD1 = "SELECT ":FN.CUSTOMER:" WITH (L.CU.TIPO.CL EQ 'PERSONA JURIDICA')"
@@ -207,12 +207,12 @@ RETURN
 PROCESS.EXTRACT:
 ******************
 
-    CALL APAP.REDOENQ.redoExecSecInfo(CUST.ID,OTH.OFFICER);* R22 Manual Conversion
+    APAP.REDOENQ.redoExecSecInfo(CUST.ID,OTH.OFFICER);* R22 Manual Conversion
     BRANCH                     = OTH.OFFICER
     CUSTOMER.CODE              = CUST.ID
     ALTERNATE.CUSTOMER.NO      = " "      ;*******This field is removed as discussion with client   R.CUST<EB.CUS.LOCAL.REF,L.CU.ALT.CU.COD.POS>
     Y.DATE                     = TODAY
-    CALL APAP.TAM.redoShowCustDesc(CUST.ID,STATUS.DESC) ;*R22 Manual Conversion
+    APAP.TAM.redoShowCustDesc(CUST.ID,STATUS.DESC) ;*R22 Manual Conversion
     Y.STATUS                   = STATUS.DESC
     RNC                        = R.CUST<EB.CUS.LOCAL.REF,L.CU.RNC.POS>
     COMMER.REGI.NR             = R.CUST<EB.CUS.PREVIOUS.NAME,1>
@@ -290,7 +290,7 @@ PROCESS.EXTRACT:
     NUMBER.SUITABLE            = R.CUST<EB.CUS.ADDRESS>
     ZIP.CODE                   = R.CUST<EB.CUS.POST.CODE>
     PO.BOX                     = R.CUST<EB.CUS.OFF.PHONE>
-    CALL APAP.TAM.redoRelcusTelType(CUST.ID,VAR.TEL.TYPE,VAR.TEL.AREA,VAR.TEL.NUMBER,VAR.TEL.EXT,VAR.TEL.CONTACT);*R22 Manual Conversion - Call routine modified
+    APAP.TAM.redoRelcusTelType(CUST.ID,VAR.TEL.TYPE,VAR.TEL.AREA,VAR.TEL.NUMBER,VAR.TEL.EXT,VAR.TEL.CONTACT);*R22 Manual Conversion - Call routine modified
     TYPE                       = VAR.TEL.TYPE
     AREA                       = VAR.TEL.AREA
     NUMBER                     = VAR.TEL.NUMBER
@@ -308,7 +308,7 @@ PROCESS.EXTRACT:
     CHANGE @VM TO '##' IN JAVA.EXTENSION
     CHANGE @VM TO '##' IN JAVA.CONTACT
 
-    CALL APAP.REDORETAIL.redoDsBasicInfo(CUST.ID,NAME.CORP,ID.CORP,ROLE.1);*R22 Manual Conversion - Call routine modified
+    APAP.REDORETAIL.redoDsBasicInfo(CUST.ID,NAME.CORP,ID.CORP,ROLE.1);*R22 Manual Conversion - Call routine modified
     CUS.CORPORATE.NAME         = NAME.CORP
     CUS.ID.NR                  = ID.CORP
     CUS.PARTICIPATION          = ROLE.1
@@ -324,7 +324,7 @@ PROCESS.EXTRACT:
     VAR.CUST.ISS.DATE          = CUST.ID:"*ACTAASAM"
     CALL F.READ(FN.CUST.DOC,VAR.CUST.ISS.DATE,R.CUST.DOC,F.CUST.DOC,CUS.DOC.ERR)
     DATE.CONSTITUTE.ASS      = R.CUST.DOC<CUS.DOC.LOCAL.REF,Y.POS.ISSDATE>        ;********* new field
-    CALL APAP.REDORETAIL.redoDsShaInfo(CUST.ID,SHA.NAME.CORP,SHA.ID.CORP,SHA.ROLE.1);*R22 Manual Conversion
+    APAP.REDORETAIL.redoDsShaInfo(CUST.ID,SHA.NAME.CORP,SHA.ID.CORP,SHA.ROLE.1);*R22 Manual Conversion
     SHA.CORPORATE.NAME         = SHA.NAME.CORP
     SHA.ID.NR                  = SHA.ID.CORP
     SHA.PARTICIPATION          = SHA.ROLE.1
@@ -337,13 +337,13 @@ PROCESS.EXTRACT:
     CHANGE @VM TO '##' IN JAVA.SID
     CHANGE @VM TO '##' IN JAVA.SPART
 
-    CALL APAP.REDORETAIL.redoCusOthFininsOne(CUST.ID,OTH.FIN);*R22 Manual Conversion
+    APAP.REDORETAIL.redoCusOthFininsOne(CUST.ID,OTH.FIN);*R22 Manual Conversion
     FIN.INST.ONE               = OTH.FIN
-    CALL APAP.REDORETAIL.redoCusOthFininsTwo(CUST.ID,OTH.FIN2);*R22 Manual Conversion
+    APAP.REDORETAIL.redoCusOthFininsTwo(CUST.ID,OTH.FIN2);*R22 Manual Conversion
     FIN.INST.TWO               = OTH.FIN2
-    CALL APAP.REDORETAIL.redoCusOthFininsThree(CUST.ID,OTH.FIN3) ;*R22 Manual Conversion
+    APAP.REDORETAIL.redoCusOthFininsThree(CUST.ID,OTH.FIN3) ;*R22 Manual Conversion
     FIN.INST.THREE             = OTH.FIN3
-    CALL APAP.REDORETAIL.redoCusOthFininsFour(CUST.ID,OTH.FIN4) ;*R22 Manual Conversion
+    APAP.REDORETAIL.redoCusOthFininsFour(CUST.ID,OTH.FIN4) ;*R22 Manual Conversion
     FIN.INST.FOUR              = OTH.FIN4
     GOSUB GET.SEGMENTO
     GOSUB GET.CUS.AC.DET

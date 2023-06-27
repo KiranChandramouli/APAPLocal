@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTkyMDAzOTU3NjpDcDEyNTI6MTY4MjU3MjU4MDE5NTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 10:46:20
+* @ValidationCode : MjoxMTI3ODkyNDczOkNwMTI1MjoxNjg1NTQ0MTQ2MjA0OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:26
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -312,7 +312,7 @@ SEL.STMT:
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.ACCOUNT
 
-        CALL APAP.REDOENQ.RedoEFormSelStmt(FILE.NAME, '', '', SEL.CMD.ACC)
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.CMD.ACC);* R22 Manual conversion
 
         SEL.CMD.ACC := ' WITH CATEGORY GE ':Y.CATEGORY.VAL.ST:' AND WITH CATEGORY LE ':Y.CATEGORY.VAL.END:' AND WITH ( CATEGORY LT 6011 OR WITH CATEGORY GT 6020 )'
         SEL.CMD.ACC := Y.SEL.VAL :" BY CATEGORY " : Y.SEL.FLD

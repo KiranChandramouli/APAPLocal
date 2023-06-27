@@ -144,7 +144,7 @@ GET.ACC.PROPERTY:
     IN.PROPERTY.CLASS = 'ACCOUNT'
     R.OUT.AA.RECORD   = ''
     Y.ACC.PROPERTY    = ''
-    CALL APAP.TAM.redoGetPropertyName(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);*Manual R22 conversion
+    APAP.TAM.redoGetPropertyName(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR);*Manual R22 conversion
 
     IF Y.ACC.PROPERTY EQ '' THEN
         CALL OCOMO("Account Property Missing - ":Y.AA.ID)

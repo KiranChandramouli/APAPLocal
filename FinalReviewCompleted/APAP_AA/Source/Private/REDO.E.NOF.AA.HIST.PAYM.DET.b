@@ -147,7 +147,7 @@ PROCESS:
 
         IF YACTIVITY EQ 'LENDING-TAKEOVER-ARRANGEMENT' THEN
             Y.COMMITED.AMT = 0; Y.DISBURSE.DATE = ''; YMIG.STAT = ''
-            CALL APAP.TAM.redoGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*R22 Manual conversion
+            APAP.TAM.redoGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);*R22 Manual conversion
             Y.DISBURSE.AMT = R.DISB.DETAILS<3>
             Y.DISBURSE.DATE= R.DISB.DETAILS<1>
             YMIG.STAT = R.DISB.DETAILS<4>

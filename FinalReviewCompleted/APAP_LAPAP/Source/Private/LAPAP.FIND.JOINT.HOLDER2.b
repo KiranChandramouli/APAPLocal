@@ -34,7 +34,7 @@ SUBROUTINE LAPAP.FIND.JOINT.HOLDER2
 *-----------------------
 
     ACC = COMI
-    CALL APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES);* R22 Manual conversion
     Y.ACC.ID = RES
 
 *-------------------------

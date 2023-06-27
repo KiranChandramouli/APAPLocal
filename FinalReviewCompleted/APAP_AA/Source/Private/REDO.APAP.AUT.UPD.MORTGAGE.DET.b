@@ -149,7 +149,7 @@ GET.CONDITIONS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG);* R22 Manual Conversion - Modified CALL format
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG);* R22 Manual Conversion - Modified CALL format
 RETURN
 
 *----------------------------------------------------------------------

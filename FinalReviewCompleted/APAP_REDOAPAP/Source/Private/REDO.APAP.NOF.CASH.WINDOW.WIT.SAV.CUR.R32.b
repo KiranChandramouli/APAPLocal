@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNTc0Mjk3MDg2OkNwMTI1MjoxNjgzMDM0Mzc5MTg1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 19:02:59
+* @ValidationCode : MjoxNTc0Mjk3MDg2OkNwMTI1MjoxNjg0ODM2MDQ2NzAwOklUU1M6LTE6LTE6MzcwODoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:46
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 3708
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -520,7 +520,7 @@ CHECK.DEBIT.CARD.TXNS:
     YTELLER.ID = ''
     YTELLER.ID = TELLER.ID
     TELLER.ID = TELLER.ID:"_":Y.CASH.WIT.FLAG:"_":Y.CHQ.WIT.FLAG:"_":Y.TFR.WIT.FLAG
-    CALL APAP.REDOAPAP.redoApapNofCashWindowDbCardR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowDbCardR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
     TELLER.ID = YTELLER.ID
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -657,7 +657,7 @@ GET.TERM.INST.CANCEL.WITHDRAWALS:
     LOCATE TELLER.ID IN Y.TT.LIST<1> SETTING Y.TT.POS THEN
         RETURN
     END
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitTermInstR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.CASH.CATEG,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitTermInstR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.CASH.CATEG,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
 RETURN
 *--------------------------------------------------------------------------------------------------------
 ***********************************
@@ -668,7 +668,7 @@ GET.TERM.INST.INTEREST.WITHDRAWALS:
     LOCATE TELLER.ID IN Y.TT.LIST<1> SETTING Y.TT.POS THEN
         RETURN
     END
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitTermInstIntR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.CASH.CATEG,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowWitTermInstIntR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.CASH.CATEG,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
 RETURN
 *--------------------------------------------------------------------------------------------------------
 ********************************
@@ -679,7 +679,7 @@ GET.CREDIT.CASH.ADV.WITHDRAWALS:
     LOCATE TELLER.ID IN Y.TT.LIST<1> SETTING Y.TT.POS THEN
         RETURN
     END
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitCccaR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitCccaR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
 RETURN
 *--------------------------------------------------------------------------------------------------------
 *****************************
@@ -690,7 +690,7 @@ GET.CHQ.PAYMENTS.WITHDRAWALS:
     LOCATE TELLER.ID IN Y.TT.LIST<1> SETTING Y.TT.POS THEN
         RETURN
     END
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitChqPayR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitChqPayR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
 RETURN
 *--------------------------------------------------------------------------------------------------------
 *******************
@@ -703,7 +703,7 @@ GET.OTHER.EXPENSES:
     YTELLER.ID = ''
     YTELLER.ID = TELLER.ID
     TELLER.ID = TELLER.ID:"_":Y.CASH.WIT.FLAG:"_":Y.CHQ.WIT.FLAG:"_":Y.TFR.WIT.FLAG
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitOthExpR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitOthExpR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
     TELLER.ID = YTELLER.ID
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -717,7 +717,7 @@ GET.CASH.TO.TELLER:
     YTELLER.ID = ''
     YTELLER.ID = TELLER.ID
     TELLER.ID = TELLER.ID:"_":Y.TELLER.ID:"_":Y.CASH.WIT.FLAG:"_":Y.CHQ.WIT.FLAG:"_":Y.TFR.WIT.FLAG
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitCttR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
+    APAP.REDOAPAP.redoApapNofCashWindowWitCttR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR)
     TELLER.ID = YTELLER.ID
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -731,7 +731,7 @@ GET.SEL.CURRENCY:
     YTELLER.ID = ''
     YTELLER.ID = TELLER.ID
     TELLER.ID = TELLER.ID::"_":Y.CASH.WIT.FLAG:"_":Y.CHQ.WIT.FLAG:"_":Y.TFR.WIT.FLAG
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitSellR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitSellR32(Y.CCY.LIST,TELLER.ID,Y.TT.PARAM.REC,Y.FINAL.ARRAY,Y.TT.LIST,SET.CUR,Y.DUP.CUR) ;*R22 MANUAL CODE CONVERSION
     TELLER.ID = YTELLER.ID
 RETURN
 

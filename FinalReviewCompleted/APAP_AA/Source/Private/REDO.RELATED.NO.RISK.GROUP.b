@@ -145,7 +145,7 @@ BAL.AMT:
 ********************************
 
     PROP.CLASS="TERM.AMOUNT"
-    CALL APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);* R22 Manual conversion
     DIRECT.BAL=R.Condition<AA.AMT.AMOUNT>
     GOSUB YIELD.BAL
     GOSUB CONTENGENCY.BALANCE

@@ -106,7 +106,7 @@ GET.REPORT.FLD.VALUES:
         Y.PREV.ACCOUNT = Y.ALT.ACCT.ID<1,ALT.TYPE.POS>
     END
 
-    CALL APAP.LAPAP.drRegGetCustType(R.CUSTOMER,OUT.ARR);* R22 Manual conversion
+    APAP.LAPAP.drRegGetCustType(R.CUSTOMER,OUT.ARR);* R22 Manual conversion
     FLD8 = OUT.ARR<1>
     FLD2 = OUT.ARR<2>
     FLD5 = STMT.ID

@@ -74,7 +74,7 @@ UPD.ACCOUNT:
 ************
 *CALL REDO.APAP.S.AC.AV.BAL.UPDATE(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD)
 ** R22 Manual conversion
-    CALL APAP.REDOAPAP.redoApapSAcAvBalUpdate(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
+    APAP.REDOAPAP.redoApapSAcAvBalUpdate(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
 
 RETURN
 *--------------------------------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ PENDING.CHARGE:
 
         IF IN.ACCT.CATEG GE RCP.CATEG.STR<1,COUNT.CAT> AND IN.ACCT.CATEG LE RCP.CATEG.END<1,COUNT.CAT> THEN
 *CALL REDO.S.PENDING.CHARGES(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ)
-            CALL APAP.TAM.redoSPendingCharges(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ);* R22 Manual conversion
+            APAP.TAM.redoSPendingCharges(APPL.TYPE,OPERATION.TYPE,STMT.ENT.ID,STMT.RECORD,NCF.NT.REQ);* R22 Manual conversion
         END
         COUNT.CAT += 1
     REPEAT
@@ -247,7 +247,7 @@ GENERATE.NCF.UNMAP:
         IF NCF.NT.REQ NE 'YES' THEN
 *CALL REDO.AP.GEN.NCF.UNMAP(STMT.ENT.ID,STMT.RECORD)
 ** R22 Manual conversion
-            CALL APAP.REDOEB.redoApGenNcfUnmap(STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
+            APAP.REDOEB.redoApGenNcfUnmap(STMT.ENT.ID,STMT.RECORD);* R22 Manual conversion
         END
         NCF.NT.REQ = ''
     END

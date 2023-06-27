@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTUxOTIzNDU1ODpDcDEyNTI6MTY4MDYwNTExOTI3ODpJVFNTOi0xOi0xOjA6MDp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Apr 2023 16:15:19
+* @ValidationCode : MjotMTUxOTIzNDU1ODpDcDEyNTI6MTY4NDgzNjAzNTMzMjpJVFNTOi0xOi0xOi03OjE6dHJ1ZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:35
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -7
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : true
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -26,7 +26,7 @@ SUBROUTINE REDO.APAP.CLEARING.INWARD.FIELDS
 * 30 -AUG -2011 - PACS00112979  FIX
 *-----------------------------------------------------------------------------
 * Date                  who                   Reference              
-* 04-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - No Change
+* 04-04-2023        ï¿½CONVERSTION TOOL   ï¿½  R22 AUTO CONVERSTION - No Change
 * 04-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
 *** <region name= Header>

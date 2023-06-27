@@ -94,13 +94,13 @@ GET.INTEREST.RATE:
 
     PROP.NAME            =  'PRINCIPAL'   ;* Interest Property to obtain
     OUT.PROP             =  ''
-    CALL APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR);* R22 Manual conversion
     Y.INT.PROPERTY       =  OUT.PROP
     PROPERTY.CLASS       = 'INTEREST'
     EFF.DATE             = ''
     ERR.MSG              = ''
     R.INTEREST.CONDITION = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROPERTY.CLASS,Y.INT.PROPERTY,R.INTEREST.CONDITION,ERR.MSG);* R22 Manual Conversion - CALL routine format modified
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROPERTY.CLASS,Y.INT.PROPERTY,R.INTEREST.CONDITION,ERR.MSG);* R22 Manual Conversion - CALL routine format modified
     Y.INT.RATE           = R.INTEREST.CONDITION<AA.INT.EFFECTIVE.RATE,1>
     Y.DAY.BASIS          = R.INTEREST.CONDITION<AA.INT.DAY.BASIS>
     IF Y.DAY.BASIS ELSE

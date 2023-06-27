@@ -1,0 +1,5 @@
+* I_F.TAM.HOST.DETAILS.TRACE.ARCIB Created 18 OCT 10 at 03:00PM by apapr8/SHANKARRAJU3
+*      PREFIX[HOST.DET.IB]
+          EQU HOST.DET.IB.HOST.NAME TO 1,   TamHostDetailsTraceArcib_HostName TO 1,
+             HOST.DET.IB.IP.ADDRESS TO 2,   TamHostDetailsTraceArcib_IpAddress TO 2,
+                   HOST.DET.IB.DATE TO 3,   TamHostDetailsTraceArcib_Date TO 3

@@ -134,21 +134,21 @@ RETURN
 CHECK.CLAIMS:
 *************
     FILE.NAME = FN.REDO.FRONT.CLAIMS.NAU
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CLAIM.CMD) ;*Manual R22 conversion
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CLAIM.CMD) ;*Manual R22 conversion
     GOSUB GET.CLAIM.VALUES
 RETURN
 **************
 CHECK.REQUESTS:
 ***************
     FILE.NAME = FN.REDO.FRONT.REQUESTS.NAU
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.REQ.CMD) ;*Manual R22 conversion
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.REQ.CMD) ;*Manual R22 conversion
     GOSUB GET.REQ.VALUES
 RETURN
 *****************
 CHECK.COMPLAINTS:
 *****************
     FILE.NAME = FN.REDO.FRONT.COMPLAINTS.NAU
-    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.COMP.CMD) ;*Manual R22 conversion
+    APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.COMP.CMD) ;*Manual R22 conversion
     GOSUB GET.COMP.VALUES
 RETURN
 *****************

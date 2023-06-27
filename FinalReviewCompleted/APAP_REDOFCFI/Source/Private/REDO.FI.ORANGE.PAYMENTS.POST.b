@@ -173,13 +173,13 @@ PROCESS.MAIL:
 *
     Y.PATH.TO.MOVE             = Y.PATH.SUCCESS
 
-*CALL APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
-    CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR);* R22 Manual Conversion - CALL method format changed
+*APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
+    APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR);* R22 Manual Conversion - CALL method format changed
 
     IF Y.ERROR THEN
         FOR Y.NUM.INTENTOS = 1 TO Y.INTENTOS
-* CALL APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
-            CALL APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR);* R22 Manual Conversion - CALL method format changed
+* APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
+            APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR);* R22 Manual Conversion - CALL method format changed
             IF Y.ERROR THEN
                 W.ERROR        = Y.ERROR
                 Y.PATH.TO.MOVE = Y.PATH.FAILURE

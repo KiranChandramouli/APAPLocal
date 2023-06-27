@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTU0MTI5NDY5MjpDcDEyNTI6MTY4NDg1MTk4NjkzODpJVFNTOi0xOi0xOjk2NDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 19:56:26
+* @ValidationCode : Mjo5NDc5MTg0NDA6Q3AxMjUyOjE2ODU1NDMxMjk2MjQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:29
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 964
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.AI.LOAN.APAP.BEN.ACCTS(FIN.ARR)
@@ -46,6 +46,7 @@ SUBROUTINE REDO.NOFILE.AI.LOAN.APAP.BEN.ACCTS(FIN.ARR)
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.AI.REDO.ACCT.RESTRICT.PARAMETER
     $USING APAP.TAM
+    $USING APAP.AA
 
     GOSUB INITIALISE
     GOSUB FORM.ACCT.ARRAY
@@ -151,8 +152,8 @@ FORM.ACCT.ARRAY:
         R.Condition = ''
         ERR.MSG = ''
         EFF.DATE = ''
-        CALL APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT);*Manual R22 conversion
-        CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
+        APAP.TAM.redoConvertAccount(ACC.ID,Y.ARR.ID,ARR.ID,ERR.TEXT);*Manual R22 conversion
+        APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG);*Manual R22 conversion
         LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF, POS.L.LOAN.STATUS>
         LOAN.COND = R.Condition<AA.OD.LOCAL.REF,POS.L.LOAN.COND>
         Y.LOOP.CONTINUE=''

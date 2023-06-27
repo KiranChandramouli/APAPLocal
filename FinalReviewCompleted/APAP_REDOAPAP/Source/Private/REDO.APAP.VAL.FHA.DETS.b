@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTU5NzI5MTc3MTpDcDEyNTI6MTY4MzAyNzk5NzIzNzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 17:16:37
+* @ValidationCode : MjotNzE0MTMyMDc3OkNwMTI1MjoxNjg1NTQ0MTYzMjU2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:12:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.VAL.FHA.DETS
@@ -35,6 +35,7 @@ SUBROUTINE REDO.APAP.VAL.FHA.DETS
     $INSERT I_F.ACCOUNT
     $INSERT I_F.REDO.APAP.CPH.PARAMETER
     $USING APAP.TAM
+    $USING APAP.AA
 *------------------------------------------------------------------------------
 
 
@@ -92,7 +93,7 @@ READ.AA.ARR.CHARGE:
     AA.ID=Y.ARR.ID
     R.AA.ARR.CHARGE = ''
     ERR.MSG = ''
-    CALL APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.CHARGE,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.CHARGE,ERR.MSG)
 RETURN
 *------------------------------------------------------------------------------
 *************************

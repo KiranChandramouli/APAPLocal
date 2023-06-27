@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjQ2MDc4Mzc4OkNwMTI1MjoxNjg0ODUzMDEyNDg5OklUU1M6LTE6LTE6MjYzOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:13:32
+* @ValidationCode : MjozMDk2Mzg0MTI6Q3AxMjUyOjE2ODU1NDMxMjE3Mjg6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 19:55:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2639
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.NOFILE.LOAN.PAYMENTS(Y.OUT.ARRAY)
@@ -58,6 +58,7 @@ SUBROUTINE REDO.E.NOFILE.LOAN.PAYMENTS(Y.OUT.ARRAY)
     $INSERT I_F.AA.ACTIVITY
     $INSERT I_F.USER
     $USING APAP.AA
+    $USING APAP.TAM
 
 *-------------------------------------------------------------------------------------------------------
 MAIN.PARA:
@@ -344,7 +345,7 @@ LOOP.GET.MAIN.TYPE:
             Y.AA.ARR.ACTIVITY = R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY.REF,Y.VM.START,Y.SM.START>
             Y.MAIN.TYPE = FIELD(Y.ACT,'-',3)
             Y.AA.ARR.ACTIVITY<2> = EffectiveDate        ;* Shek  pass effective date
-            CALL APAP.AA.redoGetPre(Y.AA.ARR.ACTIVITY,Y.PRE,Y.CURENT);* R22 Manual conversion
+            APAP.AA.redoGetPre(Y.AA.ARR.ACTIVITY,Y.PRE,Y.CURENT);* R22 Manual conversion
        
             Y.PREV.COND = Y.PRE
             Y.CURR.COND = Y.CURENT
@@ -379,7 +380,7 @@ GET.AA.ARRANGEMENT.DETAILS:
     R.CONDITION = ''
     ERR.MSG     = ''
 
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.ACCOUNT,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.AA.ARR.ACCOUNT,ERR.MSG)
     IF R.AA.ARR.ACCOUNT<AA.AC.ALT.ID> THEN
         Y.PRE.LOAN.NO = R.AA.ARR.ACCOUNT<AA.AC.ALT.ID>
     END
@@ -449,7 +450,7 @@ GET.ARR.OVERDUE.DETAILS:
     R.CONDITION = ''
     ERR.MSG     = ''
 
-    CALL APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
 
     Y.LOAN.STATUS1 = R.CONDITION<AA.OD.LOCAL.REF,LOC.L.LOAN.STATUS.1.POS>
 
@@ -502,7 +503,7 @@ READ.AA.ARRANGEMENT.ACTIVITY:
         Y.ORIGIN.AGENCY   = R.AA.ARRANGEMENT.ACTIVITY<AA.ARR.ACT.CO.CODE>
     END
 
-    CALL APAP.REDOENQ.redoENofArrangmentProcess(AA.ARRANGEMENT.ID,Y.AGENCY,Y.DISBURSED.AMOUNT);* PACS00313082 - 2015MAY01 - Cristina's email - S/E
+    APAP.REDOENQ.redoENofArrangmentProcess(AA.ARRANGEMENT.ID,Y.AGENCY,Y.DISBURSED.AMOUNT);* PACS00313082 - 2015MAY01 - Cristina's email - S/E
 
 RETURN  ;* Shek. ft/tt are in history. no need for these codes
 
@@ -569,7 +570,7 @@ GET.AA.ACCT:
     IN.ACC.ID = ''
     ERR.TEXT = ''
     OUT.ID = ''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.LOAN.NO,OUT.ID,ERR.TEXT)
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.LOAN.NO,OUT.ID,ERR.TEXT)
     Y.LOAN.NO = OUT.ID
 
 RETURN

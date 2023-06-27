@@ -60,7 +60,7 @@ PROCESS:
 * L.CU.NOUNICO should accept only 11 characters
 * If the length of the variable is not equal to 11 characters,
 * then set the ETEXT common variable to the error code, EB-REDO.INVALID.DOC.FORMAT
-* Then call APAP.TAM.REDO.S.CALC.CHECK.DIGIT subroutine.If the returned value is FAIL, then set ETEXT as EB-REDO.INCORRECT.CHECKDIGIT
+* Then APAP.TAM.REDO.S.CALC.CHECK.DIGIT subroutine.If the returned value is FAIL, then set ETEXT as EB-REDO.INCORRECT.CHECKDIGIT
 
     Cedule = "padrone$":COMI
     Param1 = "com.padrone.ws.util.MainClass"
@@ -86,7 +86,7 @@ PROCESS:
             END ELSE
                 CHECK.NUMERIC = NUM(Y.L.CU.NOUNICO)
                 IF CHECK.NUMERIC EQ 1 THEN
-                    CALL APAP.REDOSRTN.redoSCalcCheckDigit(Y.L.CU.NOUNICO)    ;*R22 MANUAL CODE CONVERSION
+                    APAP.REDOSRTN.redoSCalcCheckDigit(Y.L.CU.NOUNICO)    ;*R22 MANUAL CODE CONVERSION
                 END ELSE
                     GOSUB CHECK.COUNT
                 END

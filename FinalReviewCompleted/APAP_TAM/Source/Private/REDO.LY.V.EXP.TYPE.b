@@ -55,20 +55,20 @@ PROCESS:
 
     IF VAL.TEXT EQ '' THEN
         VAL.TEXT = 'VALIDATED'
-        CALL APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
+        APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
+        APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
+        APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
         VAL.TEXT = ''
     END ELSE
-        CALL APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
-        CALL APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
-        CALL APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
+        APAP.REDOVER.redoVAvailProgram() ;* R22 Manual conversion
+        APAP.REDOVER.redoVDisdelay() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsT() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsP() ;* R22 Manual conversion
+        APAP.TAM.redoLyDisFieldsP2() ;* R22 Manual conversion
+        APAP.REDOVER.redoVTxnInt() ;* R22 Manual conversion
     END
 
     IF VAR.EXP.TYPE EQ 'POR.DIAS' THEN

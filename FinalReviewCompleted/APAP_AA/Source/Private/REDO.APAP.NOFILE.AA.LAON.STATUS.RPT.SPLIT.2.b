@@ -163,7 +163,7 @@ GET.INS.CHG.TOT.BALANCE:
     PROPERTY    = 'REPAYMENT.SCHEDULE'
     R.CONDITION = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Conversion - modified CALL routine format
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG);* R22 Manual Conversion - modified CALL routine format
 
     PAY.SCH.LIST = R.CONDITION<AA.PS.PAYMENT.TYPE>
 

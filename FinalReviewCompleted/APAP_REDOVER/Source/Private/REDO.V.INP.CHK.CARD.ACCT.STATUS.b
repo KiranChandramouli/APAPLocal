@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNTUzMTUxMTI1OkNwMTI1MjoxNjgzMDM3MjMwNzI4OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 May 2023 19:50:30
+* @ValidationCode : MjoxNTUzMTUxMTI1OkNwMTI1MjoxNjg0ODQ1NjE3ODIyOklUU1M6LTE6LTE6OTY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 18:10:17
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 96
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -57,7 +57,7 @@ SUBROUTINE REDO.V.INP.CHK.CARD.ACCT.STATUS
         CALL STORE.OVERRIDE(CURR.NO)
     END
 *PACS00103353-S
-    CALL APAP.REDOVER.redoVInpSunnelUpdate()
+    APAP.REDOVER.redoVInpSunnelUpdate()
 *    CALL REDO.V.INP.SUNNEL.UPDATE
 *PACS00103353-E
 RETURN

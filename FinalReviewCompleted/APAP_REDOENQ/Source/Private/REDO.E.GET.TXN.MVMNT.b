@@ -63,7 +63,7 @@ INITIALISE:
 *PACS00032454-E
 
     Y.ARRAY='BE_K_TC.BE_P_CON_MOVIMIENTOSTC_A'
-    CALL APAP.REDOVER.redoVWrapSunnel(Y.ARRAY);*R22 Manual Conversion
+    APAP.REDOVER.redoVWrapSunnel(Y.ARRAY);*R22 Manual Conversion
 RETURN
 *---------------------------------------------------------------------------------
 PROCESS:

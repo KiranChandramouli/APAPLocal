@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk0MjMxNDU0OTpDcDEyNTI6MTY4NDg1NDM4MTc0OTpJVFNTOi0xOi0xOjE1MzY6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
+* @ValidationCode : MjoxMDQ2ODcwOTk2OkNwMTI1MjoxNjg1NTQzNzM5MTczOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:05:39
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1536
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.CCY.POSN.UPD.NEW
@@ -155,23 +155,23 @@ PROCESS:
         BEGIN CASE
             CASE STAGE EQ '1'
                 V$FUNCTION = 'I'
-* CALL APAP.TAM.REDO.TXN.INP.CCY.POSN.UPD
-                CALL APAP.TAM.redoTxnInpCcyPosnUpd    ;*Manual R22 conversion
+* APAP.TAM.REDO.TXN.INP.CCY.POSN.UPD
+                APAP.TAM.redoTxnInpCcyPosnUpd()    ;*Manual R22 conversion
 
             CASE STAGE EQ '2'
                 V$FUNCTION = 'A'
                 OLD.LOCAL.REF.VAL = R.NEW(LOCAL.REF.POS)<1,FXSN.POS>
-*CALL APAP.REDOVER.REDO.V.FX.REF.NUM ;*Manual R22 conversion
-                CALL APAP.REDOVER.redoVFxRefNum() ;*Manual R22 conversion
+*APAP.REDOVER.REDO.V.FX.REF.NUM ;*Manual R22 conversion
+                APAP.REDOVER.redoVFxRefNum() ;*Manual R22 conversion
                 IF LOCAL.REF.POS AND FXSN.POS AND R.NEW(LOCAL.REF.POS)<1,FXSN.POS> NE '' AND R.NEW(LOCAL.REF.POS)<1,FXSN.POS> NE OLD.LOCAL.REF.VAL THEN
                     R.NEW(CURR.NO.POS)<1,1> = SAVE.CURR.NO
                     MATBUILD R.RECORD FROM R.NEW
                     CALL F.WRITE(FN.APPL,ID.NEW,R.RECORD)
                 END
-*CALL APAP.REDOVER.REDO.V.FX.CCY.POS
-                CALL APAP.REDOVER.redoVFxCcyPos()  ;*Manual R22 conversion
-*CALL APAP.REDOVER.REDO.V.AUT.UPD.FX.POS
-                CALL APAP.REDOVER.redoVAutUpdFxPos()   ;*Manual R22 conversion
+*APAP.REDOVER.REDO.V.FX.CCY.POS
+                APAP.REDOVER.redoVFxCcyPos()  ;*Manual R22 conversion
+*APAP.REDOVER.REDO.V.AUT.UPD.FX.POS
+                APAP.REDOVER.redoVAutUpdFxPos()   ;*Manual R22 conversion
         END CASE
         CALL F.RELEASE(FN.APPL,ID.NEW,F.APPL)
         CALL F.DELETE(FN.REDO.FX.CCY.POSN,REDO.FX.CCY.POSN.ID)

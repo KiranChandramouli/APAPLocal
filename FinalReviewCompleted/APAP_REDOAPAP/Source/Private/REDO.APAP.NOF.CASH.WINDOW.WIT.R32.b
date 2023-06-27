@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTk2MDMxNDg2OkNwMTI1MjoxNjgzMDMzNzIzMTg4OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:52:03
+* @ValidationCode : MjotMTk2MDMxNDg2OkNwMTI1MjoxNjg0ODM2MDQ2NTYyOklUU1M6LTE6LTE6MTM6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:46
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 13
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -86,8 +86,8 @@ GET.SAV.CURR.DEBIT.DETAILS:
 * In this para of the code, the TELLER TRANSACTION details are read and checked if the transaction can be
 ** consdiered or not for calculations and display
 
-* CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.SAV.CUR.R32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitSavCurR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
+* APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.SAV.CUR.R32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR);*R22 MANUAL CODE CONVERSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitSavCurR32(Y.CCY.LIST,R.REDO.H.TELLER.TXN.CODES,Y.FINAL.ARRAY,SET.CUR,Y.DUP.CUR)
 RETURN
 *--------------------------------------------------------------------------------------------------------
 *****************
@@ -102,8 +102,8 @@ RETURN
 ADD.STATIC.TEXT:
 ****************
 * In this para of the code, a CALL is made to an routine to add the static text in the report for display
-* CALL APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.TEXT.R32(Y.CCY.LIST,Y.FINAL.ARRAY) ;*R22 AUTO CODE CONVRSION
-    CALL APAP.REDOAPAP.redoApapNofCashWindowWitTextR32(Y.CCY.LIST,Y.FINAL.ARRAY)
+* APAP.REDOAPAP.REDO.APAP.NOF.CASH.WINDOW.WIT.TEXT.R32(Y.CCY.LIST,Y.FINAL.ARRAY) ;*R22 AUTO CODE CONVRSION
+    APAP.REDOAPAP.redoApapNofCashWindowWitTextR32(Y.CCY.LIST,Y.FINAL.ARRAY)
     Y.CNT.FIN = DCOUNT(Y.FINAL.ARRAY,@FM)
     Y.CNTT = 0
     LOOP

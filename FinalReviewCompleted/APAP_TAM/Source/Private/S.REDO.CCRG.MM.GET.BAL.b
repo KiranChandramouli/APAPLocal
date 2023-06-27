@@ -115,7 +115,7 @@ GET.RATE:
 *avelasco - New call to S.REDO.CONV.LOCAL.CURR to get the MID.REVAL.RATE
 * Get Rate
     Y.REV.RATE = ''
-    CALL APAP.TAM.sRedoConvLocalCurr(Y.CURRENCY.ID,1,Y.REV.RATE) ;* R22 Manual conversion
+    APAP.TAM.sRedoConvLocalCurr(Y.CURRENCY.ID,1,Y.REV.RATE) ;* R22 Manual conversion
     IF NOT(Y.REV.RATE) THEN
         E = 'ST-REDO.CCRG.MID.REVAL.RATE.NO.DEF'  : @FM : "CURRENCY:": @VM :Y.CURRENCY.ID
         PROCESS.GOAHEAD = @FALSE

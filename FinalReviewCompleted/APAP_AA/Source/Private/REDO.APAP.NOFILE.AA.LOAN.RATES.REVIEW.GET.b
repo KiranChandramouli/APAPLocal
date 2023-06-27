@@ -149,7 +149,7 @@ GET.CUSTOMER.DETAILS:
     PROPERTY        = ''
     R.CONDITION.CUS = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG);* R22 Manual conversion
     Y.CUS.AFF.COMP  = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.AFF.COM>
     Y.CUS.CAMP.TYPE = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.CAMP.TY>
 *Y.PRIM.OWNERS   = R.CONDITION.CUS<AA.CUS.PRIMARY.OWNER>:@VM:R.CONDITION.CUS<AA.CUS.OTHER.PARTY>
@@ -182,7 +182,7 @@ GET.ACCOUNT.DETAILS:
 
     IN.ACC.ID  = ''
     Y.LOAN.ACC = ''
-    CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT);* R22 Manual conversion
+    APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT);* R22 Manual conversion
 
     CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,AC.ERR)
     Y.LEGACY.ID = R.ACCOUNT<AC.ALT.ACCT.ID,1>
@@ -192,7 +192,7 @@ RETURN
 GET.TERM.AMOUNT.DETAILS:
 *--------------------------------------------------------------------------------------------------------
     Y.ID = Y.AA.ID:@FM:'YES'
-    CALL APAP.TAM.redoGetDisbursementDetails(Y.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);* R22 Manual conversion
+    APAP.TAM.redoGetDisbursementDetails(Y.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB);* R22 Manual conversion
     Y.TOTAL.DISB.AMT = R.DISB.DETAILS<3>
 
     EFF.DATE        = ''
@@ -200,7 +200,7 @@ GET.TERM.AMOUNT.DETAILS:
     PROPERTY        = ''
     R.CONDITION.TERM = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.TERM,ERR.MSG);* R22 Manual conversion
     Y.COLLATERAL     = R.CONDITION.TERM<AA.AMT.LOCAL.REF,POS.L.AA.COL>
     Y.MATURITY.DATE  = R.CONDITION.TERM<AA.AMT.MATURITY.DATE>
 
@@ -210,14 +210,14 @@ GET.INTEREST.DETAILS:
 *--------------------------------------------------------------------------------------------------------
 
     PROP.NAME = 'PRINCIPAL'
-    CALL APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,PRIN.PROP,ERR);* R22 Manual conversion
+    APAP.TAM.redoGetInterestProperty(Y.AA.ID,PROP.NAME,PRIN.PROP,ERR);* R22 Manual conversion
 
     EFF.DATE        = ''
     PROP.CLASS      = 'INTEREST'
     PROPERTY        = PRIN.PROP
     R.CONDITION.INT = ''
     ERR.MSG = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INT,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.INT,ERR.MSG);* R22 Manual conversion
 
     Y.INT.RATE          = R.CONDITION.INT<AA.INT.EFFECTIVE.RATE,1>
     Y.NEXT.REVIEW.DATE  = R.CONDITION.INT<AA.INT.LOCAL.REF,POS.L.AA.NXT.REV.DT>
@@ -251,7 +251,7 @@ GET.PAYMENT.DETAILS:
     CHANGE @SM TO @FM IN Y.BILL.DATE
     CHANGE @VM TO @FM IN Y.BILL.DATE
 
-    CALL APAP.TAM.redoGetReportLoanPayamt(Y.AA.ID,Y.REPAY.AMOUNT,Y.DUMMY.VAR1,Y.DUMMY.VAR2);* R22 Manual conversion
+    APAP.TAM.redoGetReportLoanPayamt(Y.AA.ID,Y.REPAY.AMOUNT,Y.DUMMY.VAR1,Y.DUMMY.VAR2);* R22 Manual conversion
     Y.BILL.AMOUNT = Y.REPAY.AMOUNT<1>
 *Y.BILL.REF.CNT = DCOUNT(Y.BILL.REFERECES,FM)
 *LOOP
@@ -295,7 +295,7 @@ RETURN
 GET.LOAN.BALANCES:
 *-------------------------------------------------------------------------------
 
-    CALL APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.AA.ID,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
+    APAP.TAM.redoGetTotalOutstandingSinUncUnd(Y.AA.ID,Y.PROP.AMT,Y.TOTAL.AMT);* R22 Manual conversion
     Y.ACCOUNT.BAL = Y.PROP.AMT<1>
 *Y.TOTAL.BAL   = Y.TOTAL.AMT
 RETURN
@@ -308,7 +308,7 @@ GET.OVERDUE.DETAILS:
     PROPERTY    = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG     = ''
-    CALL APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG);* R22 Manual conversion
     Y.LOAN.STATUS = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS.1>
     Y.LOAN.COND   = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,POS.L.LOAN.COND>
     CHANGE @SM TO @VM IN Y.LOAN.COND

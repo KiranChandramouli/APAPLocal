@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo1NjYzMzEyMjE6Q3AxMjUyOjE2ODI2OTE1MjUwNDk6SVRTUzotMTotMTo1NDQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:45
+* @ValidationCode : MjoxOTk2NTA1OTU6Q3AxMjUyOjE2ODU1NDM2NjI1NDI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 544
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.STO.PART.PYMNT
@@ -42,6 +42,7 @@ SUBROUTINE REDO.V.VAL.STO.PART.PYMNT
     $INSERT I_CONTEXT.FLOW
     $INSERT I_F.REDO.APAP.STO.DUPLICATE
     $USING APAP.TAM
+    $USING APAP.AA
 
 
 
@@ -99,7 +100,7 @@ GET.ARR.DETAILS:
         Y.CUS = R.ACCOUNT<AC.CUSTOMER>
     END
     PROP.CLASS='TERM.AMOUNT'
-    CALL APAP.TAM.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
+    APAP.AA.redoCrrGetConditions(VAR.AA.ID,EFF.DATE,PROP.CLASS, PROPERTY,R.CONDITION,ERR.MSG) ;* R22 Manual Conversion - CALL method format modified
     Y.PART.VAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.ALLW>
     Y.PARTIAL = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART.PERC>
     Y.PART = R.CONDITION<AA.AMT.LOCAL.REF,POS.PART>

@@ -63,7 +63,7 @@ INIT:
     PROPERTY = Y.PROPERTY
     R.Condition=''
     ERR.MSG=''
-    CALL APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.charge,ERR.MSG);* R22 Manual conversion
+    APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition.charge,ERR.MSG);* R22 Manual conversion
 RETURN
 
 

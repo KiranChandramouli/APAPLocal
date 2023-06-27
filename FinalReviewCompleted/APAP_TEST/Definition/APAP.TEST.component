@@ -12,8 +12,6 @@ public method arcPdfTest (
     jBC: ARC.PDF.TEST
 }
 
-
-
 public method calljeetest (
 )
 {
@@ -27,9 +25,6 @@ public method calljtest (
 {
     jBC: CALLJTEST
 }
-
-
-
 
 public method redoInpValidateTxnAmt (
 )
@@ -45,7 +40,6 @@ public method redoTestInvUpd (
     jBC: REDO.TEST.INV.UPD
 }
 
-
 public method checkConsolKey (
 )
 {
@@ -59,3 +53,22 @@ public method eStmtEnqByConcatFer (
     jBC: E.STMT.ENQ.BY.CONCAT.FER
 }
 
+public method ofsGlobusManager2 (
+    INOUT kOfsSource string,
+    INOUT ofsMessage string
+)
+{
+    jBC: OFS.GLOBUS.MANAGER.2
+}
+
+public method newRtn (
+)
+{
+    jBC: NEW
+}
+
+public method redoTest (
+)
+{
+   jBC: REDO.TEST
+}

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjAyMTgxNzc5OkNwMTI1MjoxNjgyNDEyMzU2OTk5OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:56
+* @ValidationCode : MjotMTMyNTIzMzkyOTpDcDEyNTI6MTY4NTU0MzY0ODIyNzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.CARD.ACC
@@ -41,7 +41,8 @@ SUBROUTINE REDO.V.VAL.CARD.ACC
         IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
             Y.ARRAY='BUSCAR_TARJETA_CUENTA.FT'
         END
-        CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;*R22 Manual Code Conversion-Call Method Format Modified
+        APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;*R22 Manual Code Conversion-Call Method Format Modified
+        
         COMI=COMI[1,4]:'********':COMI[13,4]
         Y.CARD.CLIENT=Y.ARRAY<15>
         CUSTOMER.ID = System.getVariable('EXT.SMS.CUSTOMERS')

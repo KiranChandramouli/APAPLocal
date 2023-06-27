@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyMDUzMzI5OTkzOkNwMTI1MjoxNjgzMDMxNTMyNzMwOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 18:15:32
+* @ValidationCode : MjoyMDUzMzI5OTkzOkNwMTI1MjoxNjg0ODM2MDUxODYwOklUU1M6LTE6LTE6MjU2OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 256
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -97,8 +97,8 @@ PROCESS.PARA:
         Y.MSG.DET.ID= Y.MG.ACT.NOS<1,Y.COUNT>
         GOSUB MORT.DETAIL
         Y.OUT.AMT=''
-*CALL APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(Y.MAT.DATE,ARR.ID,Y.OUT.AMT) ;*R22 MANUAL CODE CONVERSION
-        CALL APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,ARR.ID,Y.OUT.AMT)
+*APAP.REDOAPAP.REDO.APAP.GET.OUTSTANDING.AMT(Y.MAT.DATE,ARR.ID,Y.OUT.AMT) ;*R22 MANUAL CODE CONVERSION
+        APAP.REDOAPAP.redoApapGetOutstandingAmt(Y.MAT.DATE,ARR.ID,Y.OUT.AMT)
         Y.SUM.OUTS+=Y.OUT.AMT
         Y.COUNT += 1
     REPEAT

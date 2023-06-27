@@ -97,7 +97,7 @@ QUERY.EFFECTIVE:
 * Get the end.date according startDate and EffectiveTime
 *
     Y.START.DATE = R.RCREC<REDO.CCRG.RLEC.START.DATE>
-    CALL APAP.TAM.sRedoAddTime(Y.START.DATE, Y.END.DATE, P.EFF.TIME) ;*MANUAL R22 CODE CONVERSION
+    APAP.TAM.sRedoAddTime(Y.START.DATE, Y.END.DATE, P.EFF.TIME) ;*MANUAL R22 CODE CONVERSION
 
 * Compare with current Time
 *

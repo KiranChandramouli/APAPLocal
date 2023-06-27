@@ -58,8 +58,8 @@ INIT:
     END                                        ;** R22 Auto Conversion - End
     Y.ARRAY='BE_K_TC.BE_P_CONSOLIDADOTC'
     
-*  CALL APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;** R22 Manual conversion - CALL method format changed
-    CALL APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;*R22 Manual Conversion
+*  APAP.REDOVER.REDO.V.WRAP.SUNNEL(Y.ARRAY) ;** R22 Manual conversion - CALL method format changed
+    APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;*R22 Manual Conversion
 RETURN
 *-------------------------------------------------------
 PROCESS:
