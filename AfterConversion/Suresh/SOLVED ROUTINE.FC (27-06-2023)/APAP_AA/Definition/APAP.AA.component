@@ -1,0 +1,35 @@
+component APAP.AA
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+ 
+
+  
+
+public method redoUpdateChqReturnB10 (
+    INOUT arrId string,
+    INOUT yFtId string
+)
+{
+    jBC: REDO.UPDATE.CHQ.RETURN.B10
+}
+
+
+
+public method redoUpdateChqReturn (
+    INOUT arrId string
+)
+{
+    jBC: REDO.UPDATE.CHQ.RETURN
+}
+
+
+
+public method redoAaUpdateOverdueStatus (
+   INOUT yId string
+)
+{
+   jBC: REDO.AA.UPDATE.OVERDUE.STATUS
+}
+
