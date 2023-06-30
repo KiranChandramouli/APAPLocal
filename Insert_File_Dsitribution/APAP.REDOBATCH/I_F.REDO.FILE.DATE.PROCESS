@@ -1,0 +1,13 @@
+* I_F.REDO.FILE.DATE.PROCESS Created 30 JUL 14 at 01:00PM by t24uatd/AUTHORISER
+*      PREFIX[REDO.FILE.PRO]
+      EQU REDO.FILE.PRO.PAY.RECORD.ID TO 1,   RedoFileDateProcess_PayRecordId TO 1,
+        REDO.FILE.PRO.FILE.TOT.AMOUNT TO 2,   RedoFileDateProcess_FileTotAmount TO 2,
+        REDO.FILE.PRO.FILE.COM.AMOUNT TO 3,   RedoFileDateProcess_FileComAmount TO 3,
+       REDO.FILE.PRO.FILE.PROCESS.AMT TO 4,   RedoFileDateProcess_FileProcessAmt TO 4,
+            REDO.FILE.PRO.OFS.PROCESS TO 5,   RedoFileDateProcess_OfsProcess TO 5,
+        REDO.FILE.PRO.DEB.ACCT.STATUS TO 6,   RedoFileDateProcess_DebAcctStatus TO 6,
+            REDO.FILE.PRO.MAIL.STATUS TO 7,   RedoFileDateProcess_MailStatus TO 7,
+              REDO.FILE.PRO.FILE.TYPE TO 8,   RedoFileDateProcess_FileType TO 8,
+          REDO.FILE.PRO.PARENT.FT.REF TO 9,   RedoFileDateProcess_ParentFtRef TO 9,
+          REDO.FILE.PRO.ADJUST.TAX.FT TO 10,  RedoFileDateProcess_AdjustTaxFt TO 10,
+         REDO.FILE.PRO.ADJUST.TAX.AMT TO 11,  RedoFileDateProcess_AdjustTaxAmt TO 11

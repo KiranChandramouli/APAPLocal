@@ -1,0 +1,3 @@
+* I_F.REDO.T.DEP.COLLATERAL Created 03 DEC 09 at 09:27PM by apapr8/AUTHORISER
+*      PREFIX[INT.DEP]
+     EQU INT.DEP.ARRANGEMENT.ID TO 1,   RedoTDepCollateral_ArrangementId TO 1
