@@ -4,7 +4,7 @@ metamodelVersion 1.6
 # -------------------------------------------------
 
 
-private method lapapGetNombreCusCajaRt (
+public method lapapGetNombreCusCajaRt (
 )
 {
    jBC: LAPAP.GET.NOMBRE.CUS.CAJA.RT
@@ -12,7 +12,7 @@ private method lapapGetNombreCusCajaRt (
 
 
 
-private method lApapNotificacionCredit (
+public method lApapNotificacionCredit (
 )
 {
    jBC: L.APAP.NOTIFICACION.CREDIT
@@ -20,7 +20,7 @@ private method lApapNotificacionCredit (
 
 
 
-private method lApapValDepMinAcc (
+public method lApapValDepMinAcc (
 )
 {
    jBC: L.APAP.VAL.DEP.MIN.ACC
