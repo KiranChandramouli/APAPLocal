@@ -1,0 +1,15 @@
+* I_F.REDO.CCRG.RL.BAL.CUS.DET Created 07 APR 11 at 04:19PM by t24r09/TEM.ANORIEGA.01
+*      PREFIX[REDO.CCRG.RBCD]
+        EQU REDO.CCRG.RBCD.CUSTOMER.ID TO 1,   RedoCcrgRlBalCusDet_CustomerId TO 1,
+             REDO.CCRG.RBCD.REL.CUS.ID TO 2,   RedoCcrgRlBalCusDet_RelCusId TO 2,
+          REDO.CCRG.RBCD.RISK.LIMIT.ID TO 3,   RedoCcrgRlBalCusDet_RiskLimitId TO 3,
+          REDO.CCRG.RBCD.RISK.GROUP.ID TO 4,   RedoCcrgRlBalCusDet_RiskGroupId TO 4,
+               REDO.CCRG.RBCD.CATEGORY TO 5,   RedoCcrgRlBalCusDet_Category TO 5,
+           REDO.CCRG.RBCD.BALANCE.TYPE TO 6,   RedoCcrgRlBalCusDet_BalanceType TO 6,
+            REDO.CCRG.RBCD.DIR.BALANCE TO 7,   RedoCcrgRlBalCusDet_DirBalance TO 7,
+         REDO.CCRG.RBCD.INT.RECEIVABLE TO 8,   RedoCcrgRlBalCusDet_IntReceivable TO 8,
+            REDO.CCRG.RBCD.CON.BALANCE TO 9,   RedoCcrgRlBalCusDet_ConBalance TO 9,
+                  REDO.CCRG.RBCD.TOTAL TO 10,  RedoCcrgRlBalCusDet_Total TO 10,
+             REDO.CCRG.RBCD.RESERVED.1 TO 11,  RedoCcrgRlBalCusDet_Reserved1 TO 11,
+             REDO.CCRG.RBCD.RESERVED.2 TO 12,  RedoCcrgRlBalCusDet_Reserved2 TO 12,
+             REDO.CCRG.RBCD.RESERVED.3 TO 13,  RedoCcrgRlBalCusDet_Reserved3 TO 13

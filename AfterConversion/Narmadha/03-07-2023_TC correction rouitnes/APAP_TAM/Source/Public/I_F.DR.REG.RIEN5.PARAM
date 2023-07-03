@@ -1,0 +1,18 @@
+* I_F.DR.REG.RIEN5.PARAM Created 04 OCT 14 at 05:09PM by t24uatd/INPUTTER
+*      PREFIX[RIEN5.PARAM]
+          EQU RIEN5.PARAM.FILE.NAME TO 1,   DrRegRien5Param_FileName TO 1,
+               RIEN5.PARAM.OUT.PATH TO 2,   DrRegRien5Param_OutPath TO 2,
+             RIEN5.PARAM.AA.PRODUCT TO 3,   DrRegRien5Param_AaProduct TO 3,
+              RIEN5.PARAM.DAY.RANGE TO 4,   DrRegRien5Param_DayRange TO 4,
+             RIEN5.PARAM.REP.HEADER TO 5,   DrRegRien5Param_RepHeader TO 5,
+               RIEN5.PARAM.REP.NAME TO 6,   DrRegRien5Param_RepName TO 6,
+             RIEN5.PARAM.REP.FIELDS TO 7,   DrRegRien5Param_RepFields TO 7,
+          RIEN5.PARAM.RECORD.STATUS TO 8,   DrRegRien5Param_RecordStatus TO 8,
+                RIEN5.PARAM.CURR.NO TO 9,   DrRegRien5Param_CurrNo TO 9,
+               RIEN5.PARAM.INPUTTER TO 10,  DrRegRien5Param_Inputter TO 10,
+              RIEN5.PARAM.DATE.TIME TO 11,  DrRegRien5Param_DateTime TO 11,
+             RIEN5.PARAM.AUTHORISER TO 12,  DrRegRien5Param_Authoriser TO 12,
+                RIEN5.PARAM.CO.CODE TO 13,  DrRegRien5Param_CoCode TO 13,
+              RIEN5.PARAM.DEPT.CODE TO 14,  DrRegRien5Param_DeptCode TO 14,
+           RIEN5.PARAM.AUDITOR.CODE TO 15,  DrRegRien5Param_AuditorCode TO 15,
+        RIEN5.PARAM.AUDIT.DATE.TIME TO 16,  DrRegRien5Param_AuditDateTime TO 16

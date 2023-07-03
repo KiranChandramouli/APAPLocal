@@ -1,0 +1,18 @@
+* I_F.REDO.LOAN.ACCOUNT.STATUS Created 17 AUG 11 at 01:55PM by apap/KIRAN
+*      PREFIX[REDO.LN.AC.ST]
+     EQU REDO.LN.AC.ST.CONSOL.KEY.VAL TO 1,   RedoLoanAccountStatus_ConsolKeyVal TO 1,
+             REDO.LN.AC.ST.RESERVED.5 TO 2,   RedoLoanAccountStatus_Reserved5 TO 2,
+             REDO.LN.AC.ST.RESERVED.4 TO 3,   RedoLoanAccountStatus_Reserved4 TO 3,
+             REDO.LN.AC.ST.RESERVED.3 TO 4,   RedoLoanAccountStatus_Reserved3 TO 4,
+             REDO.LN.AC.ST.RESERVED.2 TO 5,   RedoLoanAccountStatus_Reserved2 TO 5,
+             REDO.LN.AC.ST.RESERVED.1 TO 6,   RedoLoanAccountStatus_Reserved1 TO 6,
+               REDO.LN.AC.ST.OVERRIDE TO 7,   RedoLoanAccountStatus_Override TO 7,
+          REDO.LN.AC.ST.RECORD.STATUS TO 8,   RedoLoanAccountStatus_RecordStatus TO 8,
+                REDO.LN.AC.ST.CURR.NO TO 9,   RedoLoanAccountStatus_CurrNo TO 9,
+               REDO.LN.AC.ST.INPUTTER TO 10,  RedoLoanAccountStatus_Inputter TO 10,
+              REDO.LN.AC.ST.DATE.TIME TO 11,  RedoLoanAccountStatus_DateTime TO 11,
+             REDO.LN.AC.ST.AUTHORISER TO 12,  RedoLoanAccountStatus_Authoriser TO 12,
+                REDO.LN.AC.ST.CO.CODE TO 13,  RedoLoanAccountStatus_CoCode TO 13,
+              REDO.LN.AC.ST.DEPT.CODE TO 14,  RedoLoanAccountStatus_DeptCode TO 14,
+           REDO.LN.AC.ST.AUDITOR.CODE TO 15,  RedoLoanAccountStatus_AuditorCode TO 15,
+        REDO.LN.AC.ST.AUDIT.DATE.TIME TO 16,  RedoLoanAccountStatus_AuditDateTime TO 16

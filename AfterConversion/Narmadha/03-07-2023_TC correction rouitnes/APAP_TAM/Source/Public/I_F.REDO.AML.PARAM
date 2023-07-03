@@ -1,0 +1,19 @@
+* I_F.REDO.AML.PARAM Created 10 FEB 10 at 06:16PM by apapr8/SUDHAR
+*      PREFIX[AML.PARAM]
+            EQU AML.PARAM.AML.CCY TO 1,   RedoAmlParam_AmlCcy TO 1,
+          AML.PARAM.AMT.LIMIT.FCY TO 2,   RedoAmlParam_AmtLimitFcy TO 2,
+          AML.PARAM.AMT.LIMIT.LCY TO 3,   RedoAmlParam_AmtLimitLcy TO 3,
+             AML.PARAM.RESERVED.1 TO 4,   RedoAmlParam_Reserved1 TO 4,
+             AML.PARAM.RESERVED.2 TO 5,   RedoAmlParam_Reserved2 TO 5,
+             AML.PARAM.RESERVED.3 TO 6,   RedoAmlParam_Reserved3 TO 6,
+             AML.PARAM.RESERVED.4 TO 7,   RedoAmlParam_Reserved4 TO 7,
+             AML.PARAM.RESERVED.5 TO 8,   RedoAmlParam_Reserved5 TO 8,
+          AML.PARAM.RECORD.STATUS TO 9,   RedoAmlParam_RecordStatus TO 9,
+                AML.PARAM.CURR.NO TO 10,  RedoAmlParam_CurrNo TO 10,
+               AML.PARAM.INPUTTER TO 11,  RedoAmlParam_Inputter TO 11,
+              AML.PARAM.DATE.TIME TO 12,  RedoAmlParam_DateTime TO 12,
+             AML.PARAM.AUTHORISER TO 13,  RedoAmlParam_Authoriser TO 13,
+                AML.PARAM.CO.CODE TO 14,  RedoAmlParam_CoCode TO 14,
+              AML.PARAM.DEPT.CODE TO 15,  RedoAmlParam_DeptCode TO 15,
+           AML.PARAM.AUDITOR.CODE TO 16,  RedoAmlParam_AuditorCode TO 16,
+        AML.PARAM.AUDIT.DATE.TIME TO 17,  RedoAmlParam_AuditDateTime TO 17

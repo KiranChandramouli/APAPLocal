@@ -1,0 +1,14 @@
+* I_F.REDO.EMPLOYEE.ACCOUNTS Created 02 MAR 10 at 03:04PM by apapr8/RAJAKRR
+*      PREFIX[REDO.EMP]
+            EQU REDO.EMP.ACCOUNT TO 1,   RedoEmployeeAccounts_Account TO 1,
+                REDO.EMP.USER.ID TO 2,   RedoEmployeeAccounts_UserId TO 2,
+           REDO.EMP.REL.CUSTOMER TO 3,   RedoEmployeeAccounts_RelCustomer TO 3,
+          REDO.EMP.RECORD.STATUS TO 4,   RedoEmployeeAccounts_RecordStatus TO 4,
+                REDO.EMP.CURR.NO TO 5,   RedoEmployeeAccounts_CurrNo TO 5,
+               REDO.EMP.INPUTTER TO 6,   RedoEmployeeAccounts_Inputter TO 6,
+              REDO.EMP.DATE.TIME TO 7,   RedoEmployeeAccounts_DateTime TO 7,
+             REDO.EMP.AUTHORISER TO 8,   RedoEmployeeAccounts_Authoriser TO 8,
+                REDO.EMP.CO.CODE TO 9,   RedoEmployeeAccounts_CoCode TO 9,
+              REDO.EMP.DEPT.CODE TO 10,  RedoEmployeeAccounts_DeptCode TO 10,
+           REDO.EMP.AUDITOR.CODE TO 11,  RedoEmployeeAccounts_AuditorCode TO 11,
+        REDO.EMP.AUDIT.DATE.TIME TO 12,  RedoEmployeeAccounts_AuditDateTime TO 12

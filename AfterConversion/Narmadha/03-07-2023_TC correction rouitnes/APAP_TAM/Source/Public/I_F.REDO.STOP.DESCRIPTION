@@ -1,0 +1,23 @@
+* I_F.REDO.STOP.DESCRIPTION Created 19 SEP 13 at 11:58AM by t24uatq/AUTHORISER
+*      PREFIX[REDO.STOP]
+            EQU REDO.STOP.HEADER1 TO 1,   RedoStopDescription_Header1 TO 1,
+              REDO.STOP.FIRST.CHQ TO 2,   RedoStopDescription_FirstChq TO 2,
+               REDO.STOP.LAST.CHQ TO 3,   RedoStopDescription_LastChq TO 3,
+                REDO.STOP.QTY.CHQ TO 4,   RedoStopDescription_QtyChq TO 4,
+                REDO.STOP.CHQ.AMT TO 5,   RedoStopDescription_ChqAmt TO 5,
+             REDO.STOP.PAY.REASON TO 6,   RedoStopDescription_PayReason TO 6,
+             REDO.STOP.CHARGE.AMT TO 7,   RedoStopDescription_ChargeAmt TO 7,
+                 REDO.STOP.BENIFY TO 8,   RedoStopDescription_Benify TO 8,
+               REDO.STOP.CUS.SIGN TO 9,   RedoStopDescription_CusSign TO 9,
+              REDO.STOP.REQUESTOR TO 10,  RedoStopDescription_Requestor TO 10,
+               REDO.STOP.AUT.SIGN TO 11,  RedoStopDescription_AutSign TO 11,
+                   REDO.STOP.LOAN TO 12,  RedoStopDescription_Loan TO 12,
+          REDO.STOP.RECORD.STATUS TO 13,  RedoStopDescription_RecordStatus TO 13,
+                REDO.STOP.CURR.NO TO 14,  RedoStopDescription_CurrNo TO 14,
+               REDO.STOP.INPUTTER TO 15,  RedoStopDescription_Inputter TO 15,
+              REDO.STOP.DATE.TIME TO 16,  RedoStopDescription_DateTime TO 16,
+             REDO.STOP.AUTHORISER TO 17,  RedoStopDescription_Authoriser TO 17,
+                REDO.STOP.CO.CODE TO 18,  RedoStopDescription_CoCode TO 18,
+              REDO.STOP.DEPT.CODE TO 19,  RedoStopDescription_DeptCode TO 19,
+           REDO.STOP.AUDITOR.CODE TO 20,  RedoStopDescription_AuditorCode TO 20,
+        REDO.STOP.AUDIT.DATE.TIME TO 21,  RedoStopDescription_AuditDateTime TO 21

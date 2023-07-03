@@ -1,0 +1,19 @@
+* I_F.REDO.AZ.ROLLOVER.DETAILS Created 02 JUL 11 at 06:24PM by t24tqa01/INPUTTER
+*      PREFIX[REDO.AZ.ROLL]
+         EQU REDO.AZ.ROLL.ACCOUNT.NO TO 1,   RedoAzRolloverDetails_AccountNo TO 1,
+           REDO.AZ.ROLL.ACCOUNT.NAME TO 2,   RedoAzRolloverDetails_AccountName TO 2,
+                 REDO.AZ.ROLL.STREET TO 3,   RedoAzRolloverDetails_Street TO 3,
+                REDO.AZ.ROLL.ADDRESS TO 4,   RedoAzRolloverDetails_Address TO 4,
+           REDO.AZ.ROLL.TOWN.COUNTRY TO 5,   RedoAzRolloverDetails_TownCountry TO 5,
+              REDO.AZ.ROLL.POST.CODE TO 6,   RedoAzRolloverDetails_PostCode TO 6,
+                   REDO.AZ.ROLL.DAYS TO 7,   RedoAzRolloverDetails_Days TO 7,
+              REDO.AZ.ROLL.TIMESTAMP TO 8,   RedoAzRolloverDetails_Timestamp TO 8,
+          REDO.AZ.ROLL.RECORD.STATUS TO 9,   RedoAzRolloverDetails_RecordStatus TO 9,
+                REDO.AZ.ROLL.CURR.NO TO 10,  RedoAzRolloverDetails_CurrNo TO 10,
+               REDO.AZ.ROLL.INPUTTER TO 11,  RedoAzRolloverDetails_Inputter TO 11,
+              REDO.AZ.ROLL.DATE.TIME TO 12,  RedoAzRolloverDetails_DateTime TO 12,
+             REDO.AZ.ROLL.AUTHORISER TO 13,  RedoAzRolloverDetails_Authoriser TO 13,
+                REDO.AZ.ROLL.CO.CODE TO 14,  RedoAzRolloverDetails_CoCode TO 14,
+              REDO.AZ.ROLL.DEPT.CODE TO 15,  RedoAzRolloverDetails_DeptCode TO 15,
+           REDO.AZ.ROLL.AUDITOR.CODE TO 16,  RedoAzRolloverDetails_AuditorCode TO 16,
+        REDO.AZ.ROLL.AUDIT.DATE.TIME TO 17,  RedoAzRolloverDetails_AuditDateTime TO 17

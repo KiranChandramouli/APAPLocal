@@ -1,0 +1,3 @@
+* I_F.REDO.UPD.ACC.LIST Created 21 JAN 10 at 06:11PM by apapr8/TESTER
+*      PREFIX[AL]
+            EQU AL.ACCOUNT TO 1,   RedoUpdAccList_Account TO 1

@@ -1,0 +1,6 @@
+* I_F.REDO.CCRG.RL.EFFECTIVE.CUSTOMER Created 07 APR 11 at 02:06PM by t24r09/TEM.HPASQUEL.01
+*      PREFIX[REDO.CCRG.RLEC]
+         EQU REDO.CCRG.RLEC.START.DATE TO 1,   RedoCcrgRlEffectiveCustomer_StartDate TO 1,
+             REDO.CCRG.RLEC.RESERVED.1 TO 2,   RedoCcrgRlEffectiveCustomer_Reserved1 TO 2,
+             REDO.CCRG.RLEC.RESERVED.2 TO 3,   RedoCcrgRlEffectiveCustomer_Reserved2 TO 3,
+             REDO.CCRG.RLEC.RESERVED.3 TO 4,   RedoCcrgRlEffectiveCustomer_Reserved3 TO 4

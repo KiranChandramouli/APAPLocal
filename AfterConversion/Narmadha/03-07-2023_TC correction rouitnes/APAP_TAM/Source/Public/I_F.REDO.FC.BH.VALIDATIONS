@@ -1,0 +1,19 @@
+* I_F.REDO.FC.BH.VALIDATIONS Created 05 JUL 11 at 03:53PM by t24bqa02/MGUDINO01
+*      PREFIX[REDO.BH]
+     EQU REDO.BH.DESCRIP.RUTINE TO 1,   RedoFcBhValidations_DescripRutine TO 1,
+            REDO.BH.NAME.RUTINE TO 2,   RedoFcBhValidations_NameRutine TO 2,
+             REDO.BH.RESERVED.5 TO 3,   RedoFcBhValidations_Reserved5 TO 3,
+             REDO.BH.RESERVED.4 TO 4,   RedoFcBhValidations_Reserved4 TO 4,
+             REDO.BH.RESERVED.3 TO 5,   RedoFcBhValidations_Reserved3 TO 5,
+             REDO.BH.RESERVED.2 TO 6,   RedoFcBhValidations_Reserved2 TO 6,
+             REDO.BH.RESERVED.1 TO 7,   RedoFcBhValidations_Reserved1 TO 7,
+               REDO.BH.OVERRIDE TO 8,   RedoFcBhValidations_Override TO 8,
+          REDO.BH.RECORD.STATUS TO 9,   RedoFcBhValidations_RecordStatus TO 9,
+                REDO.BH.CURR.NO TO 10,  RedoFcBhValidations_CurrNo TO 10,
+               REDO.BH.INPUTTER TO 11,  RedoFcBhValidations_Inputter TO 11,
+              REDO.BH.DATE.TIME TO 12,  RedoFcBhValidations_DateTime TO 12,
+             REDO.BH.AUTHORISER TO 13,  RedoFcBhValidations_Authoriser TO 13,
+                REDO.BH.CO.CODE TO 14,  RedoFcBhValidations_CoCode TO 14,
+              REDO.BH.DEPT.CODE TO 15,  RedoFcBhValidations_DeptCode TO 15,
+           REDO.BH.AUDITOR.CODE TO 16,  RedoFcBhValidations_AuditorCode TO 16,
+        REDO.BH.AUDIT.DATE.TIME TO 17,  RedoFcBhValidations_AuditDateTime TO 17

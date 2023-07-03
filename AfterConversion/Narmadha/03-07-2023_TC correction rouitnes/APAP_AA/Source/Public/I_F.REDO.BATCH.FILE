@@ -1,0 +1,3 @@
+* I_F.REDO.BATCH.FILE Created 20 DEC 10 at 05:58PM by apap/KAVI
+*      PREFIX[BAT.FILE]
+               EQU BAT.FILE.DATE TO 1,   RedoBatchFile_Date TO 1

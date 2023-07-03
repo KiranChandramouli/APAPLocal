@@ -1,0 +1,21 @@
+* I_F.REDO.H.INVENTORY.MAINTAIN Created 09 APR 10 at 03:15PM by apapr8/AUTHORISER
+*      PREFIX[REDO.INVEN]
+   EQU REDO.INVEN.ITEM.DESCRIPTION TO 1,   RedoHInventoryMaintain_ItemDescription TO 1,
+               REDO.INVEN.QUANTITY TO 2,   RedoHInventoryMaintain_Quantity TO 2,
+              REDO.INVEN.SERIES.ID TO 3,   RedoHInventoryMaintain_SeriesId TO 3,
+             REDO.INVEN.RESERVED.5 TO 4,   RedoHInventoryMaintain_Reserved5 TO 4,
+             REDO.INVEN.RESERVED.4 TO 5,   RedoHInventoryMaintain_Reserved4 TO 5,
+             REDO.INVEN.RESERVED.3 TO 6,   RedoHInventoryMaintain_Reserved3 TO 6,
+             REDO.INVEN.RESERVED.2 TO 7,   RedoHInventoryMaintain_Reserved2 TO 7,
+             REDO.INVEN.RESERVED.1 TO 8,   RedoHInventoryMaintain_Reserved1 TO 8,
+              REDO.INVEN.LOCAL.REF TO 9,   RedoHInventoryMaintain_LocalRef TO 9,
+               REDO.INVEN.OVERRIDE TO 10,  RedoHInventoryMaintain_Override TO 10,
+          REDO.INVEN.RECORD.STATUS TO 11,  RedoHInventoryMaintain_RecordStatus TO 11,
+                REDO.INVEN.CURR.NO TO 12,  RedoHInventoryMaintain_CurrNo TO 12,
+               REDO.INVEN.INPUTTER TO 13,  RedoHInventoryMaintain_Inputter TO 13,
+              REDO.INVEN.DATE.TIME TO 14,  RedoHInventoryMaintain_DateTime TO 14,
+             REDO.INVEN.AUTHORISER TO 15,  RedoHInventoryMaintain_Authoriser TO 15,
+                REDO.INVEN.CO.CODE TO 16,  RedoHInventoryMaintain_CoCode TO 16,
+              REDO.INVEN.DEPT.CODE TO 17,  RedoHInventoryMaintain_DeptCode TO 17,
+           REDO.INVEN.AUDITOR.CODE TO 18,  RedoHInventoryMaintain_AuditorCode TO 18,
+        REDO.INVEN.AUDIT.DATE.TIME TO 19,  RedoHInventoryMaintain_AuditDateTime TO 19

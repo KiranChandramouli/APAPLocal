@@ -1,0 +1,13 @@
+* I_F.REDO.AT.USER.PARMS Created 10 DEC 10 at 08:45PM by apapr8/GURUDEV01
+*      PREFIX[EB.UP]
+         EQU EB.UP.SIGNONUSER TO 1,   RedoAtUserParms_Signonuser TO 1,
+             EB.UP.ID.USUARIO TO 2,   RedoAtUserParms_IdUsuario TO 2,
+          EB.UP.RECORD.STATUS TO 3,   RedoAtUserParms_RecordStatus TO 3,
+                EB.UP.CURR.NO TO 4,   RedoAtUserParms_CurrNo TO 4,
+               EB.UP.INPUTTER TO 5,   RedoAtUserParms_Inputter TO 5,
+              EB.UP.DATE.TIME TO 6,   RedoAtUserParms_DateTime TO 6,
+             EB.UP.AUTHORISER TO 7,   RedoAtUserParms_Authoriser TO 7,
+                EB.UP.CO.CODE TO 8,   RedoAtUserParms_CoCode TO 8,
+              EB.UP.DEPT.CODE TO 9,   RedoAtUserParms_DeptCode TO 9,
+           EB.UP.AUDITOR.CODE TO 10,  RedoAtUserParms_AuditorCode TO 10,
+        EB.UP.AUDIT.DATE.TIME TO 11,  RedoAtUserParms_AuditDateTime TO 11
