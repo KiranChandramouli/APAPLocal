@@ -1,4 +1,4 @@
-component APAP.Repgen
+component APAP.Repgens
 # Component Isolation Definition
 metamodelVersion 1.6
 # -------------------------------------------------
@@ -44,10 +44,18 @@ public method rgpLcAcptDue (
 
 
 
+public method rgpLcCollDue (
+)
+{
+   jBC: RGP.LC.COLL.DUE
+}
+
+
+
 public method rgpLcDiscount (
 )
 {
-    jBC: RGP.LC.DISCOUNT
+   jBC: RGP.LC.DISCOUNT
 }
 
 
@@ -55,7 +63,7 @@ public method rgpLcDiscount (
 public method rgpLcDiscounts (
 )
 {
-    jBC: RGP.LC.DISCOUNTS
+   jBC: RGP.LC.DISCOUNTS
 }
 
 
@@ -63,14 +71,6 @@ public method rgpLcDiscounts (
 public method rgpLcDrawings (
 )
 {
-    jBC: RGP.LC.DRAWINGS
-}
-
-
-
-private method rgpLcCollDue (
-)
-{
-   jBC: RGP.LC.COLL.DUE
+   jBC: RGP.LC.DRAWINGS
 }
 

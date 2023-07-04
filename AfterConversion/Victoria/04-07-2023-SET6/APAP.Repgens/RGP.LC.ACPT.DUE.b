@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjEwMDI5Mjc0NTpDcDEyNTI6MTY4ODQ2NDk4NjA1OTp2aWN0bzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 04 Jul 2023 15:33:06
+* @ValidationCode : MjotNTkwMjUzNTEzOkNwMTI1MjoxNjg4NDcxNTY3NzQ0OnZpY3RvOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jul 2023 17:22:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,9 +10,9 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.Repgen
+$PACKAGE APAP.Repgens
 *-----------------------------------------------------------------------------
-* <Rating>5812</Rating>
+* <Rating>5083</Rating>
 *-----------------------------------------------------------------------------
 
 *---------------------------------------------------------------------------------------
@@ -20,8 +20,8 @@ $PACKAGE APAP.Repgen
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM
 *----------------------------------------------------------------------------------------
-SUBROUTINE RGP.LC.DRAWINGS
-REM "RGP.LC.DRAWINGS",040129-3
+SUBROUTINE RGP.LC.ACPT.DUE
+REM "RGP.LC.ACPT.DUE",040129-3
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -31,7 +31,7 @@ REM "RGP.LC.DRAWINGS",040129-3
     $INSERT I_F.LANGUAGE
     $INSERT I_F.USER
 *************************************************************************
-    REPORT.ID = "RG.LC.DRAWINGS"
+    REPORT.ID = "RG.LC.ACPT.DUE"
     PRT.UNIT = 0
     IF V$DISPLAY = "D" THEN YPRINTING = 0 ELSE YPRINTING = 1
     IF NOT(YPRINTING) THEN IF NOT(S.COL132.ON) THEN
@@ -41,9 +41,9 @@ REM "RGP.LC.DRAWINGS",040129-3
 *************************************************************************
     YT.SMS.COMP = ID.COMPANY
     YT.SMS.FILE = "DRAWINGS"
+    YT.SMS.FILE<-1> = "LC.PARAMETERS"
     YT.SMS.FILE<-1> = "LETTER.OF.CREDIT"
     YT.SMS.FILE<-1> = "CUSTOMER"
-    YT.SMS.FILE<-1> = "DATES"
     YCOUNT = COUNT(YT.SMS.FILE,@FM)+1 ;*R22 MANUAL CONVERSION
     LOOP
         YID.COMP = YT.SMS.COMP<1>; DEL YT.SMS.COMP<1>
@@ -95,7 +95,7 @@ REM "RGP.LC.DRAWINGS",040129-3
     F.LANGUAGE=""; CALL OPF("F.LANGUAGE",F.LANGUAGE)
     READV AMOUNT.FORMAT FROM F.LANGUAGE,LNGG,EB.LAN.AMOUNT.FORMAT ELSE AMOUNT.FORMAT=""
     CLEARSELECT
-    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.LC.DRAWINGS"
+    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.LC.ACPT.DUE"
     EXECUTE "HUSH ON"
     EXECUTE "SSELECT ":YFILE
     EXECUTE "HUSH OFF"
@@ -115,16 +115,18 @@ REM "RGP.LC.DRAWINGS",040129-3
     YKEY = ""; YTOTFD = ""
     DIM YR.REC(8); MAT YR.REC = ""
     GOSUB 1000000
-    YHDR = "LETTER OF CREDIT DRAWINGS REPORTS"
+    YHDR = "ACCEPTANCE AND DEFERED DUE REP"
     IF YPRINTING THEN
-        YTYPE = ""
+        YHDR = "RGP.LC.ACPT.DUE ":YHDR
+        YTYPE = "HEADER":@FM:YHDR ;*R22 MANUAL CONVERSION
+        CALL PST ( YTYPE )
     END ELSE
         YTYPE = YHDR
     END
-    YHDR1 = " LC NUMBER      TYPE   APPLICANT/ISSUING BNK                CCY        DR AMT      BENEFICIARY"
+    YHDR1 = "                                         ACCEPTANCE / DEFERRED MATURING DRAWINGS"
     YHDR2 = ""
-    YHDR3 = ""
-    YHDR4 = ""
+    YHDR3 = "  MATURITY.DATE  DRAWING.TYPE   DR. NUMBER  CURRENCY   DOCUMENT AMOUNT                CUSTOMER/ISSUING SHORT.NAME"
+    YHDR4 = "------------------------------------------------------------------------------------------------------------------------------------"
     IF YPRINTING THEN YSTML = "'L'" ELSE YSTML = ""
     IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
         YTYPE<3> = YTYPE<3>:YSTML
@@ -133,24 +135,12 @@ REM "RGP.LC.DRAWINGS",040129-3
         IF YHDR3 <> "" THEN YTYPE<6> = YHDR3:YSTML
         IF YHDR4 <> "" THEN YTYPE<7> = YHDR4:YSTML
     END
-    YHDR.GROUP = "TODAYS DRAWINGS"
-    YHDR1 = ""
-    YHDR2 = ""
-    YHDR3 = ""
-    YHDR4 = ""
-    IF YHDR.GROUP <> "" OR YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
-        YTYPE<7> = YTYPE<7>:YSTML
-        IF YHDR.GROUP <> "" THEN YTYPE<8> = YHDR.GROUP:YSTML
-        IF YHDR.GROUP <> "" AND (YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "") THEN
-            YTYPE<8> = YTYPE<8>:YSTML
-        END
-        IF YHDR1 <> "" THEN YTYPE<9> = YHDR1:YSTML
-        IF YHDR2 <> "" THEN YTYPE<10> = YHDR2:YSTML
-        IF YHDR3 <> "" THEN YTYPE<11> = YHDR3:YSTML
-        IF YHDR4 <> "" THEN YTYPE<12> = YHDR3:YSTML
-    END
     IF YPRINTING THEN
-        HEADING YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
+        HEAD.SETTING = YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
+        IF HEAD.SETTING = "" THEN
+            HEAD.SETTING = " "
+        END
+        HEADING HEAD.SETTING
     END ELSE
         PRINT @(25+LEN(SCREEN.TITLE)+LEN(PGM.VERSION),L1ST-4):S.CLEAR.EOL:YTYPE<1>:
         IF YTYPE<5> = "" THEN YTYPE<5> = YTYPE<4>; YTYPE<4> = ""
@@ -184,154 +174,61 @@ REM "RGP.LC.DRAWINGS",040129-3
     END
     YTYPE = ""
 *------------------------------------------------------------------------
-    LOOP WHILE YKEYFD = "1" DO
+    YKEYFD = ""
+    LOOP WHILE YKEYFD = "" DO
         YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
         YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
-        YFD = YR.REC(1)  ;* YM.LCNUM
-        YFD = FMT(YFD,"14L")
-        IF LEN(YFD) > 14 THEN YFD = YFD[1,13]:"|"
-        YTOTFD := YFD
+        YFD = YR.REC(1)  ;* YM.MAT.DATE
+        BEGIN CASE
+            CASE YFD MATCHES "8N"
+                YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[1,4]
+            CASE YFD MATCHES "6N"
+                YFD=YFD[5,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[3,2]):" ":(IF YFD[1,1] LT 5 THEN '20' ELSE '19'):YFD[1,2]
+            CASE 1
+                YFD=FMT(YFD,"11L")
+        END CASE
+        IF LEN(YFD) > 11 THEN YFD = YFD[1,10]:"|"
+        YTOTFD := "    ":YFD
         YFD = YR.REC(2)  ;* YM.LC.TYPE
-        YFD = FMT(YFD,"4L")
-        IF LEN(YFD) > 4 THEN YFD = YFD[1,3]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(3)  ;* YM.DISP.ISSUE.BNK
-        YFD = FMT(YFD,"35L")
-        IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
+        YFD = FMT(YFD,"2L")
+        IF LEN(YFD) > 2 THEN YFD = YFD[1,1]:"|"
+        YTOTFD := "      ":YFD
+        YFD = YR.REC(3)  ;* YM.LC.NUM
+        IF YFD = "" THEN
+            YFD = STR(" ",16)
+        END ELSE
+            YFD = FMT(YFD,"R##-##########-##")
+        END
+        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
         YTOTFD := "   ":YFD
         YFD = YR.REC(4)  ;* YM.CURRENCY
         YFD = FMT(YFD,"3L")
         IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(5)  ;* YM.DRAW.AMT
-        IF YFD = "" THEN
-            YFD = STR(" ",16)
-        END ELSE
-            YFD = FMT(YFD,"16R2,")
-            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
-        END
-        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(6)  ;* YM.DISP.BENE
-        YFD = FMT(YFD,"35L")
-        IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
-        YTOTFD := "  ":YFD
-        GOSUB 9000000
-        IF COMI = C.U THEN RETURN  ;* end of pgm
-        GOSUB 1000000
-    REPEAT
-*
-    YTEXT = "*** END OF GROUP ***"
-    IF NOT(YPRINTING) THEN
-        L = 999; GOSUB 9000010
-        IF COMI = C.U THEN RETURN  ;* end of pgm
-    END
-    YHDR = "LETTER OF CREDIT DRAWINGS REPORTS"
-    IF YPRINTING THEN
-        YTYPE = ""
-    END ELSE
-        YTYPE = YHDR
-    END
-    YHDR1 = " LC NUMBER      TYPE   APPLICANT/ISSUING BNK                CCY        DR AMT      BENEFICIARY"
-    YHDR2 = ""
-    YHDR3 = ""
-    YHDR4 = ""
-    IF YPRINTING THEN YSTML = "'L'" ELSE YSTML = ""
-    IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
-        YTYPE<3> = YTYPE<3>:YSTML
-        IF YHDR1 <> "" THEN YTYPE<4> = YHDR1:YSTML
-        IF YHDR2 <> "" THEN YTYPE<5> = YHDR2:YSTML
-        IF YHDR3 <> "" THEN YTYPE<6> = YHDR3:YSTML
-        IF YHDR4 <> "" THEN YTYPE<7> = YHDR4:YSTML
-    END
-    YHDR.GROUP = ""
-    YHDR1 = ""
-    YHDR2 = ""
-    YHDR3 = ""
-    YHDR4 = ""
-    IF YHDR.GROUP <> "" OR YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
-        YTYPE<7> = YTYPE<7>:YSTML
-        IF YHDR.GROUP <> "" THEN YTYPE<8> = YHDR.GROUP:YSTML
-        IF YHDR.GROUP <> "" AND (YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "") THEN
-            YTYPE<8> = YTYPE<8>:YSTML
-        END
-        IF YHDR1 <> "" THEN YTYPE<9> = YHDR1:YSTML
-        IF YHDR2 <> "" THEN YTYPE<10> = YHDR2:YSTML
-        IF YHDR3 <> "" THEN YTYPE<11> = YHDR3:YSTML
-        IF YHDR4 <> "" THEN YTYPE<12> = YHDR3:YSTML
-    END
-    IF YPRINTING THEN
-        HEADING YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
-    END ELSE
-        PRINT @(25+LEN(SCREEN.TITLE)+LEN(PGM.VERSION),L1ST-4):S.CLEAR.EOL:YTYPE<1>:
-        IF YTYPE<5> = "" THEN YTYPE<5> = YTYPE<4>; YTYPE<4> = ""
-        PRINT @(0,L1ST-3):S.CLEAR.EOL:YTYPE<4>:
-        PRINT @(0,L1ST-2):S.CLEAR.EOL:YTYPE<5>:
-        L = L1ST; PRINT @(0,L):
-        IF YTYPE<6> <> "" THEN
-            YT.PAGE<P,L> = YTYPE<6>; L += 2; PRINT YTYPE<6>:@(0,L):
-        END
-        IF YTYPE<7> <> "" THEN
-            YT.PAGE<P,L> = YTYPE<7>; L += 2; PRINT YTYPE<7>:@(0,L):
-        END
-        IF YTYPE<8> <> "" THEN
-            YT.PAGE<P,L> = YTYPE<8>; L += 2; PRINT YTYPE<6>:@(0,L):
-        END
-        IF YTYPE<9> <> "" OR YTYPE<10> <> "" OR YTYPE<11> <> "" OR YTYPE<12> <> "" THEN
-            IF YTYPE<9> <> "" THEN
-                YT.PAGE<P,L> = YTYPE<9>; L += 1; PRINT YTYPE<9>:@(0,L):
-            END
-            IF YTYPE<10> <> "" THEN
-                YT.PAGE<P,L> = YTYPE<10>; L += 1; PRINT YTYPE<10>:
-            END
-            IF YTYPE<11> <> "" THEN
-                YT.PAGE<P,L> = YTYPE<11>; L += 1; PRINT YTYPE<11>:
-            END
-            IF YTYPE<12> <> "" THEN
-                YT.PAGE<P,L> = YTYPE<12>; L += 1; PRINT YTYPE<12>:
-            END
-            L += 1; PRINT @(0,L):
-        END
-    END
-    YTYPE = ""
-*------------------------------------------------------------------------
-    LOOP WHILE YKEYFD = "2" DO
-        YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
-        YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
-        YFD = YR.REC(1)  ;* YM.LCNUM
+        YTOTFD := "         ":YFD
+        YFD = YR.REC(5)  ;* YM.DOC.AMOUNT
         YFD = FMT(YFD,"14L")
         IF LEN(YFD) > 14 THEN YFD = YFD[1,13]:"|"
-        YTOTFD := YFD
-        YFD = YR.REC(2)  ;* YM.LC.TYPE
-        YFD = FMT(YFD,"4L")
-        IF LEN(YFD) > 4 THEN YFD = YFD[1,3]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(3)  ;* YM.DISP.ISSUE.BNK
+        YTOTFD := "          ":YFD
+        YFD = YR.REC(6)  ;* YM.CUSTOMER.NAME
         YFD = FMT(YFD,"35L")
         IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
-        YTOTFD := "   ":YFD
-        YFD = YR.REC(4)  ;* YM.CURRENCY
-        YFD = FMT(YFD,"3L")
-        IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(5)  ;* YM.DRAW.AMT
-        IF YFD = "" THEN
-            YFD = STR(" ",16)
-        END ELSE
-            YFD = FMT(YFD,"16R2,")
-            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
-        END
-        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(6)  ;* YM.DISP.BENE
-        YFD = FMT(YFD,"35L")
-        IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
-        YTOTFD := "  ":YFD
+        YTOTFD := " ":YFD
         GOSUB 9000000
         IF COMI = C.U THEN RETURN  ;* end of pgm
         GOSUB 1000000
     REPEAT
     YTEXT = "*** END OF REPORT ***"
+    IF LNGG <> 1 THEN CALL TXT ( YTEXT )
+    IF YPRINTING THEN
+        PRINT
+    END ELSE
+        IF L < 19 THEN
+            GOSUB 9000000
+            IF COMI = C.U THEN RETURN  ;* end of pgm
+        END
+    END
+    PRINT YTEXT
+    IF NOT(YPRINTING) THEN YT.PAGE<P,L> = YTEXT; L += 1; PRINT @(0,L):
     IF YPRINTING THEN
         CALL PRINTER.OFF
         IF NOT(PHNO) THEN PRINT @(41,L1ST-3):YBLOCKNO+YWRITNO:
@@ -352,7 +249,6 @@ RETURN
     END
     MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOTO 1000000
     YKEY = "C":YKEY
-    YKEYFD = YKEY[2,1]
     IF NOT(PHNO) AND YPRINTING THEN
         IF YWRITNO < 9 THEN
             YWRITNO += 1

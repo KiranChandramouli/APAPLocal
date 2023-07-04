@@ -1,5 +1,5 @@
-* @ValidationCode : MjotODU5ODQ4MDE0OkNwMTI1MjoxNjg4NDY0OTg1OTM2OnZpY3RvOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Jul 2023 15:33:05
+* @ValidationCode : MjotNjkwODQ4NDE6Q3AxMjUyOjE2ODg0NzE1NjkzMDA6dmljdG86LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 04 Jul 2023 17:22:49
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,9 +10,9 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.Repgen
+$PACKAGE APAP.Repgens
 *-----------------------------------------------------------------------------
-* <Rating>6232</Rating>
+* <Rating>7492</Rating>
 *-----------------------------------------------------------------------------
 
 *---------------------------------------------------------------------------------------
@@ -20,9 +20,8 @@ $PACKAGE APAP.Repgen
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM
 *----------------------------------------------------------------------------------------
-
-SUBROUTINE RGP.LC.DISCOUNTS
-REM "RGP.LC.DISCOUNTS",040129-3
+SUBROUTINE RGP.LC.DISCOUNT
+REM "RGP.LC.DISCOUNT",040129-3
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -32,7 +31,7 @@ REM "RGP.LC.DISCOUNTS",040129-3
     $INSERT I_F.LANGUAGE
     $INSERT I_F.USER
 *************************************************************************
-    REPORT.ID = "RG.LC.DISCOUNTS"
+    REPORT.ID = "RG.LC.DISCOUNT"
     PRT.UNIT = 0
     IF V$DISPLAY = "D" THEN YPRINTING = 0 ELSE YPRINTING = 1
     IF NOT(YPRINTING) THEN IF NOT(S.COL132.ON) THEN
@@ -43,6 +42,8 @@ REM "RGP.LC.DISCOUNTS",040129-3
     YT.SMS.COMP = ID.COMPANY
     YT.SMS.FILE = "DRAWINGS"
     YT.SMS.FILE<-1> = "LETTER.OF.CREDIT"
+    YT.SMS.FILE<-1> = "CUSTOMER"
+    YT.SMS.FILE<-1> = "DATES"
     YCOUNT = COUNT(YT.SMS.FILE,@FM)+1 ;*R22 MANUAL CONVERSION
     LOOP
         YID.COMP = YT.SMS.COMP<1>; DEL YT.SMS.COMP<1>
@@ -94,7 +95,7 @@ REM "RGP.LC.DISCOUNTS",040129-3
     F.LANGUAGE=""; CALL OPF("F.LANGUAGE",F.LANGUAGE)
     READV AMOUNT.FORMAT FROM F.LANGUAGE,LNGG,EB.LAN.AMOUNT.FORMAT ELSE AMOUNT.FORMAT=""
     CLEARSELECT
-    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.LC.DISCOUNTS"
+    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.LC.DISCOUNT"
     EXECUTE "HUSH ON"
     EXECUTE "SSELECT ":YFILE
     EXECUTE "HUSH OFF"
@@ -112,18 +113,17 @@ REM "RGP.LC.DISCOUNTS",040129-3
         YT.PAGE = ""; T.CONTROLWORD = C.U:@FM:C.B:@FM:C.F:@FM:C.E:@FM:C.V:@FM:C.W ;*R22 MANUAL CONVERSION
     END
     YKEY = ""; YTOTFD = ""
-    DIM YR.REC(11); MAT YR.REC = ""
+    DIM YR.REC(13); MAT YR.REC = ""
     GOSUB 1000000
-    YHDR = "DISCOUNTED DRAWINGS"
+    YHDR = "LETTER.OF.CREDIT DISCOUNTS"
     IF YPRINTING THEN
-        YTEXT = "Page"; CALL TXT ( YTEXT )
-        YTYPE = FMT(YHDR,"123L"):FMT(YTEXT,"5L"):"'PL'"
+        YTYPE = ""
     END ELSE
         YTYPE = YHDR
     END
-    YHDR1 = "------------------------------------------------------------------------------------------------------------------------------------"
-    YHDR2 = "REFERENCE NO.  OLD NUM     CCY L/C AMOUNT    PAY AMOUNT    REIMB AMOUNT  VALUE DATE   MATURITY DATE   DISCOUNT AMOUNT"
-    YHDR3 = "------------------------------------------------------------------------------------------------------------------------------------"
+    YHDR1 = "MAT.DATE  LC NUMBER       TYPE   APPLICANT/ISSUING BNK  CCY        DR AMT      INT %   DISC.AMT      SPR %    SPR.AMT       TOT.AMT"
+    YHDR2 = ""
+    YHDR3 = ""
     YHDR4 = ""
     IF YPRINTING THEN YSTML = "'L'" ELSE YSTML = ""
     IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
@@ -133,12 +133,24 @@ REM "RGP.LC.DISCOUNTS",040129-3
         IF YHDR3 <> "" THEN YTYPE<6> = YHDR3:YSTML
         IF YHDR4 <> "" THEN YTYPE<7> = YHDR4:YSTML
     END
-    IF YPRINTING THEN
-        HEAD.SETTING = YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
-        IF HEAD.SETTING = "" THEN
-            HEAD.SETTING = " "
+    YHDR.GROUP = "TODAYS DISCOUNTS"
+    YHDR1 = ""
+    YHDR2 = ""
+    YHDR3 = ""
+    YHDR4 = ""
+    IF YHDR.GROUP <> "" OR YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
+        YTYPE<7> = YTYPE<7>:YSTML
+        IF YHDR.GROUP <> "" THEN YTYPE<8> = YHDR.GROUP:YSTML
+        IF YHDR.GROUP <> "" AND (YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "") THEN
+            YTYPE<8> = YTYPE<8>:YSTML
         END
-        HEADING HEAD.SETTING
+        IF YHDR1 <> "" THEN YTYPE<9> = YHDR1:YSTML
+        IF YHDR2 <> "" THEN YTYPE<10> = YHDR2:YSTML
+        IF YHDR3 <> "" THEN YTYPE<11> = YHDR3:YSTML
+        IF YHDR4 <> "" THEN YTYPE<12> = YHDR3:YSTML
+    END
+    IF YPRINTING THEN
+        HEADING YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
     END ELSE
         PRINT @(25+LEN(SCREEN.TITLE)+LEN(PGM.VERSION),L1ST-4):S.CLEAR.EOL:YTYPE<1>:
         IF YTYPE<5> = "" THEN YTYPE<5> = YTYPE<4>; YTYPE<4> = ""
@@ -172,120 +184,263 @@ REM "RGP.LC.DISCOUNTS",040129-3
     END
     YTYPE = ""
 *------------------------------------------------------------------------
-    YKEYFD = ""
-    LOOP WHILE YKEYFD = "" DO
+    LOOP WHILE YKEYFD = "1" DO
         YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
         YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
-        YFD = YR.REC(1)  ;* YM.TXN.REF
+        YFD = YR.REC(1)  ;* YM.MAT.DATE
+        BEGIN CASE
+            CASE YFD MATCHES "8N"
+                YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[3,2]
+            CASE YFD MATCHES "6N"
+                YFD=YFD[5,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[3,2]):" ":YFD[1,2]
+            CASE 1
+                YFD=FMT(YFD,"9L")
+        END CASE
+        IF LEN(YFD) > 9 THEN YFD = YFD[1,8]:"|"
+        YTOTFD := YFD
+        YFD = YR.REC(2)  ;* YM.LCNUM
         YFD = FMT(YFD,"14L")
         IF LEN(YFD) > 14 THEN YFD = YFD[1,13]:"|"
-        YTOTFD := YFD
-        YCNT = COUNT(YR.REC(2),@VM) ;*R22 MANUAL CONVERSION
-        IF YCNT >= YCOUNT.LIN THEN YCOUNT.LIN = YCNT+1
-        YFD = YR.REC(2)<1,1>  ;* YM.DR.OLD.TXN.REF
-        YFD = FMT(YFD,"10L")
-        IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
         YTOTFD := " ":YFD
-        YFD = YR.REC(3)  ;* YM.DR.CCY
+        YFD = YR.REC(3)  ;* YM.LC.TYPE
+        YFD = FMT(YFD,"4L")
+        IF LEN(YFD) > 4 THEN YFD = YFD[1,3]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(4)  ;* YM.DISP.ISSUE.BNK
+        YFD = FMT(YFD,"20L")
+        IF LEN(YFD) > 20 THEN YFD = YFD[1,19]:"|"
+        YTOTFD := "   ":YFD
+        YFD = YR.REC(5)  ;* YM.CURRENCY
         YFD = FMT(YFD,"3L")
         IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(4)  ;* YM.DR.AMT
+        YTOTFD := "   ":YFD
+        YFD = YR.REC(6)  ;* YM.DRAW.AMT
         IF YFD = "" THEN
-            YFD = STR(" ",12)
+            YFD = STR(" ",16)
         END ELSE
-            YDEC = INDEX(YFD,".",1)
-            IF YDEC THEN YDEC = LEN(YFD) - YDEC
-            YFD = FMT(YFD,"12R":YDEC:",")
+            YFD = FMT(YFD,"16R2,")
             IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
         END
-        IF LEN(YFD) > 12 THEN YFD = YFD[1,11]:"|"
+        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(7)  ;* YM.INT.RATE
+        IF YFD = "" THEN
+            YFD = STR(" ",5)
+        END ELSE
+            YFD = FMT(YFD,"5R3,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 5 THEN YFD = YFD[1,4]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(8)  ;* YM.DISC.AMT
+        IF YFD = "" THEN
+            YFD = STR(" ",10)
+        END ELSE
+            YFD = FMT(YFD,"10R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
         YTOTFD := " ":YFD
-        YFD = YR.REC(5)  ;* YM.PAYMENT.AMOUNT
+        YFD = YR.REC(9)  ;* YM.SPREAD.RATE
         IF YFD = "" THEN
-            YFD = STR(" ",12)
+            YFD = STR(" ",5)
         END ELSE
-            YDEC = INDEX(YFD,".",1)
-            IF YDEC THEN YDEC = LEN(YFD) - YDEC
-            YFD = FMT(YFD,"12R":YDEC:",")
+            YFD = FMT(YFD,"5R3,")
             IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
         END
-        IF LEN(YFD) > 12 THEN YFD = YFD[1,11]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(6)  ;* YM.REIMBURSE.AMOUNT
+        IF LEN(YFD) > 5 THEN YFD = YFD[1,4]:"|"
+        YTOTFD := "      ":YFD
+        YFD = YR.REC(10)  ;* YM.SPREAD.AMT
         IF YFD = "" THEN
-            YFD = STR(" ",12)
+            YFD = STR(" ",10)
         END ELSE
-            YDEC = INDEX(YFD,".",1)
-            IF YDEC THEN YDEC = LEN(YFD) - YDEC
-            YFD = FMT(YFD,"12R":YDEC:",")
+            YFD = FMT(YFD,"10R2,")
             IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
         END
-        IF LEN(YFD) > 12 THEN YFD = YFD[1,11]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(7)  ;* YM.VALUE.DATE
-        BEGIN CASE
-            CASE YFD MATCHES "8N"
-                YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[1,4]
-            CASE YFD MATCHES "6N"
-                YFD=YFD[5,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[3,2]):" ":(IF YFD[1,1] LT 5 THEN '20' ELSE '19'):YFD[1,2]
-            CASE 1
-                YFD=FMT(YFD,"11L")
-        END CASE
+        IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
+        YTOTFD := " ":YFD
+        YFD = YR.REC(11)  ;* YM.TOT.DISC
+        IF YFD = "" THEN
+            YFD = STR(" ",11)
+        END ELSE
+            YFD = FMT(YFD,"11R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
         IF LEN(YFD) > 11 THEN YFD = YFD[1,10]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(8)  ;* YM.MATURITY.REVIEW
-        BEGIN CASE
-            CASE YFD MATCHES "8N"
-                YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[1,4]
-            CASE YFD MATCHES "6N"
-                YFD=YFD[5,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[3,2]):" ":(IF YFD[1,1] LT 5 THEN '20' ELSE '19'):YFD[1,2]
-            CASE 1
-                YFD=FMT(YFD,"11L")
-        END CASE
-        IF LEN(YFD) > 11 THEN YFD = YFD[1,10]:"|"
-        YTOTFD := "  ":YFD
-        YFD = YR.REC(9)  ;* YM.TOTAL.DISCOUNT
-        IF YFD = "" THEN
-            YFD = STR(" ",12)
-        END ELSE
-            YDEC = INDEX(YFD,".",1)
-            IF YDEC THEN YDEC = LEN(YFD) - YDEC
-            YFD = FMT(YFD,"12R":YDEC:",")
-            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
-        END
-        IF LEN(YFD) > 12 THEN YFD = YFD[1,11]:"|"
-        YTOTFD := "    ":YFD
+        YTOTFD := "   ":YFD
         GOSUB 9000000
         IF COMI = C.U THEN RETURN  ;* end of pgm
+        GOSUB 1000000
+    REPEAT
 *
-        FOR YAV = 2 TO YCOUNT.LIN
-            YFD = YR.REC(2)<1,YAV>  ;* YM.DR.OLD.TXN.REF
-            YFD = FMT(YFD,"10L")
-            IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
-            YTOTFD := "               ":YFD
-            GOSUB 9000000
-            IF COMI = C.U THEN RETURN  ;* end of pgm
-        NEXT YAV
+    YTEXT = "*** END OF GROUP ***"
+    IF NOT(YPRINTING) THEN
+        L = 999; GOSUB 9000010
+        IF COMI = C.U THEN RETURN  ;* end of pgm
+    END
+    YHDR = "LETTER.OF.CREDIT DISCOUNTS"
+    IF YPRINTING THEN
+        YTYPE = ""
+    END ELSE
+        YTYPE = YHDR
+    END
+    YHDR1 = "MAT.DATE  LC NUMBER       TYPE   APPLICANT/ISSUING BNK  CCY        DR AMT      INT %   DISC.AMT      SPR %    SPR.AMT       TOT.AMT"
+    YHDR2 = ""
+    YHDR3 = ""
+    YHDR4 = ""
+    IF YPRINTING THEN YSTML = "'L'" ELSE YSTML = ""
+    IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
+        YTYPE<3> = YTYPE<3>:YSTML
+        IF YHDR1 <> "" THEN YTYPE<4> = YHDR1:YSTML
+        IF YHDR2 <> "" THEN YTYPE<5> = YHDR2:YSTML
+        IF YHDR3 <> "" THEN YTYPE<6> = YHDR3:YSTML
+        IF YHDR4 <> "" THEN YTYPE<7> = YHDR4:YSTML
+    END
+    YHDR.GROUP = "ALL DISCOUNTS"
+    YHDR1 = ""
+    YHDR2 = ""
+    YHDR3 = ""
+    YHDR4 = ""
+    IF YHDR.GROUP <> "" OR YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
+        YTYPE<7> = YTYPE<7>:YSTML
+        IF YHDR.GROUP <> "" THEN YTYPE<8> = YHDR.GROUP:YSTML
+        IF YHDR.GROUP <> "" AND (YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "") THEN
+            YTYPE<8> = YTYPE<8>:YSTML
+        END
+        IF YHDR1 <> "" THEN YTYPE<9> = YHDR1:YSTML
+        IF YHDR2 <> "" THEN YTYPE<10> = YHDR2:YSTML
+        IF YHDR3 <> "" THEN YTYPE<11> = YHDR3:YSTML
+        IF YHDR4 <> "" THEN YTYPE<12> = YHDR3:YSTML
+    END
+    IF YPRINTING THEN
+        HEADING YTYPE<1>:YTYPE<2>:YTYPE<3>:YTYPE<4>:YTYPE<5>:YTYPE<6>:YTYPE<7>:YTYPE<8>:YTYPE<9>:YTYPE<10>:YTYPE<11>:YTYPE<12>
+    END ELSE
+        PRINT @(25+LEN(SCREEN.TITLE)+LEN(PGM.VERSION),L1ST-4):S.CLEAR.EOL:YTYPE<1>:
+        IF YTYPE<5> = "" THEN YTYPE<5> = YTYPE<4>; YTYPE<4> = ""
+        PRINT @(0,L1ST-3):S.CLEAR.EOL:YTYPE<4>:
+        PRINT @(0,L1ST-2):S.CLEAR.EOL:YTYPE<5>:
+        L = L1ST; PRINT @(0,L):
+        IF YTYPE<6> <> "" THEN
+            YT.PAGE<P,L> = YTYPE<6>; L += 2; PRINT YTYPE<6>:@(0,L):
+        END
+        IF YTYPE<7> <> "" THEN
+            YT.PAGE<P,L> = YTYPE<7>; L += 2; PRINT YTYPE<7>:@(0,L):
+        END
+        IF YTYPE<8> <> "" THEN
+            YT.PAGE<P,L> = YTYPE<8>; L += 2; PRINT YTYPE<6>:@(0,L):
+        END
+        IF YTYPE<9> <> "" OR YTYPE<10> <> "" OR YTYPE<11> <> "" OR YTYPE<12> <> "" THEN
+            IF YTYPE<9> <> "" THEN
+                YT.PAGE<P,L> = YTYPE<9>; L += 1; PRINT YTYPE<9>:@(0,L):
+            END
+            IF YTYPE<10> <> "" THEN
+                YT.PAGE<P,L> = YTYPE<10>; L += 1; PRINT YTYPE<10>:
+            END
+            IF YTYPE<11> <> "" THEN
+                YT.PAGE<P,L> = YTYPE<11>; L += 1; PRINT YTYPE<11>:
+            END
+            IF YTYPE<12> <> "" THEN
+                YT.PAGE<P,L> = YTYPE<12>; L += 1; PRINT YTYPE<12>:
+            END
+            L += 1; PRINT @(0,L):
+        END
+    END
+    YTYPE = ""
+*------------------------------------------------------------------------
+    LOOP WHILE YKEYFD = "2" DO
+        YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
+        YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
+        YFD = YR.REC(1)  ;* YM.MAT.DATE
+        BEGIN CASE
+            CASE YFD MATCHES "8N"
+                YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[3,2]
+            CASE YFD MATCHES "6N"
+                YFD=YFD[5,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[3,2]):" ":YFD[1,2]
+            CASE 1
+                YFD=FMT(YFD,"9L")
+        END CASE
+        IF LEN(YFD) > 9 THEN YFD = YFD[1,8]:"|"
+        YTOTFD := YFD
+        YFD = YR.REC(2)  ;* YM.LCNUM
+        YFD = FMT(YFD,"14L")
+        IF LEN(YFD) > 14 THEN YFD = YFD[1,13]:"|"
+        YTOTFD := " ":YFD
+        YFD = YR.REC(3)  ;* YM.LC.TYPE
+        YFD = FMT(YFD,"4L")
+        IF LEN(YFD) > 4 THEN YFD = YFD[1,3]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(4)  ;* YM.DISP.ISSUE.BNK
+        YFD = FMT(YFD,"20L")
+        IF LEN(YFD) > 20 THEN YFD = YFD[1,19]:"|"
+        YTOTFD := "   ":YFD
+        YFD = YR.REC(5)  ;* YM.CURRENCY
+        YFD = FMT(YFD,"3L")
+        IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
+        YTOTFD := "   ":YFD
+        YFD = YR.REC(6)  ;* YM.DRAW.AMT
+        IF YFD = "" THEN
+            YFD = STR(" ",16)
+        END ELSE
+            YFD = FMT(YFD,"16R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(7)  ;* YM.INT.RATE
+        IF YFD = "" THEN
+            YFD = STR(" ",5)
+        END ELSE
+            YFD = FMT(YFD,"5R3,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 5 THEN YFD = YFD[1,4]:"|"
+        YTOTFD := "  ":YFD
+        YFD = YR.REC(8)  ;* YM.DISC.AMT
+        IF YFD = "" THEN
+            YFD = STR(" ",10)
+        END ELSE
+            YFD = FMT(YFD,"10R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
+        YTOTFD := " ":YFD
+        YFD = YR.REC(9)  ;* YM.SPREAD.RATE
+        IF YFD = "" THEN
+            YFD = STR(" ",5)
+        END ELSE
+            YFD = FMT(YFD,"5R3,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 5 THEN YFD = YFD[1,4]:"|"
+        YTOTFD := "      ":YFD
+        YFD = YR.REC(10)  ;* YM.SPREAD.AMT
+        IF YFD = "" THEN
+            YFD = STR(" ",10)
+        END ELSE
+            YFD = FMT(YFD,"10R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 10 THEN YFD = YFD[1,9]:"|"
+        YTOTFD := " ":YFD
+        YFD = YR.REC(11)  ;* YM.TOT.DISC
+        IF YFD = "" THEN
+            YFD = STR(" ",11)
+        END ELSE
+            YFD = FMT(YFD,"11R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 11 THEN YFD = YFD[1,10]:"|"
+        YTOTFD := "   ":YFD
+        GOSUB 9000000
+        IF COMI = C.U THEN RETURN  ;* end of pgm
         GOSUB 1000000
     REPEAT
     YTEXT = "*** END OF REPORT ***"
-    IF LNGG <> 1 THEN CALL TXT ( YTEXT )
-    IF YPRINTING THEN
-        PRINT
-    END ELSE
-        IF L < 19 THEN
-            GOSUB 9000000
-            IF COMI = C.U THEN RETURN  ;* end of pgm
-        END
-    END
-    PRINT YTEXT
-    IF NOT(YPRINTING) THEN YT.PAGE<P,L> = YTEXT; L += 1; PRINT @(0,L):
     IF YPRINTING THEN
         CALL PRINTER.OFF
         IF NOT(PHNO) THEN PRINT @(41,L1ST-3):YBLOCKNO+YWRITNO:
-        C$RPT.CUSTOMER.NO = YR.REC(10)
-        C$RPT.ACCOUNT.NO = YR.REC(11)
+        C$RPT.CUSTOMER.NO = YR.REC(12)
+        C$RPT.ACCOUNT.NO = YR.REC(13)
         CALL PRINTER.CLOSE(REPORT.ID,PRT.UNIT,"")
     END ELSE
         TEXT = "END OF REPORT"; YEND = 1; GOSUB 9100000
@@ -300,6 +455,8 @@ RETURN
         YKEYFD = "***"; YKEY = STR("*",188); RETURN
     END
     MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOTO 1000000
+    YKEY = "C":YKEY
+    YKEYFD = YKEY[2,1]
     IF NOT(PHNO) AND YPRINTING THEN
         IF YWRITNO < 9 THEN
             YWRITNO += 1
@@ -338,7 +495,7 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
         CASE COMI[1,1] = "P" AND NUM(COMI[2,99]) = NUMERIC
             NEXTP = COMI[2,99]
             IF NEXTP = LASTP+1 THEN COMI = C.F; GOTO 9190000
-        CASE OTHERWISE
+        CASE 1
             E = ""; L = 22; CALL ERR; GOTO 9100010
     END CASE
 *
