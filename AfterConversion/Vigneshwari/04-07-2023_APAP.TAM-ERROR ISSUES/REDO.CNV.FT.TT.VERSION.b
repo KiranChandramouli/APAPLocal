@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDYwMTU1NTc6Q3AxMjUyOjE2ODg0NTc5NjI3OTQ6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Jul 2023 13:36:02
+* @ValidationCode : MjoxMTM0MjU2ODg1OkNwMTI1MjoxNjg4NDY1NDU5OTAzOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jul 2023 15:40:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -17,13 +17,13 @@ $PACKAGE APAP.TAM
 *-----------------------------------------------------------------------------
 SUBROUTINE REDO.CNV.FT.TT.VERSION
 * This routine is used to populate the descrptions
-*-----------------------------------------------------------------------------------
+*-----------------------------------------------------------------------------------------------------------------------------
 *Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *12/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
 *12/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
 *04/07/2023         VIGNESHWARI      MANUAL R22 CODE CONVERSION           'I_F.T24.FUND.SERVICES' insert file is commanded
-*-----------------------------------------------------------------------------------
+*-----------------------------------------------------------------------------------------------------------------------------
 
 *------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -44,14 +44,16 @@ RETURN
 INITIALISE:
 *----------------------------------------------------------------
 
-    LREF.APP = 'FUNDS.TRANSFER':@FM:'TELLER':@FM:'T24.FUND.SERVICES'
-    LREF.FIELDS = 'L.ACTUAL.VERSIO':@FM:'L.ACTUAL.VERSIO':@VM:'T24.FS.REF':@FM:'L.T24FS.TRA.DAY'
+*LREF.APP = 'FUNDS.TRANSFER':@FM:'TELLER':@FM:'T24.FUND.SERVICES'
+*LREF.FIELDS = 'L.ACTUAL.VERSIO':@FM:'L.ACTUAL.VERSIO':@VM:'T24.FS.REF':@FM:'L.T24FS.TRA.DAY'
+    LREF.APP = 'FUNDS.TRANSFER':@FM:'TELLER'
+    LREF.FIELDS = 'L.ACTUAL.VERSIO':@FM:'L.ACTUAL.VERSIO':@VM:'T24.FS.REF'
     LREF.POS=''
     CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
     LOC.FT.VER.POS     = LREF.POS<1,1>
     LOC.TT.VER.POS     = LREF.POS<2,1>
     LOC.TT.TFS.REF.POS = LREF.POS<2,2>
-    LOC.TFS.VER.POS    = LREF.POS<3,1>
+*LOC.TFS.VER.POS    = LREF.POS<3,1>
 RETURN
 *--------------------------------------------------------------
 OPENFILES:
@@ -72,13 +74,13 @@ OPENFILES:
     F.FT.HIS = ''
     CALL OPF(FN.FT.HIS,F.FT.HIS)
 
-    FN.TFS = 'F.T24.FUND.SERVICES'
-    F.TFS = ''
-    CALL OPF(FN.TFS,F.TFS)
-
-    FN.TFS.HIS= 'F.T24.FUND.SERVICES$HIS'
-    F.TFS.HIS = ''
-    CALL OPF(FN.TFS.HIS,F.TFS.HIS)
+*    FN.TFS = 'F.T24.FUND.SERVICES' // R22 Manual conversion - Start -I_F.T24.FUND.SERVICES is commented
+*    F.TFS = ''
+*    CALL OPF(FN.TFS,F.TFS)
+*
+*    FN.TFS.HIS= 'F.T24.FUND.SERVICES$HIS'
+*    F.TFS.HIS = ''
+*    CALL OPF(FN.TFS.HIS,F.TFS.HIS) // R22 Manual conversion - End
 
 
 RETURN
@@ -118,13 +120,13 @@ PROCESS:
 
             END ELSE
 
-                R.TFS = ''
-                CALL F.READ(FN.TFS,TFS.ID,R.TFS,F.TFS,TFS.ERR)
-                IF NOT(R.TFS) THEN
-                    CALL EB.READ.HISTORY.REC(F.TFS.HIS,TFS.ID,R.TFS,TFS.HIS.ERR)
-                END
+*                R.TFS = '' // MANUAL R22 CODE CONVERSION - START - 'I_F.T24.FUND.SERVICES' insert file  is commented
+*                CALL F.READ(FN.TFS,TFS.ID,R.TFS,F.TFS,TFS.ERR)
+*                IF NOT(R.TFS) THEN
+*                    CALL EB.READ.HISTORY.REC(F.TFS.HIS,TFS.ID,R.TFS,TFS.HIS.ERR)
+*                END
 
-*                Y.VERSION.NAME = R.TFS<TFS.LOCAL.REF,LOC.TFS.VER.POS> ;*MANUAL R22 CODE CONVERSION - 'I_F.T24.FUND.SERVICES' insert file is commanded so this line is commmand
+*                Y.VERSION.NAME = R.TFS<TFS.LOCAL.REF,LOC.TFS.VER.POS> // MANUAL R22 CODE CONVERSION - END
 
             END
 
