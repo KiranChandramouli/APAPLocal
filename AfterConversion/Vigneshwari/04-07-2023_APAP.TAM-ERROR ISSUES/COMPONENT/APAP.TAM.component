@@ -1,0 +1,20 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoCnvFtTtContId (
+)
+{
+   jBC: REDO.CNV.FT.TT.CONT.ID
+}
+
+
+
+public method redoCnvFtTtVersion (
+)
+{
+   jBC: REDO.CNV.FT.TT.VERSION
+}
+
