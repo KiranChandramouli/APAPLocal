@@ -1,5 +1,5 @@
-* @ValidationCode : MjotODMxMjI5OTYyOkNwMTI1MjoxNjg4NDU4MDUxMTExOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Jul 2023 13:37:31
+* @ValidationCode : MjotMzIzMDQ4NDM4OkNwMTI1MjoxNjg4NDY0OTczNTE0OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jul 2023 15:32:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -15,7 +15,7 @@ $PACKAGE APAP.TAM
 *Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *04/07/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
-*04/07/2023         VIGNESHWARI      MANUAL R22 CODE CONVERSION           'I_F.T24.FUND.SERVICES' insert file is commanded
+*04/07/2023         VIGNESHWARI      MANUAL R22 CODE CONVERSION           'I_F.T24.FUND.SERVICES' insert file is commented
 *-----------------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 * <Rating>-30</Rating>
@@ -31,6 +31,7 @@ SUBROUTINE REDO.CNV.FT.TT.CONT.ID
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.USER
 *   $INSERT I_F.T24.FUND.SERVICES
+
 *-------------------------------------------------------------------------------------------------------------
     GOSUB INITIALISE
     GOSUB OPENFILES
