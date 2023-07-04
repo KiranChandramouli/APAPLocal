@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDUwMTA3MDY6Q3AxMjUyOjE2ODg0NjQ5ODU1ODg6dmljdG86LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Jul 2023 15:33:05
+* @ValidationCode : MjotMTc5MTA5NjgxOTpDcDEyNTI6MTY4ODQ3MTU2NzU4Nzp2aWN0bzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 04 Jul 2023 17:22:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,9 +10,9 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.Repgen
+$PACKAGE APAP.Repgens
 *-----------------------------------------------------------------------------
-* <Rating>5083</Rating>
+* <Rating>5367</Rating>
 *-----------------------------------------------------------------------------
 
 *---------------------------------------------------------------------------------------
@@ -20,8 +20,8 @@ $PACKAGE APAP.Repgen
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM
 *----------------------------------------------------------------------------------------
-SUBROUTINE RGP.LC.ACPT.DUE
-REM "RGP.LC.ACPT.DUE",040129-3
+SUBROUTINE RGP.COLLECTIONS.DUE
+REM "RGP.COLLECTIONS.DUE",040129-3
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -31,7 +31,7 @@ REM "RGP.LC.ACPT.DUE",040129-3
     $INSERT I_F.LANGUAGE
     $INSERT I_F.USER
 *************************************************************************
-    REPORT.ID = "RG.LC.ACPT.DUE"
+    REPORT.ID = "RG.COLLECTIONS.DUE"
     PRT.UNIT = 0
     IF V$DISPLAY = "D" THEN YPRINTING = 0 ELSE YPRINTING = 1
     IF NOT(YPRINTING) THEN IF NOT(S.COL132.ON) THEN
@@ -40,9 +40,9 @@ REM "RGP.LC.ACPT.DUE",040129-3
     END
 *************************************************************************
     YT.SMS.COMP = ID.COMPANY
-    YT.SMS.FILE = "DRAWINGS"
+    YT.SMS.FILE = "LETTER.OF.CREDIT"
+    YT.SMS.FILE<-1> = "LC.TYPES"
     YT.SMS.FILE<-1> = "LC.PARAMETERS"
-    YT.SMS.FILE<-1> = "LETTER.OF.CREDIT"
     YT.SMS.FILE<-1> = "CUSTOMER"
     YCOUNT = COUNT(YT.SMS.FILE,@FM)+1 ;*R22 MANUAL CONVERSION
     LOOP
@@ -95,7 +95,7 @@ REM "RGP.LC.ACPT.DUE",040129-3
     F.LANGUAGE=""; CALL OPF("F.LANGUAGE",F.LANGUAGE)
     READV AMOUNT.FORMAT FROM F.LANGUAGE,LNGG,EB.LAN.AMOUNT.FORMAT ELSE AMOUNT.FORMAT=""
     CLEARSELECT
-    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.LC.ACPT.DUE"
+    YFILE = "F":R.COMPANY(EB.COM.MNEMONIC):".RGS.COLLECTIONS.DUE"
     EXECUTE "HUSH ON"
     EXECUTE "SSELECT ":YFILE
     EXECUTE "HUSH OFF"
@@ -115,17 +115,17 @@ REM "RGP.LC.ACPT.DUE",040129-3
     YKEY = ""; YTOTFD = ""
     DIM YR.REC(8); MAT YR.REC = ""
     GOSUB 1000000
-    YHDR = "ACCEPTANCE AND DEFERED DUE REP"
+    YHDR = "COLLECTION DUE REPORT"
     IF YPRINTING THEN
-        YHDR = "RGP.LC.ACPT.DUE ":YHDR
+        YHDR = "RGP.COLLECTIONS.DUE ":YHDR
         YTYPE = "HEADER":@FM:YHDR ;*R22 MANUAL CONVERSION
         CALL PST ( YTYPE )
     END ELSE
         YTYPE = YHDR
     END
-    YHDR1 = "                                         ACCEPTANCE / DEFERRED MATURING DRAWINGS"
+    YHDR1 = "                                               COLLECTIONS DUE REPORT"
     YHDR2 = ""
-    YHDR3 = "  MATURITY.DATE  DRAWING.TYPE   DR. NUMBER  CURRENCY   DOCUMENT AMOUNT                CUSTOMER/ISSUING SHORT.NAME"
+    YHDR3 = "  ACCEPTED.DATE  COLLECT.TYPE   COLL NUMBER  CURRENCY   COLLECTION AMT                CUSTOMER/ISSUING SHORT.NAME"
     YHDR4 = "------------------------------------------------------------------------------------------------------------------------------------"
     IF YPRINTING THEN YSTML = "'L'" ELSE YSTML = ""
     IF YHDR1 <> "" OR YHDR2 <> "" OR YHDR3 <> "" OR YHDR4 <> "" THEN
@@ -178,7 +178,7 @@ REM "RGP.LC.ACPT.DUE",040129-3
     LOOP WHILE YKEYFD = "" DO
         YCOUNT.LIN = 1; YCOUNT.AS.LIN = 1
         YCOUNT.TOT2 = 1; YCOUNT.AS.TOT2 = 1
-        YFD = YR.REC(1)  ;* YM.MAT.DATE
+        YFD = YR.REC(1)  ;* YM.DUE.DATE
         BEGIN CASE
             CASE YFD MATCHES "8N"
                 YFD=YFD[7,2]:" ":FIELD(T.REMTEXT(19)," ",YFD[5,2]):" ":YFD[1,4]
@@ -190,8 +190,8 @@ REM "RGP.LC.ACPT.DUE",040129-3
         IF LEN(YFD) > 11 THEN YFD = YFD[1,10]:"|"
         YTOTFD := "    ":YFD
         YFD = YR.REC(2)  ;* YM.LC.TYPE
-        YFD = FMT(YFD,"2L")
-        IF LEN(YFD) > 2 THEN YFD = YFD[1,1]:"|"
+        YFD = FMT(YFD,"4L")
+        IF LEN(YFD) > 4 THEN YFD = YFD[1,3]:"|"
         YTOTFD := "      ":YFD
         YFD = YR.REC(3)  ;* YM.LC.NUM
         IF YFD = "" THEN
@@ -200,19 +200,26 @@ REM "RGP.LC.ACPT.DUE",040129-3
             YFD = FMT(YFD,"R##-##########-##")
         END
         IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
-        YTOTFD := "   ":YFD
+        YTOTFD := " ":YFD
         YFD = YR.REC(4)  ;* YM.CURRENCY
         YFD = FMT(YFD,"3L")
         IF LEN(YFD) > 3 THEN YFD = YFD[1,2]:"|"
         YTOTFD := "         ":YFD
         YFD = YR.REC(5)  ;* YM.DOC.AMOUNT
-        YFD = FMT(YFD,"14L")
-        IF LEN(YFD) > 14 THEN YFD = YFD[1,13]:"|"
+        IF YFD = "" THEN
+            YFD = STR(" ",16)
+        END ELSE
+            YFD = FMT(YFD,"16R2,")
+            IF AMOUNT.FORMAT#"" THEN CONVERT ",." TO AMOUNT.FORMAT IN YFD
+        END
+        IF LEN(YFD) > 16 THEN YFD = YFD[1,15]:"|"
         YTOTFD := "          ":YFD
-        YFD = YR.REC(6)  ;* YM.CUSTOMER.NAME
+        YFD = YR.REC(6)  ;* YM.CUTOMER.NAME
         YFD = FMT(YFD,"35L")
         IF LEN(YFD) > 35 THEN YFD = YFD[1,34]:"|"
-        YTOTFD := " ":YFD
+        GOSUB 9000000
+        IF COMI = C.U THEN RETURN  ;* end of pgm
+        YTOTFD := "                                                                               ":YFD
         GOSUB 9000000
         IF COMI = C.U THEN RETURN  ;* end of pgm
         GOSUB 1000000
