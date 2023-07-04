@@ -1,0 +1,36 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method lApapCusDirDoMandRt (
+)
+{
+    jBC: L.APAP.CUS.DIR.DO.MAND.RT
+}
+
+
+
+public method lapapAccCanalApertura (
+)
+{
+    jBC: LAPAP.ACC.CANAL.APERTURA
+}
+
+
+private method lapapAManManRt (
+)
+{
+   jBC: LAPAP.A.MAN.MAN.RT
+}
+
+
+
+private method lapapVCusManManRt (
+)
+{
+   jBC: LAPAP.V.CUS.MAN.MAN.RT
+}
