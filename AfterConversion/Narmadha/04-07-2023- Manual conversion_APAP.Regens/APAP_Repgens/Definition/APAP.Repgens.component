@@ -1,0 +1,158 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method rgpLcOutIparty (
+)
+{
+    jBC: RGP.LC.OUT.IPARTY
+}
+
+
+
+public method rgpLcOutRskpty (
+)
+{
+    jBC: RGP.LC.OUT.RSKPTY
+}
+
+
+
+public method rgpLcsByBene (
+)
+{
+    jBC: RGP.LCS.BY.BENE
+}
+
+
+
+public method rgpLcsByBenef (
+)
+{
+    jBC: RGP.LCS.BY.BENEF
+}
+
+
+
+public method rgpLcsByCust (
+)
+{
+    jBC: RGP.LCS.BY.CUST
+}
+
+
+
+public method rgpLcsByExpiry (
+)
+{
+    jBC: RGP.LCS.BY.EXPIRY
+}
+
+
+
+public method rgpLcsByRskpty (
+)
+{
+    jBC: RGP.LCS.BY.RSKPTY
+}
+
+
+
+public method rgpLcsExpLiab (
+)
+{
+    jBC: RGP.LCS.EXP.LIAB
+}
+
+
+
+public method rgpLcsExpiryDue (
+)
+{
+    jBC: RGP.LCS.EXPIRY.DUE
+}
+
+
+
+public method rgpListAcpt (
+)
+{
+    jBC: RGP.LIST.ACPT
+}
+
+
+
+public method rgpListColl (
+)
+{
+    jBC: RGP.LIST.COLL
+}
+
+
+
+public method rgpListLcs (
+)
+{
+    jBC: RGP.LIST.LCS
+}
+
+
+
+public method rgpListPreLcs (
+)
+{
+    jBC: RGP.LIST.PRE.LCS
+}
+
+
+
+public method rgpMgRateConEx (
+)
+{
+    jBC: RGP.MG.RATE.CON.EX
+}
+
+
+
+public method rgpMgRateEx (
+)
+{
+    jBC: RGP.MG.RATE.EX
+}
+
+
+
+public method rgsCollectionsDue (
+)
+{
+    jBC: RGS.COLLECTIONS.DUE
+}
+
+
+
+public method rgsLcAccept (
+)
+{
+    jBC: RGS.LC.ACCEPT
+}
+
+
+
+public method rgsLcAcptDue (
+)
+{
+    jBC: RGS.LC.ACPT.DUE
+}
+
+
+
+public method rgsLcCollDue (
+)
+{
+    jBC: RGS.LC.COLL.DUE
+}
+
