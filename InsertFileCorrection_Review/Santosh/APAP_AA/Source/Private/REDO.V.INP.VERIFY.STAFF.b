@@ -39,7 +39,7 @@ SUBROUTINE REDO.V.INP.VERIFY.STAFF
 * 03-09-15  Maheswaran J       PACS00479725                        Routine skipped when it triggering on COB.
 *26-06-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *26-06-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,FM TO @FM, INSERT FILE MODIFIED
-*03-07-2023    Narmadha            R22 MANUAL CONVERSION   EMPACT- Insert I_F.T24.FUND.SERVICES commented resutls, will not validate and write logs of TFS table fields.
+*03-07-2023    Narmadha            R22 MANUAL CONVERSION   IMPACT- Insert I_F.T24.FUND.SERVICES commented resutls, will not validate and write logs of TFS table fields.
 *------------------------------------------------------------------------
 
     $INSERT I_COMMON

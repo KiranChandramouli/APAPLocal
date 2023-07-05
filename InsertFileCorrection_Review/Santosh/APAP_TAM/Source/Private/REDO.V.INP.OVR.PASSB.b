@@ -35,7 +35,7 @@ SUBROUTINE REDO.V.INP.OVR.PASSB
 *                                                          or NOT. Just for current savings account(s) involved (Passbook Handling)
 *26-06-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *26-06-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED.VM TO @VM,FM TO @FM
-*03-07-2023    Narmadha            R22 MANUAL CONVERSION   Insert commentedI_F.T24.FUND.SERVICES,so the fields validation on TFS will empact
+*03-07-2023    Narmadha            R22 MANUAL CONVERSION   Insert commentedI_F.T24.FUND.SERVICES,so the fields validation on TFS will Impact
 *----------------------------------------------------------------------------------
 *
     $INSERT I_COMMON

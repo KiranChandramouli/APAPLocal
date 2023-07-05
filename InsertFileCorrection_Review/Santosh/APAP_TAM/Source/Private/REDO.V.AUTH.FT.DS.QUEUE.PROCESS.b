@@ -33,7 +33,8 @@ SUBROUTINE REDO.V.AUTH.FT.DS.QUEUE.PROCESS
 *08-12-2010           Sakthi Sellappillai                                 Initial creation
 *26-06-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *26-06-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,INSERT FILE MODIFIED
-*03-07-2023    Narmadha            R22 MANUAL CONVERSION   EMPACT- Field validation on TFS and write on table REDO.APAP.H.DEAL.SLIP.QUEUE will empact
+*03-07-2023    Narmadha            R22 MANUAL CONVERSION   IMPACT- Field validation on TFS and write on table REDO.APAP.H.DEAL.SLIP.QUEUE 
+will empact
 *-------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE

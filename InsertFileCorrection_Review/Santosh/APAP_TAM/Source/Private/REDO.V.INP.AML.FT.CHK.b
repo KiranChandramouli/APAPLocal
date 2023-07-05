@@ -35,7 +35,7 @@ SUBROUTINE REDO.V.INP.AML.FT.CHK
 * 28.04.2023       Conversion Tool       R22            Auto Conversion     - No changes
 * 28.04.2023       Shanmugapriya M       R22            Manual Conversion   - FM TO @FM, VM TO @VM
 * 03-07-2023       Narmadha V                       Manual R22 Conversion     Commented insert file, commented variable regarding I_F.T24.FUND.SERVICES file
-*                                                                             EMPACT- Field validation on TFS and TOT.TODAY.TXN.AMT amount calculation will empact
+*                                                                             IMPACT- Field validation on TFS and TOT.TODAY.TXN.AMT amount calculation will empact
 *----------------------------------------------------------------------------------
 
     $INSERT I_COMMON

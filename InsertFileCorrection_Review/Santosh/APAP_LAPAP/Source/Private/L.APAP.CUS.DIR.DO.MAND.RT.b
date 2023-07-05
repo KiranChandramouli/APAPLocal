@@ -21,7 +21,7 @@ SUBROUTINE L.APAP.CUS.DIR.DO.MAND.RT
 *--------------------------------------------
 *   DATE    NAME                 Refernce                             DESCRIPTION
 *03-07-2023   Narmadha V   Manual R22 Conversion   Remove BP in insert file, commented inesert files
-*                                                  EMPACT- Residence City and Provinces check on this will not perform
+*                                                  IMPACT- Residence City and Provinces check on this will not perform
 *-----------------------------------------------------------------------------
     $INSERT   I_COMMON ;* Manual R22 Conversion
     $INSERT   I_EQUATE ;* Manual R22 Conversion
