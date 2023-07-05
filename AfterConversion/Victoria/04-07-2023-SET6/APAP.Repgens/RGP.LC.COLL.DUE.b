@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxOTY5ODA0MDk4OkNwMTI1MjoxNjg4NTU4NzA3MzUwOnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Jul 2023 17:35:07
+* @ValidationCode : MjoxNjUyNTgzMTU5OkNwMTI1MjoxNjg4NTYzMzU0MDMyOnZpY3RvOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Jul 2023 18:52:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -14,11 +14,10 @@ $PACKAGE APAP.Repgens
 *-----------------------------------------------------------------------------
 * <Rating>5258</Rating>
 *-----------------------------------------------------------------------------
-
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
-*04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM
+*04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM, GOTO TO GOSUB
 *----------------------------------------------------------------------------------------
 SUBROUTINE RGP.LC.COLL.DUE
 REM "RGP.LC.COLL.DUE",040129-3
@@ -252,7 +251,7 @@ RETURN
     IF NOT(YKEY:YDELIM) THEN
         YKEYFD = "***"; YKEY = STR("*",188); RETURN
     END
-    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOSUB 1000000
+    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOSUB 1000000 ;*R22 MANUAL CONVERSION
     YKEY = "C":YKEY
     IF NOT(PHNO) AND YPRINTING THEN
         IF YWRITNO < 9 THEN
@@ -283,7 +282,7 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     BEGIN CASE
         CASE COMI = C.B; NEXTP = P-1
         CASE COMI = C.F
-            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOSUB 9190000
+            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOSUB 9190000 ;*R22 MANUAL CONVERSION
         CASE COMI = C.E; NEXTP = LASTP
         CASE COMI = C.V OR COMI = C.W OR COMI = C.U
             PRINT S.COL132.OFF:
@@ -291,9 +290,9 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
         CASE COMI = "P"; NEXTP = 1
         CASE COMI[1,1] = "P" AND NUM(COMI[2,99]) = NUMERIC
             NEXTP = COMI[2,99]
-            IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000
+            IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000 ;*R22 MANUAL CONVERSION
         CASE OTHERWISE
-            E = ""; L = 22; CALL ERR; GOSUB 9100010
+            E = ""; L = 22; CALL ERR; GOSUB 9100010 ;*R22 MANUAL CONVERSION
     END CASE
 *
     IF NEXTP < 1 THEN
@@ -301,16 +300,16 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     END ELSE
         IF NEXTP > LASTP THEN NEXTP = LASTP
     END
-    IF NEXTP = P THEN GOSUB 9100000
+    IF NEXTP = P THEN GOSUB 9100000 ;*R22 MANUAL CONVERSION
     P = NEXTP
 *
     GOSUB 9200000
     FOR LL = L1ST TO 19
         X = YT.PAGE<P,LL>; IF X <> "" THEN PRINT @(0,LL):X:
-    NEXT LL; GOSUB 9100000
+    NEXT LL; GOSUB 9100000 ;*R22 MANUAL CONVERSION
 *
 9190000:
-    IF YEND THEN GOSUB 9100000 ELSE P = NEXTP
+    IF YEND THEN GOSUB 9100000 ELSE P = NEXTP ;*R22 MANUAL CONVERSION
 *
 9200000:
     L = L1ST; PRINT @(0,L):

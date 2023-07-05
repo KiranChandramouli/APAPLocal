@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNDYzMzY1ODU4OkNwMTI1MjoxNjg4NTU4ODIwMDI5OnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Jul 2023 17:37:00
+* @ValidationCode : MjotMTA2NDc2OTc0OTpDcDEyNTI6MTY4ODU2MzM1NDA4MTp2aWN0bzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jul 2023 18:52:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -18,7 +18,7 @@ $PACKAGE APAP.Repgens
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
-*04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM
+*04-07-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM, GOTO TO GOSUB
 *----------------------------------------------------------------------------------------
 SUBROUTINE RGP.LC.DISCOUNT
 REM "RGP.LC.DISCOUNT",040129-3
@@ -495,7 +495,7 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
         CASE COMI[1,1] = "P" AND NUM(COMI[2,99]) = NUMERIC
             NEXTP = COMI[2,99]
             IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000
-        CASE 1
+        CASE OTHERWISE
             E = ""; L = 22; CALL ERR; GOSUB 9100010
     END CASE
 *
