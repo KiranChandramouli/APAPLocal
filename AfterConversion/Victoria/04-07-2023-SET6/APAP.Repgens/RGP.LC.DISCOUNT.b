@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNjkwODQ4NDE6Q3AxMjUyOjE2ODg0NzE1NjkzMDA6dmljdG86LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 04 Jul 2023 17:22:49
+* @ValidationCode : MjoxNDYzMzY1ODU4OkNwMTI1MjoxNjg4NTU4ODIwMDI5OnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Jul 2023 17:37:00
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : victo
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -454,7 +454,7 @@ RETURN
     IF NOT(YKEY:YDELIM) THEN
         YKEYFD = "***"; YKEY = STR("*",188); RETURN
     END
-    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOTO 1000000
+    MATREAD YR.REC FROM F.FILE, YKEY ELSE MAT YR.REC = "" ; GOSUB 1000000
     YKEY = "C":YKEY
     YKEYFD = YKEY[2,1]
     IF NOT(PHNO) AND YPRINTING THEN
@@ -486,7 +486,7 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     BEGIN CASE
         CASE COMI = C.B; NEXTP = P-1
         CASE COMI = C.F
-            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOTO 9190000
+            NEXTP = P+1; IF NEXTP = LASTP+1 THEN GOSUB 9190000
         CASE COMI = C.E; NEXTP = LASTP
         CASE COMI = C.V OR COMI = C.W OR COMI = C.U
             PRINT S.COL132.OFF:
@@ -494,9 +494,9 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
         CASE COMI = "P"; NEXTP = 1
         CASE COMI[1,1] = "P" AND NUM(COMI[2,99]) = NUMERIC
             NEXTP = COMI[2,99]
-            IF NEXTP = LASTP+1 THEN COMI = C.F; GOTO 9190000
+            IF NEXTP = LASTP+1 THEN COMI = C.F; GOSUB 9190000
         CASE 1
-            E = ""; L = 22; CALL ERR; GOTO 9100010
+            E = ""; L = 22; CALL ERR; GOSUB 9100010
     END CASE
 *
     IF NEXTP < 1 THEN
@@ -504,16 +504,16 @@ IF L < 19 THEN L += 1; PRINT @(0,L):; RETURN
     END ELSE
         IF NEXTP > LASTP THEN NEXTP = LASTP
     END
-    IF NEXTP = P THEN GOTO 9100000
+    IF NEXTP = P THEN GOSUB 9100000
     P = NEXTP
 *
     GOSUB 9200000
     FOR LL = L1ST TO 19
         X = YT.PAGE<P,LL>; IF X <> "" THEN PRINT @(0,LL):X:
-    NEXT LL; GOTO 9100000
+    NEXT LL; GOSUB 9100000
 *
 9190000:
-    IF YEND THEN GOTO 9100000 ELSE P = NEXTP
+    IF YEND THEN GOSUB 9100000 ELSE P = NEXTP
 *
 9200000:
     L = L1ST; PRINT @(0,L):
