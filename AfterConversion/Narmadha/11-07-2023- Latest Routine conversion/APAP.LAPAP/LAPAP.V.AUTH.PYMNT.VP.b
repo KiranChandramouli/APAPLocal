@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDMwMzAwNTQ5OlVURi04OjE2ODkwNjk3Mzg1MTk6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 Jul 2023 15:32:18
+* @ValidationCode : MjoyOTIxODQ5OTpVVEYtODoxNjg5MDgxMjUyMzg0OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Jul 2023 18:44:12
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -163,7 +163,7 @@ GET.TT.FIELDS:
     IF TXN.CURRENCY EQ LCCY THEN
         TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.LOCAL.1)
     END ELSE
-* TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.FCY.1)
+
         TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.FCY.2)
     
     END
@@ -295,7 +295,7 @@ REG.NEW.MON.TXN:
     
 
 * Fill the remaining fields for the new VP Transaction of the payment
-*REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : FMT(SEQ.NO,"R%4")
+
     REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : ID.NEW : '.' : FMT(SEQ.NO,"R%4")
 
 * TT/FT @ID
