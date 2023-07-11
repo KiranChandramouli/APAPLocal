@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMzIwNzY2MTk4OlVURi04OjE2ODkwNjk4OTI1MzY6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 Jul 2023 15:34:52
+* @ValidationCode : MjotNzc1NTM1MzgyOlVURi04OjE2ODkwODEwNDYzNTg6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 Jul 2023 18:40:46
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -120,7 +120,7 @@ PROCESS:
             CASE TXN.VERSION MATCHES '...CASHIN...' OR TXN.VERSION MATCHES '...TFR...'
                 GOSUB GET.CARD.INFO
                 ALLOW.OFFLINE = 1
-*IF IS.MLV.ACCOUNT EQ "true" THEN
+
                 IF IS.MLV.ACCOUNT EQ "true" AND MONEDA EQ "DOP"  THEN
                     IF (MONTO.TRANSACCION LT BALANCE.MINIMO.MLV) THEN
                         GOSUB PAYMENT
@@ -143,7 +143,7 @@ PROCESS:
         GOSUB GET.CARD.INFO
         ALLOW.OFFLINE = 1
 
-*IF IS.MLV.ACCOUNT EQ "true" THEN
+
         IF IS.MLV.ACCOUNT EQ "true" AND MONEDA EQ "DOP"  THEN
             IF (MONTO.TRANSACCION LT BALANCE.MINIMO.MLV) THEN
                 GOSUB PAYMENT

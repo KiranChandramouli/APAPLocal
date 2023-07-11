@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMDIyMDQwMTgzOlVURi04OjE2ODkwNzAyMzQ2NzI6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 Jul 2023 15:40:34
+* @ValidationCode : MjotMTc5OTc1MTI2MTpVVEYtODoxNjg5MDgwODQzODAxOkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Jul 2023 18:37:23
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -42,7 +42,7 @@ RETURN
 INIT:
 **-------------------------------------------------------
     SEL.LIST = ""; NO.OF.REC = ""; SEL.ERR = ""; FT.LIST.POS = ""
-* TXN.TYPE.FILTER = "OT33 OT30 OT32 OT31 OT37 OT34 OT36 OT35 AC25 AC08 AC28 AC86 AC14 AC90 ACIO AC88 AC2C AC92 AC2D AC2B"
+
     TXN.TYPE.FILTER = "OT33 OT30 OT32 OT31 OT37 OT34 OT36 OT35 AC25 AC08 AC28 AC86 AC14 AC90 ACIO AC88 AC2C AC92 AC2D AC2B AC91 AC93 AC87 AC89 AC77"
     LOGIN.NAME = ""
     Y.CUS.ID = ""
