@@ -1,0 +1,60 @@
+*-----------------------------------------------------------------------------
+*-----------------------------------------------------------------------------
+* <Rating>-20</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.PROCES.RN.RT.LOAD
+*--------------------------------------------------------------------------------------------------
+* Description           : Rutina LOAD para el proceso de actualizacion RN o RT
+* Developed On          : 23-10-2021
+* Developed By          : APAP
+* Development Reference : ET-5416
+*--------------------------------------------------------------------------------------------------
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_BATCH.FILES
+    $INSERT T24.BP I_TSA.COMMON
+    $INSERT T24.BP I_F.AA.ARRANGEMENT.ACTIVITY
+    $INSERT T24.BP I_F.AA.OVERDUE
+    $INSERT T24.BP I_F.AA.ARRANGEMENT
+    $INSERT T24.BP I_F.AA.OVERDUE
+    $INSERT LAPAP.BP I_LAPAP.PROCES.RN.RT.COMMON
+    $INSERT T24.BP I_F.AA.CUSTOMER
+    $INSERT TAM.BP I_F.REDO.CAMPAIGN.TYPES
+
+
+    GOSUB TABLAS
+    GOSUB GET.CAMPOS.LOCALES
+    RETURN
+TABLAS:
+
+    FN.AA.ARRANGEMENT.ACTIVITY = 'F.AA.ARRANGEMENT.ACTIVITY'
+    FV.AA.ARRANGEMENT.ACTIVITY = ''
+    CALL OPF (FN.AA.ARRANGEMENT.ACTIVITY,FV.AA.ARRANGEMENT.ACTIVITY)
+
+    FN.AA.ARRANGEMENT = 'F.AA.ARRANGEMENT'
+    FV.AA.ARRANGEMENT = ''
+    CALL OPF (FN.AA.ARRANGEMENT,FV.AA.ARRANGEMENT)
+
+    FN.LAPAP.CONCATE.RN.RT = 'F.LAPAP.RT.RN'
+    FV.LAPAP.CONCATE.RN.RT = ''
+    CALL OPF (FN.LAPAP.CONCATE.RN.RT,FV.LAPAP.CONCATE.RN.RT)
+    FN.REDO.CAMPAIGN.TYPES = 'F.REDO.CAMPAIGN.TYPES';
+    FV.REDO.CAMPAIGN.TYPES = '';
+    CALL OPF (FN.REDO.CAMPAIGN.TYPES,FV.REDO.CAMPAIGN.TYPES)
+    Y.ACTIVIDAD = 'LENDING-DISBURSE-COMMITMENT';
+
+    RETURN
+
+GET.CAMPOS.LOCALES:
+    L.LOAN.STATUS.1.POS = ''; L.STATUS.CHG.DT.POS = ''; L.LOAN.COND.POS = ''; L.RESTRUCT.TYPE.POS = ''; L.AA.CAMP.TY.POS = '';
+    CALL GET.LOC.REF ("AA.PRD.DES.OVERDUE", "L.LOAN.STATUS.1",L.LOAN.STATUS.1.POS)
+    CALL GET.LOC.REF ("AA.PRD.DES.OVERDUE", "L.STATUS.CHG.DT",L.STATUS.CHG.DT.POS)
+    CALL GET.LOC.REF ("AA.PRD.DES.OVERDUE", "L.LOAN.COND",L.LOAN.COND.POS)
+    CALL GET.LOC.REF ("AA.PRD.DES.OVERDUE", "L.RESTRUCT.TYPE",L.RESTRUCT.TYPE.POS)
+    CALL GET.LOC.REF ("AA.PRD.DES.CUSTOMER", "L.AA.CAMP.TY",L.AA.CAMP.TY.POS)
+    CALL GET.LOC.REF ("REDO.CAMPAIGN.TYPES", "L.LOAN.COND",L.LOAN.COND.T.POS)
+
+
+    RETURN
+
+END

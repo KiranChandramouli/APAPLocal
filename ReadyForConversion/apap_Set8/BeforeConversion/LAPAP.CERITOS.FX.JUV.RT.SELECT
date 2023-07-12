@@ -1,0 +1,33 @@
+*-----------------------------------------------------------------------------
+* <Rating>-10</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.CERITOS.FX.JUV.RT.SELECT
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_F.ACCOUNT
+    $INSERT TAM.BP I_F.REDO.CARD.RENEWAL
+    $INSERT ATM.BP I_F.ATM.REVERSAL
+    $INSERT TAM.BP I_F.REDO.LY.POINTS
+    $INSERT LAPAP.BP I_LAPAP.CERITOS.FX.JUV.COMMON
+
+    GOSUB DO.SELECT
+    RETURN
+
+DO.SELECT:
+    SEL.ERR = ''; SEL.LIST = ''; SEL.REC = ''; SEL.CMD = ''
+    SEL.CMD = "SELECT " : FN.ACC : " WITH CATEGORY EQ 6024"
+
+    CALL OCOMO("COMANDO SELECCION: " : SEL.CMD)
+    IF Y.CAN.RUN EQ 'SI' THEN
+        CALL EB.READLIST(SEL.CMD,SEL.REC,'',SEL.LIST,SEL.ERR)
+        CALL BATCH.BUILD.LIST('',SEL.REC)
+    END ELSE
+        CALL OCOMO("PROCESO YA EJECUTADO PARA EL PERIODO, VER LOG ID: " : Y.RUN.ID)
+        Y.EMPTY = ''
+        CALL BATCH.BUILD.LIST('',Y.EMPTY)
+    END
+    RETURN
+
+
+
+END

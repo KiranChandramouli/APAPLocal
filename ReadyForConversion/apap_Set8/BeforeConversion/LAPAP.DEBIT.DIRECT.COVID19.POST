@@ -1,0 +1,89 @@
+*-----------------------------------------------------------------------------
+* <Rating>-31</Rating>
+*-----------------------------------------------------------------------------
+*----------------------------------------
+* Limpieza de DEBIT.DIRECT - 2da Fase - Proyecto COVID19
+* Fecha: 31/03/2020
+* Autor: Oliver Fermin
+*----------------------------------------
+
+SUBROUTINE LAPAP.DEBIT.DIRECT.COVID19.POST
+
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_BATCH.FILES
+    $INSERT T24.BP I_TSA.COMMON
+    $INSERT T24.BP I_F.AA.PAYMENT.SCHEDULE
+    $INSERT T24.BP I_F.AA.ARRANGEMENT
+    $INSERT LAPAP.BP I_LAPAP.DEBIT.DIRECT.COVID19.COMO
+
+    GOSUB PROCESS
+    GOSUB CREAR.ARCHIVO.DMT
+    GOSUB CREAR.ARCHIVO.VERIFICACION
+
+RETURN
+
+PROCESS:
+*******
+
+    Y.ARREGLO.VALIDACION.OUT<-1> = "ARRANGEMENT|PRESTAMO|PRODUCTO|L.AA.PAY.METHOD|L.AA.DEBT.AC"
+
+    SEL.CMD  = ''; NO.OF.RECS = ''; F.CHK.DIR = "" ; SEL.LIST= ''
+    SEL.CMD = " SELECT " : FN.LAPAP.DEBIT.DIRECT.COVID19
+    CALL EB.READLIST(SEL.CMD, SEL.LIST, '',NO.OF.RECS,SE L.ERR)
+
+    LOOP
+        REMOVE Y.ID.RECORD FROM SEL.LIST SETTING REGISTRO.POS
+    WHILE Y.ID.RECORD  DO
+        CALL F.READ(FN.LAPAP.DEBIT.DIRECT.COVID19,Y.ID.RECORD,R.LAPAP.DEBIT.DIRECT.COVID19,F.LAPAP.DEBIT.DIRECT.COVID19,ERROR.DEBIT)
+        Y.ID = Y.ID.RECORD
+        Y.ID = CHANGE(Y.ID,'*',FM)
+        BEGIN CASE
+        CASE Y.ID<2> EQ 'VALIDATION.FILE'
+            Y.ARREGLO.VALIDACION.OUT<-1> = R.LAPAP.DEBIT.DIRECT.COVID19
+        CASE Y.ID<2> EQ 'DMT.FILE'
+            Y.ARREGLO.DMT.OUT<-1> = R.LAPAP.DEBIT.DIRECT.COVID19
+        CASE 1
+            Y.VALOR = "NO REGISTRO"
+        END CASE
+    REPEAT
+
+   GOSUB CREAR.ARCHIVO.VERIFICACION
+   GOSUB CREAR.ARCHIVO.DMT
+
+RETURN
+
+    
+CREAR.ARCHIVO.VERIFICACION:
+**************************
+
+        R.FIL = ''; READ.FIL.ERR = ''
+        CALL F.READ(FN.CHK.DIR1,Y.ARCHIVO.VALIDACION.OUT,R.FIL,F.CHK.DIR1,READ.FIL.ERR)
+        
+        IF R.FIL THEN
+            DELETE F.CHK.DIR1,Y.ARCHIVO.VALIDACION.OUT 
+        END
+
+        WRITE Y.ARREGLO.VALIDACION.OUT ON F.CHK.DIR1,Y.ARCHIVO.VALIDACION.OUT ON ERROR
+            CALL OCOMO("Error en la escritura del archivo en el directorio":F.CHK.DIR1)
+        END
+
+ RETURN
+
+CREAR.ARCHIVO.DMT:
+******************
+
+        R.FIL = ''; READ.FIL.ERR = ''
+        CALL F.READ(FN.CHK.DIR1,Y.ARCHIVO.NOMBRE.DMT.OUT,R.FIL,F.CHK.DIR1,READ.FIL.ERR)
+        
+        IF R.FIL THEN
+            DELETE F.CHK.DIR1,Y.ARCHIVO.NOMBRE.DMT.OUT
+        END
+
+        WRITE Y.ARREGLO.DMT.OUT ON F.CHK.DIR1,Y.ARCHIVO.NOMBRE.DMT.OUT ON ERROR
+            CALL OCOMO("Error en la escritura del archivo en el directorio":F.CHK.DIR1)
+        END
+
+ RETURN
+
+END
