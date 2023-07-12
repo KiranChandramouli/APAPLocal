@@ -1,0 +1,17 @@
+SUBROUTINE LAPAP.NO.CUS.IDEN.TIPE
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.ST.LAPAP.OCC.CUSTOMER
+
+    Y.IDEN.TYPE     = ""
+    Y.DATA          = O.DATA
+
+    Y.DATA                = CHANGE(Y.DATA,".",@FM)
+    Y.IDEN.TYPE           = Y.DATA<1>
+
+    O.DATA                = Y.IDEN.TYPE
+
+RETURN
+
+END
