@@ -1,0 +1,176 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+
+public method lApapGetSlipMonExt (
+    INOUT yInpDeal string
+)
+{
+    jBC: L.APAP.GET.SLIP.MON.EXT
+}
+
+
+
+public method lapapMasRedonOfsPmRt (
+    INOUT ofsMessage string
+) 
+{
+    jBC: LAPAP.MAS.REDON.OFS.PM.RT
+}
+
+
+
+public method lapapMasRedonRt (
+    INOUT yRoundup string
+)
+{
+    jBC: LAPAP.MAS.REDON.RT
+}
+
+
+
+public method lapapMasRedonRtLoad (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.LOAD
+}
+
+
+
+public method lapapMasRedonRtSelect (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.SELECT
+}
+ 
+
+
+public method lapapProcRedondeoMasiv (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: LAPAP.PROC.REDONDEO.MASIV
+}
+
+
+
+public method lapapRevAbonoCharg (
+)
+{
+    jBC: LAPAP.REV.ABONO.CHARG
+}
+
+
+
+public method lapapRtnOfsCargo (
+)
+{
+    jBC: LAPAP.RTN.OFS.CARGO
+}
+
+
+
+public method lapapRtnOverCargo (
+)
+{
+    jBC: LAPAP.RTN.OVER.CARGO
+}
+
+
+
+public method lapapUpdateFieldBcr (
+)
+{
+    jBC: LAPAP.UPDATE.FIELD.BCR
+}
+
+
+
+public method lapapVEmailRt (
+)
+{
+    jBC: LAPAP.V.EMAIL.RT
+}
+
+
+
+public method lapapValidaActyRt (
+)
+{
+    jBC: LAPAP.VALIDA.ACTY.RT
+}
+
+
+
+public method redoAmlNoclientFcyCheck (
+)
+{
+    jBC: REDO.AML.NOCLIENT.FCY.CHECK
+}
+
+
+
+public method redoApapNewConditionRtLoad (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.LOAD
+}
+
+
+
+public method redoApapReportsPasswReset (
+)
+{
+    jBC: REDO.APAP.REPORTS.PASSW.RESET
+}
+
+
+
+public method redoAzReinvReverse (
+   INOUT selId string
+)
+{
+   jBC: REDO.AZ.REINV.REVERSE
+}
+
+
+
+public method lapapRawLogger (
+   INOUT logDir string,
+   INOUT logName string,
+   INOUT logArr string
+) 
+{
+   jBC: LAPAP.RAW.LOGGER
+}
+
+
+
+public method lapapQueryAccuityRt (
+   INOUT pIdentity string,
+   INOUT pName string,
+   INOUT pNationality string,
+   INOUT pGender string,
+   INOUT pDob string,
+   INOUT oData string
+)
+{
+   jBC: LAPAP.QUERY.ACCUITY.RT
+}
+
+
+
+public method lapapPlafNotifyRt (
+   INOUT rec string
+)
+{
+   jBC: LAPAP.PLAF.NOTIFY.RT
+}
+

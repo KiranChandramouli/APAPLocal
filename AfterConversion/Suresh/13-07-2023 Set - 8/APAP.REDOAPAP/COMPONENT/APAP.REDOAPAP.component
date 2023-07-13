@@ -1,0 +1,235 @@
+component APAP.REDOAPAP
+# Component Isolation Definition 
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+private method redoApapAchMirrorAcctEnt (
+    INOUT primaryAccount string,
+    INOUT yTotalAmount string,
+    INOUT varCurrency string,
+    INOUT tfsReferenceId string
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.ACCT.ENT
+}
+
+
+
+private method redoApapAchMirrorRetAcctEnt (
+    INOUT amountVal string,
+    INOUT varCurrency string,
+    INOUT redoOutwardReturnId string
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.RET.ACCT.ENT
+}
+
+
+
+private method redoApapAchMirrorRevAcctEnt (
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.REV.ACCT.ENT
+}
+
+
+
+private method redoApapAutAdminChq (
+)
+{
+    jBC: REDO.APAP.AUT.ADMIN.CHQ
+}
+
+
+
+private method redoApapAutBillPymtUpd (
+)
+{
+    jBC: REDO.APAP.AUT.BILL.PYMT.UPD
+}
+
+
+
+private method redoApapAutChqDeposit (
+)
+{
+    jBC: REDO.APAP.AUT.CHQ.DEPOSIT
+}
+
+
+
+private method redoApapAutGenDealSlip (
+)
+{
+    jBC: REDO.APAP.AUT.GEN.DEAL.SLIP
+}
+
+
+
+private method redoApapAutGenEntries (
+)
+{
+    jBC: REDO.APAP.AUT.GEN.ENTRIES
+}
+
+
+
+private method redoApapAutMulTxnUpd (
+)
+{
+    jBC: REDO.APAP.AUT.MUL.TXN.UPD
+}
+
+
+
+private method redoApapAutTfsRevTxn (
+)
+{
+    jBC: REDO.APAP.AUT.TFS.REV.TXN
+}
+
+
+
+private method redoApapBChqUpdStatus (
+    INOUT arrId string
+)
+{
+    jBC: REDO.APAP.B.CHQ.UPD.STATUS
+}
+
+
+
+private method redoApapBranchClrAcctEnt (
+)
+{
+    jBC: REDO.APAP.BRANCH.CLR.ACCT.ENT
+}
+
+
+
+private method redoApapClrAcctEntries (
+)
+{
+    jBC: REDO.APAP.CLR.ACCT.ENTRIES
+}
+
+
+
+private method redoApapInfSuffAcctEnt (
+    INOUT amountVal string,
+    INOUT varCurrency string,
+    INOUT redoOutwardReturnId string
+)
+{
+    jBC: REDO.APAP.INF.SUFF.ACCT.ENT
+}
+
+
+
+private method redoApapInpAmlTfsCheck (
+)
+{
+    jBC: REDO.APAP.INP.AML.TFS.CHECK
+}
+
+
+
+private method redoApapInpBillPayment (
+)
+{
+    jBC: REDO.APAP.INP.BILL.PAYMENT
+}
+
+
+
+private method redoApapInpTfsLinesAmt (
+)
+{
+    jBC: REDO.APAP.INP.TFS.LINES.AMT
+}
+
+
+
+private method redoApapInpTfsNcfGen (
+)
+{
+    jBC: REDO.APAP.INP.TFS.NCF.GEN
+}
+
+
+
+private method redoApapInpTfsTtCheck (
+)
+{
+    jBC: REDO.APAP.INP.TFS.TT.CHECK
+}
+
+
+
+private method redoApapInsuranceNoinput (
+)
+{
+    jBC: REDO.APAP.INSURANCE.NOINPUT
+}
+
+
+
+private method redoApapInsuranceVal (
+)
+{
+    jBC: REDO.APAP.INSURANCE.VAL
+}
+
+
+
+private method redoApapNofCashWindowDepLoopMts (
+    INOUT yCcyList string,
+    INOUT tellerId string,
+    INOUT yTtParamRec string,
+    INOUT rRedoHTellerTxnCodes string,
+    INOUT yFinalArray string,
+    INOUT yTtList string
+)
+{
+    jBC: REDO.APAP.NOF.CASH.WINDOW.DEP.LOOP.MTS
+}
+
+
+
+private method redoApapNofileArrPayments (
+    INOUT yCommonArray string,
+    INOUT varEffectiveDate string,
+    INOUT yEffDate string,
+    INOUT yFormPay string,
+    INOUT varFormPay string,
+    INOUT yPayType string,
+    INOUT varPay string,
+    INOUT yArray string
+)
+{
+    jBC: REDO.APAP.NOFILE.ARR.PAYMENTS
+}
+
+
+
+private method redoApapSapGlDetailRpt (
+    INOUT gitMapValue string,
+    INOUT convErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.RPT
+}
+
+
+
+public method redoApapSapGlDetailRptSplit1 (
+    INOUT yEntryId string,
+    INOUT yEntryIndicator string,
+    INOUT yParamDetailsList string,
+    INOUT yFtOutList string
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.RPT.SPLIT.1
+}
+
