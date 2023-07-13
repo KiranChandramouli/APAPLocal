@@ -1,0 +1,30 @@
+*------------------------------------------------------------------------------------
+*  common file : I_LAPAP.OFS.INTEREST.PAID.COMMON
+*------------------------------------------------------------------------------------
+* Technical report:
+* -----------------
+* Company Name   : APAP
+* Program Name   : I_LAPAP.OFS.INTEREST.PAID.COMMON
+* Date           : 2018-10-10
+* Item ID        : CN009607
+*------------------------------------------------------------------------------------
+* Description :
+* ------------
+* This program send data via monitor interface to SQL SERVER
+*------------------------------------------------------------------------------------
+* Modification History :
+* ----------------------
+* Date           Author            Modification Description
+* -------------  -----------       ---------------------------
+* 2018-10-10     Richard HC        Initial Development
+*------------------------------------------------------------------------------------
+* Content summary :
+* -----------------
+* Table name     : STMT.ACCT.CR
+* Auto Increment : N/A
+* Views/versions : N/A
+* EB record      : N/A
+* PGM record     : N/A
+* Routine        : N/A
+*------------------------------------------------------------------------------------
+    COM/INTEREST.PAID/FN.AZ,F.AZ,FN.ST,F.ST,FN.DT,F.DT,FN.AC,F.AC
