@@ -1,0 +1,15 @@
+* Version 1 21/12/11  GLOBUS Release No. R09.000
+*
+* Modulo de Lealtad
+* Service: REDO.GENERATE.NAB.ACCOUNTING
+*-----------------------------------------------------------------------------
+* Modification History:
+*                      2011-12-21 : Ravikiran
+*                                   First version - CR-41
+*-----------------------------------------------------------------------------
+    COMMON/TAM/FN.REDO.AA.NAB.HISTORY,
+    F.REDO.AA.NAB.HISTORY,
+    FN.AA.ARRANGEMENT,
+    F.AA.ARRANGEMENT,
+    FN.REDO.NAB.ACCOUNTING,
+    F.REDO.NAB.ACCOUNTING

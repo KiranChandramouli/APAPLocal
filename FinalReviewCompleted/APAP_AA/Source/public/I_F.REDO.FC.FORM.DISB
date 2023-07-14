@@ -1,0 +1,20 @@
+* I_F.REDO.FC.FORM.DISB Created 17 NOV 12 at 02:45PM by apap/MARI.3
+*      PREFIX[FC.PR]
+        EQU FC.PR.DESCRIPCION TO 1,   RedoFcFormDisb_Descripcion TO 1,
+           FC.PR.ID.INST.DISB TO 2,   RedoFcFormDisb_IdInstDisb TO 2,
+              FC.PR.FIELD.VRN TO 3,   RedoFcFormDisb_FieldVrn TO 3,
+               FC.PR.NAME.VRN TO 4,   RedoFcFormDisb_NameVrn TO 4,
+          FC.PR.NAME.PART.VRN TO 5,   RedoFcFormDisb_NamePartVrn TO 5,
+             FC.PR.RESERVED.4 TO 6,   RedoFcFormDisb_Reserved4 TO 6,
+             FC.PR.RESERVED.3 TO 7,   RedoFcFormDisb_Reserved3 TO 7,
+             FC.PR.RESERVED.2 TO 8,   RedoFcFormDisb_Reserved2 TO 8,
+             FC.PR.RESERVED.1 TO 9,   RedoFcFormDisb_Reserved1 TO 9,
+          FC.PR.RECORD.STATUS TO 10,  RedoFcFormDisb_RecordStatus TO 10,
+                FC.PR.CURR.NO TO 11,  RedoFcFormDisb_CurrNo TO 11,
+               FC.PR.INPUTTER TO 12,  RedoFcFormDisb_Inputter TO 12,
+              FC.PR.DATE.TIME TO 13,  RedoFcFormDisb_DateTime TO 13,
+             FC.PR.AUTHORISER TO 14,  RedoFcFormDisb_Authoriser TO 14,
+                FC.PR.CO.CODE TO 15,  RedoFcFormDisb_CoCode TO 15,
+              FC.PR.DEPT.CODE TO 16,  RedoFcFormDisb_DeptCode TO 16,
+           FC.PR.AUDITOR.CODE TO 17,  RedoFcFormDisb_AuditorCode TO 17,
+        FC.PR.AUDIT.DATE.TIME TO 18,  RedoFcFormDisb_AuditDateTime TO 18

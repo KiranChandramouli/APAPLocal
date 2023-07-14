@@ -1,0 +1,11 @@
+* I_F.REDO.ISSUE.MAIL Created 01 NOV 10 at 01:27PM by apapr8/RENU1
+*      PREFIX[ISS.ML]
+      EQU ISS.ML.RECORD.STATUS TO 1,   RedoIssueMail_RecordStatus TO 1,
+                ISS.ML.CURR.NO TO 2,   RedoIssueMail_CurrNo TO 2,
+               ISS.ML.INPUTTER TO 3,   RedoIssueMail_Inputter TO 3,
+              ISS.ML.DATE.TIME TO 4,   RedoIssueMail_DateTime TO 4,
+             ISS.ML.AUTHORISER TO 5,   RedoIssueMail_Authoriser TO 5,
+                ISS.ML.CO.CODE TO 6,   RedoIssueMail_CoCode TO 6,
+              ISS.ML.DEPT.CODE TO 7,   RedoIssueMail_DeptCode TO 7,
+           ISS.ML.AUDITOR.CODE TO 8,   RedoIssueMail_AuditorCode TO 8,
+        ISS.ML.AUDIT.DATE.TIME TO 9,   RedoIssueMail_AuditDateTime TO 9

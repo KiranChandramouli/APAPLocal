@@ -1,0 +1,1321 @@
+component APAP.REDOSRTN
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoSAccountParam (
+    INOUT applType string,
+    INOUT operationType string,
+    INOUT stmtEntId string,
+    INOUT stmtRecord string
+)
+{
+    jBC: REDO.S.ACCOUNT.PARAM
+}
+
+
+
+public method redoSAmtCredit (
+    INOUT yAmtCredit string
+)
+{
+    jBC: REDO.S.AMT.CREDIT
+}
+
+
+
+
+public method redoSAmtDebit (
+    INOUT yAmtDebit string
+)
+{
+    jBC: REDO.S.AMT.DEBIT
+}
+
+
+
+public method redoSAsOfsValRtn (
+    INOUT ofsRequest string
+)
+{
+    jBC: REDO.S.AS.OFS.VAL.RTN
+}
+
+
+
+public method redoSBankName (
+    INOUT name string
+)
+{
+    jBC: REDO.S.BANK.NAME
+}
+
+
+
+public method redoSByEvent (
+    INOUT event string,
+    INOUT acctId string,
+    INOUT rAccount string,
+    INOUT chkVal string,
+    INOUT antig string
+)
+{
+    jBC: REDO.S.BY.EVENT
+}
+
+
+
+public method redoSByIncBal (
+    INOUT acctId string,
+    INOUT chkVal string
+)
+{
+    jBC: REDO.S.BY.INC.BAL
+}
+
+
+public method redoSByMthInt (
+    INOUT acctId string,
+    INOUT chkVal string
+)
+{
+    jBC: REDO.S.BY.MTH.INT
+}
+
+
+
+public method redoSCalcAchTxntype (
+)
+{
+    jBC: REDO.S.CALC.ACH.TXNTYPE
+}
+
+
+
+public method redoSCalcCheckDigit (
+    INOUT yCheckDigit string
+)
+{
+    jBC: REDO.S.CALC.CHECK.DIGIT
+}
+
+
+
+public method redoSCalcFtAmt (
+)
+{
+    jBC: REDO.S.CALC.FT.AMT
+}
+
+
+public method redoSCheckLimit (
+)
+{
+    jBC: REDO.S.CHECK.LIMIT
+}
+
+
+
+public method redoSColATsaRecord (
+)
+{
+    jBC: REDO.S.COL.A.TSA.RECORD
+}
+
+
+
+public method redoSColConcatComi (
+    INOUT validateProcess string,
+    INOUT convFunicton string,
+    INOUT convParam string
+)
+{
+    jBC: REDO.S.COL.CONCAT.COMI
+}
+
+
+public method redoSCompanyAdd3 (
+    INOUT yAdd3 string
+)
+{
+    jBC: REDO.S.COMPANY.ADD3
+}
+
+
+
+public method redoSCompanyAdd4 (
+    INOUT yAdd4 string
+)
+{
+    jBC: REDO.S.COMPANY.ADD4
+}
+
+
+
+public method redoSCompanyId (
+    INOUT yCompanyId string
+)
+{
+    jBC: REDO.S.COMPANY.ID
+}
+
+
+
+public method redoSCompanyName (
+    INOUT yCompanyName string
+)
+{
+    jBC: REDO.S.COMPANY.NAME
+}
+
+
+
+public method redoSCorDcBrStkUpd (
+)
+{
+    jBC: REDO.S.COR.DC.BR.STK.UPD
+}
+
+
+
+public method redoSCreditAccount (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CREDIT.ACCOUNT
+}
+
+
+
+public method redoSCustAddress (
+    INOUT yAddr string
+)
+{
+    jBC: REDO.S.CUST.ADDRESS
+}
+
+
+
+public method redoSCustIdVal (
+    INOUT custId string,
+    INOUT custNo string,
+    INOUT cusErr string
+)
+{
+    jBC: REDO.S.CUST.ID.VAL
+}
+
+
+
+public method redoSCustIndustry (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUST.INDUSTRY
+}
+
+
+
+public method redoSCustPep (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUST.PEP
+}
+
+
+
+public method redoSCustPna (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUST.PNA
+}
+
+
+
+public method redoSCustTelphone (
+    INOUT phone string
+)
+{
+    jBC: REDO.S.CUST.TELPHONE
+}
+
+
+
+public method redoSCustomerAdd1 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.ADD1
+}
+
+
+
+public method redoSCustomerAdd2 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.ADD2
+}
+
+
+
+public method redoSCustomerAdd3 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.ADD3
+}
+
+
+
+public method redoSCustomerAdd4 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.ADD4
+}
+
+
+
+public method redoSCustomerAmount (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.AMOUNT
+}
+
+
+
+public method redoSCustomerCedula (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.CEDULA
+}
+
+
+
+public method redoSCustomerCell (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.CELL
+}
+
+
+
+public method redoSCustomerCity (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.CITY
+}
+
+
+
+public method redoSCustomerDob (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.DOB
+}
+
+
+
+public method redoSCustomerGender (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.GENDER
+}
+
+
+
+public method redoSCustomerHome (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.HOME
+}
+
+
+
+public method redoSCustomerLastname1 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.LASTNAME1
+}
+
+
+
+public method redoSCustomerLastname2 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.LASTNAME2
+}
+
+
+public method redoSCustomerName2 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NAME2
+}
+
+
+
+public method redoSCustomerNation (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NATION
+}
+
+
+
+public method redoSCustomerOff (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.OFF
+}
+
+
+
+public method redoSCustomerPassport (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.PASSPORT
+}
+
+
+
+public method redoSCustomerPfName1 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.PF.NAME1
+}
+
+
+
+public method redoSCustomerResSec (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.RES.SEC
+}
+
+
+
+public method redoSCustomerRnc (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.RNC
+}
+
+
+
+public method redoSCustomerSector (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.SECTOR
+}
+
+
+
+public method redoSCustomerSocName (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.SOC.NAME
+}
+
+
+
+public method redoSCustomerStreet (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.STREET
+}
+
+
+
+public method redoSCustomerTownCountry (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.TOWN.COUNTRY
+}
+
+
+
+public method redoSCustomerType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.TYPE
+}
+
+
+
+public method redoSFcAcHistory (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AC.HISTORY
+}
+
+
+
+public method redoSFcAzAcRelCod (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AZ.AC.REL.COD
+}
+
+
+
+public method redoSFcAzAcStatus1 (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AZ.AC.STATUS1
+}
+
+
+
+public method redoSFcAzAcStatus2 (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AZ.AC.STATUS2
+}
+
+
+
+public method redoSFcAzAcWknBal (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AZ.AC.WKN.BAL
+}
+
+
+
+public method redoSFcAzHistory (
+    INOUT acId string,
+    INOUT acRec string
+)
+{
+    jBC: REDO.S.FC.AZ.HISTORY
+}
+
+
+
+public method redoSFcCuTasador (
+    INOUT cuId string,
+    INOUT cuArr string
+)
+{
+    jBC: REDO.S.FC.CU.TASADOR
+}
+
+
+
+public method redoSFcLimiteTopeGr (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.TOPE.GR
+}
+
+
+
+public method redoSFcLimiteTopeVinc (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.TOPE.VINC
+}
+
+
+
+public method redoSFcPatrimoniotec (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.PATRIMONIOTEC
+}
+
+
+
+
+
+public method redoSFcViDisponibGrInv (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.DISPONIB.GR.INV
+}
+
+
+
+public method redoSFcViDisponibGrT (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.DISPONIB.GR.T
+}
+
+
+
+public method redoSFcViDisponibVGr (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.DISPONIB.V.GR
+}
+
+
+
+public method redoSFcViDisponibVinc (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.DISPONIB.VINC
+}
+
+
+
+public method redoSFcViExpTtGrupoR (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.EXP.TT.GRUPO.R
+}
+
+
+
+public method redoSFcViExposicionTGrupoR (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.EXPOSICION.T.GRUPO.R
+}
+
+
+
+public method redoSFcViExposicionTtGrupoV (
+    INOUT aaId string,
+    INOUT viArr string
+)
+{
+    jBC: REDO.S.FC.VI.EXPOSICION.TT.GRUPO.V
+}
+
+
+
+public method redoSFetchAddress (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.ADDRESS
+}
+
+
+
+public method redoSFetchCardCustomer (
+    INOUT inParam string
+)
+{
+    jBC: REDO.S.FETCH.CARD.CUSTOMER
+}
+
+
+
+public method redoSFetchCardCustomerId (
+    INOUT inParam string
+)
+{
+    jBC: REDO.S.FETCH.CARD.CUSTOMER.ID
+}
+
+
+
+public method redoSFetchCardNo (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.CARD.NO
+}
+
+
+
+public method redoSFetchCardNoTd (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.CARD.NO.TD
+}
+
+
+
+public method redoSFetchCharge (
+    INOUT sysDate string
+)
+{
+    jBC: REDO.S.FETCH.CHARGE
+}
+
+
+
+public method redoSFetchCustIden (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.CUST.IDEN
+}
+
+
+
+public method redoSFetchCustIdenNo (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.CUST.IDEN.NO
+}
+
+
+
+public method redoSFetchCustomerNo (
+    INOUT custoemrNo string
+)
+{
+    jBC: REDO.S.FETCH.CUSTOMER.NO
+}
+
+
+
+public method redoSFetchDealTime (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.DEAL.TIME
+}
+
+
+
+public method redoSFetchDebCustAcc (
+)
+{
+    jBC: REDO.S.FETCH.DEB.CUST.ACC
+}
+
+
+
+public method redoSFetchDob (
+    INOUT dobDate string
+)
+{
+    jBC: REDO.S.FETCH.DOB
+}
+
+
+
+public method redoSFetchLegalId (
+)
+{
+    jBC: REDO.S.FETCH.LEGAL.ID
+}
+
+
+public method redoSFetchSysDate (
+    INOUT sysDate string
+)
+{
+    jBC: REDO.S.FETCH.SYS.DATE
+}
+
+
+
+public method redoSFetchSystemDate (
+    INOUT sysDate string
+)
+{
+    jBC: REDO.S.FETCH.SYSTEM.DATE
+}
+
+
+
+public method redoSFetchTelephone (
+    INOUT res string
+)
+{
+    jBC: REDO.S.FETCH.TELEPHONE
+}
+
+
+
+public method redoSFetchTellerId (
+    INOUT yTellerId string
+)
+{
+    jBC: REDO.S.FETCH.TELLER.ID
+}
+
+
+
+public method redoSFetchValDate (
+    INOUT valDate string
+)
+{
+    jBC: REDO.S.FETCH.VAL.DATE
+}
+
+
+
+public method redoSFetchValueDate (
+    INOUT valDate string
+)
+{
+    jBC: REDO.S.FETCH.VALUE.DATE
+}
+
+
+
+public method redoSFormatDate (
+)
+{
+    jBC: REDO.S.FORMAT.DATE
+}
+
+
+
+public method redoSFormatDateTime (
+    INOUT sysDateTime string
+)
+{
+    jBC: REDO.S.FORMAT.DATE.TIME
+}
+
+
+
+public method redoSFormatTime (
+)
+{
+    jBC: REDO.S.FORMAT.TIME
+}
+
+
+
+public method redoSGetAccHolder (
+    INOUT jointName string
+)
+{
+    jBC: REDO.S.GET.ACC.HOLDER
+}
+
+
+
+public method redoSGetAzAccName (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.AZ.ACC.NAME
+}
+
+
+public method redoSGetClientType (
+    INOUT type string
+)
+{
+    jBC: REDO.S.GET.CLIENT.TYPE
+}
+
+
+public method redoSGetCusIdentity (
+    INOUT customerIdentity string
+)
+{
+    jBC: REDO.S.GET.CUS.IDENTITY
+}
+
+
+
+public method redoSGetCusName (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.CUS.NAME
+}
+
+
+
+public method redoSGetCusNo (
+    INOUT cusOut string
+)
+{
+    jBC: REDO.S.GET.CUS.NO
+}
+
+
+
+public method redoSGetCusNumber (
+    INOUT customerNo string
+)
+{
+    jBC: REDO.S.GET.CUS.NUMBER
+}
+
+
+
+public method redoSGetCustIden (
+)
+{
+    jBC: REDO.S.GET.CUST.IDEN
+}
+
+
+
+public method redoSGetCustNam (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.CUST.NAM
+}
+
+
+
+public method redoSGetDenomination (
+    INOUT vDrDenominatio string
+)
+{
+    jBC: REDO.S.GET.DENOMINATION
+}
+
+
+
+public method redoSGetExchgRate (
+    INOUT exchgRate string
+)
+{
+    jBC: REDO.S.GET.EXCHG.RATE
+}
+
+
+
+public method redoSGetFcyAmt (
+    INOUT fcyAmt string
+)
+{
+    jBC: REDO.S.GET.FCY.AMT
+}
+
+
+
+public method redoSGetFxBuySrc (
+    INOUT buySrc string
+)
+{
+    jBC: REDO.S.GET.FX.BUY.SRC
+}
+
+
+
+public method redoSGetFxSelDst (
+    INOUT selDst string
+)
+{
+    jBC: REDO.S.GET.FX.SEL.DST
+}
+
+
+
+public method redoSGetIdNew (
+)
+{
+    jBC: REDO.S.GET.ID.NEW
+}
+
+
+
+public method redoSGetLcyAmt (
+    INOUT lcyAmt string
+)
+{
+    jBC: REDO.S.GET.LCY.AMT
+}
+
+
+
+public method redoSGetNarrative (
+)
+{
+    jBC: REDO.S.GET.NARRATIVE
+}
+
+
+
+public method redoSGetOutBalance (
+    INOUT aaId string,
+    INOUT wamtAa string
+)
+{
+    jBC: REDO.S.GET.OUT.BALANCE
+}
+
+
+
+public method redoSGetPass (
+    INOUT userPass string
+)
+{
+    jBC: REDO.S.GET.PASS
+}
+
+
+
+public method redoSGetPayMethod (
+    INOUT payMethod string
+)
+{
+    jBC: REDO.S.GET.PAY.METHOD
+}
+
+
+public method redoSGetPrint (
+)
+{
+    jBC: REDO.S.GET.PRINT
+}
+
+
+
+public method redoSGetRcepMthd (
+    INOUT rcepMthd string
+)
+{
+    jBC: REDO.S.GET.RCEP.MTHD
+}
+
+
+component APAP.REDOSRTN
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method redoSGetSysDate (
+)
+{
+    jBC: REDO.S.GET.SYS.DATE
+}
+
+
+
+
+public method redoSGetTftCcy (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.GET.TFT.CCY
+}
+
+
+
+public method redoSGetTxnFcy (
+    INOUT txnFcy string
+)
+{
+    jBC: REDO.S.GET.TXN.FCY
+}
+
+
+
+
+public method redoSGetValDate (
+)
+{
+    jBC: REDO.S.GET.VAL.DATE
+}
+
+
+
+public method redoSNotifyInterfaceAct (
+    INOUT intCode string,
+    INOUT intType string,
+    INOUT monTp string,
+    INOUT desc string,
+    INOUT recCon string,
+    INOUT batNo string,
+    INOUT batTot string,
+    INOUT infoOr string,
+    INOUT infoDe string,
+    INOUT idProc string,
+    INOUT exUser string,
+    INOUT exPc string
+)
+{
+    jBC: REDO.S.NOTIFY.INTERFACE.ACT
+}
+
+
+
+public method redoSOpenFiles (
+)
+{
+    jBC: REDO.S.OPEN.FILES
+}
+
+
+
+public method redoSOperationType (
+    INOUT yOperationType string
+)
+{
+    jBC: REDO.S.OPERATION.TYPE
+}
+
+
+
+public method redoSPartPymtAut (
+)
+{
+    jBC: REDO.S.PART.PYMT.AUT
+}
+
+
+
+public method redoSPartPymtAut1 (
+)
+{
+    jBC: REDO.S.PART.PYMT.AUT1
+}
+
+
+
+public method redoSPaymentRule (
+)
+{
+    jBC: REDO.S.PAYMENT.RULE
+}
+
+
+
+public method redoSRejectDesc (
+    INOUT desc string
+)
+{
+    jBC: REDO.S.REJECT.DESC
+}
+
+
+
+public method redoSRepCustomerExtract (
+    INOUT yCustomerId string,
+    INOUT yProductGroup string,
+    INOUT yRelCode string,
+    INOUT outArr string
+)
+{
+    jBC: REDO.S.REP.CUSTOMER.EXTRACT
+}
+
+
+
+public method redoSTermAmount (
+)
+{
+    jBC: REDO.S.TERM.AMOUNT
+}
+
+
+
+public method redoSUpdCusActanac (
+    INOUT yCusId string
+)
+{
+    jBC: REDO.S.UPD.CUS.ACTANAC
+}
+
+
+
+public method redoSUpdCusActanacLoad (
+)
+{
+    jBC: REDO.S.UPD.CUS.ACTANAC.LOAD
+}
+
+
+
+public method redoSUpdCusActanacSelect (
+)
+{
+    jBC: REDO.S.UPD.CUS.ACTANAC.SELECT
+}
+
+
+
+public method redoSUpdCusLegalId (
+)
+{
+    jBC: REDO.S.UPD.CUS.LEGAL.ID
+}
+
+
+
+public method redoSUpdLoanPayoffDate (
+)
+{
+    jBC: REDO.S.UPD.LOAN.PAYOFF.DATE
+}
+
+
+
+public method redoSVerifyPunishLoan (
+    INOUT yResponse string
+)
+{
+    jBC: REDO.S.VERIFY.PUNISH.LOAN
+}
+
+
+
+public method redoSVpInitProcessDate (
+)
+{
+    jBC: REDO.S.VP.INIT.PROCESS.DATE
+}
+
+
+
+public method redoSWorkLimit (
+)
+{
+    jBC: REDO.S.WORK.LIMIT
+}
+
+public method redoSColGetPayFreq (
+    INOUT pInAaId string,
+    INOUT pInRStaticMapping string,
+    INOUT pInProcessDate string,
+    INOUT pOutPayFreq string
+)
+{
+    jBC: REDO.S.COL.GET.PAY.FREQ
+}
+
+public method redoSColGetPayType (
+    INOUT pInAaId string,
+    INOUT pInRStaticMapping string,
+    INOUT pInProcessDate string,
+    INOUT pOutPayType string
+)
+{
+    jBC: REDO.S.COL.GET.PAY.TYPE
+}
+
+public method redoSColGetBillDetails (
+    INOUT AAiD string,
+    INOUT rAaAccountDetails string,
+    INOUT yProcessDate string,
+    INOUT yMoraCtaVen string,
+    INOUT yTmpcreditodiasatraso string,
+    INOUT yTmpcreditocuotasvencidas string,
+    INOUT yTmpcreditocuotaspagadas string,
+    INOUT yTmpcreditomontomoroso string
+)
+{
+    jBC: REDO.S.COL.GET.BILL.DETAILS
+}
+
+public method redoSColGetPeriodBalance (
+    INOUT yAccountId string,
+    INOUT yProcessDate string,
+    INOUT rStaticMapping string,
+    INOUT yAaStatus string,
+    INOUT yAaProperty string,
+    INOUT yOutAaAmount string
+)
+{
+    jBC: REDO.S.COL.GET.PERIOD.BALANCE
+}
+
+public method redoSComCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.COM.CALC.DISB.DATE.AMT
+}
+public method redoSGetPeriodAmts(
+    INOUT yAccountId string,
+    INOUT yStartDate string, 
+    INOUT yProcessDate string, 
+    INOUT yAABalanceList string, 
+    INOUT yOutAAAMtList string
+    
+)
+{
+    jBC: REDO.S.GET.PERIOD.AMTS
+}
+
+
+
+public method redoSFetchSatus(
+)
+{
+    jBC: REDO.S.FETCH.STATUS
+}
+
+
+public method redoSGetCusAccName (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.CUS.ACC.NAME
+}
+
+public method redoSByMthIncAvgBal (
+    INOUT acctId string,
+    INOUT chkVal string
+)
+{
+    jBC: REDO.S.BY.MTH.INC.AVG.BAL
+}
+
+
+public method redoSGetUsrErrMsg (
+   INOUT pErrCode string,
+   INOUT pUsrMsg string
+)
+{
+   jBC: REDO.S.GET.USR.ERR.MSG
+}

@@ -1,0 +1,31 @@
+*
+*I_DR.REG.RIEN11.EXTRACT.COMMON
+*
+*Insert file to hold the common variables used by the service DR.REG.RIEN11.EXTRACT
+*and RCL side
+*
+*-----------------------------------------------------------------------------
+*
+*Modification History :
+*----------------------
+*  Date      Author              Modification Description
+*
+*  08/07/2014  Ashokkumar            PACS00312712 - Added additional variables
+*-----------------------------------------------------------------------------
+
+    COMMON/DR.REG.RIEN11.EXTRACT/LAST.WRK.DATE,
+    FN.DR.REG.RIEN11.PARAM,     F.DR.REG.RIEN11.PARAM,
+    FN.STMT.ENTRY,               F.STMT.ENTRY,
+    FN.ACCT.ENT.LWORK.DAY,       F.ACCT.ENT.LWORK.DAY,
+    FN.DR.REG.RIEN11.WORKFILE,FV.DR.REG.RIEN11.WORKFILE,
+    FLD.DEL,FN.CUSTOMER,F.CUSTOMER,L.CU.CIDENT.POS,
+    L.CU.RNC.POS,L.CU.TIPO.CL.POS,F.REDO.AZACC.DESC,
+    FN.ACCOUNT,F.ACCOUNT,FN.REDO.AZACC.DESC,
+    FN.DR.REG.RIEN11.WORKFILE.FCY,FV.DR.REG.RIEN11.WORKFILE.FCY,
+    FN.RE.STAT.LINE.CONT,F.RE.STAT.LINE.CONT,
+    L.CU.FOREIGN.POS,Y.APAP.INDUS.POS,
+    F.RE.STAT.REP.LINE,FN.RE.STAT.REP.LINE, FN.EB.CONTRACT.BALANCES, 
+    F.EB.CONTRACT.BALANCES, L.TXN.CODE.POS,
+    FN.TRANSACTION, F.TRANSACTION, CATEG.LST.VAL,
+    Y.TXNCCY.VAL.ARR,Y.TXNCCY.DIS.ARR,Y.TXNCDE.VAL.ARR,
+    Y.TXNCDE.DIS.ARR

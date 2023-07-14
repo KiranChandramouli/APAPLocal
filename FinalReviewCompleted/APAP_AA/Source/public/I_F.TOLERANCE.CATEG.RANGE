@@ -1,0 +1,16 @@
+* I_F.TOLERANCE.CATEG.RANGE Created 01 MAR 11 at 05:03AM by apapr8/SHANKARRAJU3
+*      PREFIX[TR]
+        EQU TR.DESCRIPTION TO 1,   ToleranceCategRange_Description TO 1,
+          TR.MIN.LIM.AGNCY TO 2,   ToleranceCategRange_MinLimAgncy TO 2,
+          TR.MAX.LIM.AGNCY TO 3,   ToleranceCategRange_MaxLimAgncy TO 3,
+        TR.MIN.LIM.CASHIER TO 4,   ToleranceCategRange_MinLimCashier TO 4,
+        TR.MAX.LIM.CASHIER TO 5,   ToleranceCategRange_MaxLimCashier TO 5,
+          TR.RECORD.STATUS TO 6,   ToleranceCategRange_RecordStatus TO 6,
+                TR.CURR.NO TO 7,   ToleranceCategRange_CurrNo TO 7,
+               TR.INPUTTER TO 8,   ToleranceCategRange_Inputter TO 8,
+              TR.DATE.TIME TO 9,   ToleranceCategRange_DateTime TO 9,
+             TR.AUTHORISER TO 10,  ToleranceCategRange_Authoriser TO 10,
+                TR.CO.CODE TO 11,  ToleranceCategRange_CoCode TO 11,
+              TR.DEPT.CODE TO 12,  ToleranceCategRange_DeptCode TO 12,
+           TR.AUDITOR.CODE TO 13,  ToleranceCategRange_AuditorCode TO 13,
+        TR.AUDIT.DATE.TIME TO 14,  ToleranceCategRange_AuditDateTime TO 14

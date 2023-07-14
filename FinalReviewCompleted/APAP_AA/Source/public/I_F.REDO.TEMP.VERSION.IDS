@@ -1,0 +1,9 @@
+* I_F.REDO.TEMP.VERSION.IDS Created 11 APR 13 at 05:10AM by apap/VIGNESH01
+*      PREFIX[REDO.TEM]
+             EQU REDO.TEM.TXN.ID TO 1,   RedoTempVersionIds_TxnId TO 1,
+             REDO.TEM.PRV.TXN.ID TO 2,   RedoTempVersionIds_PrvTxnId TO 2,
+             REDO.TEM.AUT.TXN.ID TO 3,   RedoTempVersionIds_AutTxnId TO 3,
+           REDO.TEM.PROCESS.DATE TO 4,   RedoTempVersionIds_ProcessDate TO 4,
+             REDO.TEM.REV.TXN.ID TO 5,   RedoTempVersionIds_RevTxnId TO 5,
+           REDO.TEM.REV.TXN.DATE TO 6,   RedoTempVersionIds_RevTxnDate TO 6,
+                REDO.TEM.FT.TYPE TO 7,   RedoTempVersionIds_FtType TO 7

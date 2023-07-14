@@ -1,0 +1,12 @@
+* I_F.REDO.MM.STATUS Created 08 OCT 10 at 05:59PM by apapr8/SABARI1
+*      PREFIX[MM]
+        EQU MM.DESCRIPTION TO 1,   RedoMmStatus_Description TO 1,
+          MM.RECORD.STATUS TO 2,   RedoMmStatus_RecordStatus TO 2,
+                MM.CURR.NO TO 3,   RedoMmStatus_CurrNo TO 3,
+               MM.INPUTTER TO 4,   RedoMmStatus_Inputter TO 4,
+              MM.DATE.TIME TO 5,   RedoMmStatus_DateTime TO 5,
+             MM.AUTHORISER TO 6,   RedoMmStatus_Authoriser TO 6,
+                MM.CO.CODE TO 7,   RedoMmStatus_CoCode TO 7,
+              MM.DEPT.CODE TO 8,   RedoMmStatus_DeptCode TO 8,
+           MM.AUDITOR.CODE TO 9,   RedoMmStatus_AuditorCode TO 9,
+        MM.AUDIT.DATE.TIME TO 10,  RedoMmStatus_AuditDateTime TO 10
