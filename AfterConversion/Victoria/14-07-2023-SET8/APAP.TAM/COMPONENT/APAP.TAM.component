@@ -1,0 +1,30 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method apapAuthMaskCard (
+)
+{
+    jBC: APAP.AUTH.MASK.CARD
+}
+
+
+
+public method apapCheckMaskCard (
+)
+{
+    jBC: APAP.CHECK.MASK.CARD
+}
+
+
+
+public method apapDynConvRtn (
+)
+{
+    jBC: APAP.DYN.CONV.RTN
+}
+
+
+
