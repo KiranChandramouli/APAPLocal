@@ -1,0 +1,110 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method lApapAuthTdAdiChRt (
+)
+{
+    jBC: L.APAP.AUTH.TD.ADI.CH.RT
+}
+
+
+
+
+
+
+
+public method lApapCdfGenRtPost (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.POST
+}
+
+
+
+
+public method lApapCorrCastigSeqprot (
+    INOUT aaArrId string
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT
+}
+
+
+
+public method lapapBolCreditRt (
+)
+{
+    jBC: LAPAP.BOL.CREDIT.RT
+}
+
+
+
+public method lapapBolDescRt (
+)
+{
+    jBC: LAPAP.BOL.DESC.RT
+}
+
+
+
+public method lapapTranBolCreRt (
+)
+{
+    jBC: LAPAP.TRAN.BOL.CRE.RT
+}
+
+
+
+public method lapapTranfBolsillosRt (
+)
+{
+    jBC: LAPAP.TRANF.BOLSILLOS.RT
+}
+
+
+
+public method lapapUpdateOpeningDateVal (
+)
+{
+    jBC: LAPAP.UPDATE.OPENING.DATE.VAL
+}
+
+
+
+public method lapapVLegalId (
+)
+{
+    jBC: LAPAP.V.LEGAL.ID
+}
+
+
+
+public method lapapVTranBolRt (
+)
+{
+    jBC: LAPAP.V.TRAN.BOL.RT
+}
+
+
+
+
+
+
+public method redoAutRteOverrideChk (
+)
+{
+    jBC: REDO.AUT.RTE.OVERRIDE.CHK
+}
+
+
+
+
+
+
+
+

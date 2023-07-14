@@ -1,0 +1,15 @@
+component APAP.DRREG
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+
+public method drRegRien8ExtractSelect (
+)
+{
+    jBC: DR.REG.RIEN8.EXTRACT.SELECT
+}
+
