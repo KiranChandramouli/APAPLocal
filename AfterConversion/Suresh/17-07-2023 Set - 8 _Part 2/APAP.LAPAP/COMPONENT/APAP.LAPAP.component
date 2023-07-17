@@ -1,0 +1,493 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+
+public method lApapGetSlipMonExt (
+    INOUT yInpDeal string
+)
+{
+    jBC: L.APAP.GET.SLIP.MON.EXT
+}
+
+
+
+public method lapapMasRedonOfsPmRt (
+    INOUT ofsMessage string
+) 
+{
+    jBC: LAPAP.MAS.REDON.OFS.PM.RT
+}
+
+
+
+public method lapapMasRedonRt (
+    INOUT yRoundup string
+)
+{
+    jBC: LAPAP.MAS.REDON.RT
+}
+
+
+
+public method lapapMasRedonRtLoad (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.LOAD
+}
+
+
+
+public method lapapMasRedonRtSelect (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.SELECT
+}
+ 
+
+
+public method lapapProcRedondeoMasiv (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: LAPAP.PROC.REDONDEO.MASIV
+}
+
+
+
+public method lapapRevAbonoCharg (
+)
+{
+    jBC: LAPAP.REV.ABONO.CHARG
+}
+
+
+
+public method lapapRtnOfsCargo (
+)
+{
+    jBC: LAPAP.RTN.OFS.CARGO
+}
+
+
+
+public method lapapRtnOverCargo (
+)
+{
+    jBC: LAPAP.RTN.OVER.CARGO
+}
+
+
+
+public method lapapUpdateFieldBcr (
+)
+{
+    jBC: LAPAP.UPDATE.FIELD.BCR
+}
+
+
+
+public method lapapVEmailRt (
+)
+{
+    jBC: LAPAP.V.EMAIL.RT
+}
+
+
+
+public method lapapValidaActyRt (
+)
+{
+    jBC: LAPAP.VALIDA.ACTY.RT
+}
+
+
+
+public method redoAmlNoclientFcyCheck (
+)
+{
+    jBC: REDO.AML.NOCLIENT.FCY.CHECK
+}
+
+
+
+public method redoApapNewConditionRtLoad (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.LOAD
+}
+
+
+
+public method redoApapReportsPasswReset (
+)
+{
+    jBC: REDO.APAP.REPORTS.PASSW.RESET
+}
+
+
+
+public method redoAzReinvReverse (
+    INOUT selId string
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE
+}
+
+
+
+public method lapapRawLogger (
+    INOUT logDir string,
+    INOUT logName string,
+    INOUT logArr string
+) 
+{
+    jBC: LAPAP.RAW.LOGGER
+}
+
+
+
+public method lapapQueryAccuityRt (
+    INOUT pIdentity string,
+    INOUT pName string,
+    INOUT pNationality string,
+    INOUT pGender string,
+    INOUT pDob string,
+    INOUT oData string
+)
+{
+    jBC: LAPAP.QUERY.ACCUITY.RT
+}
+
+
+
+public method lapapPlafNotifyRt (
+    INOUT rec string
+)
+{
+    jBC: LAPAP.PLAF.NOTIFY.RT
+}
+
+
+
+public method redoBBcrReportGenLoad (
+)
+{
+    jBC: REDO.B.BCR.REPORT.GEN.LOAD
+}
+
+
+
+public method redoBOverdraftAcctRtnPost (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.POST
+}
+
+
+
+public method redoBOverdraftAcctRtnSelect (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.SELECT
+}
+
+
+
+public method redoBOvrLoanReport (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT
+}
+
+
+
+public method redoBOvrLoanReportLoad (
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT.LOAD
+}
+
+
+
+public method redoBOvrLoanReportSelect (
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT.SELECT
+}
+
+
+
+public method redoBRecAcctList (
+    INOUT yAcctId string
+)
+{
+    jBC: REDO.B.REC.ACCT.LIST
+}
+
+
+
+public method redoBStatusUpdateCs (
+    INOUT yCustId string
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS
+}
+
+
+
+public method redoBStatusUpdateCsLoad (
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS.LOAD
+}
+
+
+
+public method redoBStatusUpdateCsSelect (
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS.SELECT
+}
+
+
+
+public method redoLAthTermLocName (
+    INOUT yAthId string
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME
+}
+
+
+
+public method redoLAthTermLocNameLoad (
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME.LOAD
+}
+
+
+
+public method redoLAthTermLocNameSelect (
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME.SELECT
+}
+
+
+
+public method redoLapapRteCreditAccount (
+    INOUT yOut string
+)
+{
+    jBC: REDO.LAPAP.RTE.CREDIT.ACCOUNT
+}
+
+
+
+public method redoLapapRteDslipCashAmt (
+    INOUT yOut string
+)
+{
+    jBC: REDO.LAPAP.RTE.DSLIP.CASH.AMT
+}
+
+
+
+public method redoNofileRtePrintDealslip (
+    INOUT yData string
+)
+{ 
+    jBC: REDO.NOFILE.RTE.PRINT.DEALSLIP
+}
+
+
+
+public method redoRBcrReportBuild (
+)
+{
+    jBC: REDO.R.BCR.REPORT.BUILD
+}
+
+
+
+public method redoRaiseRteOverride (
+)
+{
+    jBC: REDO.RAISE.RTE.OVERRIDE
+}
+
+
+
+public method redoSRteCcyDop (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.DOP
+}
+
+
+
+public method redoSRteCcyEur (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.EUR
+}
+
+
+
+public method redoSRteCcyGbp (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.GBP
+}
+
+
+
+public method redoSRteCcyOthers (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.OTHERS
+}
+
+
+
+public method redoSRteCcyUsd (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.USD
+}
+
+
+
+public method redoSRteFcyExgRate (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.FCY.EXG.RATE
+}
+
+
+
+public method redoSRteLdocNumber (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.LDOC.NUMBER
+}
+
+
+
+public method redoSRteLdocType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.LDOC.TYPE
+}
+
+
+
+public method redoSRteMarkOtherPerson (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.MARK.OTHER.PERSON
+}
+
+
+
+public method redoSRteOriginalAmt (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.ORIGINAL.AMT
+}
+
+
+
+public method redoSRteProductType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.PRODUCT.TYPE
+}
+
+
+
+public method redoSRteTxnType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.TXN.TYPE
+}
+
+
+
+public method redoSSetDsvariables (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.SET.DSVARIABLES
+}
+
+
+
+public method redoTtDateTimeFmt (
+    INOUT yFieldName string
+)
+{
+    jBC: REDO.TT.DATE.TIME.FMT
+}
+
+
+
+
+
+public method redoVAaAutCpOverpay (
+)
+{
+    jBC: REDO.V.AA.AUT.CP.OVERPAY
+}
+
+
+
+public method redoVUpdRteFlag (
+)
+{
+    jBC: REDO.V.UPD.RTE.FLAG
+}
+
+
+
+public method lApapJsonStringify (
+    INOUT jsonIn string,
+    INOUT jsonOut string
+)
+{
+    jBC: L.APAP.JSON.STRINGIFY
+}
+
+
+
+public method redoLGetDisbursementDetails (
+    INOUT yIdsDetails string,
+    INOUT rDisbDetails string,
+    INOUT yCommitedAmt string,
+    INOUT yPendDisb string
+)
+{
+    jBC: REDO.L.GET.DISBURSEMENT.DETAILS
+}
+
