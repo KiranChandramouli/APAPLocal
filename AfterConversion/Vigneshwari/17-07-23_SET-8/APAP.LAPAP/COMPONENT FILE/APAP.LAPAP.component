@@ -1,0 +1,58 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method lapapVInpCalcCharge (
+)
+{
+   jBC: LAPAP.V.INP.CALC.CHARGE
+}
+
+
+
+public method lapapVerifyParam (
+)
+{
+   jBC: LAPAP.VERIFY.PARAM
+}
+
+
+
+public method redoApapCreditCardUpdLoad (
+)
+{
+   jBC: REDO.APAP.CREDIT.CARD.UPD.LOAD
+}
+
+
+
+public method redoApapTcDetUpdOt (
+)
+{
+   jBC: REDO.APAP.TC.DET.UPD.OT
+}
+
+
+
+public method redoAzReinvReverseSelect (
+)
+{
+   jBC: REDO.AZ.REINV.REVERSE.SELECT
+}
+
+
+
+public method redoSRegCustomerExtract (
+   INOUT yCustomerId string,
+   INOUT yProductGroup string,
+   INOUT yRelCode string,
+   INOUT outArr string
+)
+{
+   jBC: REDO.S.REG.CUSTOMER.EXTRACT
+}
+
