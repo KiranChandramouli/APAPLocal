@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMzgzNzU0NzUxOkNwMTI1MjoxNjg5MzI4OTM2MTU3OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 14 Jul 2023 15:32:16
+* @ValidationCode : Mjo2MTA3NjEwMzA6Q3AxMjUyOjE2ODk1OTkzMzk1OTI6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 17 Jul 2023 18:38:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -21,6 +21,9 @@ SUBROUTINE REDO.S.RTE.TXN.TYPE(Y.OUT)
 *
 * Date           ref            who                description
 * 16-08-2011     New RTE Form   APAP               New RTE Form
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*13/07/2023      Conversion tool            R22 Auto Conversion           FM TO @FM, VM TO @VM, ++ TO +=, INCLUDE TO INSERT, BP removed in INSERT file, F.READ TO CACHE.READ
+*13/07/2023      Suresh                     R22 Manual Conversion           Nochange
 * ----------------------------------------------------------------------------------
 
     $INSERT I_COMMON

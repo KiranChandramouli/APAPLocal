@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTA1MzMyMDc1NjpDcDEyNTI6MTY4OTMyODg5NjU1OTozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 14 Jul 2023 15:31:36
+* @ValidationCode : Mjo2Nzc2ODkwNTc6Q3AxMjUyOjE2ODk1OTkyODM3MTU6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 17 Jul 2023 18:38:03
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -18,6 +18,9 @@ SUBROUTINE REDO.S.RTE.PRODUCT.TYPE(Y.OUT)
 * Program   Name    :REDO.LAPAP.RTE.CREDIT.ACCOUNT
 * ---------------------------------------------------------------------------------
 * DESCRIPTION       :This program is used to get the credit account value
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*13/07/2023      Conversion tool            R22 Auto Conversion            VM TO @VM, SM TO @SM, I TO I.VAR, INCLUDE TO INSERT, BP removed in INSERT file
+*13/07/2023      Suresh                     R22 Manual Conversion          CALL routine format modified
 *  ----------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -149,7 +152,7 @@ CHECK.CATEG.PRODUCT:
 
     IF Y.OUT EQ 'Otras' THEN
         Y.OUT = ID.NEW
-        CALL REDO.S.RTE.TXN.TYPE(Y.OUT)
+        APAP.LAPAP.redoSRteTxnType(Y.OUT) ;*R22 Manual Conversion
     END
 
 RETURN
