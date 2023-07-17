@@ -1,0 +1,13 @@
+* I_F.REDO.VIRTUAL.BRANCH Created 04 NOV 09 at 11:47AM by apapr8/INPUTTER
+*      PREFIX[CUS]
+        EQU CUS.DESCRIPTION TO 1,   RedoVirtualBranch_Description TO 1,
+             CUS.SHORT.DESC TO 2,   RedoVirtualBranch_ShortDesc TO 2,
+          CUS.RECORD.STATUS TO 3,   RedoVirtualBranch_RecordStatus TO 3,
+                CUS.CURR.NO TO 4,   RedoVirtualBranch_CurrNo TO 4,
+               CUS.INPUTTER TO 5,   RedoVirtualBranch_Inputter TO 5,
+              CUS.DATE.TIME TO 6,   RedoVirtualBranch_DateTime TO 6,
+             CUS.AUTHORISER TO 7,   RedoVirtualBranch_Authoriser TO 7,
+                CUS.CO.CODE TO 8,   RedoVirtualBranch_CoCode TO 8,
+              CUS.DEPT.CODE TO 9,   RedoVirtualBranch_DeptCode TO 9,
+           CUS.AUDITOR.CODE TO 10,  RedoVirtualBranch_AuditorCode TO 10,
+        CUS.AUDIT.DATE.TIME TO 11,  RedoVirtualBranch_AuditDateTime TO 11

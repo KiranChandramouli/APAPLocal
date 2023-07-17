@@ -1,0 +1,50 @@
+component APAP.REDORETAIL
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoAcctDepDetailsLoad (
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS.LOAD
+}
+
+
+
+public method redoColExtract (
+    INOUT customerId string
+)
+{
+    jBC: REDO.COL.EXTRACT
+}
+
+
+
+public method redoDefAcctCcy (
+)
+{
+    jBC: REDO.DEF.ACCT.CCY
+}
+
+
+
+public method redoDsPepBType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.B.TYPE
+}
+
+
+
+public method redoDsPepIType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.I.TYPE
+}
+
+
+
+

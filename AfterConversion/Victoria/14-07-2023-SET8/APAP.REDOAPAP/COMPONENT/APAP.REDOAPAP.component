@@ -1,0 +1,81 @@
+component APAP.REDOAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoApapSapGlExtDetEnc (
+   INOUT gitOutMsg string,
+   INOUT gitErr string
+)
+{
+   jBC: REDO.APAP.SAP.GL.EXT.DET.ENC
+}
+
+
+
+public method redoApapSapGlExtHdrExpLog (
+   INOUT gitOutMsg string,
+   INOUT gitErr string
+)
+{
+   jBC: REDO.APAP.SAP.GL.EXT.HDR.EXP.LOG
+}
+
+
+
+public method redoApapSapGlExtRepRec (
+   INOUT gitIdMapped string,
+   INOUT gitMappedRec string,
+   INOUT gitMisn string,
+   INOUT gitRProcess string,
+   INOUT gitErr string
+)
+{
+   jBC: REDO.APAP.SAP.GL.EXT.REP.REC
+}
+
+
+
+public method redoApapValAdminChq (
+)
+{
+   jBC: REDO.APAP.VAL.ADMIN.CHQ
+}
+
+
+
+public method redoApapValBenList (
+)
+{
+   jBC: REDO.APAP.VAL.BEN.LIST
+}
+
+
+
+public method redoApapValCompId (
+)
+{
+   jBC: REDO.APAP.VAL.COMP.ID
+}
+
+
+
+public method redoApapValOrgRef (
+)
+{
+   jBC: REDO.APAP.VAL.ORG.REF
+}
+
+
+
+public method redoApapValTxnCode (
+)
+{
+   jBC: REDO.APAP.VAL.TXN.CODE
+}
+
+
+
+
+

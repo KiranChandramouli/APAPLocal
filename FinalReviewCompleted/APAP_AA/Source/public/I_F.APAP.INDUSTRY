@@ -1,0 +1,22 @@
+* I_F.APAP.INDUSTRY Created 28 NOV 13 at 05:37AM by t24uatd/KARTHI
+*      PREFIX[REDO]
+        EQU REDO.DESCRIPTION TO 1,   ApapIndustry_Description TO 1,
+              REDO.HIGH.RISK TO 2,   ApapIndustry_HighRisk TO 2,
+               REDO.AA.CATEG TO 3,   ApapIndustry_AaCateg TO 3,
+             REDO.RESERVED.5 TO 4,   ApapIndustry_Reserved5 TO 4,
+             REDO.RESERVED.4 TO 5,   ApapIndustry_Reserved4 TO 5,
+             REDO.RESERVED.3 TO 6,   ApapIndustry_Reserved3 TO 6,
+             REDO.RESERVED.2 TO 7,   ApapIndustry_Reserved2 TO 7,
+             REDO.RESERVED.1 TO 8,   ApapIndustry_Reserved1 TO 8,
+              REDO.LOCAL.REF TO 9,   ApapIndustry_LocalRef TO 9,
+                REDO.STMT.NO TO 10,  ApapIndustry_StmtNo TO 10,
+               REDO.OVERRIDE TO 11,  ApapIndustry_Override TO 11,
+          REDO.RECORD.STATUS TO 12,  ApapIndustry_RecordStatus TO 12,
+                REDO.CURR.NO TO 13,  ApapIndustry_CurrNo TO 13,
+               REDO.INPUTTER TO 14,  ApapIndustry_Inputter TO 14,
+              REDO.DATE.TIME TO 15,  ApapIndustry_DateTime TO 15,
+             REDO.AUTHORISER TO 16,  ApapIndustry_Authoriser TO 16,
+                REDO.CO.CODE TO 17,  ApapIndustry_CoCode TO 17,
+              REDO.DEPT.CODE TO 18,  ApapIndustry_DeptCode TO 18,
+           REDO.AUDITOR.CODE TO 19,  ApapIndustry_AuditorCode TO 19,
+        REDO.AUDIT.DATE.TIME TO 20,  ApapIndustry_AuditDateTime TO 20

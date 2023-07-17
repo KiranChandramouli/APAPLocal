@@ -1,0 +1,17 @@
+* I_F.REDO.CH.PREV.DBCM Created 06 SEP 13 at 05:09PM by t24uatd/R.MONDRAGON
+*      PREFIX[REDO.PREV]
+             EQU REDO.PREV.IP.ADD TO 1,   RedoChPrevDbcm_IpAdd TO 1,
+                   REDO.PREV.PORT TO 2,   RedoChPrevDbcm_Port TO 2,
+                REDO.PREV.SIDSERV TO 3,   RedoChPrevDbcm_Sidserv TO 3,
+                REDO.PREV.DB.USER TO 4,   RedoChPrevDbcm_DbUser TO 4,
+                 REDO.PREV.DB.PWD TO 5,   RedoChPrevDbcm_DbPwd TO 5,
+           REDO.PREV.MSG.IF.DB.ER TO 6,   RedoChPrevDbcm_MsgIfDbEr TO 6,
+          REDO.PREV.RECORD.STATUS TO 7,   RedoChPrevDbcm_RecordStatus TO 7,
+                REDO.PREV.CURR.NO TO 8,   RedoChPrevDbcm_CurrNo TO 8,
+               REDO.PREV.INPUTTER TO 9,   RedoChPrevDbcm_Inputter TO 9,
+              REDO.PREV.DATE.TIME TO 10,  RedoChPrevDbcm_DateTime TO 10,
+             REDO.PREV.AUTHORISER TO 11,  RedoChPrevDbcm_Authoriser TO 11,
+                REDO.PREV.CO.CODE TO 12,  RedoChPrevDbcm_CoCode TO 12,
+              REDO.PREV.DEPT.CODE TO 13,  RedoChPrevDbcm_DeptCode TO 13,
+           REDO.PREV.AUDITOR.CODE TO 14,  RedoChPrevDbcm_AuditorCode TO 14,
+        REDO.PREV.AUDIT.DATE.TIME TO 15,  RedoChPrevDbcm_AuditDateTime TO 15

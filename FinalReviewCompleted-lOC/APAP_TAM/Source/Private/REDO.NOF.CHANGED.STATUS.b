@@ -1,0 +1,324 @@
+* @ValidationCode : Mjo4NTM2MzkwNDpDcDEyNTI6MTY4NDkyMzQ3MzY5MTpJVFNTOi0xOi0xOjEwOTE6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 May 2023 15:47:53
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1091
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.TAM
+SUBROUTINE REDO.NOF.CHANGED.STATUS(Y.FINAL.ARRAY)
+*-------------------------------------------------------------------------------
+* Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By : DHAMU S
+* Program Name : REDO.NOF.CASE.USER
+*--------------------------------------------------------------------------------
+*Description : This routine is used to display the Values of the particular user
+*--------------------------------------------------------------------------------
+* Linked With : ENQUIRY REDO.NOF.CASE.USER
+* In Parameter : None
+* Out Parameter : None
+*---------------------------------------------------------------------------------
+****Modification History:
+*------------------------
+*     Date            Who                  Reference               Description
+*    ------          ------               -----------             --------------
+*   02-06-2011       DHAMU S                 CRM                Initial Creation
+*DATE                 WHO                  REFERENCE                     DESCRIPTION
+*25/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             SM TO @SM
+*25/04/2023         SURESH           MANUAL R22 CODE CONVERSION         CALL routine format modified
+*--------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.REDO.ISSUE.CLAIMS
+    $INSERT I_F.REDO.ISSUE.REQUESTS
+    $INSERT I_F.REDO.ISSUE.COMPLAINTS
+    $USING APAP.REDOENQ
+
+    GOSUB INIT
+    GOSUB OPEN.FILES
+    GOSUB PROCESS
+RETURN
+
+
+*****
+INIT:
+*****
+    Y.CUST.CODE = '' ; Y.STATUS = '' ; Y.DATE = '' ; Y.APPL = '' ; Y.CLIENT.ID = ''; Y.STATUS1 = ''; Y.DATE1 = '';
+    Y.NUMBER1 = ''; CUST.ID.VAL = ''; DOC.ID.VAL = ''; CURR.NO.VAL = ''; CURRENT.STATUS.VAL = '';
+    INPUTTER.VAL = ''; PREVIOUS.CURR.NO = ''; Y.PREV.SEL.ID = ''; Y.ERR.FLAG = '' ;
+
+RETURN
+***********
+OPEN.FILES:
+***********
+    FN.REDO.ISSUE.CLAIMS = 'F.REDO.ISSUE.CLAIMS'
+    F.REDO.ISSUE.CLAIMS  = ''
+    CALL OPF(FN.REDO.ISSUE.CLAIMS,F.REDO.ISSUE.CLAIMS)
+
+    FN.REDO.ISSUE.REQUESTS = 'F.REDO.ISSUE.REQUESTS'
+    F.REDO.ISSUE.REQUESTS  = ''
+    CALL OPF(FN.REDO.ISSUE.REQUESTS,F.REDO.ISSUE.REQUESTS)
+
+    FN.REDO.ISSUE.COMPLAINTS = 'F.REDO.ISSUE.COMPLAINTS'
+    F.REDO.ISSUE.COMPLAINTS  = ''
+    CALL OPF(FN.REDO.ISSUE.COMPLAINTS,F.REDO.ISSUE.COMPLAINTS)
+
+    FN.REDO.ISSUE.CLAIMS$HIS = 'F.REDO.ISSUE.CLAIMS$HIS'
+    F.REDO.ISSUE.CLAIMS$HIS  = ''
+    CALL OPF(FN.REDO.ISSUE.CLAIMS$HIS,F.REDO.ISSUE.CLAIMS$HIS)
+
+    FN.REDO.ISSUE.REQUESTS$HIS = 'F.REDO.ISSUE.REQUESTS$HIS'
+    F.REDO.ISSUE.REQUESTS$HIS  = ''
+    CALL OPF(FN.REDO.ISSUE.REQUESTS$HIS,F.REDO.ISSUE.REQUESTS$HIS)
+
+    FN.REDO.ISSUE.COMPLAINTS$HIS = 'F.REDO.ISSUE.COMPLAINTS$HIS'
+    F.REDO.ISSUE.COMPLAINTS$HIS  = ''
+    CALL OPF(FN.REDO.ISSUE.COMPLAINTS$HIS,F.REDO.ISSUE.COMPLAINTS$HIS)
+
+RETURN
+********
+PROCESS:
+********
+
+    LOCATE "CUSTOMER.CODE" IN D.FIELDS<1> SETTING CUS.POS THEN
+        Y.CUST.CODE = D.RANGE.AND.VALUE<CUS.POS>
+    END
+    LOCATE "STATUS" IN D.FIELDS<1> SETTING STATUS.POS THEN
+        Y.STATUS  = D.RANGE.AND.VALUE<STATUS.POS>
+        GOSUB CHANGE.STATUS
+    END
+
+    LOCATE "DATE.RESOLUTION" IN D.FIELDS<1> SETTING DATE.POS THEN
+        Y.DATE  = D.RANGE.AND.VALUE<DATE.POS>
+        GOSUB CHECK.DATE
+    END
+
+    LOCATE "APPLICATION" IN D.FIELDS<1> SETTING APPL.POS THEN
+        Y.APPL = D.RANGE.AND.VALUE<APPL.POS>
+        D.RANGE.AND.VALUE<APPL.POS>=''
+        D.LOGICAL.OPERANDS<APPL.POS>=''
+        D.FIELDS<APPL.POS>=''
+    END
+
+    LOCATE "CUST.ID.NUMBER" IN D.FIELDS<1> SETTING CLIENT.POS THEN
+        Y.CLIENT.ID = D.RANGE.AND.VALUE<CLIENT.POS>
+    END
+
+    IF Y.CUST.CODE THEN
+        GOSUB CLAIM.SEL
+        GOSUB REQUEST.SEL
+        GOSUB COMPLAINT.SEL
+    END
+RETURN
+**************
+CHANGE.STATUS:
+**************
+
+    BEGIN CASE
+        CASE Y.STATUS EQ "CERRADO"
+            D.RANGE.AND.VALUE<STATUS.POS> = "CLOSED"
+            Y.STATUS = "CLOSED"
+        CASE Y.STATUS EQ "DOCUMENTACION PENDIENTE"
+            D.RANGE.AND.VALUE<STATUS.POS> = "DOCUMENT.PENDING"
+            Y.STATUS = "DOCUMENT.PENDING"
+        CASE Y.STATUS EQ "EN PROCESO"
+            D.RANGE.AND.VALUE<STATUS.POS> = "IN-PROCESS"
+            Y.STATUS = "IN-PROCESS"
+        CASE Y.STATUS EQ "ABIERTO"
+            D.RANGE.AND.VALUE<STATUS.POS> = "OPEN"
+            Y.STATUS = "OPEN"
+        CASE Y.STATUS EQ "RESUELTO"
+            D.RANGE.AND.VALUE<STATUS.POS> = "RESOLVED"
+            Y.STATUS = "RESOLVED"
+        CASE Y.STATUS EQ "RESOLUCION NOTIFICADA"
+            D.RANGE.AND.VALUE<STATUS.POS> = "RESOLVED-NOTIFIED"
+            Y.STATUS = "RESOLVED-NOTIFIED"
+        CASE 1
+            Y.STATUS = "ERROR"
+    END CASE
+
+
+RETURN
+
+***********
+CHECK.DATE:
+***********
+    Y.COUNT =DCOUNT(Y.DATE,@SM)
+    Y.TXN.DATE1 = FIELD(Y.DATE,@SM,1)
+    Y.TXN.DATE2 = FIELD(Y.DATE,@SM,2)
+    IF Y.TXN.DATE2 THEN
+        IF NOT(NUM(Y.TXN.DATE1)) OR LEN(Y.TXN.DATE1) NE '8' OR NOT(NUM(Y.TXN.DATE2)) OR LEN(Y.TXN.DATE2) NE '8' THEN
+            ENQ.ERROR = "EB-REDO.DATE.RANGE"
+        END ELSE
+            IF Y.TXN.DATE1[5,2] GT '12' OR Y.TXN.DATE2[5,2] GT '12' OR Y.TXN.DATE1[7,2] GT '31' OR Y.TXN.DATE2[7,2] GT '31' OR Y.TXN.DATE1 GT Y.TXN.DATE2 THEN
+                ENQ.ERROR = "EB-REDO.DATE.RANGE"
+            END
+        END
+    END
+RETURN
+**********
+CLAIM.SEL:
+**********
+
+    FILE.NAME = FN.REDO.ISSUE.CLAIMS
+*CALL APAP.REDOENQ.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    CLAIM.FLAG = '1'
+    GOSUB GET.VALUES
+RETURN
+************
+REQUEST.SEL:
+************
+    CLAIM.FLAG = ''
+    FILE.NAME = FN.REDO.ISSUE.REQUESTS
+*CALL APAP.REDOENQ.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    REQUEST.FLAG = '1'
+    GOSUB GET.VALUES
+RETURN
+**************
+COMPLAINT.SEL:
+**************
+    CLAIM.FLAG = ''; REQUEST.FLAG = ''
+    FILE.NAME = FN.REDO.ISSUE.COMPLAINTS
+*CALL APAP.TAM.REDO.E.FORM.SEL.STMT(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    CALL APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '',SEL.CMD) ;*MANUAL R22 CODE CONVERSION
+    COMPLAINT.FLAG = '1'
+    GOSUB GET.VALUES
+RETURN
+***********
+GET.VALUES:
+***********
+    CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.RECS,REC.ERR)
+    LOOP
+        REMOVE Y.SEL.ID FROM SEL.LIST SETTING SEL.POS
+    WHILE Y.SEL.ID:SEL.POS
+        IF CLAIM.FLAG EQ '1' THEN
+            GOSUB GET.CLAIMS.VALUES
+        END
+        IF REQUEST.FLAG EQ '1' THEN
+            GOSUB GET.REQUEST.VALUES
+        END
+        IF COMPLAINT.FLAG EQ '1' THEN
+            GOSUB GET.COMPLAINT.VALUES
+        END
+    REPEAT
+RETURN
+******************
+GET.CLAIMS.VALUES:
+******************
+    CALL F.READ(FN.REDO.ISSUE.CLAIMS,Y.SEL.ID,R.REDO.ISSUE.CLAIMS,F.REDO.ISSUE.CLAIMS,CLAIMS.ERR)
+    Y.STATUS1    = R.REDO.ISSUE.CLAIMS<ISS.CL.STATUS>
+    Y.DATE1      = R.REDO.ISSUE.CLAIMS<ISS.CL.DATE.RESOLUTION>
+    Y.NUMBER1     = R.REDO.ISSUE.CLAIMS<ISS.CL.CUST.ID.NUMBER>
+    Y.ERR.FLAG = ''
+    GOSUB CHECK.CONDITION
+    IF Y.ERR.FLAG NE '1' THEN
+        CASE.NUMBER = Y.SEL.ID
+        CUST.ID.VAL         = R.REDO.ISSUE.CLAIMS<ISS.CL.CUSTOMER.CODE>
+        DOC.ID.VAL          = R.REDO.ISSUE.CLAIMS<ISS.CL.CUST.ID.NUMBER>
+        CURR.NO.VAL         = R.REDO.ISSUE.CLAIMS<ISS.CL.CURR.NO>
+        CURRENT.STATUS.VAL  = R.REDO.ISSUE.CLAIMS<ISS.CL.STATUS>
+        INPUTTER.VAL        = R.REDO.ISSUE.CLAIMS<ISS.CL.INPUTTER>
+        PREVIOUS.CURR.NO = CURR.NO.VAL - 1
+        Y.PREV.SEL.ID = Y.SEL.ID:";":PREVIOUS.CURR.NO
+        CALL F.READ(FN.REDO.ISSUE.CLAIMS$HIS,Y.PREV.SEL.ID,R.REDO.ISSUE.CLAIMS,F.REDO.ISSUE.CLAIMS$HIS,HIS.ERR)
+        PREVIOUS.STATUS.VAL = R.REDO.ISSUE.CLAIMS<ISS.CL.STATUS>
+        GOSUB FINAL.ARRAY
+    END
+RETURN
+*******************
+GET.REQUEST.VALUES:
+*******************
+    CLAIM.FLAG = ''
+    CALL F.READ(FN.REDO.ISSUE.REQUESTS,Y.SEL.ID,R.REDO.ISSUE.REQUESTS,F.REDO.ISSUE.REQUESTS,REQUEST.ERR)
+    Y.STATUS1                  = R.REDO.ISSUE.REQUESTS<ISS.REQ.STATUS>
+    Y.DATE1                    = R.REDO.ISSUE.REQUESTS<ISS.REQ.DATE.RESOLUTION>
+    Y.NUMBER1                  = R.REDO.ISSUE.REQUESTS<ISS.REQ.CUST.ID.NUMBER>
+    Y.ERR.FLAG  = ''
+    GOSUB CHECK.CONDITION
+    IF Y.ERR.FLAG NE '1' THEN
+        CASE.NUMBER = Y.SEL.ID
+        CUST.ID.VAL            = R.REDO.ISSUE.REQUESTS<ISS.REQ.CUSTOMER.CODE>
+        DOC.ID.VAL             = R.REDO.ISSUE.REQUESTS<ISS.REQ.CUST.ID.NUMBER>
+        CURR.NO.VAL            = R.REDO.ISSUE.REQUESTS<ISS.REQ.CURR.NO>
+        CURRENT.STATUS.VAL     = R.REDO.ISSUE.REQUESTS<ISS.REQ.STATUS>
+        INPUTTER.VAL           = R.REDO.ISSUE.REQUESTS<ISS.REQ.INPUTTER>
+        PREVIOUS.CURR.NO = CURR.NO.VAL - 1
+        Y.PREV.SEL.ID = Y.SEL.ID:";":PREVIOUS.CURR.NO
+        CALL F.READ(FN.REDO.ISSUE.REQUESTS$HIS,Y.PREV.SEL.ID,R.REDO.ISSUE.REQUESTS,F.REDO.ISSUE.REQUESTS$HIS,HIS.ERR)
+        PREVIOUS.STATUS.VAL = R.REDO.ISSUE.REQUESTS<ISS.REQ.STATUS>
+        GOSUB FINAL.ARRAY
+    END
+RETURN
+*********************
+GET.COMPLAINT.VALUES:
+*********************
+    CLAIM.FLAG = ''; REQUEST.FLAG = ''
+    CALL F.READ(FN.REDO.ISSUE.COMPLAINTS,Y.SEL.ID,R.REDO.ISSUE.COMPLAINTS,F.REDO.ISSUE.COMPLAINTS,COMPLAINT.ERR)
+    Y.STATUS1                      = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.STATUS>
+    Y.DATE1                        = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.DATE.RESOLUTION>
+    Y.NUMBER1                      = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.CUST.ID.NUMBER>
+    Y.ERR.FLAG = ''
+    GOSUB CHECK.CONDITION
+    IF Y.ERR.FLAG NE '1' THEN
+        CASE.NUMBER = Y.SEL.ID
+        CUST.ID.VAL                = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.CUSTOMER.CODE>
+        DOC.ID.VAL                 = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.CUST.ID.NUMBER>
+        CURR.NO.VAL                = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.CURR.NO>
+        CURRENT.STATUS.VAL         = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.STATUS>
+        INPUTTER.VAL               = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.INPUTTER>
+        PREVIOUS.CURR.NO = CURR.NO.VAL - 1
+        Y.PREV.SEL.ID = Y.SEL.ID:";":PREVIOUS.CURR.NO
+        CALL F.READ(FN.REDO.ISSUE.COMPLAINTS$HIS,Y.PREV.SEL.ID,R.REDO.ISSUE.COMPLAINTS,F.REDO.ISSUE.COMPLAINTS$HIS,HIS.ERR)
+        PREVIOUS.STATUS.VAL        = R.REDO.ISSUE.COMPLAINTS<ISS.COMP.STATUS>
+        GOSUB FINAL.ARRAY
+    END
+RETURN
+****************
+CHECK.CONDITION:
+****************
+    IF CLAIM.FLAG EQ '1' THEN
+        IF Y.APPL THEN
+            IF Y.APPL EQ "RECLAMACION" ELSE
+                Y.ERR.FLAG = '1'
+            END
+        END
+    END
+    IF REQUEST.FLAG EQ '1' THEN
+        IF Y.APPL THEN
+            IF Y.APPL EQ "SOLICITUD" ELSE
+                Y.ERR.FLAG = '1'
+            END
+        END
+    END
+    IF COMPLAINT.FLAG EQ '1' THEN
+        IF  Y.APPL THEN
+            IF Y.APPL EQ "QUEJAS" ELSE
+                Y.ERR.FLAG = '1'
+            END
+        END
+    END
+
+    IF Y.STATUS THEN
+        IF Y.STATUS EQ Y.STATUS1 ELSE
+            Y.ERR.FLAG = '1'
+        END
+    END
+
+RETURN
+************
+FINAL.ARRAY:
+************
+    Y.FINAL.ARRAY<-1> = CUST.ID.VAL:"*":CASE.NUMBER:"*":DOC.ID.VAL:"*":PREVIOUS.STATUS.VAL:"*":CURRENT.STATUS.VAL:"*":Y.DATE1:"*":INPUTTER.VAL
+    Y.ERR.FLAG = ''
+RETURN
+******************************
+END
+*---------------End of Program--------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+* I_F.REDO.BRANCH.REQ.STOCK Created 06 JUL 12 at 02:04PM by apapr8/INPUTTER
+*      PREFIX[BRAN.STK]
+          EQU BRAN.STK.CARD.TYPE TO 1,   RedoBranchReqStock_CardType TO 1,
+            BRAN.STK.INITIAL.STK TO 2,   RedoBranchReqStock_InitialStk TO 2,
+            BRAN.STK.QTY.REQUEST TO 3,   RedoBranchReqStock_QtyRequest TO 3,
+             BRAN.STK.REQUEST.ID TO 4,   RedoBranchReqStock_RequestId TO 4,
+                 BRAN.STK.AGENCY TO 5,   RedoBranchReqStock_Agency TO 5,
+                   BRAN.STK.LOST TO 6,   RedoBranchReqStock_Lost TO 6,
+                 BRAN.STK.DAMAGE TO 7,   RedoBranchReqStock_Damage TO 7,
+                 BRAN.STK.RETURN TO 8,   RedoBranchReqStock_Return TO 8,
+              BRAN.STK.DELIVERED TO 9,   RedoBranchReqStock_Delivered TO 9,
+            BRAN.STK.VIRGIN.LOAD TO 10,  RedoBranchReqStock_VirginLoad TO 10,
+            BRAN.STK.CURRENT.QTY TO 11,  RedoBranchReqStock_CurrentQty TO 11,
+               BRAN.STK.TXN.DATE TO 12,  RedoBranchReqStock_TxnDate TO 12

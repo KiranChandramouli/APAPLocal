@@ -1,0 +1,1198 @@
+component APAP.Repgens
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+public method rgpCoExpiry (
+)
+{
+    jBC: RGP.CO.EXPIRY
+} 
+
+public method rgpCoInventory (
+)
+{
+    jBC: RGP.CO.INVENTORY
+}
+
+
+public method rgpCoRealloc (
+)
+{
+    jBC: RGP.CO.REALLOC
+}
+
+
+public method rgpCoReview (
+)
+{
+    jBC: RGP.CO.REVIEW
+}
+
+public method rgpCoRgtExpired (
+)
+{
+    jBC: RGP.CO.RGT.EXPIRED
+}
+
+
+public method rgpCoRightExpiry (
+)
+{
+    jBC: RGP.CO.RIGHT.EXPIRY
+}
+
+
+public method rgpCoRightReview (
+)
+{
+    jBC: RGP.CO.RIGHT.REVIEW
+}
+
+
+public method rgpCshFlowExcep (
+)
+{
+    jBC: RGP.CSH.FLOW.EXCEP
+}
+
+
+public method rgpCurrency (
+)
+{
+    jBC: RGP.CURRENCY
+}
+
+
+public method rgpCurrencyRates (
+)
+{
+    jBC: RGP.CURRENCY.RATES
+}
+
+public method rgpCusAlPosition (
+)
+{
+    jBC: RGP.CUS.AL.POSITION
+}
+
+
+public method rgpDeptAcctOff (
+)
+{
+    jBC: RGP.DEPT.ACCT.OFF
+}
+
+
+public method rgpDetOverride (
+)
+{
+    jBC: RGP.DET.OVERRIDE
+}
+
+
+public method rgpEnBqsTerme (
+)
+{
+    jBC: RGP.EN.BQS.TERME
+}
+
+
+public method rgpExcepLog2 (
+)
+{
+    jBC: RGP.EXCEP.LOG.2
+}
+
+
+public method rgpExceptLogEod (
+)
+{
+    jBC: RGP.EXCEPT.LOG.EOD
+}
+
+
+public method rgpExceptLogSod (
+)
+{
+    jBC: RGP.EXCEPT.LOG.SOD
+}
+
+public method rgpLiCollatSum (
+)
+{
+    jBC: RGP.LI.COLLAT.SUM
+}
+
+public method rgpLimAlPosition (
+)
+{
+    jBC: RGP.LIM.AL.POSITION
+}
+
+public method rgpLstBkBal (
+)
+{
+    jBC: RGP.LST.BK.BAL
+}
+
+public method rgpLstCliBal (
+)
+{
+    jBC: RGP.LST.CLI.BAL
+}
+
+public method rgpLstFidBanks (
+)
+{
+    jBC: RGP.LST.FID.BANKS
+}
+
+public method rgpLstFidClients (
+)
+{
+    jBC: RGP.LST.FID.CLIENTS
+}
+
+public method rgpLstFidMat (
+)
+{
+    jBC: RGP.LST.FID.MAT
+}
+
+public method rgpLstFxCntOpen (
+)
+{
+    jBC: RGP.LST.FX.CNT.OPEN
+}
+
+public method rgpLstFxFwPurch (
+)
+{
+    jBC: RGP.LST.FX.FW.PURCH
+}
+
+public method rgpLstFxFwSales (
+)
+{
+    jBC: RGP.LST.FX.FW.SALES
+}
+
+public method rgpMm0001 (
+)
+{
+    jBC: RGP.MM0001
+}
+
+public method rgpMm0002 (
+)
+{
+    jBC: RGP.MM0002
+}
+
+public method rgpMm0003 (
+)
+{
+    jBC: RGP.MM0003
+}
+
+public method rgpMm0004 (
+)
+{
+    jBC: RGP.MM0004
+}
+
+public method rgpMm0005 (
+)
+{
+    jBC: RGP.MM0005
+}
+
+public method rgpMm0006 (
+)
+{
+    jBC: RGP.MM0006
+}
+
+public method rgpOverdraftList (
+)
+{
+    jBC: RGP.OVERDRAFT.LIST
+}
+
+public method rgpPlJournal (
+)
+{
+    jBC: RGP.PL.JOURNAL
+}
+
+public method rgpPosAuditDet (
+)
+{
+    jBC: RGP.POS.AUDIT.DET
+}
+
+public method rgpPosAuditSum (
+)
+{
+    jBC: RGP.POS.AUDIT.SUM
+}
+
+public method rgpProf2 (
+)
+{
+    jBC: RGP.PROF2
+}
+
+public method rgpProtocol (
+)
+{
+    jBC: RGP.PROTOCOL
+}
+
+public method rgpPtfSummaries (
+)
+{
+    jBC: RGP.PTF.SUMMARIES
+}
+
+public method rgpReferralList (
+)
+{
+    jBC: RGP.REFERRAL.LIST
+}
+
+public method rgpSecprix (
+)
+{
+    jBC: RGP.SECPRIX
+}
+
+public method rgpSector (
+)
+{
+    jBC: RGP.SECTOR
+}
+
+public method rgpSetrep (
+)
+{
+    jBC: RGP.SETREP
+}
+
+public method rgpTransInv2 (
+)
+{
+    jBC: RGP.TRANS.INV2
+}
+
+public method rgpTransInv4 (
+)
+{
+    jBC: RGP.TRANS.INV4
+}
+
+public method rgpTransInv6 (
+)
+{
+    jBC: RGP.TRANS.INV6
+}
+
+public method rgpTransInvyest2 (
+)
+{
+    jBC: RGP.TRANS.INVYEST2
+}
+
+public method rgpTransInvyest4 (
+)
+{
+    jBC: RGP.TRANS.INVYEST4
+}
+
+public method rgpTransInvyest6 (
+)
+{
+    jBC: RGP.TRANS.INVYEST6
+}
+
+public method rgpTransJournal (
+)
+{
+    jBC: RGP.TRANS.JOURNAL
+}
+
+public method rgsPlJournal (
+)
+{
+    jBC: RGS.PL.JOURNAL
+}
+
+public method rgsPosAuditDet (
+)
+{
+    jBC: RGS.POS.AUDIT.DET
+}
+
+
+
+public method rgsPosAuditSum (
+)
+{
+    jBC: RGS.POS.AUDIT.SUM
+}
+
+
+
+public method rgsProf2 (
+)
+{
+    jBC: RGS.PROF2
+}
+
+public method rgsProtocol (
+)
+{
+    jBC: RGS.PROTOCOL
+}
+
+public method rgsPtfSummaries (
+)
+{
+    jBC: RGS.PTF.SUMMARIES
+}
+
+public method rgsReferralList (
+)
+{
+    jBC: RGS.REFERRAL.LIST
+}
+
+public method rgsSecprix (
+)
+{
+    jBC: RGS.SECPRIX
+}
+
+public method rgsSector (
+)
+{
+    jBC: RGS.SECTOR
+}
+
+public method rgsSetrep (
+)
+{
+    jBC: RGS.SETREP
+}
+
+public method rgsTransInv2 (
+)
+{
+    jBC: RGS.TRANS.INV2
+}
+
+public method rgsTransInv4 (
+)
+{
+    jBC: RGS.TRANS.INV4
+}
+
+public method rgsTransInv6 (
+)
+{
+    jBC: RGS.TRANS.INV6
+}
+
+public method rgsTransJournal (
+)
+{
+    jBC: RGS.TRANS.JOURNAL
+}
+
+public method rgsTransInvyest6 (
+)
+{
+    jBC: RGS.TRANS.INVYEST6
+}
+
+
+public method rgsTransInvyest4 (
+)
+{
+    jBC: RGS.TRANS.INVYEST4
+}
+
+
+
+public method rgsTransInvyest2 (
+)
+{
+    jBC: RGS.TRANS.INVYEST2
+}
+
+
+public method rgsCoExpiry (
+)
+{
+    jBC: RGS.CO.EXPIRY
+}
+
+public method rgsCoInventory (
+)
+{
+    jBC: RGS.CO.INVENTORY
+}
+
+public method rgsCoRealloc (
+)
+{
+    jBC: RGS.CO.REALLOC
+}
+
+
+public method rgsCoReview (
+)
+{
+    jBC: RGS.CO.REVIEW
+}
+
+
+public method rgsCoRgtExpired (
+)
+{
+    jBC: RGS.CO.RGT.EXPIRED
+}
+
+
+public method rgsCoRightExpiry (
+)
+{
+    jBC: RGS.CO.RIGHT.EXPIRY
+}
+
+
+
+
+
+public method rgsCoRightReview (
+)
+{
+    jBC: RGS.CO.RIGHT.REVIEW
+}
+
+
+public method rgsCshFlowExcep (
+)
+{
+    jBC: RGS.CSH.FLOW.EXCEP
+}
+
+public method rgsCurrency (
+)
+{
+    jBC: RGS.CURRENCY
+}
+
+
+public method rgsCurrencyRates (
+)
+{
+    jBC: RGS.CURRENCY.RATES
+}
+
+
+public method rgsCusAlPosition (
+)
+{
+    jBC: RGS.CUS.AL.POSITION
+}
+
+public method rgsDeptAcctOff (
+)
+{
+    jBC: RGS.DEPT.ACCT.OFF
+}
+
+public method rgsDetOverride (
+)
+{
+    jBC: RGS.DET.OVERRIDE
+}
+
+
+
+
+public method rgsEnBqsTerme (
+)
+{
+    jBC: RGS.EN.BQS.TERME
+}
+
+
+public method rgsExcepLog2 (
+)
+{
+    jBC: RGS.EXCEP.LOG.2
+}
+
+public method rgsExceptLogEod (
+)
+{
+    jBC: RGS.EXCEPT.LOG.EOD
+}
+
+public method rgsExceptLogSod (
+)
+{
+    jBC: RGS.EXCEPT.LOG.SOD
+}
+
+
+public method rgsExceptionLog (
+)
+{
+    jBC: RGS.EXCEPTION.LOG
+}
+
+
+
+public method rgsFwdExpList (
+)
+{
+    jBC: RGS.FWD.EXP.LIST
+}
+
+
+
+public method rgsFxJournal (
+)
+{
+    jBC: RGS.FX.JOURNAL
+}
+
+
+
+public method rgsLd0100 (
+)
+{
+    jBC: RGS.LD0100
+}
+
+
+
+public method rgsLd0110 (
+)
+{
+    jBC: RGS.LD0110
+}
+
+
+
+public method rgsLd0200 (
+)
+{
+    jBC: RGS.LD0200 
+}
+
+
+
+public method rgsLd0300 (
+)
+{
+    jBC: RGS.LD0300
+}
+
+
+
+public method rgsLd0300a (
+)
+{
+    jBC: RGS.LD0300A
+}
+
+
+
+public method rgsLd0400 (
+)
+{
+    jBC: RGS.LD0400
+}
+
+
+
+public method rgsLd0500 (
+)
+{
+    jBC: RGS.LD0500
+}
+
+
+
+public method rgsLd0600 (
+)
+{
+    jBC: RGS.LD0600
+}
+
+
+
+public method rgsLd0700 (
+)
+{
+    jBC: RGS.LD0700
+}
+
+
+
+public method rgsLd0800 (
+)
+{
+    jBC: RGS.LD0800
+}
+
+
+
+public method rgsLd1000 (
+)
+{
+    jBC: RGS.LD1000 
+}
+
+
+
+public method rgsLd1100 (
+)
+{
+    jBC: RGS.LD1100
+}
+
+
+
+public method rgsLiCoExcess (
+)
+{
+    jBC: RGS.LI.CO.EXCESS
+}
+
+
+
+public method rgsLiCollatDet (
+)
+{
+    jBC: RGS.LI.COLLAT.DET
+}
+
+
+public method rgpTransJournal2 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL2
+}
+
+
+
+public method rgpTransJournal4 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL4
+}
+
+
+
+public method rgpTransJournal6 (
+)
+{
+    jBC: RGP.TRANS.JOURNAL6
+}
+
+
+
+public method rgpTransT24inv2 (
+)
+{
+    jBC: RGP.TRANS.T24INV2
+}
+
+
+
+public method rgpTransT24inv4 (
+)
+{
+    jBC: RGP.TRANS.T24INV4
+}
+
+
+
+public method rgpTransT24inv6 (
+)
+{
+    jBC: RGP.TRANS.T24INV6
+}
+
+
+
+public method rgpTransYest2 (
+)
+{
+    jBC: RGP.TRANS.YEST2
+}
+
+
+
+public method rgpTransYest4 (
+)
+{
+    jBC: RGP.TRANS.YEST4
+}
+
+
+
+public method rgpTransYest6 (
+)
+{
+    jBC: RGP.TRANS.YEST6
+}
+
+
+
+public method rgpVersion4 (
+)
+{
+    jBC: RGP.VERSION4
+}
+
+
+
+public method rgsAccountList (
+)
+{
+    jBC: RGS.ACCOUNT.LIST
+}
+
+
+
+public method rgsAvBqsTerme (
+)
+{
+    jBC: RGS.AV.BQS.TERME
+}
+
+
+
+public method rgsBalanceList (
+)
+{
+    jBC: RGS.BALANCE.LIST
+}
+
+
+
+public method rgsBanksMnemonic (
+)
+{
+    jBC: RGS.BANKS.MNEMONIC
+}
+
+
+
+public method rgsCategory (
+)
+{
+    jBC: RGS.CATEGORY
+}
+
+
+
+public method rgsCoCover (
+)
+{
+    jBC: RGS.CO.COVER
+}
+
+
+
+public method rgsCoExpired (
+)
+{
+    jBC: RGS.CO.EXPIRED
+}
+
+
+public method rgsLiCollatSum (
+)
+{
+    jBC: RGS.LI.COLLAT.SUM
+}
+
+
+
+public method rgsLimAlPosition (
+)
+{
+    jBC: RGS.LIM.AL.POSITION
+}
+
+
+
+public method rgsLstBkBal (
+)
+{
+    jBC: RGS.LST.BK.BAL
+}
+
+
+
+public method rgsLstCliBal (
+)
+{
+    jBC: RGS.LST.CLI.BAL
+}
+
+
+
+public method rgsLstFidBanks (
+)
+{
+    jBC: RGS.LST.FID.BANKS
+}
+
+
+
+
+
+
+
+public method rgsLstFidClients (
+)
+{
+    jBC: RGS.LST.FID.CLIENTS
+}
+
+
+
+public method rgsLstFidMat (
+)
+{
+    jBC: RGS.LST.FID.MAT
+}
+
+
+
+public method rgsLstFxCntOpen (
+)
+{
+    jBC: RGS.LST.FX.CNT.OPEN
+}
+
+
+
+public method rgsLstFxFwPurch (
+)
+{
+    jBC: RGS.LST.FX.FW.PURCH
+} 
+
+
+
+public method rgsLstFxFwSales (
+)
+{
+    jBC: RGS.LST.FX.FW.SALES
+}
+
+
+
+public method rgsMm0001 (
+)
+{
+    jBC: RGS.MM0001
+}
+
+
+
+public method rgsMm0002 (
+)
+{
+    jBC: RGS.MM0002
+}
+
+ 
+
+public method rgsMm0003 (
+)
+{
+    jBC: RGS.MM0003
+}
+
+
+
+public method rgsMm0004 (
+)
+{
+    jBC: RGS.MM0004
+}
+
+
+
+public method rgsMm0005 (
+)
+{
+    jBC: RGS.MM0005
+}
+
+
+
+public method rgsMm0006 (
+)
+{
+    jBC: RGS.MM0006
+}
+
+
+
+public method rgsOverdraftList (
+)
+{
+    jBC: RGS.OVERDRAFT.LIST
+}
+
+
+
+public method rgpAccountList (
+)
+{
+    jBC: RGP.ACCOUNT.LIST
+}
+
+public method rgpAvBqsTerme (
+)
+{
+    jBC: RGP.AV.BQS.TERME
+}
+
+public method rgpBalanceList (
+)
+{
+    jBC: RGP.BALANCE.LIST
+}
+
+public method rgpBanksMnemonic (
+)
+{
+    jBC: RGP.BANKS.MNEMONIC
+}
+
+public method rgpCategory (
+)
+{
+    jBC: RGP.CATEGORY
+}
+
+public method rgpCoCover (
+)
+{
+    jBC: RGP.CO.COVER
+}
+
+public method rgpCoExpired (
+)
+{
+    jBC: RGP.CO.EXPIRED
+}
+
+public method rgsTransJournal2 (
+)
+{
+    jBC: RGS.TRANS.JOURNAL2
+}
+
+public method rgsTransJournal4 (
+)
+{
+    jBC: RGS.TRANS.JOURNAL4
+}
+
+public method rgsTransJournal6 (
+)
+{
+    jBC: RGS.TRANS.JOURNAL6
+}
+
+public method rgsVersion4 (
+)
+{
+    jBC: RGS.VERSION4
+}
+
+public method rgsTransT24inv2 (
+)
+{
+    jBC: RGS.TRANS.T24INV2
+}
+
+public method rgsTransT24inv4 (
+)
+{
+    jBC: RGS.TRANS.T24INV4
+}
+
+public method rgsTransT24inv6 (
+)
+{
+    jBC: RGS.TRANS.T24INV6
+}
+
+public method rgsTransYest2 (
+)
+{
+    jBC: RGS.TRANS.YEST2
+}
+
+
+public method rgsTransYest4 (
+)
+{
+    jBC: RGS.TRANS.YEST4
+}
+
+
+public method rgsTransYest6 (
+)
+{
+    jBC: RGS.TRANS.YEST6
+}
+
+
+public method rgpExceptionLog (
+)
+{
+    jBC: RGP.EXCEPTION.LOG
+}
+
+
+
+public method rgpFwdExpList (
+)
+{
+    jBC: RGP.FWD.EXP.LIST
+}
+
+
+
+public method rgpFxJournal (
+)
+{
+    jBC: RGP.FX.JOURNAL
+}
+
+
+
+public method rgpLd0100 (
+)
+{
+    jBC: RGP.LD0100
+}
+
+
+
+public method rgpLd0110 (
+)
+{
+    jBC: RGP.LD0110
+}
+
+
+
+public method rgpLd0200 (
+)
+{
+    jBC: RGP.LD0200
+}
+
+
+
+public method rgpLd0300 (
+)
+{
+    jBC: RGP.LD0300
+}
+
+
+
+public method rgpLd0300a (
+)
+{
+    jBC: RGP.LD0300A
+}
+
+
+
+public method rgpLd0400 (
+)
+{
+    jBC: RGP.LD0400
+}
+
+
+
+public method rgpLd0500 (
+)
+{
+    jBC: RGP.LD0500
+}
+
+
+
+public method rgpLd0600 (
+)
+{
+    jBC: RGP.LD0600
+}
+
+
+
+public method rgpLd0700 (
+)
+{
+    jBC: RGP.LD0700
+}
+
+
+
+public method rgpLd0800 (
+)
+{
+    jBC: RGP.LD0800
+}
+
+
+
+public method rgpLd1000 (
+)
+{
+    jBC: RGP.LD1000
+}
+
+
+
+public method rgpLd1100 (
+)
+{
+    jBC: RGP.LD1100
+}
+
+
+
+public method rgpLiCoExcess (
+)
+{
+    jBC: RGP.LI.CO.EXCESS
+}
+
+
+
+public method rgpLiCollatDet (
+)
+{
+    jBC: RGP.LI.COLLAT.DET
+}

@@ -1,0 +1,23 @@
+* I_F.REDO.GAR.SUSP.ACCT Created 29 SEP 11 at 09:27PM by apap/PRABHU2
+*      PREFIX[RE.GA]
+            EQU RE.GA.ACCOUNT TO 1,   RedoGarSuspAcct_Account TO 1,
+            RE.GA.RESERVED.10 TO 2,   RedoGarSuspAcct_Reserved10 TO 2,
+             RE.GA.RESERVED.9 TO 3,   RedoGarSuspAcct_Reserved9 TO 3,
+             RE.GA.RESERVED.8 TO 4,   RedoGarSuspAcct_Reserved8 TO 4,
+             RE.GA.RESERVED.7 TO 5,   RedoGarSuspAcct_Reserved7 TO 5,
+             RE.GA.RESERVED.6 TO 6,   RedoGarSuspAcct_Reserved6 TO 6,
+             RE.GA.RESERVED.5 TO 7,   RedoGarSuspAcct_Reserved5 TO 7,
+             RE.GA.RESERVED.4 TO 8,   RedoGarSuspAcct_Reserved4 TO 8,
+             RE.GA.RESERVED.3 TO 9,   RedoGarSuspAcct_Reserved3 TO 9,
+             RE.GA.RESERVED.2 TO 10,  RedoGarSuspAcct_Reserved2 TO 10,
+             RE.GA.RESERVED.1 TO 11,  RedoGarSuspAcct_Reserved1 TO 11,
+               RE.GA.OVERRIDE TO 12,  RedoGarSuspAcct_Override TO 12,
+          RE.GA.RECORD.STATUS TO 13,  RedoGarSuspAcct_RecordStatus TO 13,
+                RE.GA.CURR.NO TO 14,  RedoGarSuspAcct_CurrNo TO 14,
+               RE.GA.INPUTTER TO 15,  RedoGarSuspAcct_Inputter TO 15,
+              RE.GA.DATE.TIME TO 16,  RedoGarSuspAcct_DateTime TO 16,
+             RE.GA.AUTHORISER TO 17,  RedoGarSuspAcct_Authoriser TO 17,
+                RE.GA.CO.CODE TO 18,  RedoGarSuspAcct_CoCode TO 18,
+              RE.GA.DEPT.CODE TO 19,  RedoGarSuspAcct_DeptCode TO 19,
+           RE.GA.AUDITOR.CODE TO 20,  RedoGarSuspAcct_AuditorCode TO 20,
+        RE.GA.AUDIT.DATE.TIME TO 21,  RedoGarSuspAcct_AuditDateTime TO 21

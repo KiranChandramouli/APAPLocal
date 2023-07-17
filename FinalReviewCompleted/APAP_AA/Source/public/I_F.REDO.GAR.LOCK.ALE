@@ -1,0 +1,19 @@
+* I_F.REDO.GAR.LOCK.ALE Created 14 NOV 11 at 11:18AM by apap/PRABHU2
+*      PREFIX[TT.ALE]
+                EQU TT.ALE.ALE TO 1,   RedoGarLockAle_Ale TO 1,
+                    TT.ALE.AHG TO 2,   RedoGarLockAle_Ahg TO 2,
+           TT.ALE.OUT.CLEAR.ID TO 3,   RedoGarLockAle_OutClearId TO 3,
+           TT.ALE.USED.CLEARID TO 4,   RedoGarLockAle_UsedClearid TO 4,
+             TT.ALE.AMT.REMAIN TO 5,   RedoGarLockAle_AmtRemain TO 5,
+            TT.ALE.RESERVED.12 TO 6,   RedoGarLockAle_Reserved12 TO 6,
+            TT.ALE.RESERVED.11 TO 7,   RedoGarLockAle_Reserved11 TO 7,
+            TT.ALE.RESERVED.10 TO 8,   RedoGarLockAle_Reserved10 TO 8,
+             TT.ALE.RESERVED.9 TO 9,   RedoGarLockAle_Reserved9 TO 9,
+             TT.ALE.RESERVED.8 TO 10,  RedoGarLockAle_Reserved8 TO 10,
+             TT.ALE.RESERVED.7 TO 11,  RedoGarLockAle_Reserved7 TO 11,
+             TT.ALE.RESERVED.6 TO 12,  RedoGarLockAle_Reserved6 TO 12,
+             TT.ALE.RESERVED.5 TO 13,  RedoGarLockAle_Reserved5 TO 13,
+             TT.ALE.RESERVED.4 TO 14,  RedoGarLockAle_Reserved4 TO 14,
+             TT.ALE.RESERVED.3 TO 15,  RedoGarLockAle_Reserved3 TO 15,
+             TT.ALE.RESERVED.2 TO 16,  RedoGarLockAle_Reserved2 TO 16,
+             TT.ALE.RESERVED.1 TO 17,  RedoGarLockAle_Reserved1 TO 17

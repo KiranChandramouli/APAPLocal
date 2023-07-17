@@ -1,0 +1,76 @@
+component APAP.Repgen
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method rgpCollectTracer (
+)
+{
+    jBC: RGP.COLLECT.TRACER
+}
+
+
+
+public method rgpCollectionsDue (
+)
+{
+    jBC: RGP.COLLECTIONS.DUE
+}
+
+
+
+public method rgpLcAccept (
+)
+{
+    jBC: RGP.LC.ACCEPT
+}
+
+
+
+public method rgpLcAcceptances (
+)
+{
+    jBC: RGP.LC.ACCEPTANCES
+}
+
+
+
+public method rgpLcAcptDue (
+)
+{
+    jBC: RGP.LC.ACPT.DUE
+}
+
+
+
+public method rgpLcDiscount (
+)
+{
+    jBC: RGP.LC.DISCOUNT
+}
+
+
+
+public method rgpLcDiscounts (
+)
+{
+    jBC: RGP.LC.DISCOUNTS
+}
+
+
+
+public method rgpLcDrawings (
+)
+{
+    jBC: RGP.LC.DRAWINGS
+}
+
+
+
+private method rgpLcCollDue (
+)
+{
+   jBC: RGP.LC.COLL.DUE
+}
+
