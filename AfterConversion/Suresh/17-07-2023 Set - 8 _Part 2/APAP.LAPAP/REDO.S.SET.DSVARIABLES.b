@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNTQ0ODc1OTY6Q3AxMjUyOjE2ODkzMjg5OTExMjQ6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 14 Jul 2023 15:33:11
+* @ValidationCode : Mjo2MzcxODY1NDI6Q3AxMjUyOjE2ODk2NzU5NTcwNjg6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 18 Jul 2023 15:55:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,12 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-*---------------------------------------------------------------------------------------
-*Modification History:
-*DATE                 WHO                    REFERENCE                     DESCRIPTION
-*13/07/2023      Conversion tool            R22 Auto Conversion            FM TO @FM, VM TO @VM, SM TO @SM,++ TO +=, -- TO -=, INCLUDE TO INSERT, BP removed in INSERT file
-*13/07/2023      Suresh                     R22 Manual Conversion           Nochange
-*----------------------------------------------------------------------------------------
+
 SUBROUTINE REDO.S.SET.DSVARIABLES(Y.OUT)
 *--------------------------------------------------------------------------------
 *Company   Name    :Asociacion Popular de Ahorros y Prestamos
@@ -27,6 +22,9 @@ SUBROUTINE REDO.S.SET.DSVARIABLES(Y.OUT)
 *
 *Date           ref             who                description
 *28-02-2018     New RTE Form    APAP             Mapping all the Deal slip variables
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*13/07/2023      Conversion tool            R22 Auto Conversion            FM TO @FM, VM TO @VM, SM TO @SM,++ TO +=, -- TO -=, INCLUDE TO INSERT, BP removed in INSERT file
+*13/07/2023      Suresh                     R22 Manual Conversion          CALL routine format modified
 * -------------------------------------------------------------------------------------
  
     $INSERT I_COMMON ;*R22 Auto Conversion - Start
@@ -44,6 +42,9 @@ SUBROUTINE REDO.S.SET.DSVARIABLES(Y.OUT)
     $INSERT I_F.REDO.PAY.TYPE
     $INSERT I_F.REDO.RTE.CATEG.POSITION
     $INSERT I_F.REDO.TFS.PROCESS ;*R22 Auto Conversion - End
+    
+    $USING APAP.REDOSRTN
+    $USING APAP.REDOEB
 
 
     GOSUB INIT
@@ -54,7 +55,7 @@ RETURN
 INIT:
 *********
 
-    CALL REDO.S.CUSTOMER.NAME1(Y.OUT)
+    APAP.REDOSRTN.redoSCustomerName1(Y.OUT) ;*R22 Manual Conversion
     FN.CUSTOMER = 'F.CUSTOMER'
     F.CUSTOMER = ''
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
@@ -430,7 +431,7 @@ GET.CUST.DETAILS:
     IF VAR.CUS.PEP THEN
         Y.LOOKUP.ID='L.CUS.PEP'
         Y.LOOKUP.VAL=VAR.CUS.PEP
-        CALL REDO.EB.LOOKUP.LIST(Y.LOOKUP.ID,Y.LOOKUP.VAL,Y.DESC.VAL,RES1,RES2)
+        APAP.REDOEB.redoEbLookupList(Y.LOOKUP.ID,Y.LOOKUP.VAL,Y.DESC.VAL,RES1,RES2) ;*R22 Manual Conversion
         VAR.CUS.PEP=Y.DESC.VAL
     END
     IF VAR.CUS.PEP EQ '' THEN

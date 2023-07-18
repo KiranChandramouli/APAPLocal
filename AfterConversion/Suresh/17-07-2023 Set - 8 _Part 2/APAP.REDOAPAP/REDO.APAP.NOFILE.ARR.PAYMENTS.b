@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyMTAyMTMwNzg1OkNwMTI1MjoxNjg5NTczNjU5MDAyOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Jul 2023 11:30:59
+* @ValidationCode : MjoxMTY1OTQwODc4OkNwMTI1MjoxNjg5Njc2MzQxNzU4OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 18 Jul 2023 16:02:21
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -29,7 +29,7 @@ SUBROUTINE REDO.APAP.NOFILE.ARR.PAYMENTS(Y.COMMON.ARRAY,VAR.EFFECTIVE.DATE,Y.EFF
 *DATE           WHO           REFERENCE         DESCRIPTION
 *15.09.2010  S SUDHARSANAN   ODR-2010-03-0138   INITIAL CREATION
 *13/07/2023      Conversion tool            R22 Auto Conversion            FM TO @FM, VM TO @VM, SM TO @SM,++ TO +=, F.READ TO CACHE.READ
-*13/07/2023      Suresh                     R22 Manual Conversion          AA.CUS.PRIMARY.OWNER TO AA.CUS.CUSTOMER, AA.CUS.OWNER TO AA.CUS.CUSTOMER
+*13/07/2023      Suresh                     R22 Manual Conversion          AA.CUS.PRIMARY.OWNER TO AA.CUS.CUSTOMER, AA.CUS.OWNER TO AA.CUS.CUSTOMER, CALL routine format modified
 *----------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -53,6 +53,8 @@ SUBROUTINE REDO.APAP.NOFILE.ARR.PAYMENTS(Y.COMMON.ARRAY,VAR.EFFECTIVE.DATE,Y.EFF
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.ENQUIRY
     $INSERT I_F.REDO.AA.PAYMENT.DETAILS
+    
+    $USING APAP.AA
 
     GOSUB OPENFILES
     GOSUB LOC.REF
@@ -180,7 +182,7 @@ ARR.CONDITION:
     EFF.DATE = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL REDO.CRR.GET.CONDITIONS(VAR.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.AA.redoCrrGetConditions(VAR.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*R22 Manual Conversion
 RETURN
 *-----------------------------------------------------------------------------------------------------------------------
 GET.PRODUCT.DETAIL:
