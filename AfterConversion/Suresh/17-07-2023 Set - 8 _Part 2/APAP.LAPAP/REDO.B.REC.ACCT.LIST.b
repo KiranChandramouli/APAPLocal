@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo3NDQ4OTEwMTM6Q3AxMjUyOjE2ODkzMjA2MTUzMDM6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 14 Jul 2023 13:13:35
+* @ValidationCode : MjoxOTQ2NjcyMDM0OkNwMTI1MjoxNjg5Njc3NzY5MDU0OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 18 Jul 2023 16:26:09
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -15,10 +15,10 @@ $PACKAGE APAP.LAPAP
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *13/07/2023      Conversion tool            R22 Auto Conversion           SESSION.NO to AGENT.NO, FM TO @FM, ++ TO +=
-*13/07/2023      Suresh                     R22 Manual Conversion           Nochange
+*13/07/2023      Suresh                     R22 Manual Conversion         CALL routine format modified
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.B.REC.ACCT.LIST(Y.ACCT.ID)
-
+ 
     $INSERT I_TSA.COMMON  ;*R22 Auto Conversion - Start
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -38,7 +38,7 @@ SUBROUTINE REDO.B.REC.ACCT.LIST(Y.ACCT.ID)
     $INSERT I_F.FT.TXN.TYPE.CONDITION
     $INSERT I_F.T24.FUND.SERVICES
     $INSERT I_REDO.B.REC.ACCT.LIST.COMMON ;*R22 Auto Conversion - End
-
+    $USING APAP.REDOCHNLS
 
     GOSUB PROCESS
     GOSUB WRITE.DATA
@@ -261,7 +261,7 @@ WRITE.DATA:
                     MON.TP   = 04
                     REC.CON  = 'RECONRPT':ERR.MSG
                     DESC     = 'RECONRPT':ERR.MSG
-                    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+                    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Conversion
                 END
             END
             GOSUB WR.SEQ.FILE
@@ -281,6 +281,6 @@ WR.SEQ.FILE:
         MON.TP   = 04
         REC.CON  = 'RECONRPT':ERR.MSG
         DESC     = 'RECONRPT':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Conversion
     END
 END
