@@ -5723,11 +5723,34 @@ public method lapapLyPointsEHis (
     jBC: LAPAP.LY.POINTS.E.HIS
 }
 
-
-
 public method lapapLyInputUsmov (
 )
 {
     jBC: LAPAP.LY.INPUT.USMOV
+}
+
+public method lapapVEmailRt (
+)
+{
+    jBC: LAPAP.V.EMAIL.RT
+}
+
+public method redoApapNewConditionRtLoad (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.LOAD
+}
+
+public method lapapValidaActyRt (
+)
+{
+    jBC: LAPAP.VALIDA.ACTY.RT
+}
+
+public method redoAzReinvReverse (
+    INOUT selId string
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE
 }
 
