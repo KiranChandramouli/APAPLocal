@@ -1,0 +1,27 @@
+component APAP.AA
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoAaUpdateOverdueStatus (
+    INOUT yId string
+)
+{
+    jBC: REDO.AA.UPDATE.OVERDUE.STATUS
+}
+
+
+
+
+
+
+public method redoBCreArrAaOfs (
+    INOUT yRedoCreArrAaOfsListId string
+)
+{
+    jBC: REDO.B.CRE.ARR.AA.OFS
+}
+
+
+
