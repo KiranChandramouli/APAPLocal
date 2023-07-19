@@ -1,0 +1,427 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lapapGetNombreCusCajaRt (
+)
+{
+    jBC: LAPAP.GET.NOMBRE.CUS.CAJA.RT
+}
+
+
+
+public method lapapIdentDataRt (
+)
+{
+    jBC: LAPAP.IDENT.DATA.RT
+}
+
+
+
+public method lapapInpOcccusRt (
+)
+{
+    jBC: LAPAP.INP.OCCCUS.RT
+}
+
+
+
+public method lapapMigracionCovi (
+    INOUT yArrangementId string
+)
+{
+    jBC: LAPAP.MIGRACION.COVI
+}
+
+
+
+public method lapapMigracionCoviLoad (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.LOAD
+}
+
+
+
+public method lapapMigracionCoviSelect (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.SELECT
+}
+
+
+
+public method lapapMigrateWoff (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF
+}
+
+
+
+public method lapapMigrateWoffPost (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF.POST
+}
+
+
+
+public method lapapMlOccusMigRt (
+)
+{
+    jBC: LAPAP.ML.OCCUS.MIG.RT
+}
+
+
+
+public method lapapModDirecciones (
+)
+{
+    jBC: LAPAP.MOD.DIRECCIONES
+}
+
+
+
+public method lapapMoveNcfRt (
+)
+{
+    jBC: LAPAP.MOVE.NCF.RT
+}
+
+
+
+public method lapapNoCusIdenTipe (
+)
+{
+    jBC: LAPAP.NO.CUS.IDEN.TIPE
+}
+
+
+
+public method lapapNoCusIdentification (
+)
+{
+    jBC: LAPAP.NO.CUS.IDENTIFICATION
+}
+
+
+
+public method lapapNoCusName (
+)
+{
+    jBC: LAPAP.NO.CUS.NAME
+}
+
+
+
+public method lapapNoCusTime (
+)
+{
+    jBC: LAPAP.NO.CUS.TIME
+}
+
+
+
+public method lapapOcusSetRt (
+)
+{
+    jBC: LAPAP.OCUS.SET.RT
+}
+
+
+
+public method lapapOfsInterestPaid (
+    INOUT selListAz string
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID
+}
+
+
+
+public method lapapOfsInterestPaidLoad (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.LOAD
+}
+
+
+
+public method lapapOfsInterestPaidSelect (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.SELECT
+}
+
+
+public method lapapPciRtn (
+)
+{
+    jBC: LAPAP.PCI.RTN
+}
+
+
+
+public method lapapPlafIntListTr (
+    INOUT yRec string
+)
+{
+    jBC: LAPAP.PLAF.INT.LIST.TR
+}
+
+
+
+public method lapapPlafNotifyRt (
+    INOUT rec string
+)
+{
+    jBC: LAPAP.PLAF.NOTIFY.RT
+}
+
+
+
+public method lapapPrePendActPost (
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT.POST
+}
+
+
+public method lapapProcesRnRt (
+    INOUT yAaaId string
+)
+{
+    jBC: LAPAP.PROCES.RN.RT
+}
+
+
+
+public method lapapProcesRnRtLoad (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.LOAD
+}
+
+
+
+public method lapapProcesRnRtPost (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.POST
+}
+
+
+
+public method lapapProcesRnRtSelect (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.SELECT
+}
+
+
+
+public method lapapProcesaAchEntranteRt (
+    INOUT yIdAchDet string
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT
+}
+
+
+
+public method lapapProcesaAchEntranteRtLoad (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.LOAD
+}
+
+
+
+public method lapapProcesaAchEntranteRtSelect (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
+}
+
+
+
+public method lapapPurgalOfsrequestd (
+    INOUT purgaId string
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD
+}
+
+
+
+public method lapapPurgalOfsrequestdLoad (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.LOAD
+}
+
+
+
+public method lapapPurgalOfsrequestdSelect (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.SELECT
+}
+
+
+
+public method lapapRaiseEntryIn (
+    INOUT arrId string
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN
+}
+
+
+
+public method lapapRaiseEntryInLoad (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.LOAD
+}
+
+
+
+public method lapapRaiseEntryInSelect (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.SELECT
+}
+
+
+
+public method lapapRteUserAuth (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.AUTH
+}
+
+
+
+public method lapapRteUserIn (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.IN
+}
+
+
+
+public method lapapSendMonitorFromVersion (
+    INOUT id string,
+    INOUT sqlFields string,
+    INOUT dataTypes string,
+    INOUT monFields string,
+    INOUT sqlTable string
+)
+{
+    jBC: LAPAP.SEND.MONITOR.FROM.VERSION
+}
+
+
+
+public method lapapSendMonitorLoad (
+    INOUT id string,
+    INOUT sqlFields string,
+    INOUT dataTypes string,
+    INOUT monFields string,
+    INOUT sqlTable string
+)
+{
+    jBC: LAPAP.SEND.MONITOR.LOAD
+}
+
+
+
+public method lapapServReprecioOfs (
+)
+{
+    jBC: LAPAP.SERV.REPRECIO.OFS
+}
+
+
+public method lapapSumatoriaQrPin (
+)
+{
+    jBC: LAPAP.SUMATORIA.QR.PIN
+}
+
+
+
+public method lapapTriggerEnqAsaPrt (
+)
+{
+    jBC: LAPAP.TRIGGER.ENQ.ASA.PRT
+}
+
+
+
+public method lapapUpdAvBal (
+)
+{
+    jBC: LAPAP.UPD.AV.BAL
+}
+
+
+public method lapapUpdateOpeningDate (
+)
+{
+    jBC: LAPAP.UPDATE.OPENING.DATE
+}
+
+
+
+public method lapapVCusManManRt (
+)
+{
+    jBC: LAPAP.V.CUS.MAN.MAN.RT
+}
+
+
+
+public method lapapVOcusFieldsRt (
+)
+{
+    jBC: LAPAP.V.OCUS.FIELDS.RT
+}
+
+
+
+public method nofileLApapScheduleProA01 (
+    INOUT yData string
+)
+{
+    jBC: NOFILE.L.APAP.SCHEDULE.PRO.A01
+}
+
+
+
+public method redoApapInpRteamlTfsCheck (
+)
+{
+    jBC: REDO.APAP.INP.RTEAML.TFS.CHECK
+}
+
+
+
+public method redoAzReinvConsultaPost (
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA.POST
+}
+
+
+
+
+
+
+
