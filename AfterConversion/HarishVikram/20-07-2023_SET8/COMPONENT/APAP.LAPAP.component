@@ -1,0 +1,162 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method lApapInTdRepoNoDupRt (
+)
+{
+   jBC: L.APAP.IN.TD.REPO.NO.DUP.RT
+}
+
+
+
+public method lApapRevPagoFtPrelac (
+   INOUT idFt string
+)
+{
+   jBC: L.APAP.REV.PAGO.FT.PRELAC
+}
+
+
+
+public method lApapRevPagoFtPrelacLoad (
+)
+{
+   jBC: L.APAP.REV.PAGO.FT.PRELAC.LOAD
+}
+
+
+public method lApapRevPagoFtPrelacSelect (
+)
+{
+   jBC: L.APAP.REV.PAGO.FT.PRELAC.SELECT
+}
+
+
+
+public method lApapSetPayCovidIn (
+   INOUT yAaaId string
+)
+{
+   jBC: L.APAP.SET.PAY.COVID.IN
+}
+
+
+
+public method lApapSoybBalRt (
+   INOUT accountId string
+)
+{
+   jBC: L.APAP.SOYB.BAL.RT
+}
+
+
+
+public method lApapSoybBalRtLoad (
+)
+{
+   jBC: L.APAP.SOYB.BAL.RT.LOAD
+}
+
+
+public method lApapTdanuchgRt (
+   INOUT yLcoId string
+)
+{
+   jBC: L.APAP.TDANUCHG.RT
+}
+
+
+
+public method lApapSoybBalRtSelect (
+)
+{
+   jBC: L.APAP.SOYB.BAL.RT.SELECT
+}
+
+
+
+public method lApapTdanuchgRtLoad (
+)
+{
+   jBC: L.APAP.TDANUCHG.RT.LOAD
+}
+
+
+
+public method lApapTdanuchgRtSelect (
+)
+{
+   jBC: L.APAP.TDANUCHG.RT.SELECT
+}
+
+
+public method lApapTdmenchgRtLoad (
+)
+{
+   jBC: L.APAP.TDMENCHG.RT.LOAD
+}
+
+
+
+public method lApapTdmenchgRtSelect (
+)
+{
+   jBC: L.APAP.TDMENCHG.RT.SELECT
+}
+
+
+public method lApapTdmenchgRt (
+   INOUT yLcoId string
+)
+{
+   jBC: L.APAP.TDMENCHG.RT
+}
+
+
+public method lApapValiPayCovidLoad (
+)
+{
+   jBC: L.APAP.VALI.PAY.COVID.LOAD
+}
+
+
+
+public method lApapValiPayCovidSelect (
+)
+{
+   jBC: L.APAP.VALI.PAY.COVID.SELECT
+}
+
+
+
+public method lApapValiPayCovid (
+   INOUT yAaaId string
+)
+{
+   jBC: L.APAP.VALI.PAY.COVID
+}
+
+
+public method lapapVAsambleaCed (
+)
+{
+   jBC: LAPAP.V.ASAMBLEA.CED
+}
+
+
+public method lapapVNocusLimitRt (
+)
+{
+   jBC: LAPAP.V.NOCUS.LIMIT.RT
+}
+
+
+
+public method lapapWdrlPenalSRtLoad (
+)
+{
+   jBC: LAPAP.WDRL.PENAL.S.RT.LOAD
+}
+
