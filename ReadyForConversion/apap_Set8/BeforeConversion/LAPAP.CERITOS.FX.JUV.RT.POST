@@ -1,0 +1,40 @@
+*-----------------------------------------------------------------------------
+* <Rating>-10</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.CERITOS.FX.JUV.RT.POST
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_F.ACCOUNT
+    $INSERT TAM.BP I_F.REDO.CARD.RENEWAL
+    $INSERT ATM.BP I_F.ATM.REVERSAL
+    $INSERT TAM.BP I_F.REDO.LY.POINTS
+    $INSERT LAPAP.BP I_LAPAP.CERITOS.FX.JUV.COMMON
+
+    GOSUB DO.LOG
+    RETURN
+
+DO.LOG:
+
+    Y.TRANS.ID.2  = "CDJFX" : Y.ANIO.ACTUAL.FMT : Y.MES.ACTUAL
+    Y.APP.NAME.2  = "ST.LAPAP.CDJ.LOG"
+    Y.VER.NAME.2  = Y.APP.NAME.2 :",IN"
+    Y.FUNC.2   = "I"
+    Y.PRO.VAL.2  = "PROCESS"
+    Y.GTS.CONTROL.2 = ""
+    Y.NO.OF.AUTH.2  = ""
+    FINAL.OFS.2  = ""
+    OPTIONS.2   = ""
+    Y.CAN.NUM.2  = 0
+    Y.CAN.MULT.2  = ""
+    R.CDF.FIN   = ""
+    R.CDF.FIN<1>  = Y.ANIO.ACTUAL.FMT : Y.MES.ACTUAL        ;*RUN.PERIOD
+    R.CDF.FIN<2>  = Y.TOTAL.TXN         ;*TOTAL.TXNS
+    R.CDF.FIN<3>  = Y.TOTAL.CARDS       ;*TOTAL.CARDS
+    R.CDF.FIN<4>  = INT(Y.TOTAL.CERITOS.GEN)      ;*TOTAL.CERITOS.GEN
+    CALL OCOMO("VALORES DEL LOG: " : R.CDF.FIN)
+    CALL OFS.BUILD.RECORD(Y.APP.NAME.2,Y.FUNC.2,Y.PRO.VAL.2,Y.VER.NAME.2,Y.GTS.CONTROL.2,Y.NO.OF.AUTH.2,Y.TRANS.ID.2,R.CDF.FIN,FINAL.OFS.2)
+    CALL OFS.GLOBUS.MANAGER("DIARY.OFS", FINAL.OFS.2)
+    CALL JOURNAL.UPDATE(Y.TRANS.ID.2)
+
+    RETURN
+END
