@@ -135,3 +135,17 @@ public method lapapUpdateDaylyUsdLimite3 (
 }
 
 
+public method lapapINocusDeclinedRt (
+)
+{
+    jBC: LAPAP.I.NOCUS.DECLINED.RT
+}
+
+public method lapapIdGetVotanteRt (
+)
+{
+    jBC: LAPAP.ID.GET.VOTANTE.RT
+}
+
+
+
