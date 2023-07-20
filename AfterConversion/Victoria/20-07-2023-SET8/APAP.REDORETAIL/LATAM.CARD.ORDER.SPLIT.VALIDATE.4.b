@@ -1,0 +1,328 @@
+* @ValidationCode : MjotMTExNDQ2OTIzNDpDcDEyNTI6MTY4OTgzNjc4OTA2Mjp2aWN0bzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Jul 2023 12:36:29
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : victo
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDORETAIL
+SUBROUTINE LATAM.CARD.ORDER.SPLIT.VALIDATE.4
+*--------------------------------------------------------------------------------------------------------
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : LATAM.CARD.ORDER.SPLIT.VALIDATE.2
+*--------------------------------------------------------------------------------------------------------
+*Description  : Validation routine for LATAM.CARD.ORDER
+*Linked With  : LATAM.CARD.ORDER
+*In Parameter : N/A
+*Out Parameter: N/A
+*--------------------------------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+*    Date            Who                  Reference               Description
+*   ------         ------               -------------            -------------
+* 9 Aug 2010    Mohammed Anies K       ODR-2010-03-0400          Initial Creation
+* 20 MAY 2011   KAVITHA                PACS00024249              STOCK. REGISTER logic has been removed as per new design
+*20-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     F.READ TO CACHE.READ,++ TO +=1,= TO EQ,VARIABLE INITIALIZED
+*20-07-2023    VICTORIA S          R22 MANUAL CONVERSION   VARIABLE INITIALIZED
+*--------------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.CARD.ISSUE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.CARD.CHARGE
+    $INSERT I_F.CARD.TYPE
+    $INSERT I_F.LOCKING
+    $INSERT I_F.DATES
+    $INSERT I_F.PAYMENT.STOP.TYPE
+
+    $INSERT I_F.CARD.STATUS
+    $INSERT I_F.COMPANY
+    $INSERT I_F.AZ.ACCOUNT
+    $INSERT I_F.CARD.REPAYMENT.DATE
+    $INSERT I_F.CARD.BILL.CLOSE.DATE
+    $INSERT I_F.STOCK.REGISTER
+    $INSERT I_F.STOCK.PARAMETER
+    $INSERT I_F.MNEMONIC.COMPANY
+    $INSERT I_F.MNEMONIC.DAO
+    $INSERT I_F.DEPT.ACCT.OFFICER
+    $INSERT I_F.LOCAL.TABLE
+    $INSERT I_F.AZ.PRODUCT.PARAMETER
+    $INSERT I_GTS.COMMON
+*    -------End of core---------------------
+    $INSERT I_F.LATAM.CARD.ORDER
+    $INSERT I_F.LATAM.CARD.CLASS.CODE
+
+
+
+
+    GOSUB INIT.PARA
+    GOSUB PROCESS.PARA
+
+
+RETURN
+*----------------------------------------------
+INIT.PARA:
+    DFQU = ''
+    DFQU1 = ''
+    COM.DFQ = ''
+
+*
+*    FV.STO.REG = 'F.STOCK.REGISTER'
+*   FP.STO.REG = ''
+*   CALL OPF(FV.STO.REG,FP.STO.REG)
+
+*   FN.STOCK.PARAMETER = 'F.STOCK.PARAMETER'
+*   F.STOCK.PARAMETER = ''
+*  CALL OPF(FN.STOCK.PARAMETER,F.STOCK.PARAMETER)
+*
+    AZ.ACC.REC = ''
+**
+*   FV.CRD.ISS = 'F.CARD.ISSUE'
+*   FP.CRD.ISS = ''
+*   CALL OPF(FV.CRD.ISS,FP.CRD.ISS)
+*
+    F.CRD.RPY.DT = 'F.CARD.REPAYMENT.DATE'
+    F.CRD.RPY.DT = ''
+    CALL OPF(F.CRD.RPY.DT,F.CRD.RPY.DT)
+
+    FN.STOCK.PARAMETER = 'F.STOCK.PARAMETER' ; F.STOCK.PARAMETER = '' ; CALL OPF(FN.STOCK.PARAMETER,F.STOCK.PARAMETER)
+    FN.MNEMONIC.COMPANY = 'F.MNEMONIC.COMPANY' ; F.MNEMONIC.COMPANY = '' ; CALL OPF(FN.MNEMONIC.COMPANY,F.MNEMONIC.COMPANY)
+    FN.COMPANY = 'F.COMPANY' ; F.COMPANY = '' ; CALL OPF(FN.COMPANY,F.COMPANY)
+    FN.MNEMONIC.DAO = 'F.MNEMONIC.DAO' ; F.MNEMONIC.DAO = '' ; CALL OPF(FN.MNEMONIC.DAO,F.MNEMONIC.DAO)
+    FN.DEPT.ACCT.OFFICER = 'F.DEPT.ACCT.OFFICER' ; F.DEPT.ACCT.OFFICER = '' ; CALL OPF(FN.DEPT.ACCT.OFFICER,F.DEPT.ACCT.OFFICER)
+
+    ER=''
+    LCY.AMT = ""
+
+    ERROR.FLAG = 0
+
+RETURN
+*------------------------------------------------
+PROCESS.PARA:
+
+*PACS00024249-S
+
+
+*    IF R.NEW(CARD.IS.STOCK.REG.ID) EQ '' THEN
+*       RETURN
+*   END
+
+
+*   STO.PAR.ID = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1)
+*   CALL F.READ(FN.STOCK.PARAMETER,STO.PAR.ID,R.STOCK.PARAMETER,F.STOCK.PARAMETER,Y.ERR.SP)
+*   YRETURN = R.STOCK.PARAMETER<SP.STOCK.REG.ID>
+*   CALL DBR ("STOCK.PARAMETER":FM:SP.STOCK.REG.ID:FM:"L",STO.PAR.ID,YRETURN)
+
+*   IF NOT(YRETURN) THEN
+*       AF = CARD.IS.STOCK.REG.ID
+*       ETEXT ="AC.RTN.INVALID.STOCK.PARAMETER.ID"
+*       CALL STORE.END.ERROR
+*      RETURN
+*   END ELSE
+*      STK.REG.ID1 = FIELD(YRETURN,'-',1)
+*      STK.REG.ID2 = FIELD(YRETURN,'-',2)
+*  END
+*  IF STK.REG.ID2 EQ "" AND FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2) NE "" THEN
+*      AF = CARD.IS.STOCK.REG.ID
+*     ETEXT ="AC.RTN.INVALID.STOCK.PARAMETER.ID.1"
+*     CALL STORE.END.ERROR
+*     RETURN
+* END
+* IF STK.REG.ID2 NE "" AND FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2) EQ "" THEN
+*     STO.APP.ID = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',2)
+*    AF = CARD.IS.STOCK.REG.ID
+*    ETEXT ="AC.RTN.INVALID.STOCK.PARAMETER.ID.1"
+*    CALL STORE.END.ERROR
+*    RETURN
+*   END ELSE
+*       STO.APP.ID = FIELD(FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',2),'-',1)
+*       YRETURN = STK.REG.ID1
+*       GOSUB VALIDATE.VALUES
+*       IF ERROR.FLAG THEN
+*           RETURN
+*       END
+*       ENRICH = COMI.ENRI
+*       IF STK.REG.ID2 NE "" THEN
+*           STO.APP.ID = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2)
+*          YRETURN = STK.REG.ID2
+*         GOSUB VALIDATE.VALUES
+*         IF ERROR.FLAG THEN
+*             RETURN
+*         END
+*         COMI.ENRI = ENRICH:'-':COMI.ENRI
+*     END
+* END
+
+*  IF R.NEW.LAST(CARD.IS.CARD.START.NO) THEN
+*      R.NEW(CARD.IS.CARD.START.NO) = ''
+*     N(CARD.IS.CARD.START.NO) = '20.1.C'
+*  END ELSE
+*      N(CARD.IS.CARD.START.NO) = '20..C'
+*  END
+
+* PACS00024249 -E
+
+RETURN
+
+*************************************************************************
+* To populate the enrich and mnemonic conversion
+***********************
+VALIDATE.VALUES:
+***********************
+    YRETURN="" ;*R22 MANUAL CONVERSION
+    STK.REG.ID2="" ;*R22 MANUAL CONVERSION
+    BEGIN CASE
+        CASE YRETURN EQ "COMPANY.CODE" OR YRETURN EQ "CO.CODE" ;*R22 AUTO CONVERSION
+            CALL CACHE.READ(FN.MNEMONIC.COMPANY, STO.APP.ID, R.MNEMONIC.COMPANY, Y.ERR.MC) ;*R22 AUTO CONVERSION
+            MNE1 = R.MNEMONIC.COMPANY<AC.MCO.COMPANY>
+*CALL DBR("MNEMONIC.COMPANY":FM:AC.MCO.COMPANY:FM:"L",STO.APP.ID,MNE1)
+
+            CALL CACHE.READ(FN.COMPANY, MNE1, R.COMP, Y.ERR.COMP) ;*R22 AUTO CONVERSION
+            COMI.ENRI =R.COMP<EB.COM.COMPANY.NAME>
+*CALL DBR("COMPANY":FM:EB.COM.COMPANY.NAME:FM:"L",MNE1,COMI.ENRI)
+            GOSUB CHECK.MNE1
+        CASE YRETURN EQ "DEPARTMENT.CODE" OR YRETURN EQ "DEPT.CODE" ;*R22 AUTO CONVERSION
+
+            CALL CACHE.READ(FN.MNEMONIC.DAO, STO.APP.ID, R.MNEM.DAO, Y.ERR.MNE.DAO) ;*R22 AUTO CONVERSION
+            MNE2 = R.MNEM.DAO<MDAO.DEPT.ACCT.OFFICER>
+*CALL DBR("MNEMONIC.DAO":FM:MDAO.DEPT.ACCT.OFFICER:FM:"L",STO.APP.ID,MNE2)
+
+            CALL CACHE.READ(FN.DEPT.ACCT.OFFICER, STO.APP.ID, R.DEP.ACT.OFF1, Y.ERR.DAO) ;*R22 AUTO CONVERSION
+            COMI.ENRI = R.DEP.ACT.OFF1<EB.DAO.AREA>
+*CALL DBR("DEPT.ACCT.OFFICER":FM:EB.DAO.AREA:FM:"L",STO.APP.ID,COMI.ENRI)
+
+            IF COMI.ENRI EQ '' THEN
+                CALL CACHE.READ(FN.DEPT.ACCT.OFFICER, MNE2, R.DEP.ACT.OFF2, Y.ERR.DAO1) ;*R22 AUTO CONVERSION
+                COMI.ENRI = R.DEP.ACT.OFF2<EB.DAO.AREA>
+*CALL DBR("DEPT.ACCT.OFFICER":FM:EB.DAO.AREA:FM:"L",MNE2,COMI.ENRI)
+            END
+            GOSUB CHECK.MNE2
+        CASE YRETURN EQ "LOCAL.TABLE" OR YRETURN EQ "LOCAL.TAB" ;*R22 AUTO CONVERSION
+            F.LOCAL.TABLE = ''
+            FN.LOCAL.TABLE = "F.LOCAL.TABLE" ;*R22 AUTO CONVERSION
+            CALL OPF(FN.LOCAL.TABLE,F.LOCAL.TABLE) ;*R22 AUTO CONVERSION
+            CALL F.READ(FN.STOCK.PARAMETER,STO.PAR.ID,STO.PARAM.REC,F.STOCK.PARAMETER,ER)
+            MNE3 = STO.PARAM.REC<SP.LOCAL.TABLE.NO>
+            CALL CACHE.READ("F.LOCAL.TABLE", MNE3, LOC.TAB.REC, LOC.ERR) ;*R22 AUTO CONVERSION
+            COMI.ENRI = LOC.TAB.REC<EB.LTA.DESCRIPTION>
+*CALL DBR("LOCAL.TABLE":FM:EB.LTA.DESCRIPTION:FM:'L',MNE3,COMI.ENRI)
+            NO.VET.TAB = DCOUNT(LOC.TAB.REC<EB.LTA.VETTING.TABLE>,@VM) ;*R22 AUTO CONVERSION
+            IF LOC.TAB.REC<EB.LTA.VETTING.TABLE> THEN
+
+                FOR CNTR = 1 TO NO.VET.TAB
+                    IF STO.APP.ID EQ LOC.TAB.REC<EB.LTA.VETTING.TABLE><1,CNTR> THEN
+                        MNE3 = STO.APP.ID
+                        CNTR += 1 ;*R22 AUTO CONVERSION
+                    END
+                NEXT CNTR
+            END ELSE
+                GOSUB ELSE.PART.VAL
+            END
+            GOSUB CHECK.MNE3
+    END CASE
+RETURN
+*-------------------------
+ELSE.PART.VAL:
+    LTA.APP = LOC.TAB.REC<EB.LTA.APPLICATION.VET>
+    ENR.FLD = LOC.TAB.REC<EB.LTA.APPL.ENRICHM.FIELD>
+
+*CALL DBR(LTA.APP:FM:ENR.FLD:FM:"L",STO.APP.ID,COMI.ENRI)
+    LTA.APP = 'F.':LTA.APP
+    FV.LTA.APP = LTA.APP
+    FP.LTA.APP = ''
+    CALL OPF(FV.LTA.APP,FP.LTA.APP)
+    CALL F.READ(FV.LTA.APP,STO.APP.ID,LTA.APP.REC,FP.LTA.APP,ER1)
+    COMI.ENRI = LTA.APP.REC<ENR.FLD>
+    IF ER1 THEN
+        AF = CARD.IS.STOCK.REG.ID
+        ETEXT ="AC.RTN.INVALID.LOCAL.TABLE"
+        CALL STORE.END.ERROR
+        ERROR.FLAG = 1
+        RETURN
+    END ELSE
+        MNE3 = STO.APP.ID
+    END
+
+RETURN
+*---------------------------------
+CHECK.MNE1:
+    IF MNE1 THEN
+        IF STK.REG.ID2 EQ "" THEN
+            R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE1
+        END ELSE
+            R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE1:'-':FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2)
+        END
+*CALL REBUILD.SCREEN
+    END ELSE
+
+        CALL CACHE.READ(FN.COMPANY, STO.APP.ID, R.COMP, Y.ERR.COMP) ;*R22 AUTO CONVERSION
+        ERR = R.COMP<EB.COM.COMPANY.NAME>
+*CALL DBR("COMPANY":FM:EB.COM.COMPANY.NAME:FM:"L",STO.APP.ID,ERR)
+        IF NOT(ERR) THEN
+            AF = CARD.IS.STOCK.REG.ID
+            ETEXT ="AC.RTN.INVALID.COMP.NAME"
+            CALL STORE.END.ERROR
+            ERROR.FLAG = 1
+            RETURN
+
+        END
+    END
+RETURN
+*------------------------
+CHECK.MNE3:
+    IF MNE3 EQ STO.APP.ID THEN
+        IF STK.REG.ID2 EQ "" THEN
+            R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE3
+        END ELSE
+            IF STK.REG.ID2 EQ "LOCAL.TAB" THEN ;*R22 AUTO CONVERSION
+                R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',1):'-':MNE3
+            END ELSE
+                R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE3:'-':FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2)
+            END
+        END
+*CALL REBUILD.SCREEN
+    END ELSE
+        AF = CARD.IS.STOCK.REG.ID
+        ETEXT ="AC.RTN.INVALID.LOCAL.TABLE"
+        CALL STORE.END.ERROR
+        ERROR.FLAG = 1
+        RETURN
+    END
+RETURN
+*--------------------
+CHECK.MNE2:
+
+    IF MNE2 THEN
+        IF STK.REG.ID2 EQ "" THEN
+            R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE2
+        END ELSE
+            IF STK.REG.ID2 EQ "DEPT.CODE" THEN ;*R22 AUTO CONVERSION
+                R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',1):'-':MNE2
+            END ELSE
+                R.NEW(CARD.IS.STOCK.REG.ID) = FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'.',1):'.':MNE2:'-':FIELD(R.NEW(CARD.IS.STOCK.REG.ID),'-',2)
+            END
+        END
+*CALL REBUILD.SCREEN
+    END ELSE
+        CALL CACHE.READ(FN.DEPT.ACCT.OFFICER, STO.APP.ID, R.DEP.ACT.OFF3, Y.ERR.DAO) ;*R22 AUTO CONVERSION
+        ERR = R.DEP.ACT.OFF3<EB.DAO.AREA>
+*CALL DBR("DEPT.ACCT.OFFICER":FM:EB.DAO.AREA:FM:"L",STO.APP.ID,ERR)
+        IF NOT(ERR) THEN
+            AF = CARD.IS.STOCK.REG.ID
+            ETEXT ="AC.RTN.INVALID.DEPARTMENT.CODE"
+            CALL STORE.END.ERROR
+            ERROR.FLAG = 1
+            RETURN
+
+        END
+    END
+RETURN
+*--------------------------
+
+END
