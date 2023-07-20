@@ -1,17 +1,8 @@
-* @ValidationCode : MjoxMzA3OTc1NzE0OkNwMTI1MjoxNjg5Njc0NDkwMzUwOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 18 Jul 2023 15:31:30
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.LAPAP
-SUBROUTINE LAPAP.V.INP.CALC.CHARGE
+*--------------------------------------------------------------------------------
+* <Rating>-59</Rating>
+*--------------------------------------------------------------------------------
+
+    SUBROUTINE LAPAP.V.INP.CALC.CHARGE
 
 *--------------------------------------------------------------------------------
 *Company   Name    : Asociacion Popular de Ahorros y Prestamos
@@ -27,28 +18,21 @@ SUBROUTINE LAPAP.V.INP.CALC.CHARGE
 *Modification on 02 Jun 2022 : Use FBNK.IC.LAPAP.CLO.CHARGE.PARAM as source for ...
 *                              ... Charge parameter for PERSONA JURIDICA.
 * ----------------------------------------------------------------------------------
-*-----------------------------------------------------------------------------------------------------------------------
-*Modification HISTORY:
-*DATE		 AUTHOR				    Modification                           DESCRIPTION
-*13/07/2023	VIGNESHWARI	MANUAL    R22 CODE CONVERSION               NOCHANGE
-*13/07/2023	CONVERSION TOOL       AUTO R22 CODE CONVERSION	        T24.BP,BP is removed in insertfile, VM changed to @VM,FM changed to @FM,SM changed to @SM,
-*									                                "=" changed to "EQ",'F.READ' changed to 'CACHE.READ',CONVERT changed to CHANGE
-*-----------------------------------------------------------------------------------------------------------------------
-    $INSERT I_COMMON
-    $INSERT I_EQUATE
-    $INSERT I_F.ACCOUNT
-    $INSERT I_F.ACCOUNT.CLOSURE
-    $INSERT I_F.FT.COMMISSION.TYPE
-    $INSERT I_F.CUSTOMER
-    $INSERT I_F.IC.LAPAP.CLO.CHARGE.PARAM
 
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_F.ACCOUNT
+    $INSERT T24.BP I_F.ACCOUNT.CLOSURE
+    $INSERT T24.BP I_F.FT.COMMISSION.TYPE
+    $INSERT T24.BP I_F.CUSTOMER
+    $INSERT BP I_F.IC.LAPAP.CLO.CHARGE.PARAM
 
     IF MESSAGE EQ '' THEN
         GOSUB INIT
         GOSUB OPEN.FILES
         GOSUB PROCESS
     END
-RETURN
+    RETURN
 
 *------------------------------------------------------------------------------
 *DESCRIPTION : Initialising the variables
@@ -61,11 +45,11 @@ INIT:
     FT4.LRF.CCY=''
     ACL.CURRENCY=''
 
-    LOC.REF.APPLICATION="FT.COMMISSION.TYPE":@FM:"ACCOUNT.CLOSURE":@FM:"CUSTOMER"
-    LOC.REF.FIELDS='L.FT4.LRF.CCY':@VM:'L.FT4.MIN.PER':@VM:'L.FT4.CLO.CHG':@FM:'L.ACL.WAIVE.CHG':@FM:'L.CU.TIPO.CL':@VM:'L.CU.SEGMENTO'
+    LOC.REF.APPLICATION="FT.COMMISSION.TYPE":FM:"ACCOUNT.CLOSURE":FM:"CUSTOMER"
+    LOC.REF.FIELDS='L.FT4.LRF.CCY':VM:'L.FT4.MIN.PER':VM:'L.FT4.CLO.CHG':FM:'L.ACL.WAIVE.CHG':FM:'L.CU.TIPO.CL':VM:'L.CU.SEGMENTO'
     LOC.REF.POS=''
 
-RETURN
+    RETURN
 
 *------------------------------------------------------------------------------
 *DESCRIPTION: Opening the files ACCOUNT, FT.COMMISSION.TYPE and ACCOUNT.CLOSURE
@@ -92,7 +76,7 @@ OPEN.FILES:
     F.CUSTOMER = ''
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
 
-RETURN
+    RETURN
 
 *--------------------------------------------------------------------------------
 *DESCRIPTION:Getting the position of the local fields from FT.COMMISSION
@@ -118,7 +102,7 @@ PROCESS:
 
     IF WAIVE.CHG EQ 'Y' THEN
         R.NEW(AC.ACL.CLO.CHARGE.AMT)=0
-        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),@VM) + 1
+        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),VM) + 1
         TEXT='AC.CLOSE.WAIVE.CHGS'
         CALL STORE.OVERRIDE(CURR.NO)
     END
@@ -140,10 +124,10 @@ PROCESS:
         FTID=R.NEW(AC.ACL.CLO.CHARGE.TYPE)
         R.FT.COMMISSION.TYPE=''
 
-        CALL CACHE.READ(FN.FT.COMMISSION.TYPE, FTID, R.FT.COMMISSION.TYPE, ERR) ;*AUTO R22 CODE CONVERSION
+        CALL F.READ(FN.FT.COMMISSION.TYPE,FTID,R.FT.COMMISSION.TYPE,F.FT.COMMISSION.TYPE,ERR)
         LOC.CURR=R.FT.COMMISSION.TYPE<FT4.LOCAL.REF><1,LOC.LRF.CCY>
 
-        CHANGE @SM TO @FM IN LOC.CURR ;*AUTO R22 CODE CONVERSION
+        CONVERT SM TO FM IN LOC.CURR
 
         CALL F.READ(FN.IC.LAPAP.CLO.CHARGE.PARAM,FTID,R.IC.LAPAP.CLO.CHARGE.PARAM,F.IC.LAPAP.CLO.CHARGE.PARAM,ERR.IC)
 
@@ -157,7 +141,7 @@ PROCESS:
 
 
     END
-RETURN
+    RETURN
 
 **************
 CALC.CHARGE:
@@ -166,12 +150,12 @@ CALC.CHARGE:
 
     CLOSE.CHG=R.FT.COMMISSION.TYPE<FT4.LOCAL.REF><1,LOC.EARLY.CLOSE.CHARGE,POS>
     MINIMUM.HOLD=R.FT.COMMISSION.TYPE<FT4.LOCAL.REF><1,LOC.MIN.HOLD.PERIOD,POS>
-    IF MINIMUM.HOLD[1] EQ 'Y' THEN ;*AUTO R22 CODE CONVERSION
+    IF MINIMUM.HOLD[1]='Y' THEN
         VAL=FIELD(MINIMUM.HOLD,'Y',1)
         MIN.HOLD.VALUE=VAL * 12
     END
     ELSE
-        IF MINIMUM.HOLD[1] EQ 'M' THEN
+        IF MINIMUM.HOLD[1]='M' THEN
             VAL=FIELD(MINIMUM.HOLD,'M',1)
             MIN.HOLD.VALUE=VAL
         END
@@ -179,12 +163,12 @@ CALC.CHARGE:
 
     IF NO.OF.MONTHS LT MIN.HOLD.VALUE  THEN
         R.NEW(AC.ACL.CLO.CHARGE.AMT)=CLOSE.CHG
-        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),@VM) + 1
+        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),VM) + 1
         TEXT='AC.CLOSE.CHG.AMT'
         CALL STORE.OVERRIDE(CURR.NO)
     END
 
-RETURN
+    RETURN
 
 ****************
 CALC.CHARGE.FROM.PARAMS:
@@ -202,7 +186,7 @@ CALC.CHARGE.FROM.PARAMS:
     FINDSTR Y.ACC.CATEGORY IN P.WAIVE.CATEGORY SETTING v.fieldNo, v.valueNo THEN
 *If we enter here the account category is amongst waive ones.
         R.NEW(AC.ACL.CLO.CHARGE.AMT)=0
-        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),@VM) + 1
+        CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),VM) + 1
         TEXT='AC.CLOSE.WAIVE.CHGS'
         CALL STORE.OVERRIDE(CURR.NO)
 
@@ -244,9 +228,9 @@ CALC.CHARGE.FROM.PARAMS:
 *CALL LAPAP.LOGGER('LOGGER.BP',ID.NEW,MSG)
 *DEBUG
     R.NEW(AC.ACL.CLO.CHARGE.AMT)= Y.CHG.AMT
-    CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),@VM) + 1
+    CURR.NO = DCOUNT(R.NEW(AC.ACL.OVERRIDE),VM) + 1
     TEXT='AC.CLOSE.CHG.AMT'
     CALL STORE.OVERRIDE(CURR.NO)
-RETURN
+    RETURN
 
 END
