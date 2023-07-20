@@ -160,3 +160,9 @@ public method lapapWdrlPenalSRtLoad (
    jBC: LAPAP.WDRL.PENAL.S.RT.LOAD
 }
 
+public method lApapScheduleProjLoad (
+)
+{
+   jBC: L.APAP.SCHEDULE.PROJ.LOAD
+}
+

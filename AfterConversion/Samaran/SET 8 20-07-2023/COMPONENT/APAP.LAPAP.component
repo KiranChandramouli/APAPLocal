@@ -1,0 +1,287 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lapapVCussegmentRt (
+)
+{
+    jBC: LAPAP.V.CUSSEGMENT.RT
+}
+
+
+
+public method lapapValTxnReversed (
+)
+{
+    jBC: LAPAP.VAL.TXN.REVERSED
+}
+
+
+
+public method nofileLApapScheduleProA02 (
+    INOUT yData string
+)
+{
+    jBC: NOFILE.L.APAP.SCHEDULE.PRO.A02
+}
+
+
+
+public method redoApapNewConditionRt (
+    INOUT yRegistro string
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT
+}
+
+
+
+public method redoAzReinvConsultaSelect (
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA.SELECT
+}
+
+
+
+public method redoBAaAccNegVal (
+    INOUT arrLnData string
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL
+}
+
+
+
+public method redoBAaAccNegValLoad (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.LOAD
+}
+
+
+
+public method redoBAaAccNegValPost (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.POST
+}
+
+
+
+public method redoBAaAccNegValSelect (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.SELECT
+}
+
+
+
+public method redoBAaCpOverpay (
+    INOUT overpayId string
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY
+}
+
+
+
+public method redoBAaCpOverpayLoad (
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY.LOAD
+}
+
+
+
+public method redoBAaCpOverpaySelect (
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY.SELECT
+}
+
+
+
+public method redoBAaLoanUncBal (
+    INOUT aaArrList string
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL
+}
+
+
+
+public method redoBAaLoanUncBalLoad (
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL.LOAD
+}
+
+
+
+public method redoBAaLoanUncBalSelect (
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL.SELECT
+}
+
+
+
+public method redoBAaZbalNegVal (
+    INOUT arrLnData string
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL
+}
+
+
+
+public method redoBAaZbalNegValLoad (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.LOAD
+}
+
+
+
+public method redoBAaZbalNegValPost (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.POST
+}
+
+
+
+public method redoBAaZbalNegValSelect (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.SELECT
+}
+
+
+
+public method redoBBcrTcReportGen (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN
+}
+
+
+
+public method redoBBcrTcReportGenLoad (
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN.LOAD
+}
+
+
+
+public method redoBBcrTcReportGenSelect (
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN.SELECT
+}
+
+
+
+public method redoBCommerDebtorDet (
+    INOUT recId string
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET
+}
+
+
+
+public method redoBCommerDebtorUpd (
+    INOUT yAaCusId string
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD
+}
+
+
+
+public method redoBCommerDebtorUpdLoad (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD.LOAD
+}
+
+
+
+public method redoBCommerDebtorUpdSelect (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD.SELECT
+}
+
+
+
+public method redoBDlyCardPayDet (
+    INOUT visionId string
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET
+}
+
+
+
+public method redoBDlyCardPayDetLoad (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.LOAD
+}
+
+
+
+public method redoBDlyCardPayDetPost (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.POST
+}
+
+
+
+public method redoBDlyCardPayDetSelect (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.SELECT
+}
+
+
+
+public method redoBOverdraftAcctRtn (
+    INOUT overArry string
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN
+}
+
+
+
+public method redoBOverdraftAcctRtnLoad (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.LOAD
+}
+
+
+
+public method redoBCommerDebtorDetLoad (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET.LOAD
+}
+
+
+
+public method redoBCommerDebtorDetSelect (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET.SELECT
+}
+
