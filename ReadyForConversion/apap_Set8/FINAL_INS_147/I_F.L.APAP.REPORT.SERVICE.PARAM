@@ -1,0 +1,18 @@
+* I_F.L.APAP.REPORT.SERVICE.PARAM Created 06 FEB 18 at 03:33PM by da5tus/UPGRADE5
+*      PREFIX[RPT.SERVC]
+            EQU RPT.SERVC.TABLE.DESCRIPTION TO 1,   LApapReportServiceParam_TableDescription TO 1,
+                 RPT.SERVC.TSA.SERVICE.NAME TO 2,   LApapReportServiceParam_TsaServiceName TO 2,
+                       RPT.SERVC.RESERVED.5 TO 3,   LApapReportServiceParam_Reserved5 TO 3,
+                       RPT.SERVC.RESERVED.4 TO 4,   LApapReportServiceParam_Reserved4 TO 4,
+                       RPT.SERVC.RESERVED.3 TO 5,   LApapReportServiceParam_Reserved3 TO 5,
+                       RPT.SERVC.RESERVED.2 TO 6,   LApapReportServiceParam_Reserved2 TO 6,
+                       RPT.SERVC.RESERVED.1 TO 7,   LApapReportServiceParam_Reserved1 TO 7,
+                    RPT.SERVC.RECORD.STATUS TO 8,   LApapReportServiceParam_RecordStatus TO 8,
+                          RPT.SERVC.CURR.NO TO 9,   LApapReportServiceParam_CurrNo TO 9,
+                         RPT.SERVC.INPUTTER TO 10,  LApapReportServiceParam_Inputter TO 10,
+                        RPT.SERVC.DATE.TIME TO 11,  LApapReportServiceParam_DateTime TO 11,
+                       RPT.SERVC.AUTHORISER TO 12,  LApapReportServiceParam_Authoriser TO 12,
+                          RPT.SERVC.CO.CODE TO 13,  LApapReportServiceParam_CoCode TO 13,
+                        RPT.SERVC.DEPT.CODE TO 14,  LApapReportServiceParam_DeptCode TO 14,
+                     RPT.SERVC.AUDITOR.CODE TO 15,  LApapReportServiceParam_AuditorCode TO 15,
+                  RPT.SERVC.AUDIT.DATE.TIME TO 16,  LApapReportServiceParam_AuditDateTime TO 16
