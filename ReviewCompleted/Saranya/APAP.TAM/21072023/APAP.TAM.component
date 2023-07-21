@@ -643,3 +643,8 @@ public method redoVpUtilLog (
     jBC: REDO.VP.UTIL.LOG
 }
 
+public method redoGeneraPwd (
+)
+{
+    jBC: REDO.GENERA.PWD
+}

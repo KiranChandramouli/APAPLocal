@@ -10,3 +10,16 @@ public method redoBClearReturn (
    jBC: REDO.B.CLEAR.RETURN
 }
 
+public method redoBRevNabAcctReachWof (
+   INOUT yId string
+)
+{
+   jBC: REDO.B.REV.NAB.ACCT.REACH.WOF
+}
+
+public method redoBTransProcessPost (
+)
+{
+   jBC: REDO.B.TRANS.PROCESS.POST
+}
+

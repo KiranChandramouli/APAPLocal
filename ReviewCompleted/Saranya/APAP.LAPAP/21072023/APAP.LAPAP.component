@@ -34,3 +34,35 @@ public method redoApapCreditCardUpdLoad (
    jBC: REDO.APAP.CREDIT.CARD.UPD.LOAD
 }
 
+public method lapapAsaRt (
+    INOUT account string
+)
+{
+    jBC: LAPAP.ASA.RT
+}
+
+public method lapapAsaRtLoad (
+)
+{
+    jBC: LAPAP.ASA.RT.LOAD
+}
+
+public method lapapAsaRtSelect (
+)
+{
+    jBC: LAPAP.ASA.RT.SELECT
+}
+
+public method lapapFundSendMonitor (
+    INOUT recList string
+)
+{
+    jBC: LAPAP.FUND.SEND.MONITOR
+}
+
+public method lapapWdrlPenalSRtSelect (
+)
+{
+    jBC: LAPAP.WDRL.PENAL.S.RT.SELECT
+}
+
