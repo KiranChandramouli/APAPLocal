@@ -28,3 +28,9 @@ public method redoApapCreditCardUpd (
     jBC: REDO.APAP.CREDIT.CARD.UPD
 }
 
+public method redoApapCreditCardUpdLoad (
+)
+{
+   jBC: REDO.APAP.CREDIT.CARD.UPD.LOAD
+}
+
