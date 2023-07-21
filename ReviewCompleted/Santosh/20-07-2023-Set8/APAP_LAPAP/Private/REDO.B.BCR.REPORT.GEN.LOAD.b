@@ -1,0 +1,236 @@
+* @ValidationCode : MjoxNjY1MTE4NjYxOkNwMTI1MjoxNjg5ODU2NTUzMTQ3OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Jul 2023 18:05:53
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+
+* Version 1 13/04/00  GLOBUS Release No. 200508 30/06/05
+* @(#) REDO.B.BCR.REPORT.GEN.LOAD Ported to jBASE 16:17:03  28 NOV 2017
+*-----------------------------------------------------------------------------
+*-----------------------------------------------------------------------------
+SUBROUTINE REDO.B.BCR.REPORT.GEN.LOAD
+*-----------------------------------------------------------------------------
+* Load routine to setup the common area for the multi-threaded Close of Business
+* job TEMPLATE.EOD
+* ----------------------------------------------------------------------------
+* 2011-08-28 : PACS00060197  - C.22 Integration
+*              hpasquel@temenos.com
+* 2012-04-17 : PACS00191153  - C.21 Improvementes
+*              hpasquel@temenos.com
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*13/07/2023      Conversion tool            R22 Auto Conversion       VM TO @VM, SM TO @SM,BP removed in INSERT file
+*13/07/2023      Suresh                     R22 Manual Conversion     Variable initialised
+*-----------------------------------------------------------------------------
+    $INSERT I_COMMON ;*R22 Auto Conversion - Start
+    $INSERT I_EQUATE
+    $INSERT I_BATCH.FILES
+    $INSERT I_F.CUSTOMER
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.AA.BILL.DETAILS
+    $INSERT I_F.AA.TERM.AMOUNT
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+    $INSERT I_F.AA.CUSTOMER
+    $INSERT I_F.ACCT.ACTIVITY
+    $INSERT I_F.COUNTRY
+    $INSERT I_F.AA.PAYMENT.SCHEDULE
+    $INSERT I_F.TSA.SERVICE
+*
+    $INSERT I_F.REDO.BCR.REPORT.DATA
+    $INSERT I_REDO.B.BCR.REPORT.GEN.COMMON
+    $INSERT I_F.REDO.INTERFACE.PARAM
+    $INSERT I_F.REDO.H.REPORTS.PARAM
+    $INSERT I_F.REDO.BCR.REPORT.EXEC
+    $INSERT I_F.EB.CONTRACT.BALANCES
+    $INSERT I_F.AA.ARRANGEMENT.ACTIVITY ;*R22 Auto Conversion - End
+*-----------------------------------------------------------------------------
+
+* Open Files
+    GOSUB OPEN.FILES
+    GOSUB INITIALISE
+    GOSUB GET.PARAM
+RETURN
+
+*-----------------------------------------------------------------------------
+INITIALISE:
+*-----------------------------------------------------------------------------
+    LOC.REF.APPL = ''
+    LOC.REF.APPL<1>="CUSTOMER"
+    LOC.REF.APPL<2>="AA.ARR.OVERDUE"
+    LOC.REF.APPL<3>="AA.PRD.DES.PAYMENT.SCHEDULE"
+    LOC.REF.FIELDS = ''
+    LOC.REF.FIELDS := "L.CU.TIPO.CL":@VM:"L.CU.CIDENT":@VM:"L.CU.RNC":@VM:"L.CU.TEL.AREA":@VM:"L.CU.TEL.NO":
+    LOC.REF.FIELDS := @VM:"L.CU.TEL.TYPE":@VM:"L.CU.TEL.EXT":@VM:"L.CU.URB.ENS.RE":@VM:"L.CU.RES.SECTOR"
+    LOC.REF.FIELDS<2> = "L.LOAN.COND":@VM:"L.LOAN.STATUS.1"
+    LOC.REF.FIELDS<3> = "L.PAID.BILL.CNT":@VM:"L.AA.PAY.METHD"
+    LOC.REF.POS = ''
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPL,LOC.REF.FIELDS,LOC.REF.POS)
+
+    Y.L.CU.TIPO.CL.POS = LOC.REF.POS<1,1>
+    Y.L.CU.CIDENT.POS = LOC.REF.POS<1,2>
+    Y.L.CU.RNC.POS = LOC.REF.POS<1,3>
+    Y.L.CU.TEL.AREA.POS = LOC.REF.POS<1,4>
+    Y.L.CU.TEL.NO.POS = LOC.REF.POS<1,5>
+    Y.L.CU.TEL.TYPE.POS = LOC.REF.POS<1,6>
+    Y.L.CU.TEL.EXT.POS = LOC.REF.POS<1,7>
+    Y.L.CU.URB.ENS.RE.POS = LOC.REF.POS<1,8>
+    Y.L.CU.RES.SECTOR.POS = LOC.REF.POS<1,9>
+    Y.L.LOAN.COND = LOC.REF.POS<2,1>
+    POS.L.LOAN.STATUS.1 = LOC.REF.POS<2,2>
+    POS.L.PAID.BILL.CNT = LOC.REF.POS<3,1>
+    PAYMT.METHOD.POS   = LOC.REF.POS<3,2>
+RETURN
+
+*-----------------------------------------------------------------------------
+OPEN.FILES:
+*-----------------------------------------------------------------------------
+
+    FN.CUSTOMER="F.CUSTOMER"
+    F.CUSTOMER=''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    FN.DATA="F.REDO.BCR.REPORT.DATA"
+    F.DATA=''
+    CALL OPF(FN.DATA,F.DATA)
+    FN.TSA.SERVICE = "F.TSA.SERVICE"
+    F.TSA.SERVICE  = ''
+    CALL OPF(FN.TSA.SERVICE,F.TSA.SERVICE)
+
+    FN.AA="F.AA.ARRANGEMENT"
+    F.AA=''
+    CALL OPF(FN.AA,F.AA)
+
+    FN.COUNTRY='F.COUNTRY'
+    F.COUNTRY=''
+    CALL OPF(FN.COUNTRY,F.COUNTRY)
+
+    FN.AA.DETAILS="F.AA.ACCOUNT.DETAILS"
+    F.AA.DETAILS=''
+    CALL OPF(FN.AA.DETAILS,F.AA.DETAILS)
+
+    FN.AA.DETAILS.HST="F.AA.ACCOUNT.DETAILS.HIST"
+    F.AA.DETAILS.HST=''
+    CALL OPF(FN.AA.DETAILS.HST,F.AA.DETAILS.HST)
+
+    FN.AA.TERM="F.AA.ARR.TERM.AMOUNT"
+    F.AA.TERM=''
+    CALL OPF(FN.AA.TERM,F.AA.TERM)
+
+    FN.AA.BILL="F.AA.BILL.DETAILS"
+    F.AA.BILL=''
+    CALL OPF(FN.AA.BILL,F.AA.BILL)
+
+    FN.AA.BILL.HST="F.AA.BILL.DETAILS.HIST"
+    F.AA.BILL.HST =''
+    CALL OPF(FN.AA.BILL.HST,F.AA.BILL.HST)
+
+    FN.AA.CUSTOMER="F.AA.ARR.CUSTOMER"
+    F.AA.CUSTOMER=''
+    CALL OPF(FN.AA.CUSTOMER,F.AA.CUSTOMER)
+
+    FN.AA.SCHEDULE="F.AA.ARR.PAYMENT.SCHEDULE"
+    F.AA.SCHEDULE=''
+    CALL OPF(FN.AA.SCHEDULE,F.AA.SCHEDULE)
+
+    FN.AA.ACTIVITY="F.ACCT.ACTIVITY"
+    F.AA.ACTIVITY=''
+    CALL OPF(FN.AA.ACTIVITY,F.AA.ACTIVITY)
+
+*      PACS00191153
+    FN.AA.ACTIVITY.HISTORY = "F.AA.ACTIVITY.HISTORY"
+    F.AA.ACTIVITY.HISTORY  = ''
+    CALL OPF(FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY)
+
+    FN.REDO.AA.SCHEDULE = 'F.REDO.AA.SCHEDULE'
+    F.REDO.AA.SCHEDULE  = ''
+    CALL OPF(FN.REDO.AA.SCHEDULE,F.REDO.AA.SCHEDULE)
+
+    FN.AA.ARRANGEMENT.ACTIVITY = 'F.AA.ARRANGEMENT.ACTIVITY'
+    F.AA.ARRANGEMENT.ACTIVITY  = ''
+    CALL OPF(FN.AA.ARRANGEMENT.ACTIVITY,F.AA.ARRANGEMENT.ACTIVITY)
+
+
+    FN.AA.REFERENCE.DETAILS = 'F.AA.REFERENCE.DETAILS'
+    F.AA.REFERENCE.DETAILS  = ''
+    CALL OPF(FN.AA.REFERENCE.DETAILS,F.AA.REFERENCE.DETAILS)
+
+    FN.AA.ACCOUNT.DETAILS = 'F.AA.ACCOUNT.DETAILS'
+    F.AA.ACCOUNT.DETAILS  = ''
+    CALL OPF(FN.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS)
+
+    FN.ACCOUNT.CLOSED = 'F.ACCOUNT.CLOSED'
+    F.ACCOUNT.CLOSED  = ''
+    CALL OPF(FN.ACCOUNT.CLOSED,F.ACCOUNT.CLOSED)
+
+    FN.REDO.H.REPORTS.PARAM = "F.REDO.H.REPORTS.PARAM"; F.REDO.H.REPORTS.PARAM = ''
+    CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
+
+    FN.REDO.APAP.PROPERTY.PARAM = 'F.REDO.APAP.PROPERTY.PARAM'; F.REDO.APAP.PROPERTY.PARAM = ''
+    CALL OPF(FN.REDO.APAP.PROPERTY.PARAM,F.REDO.APAP.PROPERTY.PARAM)
+
+    FN.AA.ACTIVITY.HISTORY = 'F.AA.ACTIVITY.HISTORY'; F.AA.ACTIVITY.HISTORY = ''
+    CALL OPF(FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY)
+
+    FN.ACCOUNT = 'F.ACCOUNT'; F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.ACCOUNT.HST = 'F.ACCOUNT$HIS'; F.ACCOUNT.HST = ''
+    CALL OPF(FN.ACCOUNT.HST,F.ACCOUNT.HST)
+
+    FN.REDO.BCR.REPORT.EXEC = 'F.REDO.BCR.REPORT.EXEC'; F.REDO.BCR.REPORT.EXEC = ''
+    CALL OPF(FN.REDO.BCR.REPORT.EXEC,F.REDO.BCR.REPORT.EXEC)
+
+    FN.EB.CONT.BAL = "F.EB.CONTRACT.BALANCES"
+    F.EB.CONT.BAL = ""
+    CALL OPF(FN.EB.CONT.BAL,F.EB.CONT.BAL)
+
+    FN.AA.ARRANGEMENT.ACTIVITY1 = 'F.AA.ARRANGEMENT.ACTIVITY'
+    F.AA.ARRANGEMENT.ACTIVITY1  = ''
+    CALL OPF(FN.AA.ARRANGEMENT.ACTIVITY1,F.AA.ARRANGEMENT.ACTIVITY1)
+
+RETURN
+*-----------------------------------------------------------------------------
+GET.PARAM:
+**********
+    Y.REPORT.PARAM.ID = "REDO.BCR001"
+    R.REDO.H.REPORTS.PARAM = ''; PARAM.ERR = ''
+    CALL CACHE.READ(FN.REDO.H.REPORTS.PARAM,Y.REPORT.PARAM.ID,R.REDO.H.REPORTS.PARAM,PARAM.ERR)
+    IF R.REDO.H.REPORTS.PARAM NE '' THEN
+        Y.FIELD.NME.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.NAME>
+        Y.FIELD.VAL.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.VALUE>
+    END
+
+    LOCATE "PROD.GRP.NEG" IN Y.FIELD.NME.ARR<1,1> SETTING PRDG.POS THEN
+        Y.PRDG.VAL.ARR = Y.FIELD.VAL.ARR<1,PRDG.POS>
+        Y.PRDG.VAL.ARR = CHANGE(Y.PRDG.VAL.ARR,@SM,@VM)
+    END
+    LOCATE "PAYROLL.NEG" IN Y.FIELD.NME.ARR<1,1> SETTING PAYR.POS THEN
+        Y.PAYR.VAL.ARR = Y.FIELD.VAL.ARR<1,PAYR.POS>
+        Y.PAYR.VAL.ARR = CHANGE(Y.PAYR.VAL.ARR,@SM,@VM)
+    END
+**-------------------------------------------------------------
+    LOCATE "ESTATUS" IN Y.FIELD.NME.ARR<1,1> SETTING EST.POS THEN
+        Y.ESTATUS.VAL.ARR = Y.FIELD.VAL.ARR<1,EST.POS>
+        Y.ESTATUS.VAL.ARR = CHANGE(Y.ESTATUS.VAL.ARR,@SM,@VM)
+    END
+
+    LOCATE "CATEGORIAWOF" IN Y.FIELD.NME.ARR<1,1> SETTING WOF.POS THEN
+        Y.CATEGORIA.WOF = Y.FIELD.VAL.ARR<1,WOF.POS>
+        Y.CATEGORIA.WOF = CHANGE(Y.CATEGORIA.WOF ,@SM,@VM)
+    END
+**----------------------------------------------------------------
+
+ 
+    ID.NEW.REC='BCR001'
+    R.REDO.BCR.REPORT.EXEC = ''; Y.ERR = ''
+    CALL F.READ(FN.REDO.BCR.REPORT.EXEC,ID.NEW.REC,R.REDO.BCR.REPORT.EXEC,F.REDO.BCR.REPORT.EXEC,Y.ERR)
+    Y.LAST.MONTH.ACT = R.REDO.BCR.REPORT.EXEC<REDO.BCR.REP.EXE.REP.TIME.RANGE>
+RETURN
+END

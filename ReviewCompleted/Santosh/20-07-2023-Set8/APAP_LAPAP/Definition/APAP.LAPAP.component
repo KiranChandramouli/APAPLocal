@@ -7912,3 +7912,35 @@ public method redoApapCreditCardUpdSelect (
 {
     jBC: REDO.APAP.CREDIT.CARD.UPD.SELECT
 }
+
+
+public method redoAmlNoclientFcyCheck (
+)
+{
+    jBC: REDO.AML.NOCLIENT.FCY.CHECK
+}
+
+
+
+public method redoApapReportsPasswReset (
+)
+{
+    jBC: REDO.APAP.REPORTS.PASSW.RESET
+}
+
+
+
+public method redoBBcrReportGenLoad (
+)
+{
+    jBC: REDO.B.BCR.REPORT.GEN.LOAD
+}
+
+
+
+public method redoRBcrReportBuild (
+)
+{
+    jBC: REDO.R.BCR.REPORT.BUILD
+}
+
