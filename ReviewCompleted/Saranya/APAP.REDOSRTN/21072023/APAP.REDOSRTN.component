@@ -1,0 +1,12 @@
+component APAP.REDOSRTN
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+public method redoSCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.CALC.DISB.DATE.AMT
+}
+

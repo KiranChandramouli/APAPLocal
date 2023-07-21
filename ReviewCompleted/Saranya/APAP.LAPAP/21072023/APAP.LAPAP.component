@@ -1,0 +1,30 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method lapapCusPepAutoRisk (
+)
+{
+    jBC: LAPAP.CUS.PEP.AUTO.RISK
+}
+
+public method lapapMonGetTypePerson (
+)
+{
+    jBC: LAPAP.MON.GET.TYPE.PERSON
+}
+
+public method lapapMonGetTypePersonHis (
+)
+{
+    jBC: LAPAP.MON.GET.TYPE.PERSON.HIS
+}
+
+public method redoApapCreditCardUpd (
+    INOUT buldId string
+)
+{
+    jBC: REDO.APAP.CREDIT.CARD.UPD
+}
+
