@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMDU3MTg4NzAxOkNwMTI1MjoxNjg0ODU0Mzg3MTgwOklUU1M6LTE6LTE6MTc5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationCode : MjotMTQ2MTQ4ODMyNDpDcDEyNTI6MTY4OTkyOTc4NzgzNDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 21 Jul 2023 14:26:27
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1793
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -28,9 +28,9 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
 *02-SEP-2010    Swaminathan.S.R        ODR-2009-12-0290     INITIAL CREATION
 *12-APR-2013 Karthik Sundararajan   PERF-CHANGE
 *12-Oct-2017 Saran.S
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - TNO TO C$T24.SESSION.NO AND ADDING END
-* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -CALL method format changed
 
 *---------------------------------------------------------------------------------
 
@@ -47,6 +47,7 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
     $INSERT I_F.REDO.ACH.PROCESS.DET
     $INSERT I_F.USER
     $INSERT I_F.LOCKING
+    $USING APAP.REDOCHNLS
 *---------------------------------------------------------------------------------
 
     GOSUB SEL.ID
@@ -163,7 +164,8 @@ OPEN.FILE:
 *call C.22  FILE.OPEN.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method format changed
             OPEN.ERR = '1'
         END
     END
@@ -174,7 +176,8 @@ OPEN.FILE:
 *call C.22  HIS.OPEN.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH.HIS ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+                APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual conversion - CALL method format changed
                 OPEN.ERR = '1'
             END
         END
@@ -197,7 +200,8 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Write ':PATH.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method changed
             WRITE.ERR = '1'
         END
 
@@ -206,7 +210,8 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Write ':PATH.HIS.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+                APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method changed
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
                 WRITE.ERR = '1'
             END
         END
@@ -324,8 +329,8 @@ SUCCESS.MSG:
 
     INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
     MON.TP = '01' ; DESC = 'Record generated successfully' ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
-
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method format changed
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 *******

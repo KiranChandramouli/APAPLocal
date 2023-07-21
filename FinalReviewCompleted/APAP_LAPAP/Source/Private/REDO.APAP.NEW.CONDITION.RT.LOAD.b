@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNjE5MzQ5NDYyOkNwMTI1MjoxNjg5MzM5NzI2NjA4OklUU1M6LTE6LTE6MjkzOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 14 Jul 2023 18:32:06
+* @ValidationCode : MjotMTI2MDg3OTQ4MjpDcDEyNTI6MTY4OTc0NDU2ODM1OTpJVFNTOi0xOi0xOjI5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Jul 2023 10:59:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,14 +11,14 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-SUBROUTINE REDO.APAP.NEW.CONDITION.RT.LOAD
-*==============================================================================
 *---------------------------------------------------------------------------------------
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *13/07/2023      Conversion tool            R22 Auto Conversion           BP removed in INSERT file
 *13/07/2023      Suresh                     R22 Manual Conversion           Nochange
 *----------------------------------------------------------------------------------------
+SUBROUTINE REDO.APAP.NEW.CONDITION.RT.LOAD
+*==============================================================================
 *==============================================================================
 
     $INSERT I_COMMON ;*R22 Auto Conversion - Start

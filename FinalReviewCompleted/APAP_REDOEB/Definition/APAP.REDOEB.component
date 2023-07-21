@@ -597,3 +597,9 @@ public method redoEbMsgGen (
     jBC: REDO.EB.MSG.GEN
 }
 
+public method mbSdbAmortCharge (
+   INOUT sdbId string
+)
+{
+   jBC: MB.SDB.AMORT.CHARGE
+}

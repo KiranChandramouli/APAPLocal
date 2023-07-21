@@ -71,7 +71,7 @@ PROCESS:
     END
 
 *CALC THE REA VALUE
-    CALL  APAP.TAM.redoVValReaCollateral();* R22 Manual conversion
+    APAP.TAM.redoVValReaCollateral();* R22 Manual conversion
 
 
 RETURN

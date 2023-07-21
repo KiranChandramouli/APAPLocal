@@ -2984,4 +2984,25 @@ public method redoSFcDefPartDisb (
 }
 
 
+public method redoVInpVerifyStaff (
+)
+{
+    jBC: REDO.V.INP.VERIFY.STAFF
+}
+
+
+
+public method redoNvAaAmlCheck (
+)
+{
+    jBC: REDO.NV.AA.AML.CHECK
+}
+
+
+public method redoAaUpdateOverdueStatus (
+    INOUT yId string
+)
+{
+    jBC: REDO.AA.UPDATE.OVERDUE.STATUS
+}
 

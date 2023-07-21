@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTE0OTM1MjQ3ODpDcDEyNTI6MTY4OTMzOTcyNjU2MTpJVFNTOi0xOi0xOjg2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 14 Jul 2023 18:32:06
+* @ValidationCode : Mjo0NDkxMjI3MjpDcDEyNTI6MTY4OTc0NDU2ODMyOTpJVFNTOi0xOi0xOjg2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Jul 2023 10:59:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,13 +11,13 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-SUBROUTINE LAPAP.VALIDA.ACTY.RT
 *---------------------------------------------------------------------------------------
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *13/07/2023      Conversion tool            R22 Auto Conversion            BP removed in INSERT File
 *13/07/2023      Suresh                     R22 Manual Conversion          CALL routine format modified
 *----------------------------------------------------------------------------------------
+SUBROUTINE LAPAP.VALIDA.ACTY.RT
     $INSERT I_COMMON ;*R22 Auto Conversion - Start
     $INSERT I_EQUATE
     $INSERT I_GTS.COMMON

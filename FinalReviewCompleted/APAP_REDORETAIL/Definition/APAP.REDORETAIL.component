@@ -3290,3 +3290,48 @@ public method redoCardStatus (
 {
    jBC: REDO.CARD.STATUS
 }
+
+
+
+public method redoAcctDepDetailsLoad (
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS.LOAD
+}
+
+
+
+public method redoColExtract (
+    INOUT customerId string
+)
+{
+    jBC: REDO.COL.EXTRACT
+}
+
+
+
+public method redoDefAcctCcy (
+)
+{
+    jBC: REDO.DEF.ACCT.CCY
+}
+
+
+
+public method redoDsPepBType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.B.TYPE
+}
+
+
+
+public method redoDsPepIType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.I.TYPE
+}
+
+

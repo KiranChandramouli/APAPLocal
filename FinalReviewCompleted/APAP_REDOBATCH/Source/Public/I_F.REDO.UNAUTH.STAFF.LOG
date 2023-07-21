@@ -1,0 +1,16 @@
+* I_F.REDO.UNAUTH.STAFF.LOG Created 04 MAR 10 at 04:16PM by apapr8/RAJAKRR
+*      PREFIX[REDO.LOG]
+            EQU REDO.LOG.USER.ID TO 1,   RedoUnauthStaffLog_UserId TO 1,
+          REDO.LOG.ACTIVITY.DATE TO 2,   RedoUnauthStaffLog_ActivityDate TO 2,
+          REDO.LOG.ACTIVITY.TIME TO 3,   RedoUnauthStaffLog_ActivityTime TO 3,
+            REDO.LOG.APPLICATION TO 4,   RedoUnauthStaffLog_Application TO 4,
+              REDO.LOG.RECORD.ID TO 5,   RedoUnauthStaffLog_RecordId TO 5,
+          REDO.LOG.RECORD.STATUS TO 6,   RedoUnauthStaffLog_RecordStatus TO 6,
+                REDO.LOG.CURR.NO TO 7,   RedoUnauthStaffLog_CurrNo TO 7,
+               REDO.LOG.INPUTTER TO 8,   RedoUnauthStaffLog_Inputter TO 8,
+              REDO.LOG.DATE.TIME TO 9,   RedoUnauthStaffLog_DateTime TO 9,
+             REDO.LOG.AUTHORISER TO 10,  RedoUnauthStaffLog_Authoriser TO 10,
+                REDO.LOG.CO.CODE TO 11,  RedoUnauthStaffLog_CoCode TO 11,
+              REDO.LOG.DEPT.CODE TO 12,  RedoUnauthStaffLog_DeptCode TO 12,
+           REDO.LOG.AUDITOR.CODE TO 13,  RedoUnauthStaffLog_AuditorCode TO 13,
+        REDO.LOG.AUDIT.DATE.TIME TO 14,  RedoUnauthStaffLog_AuditDateTime TO 14

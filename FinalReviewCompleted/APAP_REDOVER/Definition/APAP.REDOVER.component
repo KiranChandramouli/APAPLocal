@@ -7006,3 +7006,50 @@ public method redoVValMaximumValueDi(
 {
     jBC: REDO.V.VAL.MAXIMUM.VALUE.DI
 } 
+
+public method redoInpPrRemainAmtRepay (
+)
+{
+    jBC: REDO.INP.PR.REMAIN.AMT.REPAY
+}
+
+
+
+public method redoInpUpdLoanLocTab (
+)
+{
+    jBC: REDO.INP.UPD.LOAN.LOC.TAB
+}
+
+
+
+public method redoVAuthDepReceipts (
+)
+{
+    jBC: REDO.V.AUTH.DEP.RECEIPTS
+}
+
+
+
+public method redoVTelGroup (
+)
+{
+    jBC: REDO.V.TEL.GROUP
+}
+
+
+
+public method redoVValDisbLoan (
+)
+{
+    jBC: REDO.V.VAL.DISB.LOAN
+}
+
+
+
+public method redoVAutReverseChg (
+)
+{
+    jBC: REDO.V.AUT.REVERSE.CHG
+}
+

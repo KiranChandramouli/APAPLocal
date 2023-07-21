@@ -1,0 +1,373 @@
+* @ValidationCode : MjotODE5NjkwMTc3OkNwMTI1MjoxNjg5NTcwNTEyMjY4OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 17 Jul 2023 10:38:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.TAM
+*-----------------------------------------------------------------------------------------------------------------------------------
+*Modification HISTORY:
+*DATE			               AUTHOR					Modification                            DESCRIPTION
+
+*-----------------------------------------------------------------------------------------------------------------------------------
+SUBROUTINE REDO.APAP.AUTH.PRINT.SLIP
+******************************************************************************
+*  Company   Name    :Asociacion Popular de Ahorros y Prestamos
+*  Developed By      :Temenos Development
+*  Program   Name    :REDO.APAP.AUTH.PRINT.SLIP
+***********************************************************************************
+*Description:    This is an AUTHORISATION routine attached to the Enquiry used
+*                to PRINT a deal slip when the User clicks on PRINT option
+*****************************************************************************
+*linked with:
+*In parameter:
+*Out parameter:
+**********************************************************************
+* Modification History :
+*****************************************************************************************************************************************************************************
+*DATE                WHO                   REFERENCE                                DESCRIPTION
+*15.12.2011        C.SRIRAMAN       ODR-2011-01-0103                              INITIAL CREATION
+*03-05-2011        Sudharsanan S        PACS00055008                              Update REDO.PRINT.REPRINT.IDS with id as FT/TT/T24FS and value as  ContractId*HoldId
+*13/07/2023	   CONVERSION TOOL      AUTO R22 CODE CONVERSION			              SM to @SM
+*13/07/2023	    VIGNESHWARI         MANUAL R22 CODE CONVERSION		                NOCHANGE
+*******************************************************************************************************************************************************************************
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.REDO.APAP.H.REPRINT.SEQ
+    $INSERT I_F.REDO.APAP.H.DEAL.SLIP.QUEUE
+    $INSERT I_F.TELLER
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.T24.FUND.SERVICES
+    $INSERT I_F.DEAL.SLIP.FORMAT
+    $INSERT I_GTS.COMMON
+    $INSERT I_RC.COMMON
+    $INSERT I_F.LOCKING
+    $INSERT I_System
+
+    GOSUB INIT
+    GOSUB PROCESS
+
+RETURN
+
+****
+INIT:
+*****
+
+    FN.REDO.APAP.H.DEAL.SLIP.QUEUE = 'F.REDO.APAP.H.DEAL.SLIP.QUEUE'
+    F.REDO.APAP.H.DEAL.SLIP.QUEUE  = ''
+    CALL OPF(FN.REDO.APAP.H.DEAL.SLIP.QUEUE,F.REDO.APAP.H.DEAL.SLIP.QUEUE)
+
+    FN.REDO.APAP.H.REPRINT.SEQ = 'F.REDO.APAP.H.REPRINT.SEQ'
+    F.REDO.APAP.H.REPRINT.SEQ  = ''
+    CALL OPF(FN.REDO.APAP.H.REPRINT.SEQ,F.REDO.APAP.H.REPRINT.SEQ)
+
+    FN.REDO.PRINT.REPRINT.IDS = 'F.REDO.PRINT.REPRINT.IDS'
+    F.REDO.PRINT.REPRINT.IDS = ''
+    CALL OPF(FN.REDO.PRINT.REPRINT.IDS,F.REDO.PRINT.REPRINT.IDS)
+
+    FN.TELLER = 'F.TELLER'
+    F.TELLER = ''
+    CALL OPF(FN.TELLER,F.TELLER)
+
+    FN.TELLER.HIS = 'F.TELLER$HIS'
+    F.TELLER.HIS = ''
+    CALL OPF(FN.TELLER.HIS,F.TELLER.HIS)
+
+    FN.FUNDS.TRANSFER = 'F.FUNDS.TRANSFER'
+    F.FUNDS.TRANSFER = ''
+    CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
+
+    FN.FUNDS.TRANSFER.HIS = 'F.FUNDS.TRANSFER$HIS'
+    F.FUNDS.TRANSFER.HIS = ''
+    CALL OPF(FN.FUNDS.TRANSFER.HIS,F.FUNDS.TRANSFER.HIS)
+
+    FN.T24.FUND.SERVICES = 'F.T24.FUND.SERVICES'
+    F.T24.FUND.SERVICES = ''
+    CALL OPF(FN.T24.FUND.SERVICES, F.T24.FUND.SERVICES)
+
+    FN.T24.FUND.SERVICES.HIS = 'F.T24.FUND.SERVICES$HIS'
+    F.T24.FUND.SERVICES.HIS = ''
+    CALL OPF(FN.T24.FUND.SERVICES.HIS,F.T24.FUND.SERVICES.HIS)
+
+    OFS$DEAL.SLIP.PRINTING = 1
+
+    SAVE.APPLICATION = APPLICATION
+
+
+RETURN
+
+********
+PROCESS:
+*********
+
+    Y.TRANS.ID  = ID.NEW
+    R.NEW(REDO.REP.SEQ.REPRINT.SEQ)  = R.NEW(REDO.REP.SEQ.REPRINT.SEQ) + 1
+    R.NEW(REDO.REP.SEQ.REPRINT.FLAG) = 'NO'
+    R.NEW(REDO.REP.SEQ.INIT.PRINT) = 'YES'
+
+    Y.NEW.ID = FIELD(Y.TRANS.ID,'-',1)
+    Y.DEAL.SLIP.ID = FIELD(Y.TRANS.ID,'-',2)
+    Y.CONTRACT.NO = Y.NEW.ID
+    CALL F.READ(FN.REDO.APAP.H.DEAL.SLIP.QUEUE,Y.NEW.ID,R.REDO.APAP.H.DEAL.SLIP.QUEUE,F.REDO.APAP.H.DEAL.SLIP.QUEUE,QUEUE.ERR)
+
+    DEAL.SLIP.ID = R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.DEAL.SLIP.ID>
+
+    LOCATE Y.DEAL.SLIP.ID IN DEAL.SLIP.ID<1,1> SETTING DEAL.SLIP.POS ELSE
+        RETURN
+    END
+
+    Y.SLIP.ID  = DEAL.SLIP.ID<1,DEAL.SLIP.POS>
+
+    BEGIN CASE
+        CASE Y.NEW.ID[1,2] EQ 'TT'
+            GOSUB MAIN.PROCESS
+            GOSUB TT.TRANSACTION
+
+        CASE Y.TRANS.ID[1,2] EQ 'FT'
+            GOSUB MAIN.PROCESS
+            GOSUB FT.TRANSACTION
+
+        CASE Y.TRANS.ID[1,5] EQ 'T24FS'
+            GOSUB MAIN.PROCESS
+            GOSUB T24FS.TRANSACTION
+
+    END CASE
+
+
+RETURN
+
+***********************
+MAIN.PROCESS:
+*********************
+
+    BEGIN CASE
+
+        CASE Y.NEW.ID[1,2] EQ 'FT'
+            GOSUB READ.FUNDS.TRANSFER
+
+        CASE Y.NEW.ID[1,2] EQ 'TT'
+            GOSUB READ.TELLER
+
+        CASE Y.NEW.ID[1,5] EQ 'T24FS'
+            GOSUB READ.FUND.SERVICES
+
+    END CASE
+
+RETURN
+
+
+**********************
+READ.FUNDS.TRANSFER:
+********************
+
+    Y.ID = ID.NEW
+
+    CALL F.READ(FN.FUNDS.TRANSFER,Y.NEW.ID,R.REC,F.FUNDS.TRANSFER,TRANSFER.ERR)
+
+    Y.NEW.DUP = ''
+
+    MATBUILD Y.NEW.DUP FROM R.NEW
+
+    IF R.REC EQ '' THEN
+        CALL F.READ(FN.FUNDS.TRANSFER.HIS,Y.NEW.ID,R.REC,F.FUNDS.TRANSFER.HIS,TRANS.ERR)
+        MATPARSE R.NEW FROM R.REC
+    END ELSE
+        MATPARSE R.NEW FROM R.REC
+    END
+
+    OFS$DEAL.SLIP.PRINTING = 1
+
+    ID.NEW = Y.NEW.ID
+
+    CALL PRODUCE.DEAL.SLIP(Y.SLIP.ID)
+*PACS00055008 - S
+    VAR.HOLD.ID = C$LAST.HOLD.ID
+    R.REDO.PRINT.REPRINT.IDS = '' ; PRINT.ERR = ''
+    CALL F.READ(FN.REDO.PRINT.REPRINT.IDS,'FT',R.REDO.PRINT.REPRINT.IDS,F.REDO.PRINT.REPRINT.IDS,PRINT.ERR)
+    GOSUB UPDATE.CONCAT.TAB
+    CALL F.WRITE(FN.REDO.PRINT.REPRINT.IDS,'FT',R.REDO.PRINT.REPRINT.IDS)
+*PACS00055008 - E
+    ID.NEW = Y.ID
+
+    MATPARSE R.NEW FROM Y.NEW.DUP
+
+RETURN
+
+*********************
+READ.TELLER:
+*****************
+
+    Y.ID = ID.NEW
+
+    CALL F.READ(FN.TELLER,Y.NEW.ID,R.REC,F.TELLER,TELLER.ERR)
+
+    Y.NEW.DUP = ''
+
+    MATBUILD Y.NEW.DUP FROM R.NEW
+
+    IF R.REC EQ '' THEN
+        CALL F.READ(FN.TELLER.HIS,Y.NEW.ID,R.REC,F.TELLER.HIS,TELL.ERR)
+        MATPARSE R.NEW FROM R.REC
+    END ELSE
+        MATPARSE R.NEW FROM R.REC
+    END
+    OFS$DEAL.SLIP.PRINTING = 1
+
+    ID.NEW = Y.NEW.ID
+
+    CALL PRODUCE.DEAL.SLIP(Y.SLIP.ID)
+*PACS00055008 - S
+    VAR.HOLD.ID = C$LAST.HOLD.ID
+    R.REDO.PRINT.REPRINT.IDS = '' ; PRINT.ERR = ''
+    CALL F.READ(FN.REDO.PRINT.REPRINT.IDS,'TT',R.REDO.PRINT.REPRINT.IDS,F.REDO.PRINT.REPRINT.IDS,PRINT.ERR)
+    GOSUB UPDATE.CONCAT.TAB
+    CALL F.WRITE(FN.REDO.PRINT.REPRINT.IDS,'TT',R.REDO.PRINT.REPRINT.IDS)
+*PACS00055008 - E
+    ID.NEW = Y.ID
+
+    MATPARSE R.NEW FROM Y.NEW.DUP
+
+RETURN
+
+******************
+READ.FUND.SERVICES:
+********************
+
+    Y.ID = ID.NEW
+
+    CALL F.READ(FN.T24.FUND.SERVICES,Y.NEW.ID,R.REC,F.T24.FUND.SERVICES,SERVICES.ERR)
+    Y.NEW.DUP = ''
+
+    MATBUILD Y.NEW.DUP FROM R.NEW
+
+    IF R.REC EQ '' THEN
+        CALL F.READ(FN.T24.FUND.SERVICES$HIS,Y.NEW.ID,R.REC,F.FUNDS.TRANSFER.HIS,TRANSFER.HIS.ERR)
+        MATPARSE R.NEW FROM R.REC
+    END ELSE
+        MATPARSE R.NEW FROM R.REC
+    END
+
+    OFS$DEAL.SLIP.PRINTING = 1
+
+    IF Y.SLIP.ID EQ 'REDO.DEP.TFS' THEN
+* CALL APAP.TAM.REDO.CALL.DEP.TFS.RE.ARR
+        APAP.TAM.redoCallDepTfsReArr() ;*MANUAL R22 CODE CONVERSION
+    END
+
+
+    ID.NEW = Y.NEW.ID
+
+    CALL PRODUCE.DEAL.SLIP(Y.SLIP.ID)
+*PACS00055008 - S
+    VAR.HOLD.ID = C$LAST.HOLD.ID
+    R.REDO.PRINT.REPRINT.IDS = '' ; PRINT.ERR = ''
+    CALL F.READ(FN.REDO.PRINT.REPRINT.IDS,'T24FS',R.REDO.PRINT.REPRINT.IDS,F.REDO.PRINT.REPRINT.IDS,PRINT.ERR)
+    GOSUB UPDATE.CONCAT.TAB
+    CALL F.WRITE(FN.REDO.PRINT.REPRINT.IDS,'T24FS',R.REDO.PRINT.REPRINT.IDS)
+*PACS00055008 - E
+    ID.NEW = Y.ID
+
+    MATPARSE R.NEW FROM Y.NEW.DUP
+
+RETURN
+
+******************
+UPDATE.CONCAT.TAB:
+*******************
+*PACS00055008 - S
+    Y.SEP   = ","
+    Y.VALUE = Y.CONTRACT.NO:'*':VAR.HOLD.ID
+    IF R.REDO.PRINT.REPRINT.IDS THEN
+        Y.CONTRACT.ID = FIELDS(R.REDO.PRINT.REPRINT.IDS,"*",1,1)
+        LOCATE Y.CONTRACT.NO IN Y.CONTRACT.ID SETTING POS THEN
+            R.REDO.PRINT.REPRINT.IDS<POS> := Y.SEP : VAR.HOLD.ID  ;* PACS00245671 - S/E
+        END ELSE
+            R.REDO.PRINT.REPRINT.IDS<-1> = Y.VALUE
+        END
+    END ELSE
+        R.REDO.PRINT.REPRINT.IDS<-1> = Y.VALUE
+    END
+RETURN
+*PACS00055008 - E
+*********************
+TT.TRANSACTION:
+*********************
+    Y.TIME.DATE = TIMEDATE()
+    Y.TIME = Y.TIME.DATE[1,8]
+    Y.DATE = Y.TIME.DATE[10,11]
+    Y.DATE1 = Y.DATE[1,2]
+    Y.DATE2 = Y.DATE[4,3]
+    Y.DATE3 = Y.DATE[8,5]
+    Y.DATETIME = Y.DATE2:' ':Y.DATE1:',':Y.DATE3:' ':Y.TIME
+
+    CALL F.READ(FN.TELLER,Y.NEW.ID,R.TELLER,F.TELLER,TELLER.ERR)
+    Y.TILL.ID = R.TELLER<TT.TE.TELLER.ID.1>
+
+    GOSUB CHECK.PRINT
+
+RETURN
+
+*******************
+FT.TRANSACTION:
+*******************
+    Y.TIME.DATE = TIMEDATE()
+    Y.TIME = Y.TIME.DATE[1,8]
+    Y.DATE = Y.TIME.DATE[10,11]
+    Y.DATE1 = Y.DATE[1,2]
+    Y.DATE2 = Y.DATE[4,3]
+    Y.DATE3 = Y.DATE[8,5]
+    Y.DATETIME = Y.DATE2:' ':Y.DATE1:',':Y.DATE3:' ':Y.TIME
+
+
+    GOSUB CHECK.PRINT
+
+RETURN
+
+
+********************
+T24FS.TRANSACTION:
+*******************
+
+    Y.TIME.DATE = TIMEDATE()
+    Y.TIME = Y.TIME.DATE[1,8]
+    Y.DATE = Y.TIME.DATE[10,11]
+    Y.DATE1 = Y.DATE[1,2]
+    Y.DATE2 = Y.DATE[4,3]
+    Y.DATE3 = Y.DATE[8,5]
+    Y.DATETIME = Y.DATE2:' ':Y.DATE1:',':Y.DATE3:' ':Y.TIME
+
+    GOSUB CHECK.PRINT
+
+RETURN
+
+
+******************
+CHECK.PRINT:
+******************
+
+    Y.PRINT = R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.INIT.PRINT,DEAL.SLIP.POS>
+    Y.SM.COUNT = DCOUNT(Y.PRINT,@SM)
+
+    IF Y.TILL.ID NE '' THEN
+        R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.TELLER.USER,DEAL.SLIP.POS,Y.SM.COUNT> = Y.TILL.ID:'-':OPERATOR
+    END ELSE
+        R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.TELLER.USER,DEAL.SLIP.POS,Y.SM.COUNT> = OPERATOR
+    END
+
+    R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.TXN.DAY.TIME,DEAL.SLIP.POS,Y.SM.COUNT> = Y.DATETIME
+    R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.INIT.PRINT,DEAL.SLIP.POS,Y.SM.COUNT> = 'YES'
+    R.REDO.APAP.H.DEAL.SLIP.QUEUE<REDO.DS.QUEUE.REPRINT,DEAL.SLIP.POS,Y.SM.COUNT> = 'NO'
+
+    CALL F.WRITE(FN.REDO.APAP.H.DEAL.SLIP.QUEUE,Y.NEW.ID,R.REDO.APAP.H.DEAL.SLIP.QUEUE)
+
+RETURN
+
+*****************
+END

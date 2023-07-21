@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNjQwNDgwOTkyOkNwMTI1MjoxNjgzMDE0OTQ2Mjk0OklUU1M6LTE6LTE6LTQwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 02 May 2023 13:39:06
+* @ValidationCode : MjotMTI2MzM3NzY2NjpDcDEyNTI6MTY4OTIzODE5OTI2MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 13 Jul 2023 14:19:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -40
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.VALUES.DI
@@ -57,11 +57,11 @@ RETURN  ;* Program RETURN
 *-----------------------------------------------------------------------------------
 PROCESS:
 *======
-    CALL  APAP.REDOVER.redoVValDispoInstru();* R22 Manual Conversion - CALL method format modified
-    CALL  APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
-    CALL  APAP.REDOVER.redoVRedoVValMaxTotal();* R22 Manual Conversion - CALL method format modified
-    CALL  APAP.REDOVER.redoVValSelClieCuen();* R22 Manual Conversion - CALL method format modified
-    CALL  APAP.TAM.redoVValReaCollateral();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValDispoInstru();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValCalcMaxColla();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVRedoVValMaxTotal();* R22 Manual Conversion - CALL method format modified
+    APAP.REDOVER.redoVValSelClieCuen();* R22 Manual Conversion - CALL method format modified
+    APAP.TAM.redoVValReaCollateral();* R22 Manual Conversion - CALL method format modified
 * CALL  REDO.V.VAL.LIBRO.MAYOR
     GOSUB DROUND.VALUES
 RETURN

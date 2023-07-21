@@ -1,0 +1,176 @@
+$PACKAGE APAP.REDOVER
+SUBROUTINE REDO.AUT.TFS.LOCK
+****************************************************************
+*-------------------------------------------------------------------------
+* Company Name  : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By  : GANESH R
+* Program Name  : REDO.AUT.TFS.LOCK
+*-------------------------------------------------------------------------
+* Description: This routine is a Auth routine
+*
+*----------------------------------------------------------
+* Linked with:
+* In parameter :
+* out parameter : None
+*------------------------------------------------------------------------
+* MODIFICATION HISTORY
+*--------------------------------------------
+*   DATE              ODR                             DESCRIPTION
+* 25-11-10          ODR-2010-09-0251              Initial Creation
+*13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     VM TO @VM,++ TO +=1
+*13-07-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL ROUTINE MODIFIED
+*------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.CUSTOMER
+    $INSERT I_F.DATES
+    $INSERT I_F.AC.LOCKED.EVENTS
+    $INSERT I_F.REDO.APAP.CLEAR.PARAM
+    $INSERT I_F.T24.FUND.SERVICES
+    $INSERT I_F.REDO.TFS.ALE
+    $USING APAP.TAM
+    
+    GOSUB INIT
+    GOSUB OPEN.FILE
+    GOSUB PROCESS
+
+RETURN
+
+******
+INIT:
+******
+    Y.FROM.DATE = ''
+    Y.EXPOSURE.DATE = ''
+    Y.TO.DATE = ''
+    R.REC=''
+RETURN
+
+*********
+OPEN.FILE:
+*********
+
+    FN.AC.LOC.ACC = 'F.AC.LOCKED.EVENTS'
+    F.AC.LOC.ACC = ''
+    CALL OPF(FN.AC.LOC.ACC,F.AC.LOC.ACC)
+
+    FN.REDO.APAP.PARAM = 'F.REDO.APAP.CLEAR.PARAM'
+    F.REDP.APAP.PARAM = ''
+    CALL OPF(FN.REDO.APAP.PARAM,F.REDP.APAP.PARAM)
+
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.REDO.TFS.ALE = 'F.REDO.TFS.ALE'
+    F.REDO.TFS.ALE  = ''
+    CALL OPF(FN.REDO.TFS.ALE,F.REDO.TFS.ALE)
+
+    LOC.REF.APPLICATION   = "T24.FUND.SERVICES"
+    LOC.REF.FIELDS        = 'L.FT.ADD.INFO'
+    LOC.REF.POS           = ''
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
+    POS.L.FT.ADD.INFO     = LOC.REF.POS<1,1>
+
+RETURN
+
+********
+PROCESS:
+********
+    CALL CACHE.READ(FN.REDO.APAP.PARAM,'SYSTEM',R.REDO.APAP.PARAM,PARAM.ERR)
+    Y.EXP.DATE = ''
+*CALL REDO.INP.CALC.TXN.DATES(Y.EXP.DATE)
+*R22 MANUAL CONVERSION
+    APAP.TAM.redoInpCalcTxnDates(Y.EXP.DATE)
+    TFS.TXN.LIST = R.NEW(TFS.TRANSACTION)
+    TFS.LIST.COUNT = DCOUNT(TFS.TXN.LIST,@VM) ;*R22 AUTO CONVERSION
+    VAR.COUNT = 1
+    LOOP
+        REMOVE TXN.ID FROM TFS.TXN.LIST SETTING TXN.POS
+    WHILE VAR.COUNT LE TFS.LIST.COUNT
+        TFS.TXN.TYPE = R.REDO.APAP.PARAM<CLEAR.PARAM.TT.FT.TRAN.TYPE>
+*Y.ACCOUNT.NUMBER = R.NEW(TFS.PRIMARY.ACCOUNT)
+        GOSUB GET.ACCOUNT
+        LOCATE TXN.ID IN TFS.TXN.TYPE<1,1> SETTING PARAM.POS THEN
+*Y.TO.DATE = R.NEW(TFS.DR.EXP.DATE)<1,VAR.COUNT>
+            Y.TO.DATE = Y.EXP.DATE<VAR.COUNT>
+            Y.FROM.DATE = TODAY
+            Y.AMOUNT = R.NEW(TFS.AMOUNT)<1,VAR.COUNT>
+            DESCRIPTION = ID.NEW
+
+            IF R.NEW(TFS.REVERSAL.MARK)<1,1> EQ 'R' OR R.NEW(TFS.R.UL.STATUS)<1,1> EQ 'RNAU' THEN
+                GOSUB REVERSE.OFS
+            END ELSE
+                GOSUB CREATE.OFS
+            END
+        END
+        VAR.COUNT += 1 ;*R22 AUTO CONVERSION
+    REPEAT
+RETURN
+*--------------------------------------------------
+GET.ACCOUNT:
+*--------------------------------------------------
+
+
+    IF R.NEW(TFS.LOCAL.REF)<1,POS.L.FT.ADD.INFO> THEN
+        Y.ACCOUNT.NUMBER = R.NEW(TFS.LOCAL.REF)<1,POS.L.FT.ADD.INFO>
+        CALL F.READ(FN.ACCOUNT,Y.ACCOUNT.NUMBER,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
+        IF R.ACCOUNT ELSE
+            Y.ACCOUNT.NUMBER = R.NEW(TFS.PRIMARY.ACCOUNT)
+        END
+    END ELSE
+        Y.ACCOUNT.NUMBER = R.NEW(TFS.PRIMARY.ACCOUNT)
+    END
+
+RETURN
+************
+CREATE.OFS:
+************
+
+*Locking AC.LOCKED.EVENTS
+    R.REC<AC.LCK.FROM.DATE> = Y.FROM.DATE
+    R.REC<AC.LCK.TO.DATE> = Y.TO.DATE
+    R.REC<AC.LCK.ACCOUNT.NUMBER> = Y.ACCOUNT.NUMBER
+    R.REC<AC.LCK.LOCKED.AMOUNT> = Y.AMOUNT
+    R.REC<AC.LCK.DESCRIPTION> = DESCRIPTION
+
+    OFSVERSION = "AC.LOCKED.EVENTS,OFS"
+    OFSFUNCTION = 'I'
+    PROCESS = 'PROCESS'
+    OFS.SOURCE.ID = 'REDO.CHQ.ISSUE'
+    APP.NAME = 'AC.LOCKED.EVENTS'
+    GTSMODE = ''
+    NO.OF.AUTH = '0'
+    TRANSACTION.ID = ''
+    OFSSTRING = ''
+    OFS.OP = ''
+
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCTION,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.REC,OFSSTRING)
+    CALL OFS.POST.MESSAGE(OFSSTRING,OFS.MSG.ID,OFS.SOURCE.ID,OFS.OP)
+
+RETURN
+************
+REVERSE.OFS:
+************
+    CALL F.READ(FN.REDO.TFS.ALE,ID.NEW,R.REDO.TFS.ALE,F.REDO.TFS.ALE,TFS.ALE.ERR)
+    Y.ALE.ID = R.REDO.TFS.ALE<TFS.ALE.ALE>
+    OFSVERSION = "AC.LOCKED.EVENTS,OFS"
+    OFSFUNCTION = 'R'
+    PROCESS = 'PROCESS'
+    OFS.SOURCE.ID = 'REDO.CHQ.ISSUE'
+    APP.NAME = 'AC.LOCKED.EVENTS'
+    GTSMODE = ''
+    NO.OF.AUTH = '0'
+    TRANSACTION.ID = Y.ALE.ID
+    OFSSTRING = ''
+    OFS.OP = ''
+
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCTION,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.REC,OFSSTRING)
+    CALL OFS.POST.MESSAGE(OFSSTRING,OFS.MSG.ID,OFS.SOURCE.ID,OFS.OP)
+
+RETURN
+
+*********************
+END
+
+*End of program

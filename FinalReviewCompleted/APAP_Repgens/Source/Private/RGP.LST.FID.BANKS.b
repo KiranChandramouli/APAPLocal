@@ -1,14 +1,15 @@
-* @ValidationCode : MjotMzg1NjY0OTY4OkNwMTI1MjoxNjg2ODIxNDIwNDU2OmhhaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Jun 2023 15:00:20
+* @ValidationCode : MjotMzg1NjY0OTY4OkNwMTI1MjoxNjg4NTM2ODkxMzkwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:31
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : hai
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.Repgens
 SUBROUTINE RGP.LST.FID.BANKS
 *----------------------------------------------------------------------------

@@ -4557,3 +4557,76 @@ public method redoBPrinIntUpdateSelect (
     jBC: REDO.B.PRIN.INT.UPDATE.SELECT
 }
 
+public method redoBClearChq (
+    INOUT yClearOutwardId string
+)
+{
+    jBC: REDO.B.CLEAR.CHQ
+}
+
+public method redoBClearChqLoad (
+)
+{
+    jBC: REDO.B.CLEAR.CHQ.LOAD
+}
+
+public method redoBClearOut (
+    INOUT incomePar string
+)
+{
+    jBC: REDO.B.CLEAR.OUT
+}
+
+public method redoBClearReturn (
+    INOUT rAperta string
+)
+{
+    jBC: REDO.B.CLEAR.RETURN
+}
+
+public method redoBDealSlipQueuePurge (
+    INOUT yPurgeId string
+)
+{
+    jBC: REDO.B.DEAL.SLIP.QUEUE.PURGE
+}
+
+public method redoBDealSlipQueuePurgeLoad (
+)
+{
+    jBC: REDO.B.DEAL.SLIP.QUEUE.PURGE.LOAD
+}
+
+public method redoBRevNabAcctReachWof (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.REV.NAB.ACCT.REACH.WOF
+}
+
+public method redoBTransProcessPost (
+)
+{
+    jBC: REDO.B.TRANS.PROCESS.POST
+}
+
+public method redoBClearReturn (
+   INOUT rAperta string
+)
+{
+   jBC: REDO.B.CLEAR.RETURN
+}
+
+public method redoBRevNabAcctReachWof (
+   INOUT yId string
+)
+{
+   jBC: REDO.B.REV.NAB.ACCT.REACH.WOF
+}
+
+public method redoBTransProcessPost (
+)
+{
+   jBC: REDO.B.TRANS.PROCESS.POST
+}
+

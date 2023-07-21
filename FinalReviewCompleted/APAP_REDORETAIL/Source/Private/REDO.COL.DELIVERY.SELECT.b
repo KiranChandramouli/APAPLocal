@@ -35,7 +35,7 @@ SUBROUTINE REDO.COL.DELIVERY.SELECT
 * We take one by one, because we need to guarantee the ACID for eact table
     E = ''
 *CALL  REDO.COL.R.DEL.UPD.LOCKING("READ", ID.LIST)
-    CALL APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
+    APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
     IF E NE '' THEN
         CALL OCOMO("OMITTING THE COLLECTOR.DELIVERY PROCESS")
         CALL OCOMO(E)

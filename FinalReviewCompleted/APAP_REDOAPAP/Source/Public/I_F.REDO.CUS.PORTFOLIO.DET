@@ -1,0 +1,20 @@
+* I_F.REDO.CUS.PORTFOLIO.DET Created 14 JUN 10 at 07:56PM by apapr8/SHIVA.1
+*      PREFIX[CUS.PORT]
+        EQU CUS.PORT.CUSTOMER.NO TO 1,   RedoCusPortfolioDet_CustomerNo TO 1,
+           CUS.PORT.PORTFOLIO.NO TO 2,   RedoCusPortfolioDet_PortfolioNo TO 2,
+            CUS.PORT.RESERVED.05 TO 3,   RedoCusPortfolioDet_Reserved05 TO 3,
+            CUS.PORT.RESERVED.04 TO 4,   RedoCusPortfolioDet_Reserved04 TO 4,
+            CUS.PORT.RESERVED.03 TO 5,   RedoCusPortfolioDet_Reserved03 TO 5,
+            CUS.PORT.RESERVED.02 TO 6,   RedoCusPortfolioDet_Reserved02 TO 6,
+            CUS.PORT.RESERVED.01 TO 7,   RedoCusPortfolioDet_Reserved01 TO 7,
+              CUS.PORT.LOCAL.REF TO 8,   RedoCusPortfolioDet_LocalRef TO 8,
+               CUS.PORT.OVERRIDE TO 9,   RedoCusPortfolioDet_Override TO 9,
+          CUS.PORT.RECORD.STATUS TO 10,  RedoCusPortfolioDet_RecordStatus TO 10,
+                CUS.PORT.CURR.NO TO 11,  RedoCusPortfolioDet_CurrNo TO 11,
+               CUS.PORT.INPUTTER TO 12,  RedoCusPortfolioDet_Inputter TO 12,
+              CUS.PORT.DATE.TIME TO 13,  RedoCusPortfolioDet_DateTime TO 13,
+             CUS.PORT.AUTHORISER TO 14,  RedoCusPortfolioDet_Authoriser TO 14,
+                CUS.PORT.CO.CODE TO 15,  RedoCusPortfolioDet_CoCode TO 15,
+              CUS.PORT.DEPT.CODE TO 16,  RedoCusPortfolioDet_DeptCode TO 16,
+           CUS.PORT.AUDITOR.CODE TO 17,  RedoCusPortfolioDet_AuditorCode TO 17,
+        CUS.PORT.AUDIT.DATE.TIME TO 18,  RedoCusPortfolioDet_AuditDateTime TO 18

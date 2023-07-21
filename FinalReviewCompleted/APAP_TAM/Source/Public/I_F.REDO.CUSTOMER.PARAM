@@ -1,0 +1,13 @@
+* I_F.REDO.CUSTOMER.PARAM Created 06 JAN 11 at 08:03AM by apapr8/TESTER1
+*      PREFIX[ACP]
+      EQU ACP.CUSTOMER.NAME TO 1,   RedoCustomerParam_CustomerName TO 1,
+         ACP.AC.ENTRY.PARAM TO 2,   RedoCustomerParam_AcEntryParam TO 2,
+          ACP.RECORD.STATUS TO 3,   RedoCustomerParam_RecordStatus TO 3,
+                ACP.CURR.NO TO 4,   RedoCustomerParam_CurrNo TO 4,
+               ACP.INPUTTER TO 5,   RedoCustomerParam_Inputter TO 5,
+              ACP.DATE.TIME TO 6,   RedoCustomerParam_DateTime TO 6,
+             ACP.AUTHORISER TO 7,   RedoCustomerParam_Authoriser TO 7,
+                ACP.CO.CODE TO 8,   RedoCustomerParam_CoCode TO 8,
+              ACP.DEPT.CODE TO 9,   RedoCustomerParam_DeptCode TO 9,
+           ACP.AUDITOR.CODE TO 10,  RedoCustomerParam_AuditorCode TO 10,
+        ACP.AUDIT.DATE.TIME TO 11,  RedoCustomerParam_AuditDateTime TO 11

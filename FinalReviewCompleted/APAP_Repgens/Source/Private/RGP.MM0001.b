@@ -1,14 +1,15 @@
-* @ValidationCode : Mjo3NjQ0MzcyNTM6Q3AxMjUyOjE2ODY4MjM1Nzg3ODg6aGFpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Jun 2023 15:36:18
+* @ValidationCode : Mjo3NjQ0MzcyNTM6Q3AxMjUyOjE2ODg1MzY4OTE2NjM6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:31
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : hai
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.Repgens
 SUBROUTINE RGP.MM0001
 REM "RGP.MM0001",230614-4

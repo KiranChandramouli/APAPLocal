@@ -1319,3 +1319,124 @@ public method redoSGetUsrErrMsg (
 {
    jBC: REDO.S.GET.USR.ERR.MSG
 }
+
+
+public method redoSCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.CALC.DISB.DATE.AMT
+}
+
+
+
+public method redoSCheckAmount (
+    INOUT chqAmt string
+)
+{
+    jBC: REDO.S.CHECK.AMOUNT
+}
+
+
+
+public method redoSCustomerName1 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NAME1
+}
+
+
+
+public method redoSCustomerName1Nv (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NAME1.NV
+}
+
+
+
+public method redoSFcLimiteGfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GFUNCEMP
+}
+
+
+
+public method redoSFcLimiteGrgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRGAR
+}
+
+
+
+public method redoSFcLimiteGrsgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRSGAR
+}
+
+
+
+public method redoSFcLimiteIfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.IFUNCEMP
+}
+
+
+
+public method redoSGetAzAccRef (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.AZ.ACC.REF
+}
+
+
+
+public method redoSGetCashAmount (
+    INOUT cashAmt string
+)
+{
+    jBC: REDO.S.GET.CASH.AMOUNT
+}
+
+
+
+public method redoSGetTfsTotAmt (
+    INOUT yTotalAmt string
+)
+{
+    jBC: REDO.S.GET.TFS.TOT.AMT
+}
+
+
+
+public method redoSRecAcctList (
+    INOUT yAcctId string,
+    INOUT yFinArray string
+)
+{
+    jBC: REDO.S.REC.ACCT.LIST
+}
+
+public method redoSCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.CALC.DISB.DATE.AMT
+}

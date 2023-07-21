@@ -5460,3 +5460,30 @@ public method redoEGetStmtPeriod (
 {
     jBC: REDO.E.GET.STMT.PERIOD
 }
+
+
+public method redoECheckUser (
+    INOUT enqData string
+)
+{
+    jBC: REDO.E.CHECK.USER
+}
+
+
+
+public method redoENofClicuent (
+    INOUT cuDetArr string
+)
+{
+    jBC: REDO.E.NOF.CLICUENT
+}
+
+
+
+public method redoNofGetRetChqTrans (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.NOF.GET.RET.CHQ.TRANS
+}
+
