@@ -1,0 +1,7 @@
+* I_F.REDO.CUST.PRD.LIST Created 17 AUG 15 at 04:21PM by t24teme/INPUTTER
+*      PREFIX[PRD]
+         EQU PRD.PRODUCT.ID TO 1,   RedoCustPrdList_ProductId TO 1,
+             PRD.PRD.STATUS TO 2,   RedoCustPrdList_PrdStatus TO 2,
+           PRD.TYPE.OF.CUST TO 3,   RedoCustPrdList_TypeOfCust TO 3,
+                   PRD.DATE TO 4,   RedoCustPrdList_Date TO 4,
+           PRD.PROCESS.DATE TO 5,   RedoCustPrdList_ProcessDate TO 5

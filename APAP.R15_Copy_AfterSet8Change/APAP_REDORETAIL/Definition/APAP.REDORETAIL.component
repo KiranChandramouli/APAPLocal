@@ -1,0 +1,3344 @@
+component APAP.REDORETAIL
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+public method certifiedChequeDetails (
+)
+{
+    jBC: CERTIFIED.CHEQUE.DETAILS
+}
+
+
+public method certifiedChequeDetailsFields (
+)
+{
+    jBC: CERTIFIED.CHEQUE.DETAILS.FIELDS
+}
+
+
+
+public method certifiedChequeParameter (
+)
+{
+    jBC: CERTIFIED.CHEQUE.PARAMETER
+}
+
+
+
+public method certifiedChequeParameterFields (
+)
+{
+    jBC: CERTIFIED.CHEQUE.PARAMETER.FIELDS
+}
+
+
+
+public method certifiedChequeParameterRecord (
+)
+{
+    jBC: CERTIFIED.CHEQUE.PARAMETER.RECORD
+}
+
+
+
+public method certifiedChequeParameterValidate (
+)
+{
+    jBC: CERTIFIED.CHEQUE.PARAMETER.VALIDATE
+}
+
+
+
+public method certifiedChequeStock (
+)
+{
+    jBC: CERTIFIED.CHEQUE.STOCK
+}
+
+
+
+public method certifiedChequeStockFields (
+)
+{
+    jBC: CERTIFIED.CHEQUE.STOCK.FIELDS
+}
+
+
+
+public method certifiedChequeStockHis (
+)
+{
+    jBC: CERTIFIED.CHEQUE.STOCK.HIS
+}
+
+
+
+public method certifiedChequeStockHisFields (
+)
+{
+    jBC: CERTIFIED.CHEQUE.STOCK.HIS.FIELDS
+}
+
+
+
+public method checkAssociatedLoan (
+)
+{
+    jBC: CHECK.ASSOCIATED.LOAN
+}
+
+
+public method checkStartDate (
+)
+{
+    jBC: CHECK.START.DATE
+}
+
+
+public method creditLimitMaintenance (
+)
+{
+    jBC: CREDIT.LIMIT.MAINTENANCE
+}
+
+
+public method creditLimitMaintenanceFields (
+)
+{
+    jBC: CREDIT.LIMIT.MAINTENANCE.FIELDS
+}
+
+
+public method creditLimitMaintenanceValidate (
+)
+{
+    jBC: CREDIT.LIMIT.MAINTENANCE.VALIDATE
+}
+
+public method crrCardAgreement (
+)
+{
+    jBC: CRR.CARD.AGREEMENT
+}
+
+
+public method crrCardAgreementFields (
+)
+{
+    jBC: CRR.CARD.AGREEMENT.FIELDS
+}
+
+
+public method crrCardAgreementId (
+)
+{
+    jBC: CRR.CARD.AGREEMENT.ID
+}
+
+
+public method crrSCalcIrr (
+    INOUT npvVal string,
+    INOUT cashFlows string,
+    INOUT term string,
+    INOUT irrRate string
+)
+{
+    jBC: CRR.S.CALC.IRR
+}
+
+public method latamCardAccess (
+)
+{
+    jBC: LATAM.CARD.ACCESS
+}
+
+
+
+public method latamCardAccessFields (
+)
+{
+    jBC: LATAM.CARD.ACCESS.FIELDS
+}
+
+
+
+public method latamCardAcsDefId (
+)
+{
+    jBC: LATAM.CARD.ACS.DEF.ID
+}
+
+
+
+public method latamCardCharges (
+)
+{
+    jBC: LATAM.CARD.CHARGES
+}
+
+
+
+public method latamCardChargesFields (
+)
+{
+    jBC: LATAM.CARD.CHARGES.FIELDS
+}
+
+
+
+public method latamCardClassCode (
+)
+{
+    jBC: LATAM.CARD.CLASS.CODE
+}
+
+
+
+public method latamCardClassCodeFields (
+)
+{
+    jBC: LATAM.CARD.CLASS.CODE.FIELDS
+}
+
+
+
+public method latamCardClassCodeId (
+)
+{
+    jBC: LATAM.CARD.CLASS.CODE.ID
+}
+
+
+
+public method latamCardCustomer (
+)
+{
+    jBC: LATAM.CARD.CUSTOMER
+}
+
+
+
+public method latamCardCustomerFields (
+)
+{
+    jBC: LATAM.CARD.CUSTOMER.FIELDS
+}
+
+
+
+public method latamCardDeliveryAddress (
+)
+{
+    jBC: LATAM.CARD.DELIVERY.ADDRESS
+}
+
+
+
+public method latamCardDeliveryAddressFields (
+)
+{
+    jBC: LATAM.CARD.DELIVERY.ADDRESS.FIELDS
+}
+
+
+
+public method latamCardInterface (
+)
+{
+    jBC: LATAM.CARD.INTERFACE
+}
+
+
+
+public method latamCardInterfaceFields (
+)
+{
+    jBC: LATAM.CARD.INTERFACE.FIELDS
+}
+
+
+
+public method latamCardLimDefAdd (
+)
+{
+    jBC: LATAM.CARD.LIM.DEF.ADD
+}
+
+
+
+public method latamCardLimDefAddFields (
+)
+{
+    jBC: LATAM.CARD.LIM.DEF.ADD.FIELDS
+}
+
+
+
+public method latamCardLimDefAuthorise (
+)
+{
+    jBC: LATAM.CARD.LIM.DEF.AUTHORISE
+}
+
+
+
+public method latamCardOrder (
+)
+{
+    jBC: LATAM.CARD.ORDER
+}
+
+
+
+public method latamCardOrderFields (
+)
+{
+    jBC: LATAM.CARD.ORDER.FIELDS
+}
+
+
+
+public method latamCardOrderFieldsSplit (
+)
+{
+    jBC: LATAM.CARD.ORDER.FIELDS.SPLIT
+}
+
+
+
+public method latamCardOrderId (
+)
+{
+    jBC: LATAM.CARD.ORDER.ID
+}
+
+
+
+public method latamCardOrderOverrides (
+)
+{
+    jBC: LATAM.CARD.ORDER.OVERRIDES
+}
+
+
+
+public method latamCardOrderProcess (
+)
+{
+    jBC: LATAM.CARD.ORDER.PROCESS
+}
+
+
+
+public method latamCardOrderRecord (
+)
+{
+    jBC: LATAM.CARD.ORDER.RECORD
+}
+
+
+
+public method latamCardOrderSplitAuth (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.AUTH
+}
+
+
+
+public method latamCardOrderSplitCrossval1 (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.CROSSVAL.1
+}
+
+
+
+public method latamCardOrderSplitCrossval (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.CROSSVAL
+}
+
+
+
+public method latamCardAcsDef (
+)
+{
+    jBC: LATAM.CARD.ACS.DEF
+}
+
+
+
+public method latamCardAcsDefFields (
+)
+{
+    jBC: LATAM.CARD.ACS.DEF.FIELDS
+}
+
+
+
+public method latamCardLimDef (
+)
+{
+    jBC: LATAM.CARD.LIM.DEF
+}
+
+
+
+public method latamCardLimDefFields (
+)
+{
+    jBC: LATAM.CARD.LIM.DEF.FIELDS
+}
+
+
+
+public method latamCardOrderAuthorise (
+)
+{
+    jBC: LATAM.CARD.ORDER.AUTHORISE
+}
+
+public method latamCardOrderSplitProcess (
+    INOUT accountId string,
+    INOUT account string,
+    INOUT cardCharge string,
+    INOUT charges string,
+    INOUT chargeDate string,
+    INOUT lcyAmt string
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.PROCESS
+}
+
+
+
+public method latamCardOrderSplitValidate1 (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.1
+}
+
+
+
+public method latamCardOrderSplitValidate2 (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.2
+}
+
+
+
+public method latamCardOrderSplitValidate3 (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.3
+}
+
+
+public method latamCardOrderSplitValidate (
+)
+{
+    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE
+}
+
+
+
+public method latamCardOrderValidate (
+)
+{
+    jBC: LATAM.CARD.ORDER.VALIDATE
+}
+
+
+
+public method latamCardRegister (
+)
+{
+    jBC: LATAM.CARD.REGISTER
+}
+
+
+
+public method latamCardRegisterFields (
+)
+{
+    jBC: LATAM.CARD.REGISTER.FIELDS
+}
+
+
+
+public method latamCrrValCardAccount (
+)
+{
+    jBC: LATAM.CRR.VAL.CARD.ACCOUNT
+}
+
+
+
+public method redoAAcctClosure (
+)
+{
+    jBC: REDO.A.ACCT.CLOSURE
+}
+
+
+
+public method redoAAtmRevLyPts (
+)
+{
+    jBC: REDO.A.ATM.REV.LY.PTS
+}
+
+
+
+public method redoACallAccountingDel (
+)
+{
+    jBC: REDO.A.CALL.ACCOUNTING.DEL
+}
+
+
+
+public method redoACallAccountingNew (
+)
+{
+    jBC: REDO.A.CALL.ACCOUNTING.NEW
+}
+
+
+
+public method redoACallAccountingRev (
+)
+{
+    jBC: REDO.A.CALL.ACCOUNTING.REV
+}
+
+
+
+public method redoACardType (
+)
+{
+    jBC: REDO.A.CARD.TYPE
+}
+
+
+
+public method redoAChqRevChgs (
+)
+{
+    jBC: REDO.A.CHQ.REV.CHGS
+}
+
+
+
+public method redoAFcPassport (
+)
+{
+    jBC: REDO.A.FC.PASSPORT
+}
+
+
+
+public method redoARevPymntVp (
+)
+{
+    jBC: REDO.A.REV.PYMNT.VP
+}
+
+
+
+public method redoASyncMasterData (
+)
+{
+    jBC: REDO.A.SYNC.MASTER.DATA
+}
+
+
+
+public method redoAUpdAllIds (
+)
+{
+    jBC: REDO.A.UPD.ALL.IDS
+}
+
+
+
+public method redoAcCancPoder (
+    INOUT yEnqOut string
+)
+{
+    jBC: REDO.AC.CANC.PODER
+}
+
+
+
+public method redoAcPoder (
+    INOUT yEnqOut string
+)
+{
+    jBC: REDO.AC.PODER
+}
+
+
+
+public method redoAcPoolRateChange (
+)
+{
+    jBC: REDO.AC.POOL.RATE.CHANGE
+}
+
+
+
+public method redoAcPrintMask (
+)
+{
+    jBC: REDO.AC.PRINT.MASK
+}
+
+
+
+public method redoAcPrintMaskFields (
+)
+{
+    jBC: REDO.AC.PRINT.MASK.FIELDS
+}
+
+
+
+public method redoAcTutor (
+)
+{
+    jBC: REDO.AC.TUTOR
+}
+
+
+
+public method redoAccCrInt (
+)
+{
+    jBC: REDO.ACC.CR.INT
+}
+
+
+
+public method redoAccCrIntFields (
+)
+{
+    jBC: REDO.ACC.CR.INT.FIELDS
+}
+
+
+
+public method redoAccCrIntId (
+)
+{
+    jBC: REDO.ACC.CR.INT.ID
+}
+
+
+
+public method redoAccReasonUpdate (
+)
+{
+    jBC: REDO.ACC.REASON.UPDATE
+}
+public method redoAcctCompExce (
+)
+{
+    jBC: REDO.ACCT.COMP.EXCE
+}
+
+
+
+public method redoAcctCompExceFields (
+)
+{
+    jBC: REDO.ACCT.COMP.EXCE.FIELDS
+}
+
+
+
+public method redoAcctDepDetails (
+    INOUT yAccId string
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS
+}
+
+
+
+
+public method redoAcctDepDetailsPost (
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS.POST
+}
+
+
+
+public method redoAcctDepDetailsSelect (
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS.SELECT
+}
+
+
+
+public method redoAcctExceRbhp (
+)
+{
+    jBC: REDO.ACCT.EXCE.RBHP
+}
+
+
+
+public method redoAcctExceRbhpFields (
+)
+{
+    jBC: REDO.ACCT.EXCE.RBHP.FIELDS
+}
+
+
+
+public method redoAcctIstRespMap (
+)
+{
+    jBC: REDO.ACCT.IST.RESP.MAP
+}
+
+
+
+public method redoAcctIstRespMapFields (
+)
+{
+    jBC: REDO.ACCT.IST.RESP.MAP.FIELDS
+}
+
+public method redoAcctIstRespMapId (
+)
+{
+    jBC: REDO.ACCT.IST.RESP.MAP.ID
+}
+
+
+
+public method redoAcctIstRespMapValidate (
+)
+{
+    jBC: REDO.ACCT.IST.RESP.MAP.VALIDATE
+}
+
+
+
+public method redoAcctMrkwofHist (
+)
+{
+    jBC: REDO.ACCT.MRKWOF.HIST
+}
+
+
+
+public method redoAcctMrkwofHistFields (
+)
+{
+    jBC: REDO.ACCT.MRKWOF.HIST.FIELDS
+}
+
+
+
+public method redoAcctMrkwofParameter (
+)
+{
+    jBC: REDO.ACCT.MRKWOF.PARAMETER
+}
+
+
+
+public method redoAcctMrkwofParameterFields (
+)
+{
+    jBC: REDO.ACCT.MRKWOF.PARAMETER.FIELDS
+}
+
+
+
+public method redoAcctStatusCode (
+)
+{
+    jBC: REDO.ACCT.STATUS.CODE
+}
+
+
+
+public method redoAcctStatusCodeFields (
+)
+{
+    jBC: REDO.ACCT.STATUS.CODE.FIELDS
+}
+
+
+public method redoAchApapFtReversal (
+)
+{
+    jBC: REDO.ACH.APAP.FT.REVERSAL
+}
+
+
+
+
+public method redoAchDate (
+)
+{
+    jBC: REDO.ACH.DATE
+}
+
+
+
+public method redoAchDateFields (
+)
+{
+    jBC: REDO.ACH.DATE.FIELDS
+}
+
+
+
+public method redoAchDetIds (
+)
+{
+    jBC: REDO.ACH.DET.IDS
+}
+
+
+
+public method redoAchDetIdsFields (
+)
+{
+    jBC: REDO.ACH.DET.IDS.FIELDS
+}
+
+
+
+public method redoAchFileUpdFtReversal (
+)
+{
+    jBC: REDO.ACH.FILE.UPD.FT.REVERSAL
+}
+
+
+
+public method redoAchInwAltAcct (
+)
+{
+    jBC: REDO.ACH.INW.ALT.ACCT
+}
+
+
+
+public method redoAchInwAltAcctCus (
+)
+{
+    jBC: REDO.ACH.INW.ALT.ACCT.CUS
+}
+
+
+
+
+public method redoAchInwOmsg (
+    INOUT yOutMessage string
+)
+{
+    jBC: REDO.ACH.INW.OMSG
+}
+
+
+
+public method redoAchParam (
+)
+{
+    jBC: REDO.ACH.PARAM
+}
+
+
+
+public method redoAchParamFields (
+)
+{
+    jBC: REDO.ACH.PARAM.FIELDS
+}
+
+
+
+public method redoAchParamValidate (
+)
+{
+    jBC: REDO.ACH.PARAM.VALIDATE
+}
+
+public method redoAchParticipants (
+)
+{
+    jBC: REDO.ACH.PARTICIPANTS
+}
+
+
+
+public method redoAchParticipantsFields (
+)
+{
+    jBC: REDO.ACH.PARTICIPANTS.FIELDS
+}
+
+
+
+public method redoAchProcIds (
+)
+{
+    jBC: REDO.ACH.PROC.IDS
+}
+
+
+
+public method redoAchProcIdsFields (
+)
+{
+    jBC: REDO.ACH.PROC.IDS.FIELDS
+}
+
+
+
+public method redoAchProcess (
+)
+{
+    jBC: REDO.ACH.PROCESS
+}
+
+
+
+public method redoAchProcessDet (
+)
+{
+    jBC: REDO.ACH.PROCESS.DET
+}
+
+
+
+public method redoAchProcessDetFields (
+)
+{
+    jBC: REDO.ACH.PROCESS.DET.FIELDS
+}
+
+
+
+public method redoAchProcessDetId (
+)
+{
+    jBC: REDO.ACH.PROCESS.DET.ID
+}
+
+
+
+public method redoAchProcessFields (
+)
+{
+    jBC: REDO.ACH.PROCESS.FIELDS
+}
+
+
+
+public method redoAchProcessId (
+)
+{
+    jBC: REDO.ACH.PROCESS.ID
+}
+
+
+
+public method redoAchRefUpdFtReversal (
+)
+{
+    jBC: REDO.ACH.REF.UPD.FT.REVERSAL
+}
+
+
+
+public method redoAchRejectCode (
+)
+{
+    jBC: REDO.ACH.REJECT.CODE
+}
+
+
+
+public method redoAchRejectCodeFields (
+)
+{
+    jBC: REDO.ACH.REJECT.CODE.FIELDS
+}
+
+
+
+public method redoAchTransferDetails (
+)
+{
+    jBC: REDO.ACH.TRANSFER.DETAILS
+}
+
+
+
+public method redoAchTransferDetailsFields (
+)
+{
+    jBC: REDO.ACH.TRANSFER.DETAILS.FIELDS
+}
+
+
+
+public method redoAciAzIntRate (
+    INOUT yAzAccountId string,
+    INOUT yAciOfsArray string,
+    INOUT yMaturityDate string,
+    INOUT varIntRate string
+)
+{
+    jBC: REDO.ACI.AZ.INT.RATE
+}
+
+
+
+public method redoAmortSecTrade (
+)
+{
+    jBC: REDO.AMORT.SEC.TRADE
+}
+
+
+
+public method redoAmortSecTradeFields (
+)
+{
+    jBC: REDO.AMORT.SEC.TRADE.FIELDS
+}
+
+
+
+public method redoAmortSecTradeUpdate (
+)
+{
+    jBC: REDO.AMORT.SEC.TRADE.UPDATE
+}
+
+
+
+public method redoAzAcAutFdPrec (
+)
+{
+    jBC: REDO.AZ.AC.AUT.FD.PREC
+}
+
+
+
+public method redoAzAcDelClose (
+)
+{
+    jBC: REDO.AZ.AC.DEL.CLOSE
+}
+
+
+
+public method redoAzAcFdPrecInp (
+)
+{
+    jBC: REDO.AZ.AC.FD.PREC.INP
+}
+
+
+
+public method redoAzAcInpGraEndDate (
+)
+{
+    jBC: REDO.AZ.AC.INP.GRA.END.DATE
+}
+
+
+
+public method redoAzAcPrecRecRollOver (
+)
+{
+    jBC: REDO.AZ.AC.PREC.REC.ROLL.OVER
+}
+
+
+
+public method redoAzAcPrecValPenalPcnt (
+)
+{
+    jBC: REDO.AZ.AC.PREC.VAL.PENAL.PCNT
+}
+
+
+
+public method redoAzAcctAmt (
+)
+{
+    jBC: REDO.AZ.ACCT.AMT
+}
+
+
+
+public method redoAzBuildData (
+    INOUT enqDetails string
+)
+{
+    jBC: REDO.AZ.BUILD.DATA
+}
+
+
+
+public method redoAzDateAuth (
+)
+{
+    jBC: REDO.AZ.DATE.AUTH
+}
+
+
+
+public method redoAzDateCalc (
+    INOUT ySelectId string
+)
+{
+    jBC: REDO.AZ.DATE.CALC
+}
+
+
+
+public method redoAzDateCalcLoad (
+)
+{
+    jBC: REDO.AZ.DATE.CALC.LOAD
+}
+
+
+
+public method redoAzDateCalcSelect (
+)
+{
+    jBC: REDO.AZ.DATE.CALC.SELECT
+}
+
+
+
+public method redoAzDiscountRate (
+)
+{
+    jBC: REDO.AZ.DISCOUNT.RATE
+}
+
+
+
+public method redoAzDiscountRateFields (
+)
+{
+    jBC: REDO.AZ.DISCOUNT.RATE.FIELDS
+}
+
+
+
+public method redoAzDiscountRateValidate (
+)
+{
+    jBC: REDO.AZ.DISCOUNT.RATE.VALIDATE
+}
+
+
+
+public method redoAzDslipAmountRtn (
+    INOUT yAmt string
+)
+{
+    jBC: REDO.AZ.DSLIP.AMOUNT.RTN
+}
+
+
+
+public method redoAzDslipRtn (
+    INOUT yRet string
+)
+{
+    jBC: REDO.AZ.DSLIP.RTN
+}
+
+
+
+public method redoAzFundParam (
+)
+{
+    jBC: REDO.AZ.FUND.PARAM
+}
+
+
+public method redoAzFundParamFields (
+)
+{
+    jBC: REDO.AZ.FUND.PARAM.FIELDS
+}
+
+
+
+public method redoAzFundParamValidate (
+)
+{
+    jBC: REDO.AZ.FUND.PARAM.VALIDATE
+}
+
+
+
+public method redoAzIdSmsCheck (
+)
+{
+    jBC: REDO.AZ.ID.SMS.CHECK
+}
+
+
+
+public method redoAzInvFacUpdOtime (
+)
+{
+    jBC: REDO.AZ.INV.FAC.UPD.OTIME
+}
+
+
+
+public method redoAzMaturityDate (
+    INOUT sysDate string
+)
+{
+    jBC: REDO.AZ.MATURITY.DATE
+}
+
+
+
+public method redoAzPenalAmtCalc (
+    INOUT penalPer string,
+    INOUT prDepDays string,
+    INOUT penAmt string
+)
+{
+    jBC: REDO.AZ.PENAL.AMT.CALC
+}
+
+
+
+public method redoAzRollIntRate (
+    INOUT getRate string
+)
+{
+    jBC: REDO.AZ.ROLL.INT.RATE
+}
+
+
+
+public method redoAzRolloverDefault (
+)
+{
+    jBC: REDO.AZ.ROLLOVER.DEFAULT
+}
+
+
+
+public method redoAzRolloverDetails (
+)
+{
+    jBC: REDO.AZ.ROLLOVER.DETAILS
+}
+
+
+
+public method redoAzRolloverDetailsFields (
+)
+{
+    jBC: REDO.AZ.ROLLOVER.DETAILS.FIELDS
+}
+
+
+
+public method redoAzTtAutFdPrec (
+)
+{
+    jBC: REDO.AZ.TT.AUT.FD.PREC
+}
+
+
+
+public method redoAzTtPrecRec (
+)
+{
+    jBC: REDO.AZ.TT.PREC.REC
+}
+
+
+
+public method redoAzTtValPenalpc (
+)
+{
+    jBC: REDO.AZ.TT.VAL.PENALPC
+}
+
+
+
+public method redoAzWriteTrace (
+    INOUT yRtnName string,
+    INOUT yAzId string
+)
+{
+    jBC: REDO.AZ.WRITE.TRACE
+}
+
+
+
+public method redoAzaccDesc (
+)
+{
+    jBC: REDO.AZACC.DESC
+}
+
+public method redoAzaccDescFields (
+)
+{
+    jBC: REDO.AZACC.DESC.FIELDS
+}
+
+
+
+public method redoCardBin (
+)
+{
+    jBC: REDO.CARD.BIN
+}
+
+
+
+public method redoCardBinFields (
+)
+{
+    jBC: REDO.CARD.BIN.FIELDS
+}
+
+
+
+public method redoCardBranchIdDeliver (
+)
+{
+    jBC: REDO.CARD.BRANCH.ID.DELIVER
+}
+
+
+
+public method redoCardChnVal (
+)
+{
+    jBC: REDO.CARD.CHN.VAL
+}
+
+
+
+public method redoCardDamageAuthorise (
+)
+{
+    jBC: REDO.CARD.DAMAGE.AUTHORISE
+}
+
+
+
+public method redoCardDamage (
+)
+{
+    jBC: REDO.CARD.DAMAGE
+}
+
+
+
+public method redoCardDamageFields (
+)
+{
+    jBC: REDO.CARD.DAMAGE.FIELDS
+}
+
+
+
+public method redoCardDamageId (
+)
+{
+    jBC: REDO.CARD.DAMAGE.ID
+}
+
+
+
+public method redoCardDamageProcess (
+)
+{
+    jBC: REDO.CARD.DAMAGE.PROCESS
+}
+
+
+
+public method redoCardDamageRecord (
+)
+{
+    jBC: REDO.CARD.DAMAGE.RECORD
+}
+
+
+
+public method redoCardDamageValidate (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VALIDATE
+}
+
+
+
+public method redoCardDamageVirginAuthorise (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VIRGIN.AUTHORISE
+}
+
+
+
+public method redoCardDamageVirgin (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VIRGIN
+}
+
+
+
+public method redoCardDamageVirginFields (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VIRGIN.FIELDS
+}
+
+
+
+public method redoCardDamageVirginProcess (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VIRGIN.PROCESS
+}
+
+
+
+public method redoCardDamageVirginValidate (
+)
+{
+    jBC: REDO.CARD.DAMAGE.VIRGIN.VALIDATE
+}
+
+
+
+public method redoCardDesHis (
+)
+{
+    jBC: REDO.CARD.DES.HIS
+}
+
+
+
+public method redoCardDesHisFields (
+)
+{
+    jBC: REDO.CARD.DES.HIS.FIELDS
+}
+
+
+
+public method redoCardDmgEmbossAuthorise (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS.AUTHORISE
+}
+
+
+
+public method redoCardDmgEmboss (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS
+}
+
+
+
+public method redoCardDmgEmbossFields (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS.FIELDS
+}
+
+
+
+public method redoCardDmgEmbossId (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS.ID
+}
+
+
+
+public method redoCardDmgEmbossProcess (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS.PROCESS
+}
+
+
+
+public method redoCardDmgEmbossValidate (
+)
+{
+    jBC: REDO.CARD.DMG.EMBOSS.VALIDATE
+}
+
+public method redoCardGenerationAuthorise (
+)
+{
+    jBC: REDO.CARD.GENERATION.AUTHORISE
+}
+
+
+
+public method redoCardGeneration (
+)
+{
+    jBC: REDO.CARD.GENERATION
+}
+
+
+
+public method redoCardGenerationFields (
+)
+{
+    jBC: REDO.CARD.GENERATION.FIELDS
+}
+
+
+
+public method redoCardGenerationProcess (
+)
+{
+    jBC: REDO.CARD.GENERATION.PROCESS
+}
+
+
+
+public method redoCardGenerationRecord (
+)
+{
+    jBC: REDO.CARD.GENERATION.RECORD
+}
+
+
+
+public method redoCardGenerationValidate (
+)
+{
+    jBC: REDO.CARD.GENERATION.VALIDATE
+}
+
+
+
+public method redoCardGenerationWs (
+)
+{
+    jBC: REDO.CARD.GENERATION.WS
+}
+
+
+
+public method redoCardIstRespMap (
+)
+{
+    jBC: REDO.CARD.IST.RESP.MAP
+}
+
+
+
+public method redoCardIstRespMapFields (
+)
+{
+    jBC: REDO.CARD.IST.RESP.MAP.FIELDS
+}
+
+
+
+public method redoCardIstRespMapValidate (
+)
+{
+    jBC: REDO.CARD.IST.RESP.MAP.VALIDATE
+}
+
+
+
+public method redoCardLostIntransit (
+)
+{
+    jBC: REDO.CARD.LOST.INTRANSIT
+}
+
+
+
+public method redoCardNoLock (
+)
+{
+    jBC: REDO.CARD.NO.LOCK
+}
+
+
+
+public method redoCardNoLockFields (
+)
+{
+    jBC: REDO.CARD.NO.LOCK.FIELDS
+}
+
+
+
+public method redoCardNumbers (
+)
+{
+    jBC: REDO.CARD.NUMBERS
+}
+
+
+
+public method redoCardNumbersFields (
+)
+{
+    jBC: REDO.CARD.NUMBERS.FIELDS
+}
+
+
+
+public method redoCardPinReset (
+)
+{
+    jBC: REDO.CARD.PIN.RESET
+}
+
+
+
+public method redoCardPinResetFields (
+)
+{
+    jBC: REDO.CARD.PIN.RESET.FIELDS
+}
+
+
+
+public method redoCardPinResetId (
+)
+{
+    jBC: REDO.CARD.PIN.RESET.ID
+}
+
+
+
+public method redoCardPinResetRecord (
+)
+{
+    jBC: REDO.CARD.PIN.RESET.RECORD
+}
+
+
+
+public method redoCardPinResetUpd (
+)
+{
+    jBC: REDO.CARD.PIN.RESET.UPD
+}
+
+
+
+public method redoCardPrintLostAuthorise (
+)
+{
+    jBC: REDO.CARD.PRINT.LOST.AUTHORISE
+}
+
+
+
+public method redoCardPrintLost (
+)
+{
+    jBC: REDO.CARD.PRINT.LOST
+}
+
+
+
+public method redoCardPrintLostFields (
+)
+{
+    jBC: REDO.CARD.PRINT.LOST.FIELDS
+}
+
+
+
+public method redoCardPrintLostProcess (
+)
+{
+    jBC: REDO.CARD.PRINT.LOST.PROCESS
+}
+
+
+
+public method redoCardPrintLostUpdate (
+)
+{
+    jBC: REDO.CARD.PRINT.LOST.UPDATE
+}
+
+
+
+public method redoCardRegStock (
+)
+{
+    jBC: REDO.CARD.REG.STOCK
+}
+
+
+
+public method redoCardRegStockFields (
+)
+{
+    jBC: REDO.CARD.REG.STOCK.FIELDS
+}
+
+
+
+public method redoCardRegoffAccept (
+)
+{
+    jBC: REDO.CARD.REGOFF.ACCEPT
+}
+
+
+
+public method redoCardRenewal (
+)
+{
+    jBC: REDO.CARD.RENEWAL
+}
+
+
+
+public method redoCardRenewalFields (
+)
+{
+    jBC: REDO.CARD.RENEWAL.FIELDS
+}
+
+
+
+public method redoCardReorderDest (
+)
+{
+    jBC: REDO.CARD.REORDER.DEST
+}
+
+
+
+public method redoCardReorderDestFields (
+)
+{
+    jBC: REDO.CARD.REORDER.DEST.FIELDS
+}
+
+
+
+public method redoCardReorderDestValidate (
+)
+{
+    jBC: REDO.CARD.REORDER.DEST.VALIDATE
+}
+
+
+
+public method redoCardReorderIdChk (
+)
+{
+    jBC: REDO.CARD.REORDER.ID.CHK
+}
+
+
+
+public method redoCardReqStatus (
+)
+{
+    jBC: REDO.CARD.REQ.STATUS
+}
+
+
+
+public method redoCardReqStatusFields (
+)
+{
+    jBC: REDO.CARD.REQ.STATUS.FIELDS
+}
+
+
+
+public method redoCardRequestAuthorise (
+)
+{
+    jBC: REDO.CARD.REQUEST.AUTHORISE
+}
+
+
+
+public method redoCardRequest (
+)
+{
+    jBC: REDO.CARD.REQUEST
+}
+
+
+
+public method redoCardRequestFields (
+)
+{
+    jBC: REDO.CARD.REQUEST.FIELDS
+}
+
+
+
+public method redoCardRequestId (
+)
+{
+    jBC: REDO.CARD.REQUEST.ID
+}
+
+
+
+public method redoCardRequestProcess (
+)
+{
+    jBC: REDO.CARD.REQUEST.PROCESS
+}
+
+
+
+public method redoCardRequestRecord (
+)
+{
+    jBC: REDO.CARD.REQUEST.RECORD
+}
+
+
+
+public method redoCardRequestValidate (
+)
+{
+    jBC: REDO.CARD.REQUEST.VALIDATE
+}
+
+
+
+public method redoCardResetRetryCount (
+)
+{
+    jBC: REDO.CARD.RESET.RETRY.COUNT
+}
+
+
+
+public method redoCardSeriesParam (
+)
+{
+    jBC: REDO.CARD.SERIES.PARAM
+}
+
+
+
+public method redoCardSeriesParamFields (
+)
+{
+    jBC: REDO.CARD.SERIES.PARAM.FIELDS
+}
+
+public method redoColDeliveryAmd (
+)
+{
+    jBC: REDO.COL.DELIVERY.AMD
+}
+
+
+
+public method redoColDeliveryLoad (
+)
+{
+    jBC: REDO.COL.DELIVERY.LOAD
+}
+
+
+
+public method redoColDeliverySelect (
+)
+{
+    jBC: REDO.COL.DELIVERY.SELECT
+}
+
+
+public method redoColExtractLoad (
+)
+{
+    jBC: REDO.COL.EXTRACT.LOAD
+}
+
+
+
+
+public method redoColExtractCredit2 (
+    INOUT pParagraphIn string,
+    INOUT pAccountId string,
+    INOUT pAaId string,
+    INOUT pGetCreditGranted string,
+    INOUT pGetAaCustomer string,
+    INOUT pProcessItemsDetails string
+)
+{
+    jBC: REDO.COL.EXTRACT.CREDIT.2
+}
+
+
+
+public method redoColExtractCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: REDO.COL.EXTRACT.CREDIT
+}
+
+
+
+public method redoColExtractCreditRead (
+    INOUT aaId string,
+    INOUT rAa string,
+    INOUT rActHist string,
+    INOUT rPrincipalint string,
+    INOUT rMoraint string,
+    INOUT rAaAccountDetails string
+)
+{
+    jBC: REDO.COL.EXTRACT.CREDIT.READ
+}
+
+
+
+public method redoColExtractPost (
+)
+{
+    jBC: REDO.COL.EXTRACT.POST
+}
+
+
+
+public method redoColExtractPre (
+    INOUT yCustomerId string
+)
+{
+    jBC: REDO.COL.EXTRACT.PRE
+}
+
+
+
+public method redoColExtractPreLoad (
+)
+{
+    jBC: REDO.COL.EXTRACT.PRE.LOAD
+}
+
+
+
+public method redoColExtractPreSelect (
+)
+{
+    jBC: REDO.COL.EXTRACT.PRE.SELECT
+}
+
+
+
+public method redoColExtractSelect (
+)
+{
+    jBC: REDO.COL.EXTRACT.SELECT
+}
+
+
+
+public method redoColExtractTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: REDO.COL.EXTRACT.TXN
+}
+
+
+
+public method redoColFfExtract (
+    INOUT customerId string
+)
+{
+    jBC: REDO.COL.FF.EXTRACT
+}
+
+
+
+public method redoColFfExtractCredit2 (
+    INOUT pParagraphIn string,
+    INOUT pAccountId string,
+    INOUT pAaId string,
+    INOUT pGetCreditGranted string,
+    INOUT pGetAaCustomer string,
+    INOUT pProcessItemsDetails string
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.CREDIT.2
+}
+
+
+
+public method redoColFfExtractCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.CREDIT
+}
+
+
+
+public method redoColFfExtractLoad (
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.LOAD
+}
+
+
+
+public method redoColFfExtractPost (
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.POST
+}
+
+
+
+public method redoColFfExtractSelect (
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.SELECT
+}
+
+
+
+public method redoColFfExtractTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: REDO.COL.FF.EXTRACT.TXN
+}
+
+
+
+public method redoColGetTotalOutstanding (
+    INOUT arrId string,
+    INOUT yPropAmt string,
+    INOUT yTotalAmt string
+)
+{
+    jBC: REDO.COL.GET.TOTAL.OUTSTANDING
+}
+
+
+
+public method redoColLinkLimit (
+)
+{
+    jBC: REDO.COL.LINK.LIMIT
+}
+
+
+
+public method redoColPostLog (
+)
+{
+    jBC: REDO.COL.POST.LOG
+}
+
+
+
+public method redoColRCallJavaApi (
+    INOUT yEbApiId string,
+    INOUT yRequest string,
+    INOUT yResponse string
+)
+{
+    jBC: REDO.COL.R.CALL.JAVA.API
+}
+
+
+
+
+
+public method redoColRGetConnection (
+    INOUT yRidId string,
+    INOUT rRedoInterfaceParam string,
+    INOUT yConnectionString string
+)
+{
+    jBC: REDO.COL.R.GET.CONNECTION
+}
+
+
+
+public method redoColTracePhone (
+)
+{
+    jBC: REDO.COL.TRACE.PHONE
+}
+
+
+
+public method redoCollTypeDet (
+)
+{
+    jBC: REDO.COLL.TYPE.DET
+}
+
+
+
+public method redoCollTypeDetFields (
+)
+{
+    jBC: REDO.COLL.TYPE.DET.FIELDS
+}
+
+
+
+public method redoCollateralParam (
+)
+{
+    jBC: REDO.COLLATERAL.PARAM
+}
+
+
+
+public method redoCollateralParamFields (
+)
+{
+    jBC: REDO.COLLATERAL.PARAM.FIELDS
+}
+
+
+
+public method redoCollateralParamId (
+)
+{
+    jBC: REDO.COLLATERAL.PARAM.ID
+}
+
+
+
+public method redoCollateralParameter (
+)
+{
+    jBC: REDO.COLLATERAL.PARAMETER
+}
+
+
+
+public method redoCollateralParameterFields (
+)
+{
+    jBC: REDO.COLLATERAL.PARAMETER.FIELDS
+}
+
+
+
+public method redoCollateralRea (
+)
+{
+    jBC: REDO.COLLATERAL.REA
+}
+
+
+
+public method redoCollateralReaFields (
+)
+{
+    jBC: REDO.COLLATERAL.REA.FIELDS
+}
+
+
+
+public method redoCusAccPrpsdUse (
+    INOUT custId string,
+    INOUT depositSource string
+)
+{
+    jBC: REDO.CUS.ACC.PRPSD.USE
+}
+
+
+
+public method redoCusCashDep (
+    INOUT cashDep string
+)
+{
+    jBC: REDO.CUS.CASH.DEP
+}
+
+
+
+public method redoCusCashWth (
+    INOUT cashWth string
+)
+{
+    jBC: REDO.CUS.CASH.WTH
+}
+
+
+
+public method redoCusChqDep (
+    INOUT chqDep string
+)
+{
+    jBC: REDO.CUS.CHQ.DEP
+}
+
+
+
+public method redoCusChqWth (
+    INOUT chqWth string
+)
+{
+    jBC: REDO.CUS.CHQ.WTH
+}
+
+
+
+public method redoCusDepTrans (
+    INOUT custId string,
+    INOUT dtran1 string,
+    INOUT dtran2 string,
+    INOUT dtran3 string,
+    INOUT dtran4 string,
+    INOUT dtran5 string
+)
+{
+    jBC: REDO.CUS.DEP.TRANS
+}
+
+
+
+public method redoCusId (
+)
+{
+    jBC: REDO.CUS.ID
+}
+
+
+
+public method redoCusInitDepSrc (
+    INOUT custId string,
+    INOUT depositSource string
+)
+{
+    jBC: REDO.CUS.INIT.DEP.SRC
+}
+
+
+
+public method redoCusOthFininsFour (
+    INOUT custId string,
+    INOUT othFin4 string
+)
+{
+    jBC: REDO.CUS.OTH.FININS.FOUR
+}
+
+
+
+public method redoCusOthFininsOne (
+    INOUT custId string,
+    INOUT othFin string
+)
+{
+    jBC: REDO.CUS.OTH.FININS.ONE
+}
+
+
+
+public method redoCusOthFininsThree (
+    INOUT custId string,
+    INOUT othFin3 string
+)
+{
+    jBC: REDO.CUS.OTH.FININS.THREE
+}
+
+
+
+public method redoCusOthFininsTwo (
+    INOUT custId string,
+    INOUT othFin2 string
+)
+{
+    jBC: REDO.CUS.OTH.FININS.TWO
+}
+
+
+
+public method redoCusPortfolioDet (
+)
+{
+    jBC: REDO.CUS.PORTFOLIO.DET
+}
+
+
+
+public method redoCusPortfolioDetFields (
+)
+{
+    jBC: REDO.CUS.PORTFOLIO.DET.FIELDS
+}
+
+
+
+public method redoCusPrdAcctNum (
+    INOUT custId string,
+    INOUT productCode string
+)
+{
+    jBC: REDO.CUS.PRD.ACCT.NUM
+}
+
+
+
+public method redoCusProvisionAuthorise (
+)
+{
+    jBC: REDO.CUS.PROVISION.AUTHORISE
+}
+
+
+
+public method redoCusSecFolNoDet (
+)
+{
+    jBC: REDO.CUS.SEC.FOL.NO.DET
+}
+
+
+
+public method redoCusSecFolNoDetFields (
+)
+{
+    jBC: REDO.CUS.SEC.FOL.NO.DET.FIELDS
+}
+
+
+
+public method redoCusTxnConcat (
+)
+{
+    jBC: REDO.CUS.TXN.CONCAT
+}
+
+
+
+public method redoCusTxnConcatFields (
+)
+{
+    jBC: REDO.CUS.TXN.CONCAT.FIELDS
+}
+
+
+
+public method redoCusTxnParam (
+)
+{
+    jBC: REDO.CUS.TXN.PARAM
+}
+
+
+
+public method redoCusTxnParamFields (
+)
+{
+    jBC: REDO.CUS.TXN.PARAM.FIELDS
+}
+
+
+
+public method redoCusWthTrans (
+    INOUT custId string,
+    INOUT wtran1 string,
+    INOUT wtran2 string,
+    INOUT wtran3 string,
+    INOUT wtran4 string,
+    INOUT wtran5 string
+)
+{
+    jBC: REDO.CUS.WTH.TRANS
+}
+
+
+
+public method redoCustComplaints (
+)
+{
+    jBC: REDO.CUST.COMPLAINTS
+}
+
+
+
+public method redoCustComplaintsFields (
+)
+{
+    jBC: REDO.CUST.COMPLAINTS.FIELDS
+}
+
+
+
+public method redoCustIdentityRef (
+    INOUT custId string,
+    INOUT custAlterId string,
+    INOUT custName string
+)
+{
+    jBC: REDO.CUST.IDENTITY.REF
+}
+
+
+
+public method redoCustPrdList (
+)
+{
+    jBC: REDO.CUST.PRD.LIST
+}
+
+
+
+public method redoCustPrdListFields (
+)
+{
+    jBC: REDO.CUST.PRD.LIST.FIELDS
+}
+
+
+
+public method redoCustRequests (
+)
+{
+    jBC: REDO.CUST.REQUESTS
+}
+
+
+
+public method redoCustRequestsFields (
+)
+{
+    jBC: REDO.CUST.REQUESTS.FIELDS
+}
+
+
+
+public method redoCustomerArrangement (
+)
+{
+    jBC: REDO.CUSTOMER.ARRANGEMENT
+}
+
+
+
+public method redoCustomerArrangementFields (
+)
+{
+    jBC: REDO.CUSTOMER.ARRANGEMENT.FIELDS
+}
+
+
+
+public method redoCustomerClaims (
+)
+{
+    jBC: REDO.CUSTOMER.CLAIMS
+}
+
+
+
+public method redoCustomerClaimsFields (
+)
+{
+    jBC: REDO.CUSTOMER.CLAIMS.FIELDS
+}
+
+
+
+public method redoCustomerComplaints (
+)
+{
+    jBC: REDO.CUSTOMER.COMPLAINTS
+}
+
+
+
+public method redoCustomerComplaintsFields (
+)
+{
+    jBC: REDO.CUSTOMER.COMPLAINTS.FIELDS
+}
+
+
+
+public method redoCustomerParam (
+)
+{
+    jBC: REDO.CUSTOMER.PARAM
+}
+
+
+
+public method redoCustomerParamFields (
+)
+{
+    jBC: REDO.CUSTOMER.PARAM.FIELDS
+}
+
+public method redoCustomerRequests (
+)
+{
+    jBC: REDO.CUSTOMER.REQUESTS
+}
+
+
+
+public method redoCustomerRequestsFields (
+)
+{
+    jBC: REDO.CUSTOMER.REQUESTS.FIELDS
+}
+
+
+
+
+public method redoDsAclAcctTitle (
+    INOUT acctTitle string
+)
+{
+    jBC: REDO.DS.ACL.ACCT.TITLE
+}
+
+
+
+public method redoDsAclCaptDate (
+    INOUT captDate string
+)
+{
+    jBC: REDO.DS.ACL.CAPT.DATE
+}
+
+
+
+public method redoDsAclSetAcctTitle (
+    INOUT acctTitle string
+)
+{
+    jBC: REDO.DS.ACL.SET.ACCT.TITLE
+}
+
+
+
+public method redoDsAdjCouponDays (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.ADJ.COUPON.DAYS
+}
+
+
+
+public method redoDsAmountFcy (
+    INOUT amtFcy string
+)
+{
+    jBC: REDO.DS.AMOUNT.FCY
+}
+
+
+
+public method redoDsAmountLcy (
+    INOUT amtLcy string
+)
+{
+    jBC: REDO.DS.AMOUNT.LCY
+}
+
+
+
+public method redoDsAmountNcf (
+    INOUT yAmount string
+)
+{
+    jBC: REDO.DS.AMOUNT.NCF
+}
+
+
+
+public method redoDsAzIntRate (
+    INOUT yIntRate string
+)
+{
+    jBC: REDO.DS.AZ.INT.RATE
+}
+
+
+
+public method redoDsAzMailAdd (
+    INOUT yAcctNo string,
+    INOUT yAddressDet string
+)
+{
+    jBC: REDO.DS.AZ.MAIL.ADD
+}
+
+
+
+public method redoDsAzMatDate (
+    INOUT matDate string
+)
+{
+    jBC: REDO.DS.AZ.MAT.DATE
+}
+
+
+
+public method redoDsAzValDate (
+    INOUT valDate string
+)
+{
+    jBC: REDO.DS.AZ.VAL.DATE
+}
+
+
+
+public method redoDsBasicInfo (
+    INOUT custId string,
+    INOUT nameCorp string,
+    INOUT idCorp string,
+    INOUT role1 string
+)
+{
+    jBC: REDO.DS.BASIC.INFO
+}
+
+
+
+public method redoDsBenefic (
+    INOUT yBeneficy string
+)
+{
+    jBC: REDO.DS.BENEFIC
+}
+
+
+
+public method redoDsBeneficiry (
+    INOUT yBeneficy string
+)
+{
+    jBC: REDO.DS.BENEFICIRY
+}
+
+
+
+public method redoDsBuySellSource (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.BUY.SELL.SOURCE
+}
+
+
+
+public method redoDsBuySource (
+    INOUT buySource string
+)
+{
+    jBC: REDO.DS.BUY.SOURCE
+}
+
+
+
+public method redoDsCalcAcClTotChg (
+    INOUT res string
+)
+{
+    jBC: REDO.DS.CALC.AC.CL.TOT.CHG
+}
+
+
+
+public method redoDsCalcPremium (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.CALC.PREMIUM
+}
+
+
+
+public method redoDsCcyFxrte (
+    INOUT yCcy string
+)
+{
+    jBC: REDO.DS.CCY.FXRTE
+}
+
+
+
+public method redoDsChkCpy (
+    INOUT yTransId string
+)
+{
+    jBC: REDO.DS.CHK.CPY
+}
+
+
+
+public method redoDsChqStopDate (
+    INOUT matDate string
+)
+{
+    jBC: REDO.DS.CHQ.STOP.DATE
+}
+
+
+
+public method redoDsClientType (
+    INOUT clientType string
+)
+{
+    jBC: REDO.DS.CLIENT.TYPE
+}
+
+
+
+public method redoDsClientTypeDisc (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.CLIENT.TYPE.DISC
+}
+
+
+
+public method redoDsCptyName (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.CPTY.NAME
+}
+
+
+
+
+public method redoDsCusBenef (
+    INOUT yCusId string
+)
+{
+    jBC: REDO.DS.CUS.BENEF
+}
+
+
+
+public method redoDsDateSubmitToSap (
+    INOUT sapDate string
+)
+{
+    jBC: REDO.DS.DATE.SUBMIT.TO.SAP
+}
+
+
+
+public method redoDsDaysToMat (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.DAYS.TO.MAT
+}
+
+
+
+public method redoDsDeleviryDate (
+    INOUT deleviryDate string
+)
+{
+    jBC: REDO.DS.DELEVIRY.DATE
+}
+
+
+
+public method redoDsFcyFx (
+    INOUT yCcy string
+)
+{
+    jBC: REDO.DS.FCY.FX
+}
+
+
+
+public method redoDsFmtTypCust (
+    INOUT custId string,
+    INOUT cusType string
+)
+{
+    jBC: REDO.DS.FMT.TYP.CUST
+}
+
+
+
+public method redoDsFxBuySellName (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.FX.BUY.SELL.NAME
+}
+
+
+
+public method redoDsCptyRnc (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.CPTY.RNC
+}
+
+public method redoDsFxMtd (
+    INOUT yOutVar string
+)
+{
+    jBC: REDO.DS.FX.MTD
+}
+
+
+
+public method redoDsGetAppDesc (
+    INOUT varAppDesc string
+)
+{
+    jBC: REDO.DS.GET.APP.DESC
+}
+
+
+
+public method redoDsGetBenefName (
+    INOUT benefName string
+)
+{
+    jBC: REDO.DS.GET.BENEF.NAME
+}
+
+
+
+public method redoDsGetCuenta (
+    INOUT varAccountNo string
+)
+{
+    jBC: REDO.DS.GET.CUENTA
+}
+
+
+
+public method redoDsGetPayForm (
+    INOUT varPayForm string
+)
+{
+    jBC: REDO.DS.GET.PAY.FORM
+}
+
+
+
+public method redoDsGetPenalAmt (
+    INOUT varPenalAmt string
+)
+{
+    jBC: REDO.DS.GET.PENAL.AMT
+}
+
+
+
+public method redoDsGetPrincipal (
+    INOUT varAmount string
+)
+{
+    jBC: REDO.DS.GET.PRINCIPAL
+}
+
+
+
+public method redoDsGetTotalAccAmount (
+    INOUT varTotAmount string
+)
+{
+    jBC: REDO.DS.GET.TOTAL.ACC.AMOUNT
+}
+
+
+
+public method redoDsGetUserLogin (
+    INOUT varUserCompDesc string
+)
+{
+    jBC: REDO.DS.GET.USER.LOGIN
+}
+
+
+
+public method redoDsIntPayType (
+    INOUT varIntPayType string
+)
+{
+    jBC: REDO.DS.INT.PAY.TYPE
+}
+
+
+
+public method redoDsInvestType (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.INVEST.TYPE
+}
+
+
+
+public method redoDsInvestmentTerm (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.INVESTMENT.TERM
+}
+
+
+
+public method redoDsMetPayMethod (
+    INOUT payMethod string
+)
+{
+    jBC: REDO.DS.MET.PAY.METHOD
+}
+
+
+
+public method redoDsNarrative (
+    INOUT yComentario string
+)
+{
+    jBC: REDO.DS.NARRATIVE
+}
+
+
+
+public method redoDsNoOfMonth (
+    INOUT yNoOfMonth string
+)
+{
+    jBC: REDO.DS.NO.OF.MONTH
+}
+
+
+
+public method redoDsPayMethod (
+    INOUT payMethod string
+)
+{
+    jBC: REDO.DS.PAY.METHOD
+}
+
+
+
+
+
+public method redoDsPortfolio (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.PORTFOLIO
+}
+
+
+
+public method redoDsRcepMthd (
+    INOUT rcepMthd string
+)
+{
+    jBC: REDO.DS.RCEP.MTHD
+}
+
+
+
+public method redoDsRejectDate (
+    INOUT rejectDate string
+)
+{
+    jBC: REDO.DS.REJECT.DATE
+}
+
+
+
+public method redoDsScAmount (
+    INOUT yAmount string
+)
+{
+    jBC: REDO.DS.SC.AMOUNT
+}
+
+
+
+public method redoDsScAmount2 (
+    INOUT yAmount string
+)
+{
+    jBC: REDO.DS.SC.AMOUNT2
+}
+
+
+
+public method redoDsScCcy (
+    INOUT yCcy string
+)
+{
+    jBC: REDO.DS.SC.CCY
+}
+
+
+
+public method redoDsScCcy2 (
+    INOUT yCcy string
+)
+{
+    jBC: REDO.DS.SC.CCY2
+}
+
+
+
+public method redoDsScCreditCard (
+    INOUT yCard string
+)
+{
+    jBC: REDO.DS.SC.CREDIT.CARD
+}
+
+
+
+public method redoDsScPayType (
+    INOUT yOutVar string
+)
+{
+    jBC: REDO.DS.SC.PAY.TYPE
+}
+
+
+
+public method redoDsSecTradeCcy (
+    INOUT tradeCcy string
+)
+{
+    jBC: REDO.DS.SEC.TRADE.CCY
+}
+
+
+
+public method redoDsSecurityTerm (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.SECURITY.TERM
+}
+
+
+
+public method redoDsSelBen (
+    INOUT benDst3 string
+)
+{
+    jBC: REDO.DS.SEL.BEN
+}
+
+
+
+public method redoDsSelDst (
+    INOUT selDst string
+)
+{
+    jBC: REDO.DS.SEL.DST
+}
+
+
+
+public method redoDsShaInfo (
+    INOUT custId string,
+    INOUT shaNameCorp string,
+    INOUT shaIdCorp string,
+    INOUT shaRole1 string
+)
+{
+    jBC: REDO.DS.SHA.INFO
+}
+
+
+
+public method redoDsSpouseDetails (
+    INOUT custId string,
+    INOUT spouseIdent string,
+    INOUT spouseId string,
+    INOUT famName string,
+    INOUT givName string
+)
+{
+    jBC: REDO.DS.SPOUSE.DETAILS
+}
+
+
+
+public method redoDsSpouseNames (
+    INOUT spouseDet string
+)
+{
+    jBC: REDO.DS.SPOUSE.NAMES
+}
+
+
+
+public method redoDsStAltIds (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.ALT.IDS
+}
+
+
+
+public method redoDsStAuth (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.AUTH
+}
+
+
+
+public method redoDsStBuyers (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.BUYERS
+}
+
+
+
+public method redoDsStComments (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.ST.COMMENTS
+}
+
+
+
+public method redoDsStInvIds (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.INV.IDS
+}
+
+
+
+public method redoDsStPgNo (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.PG.NO
+}
+
+
+
+public method redoDsStSellers (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.SELLERS
+}
+
+
+
+public method redoDsStTrader (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.TRADER
+}
+
+
+
+public method redoDsStTreasury (
+    INOUT yRet string
+)
+{
+    jBC: REDO.DS.ST.TREASURY
+}
+
+
+
+public method redoDsYieldPerPeriod (
+    INOUT inOutPara string
+)
+{
+    jBC: REDO.DS.YIELD.PER.PERIOD
+}
+
+
+
+public method redoDslipCuName (
+    INOUT dsCrr1 string
+)
+{
+    jBC: REDO.DSLIP.CU.NAME
+}
+
+
+
+public method redoDslipCuNumber (
+    INOUT dsCrr2 string
+)
+{
+    jBC: REDO.DSLIP.CU.NUMBER
+}
+
+
+
+public method redoDslipCuPrg (
+    INOUT dsCrr1 string
+)
+{
+    jBC: REDO.DSLIP.CU.PRG
+}
+
+
+public method redoColRDelUpdLoking (
+    INOUT yOption string,
+    INOUT yResponse string,
+)
+{
+    jBC: REDO.COL.R.DEL.UPD.LOCKING
+}
+
+public method redoDueFeeLoansReport (
+    INOUT yFinalArry string,
+)
+
+{
+    jBC: REDO.DUE.FEE.LOANS.REPORT
+}
+
+public method redoAcctVal (
+)
+{
+    jBC: REDO.ACCT.VAL
+}
+
+public method redoAchInwIndir (
+)
+{
+    jBC: REDO.ACH.INW.INDIR
+}
+
+public method redoCardStatus (
+)
+{
+    jBC: REDO.CARD.STATUS
+}
+
+
+
+public method redoAcctDepDetailsLoad (
+)
+{
+    jBC: REDO.ACCT.DEP.DETAILS.LOAD
+}
+
+
+
+public method redoColExtract (
+    INOUT customerId string
+)
+{
+    jBC: REDO.COL.EXTRACT
+}
+
+
+
+public method redoDefAcctCcy (
+)
+{
+    jBC: REDO.DEF.ACCT.CCY
+}
+
+
+
+public method redoDsPepBType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.B.TYPE
+}
+
+
+
+public method redoDsPepIType (
+    INOUT yType string
+)
+{
+    jBC: REDO.DS.PEP.I.TYPE
+}
+
+
+
+
+public method latamCardOrderSplitValidate4 (
+)
+{
+   jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.4
+}
+

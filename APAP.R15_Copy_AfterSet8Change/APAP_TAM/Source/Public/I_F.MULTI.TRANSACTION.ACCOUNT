@@ -1,0 +1,21 @@
+* I_F.MULTI.TRANSACTION.ACCOUNT Created 17 DEC 10 at 01:09PM by apap/JEEVA
+*      PREFIX[REDO.TXN.ACCT]
+            EQU REDO.TXN.ACCT.VERSION TO 1,   MultiTransactionAccount_Version TO 1,
+                REDO.TXN.ACCT.ACCOUNT TO 2,   MultiTransactionAccount_Account TO 2,
+             REDO.TXN.ACCT.RESERVED.5 TO 3,   MultiTransactionAccount_Reserved5 TO 3,
+             REDO.TXN.ACCT.RESERVED.4 TO 4,   MultiTransactionAccount_Reserved4 TO 4,
+             REDO.TXN.ACCT.RESERVED.3 TO 5,   MultiTransactionAccount_Reserved3 TO 5,
+             REDO.TXN.ACCT.RESERVED.2 TO 6,   MultiTransactionAccount_Reserved2 TO 6,
+             REDO.TXN.ACCT.RESERVED.1 TO 7,   MultiTransactionAccount_Reserved1 TO 7,
+             REDO.TXN.ACCT.RESERVED.8 TO 8,   MultiTransactionAccount_Reserved8 TO 8,
+             REDO.TXN.ACCT.RESERVED.7 TO 9,   MultiTransactionAccount_Reserved7 TO 9,
+             REDO.TXN.ACCT.RESERVED.6 TO 10,  MultiTransactionAccount_Reserved6 TO 10,
+          REDO.TXN.ACCT.RECORD.STATUS TO 11,  MultiTransactionAccount_RecordStatus TO 11,
+                REDO.TXN.ACCT.CURR.NO TO 12,  MultiTransactionAccount_CurrNo TO 12,
+               REDO.TXN.ACCT.INPUTTER TO 13,  MultiTransactionAccount_Inputter TO 13,
+              REDO.TXN.ACCT.DATE.TIME TO 14,  MultiTransactionAccount_DateTime TO 14,
+             REDO.TXN.ACCT.AUTHORISER TO 15,  MultiTransactionAccount_Authoriser TO 15,
+                REDO.TXN.ACCT.CO.CODE TO 16,  MultiTransactionAccount_CoCode TO 16,
+              REDO.TXN.ACCT.DEPT.CODE TO 17,  MultiTransactionAccount_DeptCode TO 17,
+           REDO.TXN.ACCT.AUDITOR.CODE TO 18,  MultiTransactionAccount_AuditorCode TO 18,
+        REDO.TXN.ACCT.AUDIT.DATE.TIME TO 19,  MultiTransactionAccount_AuditDateTime TO 19

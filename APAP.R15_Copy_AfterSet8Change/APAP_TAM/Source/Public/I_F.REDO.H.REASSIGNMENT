@@ -1,0 +1,23 @@
+* I_F.REDO.H.REASSIGNMENT Created 12 JUN 11 at 02:10PM by apapr8/SJEY
+*      PREFIX[RE.ASS]
+               EQU RE.ASS.DATE TO 1,   RedoHReassignment_Date TO 1,
+         RE.ASS.ACCOUNT.NUMBER TO 2,   RedoHReassignment_AccountNumber TO 2,
+           RE.ASS.ACCOUNT.NAME TO 3,   RedoHReassignment_AccountName TO 3,
+              RE.ASS.ITEM.CODE TO 4,   RedoHReassignment_ItemCode TO 4,
+            RE.ASS.DESCRIPTION TO 5,   RedoHReassignment_Description TO 5,
+                 RE.ASS.SERIES TO 6,   RedoHReassignment_Series TO 6,
+        RE.ASS.REASON.FOR.ASSN TO 7,   RedoHReassignment_ReasonForAssn TO 7,
+             RE.ASS.NEW.SERIES TO 8,   RedoHReassignment_NewSeries TO 8,
+               RE.ASS.DEPT.DES TO 9,   RedoHReassignment_DeptDes TO 9,
+                   RE.ASS.DEPT TO 10,  RedoHReassignment_Dept TO 10,
+                   RE.ASS.CODE TO 11,  RedoHReassignment_Code TO 11,
+               RE.ASS.OVERRIDE TO 12,  RedoHReassignment_Override TO 12,
+          RE.ASS.RECORD.STATUS TO 13,  RedoHReassignment_RecordStatus TO 13,
+                RE.ASS.CURR.NO TO 14,  RedoHReassignment_CurrNo TO 14,
+               RE.ASS.INPUTTER TO 15,  RedoHReassignment_Inputter TO 15,
+              RE.ASS.DATE.TIME TO 16,  RedoHReassignment_DateTime TO 16,
+             RE.ASS.AUTHORISER TO 17,  RedoHReassignment_Authoriser TO 17,
+                RE.ASS.CO.CODE TO 18,  RedoHReassignment_CoCode TO 18,
+              RE.ASS.DEPT.CODE TO 19,  RedoHReassignment_DeptCode TO 19,
+           RE.ASS.AUDITOR.CODE TO 20,  RedoHReassignment_AuditorCode TO 20,
+        RE.ASS.AUDIT.DATE.TIME TO 21,  RedoHReassignment_AuditDateTime TO 21

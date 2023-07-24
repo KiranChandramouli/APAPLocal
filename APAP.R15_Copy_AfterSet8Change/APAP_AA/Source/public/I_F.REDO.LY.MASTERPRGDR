@@ -1,0 +1,13 @@
+* I_F.REDO.LY.MASTERPRGDR Created 28 JUN 12 at 11:27AM by t24bbcr9/TEM.RMONDR.01
+*      PREFIX[REDO.MASPRG]
+         EQU REDO.MASPRG.MASTER.PRG TO 1,   RedoLyMasterprgdr_MasterPrg TO 1,
+              REDO.MASPRG.SLAVE.PRG TO 2,   RedoLyMasterprgdr_SlavePrg TO 2,
+          REDO.MASPRG.RECORD.STATUS TO 3,   RedoLyMasterprgdr_RecordStatus TO 3,
+                REDO.MASPRG.CURR.NO TO 4,   RedoLyMasterprgdr_CurrNo TO 4,
+               REDO.MASPRG.INPUTTER TO 5,   RedoLyMasterprgdr_Inputter TO 5,
+              REDO.MASPRG.DATE.TIME TO 6,   RedoLyMasterprgdr_DateTime TO 6,
+             REDO.MASPRG.AUTHORISER TO 7,   RedoLyMasterprgdr_Authoriser TO 7,
+                REDO.MASPRG.CO.CODE TO 8,   RedoLyMasterprgdr_CoCode TO 8,
+              REDO.MASPRG.DEPT.CODE TO 9,   RedoLyMasterprgdr_DeptCode TO 9,
+           REDO.MASPRG.AUDITOR.CODE TO 10,  RedoLyMasterprgdr_AuditorCode TO 10,
+        REDO.MASPRG.AUDIT.DATE.TIME TO 11,  RedoLyMasterprgdr_AuditDateTime TO 11
