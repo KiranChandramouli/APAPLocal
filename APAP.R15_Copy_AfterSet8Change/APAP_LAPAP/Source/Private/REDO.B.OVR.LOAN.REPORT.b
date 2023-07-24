@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo2MzI0MDAyMTg6Q3AxMjUyOjE2ODk3NDQ1NjkwODY6SVRTUzotMTotMTo2MTgxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 Jul 2023 10:59:29
+* @ValidationCode : MjoxNzA1NzI4ODU5OkNwMTI1MjoxNjkwMTg1MzIyNjYyOkhhcmlzaHZpa3JhbUM6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Jul 2023 13:25:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 6181
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -337,7 +337,8 @@ GET.OVRDUE:
     Y.AA.AD.MAX.BILL.DATE = MAXIMUM(Y.BILL.PAY.DATE)
     Y.AA.AD.PAYMENT.END.DATE = R.AA.AC<AA.AD.PAYMENT.END.DATE>
 
-    CALL L.APAP.DATEADD.MONTH(1, Y.AA.AD.MAX.BILL.DATE)
+*    CALL L.APAP.DATEADD.MONTH(1, Y.AA.AD.MAX.BILL.DATE)
+    APAP.LAPAP.lApapDateaddMonth(1, Y.AA.AD.MAX.BILL.DATE)        ;*R22 Manual Conversion
 
 *-- SI LA FECHA CALCULADA ES MENOR A LA FECHA DEL ULTIMO PAGO SEGUN CALENDARIO, TOMARA ESTA COMO FECHA DEL PROXIMO PAGO
 *--DE LO CONTRARIO TOMARA LA ULTIMA FECHA DE PAGO DEL CALENDARIO DE PAGOS

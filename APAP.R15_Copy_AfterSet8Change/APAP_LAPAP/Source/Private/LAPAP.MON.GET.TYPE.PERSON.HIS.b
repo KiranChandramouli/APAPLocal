@@ -1,12 +1,12 @@
-* @ValidationCode : Mjo0MTY2OTE5OTQ6Q3AxMjUyOjE2ODk5MTg5NDMxODA6SVRTUzotMTotMTo1OTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 21 Jul 2023 11:25:43
+* @ValidationCode : Mjo2MDcwMjUzMzU6Q3AxMjUyOjE2OTAxOTE2NzM3ODk6SGFyaXNodmlrcmFtQzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Jul 2023 15:11:13
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 597
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -17,7 +17,7 @@ $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
-*20-07-2023    VICTORIA S          R22 MANUAL CONVERSION   Folder name removed
+*20-07-2023    VICTORIA S          R22 MANUAL CONVERSION   Folder name removed, CALL routine format modified
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.MON.GET.TYPE.PERSON.HIS
 
@@ -46,7 +46,8 @@ SUBROUTINE LAPAP.MON.GET.TYPE.PERSON.HIS
 *---------------
 
     ACC = ID
-    CALL LAPAP.VERIFY.ACC(ACC,RES)
+*    CALL LAPAP.VERIFY.ACC(ACC,RES)
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES)            ;*R22 MANUAL CONVERSION
     Y.ACC.ID = RES
 
     IF ACC NE Y.ACC.ID THEN
