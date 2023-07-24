@@ -8750,7 +8750,7 @@ public method nofileLApapScheduleProA01 (
 
 
 
-private method redoApapInpRteamlTfsCheck (
+public method redoApapInpRteamlTfsCheck (
 )
 {
    jBC: REDO.APAP.INP.RTEAML.TFS.CHECK
