@@ -1,0 +1,15 @@
+* I_F.REDO.AML.TXN.UPDATE Created 14 MAR 17 at 04:16PM by t24uatdev/TEST.3
+*      PREFIX[AML]
+             EQU AML.TXN.ID TO 1,   RedoAmlTxnUpdate_TxnId TO 1,
+             AML.TRANS.DATE TO 2,   RedoAmlTxnUpdate_TransDate TO 2,
+             AML.TYPE.OF.ID TO 3,   RedoAmlTxnUpdate_TypeOfId TO 3,
+           AML.LEGAL.ID.NUM TO 4,   RedoAmlTxnUpdate_LegalIdNum TO 4,
+            AML.CLIENT.NAME TO 5,   RedoAmlTxnUpdate_ClientName TO 5,
+           AML.BUY.SELL.TXN TO 6,   RedoAmlTxnUpdate_BuySellTxn TO 6,
+               AML.CURRENCY TO 7,   RedoAmlTxnUpdate_Currency TO 7,
+             AML.FCY.AMOUNT TO 8,   RedoAmlTxnUpdate_FcyAmount TO 8,
+             AML.LCY.AMOUNT TO 9,   RedoAmlTxnUpdate_LcyAmount TO 9,
+           AML.OVERRIDE.Y.N TO 10,  RedoAmlTxnUpdate_OverrideYN TO 10,
+            AML.BRANCH.CODE TO 11,  RedoAmlTxnUpdate_BranchCode TO 11,
+           AML.CU.AMLBUY.RT TO 12,  RedoAmlTxnUpdate_CuAmlbuyRt TO 12,
+             AML.TXN.ACTION TO 13,  RedoAmlTxnUpdate_TxnAction TO 13
