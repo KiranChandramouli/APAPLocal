@@ -1,0 +1,185 @@
+* @ValidationCode : MjotMzg0MzY2Mzg2OkNwMTI1MjoxNjgwNzgzNjY1NTAwOklUU1M6LTE6LTE6NjU1OjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 06 Apr 2023 17:51:05
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 655
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOFCFI
+SUBROUTINE REDO.FC.INT.B2.NEW
+
+*
+* Subroutine Type : ROUTINE
+* Attached to     : ROUTINE AA.ARRANGEMENT.ACTIVITY,AA.NEW.FC
+* Attached as     : AUTH.ROUTINE
+* Primary Purpose : AUTHORIZE INS ID .. GETTING THE RCA QUEUE
+*
+* Incoming:
+* ---------
+*
+* Outgoing:
+* ---------
+*
+*
+* Error Variables:
+*
+*-----------------------------------------------------------------------------------
+* Modification History:
+*
+* Development for : Asociacion Popular de Ahorros y Prestamos
+* Development by  : mgudino - TAM Latin America
+* Date            : 14 MAR 2012 / test
+* Modification History:
+* Date                 Who                              Reference                            DESCRIPTION
+*04-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
+*04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
+*-----------------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
+    $INSERT I_F.REDO.CREATE.ARRANGEMENT
+    $INSERT I_F.APAP.H.INSURANCE.DETAILS
+    $INSERT I_F.APAP.H.INSURANCE.AUT
+    $INSERT I_System
+
+
+    GOSUB INITIALISE
+
+    IF PROCESS.GOAHEAD THEN
+
+        GOSUB OPEN.FILES
+        GOSUB PROCESS.MAIN
+    END
+
+RETURN  ;* Program RETURN
+
+PROCESS.MAIN:
+*============
+    REDO.CREATE.ARRANGEMENT.LIST.ID = R.NEW(INS.AUTH.ARRANGEMENT)
+
+    IF REDO.CREATE.ARRANGEMENT.LIST.ID THEN
+        CALL F.READ(FN.REDO.CREATE.ARRANGEMENT, REDO.CREATE.ARRANGEMENT.LIST.ID, R.RCA, F.REDO.CREATE.ARRANGEMENT, Y.ERR)
+        IF Y.ERR NE "" THEN
+            ETEXT = "EB-RECORD.NOT.FOUND": @FM : REDO.CREATE.ARRANGEMENT.LIST.ID
+            CALL STORE.END.ERROR
+            RETURN
+        END
+
+        Y.POLICY.CONT = DCOUNT(R.RCA<REDO.FC.POLICY.NUMBER.AUX>, @VM)
+    END
+
+    Y.POLICY.CONT = DCOUNT(R.RCA<REDO.FC.POLICY.NUMBER.AUX>, @VM)
+* MAPPING
+
+    Y.CONT.POL =1
+    LOOP
+    WHILE Y.CONT.POL LE Y.POLICY.CONT
+        Y.ID.TEMPORAL = R.RCA<REDO.FC.POLICY.NUMBER.AUX,Y.CONT.POL>
+        GOSUB PERFOM.OFS
+        Y.CONT.POL+=1
+    REPEAT
+
+RETURN
+
+INITIALISE:
+*=========
+
+*      IF V$FUNCTION NE 'A' THEN
+*         PROCESS.GOAHEAD = 0
+*         RETURN
+*      END
+    BK.SEPARATOR = ','
+    SUB.BK.SEPARATOR = '/'
+    Y.ID.ARR = ID.NEW
+
+    FN.RCA.R.NEW = 'F.RCA.R.NEW'
+    F.RCA.R.NEW = ''
+
+    FN.APAP.H.INSURANCE.DETAILS = 'F.APAP.H.INSURANCE.DETAILS'
+    F.APAP.H.INSURANCE.DETAILS = ''
+
+    FN.APAP.H.INSURANCE.DETAILS.NAU = 'F.APAP.H.INSURANCE.DETAILS$NAU'
+    F.APAP.H.INSURANCE.DETAILS.NAU = ''
+
+    FN.REDO.CREATE.ARRANGEMENT = 'F.REDO.CREATE.ARRANGEMENT'
+    F.REDO.CREATE.ARRANGEMENT = ''
+
+    FN.AA.ARRANGEMENT.ACTIVITY = 'F.AA.ARRANGEMENT.ACTIVITY'
+    F.AA.ARRANGEMENT.ACTIVITY = ''
+
+    FN.APAP.H.INSURANCE.AUT = 'F.APAP.H.INSURANCE.AUT'
+    F.APAP.H.INSURANCE.AUT = ''
+
+    Y.POLICY.CONT = 0
+    R.RCA = ''
+    PROCESS.GOAHEAD = 1
+
+RETURN
+
+PERFOM.OFS:
+*=========
+*TODO: LEER DEL APAP.INSURANCE.DETAILS EL ID
+*DEBUG
+    SELECT.STATEMENT = 'SELECT ':FN.APAP.H.INSURANCE.DETAILS:'$NAU WITH ID.TEMPORAL LIKE ':Y.ID.TEMPORAL
+    APAP.INSURANCE.DETAILS.LIST = ''
+    LIST.NAME = ''
+    SELECTED = ''
+    SYSTEM.RETURN.CODE = ''
+    CALL EB.READLIST(SELECT.STATEMENT,APAP.INSURANCE.DETAILS.LIST,LIST.NAME,SELECTED,SYSTEM.RETURN.CODE)
+    IF APAP.INSURANCE.DETAILS.LIST THEN
+        REMOVE  APAP.INSURANCE.DETAILS.ID FROM  APAP.INSURANCE.DETAILS.LIST SETTING POS.U
+        GOSUB PROCESS.OFS
+    END
+
+RETURN
+
+
+PROCESS.OFS:
+*=========
+*DEBUG
+    AAA.REQUEST = ''
+
+    APP.NAME = 'APAP.H.INSURANCE.DETAILS'
+    IN.FUNCTION = 'A'
+    VERSION.NAME = 'APAP.H.INSURANCE.DETAILS,REDO.AUTORIZACION.FC'
+
+
+    CALL OFS.BUILD.RECORD(APP.NAME, IN.FUNCTION, "PROCESS", VERSION.NAME, "", "", APAP.INSURANCE.DETAILS.ID, AAA.REQUEST, Y.OFS.MSG.REQ)
+
+    OFS.MSG.ID = ''
+    OFS.SOURCE = 'TRIGGER.INS.TWS'
+    OFS.ERR = ''
+
+    CALL OFS.POST.MESSAGE(Y.OFS.MSG.REQ,OFS.MSG.ID,OFS.SOURCE,OFS.ERR)
+
+
+* Capture overrides
+*      R.INS.RES = OFS.TO.DYN(Y.OFS.MSG.RES,Y.APPLICATION,Y.OFS.INFO)
+*      IF R.INS.RES<INS.DET.OVERRIDE> NE '' THEN
+*         Y.OVERRIDE.MSG = Y.APPLICATION : ' - ' : R.INS.RES<INS.DET.OVERRIDE>
+*         R.NEW(REDO.FC.OVERRIDE) = R.NEW(REDO.FC.OVERRIDE) : VM : Y.OVERRIDE.MSG
+*      END
+
+
+RETURN
+OPEN.FILES:
+*=========
+
+    CALL OPF(FN.RCA.R.NEW, F.RCA.R.NEW)
+
+    CALL OPF(FN.REDO.CREATE.ARRANGEMENT, F.REDO.CREATE.ARRANGEMENT)
+
+    CALL OPF(FN.APAP.H.INSURANCE.DETAILS, F.APAP.H.INSURANCE.DETAILS)
+    CALL OPF(FN.APAP.H.INSURANCE.AUT, F.APAP.H.INSURANCE.AUT)
+    CALL OPF(FN.APAP.H.INSURANCE.DETAILS.NAU, F.APAP.H.INSURANCE.DETAILS.NAU)
+    CALL OPF(FN.AA.ARRANGEMENT.ACTIVITY, F.AA.ARRANGEMENT.ACTIVITY)
+
+RETURN
+
+END
