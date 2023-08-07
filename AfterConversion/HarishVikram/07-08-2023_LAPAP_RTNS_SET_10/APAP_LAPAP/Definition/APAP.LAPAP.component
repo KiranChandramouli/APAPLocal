@@ -1,0 +1,28 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+private method lApapActualizarReferido (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.REFERIDO
+}
+
+
+
+private method lApapMancyNotifyRt (
+)
+{
+    jBC: L.APAP.MANCY.NOTIFY.RT
+}
+
+
+
+public method redoRBcrReportBuild (
+)
+{
+    jBC: REDO.R.BCR.REPORT.BUILD
+}
+
