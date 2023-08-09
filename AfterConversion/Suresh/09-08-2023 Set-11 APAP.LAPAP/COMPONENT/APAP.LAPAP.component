@@ -1,0 +1,62 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lapapClosCloscus ( 
+)
+{
+    jBC: LAPAP.CLOS.CLOSCUS
+}
+
+
+
+public method lapapConsultarCategoryDeposit (
+)
+{
+    jBC: LAPAP.CONSULTAR.CATEGORY.DEPOSIT
+}
+ 
+
+
+public method lapapGetOrcusRt (
+)
+{
+    jBC: LAPAP.GET.ORCUS.RT
+}
+
+
+
+public method lapapInTxnuniProCusRt (
+)
+{
+    jBC: LAPAP.IN.TXNUNI.PRO.CUS.RT
+}
+
+
+
+public method lapapMigCardnoRt (
+)
+{
+    jBC: LAPAP.MIG.CARDNO.RT
+}
+
+
+
+public method lapapNofAaInfoRtCan (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.CAN
+}
+
+
+
+public method lapapNofAaInfoRtAct (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.ACT
+}
+
