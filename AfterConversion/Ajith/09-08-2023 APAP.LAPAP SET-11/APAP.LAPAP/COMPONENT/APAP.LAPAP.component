@@ -1,0 +1,76 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapColFfCollector (
+    INOUT customerId string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR
+}
+
+
+
+public method lApapColFfCollectorCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string,
+    INOUT prGesgarantias string,
+    INOUT prGescreditosgarantias string,
+    INOUT prGestipogarantias string,
+    INOUT pGescreditointegracion string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.CREDIT
+}
+
+
+
+public method lApapColFfCollectorLoad (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.LOAD
+}
+
+
+
+public method lApapColFfCollectorPost (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.POST
+}
+
+
+
+public method lApapColFfCollectorTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.TXN
+}
+
+
+
+public method lapapWaiveImp0015Rt (
+)
+{
+    jBC: LAPAP.WAIVE.IMP0015.RT
+}
+
+
+public method lApapColFfCollectorSelect (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.SELECT
+}
+
+
+
