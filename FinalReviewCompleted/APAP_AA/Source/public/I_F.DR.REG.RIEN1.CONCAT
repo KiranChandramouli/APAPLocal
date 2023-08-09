@@ -1,5 +1,0 @@
-*
-    * I_F.DR.REG.RIEN1.CONCAT Created 06 JUL 13 at 03:30AM by apap/GANGADHAR1
-*      PREFIX[DR.RIEN1.CONCAT]
-          EQU DR.RIEN1.CONCAT.SELL.RATE TO 1,   DrRegRien1Concat_SellRate TO 1,
-                DR.RIEN1.CONCAT.LN.SELL TO 2,   DrRegRien1Concat_LnSell TO 2

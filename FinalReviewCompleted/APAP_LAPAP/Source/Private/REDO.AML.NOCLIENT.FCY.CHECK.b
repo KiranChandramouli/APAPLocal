@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2Njk1NjQ3OTQ6Q3AxMjUyOjE2ODk4NTQ5NDM2MTE6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 20 Jul 2023 17:39:03
+* @ValidationCode : Mjo2Njk1NjQ3OTQ6Q3AxMjUyOjE2OTAxOTQ4MzE4NTY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:51
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------

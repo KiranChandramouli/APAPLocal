@@ -1,3 +1,15 @@
+* @ValidationCode : MjoxMTQzMTA1NzczOkNwMTI1MjoxNjkwMjY0MTg4MTgwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:48
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.FASEII.COVID(AA.ARR.ID)
 
@@ -12,8 +24,8 @@ SUBROUTINE LAPAP.FASEII.COVID(AA.ARR.ID)
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
-* 13-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , FM to @FM ,SM to @SM , ++ to +=1 , X to X.VAR , J to J.VAR 
+*  DATE             WHO                   REFERENCE
+* 13-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , FM to @FM ,SM to @SM , ++ to +=1 , X to X.VAR , J to J.VAR
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
 
     $INSERT I_COMMON
@@ -30,6 +42,7 @@ SUBROUTINE LAPAP.FASEII.COVID(AA.ARR.ID)
     $INSERT I_F.APAP.H.INSURANCE.DETAILS
     $INSERT I_F.DATES
     $INSERT I_LAPAP.FASEII.COVID.COMO
+    $USING APAP.AA
 
     GOSUB MAIN.PROCESS
 
@@ -68,7 +81,8 @@ MAIN.PROCESS:
         Y.CONTADOR.PRESTAMO += 1;
         CRT Y.CONTADOR.PRESTAMO:". ":Y.ARRANGEMENT.ID;
 
-        CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+*       CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+        APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion
         R.AA.TERM.AMOUNT          = FIELD(OUT.RECORD,"*",1)
         R.AA.PAYMENT.SCHEDULE.APP = FIELD(OUT.RECORD,"*",3)
         R.AA.INTEREST             = FIELD(OUT.RECORD,"*",7)
@@ -606,7 +620,8 @@ GET.MAX.COLLATERAL.ID:
     COLLATERAL.VALUE.MAX= "";
     COLLATERAL.ID.MAX= "";
 
-    CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+*   CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+    APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion
     R.AA.TERM.AMOUNT.APP      = FIELD(OUT.RECORD,"*",1)
 
     COLLATERAL.ID = R.AA.TERM.AMOUNT.APP<AA.AMT.LOCAL.REF,L.AA.COL.POS>

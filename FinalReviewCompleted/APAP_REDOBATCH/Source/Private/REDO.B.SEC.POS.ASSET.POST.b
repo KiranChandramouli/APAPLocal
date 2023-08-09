@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNzA3MDkwMDE5OkNwMTI1MjoxNjg0ODU0Mzk4Mjc0OklUU1M6LTE6LTE6MzU3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:38
+* @ValidationCode : MjoxNTk1OTYxMjM2OkNwMTI1MjoxNjkwMjY0NDUwMTcwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:10
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 357
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.SEC.POS.ASSET.POST
@@ -44,8 +44,8 @@ SUBROUTINE REDO.B.SEC.POS.ASSET.POST
 * Defect Reference       Modified By                    Date of Change        Change Details
 *(RTC/TUT/PACS)                                        (YYYY-MM-DD)
 *-----------------------------------------------------------------------------------------------------------------
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
+* Date                   who                   Reference
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
 * Include files
@@ -54,6 +54,8 @@ SUBROUTINE REDO.B.SEC.POS.ASSET.POST
     $INSERT I_EQUATE
     $INSERT I_F.DATES
     $INSERT I_F.REDO.H.REPORTS.PARAM
+    $USING APAP.REDOCHNLS
+   
 *
     GOSUB INITIALISE
     GOSUB PROCESS
@@ -164,8 +166,8 @@ RAISE.ERR.C.22:
     ID.PROC  = ''
     EX.USER  = ''
     EX.PC    = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
-
+*    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
 RETURN
 
 *------------------------------------------------------------------Final End---------------------------------------------------------------------------

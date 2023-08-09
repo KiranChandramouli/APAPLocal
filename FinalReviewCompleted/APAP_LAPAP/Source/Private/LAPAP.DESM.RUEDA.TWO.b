@@ -1,3 +1,15 @@
+* @ValidationCode : MjotMTg4Nzg4NjkwNzpDcDEyNTI6MTY5MDI2NDE4NzU0MzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:47
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.DESM.RUEDA.TWO(AA.ARR.ID)
 
@@ -7,7 +19,7 @@ SUBROUTINE LAPAP.DESM.RUEDA.TWO(AA.ARR.ID)
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , FM to @FM ,SM to @SM
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
 
@@ -24,6 +36,7 @@ SUBROUTINE LAPAP.DESM.RUEDA.TWO(AA.ARR.ID)
     $INSERT I_F.AA.TERM.AMOUNT
     $INSERT I_F.DATES
     $INSERT I_LAPAP.DESM.RUEDA.TWO.COMO
+    $USING APAP.AA
 
     GOSUB MAIN.PROCESS
 
@@ -61,7 +74,8 @@ MAIN.PROCESS:
 
         CRT "PROCESANDO: ":Y.ARRANGEMENT.ID;
 
-        CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+*       CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+        APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion
         R.AA.TERM.AMOUNT          = FIELD(OUT.RECORD,"*",1)
         R.AA.PAYMENT.SCHEDULE.APP = FIELD(OUT.RECORD,"*",3)
         R.AA.INTEREST             = FIELD(OUT.RECORD,"*",7)

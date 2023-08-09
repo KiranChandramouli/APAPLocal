@@ -19,7 +19,6 @@ public method redoAutConcatUptLog (
 }
 
 
-
 public method redoAutDelIdTemp (
 )
 {
@@ -7051,5 +7050,22 @@ public method redoVAutReverseChg (
 )
 {
     jBC: REDO.V.AUT.REVERSE.CHG
+}
+
+
+
+public method redoAutOnlineMsg (
+)
+{
+   jBC: REDO.AUT.ONLINE.MSG
+}
+
+
+
+
+public method redoInpLetterIssue (
+)
+{
+   jBC: REDO.INP.LETTER.ISSUE
 }
 

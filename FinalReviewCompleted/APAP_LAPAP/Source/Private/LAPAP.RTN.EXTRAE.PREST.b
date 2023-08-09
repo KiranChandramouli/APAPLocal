@@ -1,0 +1,113 @@
+* @ValidationCode : MjoxNDcxOTY2MDg3OkNwMTI1MjoxNjkwNDM0MDg1OTg1OklUU1M6LTE6LTE6NTkxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 27 Jul 2023 10:31:25
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 591
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+*---------------------------------------------------------------------------------------
+*MODIFICATION HISTORY:
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*26-07-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,FM TO @FM,VARIABLE NAME MODIFIED
+*----------------------------------------------------------------------------------------
+$PACKAGE APAP.LAPAP
+
+SUBROUTINE LAPAP.RTN.EXTRAE.PREST
+
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.TELLER
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.CUSTOMER
+    $INSERT I_GTS.COMMON
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+
+
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT = ''
+
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.AA.ARRANGEMENT='F.AA.ARRANGEMENT'
+    F.AA.ARRANGEMENT=''
+
+    CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
+
+    FN.CUSTOMER ='F.CUSTOMER'
+    F.CUSTOMER= ''
+
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+
+    LOC.APPLICATION = "TELLER":@FM:"ACCOUNT" ;*R22 MANUAL CONVERSION
+    LOC.FIELDS      = 'L.COMMENTS':@VM:'L.TT.CLIENT.NME':@FM:'L.OD.STATUS' ;*R22 MANUAL CONVERSION
+    LOC.POS         = ''
+
+
+    CALL MULTI.GET.LOC.REF(LOC.APPLICATION,LOC.FIELDS,LOC.POS)
+
+
+    POS.L.COMMENTS      = LOC.POS<1,1>
+    POS.L.TT.CLIENT.NME = LOC.POS<1,2>
+    POS.L.OD.STATUS     = LOC.POS<2,1>
+
+    IF NUM(COMI)THEN
+
+        CALL F.READ(FN.ACCOUNT,COMI,R.ACCOUNT,F.ACCOUNT,ACCOUNT.ERR)
+        Y.ARRANGEMENT.NUMBER=R.ACCOUNT<AC.ARRANGEMENT.ID>
+
+        IF Y.ARRANGEMENT.NUMBER EQ '' THEN
+
+            ETEXT='REVISAR NUMERO DE PRESTAMO'
+            CALL STORE.END.ERROR
+            RETURN
+
+        END ELSE
+
+            Y.CUSTOMER = R.ACCOUNT<AC.CUSTOMER>
+*R.NEW(TT.TE.CURRENCY.1)=R.ACCOUNT<A.CURRENCY>
+            R.NEW(TT.TE.CURRENCY.1)=R.ACCOUNT<AC.CURRENCY> ;*R22 MANUAL CONVERSION
+            GOSUB GET.CUST.ENRI
+        END
+
+    END ELSE
+
+        CALL F.READ(FN.AA.ARRANGEMENT,COMI,R.AA.ARRANGEMENT,F.AA.ARRANGEMENT,AA.ARRANGEMENT.ERR)
+
+        IF AA.ARRANGEMENT.ERR THEN
+
+            ETEXT = "REVISAR NUMERO DE PRESTAMO"
+
+            CALL STORE.END.ERROR
+
+            RETURN
+
+        END ELSE
+            COMI = R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL.ID,1>
+            Y.CUSTOMER=R.AA.ARRANGEMENT<AA.ARR.CUSTOMER>
+            R.NEW(TT.TE.CURRENCY.1)=R.AA.ARRANGEMENT<AA.ARR.CURRENCY>
+            GOSUB GET.CUST.ENRI
+
+        END
+
+    END
+
+
+RETURN
+
+GET.CUST.ENRI:
+
+    CALL F.READ(FN.CUSTOMER,Y.CUSTOMER,R.CUSTOMER,F.CUSTOMER,CUSTOMER.ERR)
+    Y.CUSTOMER.NAME=R.CUSTOMER<EB.CUS.SHORT.NAME>
+    R.NEW(TT.TE.LOCAL.REF)<1,POS.L.COMMENTS>=Y.CUSTOMER
+    R.NEW(TT.TE.LOCAL.REF)<1,POS.L.TT.CLIENT.NME>=Y.CUSTOMER.NAME
+
+
+RETURN

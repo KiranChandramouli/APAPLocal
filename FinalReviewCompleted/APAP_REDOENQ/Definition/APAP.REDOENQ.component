@@ -16,7 +16,6 @@ public method redoECnvBillType (
 }
 
 
-
 public method redoECnvDsBenfNames (
     INOUT yAccountNo string
 )
@@ -5485,5 +5484,39 @@ public method redoNofGetRetChqTrans (
 )
 {
     jBC: REDO.NOF.GET.RET.CHQ.TRANS
+}
+
+
+
+public method nofileApapDetailLoansPayments (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.APAP.DETAIL.LOANS.PAYMENTS
+}
+
+
+public method redoENofRteRevRtn (
+   INOUT txnRevArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.REV.RTN
+}
+
+
+public method redoENofRteRtn (
+   INOUT txnArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.RTN
+}
+
+
+
+public method nofileRedoEnqAthAcquirer (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.REDO.ENQ.ATH.ACQUIRER
 }
 

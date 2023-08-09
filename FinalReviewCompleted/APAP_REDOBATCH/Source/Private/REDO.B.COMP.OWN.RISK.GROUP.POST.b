@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2MTE1NzkzNzc6Q3AxMjUyOjE2ODQ4NTQzODMwNzA6SVRTUzotMTotMTozMDU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:23
+* @ValidationCode : Mjo3ODc2NjcwMzI6Q3AxMjUyOjE2OTAyNjQzNTczODc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 305
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP.POST
@@ -46,7 +46,7 @@ SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP.POST
 *                                                                          then "0" should be displayed as prefix.
 *-----------------------------------------------------------------------------------------------------------------
 * PACS00361958           Ashokkumar.V.P                  23/02/2015           Optimized the relation between the customer
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION VM TO @VM AND FM TO @FM AND ! TO *
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -56,6 +56,7 @@ SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP.POST
     $INSERT I_EQUATE
     $INSERT I_F.DATES
     $INSERT I_F.REDO.H.REPORTS.PARAM
+    $USING APAP.REDOCHNLS
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -131,7 +132,8 @@ GET.REPORT.LINES:
         MON.TP   = 04
         REC.CON  = 'GR99-':ERR.MSG
         DESC     = 'GR99-':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 
 *20140318 (S)
@@ -158,7 +160,8 @@ GET.REPORT.LINES:
             MON.TP   = 04
             REC.CON  = 'GR99-':ERR.MSG
             DESC     = 'GR99-':ERR.MSG
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*           CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)    ;*R22 Manual Code Conversion
         END
 
         REPORT.LINES = R.TEMP.PATH
@@ -209,7 +212,8 @@ OPEN.SEQ.FILE:
         MON.TP   = 04
         REC.CON  = 'GR99-':ERR.MSG
         DESC     = 'GR99-':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*      CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 
 RETURN
@@ -238,9 +242,9 @@ WRITE.TO.FILE:
         MON.TP   = 04
         REC.CON  = 'GR99-':ERR.MSG
         DESC     = 'GR99-':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
-
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 END       ;*End of program

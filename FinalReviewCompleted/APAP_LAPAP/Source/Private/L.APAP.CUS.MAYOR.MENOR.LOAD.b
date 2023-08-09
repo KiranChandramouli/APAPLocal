@@ -1,16 +1,16 @@
-$PACKAGE APAP.LAPAP
-* @ValidationCode : MjoxMDMzODQwNzk4OkNwMTI1MjoxNjg5MjU1ODY0NjYxOkhhcmlzaHZpa3JhbUM6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Jul 2023 19:14:24
+* @ValidationCode : MjoxMDMzODQwNzk4OkNwMTI1MjoxNjkwMTY3NTI5Mjg4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 08:28:49
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
 SUBROUTINE L.APAP.CUS.MAYOR.MENOR.LOAD
 *-----------------------------------------------------------------------------
 *MODIFICATION HISTORY:

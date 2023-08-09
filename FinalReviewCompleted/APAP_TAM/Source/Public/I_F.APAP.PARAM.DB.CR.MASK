@@ -1,0 +1,22 @@
+* I_F.APAP.PARAM.DB.CR.MASK Created 22 SEP 17 at 08:22AM by t24uatdev/SSELVARAJ.1
+*      PREFIX[APAP.MASK]
+              EQU APAP.MASK.VER.FLD.ENQ.COL TO 1,   ApapParamDbCrMask_VerFldEnqCol TO 1,
+                   APAP.MASK.MASKING.DIGITS TO 2,   ApapParamDbCrMask_MaskingDigits TO 2,
+                      APAP.MASK.RESERVED.10 TO 3,   ApapParamDbCrMask_Reserved10 TO 3,
+                       APAP.MASK.RESERVED.9 TO 4,   ApapParamDbCrMask_Reserved9 TO 4,
+                       APAP.MASK.RESERVED.8 TO 5,   ApapParamDbCrMask_Reserved8 TO 5,
+                       APAP.MASK.RESERVED.7 TO 6,   ApapParamDbCrMask_Reserved7 TO 6,
+                       APAP.MASK.RESERVED.5 TO 7,   ApapParamDbCrMask_Reserved5 TO 7,
+                       APAP.MASK.RESERVED.4 TO 8,   ApapParamDbCrMask_Reserved4 TO 8,
+                       APAP.MASK.RESERVED.3 TO 9,   ApapParamDbCrMask_Reserved3 TO 9,
+                       APAP.MASK.RESERVED.2 TO 10,  ApapParamDbCrMask_Reserved2 TO 10,
+                       APAP.MASK.RESERVED.1 TO 11,  ApapParamDbCrMask_Reserved1 TO 11,
+                    APAP.MASK.RECORD.STATUS TO 12,  ApapParamDbCrMask_RecordStatus TO 12,
+                          APAP.MASK.CURR.NO TO 13,  ApapParamDbCrMask_CurrNo TO 13,
+                         APAP.MASK.INPUTTER TO 14,  ApapParamDbCrMask_Inputter TO 14,
+                        APAP.MASK.DATE.TIME TO 15,  ApapParamDbCrMask_DateTime TO 15,
+                       APAP.MASK.AUTHORISER TO 16,  ApapParamDbCrMask_Authoriser TO 16,
+                          APAP.MASK.CO.CODE TO 17,  ApapParamDbCrMask_CoCode TO 17,
+                        APAP.MASK.DEPT.CODE TO 18,  ApapParamDbCrMask_DeptCode TO 18,
+                     APAP.MASK.AUDITOR.CODE TO 19,  ApapParamDbCrMask_AuditorCode TO 19,
+                  APAP.MASK.AUDIT.DATE.TIME TO 20,  ApapParamDbCrMask_AuditDateTime TO 20

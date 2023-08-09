@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo3MTczMzcxNTU6Q3AxMjUyOjE2ODY2NzM5ODk0ODM6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:03:09
+* @ValidationCode : MjoyMTA0NDg2OTA1OkNwMTI1MjoxNjkwMjY0MDcxNTgxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:17:51
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -43,6 +43,7 @@ SUBROUTINE REDO.PRE.PRINC.INTEREST
     $INSERT I_F.AA.PAYMENT.SCHEDULE
 *TUS AA Changes - 20161019
     $INSERT I_F.AA.ACCOUNT.DETAILS
+    $USING APAP.TAM
 *TUS END
 *-----------------------------------------------------------------------------
     IF c_aalocActivityStatus EQ 'UNAUTH' THEN
@@ -72,7 +73,8 @@ GET.ARRNG.ID:
     !
     Y.ARRANGEMENT.ID = c_aalocArrId
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
-    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
+*   CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
+    APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code Conversion
     Y.PRIN.PROP=OUT.PROP        ;* This variable hold the value of principal interest property
 
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTYwOTU2NTg1OkNwMTI1MjoxNjg0OTIzODM0OTQzOklUU1M6LTE6LTE6Mzk1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 24 May 2023 15:53:54
+* @ValidationCode : MjotMTQwMTQ0MDk0MTpDcDEyNTI6MTY5MDE3NzEyMjc5MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Jul 2023 11:08:42
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 395
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.RTE.EXCESS(Y.AGENCY,Y.AMT,TXN.CNT)
@@ -59,8 +59,8 @@ SUBROUTINE REDO.RTE.EXCESS(Y.AGENCY,Y.AMT,TXN.CNT)
     F.FUNDS.TRANSFER = ''
     CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
 
-    CALL REDO.E.NOF.RTE.RTN(Y.DATA) ; * R22 Manual conversion
-*APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*MANUAL R22 CODE CONVERSION
+*    CALL REDO.E.NOF.RTE.RTN(Y.DATA) ; * R22 Manual conversion
+    APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*MANUAL R22 CODE CONVERSION
 
     Y.DATA.CNT = DCOUNT(Y.DATA,@FM)
     Y.DATA.INT = 1

@@ -1,5 +1,0 @@
-* I_F.REDO.NAB.ACCOUNTING Created 20 JAN 12 at 02:43PM by apap/TEMENOS.02
-*      PREFIX[REDO.NAB.ACC]
-            EQU REDO.NAB.ACC.NAB.AMT TO 1,   RedoNabAccounting_NabAmt TO 1,
-            REDO.NAB.ACC.LOAN.STATUS TO 2,   RedoNabAccounting_LoanStatus TO 2,
-                REDO.NAB.ACC.PRODUCT TO 3,   RedoNabAccounting_Product TO 3

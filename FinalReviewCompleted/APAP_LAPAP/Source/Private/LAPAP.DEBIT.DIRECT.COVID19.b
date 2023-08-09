@@ -1,3 +1,15 @@
+* @ValidationCode : Mjo3MDk5NDk3NTpDcDEyNTI6MTY5MDI2NDE4Njc3NzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:46
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * Limpieza de DEBIT.DIRECT - 2da Fase - Proyecto COVID19
 * Fecha: 31/03/2020
@@ -8,7 +20,7 @@ SUBROUTINE LAPAP.DEBIT.DIRECT.COVID19(Y.ARRANGEMENT.ID)
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - FM to @FM
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
     $INSERT I_COMMON
@@ -18,7 +30,7 @@ SUBROUTINE LAPAP.DEBIT.DIRECT.COVID19(Y.ARRANGEMENT.ID)
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_F.AA.ARRANGEMENT
     $INSERT I_LAPAP.DEBIT.DIRECT.COVID19.COMO
-
+    $USING APAP.TAM
     GOSUB MAIN.PROCESS
 
 RETURN
@@ -53,7 +65,8 @@ GET.FIELDS.PAYMENT.SCHEDULE:
 
     PROP.CLASS = 'PAYMENT.SCHEDULE'; PROPERTY = ''; EFF.DATE = ''; R.CONDITION = ''
     ERR.MSG = ''; R.AA.PAYMENT.SCHEDULE = ''
-    CALL REDO.CRR.GET.CONDITIONS(AA.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+*   CALL REDO.CRR.GET.CONDITIONS(AA.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+    APAP.TAM.redoCrrGetConditions(AA.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*R22 Manual Code Conversion
     R.AA.PAYMENT.SCHEDULE = R.CONDITION
 
     IF R.AA.PAYMENT.SCHEDULE THEN

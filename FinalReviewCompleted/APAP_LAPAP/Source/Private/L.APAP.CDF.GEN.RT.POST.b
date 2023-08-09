@@ -1,3 +1,15 @@
+* @ValidationCode : MjotMTQ1ODIyNzk0OTpDcDEyNTI6MTY5MDE5NDgwMDczODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:20
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
@@ -41,7 +53,10 @@ DO.LOG:
     R.CDF.FIN<4>  = INT(Y.TOTAL.CERITOS.GEN)      ;*TOTAL.CERITOS.GEN
 
     CALL OFS.BUILD.RECORD(Y.APP.NAME.2,Y.FUNC.2,Y.PRO.VAL.2,Y.VER.NAME.2,Y.GTS.CONTROL.2,Y.NO.OF.AUTH.2,Y.TRANS.ID.2,R.CDF.FIN,FINAL.OFS.2)
-    CALL OFS.GLOBUS.MANAGER("DIARY.OFS", FINAL.OFS.2)
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*CALL OFS.GLOBUS.MANAGER("DIARY.OFS", FINAL.OFS.2)
+    CALL OFS.CALL.BULK.MANAGER("DIARY.OFS", FINAL.OFS.2, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
+    
     CALL JOURNAL.UPDATE('')
 RETURN
 

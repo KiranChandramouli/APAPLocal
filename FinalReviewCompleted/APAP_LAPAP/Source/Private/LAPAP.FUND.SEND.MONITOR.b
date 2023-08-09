@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo2NDg3MjcxNTA6Q3AxMjUyOjE2ODk5MzYxMTE4NjM6SVRTUzotMTotMToxMDQ5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 21 Jul 2023 16:11:51
+* @ValidationCode : MjoxMTU5NDc2MDIwOkNwMTI1MjoxNjkwMTk0ODE5NTg2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:39
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1049
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -116,7 +116,8 @@ PROCESS:
 
 
 *-Passing parameters to this routine for get some values
-    CALL LAPAP.CUSTOMER.IDENT(mon.cliente,IDENT,IDENTYPE,NAME,LASTN,DEFV)
+*CALL LAPAP.CUSTOMER.IDENT(mon.cliente,IDENT,IDENTYPE,NAME,LASTN,DEFV)
+    APAP.LAPAP.lapapCustomerIdent(mon.cliente,IDENT,IDENTYPE,NAME,LASTN,DEFV);* R22 Manual conversion - CALL method format changed
     IF DEFV EQ "YES" THEN
         mon.cedula = IDENT
         mon.tipo = IDENTYPE
@@ -151,7 +152,8 @@ PROCESS:
 
 
 *-Passing parameters to this routine for get some values
-    CALL LAPAP.CUSTOMER.IDENT(beneficiario,IDENT,IDENTYPE,NAME,LASTN,DEFV)
+    APAP.LAPAP.lapapCustomerIdent(beneficiario,IDENT,IDENTYPE,NAME,LASTN,DEFV);* R22 Manual conversion - CALL method format changed
+*CALL LAPAP.CUSTOMER.IDENT(beneficiario,IDENT,IDENTYPE,NAME,LASTN,DEFV)
     IF DEFV EQ "YES" THEN
         cedula.beneficiario = IDENT
         nombre.beneficiario = NAME:" ":LASTN

@@ -1,23 +1,23 @@
-* @ValidationCode : MjoxMDYxMDIyNjkzOkNwMTI1MjoxNjg5OTMyNzgyMDE5OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 21 Jul 2023 15:16:22
+* @ValidationCode : MjoxNDcxNDU2OTgzOkNwMTI1MjoxNjkwMjY2NTUyNzc3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:59:12
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.COL.EXTRACT(CUSTOMER.ID)
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 21-JULY-2023      Conversion Tool       R22 Auto Conversion - VM to @VM , FM to @FM ,I to I.VAR and ++ to +=
-* 21-JULY-2023      Harsha                R22 Manual Conversion - Varialble not found and Added APAP.REDORETAIL                          
+* 21-JULY-2023      Harsha                R22 Manual Conversion - Varialble not found and Added APAP.REDORETAIL
 *------------------------------------------------------------------------
     $INSERT I_EQUATE
     $INSERT I_COMMON
@@ -25,6 +25,7 @@ SUBROUTINE REDO.COL.EXTRACT(CUSTOMER.ID)
     $INSERT I_F.DE.ADDRESS
     $INSERT I_REDO.COL.CUSTOMER.COMMON
     $INSERT I_F.REDO.COL.TRACE.PHONE
+    $USING APAP.TAM
    
    
     GOSUB INITIALISE
@@ -511,8 +512,10 @@ TRACE.ERROR:        * Trace Error, Y.MSG is the error message, Y.TABLE.ID identi
     CALL TXT(Y.MSG)
     Y.MSG = Y.MSG : "-" : CUSTOMER.ID
     ROUTINE.NAME = "REDO.COL.EXTRACT"
-    CALL REDO.R.COL.EXTRACT.ERROR(Y.MSG, ROUTINE.NAME,Y.TABLE.ID)
-    CALL REDO.R.COL.PROCESS.TRACE('EXTRACT', 20, 1, Y.TABLE.ID, '', Y.MSG)
+*   CALL REDO.R.COL.EXTRACT.ERROR(Y.MSG, ROUTINE.NAME,Y.TABLE.ID)
+    APAP.TAM.redoRColExtractError(Y.MSG, ROUTINE.NAME,Y.TABLE.ID) ;*R22 Manual Code Converison
+*   CALL REDO.R.COL.PROCESS.TRACE('EXTRACT', 20, 1, Y.TABLE.ID, '', Y.MSG)
+    APAP.TAM.redoRColProcessTrace('EXTRACT', 20, 1, Y.TABLE.ID, '', Y.MSG)   ;*R22 Manual Code Converison
     C.MON.TP='08'
     C.ID.PROC = REDO.INTERFACE.PARAM.ID
 C.DESC=Y.MSG:
@@ -531,7 +534,8 @@ FINAL.WRITE.RECORD:
 
 *    WRITE R.REDO.COL.QUEUE TO F.REDO.COL.QUEUE, Y.QUEUE.ID ;*Tus Start
         CALL F.WRITE(FN.REDO.COL.QUEUE,Y.QUEUE.ID,R.REDO.COL.QUEUE);*Tus End
-        CALL REDO.R.COL.PROCESS.TRACE('EXTRACT', 10, 1, R.REDO.COL.QUEUE<1>, R.REDO.COL.QUEUE<4>, "")
+*       CALL REDO.R.COL.PROCESS.TRACE('EXTRACT', 10, 1, R.REDO.COL.QUEUE<1>, R.REDO.COL.QUEUE<4>, "")
+        APAP.TAM.redoRColProcessTrace('EXTRACT', 10, 1, R.REDO.COL.QUEUE<1>, R.REDO.COL.QUEUE<4>, "") ;*R22 Manual Code Converison
         C.MON.TP='01'
         C.DESC = 'GRABA EL REGISTRO EN F.REDO.COL.QUEUE'
         C.ID.PROC = Y.QUEUE.ID

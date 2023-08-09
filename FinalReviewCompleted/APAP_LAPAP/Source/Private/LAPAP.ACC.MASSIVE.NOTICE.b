@@ -1,3 +1,15 @@
+* @ValidationCode : MjoxNDIxNjI3MDkwOkNwMTI1MjoxNjkwMTk0ODEyNzE1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *========================================================================
 *-----------------------------------------------------------------------------
@@ -32,7 +44,7 @@ SUBROUTINE LAPAP.ACC.MASSIVE.NOTICE(SEL.LIST)
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , S to S.VAR , M to M.VAR
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
 
@@ -77,11 +89,13 @@ SUBROUTINE LAPAP.ACC.MASSIVE.NOTICE(SEL.LIST)
             ARR<1> = "LAPAP.ACC.MASSIVE.NOTICE.REJECTED.txt"
             ARR<2> = "NO SE PUDO MODIFICAR EL STATUS DE LA CUENTA.( ":ID:" ) ":ERR.ACC
             ARR<3> = "../interface/T24ACCNOTICE"
-            CALL LAPAP.WRITE.FILE(ARR)
+*CALL LAPAP.WRITE.FILE(ARR)
+            APAP.LAPAP.lapapWriteFile(ARR);* R22 Manual conversion - CALL method format changed
         END
 
     END ELSE
-        CALL LAPAP.BUILD.OFS.LOAD(APP,Y.FUNC,ID,R.SS)
+*CALL LAPAP.BUILD.OFS.LOAD(APP,Y.FUNC,ID,R.SS)
+        APAP.LAPAP.lapapBuildOfsLoad(APP,Y.FUNC,ID,R.SS);* R22 Manual conversion - CALL method format changed
     END
 
 

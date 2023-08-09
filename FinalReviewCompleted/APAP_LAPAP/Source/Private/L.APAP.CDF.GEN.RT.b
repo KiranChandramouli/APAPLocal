@@ -1,3 +1,15 @@
+* @ValidationCode : MjoxODY3MTU4NjAxOkNwMTI1MjoxNjkwMTk0ODAwNzc1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:20
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
@@ -214,7 +226,10 @@ SEND.OFS.MSG:
     END
 
     CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.LP.FIN,FINAL.OFS)
-    CALL OFS.GLOBUS.MANAGER("DIARY.OFS", FINAL.OFS)
+
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*    CALL OFS.GLOBUS.MANAGER("DIARY.OFS", FINAL.OFS)
+    CALL OFS.CALL.BULK.MANAGER("DIARY.OFS", FINAL.OFS, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
 
 *-- PRINT "OFS: " : FINAL.OFS
     CALL OCOMO("PROCESSED: CUSTOMER=":Y.CUSTOMER:",TXN.REF=":Y.ID.TXN:", CARD=":Y.ACTUAL.CARD:", ACCT=":Y.ACC.ID:", CERITOS=":INT(Y.CERITOS.ACTUAL):"::>")

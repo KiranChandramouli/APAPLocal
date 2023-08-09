@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQ1ODA5ODY2NjpDcDEyNTI6MTY4NDkxNjQ5MTI1MzpJVFNTOi0xOi0xOi02NToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 24 May 2023 13:51:31
+* @ValidationCode : MjotMTc5NDczNTg2OkNwMTI1MjoxNjkwMjY2NjQ2NzI5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 12:00:46
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -65
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOSRTN
 SUBROUTINE REDO.S.COL.GET.PAY.FREQ(P.IN.AA.ID,  P.IN.R.STATIC.MAPPING, P.IN.PROCESS.DATE, P.OUT.PAY.FREQ)
@@ -39,6 +39,7 @@ SUBROUTINE REDO.S.COL.GET.PAY.FREQ(P.IN.AA.ID,  P.IN.R.STATIC.MAPPING, P.IN.PROC
 *
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_REDO.COL.CUSTOMER.COMMON
+    $USING APAP.TAM
 *
 *************************************************************************
 *
@@ -76,7 +77,8 @@ PROCESS:
     Y.MAP.TYPE  = "PAYMENT.FREQ"
     E = ""
     R.STATIC.MAPPING = ""
-    CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
+*    CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
+    APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE) ;*R22 Manual Code Conversion
     IF E THEN
         P.OUT.PAY.FREQ = ""
         RETURN ;* R22 Manual conversion - RETURN statement added

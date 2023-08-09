@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQzNzAyMzcxMzpDcDEyNTI6MTY4NDg1NDM4OTg0MzpJVFNTOi0xOi0xOjM3MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:29
+* @ValidationCode : Mjo4ODA4OTMxNDU6Q3AxMjUyOjE2OTAyNjQzOTg2NzQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:18
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 371
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LOAN.CLOSURE(ARR.ID)
@@ -23,7 +23,7 @@ SUBROUTINE REDO.B.LOAN.CLOSURE(ARR.ID)
 *------------------------------------------------------------------------
 *  DATE             WHO                   REFERENCE          DESCRIPTION
 * 02-JAN-2012     H GANESH              PACS00174524 - B.43 Initial Draft
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND SM TO @SM AND ++ TO += 1
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------
@@ -35,6 +35,7 @@ SUBROUTINE REDO.B.LOAN.CLOSURE(ARR.ID)
     $INSERT I_F.APAP.H.INSURANCE.DETAILS
     $INSERT I_REDO.B.LOAN.CLOSURE.COMMON
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
+    $USING APAP.TAM
 
     GOSUB PROCESS
 RETURN
@@ -43,12 +44,14 @@ PROCESS:
 *------------------------------------------------------------------------
 
     ACC.ID = ''
-    CALL REDO.GET.TOTAL.OUTSTANDING(ARR.ID,PROP.AMT,TOTAL.AMT)
+*   CALL REDO.GET.TOTAL.OUTSTANDING(ARR.ID,PROP.AMT,TOTAL.AMT)
+    APAP.TAM.redoGetTotalOutstanding(ARR.ID,PROP.AMT,TOTAL.AMT) ;*R22 Manual Code Conversion
     IF TOTAL.AMT EQ 0 ELSE
         RETURN
     END
 
-    CALL REDO.CONVERT.ACCOUNT('',ARR.ID,ACC.ID,ERR.TEXT)
+*   CALL REDO.CONVERT.ACCOUNT('',ARR.ID,ACC.ID,ERR.TEXT)
+    APAP.TAM.redoConvertAccount('',ARR.ID,ACC.ID,ERR.TEXT) ;*;*R22 Manual Code Conversion
     IF ACC.ID ELSE
         RETURN
     END
@@ -102,7 +105,9 @@ UPDATE.INSURANCE.CHARGE:
 *------------------------------------------------------------------------
 
     Y.CHRG.PROPERTY = ''
-    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR)
+*    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
+    
     Y.PROPERTY.LIST = Y.CHRG.PROPERTY
 
     Y.CHARGE.PROP.CNT = DCOUNT(Y.PROPERTY.LIST,@FM)
@@ -115,7 +120,8 @@ UPDATE.INSURANCE.CHARGE:
         PROPERTY   = Y.PROPERTY.LIST<Y.VAR1>
         R.CONDITION.CHARGE = ''
         ERR.MSG = ''
-        CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG)
+*       CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG)
+        APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG) ;*R22 Manual Code Conversion
         Y.POLICY.NO = ''
         Y.POLICY.NO = R.CONDITION.CHARGE<AA.CHG.LOCAL.REF,POS.POL.NUMBER>
 
@@ -137,8 +143,8 @@ WRITE.INSURANCE.DETAILS:
     WHILE Y.VAR2 LE Y.POLICY.NO.CNT
 
         Y.POL.NO = Y.POLICY.NO<1,1,Y.VAR2>
-        CALL REDO.UPDATE.INSURANCE.DETAILS(Y.POL.NO)
-
+*       CALL REDO.UPDATE.INSURANCE.DETAILS(Y.POL.NO)
+        APAP.TAM.redoUpdateInsuranceDetails(Y.POL.NO) ;*R22 Manual Code Conversion
         Y.VAR2 += 1
     REPEAT
 RETURN

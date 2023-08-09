@@ -1,9 +1,0 @@
-* I_F.DR.REG.213IF01.CONCAT Created 01 DEC 14 at 01:55PM by t24aassu/INPUTTER
-*    .  PREFIX[DR.213IF01.CONCAT] 
-            EQU DR.213IF01.CONCAT.STMT.ID TO 1,   DrReg213if01Concat_StmtId TO 1,
-              DR.213IF01.CONCAT.CR.AMOUNT TO 2,   DrReg213if01Concat_CrAmount TO 2,
-                DR.213IF01.CONCAT.CR.DATE TO 3,   DrReg213if01Concat_CrDate TO 3,
-          DR.213IF01.CONCAT.CUST.RELATION TO 4,   DrReg213if01Concat_CustRelation TO 4,
-          DR.213IF01.CONCAT.CUST.RTE.FORM TO 5,   DrReg213if01Concat_CustRteForm TO 5,
-            DR.213IF01.CONCAT.PEP.STMT.ID TO 6,   DrReg213if01Concat_PepStmtId TO 6,
-          DR.213IF01.CONCAT.REGN8.STMT.ID TO 7,   DrReg213if01Concat_Regn8StmtId TO 7
