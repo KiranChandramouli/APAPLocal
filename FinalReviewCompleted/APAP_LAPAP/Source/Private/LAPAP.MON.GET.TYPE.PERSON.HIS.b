@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo0MTY2OTE5OTQ6Q3AxMjUyOjE2ODk5MTg5NDMxODA6SVRTUzotMTotMTo1OTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 21 Jul 2023 11:25:43
+* @ValidationCode : Mjo2MDcwMjUzMzU6Q3AxMjUyOjE2OTAxOTQ4MjM1MTE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 597
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -17,7 +17,7 @@ $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
-*20-07-2023    VICTORIA S          R22 MANUAL CONVERSION   Folder name removed
+*20-07-2023    VICTORIA S          R22 MANUAL CONVERSION   Folder name removed, CALL routine format modified
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.MON.GET.TYPE.PERSON.HIS
 
@@ -46,7 +46,8 @@ SUBROUTINE LAPAP.MON.GET.TYPE.PERSON.HIS
 *---------------
 
     ACC = ID
-    CALL LAPAP.VERIFY.ACC(ACC,RES)
+*    CALL LAPAP.VERIFY.ACC(ACC,RES)
+    APAP.LAPAP.lapapVerifyAcc(ACC,RES)            ;*R22 MANUAL CONVERSION
     Y.ACC.ID = RES
 
     IF ACC NE Y.ACC.ID THEN

@@ -10,7 +10,6 @@ public method acctActivityRebuild (
 }
 
 
-
 public method acctEcbBalFromActivity (
 )
 {
@@ -8036,12 +8035,6 @@ public method redoApapCreditCardUpd (
     jBC: REDO.APAP.CREDIT.CARD.UPD
 }
 
-public method redoApapCreditCardUpdLoad (
-)
-{
-   jBC: REDO.APAP.CREDIT.CARD.UPD.LOAD
-}
-
 public method lapapAsaRt (
     INOUT account string
 )
@@ -8152,22 +8145,10 @@ public method lapapValidaActyRt (
     jBC: LAPAP.VALIDA.ACTY.RT
 }
 
-public method redoAmlNoclientFcyCheck (
-)
-{
-    jBC: REDO.AML.NOCLIENT.FCY.CHECK
-}
-
 public method redoApapNewConditionRtLoad (
 )
 {
     jBC: REDO.APAP.NEW.CONDITION.RT.LOAD
-}
-
-public method redoApapReportsPasswReset (
-)
-{
-    jBC: REDO.APAP.REPORTS.PASSW.RESET
 }
 
 public method redoAzReinvReverse (
@@ -8175,40 +8156,6 @@ public method redoAzReinvReverse (
 )
 {
     jBC: REDO.AZ.REINV.REVERSE
-}
-
-public method lapapRawLogger (
-    INOUT logDir string,
-    INOUT logName string,
-    INOUT logArr string
-) 
-{
-    jBC: LAPAP.RAW.LOGGER
-}
-
-public method lapapQueryAccuityRt (
-    INOUT pIdentity string,
-    INOUT pName string,
-    INOUT pNationality string,
-    INOUT pGender string,
-    INOUT pDob string,
-    INOUT oData string
-)
-{
-    jBC: LAPAP.QUERY.ACCUITY.RT
-}
-
-public method lapapPlafNotifyRt (
-    INOUT rec string
-)
-{
-    jBC: LAPAP.PLAF.NOTIFY.RT
-}
-
-public method redoBBcrReportGenLoad (
-)
-{
-    jBC: REDO.B.BCR.REPORT.GEN.LOAD
 }
 
 public method redoBOverdraftAcctRtnPost (
@@ -8306,12 +8253,6 @@ public method redoNofileRtePrintDealslip (
 )
 { 
     jBC: REDO.NOFILE.RTE.PRINT.DEALSLIP
-}
-
-public method redoRBcrReportBuild (
-)
-{
-    jBC: REDO.R.BCR.REPORT.BUILD
 }
 
 public method redoRaiseRteOverride (
@@ -8430,20 +8371,416 @@ public method redoVUpdRteFlag (
     jBC: REDO.V.UPD.RTE.FLAG
 }
 
-public method lApapJsonStringify (
-    INOUT jsonIn string,
-    INOUT jsonOut string
+public method lapapIdentDataRt (
 )
 {
-    jBC: L.APAP.JSON.STRINGIFY
+    jBC: LAPAP.IDENT.DATA.RT
 }
 
-public method redoLGetDisbursementDetails (
-    INOUT yIdsDetails string,
-    INOUT rDisbDetails string,
-    INOUT yCommitedAmt string,
-    INOUT yPendDisb string
+public method lapapInpOcccusRt (
 )
 {
-    jBC: REDO.L.GET.DISBURSEMENT.DETAILS
+    jBC: LAPAP.INP.OCCCUS.RT
+}
+
+
+
+public method redoAzReinvReverseLoad (
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE.LOAD
+}
+
+
+
+public method redoAzReinvConsultaPost (
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA.POST
+}
+
+
+
+public method redoApapNewConditionRtSelect (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.SELECT
+}
+
+
+
+public method lapapMigracionCovi (
+    INOUT yArrangementId string
+)
+{
+    jBC: LAPAP.MIGRACION.COVI
+}
+
+
+
+public method lapapMigracionCoviLoad (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.LOAD
+}
+
+
+
+public method lapapMigracionCoviSelect (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.SELECT
+}
+
+
+
+public method lapapMigrateWoff (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF
+}
+
+
+
+public method lapapMigrateWoffPost (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF.POST
+}
+
+
+
+public method lapapMlOccusMigRt (
+)
+{
+    jBC: LAPAP.ML.OCCUS.MIG.RT
+}
+
+
+
+public method lapapModDirecciones (
+)
+{
+    jBC: LAPAP.MOD.DIRECCIONES
+}
+
+
+
+public method lapapMoveNcfRt (
+)
+{
+    jBC: LAPAP.MOVE.NCF.RT
+}
+
+
+
+public method lapapNoCusIdenTipe (
+)
+{
+    jBC: LAPAP.NO.CUS.IDEN.TIPE
+}
+
+
+
+public method lapapNoCusIdentification (
+)
+{
+    jBC: LAPAP.NO.CUS.IDENTIFICATION
+}
+
+
+
+public method lapapNoCusName (
+)
+{
+    jBC: LAPAP.NO.CUS.NAME
+}
+
+
+
+public method lapapNoCusTime (
+)
+{
+    jBC: LAPAP.NO.CUS.TIME
+}
+
+
+
+public method lapapOfsInterestPaid (
+    INOUT selListAz string
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID
+}
+
+
+
+public method lapapOfsInterestPaidLoad (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.LOAD
+}
+
+
+
+public method lapapOfsInterestPaidSelect (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.SELECT
+}
+
+
+
+public method lapapPciRtn (
+)
+{
+    jBC: LAPAP.PCI.RTN
+}
+
+
+
+public method lapapPrePendActPost (
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT.POST
+}
+
+
+
+public method lapapProcesRnRt (
+    INOUT yAaaId string
+)
+{
+    jBC: LAPAP.PROCES.RN.RT
+}
+
+
+
+public method lapapProcesRnRtLoad (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.LOAD
+}
+
+
+
+public method lapapProcesRnRtPost (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.POST
+}
+
+
+
+public method lapapProcesRnRtSelect (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.SELECT
+}
+
+
+
+public method lapapProcesaAchEntranteRt (
+    INOUT yIdAchDet string
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT
+}
+
+
+
+public method lapapProcesaAchEntranteRtLoad (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.LOAD
+}
+
+
+
+public method lapapProcesaAchEntranteRtSelect (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
+}
+
+
+
+public method lapapPurgalOfsrequestd (
+    INOUT purgaId string
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD
+}
+
+
+
+public method lapapPurgalOfsrequestdLoad (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.LOAD
+}
+
+
+
+public method lapapPurgalOfsrequestdSelect (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.SELECT
+}
+
+
+
+public method lapapRaiseEntryIn (
+    INOUT arrId string
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN
+}
+
+
+
+public method lapapRaiseEntryInLoad (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.LOAD
+}
+
+
+
+public method lapapRaiseEntryInSelect (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.SELECT
+}
+
+
+
+public method lapapRteUserAuth (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.AUTH
+}
+
+
+
+public method lapapRteUserIn (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.IN
+}
+
+
+
+public method lapapServReprecioOfs (
+)
+{
+    jBC: LAPAP.SERV.REPRECIO.OFS
+}
+
+
+
+public method lapapSumatoriaQrPin (
+)
+{
+    jBC: LAPAP.SUMATORIA.QR.PIN
+}
+
+
+
+public method lapapTriggerEnqAsaPrt (
+)
+{
+    jBC: LAPAP.TRIGGER.ENQ.ASA.PRT
+}
+
+
+
+public method lapapUpdAvBal (
+)
+{
+    jBC: LAPAP.UPD.AV.BAL
+}
+
+
+
+public method lapapUpdateOpeningDate (
+)
+{
+    jBC: LAPAP.UPDATE.OPENING.DATE
+}
+
+
+
+public method lapapVIdVotanteRt (
+)
+{
+    jBC: LAPAP.V.ID.VOTANTE.RT
+}
+
+
+
+public method lapapVOcusFieldsRt (
+)
+{
+    jBC: LAPAP.V.OCUS.FIELDS.RT
+}
+
+
+
+public method lapapVerifyCategoryParam (
+    INOUT cusi string,
+    INOUT cati string,
+    INOUT res string
+)
+{
+    jBC: LAPAP.VERIFY.CATEGORY.PARAM
+}
+
+
+
+public method nofileLApapScheduleProA01 (
+    INOUT yData string
+)
+{
+    jBC: NOFILE.L.APAP.SCHEDULE.PRO.A01
+}
+
+
+
+public method redoApapInpRteamlTfsCheck (
+)
+{
+    jBC: REDO.APAP.INP.RTEAML.TFS.CHECK
+}
+
+public method lApapCantRelAc (
+)
+{
+   jBC: L.APAP.CANT.REL.AC
+}
+
+public method lApapPassbookPrintOvrd (
+)
+{
+   jBC: L.APAP.PASSBOOK.PRINT.OVRD
+}
+
+public method lapapRtnExtraePrest (
+)
+{
+   jBC: LAPAP.RTN.EXTRAE.PREST
+}
+
+public method lApapActualizarReferido (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.REFERIDO
+}
+
+public method lApapMancyNotifyRt (
+)
+{
+    jBC: L.APAP.MANCY.NOTIFY.RT
 }

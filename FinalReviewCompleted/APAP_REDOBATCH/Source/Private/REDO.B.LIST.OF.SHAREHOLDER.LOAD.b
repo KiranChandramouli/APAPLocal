@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDMwNzIwOTQyOkNwMTI1MjoxNjg0ODU0Mzg5MzYzOklUU1M6LTE6LTE6MjEyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:29
+* @ValidationCode : MjotMjkzODUxNTYwOkNwMTI1MjoxNjkwMjY0Mzk3MDA4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:17
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 212
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LIST.OF.SHAREHOLDER.LOAD
@@ -40,7 +40,7 @@ SUBROUTINE REDO.B.LIST.OF.SHAREHOLDER.LOAD
 *-----------------------------------------------------------------------------------------------------------------
 * Defect Reference       Modified By                    Date of Change        Change Details
 * (RTC/TUT/PACS)                                        (YYYY-MM-DD)
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM AND SESSION.NO TO AGENT.NUMBER AND ADDING I_TSA.COMMON
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -55,6 +55,7 @@ SUBROUTINE REDO.B.LIST.OF.SHAREHOLDER.LOAD
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.LIST.OF.SHAREHOLDER.COMMON
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
+    $USING APAP.REDOCHNLS
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -173,7 +174,8 @@ OPEN.TEMP.PATH:
         MON.TP   = 04
         REC.CON  = 'MV32-':ERR.MSG
         DESC     = 'MV32-':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 
 RETURN

@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTg2ODU5NjY2OkNwMTI1MjoxNjg5ODUwNzQ2MjY2OklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 20 Jul 2023 16:29:06
+* @ValidationCode : MjotNDgyNzgyNTU6Q3AxMjUyOjE2OTAyNjQxNjg4OTU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:28
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -53,7 +53,7 @@ SUBROUTINE L.APAP.B.TASAS.ACTIV.PASIV.DUP(REC.ID)
     $INSERT I_F.COMPANY
     $INSERT I_L.APAP.B.TASAS.ACTIV.PASIV.DUP.COMMON
     $INSERT I_F.REDO.APAP.INSTIT.FINANC.PARAM
-
+    $USING APAP.TAM
 
     GOSUB MAIN.PROCESS
 RETURN
@@ -287,7 +287,8 @@ GET.NPV.CALC:
 
     Y.IDS.DETAILS<1> = REC.ID
     Y.IDS.DETAILS<2> = "YES"
-    CALL REDO.GET.DISBURSEMENT.DETAILS(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
+*   CALL REDO.GET.DISBURSEMENT.DETAILS(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
+	APAP.TAM.redoGetDisbursementDetails(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB) ;*R22 Manual Code Conversion
     Y.TOT.DIS.AMT = ABS(R.DISB.DETAILS<3>)
     TOTAL.REVENU =  Y.TOT.DIS.AMT - yTOT.PAYMENT
 

@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo4MTU5OTkyNDg6Q3AxMjUyOjE2ODQ4NTQzOTk2NTQ6SVRTUzotMTotMToyNjExOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:39
+* @ValidationCode : MjotNjY3MDQ3NjA4OkNwMTI1MjoxNjkwMjY0NDU2NTA3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:16
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2611
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.TRANS.PROCESS(BUILD.LIST)
@@ -29,7 +29,7 @@ SUBROUTINE REDO.B.TRANS.PROCESS(BUILD.LIST)
 * DATE             WHO                         REFERENCE            DESCRIPTION
 *==============    ==============              =================    =================
 * 19.10.2010       Sakthi Sellappillai         ODR-2010-08-0031     INITIAL CREATION
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND COMMENTED I_F.FUNDS.TRANSFER
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------------------------
@@ -43,9 +43,10 @@ SUBROUTINE REDO.B.TRANS.PROCESS(BUILD.LIST)
     $INSERT I_F.REDO.FILE.DATE.PROCESS
     $INSERT I_F.REDO.NCF.ISSUED
     $INSERT I_F.REDO.L.NCF.UNMAPPED
-*   $INSERT I_F.FUNDS.TRANSFER  ;*R22 AUTO CONVERSTION COMMENTED I_F.FUNDS.TRANSFER 
+*   $INSERT I_F.FUNDS.TRANSFER  ;*R22 AUTO CONVERSTION COMMENTED I_F.FUNDS.TRANSFER
     $INSERT I_F.REDO.L.NCF.STATUS
     $INSERT I_F.REDO.L.NCF.CANCELLED
+    $USING APAP.TAM
 
     GOSUB INIT.PROCESS
     GOSUB GOEND
@@ -151,7 +152,8 @@ GET.PAYROLL.PROCESS:
 
 
 
-    CALL REDO.UPLOAD.CREDIT.ACCOUNT.CHECK(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID)
+*    CALL REDO.UPLOAD.CREDIT.ACCOUNT.CHECK(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID)
+    APAP.TAM.redoUploadCreditAccountCheck(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID) ;*R22 Manual Code Conversion
 
     IF Y.CR.ACCT.STATUS THEN
         R.REDO.SUPPLIER.PAYMENT<REDO.SUP.PAY.CR.STATUS> = Y.CR.ACCT.STATUS
@@ -256,7 +258,8 @@ GET.SUPPLIER.PROCESS:
     END
 
 
-    CALL REDO.UPLOAD.CREDIT.ACCOUNT.CHECK(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID)
+*    CALL REDO.UPLOAD.CREDIT.ACCOUNT.CHECK(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID)
+    APAP.TAM.redoUploadCreditAccountCheck(Y.BEN.ACCOUNT,Y.FILE.TYPE,Y.REDO.SUPPLIER.ID,Y.CR.ACCT.STATUS,Y.BEN.ID) ;*R22 Manual Code Conversion
 
     IF Y.CR.ACCT.STATUS THEN
         R.REDO.SUPPLIER.PAYMENT<REDO.SUP.PAY.CR.STATUS> = Y.CR.ACCT.STATUS

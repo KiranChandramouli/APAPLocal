@@ -1,12 +1,12 @@
-* @ValidationCode : MjotOTM4NTA2MjUyOkNwMTI1MjoxNjg5ODUwNzY2NDkwOklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 20 Jul 2023 16:29:26
+* @ValidationCode : MjotNzU4NTUyMTk3OkNwMTI1MjoxNjkwMjY0MTY5NjE5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:29
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -34,7 +34,7 @@ SUBROUTINE L.APAP.CAMPO.CUOTA.PROG(ARRANGEMENT.ID)
     $INSERT  I_F.ST.L.APAP.COVI.PRELACIONIII ;*R22 MANAL CONVERSION
     $INSERT  I_F.L.APAP.LOG.COVID19
     $INSERT  I_L.APAP.CAMPO.CUOTA.PROG.COMMON ;*R22 MANAL CONVERSION
-
+    $USING APAP.AA
     GOSUB MAIN.PROCESS
 
 RETURN
@@ -42,7 +42,8 @@ RETURN
 
 MAIN.PROCESS:
     AA.ARR.ID = ARRANGEMENT.ID; Y.ESTADO.CUOTA.PROG = "PROCESADO";
-    CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(AA.ARR.ID,OUT.RECORD)
+*   CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(AA.ARR.ID,OUT.RECORD)
+    APAP.AA.redoBConLnsByDebtorAaRecs(AA.ARR.ID,OUT.RECORD) ;*R22 Manual Code Conversion
     R.AA.PAYMENT.SCHEDULE.APP = FIELD(OUT.RECORD,"*",3)
     GOSUB GET.AA.PAYMENT.SHEDULE
     GOSUB GET.COVID.PRELACION

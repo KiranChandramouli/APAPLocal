@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0NzcxNTUzMDM6Q3AxMjUyOjE2ODQ4NTQzODEzNTE6SVRTUzotMTotMToxODI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
+* @ValidationCode : MjotMTc0MzMyMTEyNTpDcDEyNTI6MTY5MDI2NDM1MjY1MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:32
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 182
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.BCR.REPORT.PARAM.UPD
@@ -23,7 +23,7 @@ SUBROUTINE REDO.B.BCR.REPORT.PARAM.UPD
 *!
 *-------------------------------------------------------------------------------------
 *Modification
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - NO CHANGES
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------
@@ -31,6 +31,7 @@ SUBROUTINE REDO.B.BCR.REPORT.PARAM.UPD
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.INTERFACE.PARAM
+    $USING APAP.TAM
 *-----------------------------------------------------------------------------
     GOSUB INITIALISE
     GOSUB PROCESS
@@ -40,7 +41,8 @@ RETURN
 PROCESS:
 *-----------------------------------------------------------------------------
 
-    CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.LIST)     ;* Get the list of REDO.INTERFACE.PARAM to process
+*   CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.LIST)     ;* Get the list of REDO.INTERFACE.PARAM to process
+    APAP.TAM.redoRBcrReportGenListGet(Y.LIST) ;*R22 Manual Code Conversion
 
     LOOP
         REMOVE Y.RIP.ID FROM Y.LIST SETTING Y.POS

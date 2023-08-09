@@ -15,7 +15,6 @@ public method redoSAccountParam (
 }
 
 
-
 public method redoSAmtCredit (
     INOUT yAmtCredit string
 )
@@ -1313,11 +1312,11 @@ public method redoSByMthIncAvgBal (
 
 
 public method redoSGetUsrErrMsg (
-   INOUT pErrCode string,
-   INOUT pUsrMsg string
+    INOUT pErrCode string,
+    INOUT pUsrMsg string
 )
 {
-   jBC: REDO.S.GET.USR.ERR.MSG
+    jBC: REDO.S.GET.USR.ERR.MSG
 }
 
 
@@ -1433,10 +1432,3 @@ public method redoSRecAcctList (
     jBC: REDO.S.REC.ACCT.LIST
 }
 
-public method redoSCalcDisbDateAmt (
-    INOUT inRecVal string,
-    INOUT outRecVal string
-)
-{
-    jBC: REDO.S.CALC.DISB.DATE.AMT
-}

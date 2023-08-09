@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTEzNTk1NDI2MzpDcDEyNTI6MTY4NDgzNjAzNjkwNDpJVFNTOi0xOi0xOi0xODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:36
+* @ValidationCode : MjoxMDcyODY1MTE1OkNwMTI1MjoxNjkwMjY0MjU5ODMwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:20:59
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -18
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.DS.AMT.TO.WORDS(Y.AMT)
@@ -43,6 +43,8 @@ SUBROUTINE REDO.APAP.DS.AMT.TO.WORDS(Y.AMT)
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.AZ.ACCOUNT
+    $USING APAP.TAM
+    
 
 *--------------------------------------------------------------------------------
 **********
@@ -68,7 +70,8 @@ PROCESS.PARA:
 *******This condition is used for USD deposits through SMB versions deal slip print*************
         IF NOT(IN.AMT) THEN
             IN.AMT=R.NEW(AZ.PRINCIPAL)
-            CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+*           CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+            APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;*R22 Manual Code Conversion
             VAR.OUT.AMT = EREPLACE(OUT.AMT,"pesos con","usd con")
             Y.AMT = UPCASE(VAR.OUT.AMT)
             RETURN
@@ -78,7 +81,8 @@ PROCESS.PARA:
         IN.AMT=R.NEW(AZ.PRINCIPAL)
     END
 
-    CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+*   CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+    APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;*R22 Manual Code Conversion
 
 * Fix for PACS00261598 [AZ DEPOSIT DEALSLIP ALIGNMENT ISSUE]
 

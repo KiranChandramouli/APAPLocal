@@ -17,7 +17,6 @@ public method redoFcBhValidationsFields (
 }
 
 
-
 public method redoFcClAccounting (
     INOUT action string
 )
@@ -1765,3 +1764,11 @@ public method redoFiOrangePayments (
 {
     jBC: REDO.FI.ORANGE.PAYMENTS
 }
+
+
+public method redoFiControlId (
+)
+{
+    jBC: REDO.FI.CONTROL.ID
+}
+

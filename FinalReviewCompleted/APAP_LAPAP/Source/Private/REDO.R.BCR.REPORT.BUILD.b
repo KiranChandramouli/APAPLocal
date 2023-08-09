@@ -1,17 +1,25 @@
-* @ValidationCode : MjotMTg1OTgwMjUzMTpDcDEyNTI6MTY4OTg1NjU5Njc5MTpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 20 Jul 2023 18:06:36
+* @ValidationCode : Mjo3NDczODU4MTE6Q3AxMjUyOjE2OTEzOTk4MTE2NTc6SVRTUzotMTotMTo1Njc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 07 Aug 2023 14:46:51
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 567
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-
+*-----------------------------------------------------------------------------
+* <Rating>-35</Rating>
+*-----------------------------------------------------------------------------
+*-----------------------------------------------------------------------------
+*MODIFICATION HISTORY:
+*
+* DATE              WHO                REFERENCE                 DESCRIPTION
+* 13-07-2023     Harishvikram C   Manual R22 conversion       BP Removed, VM to @VM, FM to @FM, CALL routine format modified
+*----------------------------------------------------------------------------
 SUBROUTINE REDO.R.BCR.REPORT.BUILD
 *-----------------------------------------------------------------------------
 * Esta rutina es la encargada de generar el archivo correspondiente de acuerdo a los datos
@@ -21,24 +29,20 @@ SUBROUTINE REDO.R.BCR.REPORT.BUILD
 * @stereotype subroutine
 * @package REDO
 *!
-*DATE                 WHO                    REFERENCE                     DESCRIPTION
-*13/07/2023      Conversion tool            R22 Auto Conversion            INCLUDE TO INSERT, BP removed in INSERT file, CHAR to CHARX, FM TO @FM, VM TO @VM
-*13/07/2023      Suresh                     R22 Manual Conversion          Variable initialised
-*------------------------------------------------------------------------------------------------------------
-    $INSERT I_COMMON ;*R22 Auto Conversion - Start
+*-----------------------------------------------------------------------------
+    $INSERT I_COMMON ;* R22 Manual conversion - INCLUDE changed to INSERT
     $INSERT I_EQUATE
     $INSERT I_F.DATES
     $INSERT I_F.REDO.INTERFACE.PARAM
     $INSERT I_F.REDO.BCR.REPORT.DATA
     $INSERT I_F.REDO.BCR.REPORT.EXEC
     $INSERT I_REDO.B.BCR.REPORT.BUILD.COMMON
-    $INSERT JBC.h  ;*R22 Auto Conversion - End
-    
+    $INSERT JBC.h ;* R22 Manual conversion - INCLUDE changed to INSERT
     $USING APAP.REDOCHNLS
 *-----------------------------------------------------------------------------
 
-    EQU LF TO CHARX(10) ;*R22 Auto Conversion
-    EQU CR TO CHARX(13) ;*R22 Auto Conversion
+    EQU LF TO CHARX(10);* R22 Manual conversion - CHAR changed to CHARX
+    EQU CR TO CHARX(13);* R22 Manual conversion - CHAR changed to CHARX
     E = ''
     GOSUB INITIALISE
     IF E NE '' THEN
@@ -134,7 +138,8 @@ INITIALISE:
             E<2> = Y.FILE.NAME1 : @VM : yPath
             K.MON.TP='08'
             K.DESC=E
-            APAP.REDOCHNLS.redoInterfaceRecAct(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC) ;*R22 Manual Conversion
+*            CALL REDO.INTERFACE.REC.ACT(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)  ;*Manual R22 conversion
             RETURN
         END
     END
@@ -147,7 +152,8 @@ WRITE.LINE:
     WRITESEQ yLine TO F.PROP.FILE.1 ELSE
         K.MON.TP='08'
         K.DESC= "ERROR TRYING TO WRITE ON FILE " : yPath : "/" : Y.FILE.NAME1
-        APAP.REDOCHNLS.redoInterfaceRecAct(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC) ;*R22 Manual Conversion
+*        CALL REDO.INTERFACE.REC.ACT(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)  ;*Manual R22 conversion
         CALL OCOMO("ERROR TRYING TO WRITE TO SEQ-FILE " : K.DESC)
     END
 RETURN

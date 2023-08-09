@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTUyMDM0MTc5OkNwMTI1MjoxNjg5OTIzMTc5MDk0OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 21 Jul 2023 12:36:19
+* @ValidationCode : MjotMTMxNzQ1OTY2NDpDcDEyNTI6MTY5MDI2Njc4NzQ0MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 12:03:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.B.DEBTOR.PUNISH(Y.AA.ARR.ID)
@@ -44,7 +44,7 @@ SUBROUTINE REDO.B.DEBTOR.PUNISH(Y.AA.ARR.ID)
 * 29/10/2014  Ashokkumar.V.P        PACS00400717 - New mapping changes
 * 01/12/2017  Ashokkumar            CN007886--> Added the product LINEAS.DE.CREDITO.TC to the report.
 * 15/01/2018  Ashokkumar            CN008154 -> Added new field to display Currency and amended the Tipo de Operacion field.
-* 21-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , FM to @FM and SM to @SM 
+* 21-JULY-2023      Harsha                R22 Auto Conversion  - VM to @VM , FM to @FM and SM to @SM
 * 21-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts and Added APAP.TAM
 *-----------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -63,6 +63,7 @@ SUBROUTINE REDO.B.DEBTOR.PUNISH(Y.AA.ARR.ID)
     $INSERT I_REDO.B.DEBTOR.PUNISH.COMMON		;* Added the two varible L.CU.DEBTOR.POSN and L.LOAN.COND.POS in Insert file
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
     $INSERT I_F.REDO.APAP.CREDIT.CARD.DET
+    $USING APAP.LAPAP
 
 
     GOSUB INITIALIZE
@@ -280,7 +281,8 @@ MAP.FIELD.RCL:
 *Mapping field for RCL
 *REDO.S.REP.CUSTOMER.EXTRACT is generic routine
 *-----------------------------------------------------------------------------------------------------------------
-    CALL REDO.S.REG.CUSTOMER.EXTRACT(Y.CUS.NO,Y.PRODUCT.GROUP,Y.REL.REQ,Y.OUT.ARR)
+*    CALL REDO.S.REG.CUSTOMER.EXTRACT(Y.CUS.NO,Y.PRODUCT.GROUP,Y.REL.REQ,Y.OUT.ARR)
+    APAP.LAPAP.redoSRegCustomerExtract(Y.CUS.NO,Y.PRODUCT.GROUP,Y.REL.REQ,Y.OUT.ARR) ;*R22 Manual Code Conversion
     Y.CUST.IDEN = Y.OUT.ARR<1>
     Y.CUST.TYPE = Y.OUT.ARR<2>
     Y.CUST.NAME = Y.OUT.ARR<3>

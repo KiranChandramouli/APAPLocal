@@ -1,3 +1,0 @@
-* I_F.DR.REG.REGN16.AC Created 17 FEB 14 at 05:09PM by t24uatq/INPUTTER
-*      PREFIX[REGN16.ACC]
-       EQU REGN16.ACC.MID.VAL.RATE TO 1,   DrRegRegn16Ac_MidValRate TO 1

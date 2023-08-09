@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNDkyMjc5MTA1OkNwMTI1MjoxNjg0ODU0MzgzMTQwOklUU1M6LTE6LTE6MzUwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:23
+* @ValidationCode : MjotMzI2MTMwNDY5OkNwMTI1MjoxNjkwMjY0MzU3NDM1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 350
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP(CUSTOMER.ID)
@@ -44,7 +44,7 @@ SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP(CUSTOMER.ID)
 *                                                                             displayed as per the required format
 *-----------------------------------------------------------------------------------------------------------------
 * PACS00361958           Ashokkumar.V.P                  23/02/2015           Optimized the relation between the customer
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION SM TO @SM AND VM TO @VM AND FM TO @FM AND ! TO *
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -57,6 +57,7 @@ SUBROUTINE REDO.B.COMP.OWN.RISK.GROUP(CUSTOMER.ID)
     $INSERT I_F.CUST.DOCUMENT
     $INSERT I_F.COMPANY
     $INSERT I_REDO.B.COMP.OWN.RISK.GROUP.COMMON
+    $USING APAP.REDOCHNLS
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -375,7 +376,8 @@ WRITE.TO.FILE:
         MON.TP   = 04
         REC.CON  = 'GR99-':ERR.MSG
         DESC     = 'GR99-':ERR.MSG
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
     C$SPARE(451) = ''; C$SPARE(452) = ''; C$SPARE(453) = ''; C$SPARE(454) = ''; C$SPARE(455) = ''
     C$SPARE(456) = ''; C$SPARE(457) = ''; C$SPARE(458) = ''; C$SPARE(459) = ''; C$SPARE(460) = ''

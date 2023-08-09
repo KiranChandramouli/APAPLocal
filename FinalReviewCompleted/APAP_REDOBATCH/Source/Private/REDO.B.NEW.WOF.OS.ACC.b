@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjAyNDQyMDA4NjpDcDEyNTI6MTY4NDg1NDM5NDEzODpJVFNTOi0xOi0xOjI0OTA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:34
+* @ValidationCode : MjoxMjkzOTQwNjA4OkNwMTI1MjoxNjkwMjY0NDI1NDcwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:45
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2490
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.NEW.WOF.OS.ACC(Y.ID)
@@ -27,7 +27,7 @@ SUBROUTINE REDO.B.NEW.WOF.OS.ACC(Y.ID)
 *-----------------------
 * Reference              Date                Description
 * ODR-2011-12-0017      23-OCT-2011          WOF ACCOUTING - PACS00202156
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -=
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------
@@ -44,7 +44,7 @@ SUBROUTINE REDO.B.NEW.WOF.OS.ACC(Y.ID)
     $INSERT I_F.REDO.AA.INT.CLASSIFICATION
     $INSERT I_F.REDO.ACCT.MRKWOF.PARAMETER
     $INSERT I_REDO.B.NEW.WOF.OS.ACC.COMMON
-
+    $USING APAP.TAM
 *-----------------------------------------------------------------
 MAIN:
 *-----------------------------------------------------------------
@@ -540,7 +540,8 @@ GET.PRINCIPALINT.PROPERTY:
     OUT.PROP = ''
     ERR = ''
     PROP.NAME = 'PRINCIPAL'
-    CALL REDO.GET.INTEREST.PROPERTY(Y.ID,PROP.NAME,OUT.PROP,ERR)
+*   CALL REDO.GET.INTEREST.PROPERTY(Y.ID,PROP.NAME,OUT.PROP,ERR)
+    APAP.TAM.redoGetInterestProperty(Y.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code Conversion
     Y.INT.PROPERTY = OUT.PROP
     IF Y.INT.PROPERTY EQ '' AND ERR NE '' THEN
         CALL  OCOMO("Not able to find principal interest property - ":Y.ID)
@@ -549,7 +550,8 @@ GET.PRINCIPALINT.PROPERTY:
 
     Y.ACCOUNT.PROPERTY = ''
     OUT.ERR = ''
-    CALL REDO.GET.PROPERTY.NAME(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+*   CALL REDO.GET.PROPERTY.NAME(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)  ;*R22 Manual Code Conversion
 
     IF Y.ACCOUNT.PROPERTY EQ '' AND OUT.ERR NE '' THEN
         CALL  OCOMO("Not able to find Account property - ":Y.ID)
@@ -565,7 +567,8 @@ GET.OVERDUE.STATUS:
     PROPERTY = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''; Y.BILL.TYPE = ''
-    CALL REDO.CRR.GET.CONDITIONS(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+*   CALL REDO.CRR.GET.CONDITIONS(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+    APAP.TAM.redoCrrGetConditions(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG) ;*R22 Manual Code Conversion
     Y.BILL.TYPE = R.CONDITION.OVERDUE<AA.OD.BILL.TYPE>
     LOCATE 'PAYMENT' IN Y.BILL.TYPE<1,1> SETTING YPOSN THEN
         Y.OVERDUE.STATUS = R.CONDITION.OVERDUE<AA.OD.OVERDUE.STATUS,YPOSN>

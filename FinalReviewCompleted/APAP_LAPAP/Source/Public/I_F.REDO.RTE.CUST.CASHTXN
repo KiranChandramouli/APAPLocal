@@ -1,0 +1,10 @@
+* I_F.REDO.RTE.CUST.CASHTXN Created 13 DEC 17 at 01:11PM by da5tus/TEST.1
+*      PREFIX[RTE]
+                       EQU RTE.TXN.ID TO 1,   RedoRteCustCashtxn_TxnId TO 1,
+                       RTE.INITIAL.ID TO 2,   RedoRteCustCashtxn_InitialId TO 2,
+                       RTE.TRANS.DATE TO 3,   RedoRteCustCashtxn_TransDate TO 3,
+                      RTE.BRANCH.CODE TO 4,   RedoRteCustCashtxn_BranchCode TO 4,
+                      RTE.CASH.AMOUNT TO 5,   RedoRteCustCashtxn_CashAmount TO 5,
+                   RTE.ACTUAL.VERSION TO 6,   RedoRteCustCashtxn_ActualVersion TO 6,
+                         RTE.FUNCTION TO 7,   RedoRteCustCashtxn_Function TO 7,
+                   RTE.RTE.RESET.FLAG TO 8,   RedoRteCustCashtxn_RteResetFlag TO 8

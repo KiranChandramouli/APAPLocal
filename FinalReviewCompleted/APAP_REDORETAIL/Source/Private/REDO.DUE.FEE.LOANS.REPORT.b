@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2NzAwMTI3MTM6Q3AxMjUyOjE2ODU5NTAzMzUyNzg6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Jun 2023 13:02:15
+* @ValidationCode : MjotMTMxNTM5MTQwNTpDcDEyNTI6MTY5MDI2NjU1NzEzNDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:59:17
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.DUE.FEE.LOANS.REPORT(Y.OUT.ARRAY)
@@ -54,6 +54,9 @@ SUBROUTINE REDO.DUE.FEE.LOANS.REPORT(Y.OUT.ARRAY)
 
     $INSERT I_F.AA.INTEREST.ACCRUALS
     $INSERT I_F.AA.OVERDUE
+    $USING APAP.TAM
+   
+    
 
     GOSUB INITIALISE
     GOSUB OPENFILES
@@ -260,7 +263,8 @@ GET.BILL.DETAILS:
     Y.BILL.DUE.DATE    = '' ; Y.TOT.CAPITAL.FEE = '' ; Y.TOT.FEE.INTEREST = '' ; Y.TOT.DUE.FEE = '' ; Y.TOT.CHRG.COMM.FEE = ''
     Y.TOT.CHRG.INS.FEE = '' ; Y.TOTAL.FEE = '' ; Y.AA.ID = '' ;* PACS00321228 - VNL - 20150817 - S/E
 *
-    CALL REDO.GET.BILL.DETAILS(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE)
+*    CALL REDO.GET.BILL.DETAILS(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE)
+    APAP.TAM.redoGetBillDetails(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE) ;*R22 Manual Code Conversion
 * PACS00321228 - 2014OCT04 - S
     Y.BILL.DATE   = Y.BILL.DUE.DATE
     Y.TOT.CAP.FEE = Y.TOT.CAPITAL.FEE

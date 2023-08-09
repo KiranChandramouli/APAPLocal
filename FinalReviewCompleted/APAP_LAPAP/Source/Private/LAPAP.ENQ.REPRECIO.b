@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo3MDUxMDUzODA6Q3AxMjUyOjE2ODY2NzQyNjIwNDk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:07:42
+* @ValidationCode : MjoxMTc0NDUyNDc5OkNwMTI1MjoxNjkwMjY0MTg3ODY2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:47
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -45,7 +45,7 @@ SUBROUTINE LAPAP.ENQ.REPRECIO(Y.FINAL)
     $INSERT I_F.REDO.CUST.PRD.LIST
     $INSERT I_F.AA.OVERDUE
 *   $INSERT I_F.AZ.ACCOUNT
-
+    $USING APAP.AA
     GOSUB LOAD.TABLES
     GOSUB PROCESS
 
@@ -448,7 +448,8 @@ GET.INFO.ARRANGEMENT:
         T.CONTINUE.FLAG = 'NO';
     END
 
-    CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+*   CALL REDO.B.CON.LNS.BY.DEBTOR.AA.RECS(Y.ARRANGEMENT.ID,OUT.RECORD)
+    APAP.AA.redoBConLnsByDebtorAaRecs(Y.ARRANGEMENT.ID,OUT.RECORD) ;*R22 Manual Code Conversion
     R.AA.TERM.AMOUNT          = FIELD(OUT.RECORD,"*",1)
     R.AA.INTEREST             = FIELD(OUT.RECORD,"*",7)
 

@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTM3ODA5ODU1MTpDcDEyNTI6MTY4OTkzNjExMTcxNzpJVFNTOi0xOi0xOjEyNjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 21 Jul 2023 16:11:51
+* @ValidationCode : MjotMTc0ODY0MTEzMzpDcDEyNTI6MTY5MDE5NDgxMzY4ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:33
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1266
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -70,7 +70,7 @@ LEER.SOYB:
         Y.FECHA.CIERRE =   Y.ANO.ACT : '1231'
 
         IF (Y.TIPO.CLIENTE NE 'PERSONA JURIDICA') THEN
-            CALL LAPAP.CALC.AGE.RT(Y.FECHA.NACE.CLIENTE,Y.PA.FECHA.ASAMBLEA,Y.EDAD.CLIENTE)
+            APAP.LAPAP.lapapCalcAgeRt(Y.FECHA.NACE.CLIENTE,Y.FECHA.CIERRE,Y.EDAD.CLIENTE);* R22 Manual conversion - CALL method format changed
 *CALL LAPAP.CALC.AGE.RT(Y.FECHA.NACE.CLIENTE,Y.FECHA.CIERRE,Y.EDAD.CLIENTE)
         END
 *ESCRIBO EL BALANCE MENSUAL PARA REFERENCIA.
@@ -81,8 +81,8 @@ LEER.SOYB:
         CALL OCOMO("LLAMANDO RUTINA 'LAPAP.TWELVE.AVG.RT' CON PARAMETROS: ": ACCOUNT : "|" : Y.ANO.ACT : "|" : Y.BALANCE.DE.INICIO )
 
 *  CALL LAPAP.TWELVE.AVG.RT(ACCOUNT, Y.ANO.ACT, Y.BALANCE.DE.INICIO, Y.ARR.BALANCE.PROM.MENSUAL)
-
-        CALL L.APAP.ANUAL.AVG.RT(ACCOUNT, Y.ANO.ACT, Y.BALANCE.DE.INICIO, Y.ARR.BALANCE.PROM.MENSUAL,Y.DIA.MENOR.PROMEDIO)
+        APAP.LAPAP.lApapAnualAvgRt(ACCOUNT, Y.ANO.ACT, Y.BALANCE.DE.INICIO, Y.ARR.BALANCE.PROM.MENSUAL,Y.DIA.MENOR.PROMEDIO);* R22 Manual conversion - CALL method format changed
+*CALL L.APAP.ANUAL.AVG.RT(ACCOUNT, Y.ANO.ACT, Y.BALANCE.DE.INICIO, Y.ARR.BALANCE.PROM.MENSUAL,Y.DIA.MENOR.PROMEDIO)
 
         CALL OCOMO("BALANCES PROMEDIO:" : Y.ARR.BALANCE.PROM.MENSUAL)
 

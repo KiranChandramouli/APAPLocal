@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk4ODIxMDM1NTpDcDEyNTI6MTY4NDgzNjA0ODE1NjpJVFNTOi0xOi0xOjU1MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:48
+* @ValidationCode : MjoxMDI2ODQ4NTE5OkNwMTI1MjoxNjkwMjY0MjY4MjI2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 553
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOF.FT.REVERSE(Y.FIN.ARR)
@@ -38,6 +38,7 @@ SUBROUTINE REDO.APAP.NOF.FT.REVERSE(Y.FIN.ARR)
     $INSERT I_F.FT.TXN.TYPE.CONDITION
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.REDO.APAP.REVERSAL.FTTC
+    $USING APAP.REDOENQ
 
 *-----------------------------------------------------------------------------
 MAIN:
@@ -105,8 +106,10 @@ PROCESS:
 *-----------------------------------------------------------------------------
 
 
-    CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD)
-    CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD)
+*   CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD)
+*   CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD)
+    APAP.REDOENQ.redoEFormSelStmt(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD) ;*R22 Manual Code Conversion
+    APAP.REDOENQ.redoEFormSelStmt(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD) ;*R22 Manual Code Conversion
     IF D.RANGE.AND.VALUE AND NOT(Y.DATE) THEN
         SEL.LIVE.CMD := ' AND PROCESSING.DATE GE ':Y.HIST.DATE
         SEL.HIST.CMD := ' AND PROCESSING.DATE GE ':Y.HIST.DATE

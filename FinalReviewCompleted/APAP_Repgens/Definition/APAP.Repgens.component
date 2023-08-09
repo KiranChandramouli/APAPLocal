@@ -2,6 +2,7 @@ component APAP.Repgens
 # Component Isolation Definition
 metamodelVersion 1.6
 # -------------------------------------------------
+
 public method rgpCoExpiry (
 )
 {

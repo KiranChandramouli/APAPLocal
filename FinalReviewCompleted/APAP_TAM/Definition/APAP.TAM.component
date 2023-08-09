@@ -19,7 +19,6 @@ public method redoFtLaunchSupportingEnq (
 
 
 
-
 public method redoFtNcfIdGen (
 )
 {
@@ -15711,153 +15710,27 @@ public method redoValCcyCheck (
 
 
 
-public method redoCcrgCalMaxAmountValRtn (
-)
-{
-    jBC: REDO.CCRG.CAL.MAX.AMOUNT.VAL.RTN
-}
 
 
-public method redoChkIdStockVault (
+public method apapAuthMaskCard (
 )
 {
-    jBC: REDO.CHK.ID.STOCK.VAULT
+   jBC: APAP.AUTH.MASK.CARD
 }
 
 
 
-public method redoConvActualVersionName (
+public method apapCheckMaskCard (
 )
 {
-    jBC: REDO.CONV.ACTUAL.VERSION.NAME
+   jBC: APAP.CHECK.MASK.CARD
 }
 
 
 
-public method redoGeneraPwd (
+public method apapDynConvRtn (
 )
 {
-    jBC: REDO.GENERA.PWD
+   jBC: APAP.DYN.CONV.RTN
 }
 
-
-
-public method redoGetAccCoCode (
-    INOUT accountVal string,
-    INOUT yAccCoCode string
-)
-{
-    jBC: REDO.GET.ACC.CO.CODE
-}
-
-
-
-public method redoGetLendingProducts (
-)
-{
-    jBC: REDO.GET.LENDING.PRODUCTS
-}
-
-
-
-public method redoGetWaiveCateg (
-    INOUT waiveCat string
-)
-{
-    jBC: REDO.GET.WAIVE.CATEG
-}
-
-
-public method redoPrnVirginDamage (
-    INOUT yArray string
-)
-{
-    jBC: REDO.PRN.VIRGIN.DAMAGE
-}
-
-
-
-public method redoRaiseNabAccounting (
-    INOUT nabId string
-)
-{
-    jBC: REDO.RAISE.NAB.ACCOUNTING
-}
-
-
-
-public method redoRaiseRepayAccounting (
-    INOUT repayId string
-)
-{
-    jBC: REDO.RAISE.REPAY.ACCOUNTING
-}
-
-
-
-public method redoCcrgCalMaxAmount (
-    INOUT pInRtn string
-)
-{
-    jBC: REDO.CCRG.CAL.MAX.AMOUNT
-}
-
-
-public method redoRaiseWofAccounting (
-    INOUT wofId string
-)
-{
-    jBC: REDO.RAISE.WOF.ACCOUNTING
-}
-
-
-public method redoUpdFulChqRev (
-    INOUT ckId string
-)
-{
-    jBC: REDO.UPD.FUL.CHQ.REV
-}
-
-
-public method redoUpdateChequeAmounts (
-)
-{
-    jBC: REDO.UPDATE.CHEQUE.AMOUNTS
-}
-
-
-public method redoVAutAaDisburse (
-)
-{
-    jBC: REDO.V.AUT.AA.DISBURSE
-}
-
-public method redoVInpChqMand (
-)
-{
-    jBC: REDO.V.INP.CHQ.MAND
-}
-
-
-
-public method redoValSeriesCheck (
-)
-{
-    jBC: REDO.VAL.SERIES.CHECK
-}
-
-
-
-public method redoValStartNumber (
-)
-{
-    jBC: REDO.VAL.START.NUMBER
-}
-
-
-
-public method redoValTfsTxnType (
-)
-{
-    jBC: REDO.VAL.TFS.TXN.TYPE
-}

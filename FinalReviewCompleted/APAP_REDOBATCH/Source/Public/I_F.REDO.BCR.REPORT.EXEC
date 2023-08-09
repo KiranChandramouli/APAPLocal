@@ -1,4 +1,4 @@
-* I_F.REDO.BCR.REPORT.EXEC Created 22 JUL 14 at 07:40PM by t24uatd/INPUTTER
+* I_F.REDO.BCR.REPORT.EXEC Created 29 JAN 16 at 03:47AM by t24aassu/AUTHORISER
 *      PREFIX[REDO.BCR.REP.EXE]
                EQU REDO.BCR.REP.EXE.NAME TO 1,   RedoBcrReportExec_Name TO 1,
             REDO.BCR.REP.EXE.SEND.METHOD TO 2,   RedoBcrReportExec_SendMethod TO 2,
@@ -13,7 +13,7 @@
           REDO.BCR.REP.EXE.GET.INT.PARAM TO 11,  RedoBcrReportExec_GetIntParam TO 11,
             REDO.BCR.REP.EXE.RUN.PROCESS TO 12,  RedoBcrReportExec_RunProcess TO 12,
      REDO.BCR.REP.EXE.LOAN.PRODUCT.GROUP TO 13,  RedoBcrReportExec_LoanProductGroup TO 13,
-             REDO.BCR.REP.EXE.RESERVED.3 TO 14,  RedoBcrReportExec_Reserved3 TO 14,
+         REDO.BCR.REP.EXE.REP.TIME.RANGE TO 14,  RedoBcrReportExec_RepTimeRange TO 14,
              REDO.BCR.REP.EXE.RESERVED.2 TO 15,  RedoBcrReportExec_Reserved2 TO 15,
              REDO.BCR.REP.EXE.RESERVED.1 TO 16,  RedoBcrReportExec_Reserved1 TO 16,
               REDO.BCR.REP.EXE.LOCAL.REF TO 17,  RedoBcrReportExec_LocalRef TO 17,

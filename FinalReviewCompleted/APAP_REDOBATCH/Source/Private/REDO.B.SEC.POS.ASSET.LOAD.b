@@ -1,14 +1,14 @@
-* @ValidationCode : MjotODMwNTk1NDE3OkNwMTI1MjoxNjg0ODU0Mzk4MjUxOklUU1M6LTE6LTE6MTk2ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:38
+* @ValidationCode : Mjo0MDE1MTEzNzU6Q3AxMjUyOjE2OTAyNjQ0NTAxNDc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:10
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1968
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.SEC.POS.ASSET.LOAD
@@ -33,7 +33,7 @@ SUBROUTINE REDO.B.SEC.POS.ASSET.LOAD
 *--------------------------------------------------------------------------------------------------
 * Defect Reference       Modified By                    Date of Change        Change Details
 * (RTC/TUT/PACS)
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ADD I_TSA.COMMON AND SESSION.NO TO AGENT.NUMBER
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------------------
@@ -48,6 +48,7 @@ SUBROUTINE REDO.B.SEC.POS.ASSET.LOAD
     $INSERT I_BATCH.FILES
     $INSERT I_SC.COMMON
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
+    $USING APAP.REDOCHNLS
 
     GOSUB INITIALISATION
     GOSUB GET.BATCH.VALUE
@@ -262,7 +263,8 @@ RAISE.ERR.C.22:
     ID.PROC   = ''
     EX.USER   = ''
     EX.PC     = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
 *
 RETURN
 END

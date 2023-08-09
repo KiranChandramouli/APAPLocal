@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMDc1Mzk3NzQ1OkNwMTI1MjoxNjg0ODU0Mzg3MzE0OklUU1M6LTE6LTE6LTI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationCode : MjoxODkxNzE0NTY5OkNwMTI1MjoxNjkwMjY0MzgxNDU0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:01
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -2
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.GEN.ACH.REJINW.FILE.SELECT
@@ -30,7 +30,7 @@ SUBROUTINE REDO.B.GEN.ACH.REJINW.FILE.SELECT
 *   Date               who           Reference            Description
 * 04-Oct-2010        Harish.Y       ODR-2009-12-0290    Initial Creation
 * 10-APR-2013        Shesharaj     PERF-CHANGE            Performance Changes
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 11-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ SUBROUTINE REDO.B.GEN.ACH.REJINW.FILE.SELECT
     $INSERT I_F.REDO.INTERFACE.PARAM
     $INSERT I_F.REDO.ACH.PARAM
     $INSERT I_REDO.B.GEN.ACH.REJINW.FILE.COMMON
-
+    $USING APAP.REDOCHNLS
 
 *!*PERF-CHANGE - Start
 *!    SEL.CMD = "SELECT ":FN.REDO.ACH.PROCESS:" WITH EXEC.DATE EQ ":TODAY:" AND PROCESS.TYPE EQ REDO.ACH.INWARD OR PROCESS.TYPE EQ REDO.ACH.REJ.OUTWARD"
@@ -63,7 +63,8 @@ SUBROUTINE REDO.B.GEN.ACH.REJINW.FILE.SELECT
         REC.CON = 'REDO.B.GEN.ACH.REJINW.FILE.SELECT';
         EX.USER = OPERATOR;
         EX.PC = '' ;
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*      CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 RETURN
 END

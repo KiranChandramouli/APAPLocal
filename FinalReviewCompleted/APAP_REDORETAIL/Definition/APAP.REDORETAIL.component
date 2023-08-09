@@ -9,7 +9,6 @@ public method certifiedChequeDetails (
 }
 
 
-
 public method certifiedChequeDetailsFields (
 )
 {
@@ -3288,7 +3287,7 @@ public method redoAchInwIndir (
 public method redoCardStatus (
 )
 {
-   jBC: REDO.CARD.STATUS
+    jBC: REDO.CARD.STATUS
 }
 
 
@@ -3334,4 +3333,12 @@ public method redoDsPepIType (
     jBC: REDO.DS.PEP.I.TYPE
 }
 
+
+
+
+public method latamCardOrderSplitValidate4 (
+)
+{
+   jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.4
+}
 

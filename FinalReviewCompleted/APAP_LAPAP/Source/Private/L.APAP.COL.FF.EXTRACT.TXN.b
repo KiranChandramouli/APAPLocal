@@ -1,3 +1,15 @@
+* @ValidationCode : MjotMTI4MDc0NDcwMDpDcDEyNTI6MTY5MDI2NDE3MDU0NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:30
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE L.APAP.COL.FF.EXTRACT.TXN(Y.PROCESS.DATE, Y.AA.ID, R.STATIC.MAPPING, Y.ACCOUNT.ID, Y.PRODUCT.ID, Y.AGENCY.CODE, Y.CREDIT.TXN)
 *******************************************************************************
@@ -27,6 +39,7 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.TXN(Y.PROCESS.DATE, Y.AA.ID, R.STATIC.MAPPING, 
     $INSERT I_F.AA.ACTIVITY.HISTORY
     $INSERT I_F.STMT.ENTRY
     $INSERT I_F.TRANSACTION
+    $USING APAP.TAM
 *
     $INSERT I_L.APAP.COL.CUSTOMER.COMMON ;*R22 Auto code conversion
 *   $INSERT I_F.AA.ACTIVITY.HISTORY
@@ -246,7 +259,8 @@ GET.STATIC.MAPPING:
 *-----------------------------------------------------------------------------
 
     E = ""
-    CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
+*   CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
+    APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE) ;*R22 Manual Code Conversion
 RETURN
 
 *

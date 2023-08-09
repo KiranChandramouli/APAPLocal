@@ -184,7 +184,7 @@ public method redoFcClPaymentAa (
 public method redoFcEnqAaProduct (
     INOUT enqData string
 )
-{
+{ 
     jBC: REDO.FC.ENQ.AA.PRODUCT
 }
 
@@ -3004,5 +3004,13 @@ public method redoAaUpdateOverdueStatus (
 )
 {
     jBC: REDO.AA.UPDATE.OVERDUE.STATUS
+}
+
+
+
+public method redoFcClRegisterAa (
+)
+{
+   jBC: REDO.FC.CL.REGISTER.AA
 }
 

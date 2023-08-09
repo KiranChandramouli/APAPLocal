@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTU3MzI2NTc5OlVURi04OjE2ODk3NDk2NTU2MzY6SVRTUzotMTotMToyOTY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 19 Jul 2023 12:24:15
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjotNTc5MTI3NTM6Q3AxMjUyOjE2OTAxOTQ4MjI4NTI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 296
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false

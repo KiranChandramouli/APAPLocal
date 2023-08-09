@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNDUxMzUyMjg2OkNwMTI1MjoxNjg0ODU0Mzk2NTkyOklUU1M6LTE6LTE6MzYwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:36
+* @ValidationCode : MjoxMjAwMDgyNDUxOkNwMTI1MjoxNjkwMjY0NDM3ODQ0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:57
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 360
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.RISK.GROUP.MEMBERS(CUSTOMER.ID)
@@ -43,7 +43,7 @@ SUBROUTINE REDO.B.RISK.GROUP.MEMBERS(CUSTOMER.ID)
 * REGN4-GR03             Kalyani L K                     2014-02-14           Initial Draft
 *                        Thenmalar T                     2014-03-18           Fixes done as per the changes suggested
 *                        Thenmalar T                     2014-03-19           Fixes done as per the changes suggested
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND SESSION.NO TO AGENT.NUMBER AND ADD I_TSA.COMMON
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -59,6 +59,7 @@ SUBROUTINE REDO.B.RISK.GROUP.MEMBERS(CUSTOMER.ID)
     $INSERT I_BATCH.FILES
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.RISK.GROUP.MEMBERS.COMMON
+    $USING APAP.REDOCHNLS
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -350,7 +351,8 @@ WRITE.FILE:
         MON.TP   = 04
         REC.CON  = "GR03"
         DESC     = "GR03"
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 
 RETURN

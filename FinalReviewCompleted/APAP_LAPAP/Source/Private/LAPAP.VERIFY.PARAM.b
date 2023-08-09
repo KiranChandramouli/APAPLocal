@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY3MDMwMjE4NTpDcDEyNTI6MTY4OTI0NTk0ODQ5NDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 13 Jul 2023 16:29:08
+* @ValidationCode : MjotMTEzMzU0NTAwMTpDcDEyNTI6MTY5MDE5NTIyNjUwNzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:10:26
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,8 +33,8 @@ SUBROUTINE LAPAP.VERIFY.PARAM
     F.ACC = ""
 
 
-    CALL LAPAP.VERIFY.CATEGORY.PARAM(CUSI,CATI,RES)
-
+*   CALL LAPAP.VERIFY.CATEGORY.PARAM(CUSI,CATI,RES)
+    APAP.LAPAP.lapapVerifyCategoryParam(CUSI,CATI,RES) ;*MANUAL R22 CODE CONVERSION
 
     IF RES NE 1 THEN
         CALL REBUILD.SCREEN
