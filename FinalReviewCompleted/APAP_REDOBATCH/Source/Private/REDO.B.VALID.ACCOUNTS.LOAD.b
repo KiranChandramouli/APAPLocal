@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotODQzOTA1NzU4OkNwMTI1MjoxNjkwMjY0NDY3NjE4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:27
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMjk2NjQ0MDM3OkNwMTI1MjoxNjg0ODU0NDAxODE5OklUU1M6LTE6LTE6MTQ4MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:41
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1481
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.VALID.ACCOUNTS.LOAD
@@ -43,7 +57,10 @@ SUBROUTINE REDO.B.VALID.ACCOUNTS.LOAD
     $INSERT I_F.REDO.APAP.H.PARAMETER
     $INSERT I_REDO.B.VALID.ACCOUNTS.COMMON
     $INSERT I_F.REDO.APAP.CLEAR.PARAM
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 
     GOSUB INIT
 RETURN
@@ -191,8 +208,12 @@ C22.LOG:
     ID.PROC = ''
     EX.USER = ''
     EX.PC = ''
+<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 RETURN
 END
 *-------------------------------------------------------------------------------------

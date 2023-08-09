@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotNzg1Mjk1ODYyOkNwMTI1MjoxNjkwMjY0MjYzNTE4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:03
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoxMTU4NDg2MTUyOkNwMTI1MjoxNjg0ODM2MDQyMjcxOklUU1M6LTE6LTE6NTA1OjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 505
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.INP.CPH.OPEN
@@ -47,7 +61,11 @@ SUBROUTINE REDO.APAP.INP.CPH.OPEN
     $INSERT I_F.REDO.APAP.MORTGAGES.DETAIL
     $INSERT I_F.REDO.APAP.CPH.PARAMETER
     $INSERT I_F.REDO.OFS.PARAM
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+
+>>>>>>> Stashed changes
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -250,8 +268,13 @@ OFS.UPDATE:
 
     IN.PROPERTY.CLASS='ACCOUNT'
     OUT.PROPERTY=''
+<<<<<<< Updated upstream
 *    CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+
+>>>>>>> Stashed changes
     Y.PROPERTY = OUT.PROPERTY
     Y.ACTIVITY = "LENDING-UPDATE-":OUT.PROPERTY
 

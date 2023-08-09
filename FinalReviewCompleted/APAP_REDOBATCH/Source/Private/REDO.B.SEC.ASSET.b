@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNTIyMDY4OTI0OkNwMTI1MjoxNjkwMjY0NDUwMTExOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:10
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoxNzQ1ODE2ODIxOkNwMTI1MjoxNjg0ODU0Mzk4MjA1OklUU1M6LTE6LTE6MTkyMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:38
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1921
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.SEC.ASSET(Y.INV.DET)
@@ -32,7 +46,11 @@ SUBROUTINE REDO.B.SEC.ASSET(Y.INV.DET)
 *-----------------------------------------------------------------------------------------------------------------
 * Defect Reference       Modified By                    Date of Change        Change Details
 * NA                     Thenmalar T                     18-Feb-2013                   Updated mapping positions
+<<<<<<< Updated upstream
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM
+=======
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM 
+>>>>>>> Stashed changes
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
 *
@@ -66,8 +84,11 @@ SUBROUTINE REDO.B.SEC.ASSET(Y.INV.DET)
     $INSERT I_F.STOCK.EXCHANGE
     $INSERT I_REDO.B.SEC.POS.ASSET.COMMON
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
     $USING APAP.REDOSRTN
+=======
+>>>>>>> Stashed changes
 * </region>
 *-----------------------------------------------------------------------------
 *
@@ -414,8 +435,12 @@ TYPE.OF.CUSTOMER:
     Y.PROG.GRP = ''
     Y.REL.REQ = ''
     OUT.ARR = ''
+<<<<<<< Updated upstream
 *   CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR)
     APAP.REDOSRTN.redoSRepCustomerExtract(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR)
+>>>>>>> Stashed changes
     Y.CUST.TYPE.VAL = FIELD(OUT.ARR,@FM,2)
     Y.CUST.TYPE = Y.CUST.TYPE.VAL[1,2]
 *
@@ -615,8 +640,12 @@ RAISE.ERR.C.22:
     ID.PROC   = ''
     EX.USER   = ''
     EX.PC     = ''
+<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 *
 RETURN
 *------------------------------------------------------------------Final End-------------------------------------------

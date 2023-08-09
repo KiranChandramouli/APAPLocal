@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoyMTMxNzM4ODI6Q3AxMjUyOjE2OTAyNjQzNTU0MzU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:35
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoxOTc5MTU0NzI1OkNwMTI1MjoxNjg0ODU0MzgyNDU4OklUU1M6LTE6LTE6OTI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:22
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 92
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.CLEAR.RETURN.SELECT
@@ -30,7 +44,11 @@ SUBROUTINE REDO.B.CLEAR.RETURN.SELECT
 *-----------------------
 * DATE             WHO            REFERENCE         DESCRIPTION
 * 21.09.2010  ganesh r           ODR-2010-09-0251   INITIAL CREATION
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 * 10-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION FM TO @FM
 * 10-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------------------------
@@ -41,7 +59,10 @@ SUBROUTINE REDO.B.CLEAR.RETURN.SELECT
     $INSERT I_F.REDO.CLEARING.PROCESS
     $INSERT I_BATCH.FILES
     $INSERT I_REDO.B.CLEAR.RETURN.COMMON
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 *------------------------------------------------------------------------------------------
 
     GOSUB PROCESS
@@ -97,8 +118,12 @@ PROCESS:
             REC.CON = ''
             EX.USER = ''
             EX.PC = ''
+<<<<<<< Updated upstream
 *           CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
             CALL OCOMO("Log Interface has been called since file is empty")
         END
     REPEAT

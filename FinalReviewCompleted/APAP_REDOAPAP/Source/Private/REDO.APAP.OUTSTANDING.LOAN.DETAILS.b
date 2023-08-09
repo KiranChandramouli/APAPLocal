@@ -1,14 +1,25 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxOTI4MDg5OTU5OkNwMTI1MjoxNjkwMjY0MjcxMDk3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
+=======
+* @ValidationCode : MjoxMDEwNjM0MjI2OkNwMTI1MjoxNjg1OTQ5MjM1MTg1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Jun 2023 12:43:55
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+>>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.OUTSTANDING.LOAN.DETAILS(Y.FINAL.ARRAY,Y.END.DATE,Y.CRITERIA.SEL,Y.ENQ.OUT)
@@ -53,8 +64,11 @@ SUBROUTINE REDO.APAP.OUTSTANDING.LOAN.DETAILS(Y.FINAL.ARRAY,Y.END.DATE,Y.CRITERI
     $INSERT I_F.REDO.H.CUSTOMER.PROVISIONING
     $INSERT I_F.REDO.H.PROVISION.PARAMETER
     $INSERT I_F.REDO.AA.CHARGE.PARAM
+<<<<<<< Updated upstream
     $USING APAP.AA
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 
     GOSUB OPEN.FILES
     GOSUB GET.LOCAL.FLDPOS
@@ -179,8 +193,12 @@ ARR.CONDITION:
     EFF.DATE = ''
     R.CONDITION = ''
     ERR.MSG = ''
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+=======
+    CALL REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
+>>>>>>> Stashed changes
 RETURN
 *----------------------------------------------------------------------
 GET.PRODUCT.DETAIL:
@@ -267,8 +285,12 @@ PICK.AND.ASSIGN:
             END
         END
     END
+<<<<<<< Updated upstream
 *  CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT)
     APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT)   ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT)
+>>>>>>> Stashed changes
     Y.ACCT.NO = OUT.ID
     CALL F.READ(FN.ACCOUNT,OUT.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
     Y.DAO = R.ACCOUNT<AC.ACCOUNT.OFFICER> ;*--------------------------------------------------------------- 12TH FIELD VALUE
@@ -331,8 +353,12 @@ PICK.AND.ASSIGN:
 *Y.BILL.AMOUNT = PAYMENT.SCHEDULE.CONDITION<AA.PS.CALC.AMOUNT>
     Y.DATE = TODAY
     Y.BILL.AMOUNT = 0
+<<<<<<< Updated upstream
 *   CALL REDO.GET.NEXT.PAYMENT.AMOUNT.OLD(Y.ARR.ID,Y.DATE,Y.BILL.AMOUNT)
     APAP.TAM.redoGetNextPaymentAmountOld(Y.ARR.ID,Y.DATE,Y.BILL.AMOUNT) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.NEXT.PAYMENT.AMOUNT.OLD(Y.ARR.ID,Y.DATE,Y.BILL.AMOUNT)
+>>>>>>> Stashed changes
     CHANGE @VM TO @FM IN Y.BILL.AMOUNT
     CHANGE @SM TO @FM IN Y.BILL.AMOUNT
     Y.BILL.AMOUNT = SUM(Y.BILL.AMOUNT)    ;*------------------------------------------------------------------------- 35TH FIELD VALUE
@@ -357,13 +383,21 @@ RETURN
 *-----------------------------------------------------------------------------
 CALL.GET.CHARGE:
 *---------------
+<<<<<<< Updated upstream
     APAP.REDOAPAP.redoApapGetChargeAmt(Y.ARR.ID,Y.LOAN.BK.TYP,Y.FIRST.DISB.DATE,Y.END.DATE,Y.BALANCE.CHARGE,Y.TOT.BAL.DUE)     ;*------ 31ST & 32ND FIELD VALUE
+=======
+     APAP.REDOAPAP.redoApapGetChargeAmt(Y.ARR.ID,Y.LOAN.BK.TYP,Y.FIRST.DISB.DATE,Y.END.DATE,Y.BALANCE.CHARGE,Y.TOT.BAL.DUE)     ;*------ 31ST & 32ND FIELD VALUE
+>>>>>>> Stashed changes
     Y.BALANCE.CHARGE -= Y.TOT.BAL.DUE
 RETURN
 *-----------------------------------------------------------------------------
 CALL.GET.ACC.INT:
 *---------------
+<<<<<<< Updated upstream
     APAP.REDOAPAP.redoApapGetIntAcc(Y.ARR.ID,Y.FIRST.DISB.DATE,Y.END.DATE,Y.UNPAID.BILL.CNT,Y.DELAYED.BILLS.VAL)     ;*----------------- 36TH & 37TH FIELD VALUE
+=======
+     APAP.REDOAPAP.redoApapGetIntAcc(Y.ARR.ID,Y.FIRST.DISB.DATE,Y.END.DATE,Y.UNPAID.BILL.CNT,Y.DELAYED.BILLS.VAL)     ;*----------------- 36TH & 37TH FIELD VALUE
+>>>>>>> Stashed changes
 RETURN
 *-----------------------------------------------------------------------------
 ACCT.INT.BAL:
@@ -375,8 +409,12 @@ ACCT.INT.BAL:
     Y.INTEREST.BALANCE = Y.BALANCE        ;*---------------------- 30TH FIELD VALUE
 
     Y.PENALTY.INT = 0
+<<<<<<< Updated upstream
 *    CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,"PENALTY",PENAL.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ARR.ID,"PENALTY",PENAL.PROP,ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,"PENALTY",PENAL.PROP,ERR)
+>>>>>>> Stashed changes
     Y.PROPERTY.LIST = PENAL.PROP
     Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.OVERDUE.STATUS
     GOSUB GET.BALANCE
@@ -389,8 +427,12 @@ ACCT.ACT.BK.BAL:
 
     Y.TOTAL.CAP.BAL = 0
     Y.ACCOUNT.PROPERTY = ''
+<<<<<<< Updated upstream
 *    CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR) ;*R22 Manual Code onversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 
     ACC.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.OVERDUE.STATUS
     Y.PROPERTY.LIST = Y.ACCOUNT.PROPERTY
@@ -494,8 +536,13 @@ GET.CHARGE.CONDITIONS:
     PROPERTY     = ""
     R.CHARGE.CONDITION  = ""
     ERR.MSG      = ''
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CHARGE.CONDITION,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CHARGE.CONDITION,ERR.MSG) ;*MANUAL R22 CODE CONVERSION
+=======
+    CALL REDO.CRR.GET.CONDITIONS(Y.ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CHARGE.CONDITION,ERR.MSG)
+
+>>>>>>> Stashed changes
 RETURN
 *** </region>
 *-----------------------------------------------------------------------------
@@ -551,8 +598,12 @@ GET.PAIDUP.VALUE:
 *----------------
 
     Y.PAIDUP.VALUE = 0
+<<<<<<< Updated upstream
 *  CALL REDO.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
     APAP.TAM.redoGetDisbursementDetails(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB) ;*R22 Manaul Code Conversion
+=======
+    CALL REDO.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
+>>>>>>> Stashed changes
     Y.PAIDUP.VALUE = R.DISB.DETAILS<3>    ;*-------------------------------- 20TH FIELD VALUE
 
 
@@ -634,8 +685,12 @@ RETURN
 *----------------------------------------------------------------------
 GET.INTEREST.RATE:
 *----------------------------------------------------------------------
+<<<<<<< Updated upstream
 *   CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,"PRINCIPAL",OUT.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ARR.ID,"PRINCIPAL",OUT.PROP,ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.INTEREST.PROPERTY(Y.ARR.ID,"PRINCIPAL",OUT.PROP,ERR)
+>>>>>>> Stashed changes
 *Y.INT.ID=Y.ARR.ID:'-':OUT.PROP
 *CALL F.READ(FN.AA.INTEREST.ACCRUALS,Y.INT.ID,R.INT.ACCRUAL,F.AA.INTEREST.ACCRUALS,INT.ACC.ERR)
 *Y.INTEREST.RATE=R.INT.ACCRUAL<AA.INT.ACC.RATE,1,1>      ;*---------------------------------------------------- 21ST FIELD VALUE
@@ -645,8 +700,12 @@ GET.CHARGE.PROPERTY:
 *----------------------------------------------------------------------
 * This part get the charge properties for that loan
     Y.CHARGE.PROPERTY = ''
+<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHARGE.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHARGE.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHARGE.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 
 RETURN
 *----------------------------------------------------------------------

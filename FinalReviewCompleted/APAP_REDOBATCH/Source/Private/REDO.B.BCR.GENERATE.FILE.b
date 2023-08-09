@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMjExMzkwMTY2MzpDcDEyNTI6MTY5MDI3MzIwOTc4MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 13:50:09
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMTI0MTI0NzA3MzpDcDEyNTI6MTY4NTY4NzY4NTcxNTpJVFNTOi0xOi0xOjE4NToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 02 Jun 2023 12:04:45
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 185
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.BCR.GENERATE.FILE
@@ -71,12 +85,22 @@ SUBROUTINE REDO.B.BCR.GENERATE.FILE
     REPEAT
 *    RETURN
 
+<<<<<<< Updated upstream
 *   CALL REDO.R.BCR.REPORT.BUILD(ID.NEW.REC,'ONLINE',R.REDO.INT.PARAM)
     APAP.LAPAP.redoRBcrReportBuild() ;*Manual R22 conversion
+=======
+    CALL REDO.R.BCR.REPORT.BUILD(ID.NEW.REC,'ONLINE',R.REDO.INT.PARAM)
+*APAP.LAPAP.redoRBcrReportBuild(ID.NEW.REC,'ONLINE',R.REDO.INT.PARAM) ;*Manual R22 conversion
+
+>>>>>>> Stashed changes
 
 
 
 RETURN
 
 
+<<<<<<< Updated upstream
 END
+=======
+END
+>>>>>>> Stashed changes

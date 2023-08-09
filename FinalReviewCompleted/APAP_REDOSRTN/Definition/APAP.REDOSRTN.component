@@ -15,6 +15,10 @@ public method redoSAccountParam (
 }
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 public method redoSAmtCredit (
     INOUT yAmtCredit string
 )
@@ -1312,6 +1316,7 @@ public method redoSByMthIncAvgBal (
 
 
 public method redoSGetUsrErrMsg (
+<<<<<<< Updated upstream
     INOUT pErrCode string,
     INOUT pUsrMsg string
 )
@@ -1432,3 +1437,11 @@ public method redoSRecAcctList (
     jBC: REDO.S.REC.ACCT.LIST
 }
 
+=======
+   INOUT pErrCode string,
+   INOUT pUsrMsg string
+)
+{
+   jBC: REDO.S.GET.USR.ERR.MSG
+}
+>>>>>>> Stashed changes

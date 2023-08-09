@@ -16,6 +16,10 @@ public method redoECnvBillType (
 }
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 public method redoECnvDsBenfNames (
     INOUT yAccountNo string
 )
@@ -5459,6 +5463,7 @@ public method redoEGetStmtPeriod (
 {
     jBC: REDO.E.GET.STMT.PERIOD
 }
+<<<<<<< Updated upstream
 
 
 public method redoECheckUser (
@@ -5520,3 +5525,5 @@ public method nofileRedoEnqAthAcquirer (
    jBC: NOFILE.REDO.ENQ.ATH.ACQUIRER
 }
 
+=======
+>>>>>>> Stashed changes

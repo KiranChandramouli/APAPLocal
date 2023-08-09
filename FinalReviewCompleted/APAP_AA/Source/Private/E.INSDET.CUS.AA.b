@@ -69,7 +69,11 @@ PROCESS.GOAHEAD:
 
 
 * CALL THE APAP.CUS.AA.ARRANGEMENT TO BUILD AA.LIST
+<<<<<<< Updated upstream
 *APAP.CUS.AA.ARRANGEMENT(CUST.LIST,AA.LIST)
+=======
+*CALL APAP.CUS.AA.ARRANGEMENT(CUST.LIST,AA.LIST)
+>>>>>>> Stashed changes
     APAP.AA.apapCusAaArrangement(CUST.LIST,AA.LIST) ;*R22 Manual Code Conversion
 
 RETURN

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMzQ2OTA4MzI5OkNwMTI1MjoxNjkwMjY0NDc2NTg4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoxMDQ4MDEwMjQ6Q3AxMjUyOjE2ODQ4NTQ0MDM5MDA6SVRTUzotMTotMTotNjc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:43
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : -67
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 * Version 2 02/06/00  GLOBUS Release No. G11.0.00 29/06/00
@@ -26,7 +40,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.VALIDATE
 *-----------------------------------------------------------------------------
 * 07/06/06 - BG_100011433
 *            Creation
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 * 17-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - ! TO *
 * 17-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
@@ -35,7 +53,10 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.VALIDATE
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.BCR.REPORT.EXEC
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 
     GOSUB INITIALISE
     GOSUB PROCESS.MESSAGE
@@ -53,8 +74,12 @@ VALIDATE:
 *      CALL STORE.END.ERROR               <== Needs to be invoked per error
 
 
+<<<<<<< Updated upstream
 *   CALL REDO.R.INTERFACE.PARAM.VALIDATE("REDO.BCR.REPORT.EXEC")
     APAP.TAM.redoRInterfaceParamValidate("REDO.BCR.REPORT.EXEC")  ;*R22 Manual Code Converison
+=======
+    CALL REDO.R.INTERFACE.PARAM.VALIDATE("REDO.BCR.REPORT.EXEC")
+>>>>>>> Stashed changes
 
     IF ETEXT NE "" THEN
         T.TEXT = ETEXT
@@ -72,8 +97,12 @@ VALIDATE:
 
     IF R.NEW(REDO.BCR.REP.EXE.RUN.PROCESS) EQ 'SI' THEN
 * << TSA.SERVICE REDO.BCR.REPORT.GEN must be stopped to allow execute a new action
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
         APAP.TAM.redoRBcrReportCheckTsa(Y.RESPONSE) ;*R22 Manual Code Converison
+=======
+        CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
+>>>>>>> Stashed changes
         IF Y.RESPONSE EQ '1' THEN
             E = 'ST-REDO.BCR.EXECUTION.SERVICE'
         END

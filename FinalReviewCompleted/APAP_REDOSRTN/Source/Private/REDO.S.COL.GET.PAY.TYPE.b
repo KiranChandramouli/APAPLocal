@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotOTM0Mjk2MjEyOkNwMTI1MjoxNjkwMjY2NjQ2NzQ0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 12:00:46
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoxOTMyOTM0NjMzOkNwMTI1MjoxNjg0OTE2NDkxMzMzOklUU1M6LTE6LTE6LTYxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 May 2023 13:51:31
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : -61
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
 $PACKAGE APAP.REDOSRTN
@@ -34,7 +48,10 @@ SUBROUTINE REDO.S.COL.GET.PAY.TYPE(P.IN.AA.ID,  P.IN.R.STATIC.MAPPING, P.IN.PROC
     $INSERT I_EQUATE
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_REDO.COL.CUSTOMER.COMMON
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 *
 *************************************************************************
 *
@@ -82,8 +99,12 @@ PROCESS:
     Y.MAP.VALUE = P.OUT.PAY.TYPE
     Y.MAP.TYPE  = "PAYMENT.TYPE"
     E = ""
+<<<<<<< Updated upstream
 *   CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, P.IN.R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
     APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, P.IN.R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, P.IN.R.STATIC.MAPPING, 1, P.IN.R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
+>>>>>>> Stashed changes
     IF E THEN
         P.OUT.PAY.TYPE = ""
         RETURN ;* R22 Manual conversion - RETURN statement added

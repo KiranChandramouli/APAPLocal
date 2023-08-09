@@ -184,7 +184,11 @@ public method redoFcClPaymentAa (
 public method redoFcEnqAaProduct (
     INOUT enqData string
 )
+<<<<<<< Updated upstream
 { 
+=======
+{
+>>>>>>> Stashed changes
     jBC: REDO.FC.ENQ.AA.PRODUCT
 }
 
@@ -2984,6 +2988,7 @@ public method redoSFcDefPartDisb (
 }
 
 
+<<<<<<< Updated upstream
 public method redoVInpVerifyStaff (
 )
 {
@@ -3013,4 +3018,6 @@ public method redoFcClRegisterAa (
 {
    jBC: REDO.FC.CL.REGISTER.AA
 }
+=======
+>>>>>>> Stashed changes
 

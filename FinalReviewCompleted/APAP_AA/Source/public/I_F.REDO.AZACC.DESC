@@ -1,0 +1,4 @@
+* I_F.REDO.AZACC.DESC Created 28 MAR 13 at 12:38AM by apap/REJ.1
+*      PREFIX[AZACC]
+               EQU AZACC.DESC TO 1,   RedoAzaccDesc_Desc TO 1,
+             AZACC.ASSET.TYPE TO 2,   RedoAzaccDesc_AssetType TO 2

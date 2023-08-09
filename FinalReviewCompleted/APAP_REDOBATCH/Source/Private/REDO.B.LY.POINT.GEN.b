@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo0NzM3NDM3OTY6Q3AxMjUyOjE2OTAyNjQ0MTEwODk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:31
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : Mjo3MTYyNjY0MDQ6Q3AxMjUyOjE2ODQ4NTQzOTIzMjY6SVRTUzotMTotMTo0ODc4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 4878
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LY.POINT.GEN(ACCT.ID)
@@ -32,7 +46,11 @@ SUBROUTINE REDO.B.LY.POINT.GEN(ACCT.ID)
 *------------------
 *   Date               who           Reference            Description
 * 17-JUN-2013   RMONDRAGON        ODR-2011-06-0243      Initial Creation
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND ++ TO += 1 AND TNO TO C$T24.SESSION.NO
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *----------------------------------------------------------------------------------------------------------
@@ -49,7 +67,10 @@ SUBROUTINE REDO.B.LY.POINT.GEN(ACCT.ID)
     $INSERT I_F.REDO.LY.MASTERPRGDR
     $INSERT I_REDO.B.LY.POINT.GEN.COMMON ;*Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES ;*Tus End
+<<<<<<< Updated upstream
     $USING APAP.REDOSRTN
+=======
+>>>>>>> Stashed changes
 
     GOSUB PROCESS
 
@@ -255,8 +276,12 @@ CHK.MTH.INC.AVG.BAL:
 *-------------------
 
     IF NEXT.MONTH NE CUR.MONTH THEN
+<<<<<<< Updated upstream
 *       CALL REDO.S.BY.MTH.INC.AVG.BAL(ACCT.ID,CHK.VAL)
         APAP.REDOSRTN.redoSByMthIncAvgBal(ACCT.ID,CHK.VAL) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.S.BY.MTH.INC.AVG.BAL(ACCT.ID,CHK.VAL)
+>>>>>>> Stashed changes
     END
 
 RETURN
@@ -322,8 +347,12 @@ CHK.MTH.INT:
 *-----------
 
     IF NEXT.MONTH NE CUR.MONTH THEN
+<<<<<<< Updated upstream
 *       CALL REDO.S.BY.MTH.INT(ACCT.ID,CHK.VAL)
         APAP.REDOSRTN.redoSByMthInt(ACCT.ID,CHK.VAL) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.S.BY.MTH.INT(ACCT.ID,CHK.VAL)
+>>>>>>> Stashed changes
     END
 
 RETURN

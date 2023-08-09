@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotNDMxNzgyMTk1OkNwMTI1MjoxNjkwMjY0NDMxODI3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:51
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMTMwMjA3MDg1MjpDcDEyNTI6MTY4NDg1NDM5NTM4NzpJVFNTOi0xOi0xOjEwODY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1086
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.REINV.SYNC(Y.AZ.ACCOUNT.ID)
@@ -32,8 +46,13 @@ SUBROUTINE REDO.B.REINV.SYNC(Y.AZ.ACCOUNT.ID)
 *  DATE             WHO         REFERENCE         DESCRIPTION
 * 17-06-2010      SUJITHA.S   ODR-2009-10-0332  INITIAL CREATION
 * 29-03-2012      RIYAS J     PACS00188349      CRATE ACI FOR LIQUIDATION ACCOUNT IF ROOLLOVER DATE IS HOLIDAY
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1
+=======
+* Date                   who                   Reference              
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 
+>>>>>>> Stashed changes
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------
 
@@ -47,7 +66,10 @@ SUBROUTINE REDO.B.REINV.SYNC(Y.AZ.ACCOUNT.ID)
     $INSERT I_F.AZ.SCHEDULES
     $INSERT I_REDO.B.REINV.SYNC.COMMON
     $INSERT I_F.DATES
+<<<<<<< Updated upstream
     $USING APAP.REDORETAIL
+=======
+>>>>>>> Stashed changes
 
     GOSUB INIT
     GOSUB PROCESS
@@ -319,8 +341,12 @@ MATURITY.DATE.OFS:
     IF Y.MATURITY.DATE GT TODAY AND Y.MATURITY.DATE LT Y.NEXT.WORKING.DAY THEN
         CALL AWD('',Y.MATURITY.DATE,YDAY.TYPE)
         IF YDAY.TYPE NE 'W' THEN
+<<<<<<< Updated upstream
 *          CALL REDO.ACI.AZ.INT.RATE(Y.AZ.ACCOUNT.ID,Y.ACI.OFS.ARRAY,Y.MATURITY.DATE,VAR.INT.RATE)
             APAP.REDORETAIL.redoAciAzIntRate(Y.AZ.ACCOUNT.ID,Y.ACI.OFS.ARRAY,Y.MATURITY.DATE,VAR.INT.RATE) ;*R22 Manual Code Conversion
+=======
+            CALL REDO.ACI.AZ.INT.RATE(Y.AZ.ACCOUNT.ID,Y.ACI.OFS.ARRAY,Y.MATURITY.DATE,VAR.INT.RATE)
+>>>>>>> Stashed changes
         END
     END
 

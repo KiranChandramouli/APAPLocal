@@ -1,14 +1,25 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNjI4MjU5MzUwOkNwMTI1MjoxNjkwMjY1MjE3Mjg1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:36:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
+=======
+* @ValidationCode : MjotNzAwNDUwNzg1OkNwMTI1MjoxNjg1OTQ5Njg4MTkzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Jun 2023 12:51:28
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+>>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOF.INSURANCE.DETAILS(Y.FIN.ARR)
@@ -44,7 +55,10 @@ SUBROUTINE REDO.NOF.INSURANCE.DETAILS(Y.FIN.ARR)
     $INSERT I_F.CUSTOMER
     $INSERT I_F.COLLATERAL
     $INSERT I_F.AA.ACCOUNT.DETAILS
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
 MAIN:
 *-----------------------------------------------------------------------------
@@ -325,8 +339,12 @@ RETURN
 PROCESS.CHARGE.PROP:
 *-----------------------------------------------------------------------------
     OUT.PROPERTY = ''
+<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)   ;*R22 Manual Code Converison
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ARR.ID,'CHARGE',R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
     CNT.CR.PROP = DCOUNT(OUT.PROPERTY,@FM)
     FLG.CR = 0
     LOOP

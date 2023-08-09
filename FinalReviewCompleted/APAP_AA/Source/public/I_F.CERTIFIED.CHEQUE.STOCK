@@ -1,0 +1,9 @@
+* I_F.CERTIFIED.CHEQUE.STOCK Created 17 MAR 10 at 07:41PM by apapr8/SUDHAR
+*      PREFIX[CERT.STO]
+             EQU CERT.STO.STATUS TO 1,   CertifiedChequeStock_Status TO 1,
+                 CERT.STO.AMOUNT TO 2,   CertifiedChequeStock_Amount TO 2,
+                   CERT.STO.DATE TO 3,   CertifiedChequeStock_Date TO 3,
+              CERT.STO.TRANS.REF TO 4,   CertifiedChequeStock_TransRef TO 4,
+             CERT.STO.ACCOUNT.NO TO 5,   CertifiedChequeStock_AccountNo TO 5,
+                   CERT.STO.USER TO 6,   CertifiedChequeStock_User TO 6,
+              CERT.STO.COMP.CODE TO 7,   CertifiedChequeStock_CompCode TO 7

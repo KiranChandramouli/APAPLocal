@@ -1,14 +1,25 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoyMTEyNzM0MjIzOkNwMTI1MjoxNjkwMjY0MDYzNDA1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:17:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
+=======
+* @ValidationCode : MjotNjM2NjMzMzc5OkNwMTI1MjoxNjg1OTQ5MDY0MTgxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Jun 2023 12:41:04
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+>>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 SUBROUTINE REDO.APAP.NOFILE.RESTRUCT.LOAN(Y.OUT.ARRAY)
@@ -51,7 +62,10 @@ SUBROUTINE REDO.APAP.NOFILE.RESTRUCT.LOAN(Y.OUT.ARRAY)
     $INSERT I_F.AA.INTEREST.ACCRUALS
     $INSERT I_F.AA.BILL.DETAILS
     $INSERT I_AA.APP.COMMON
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 
     GOSUB OPENFILES
     GOSUB GET.LOCAL.REF
@@ -175,8 +189,12 @@ FETCH.USER.DETAILS:
     OUT.PROPERTY       = ''
     R.OUT.AA.RECORD    = ''
     OUT.ERR            = ''
+<<<<<<< Updated upstream
 *    CALL REDO.GET.PROPERTY.NAME(Y.ARRANGE.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.ARRANGE.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR);* R22 Manual Code Conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ARRANGE.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
     CALL F.READ(FN.AA.ACTIVITY.HISTORY,Y.ARRANGE.ID,R.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY,Y.ERR.ACT.HIS)
     IF R.AA.ACTIVITY.HISTORY THEN
         ORIG.ACT       = "LENDING-UPDATE":"-":OUT.PROPERTY

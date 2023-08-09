@@ -1,12 +1,23 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTg4MTU3NzM5NzpVVEYtODoxNjg4NTM2ODk0ODMyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:34
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : ITSS
+=======
+* @ValidationCode : MjotMTg4MTU3NzM5NzpVVEYtODoxNjg2ODM1NDk1Mzg2OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 15 Jun 2023 18:54:55
+* @ValidationInfo : Encoding          : UTF-8
+* @ValidationInfo : User Name         : Admin
+>>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
+<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
+=======
+* @ValidationInfo : Strict flag       : N/A
+>>>>>>> Stashed changes
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -17,8 +28,13 @@ REM "RGS.EN.BQS.TERME",230614-4
 *************************************************************************
 * MODIFICATION HISTORY:
 
+<<<<<<< Updated upstream
 * DATEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WHOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ REFERENCEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DESCRIPTION
 * 15-JUNE-2023ï¿½ï¿½ï¿½ï¿½ï¿½Narmadha Vï¿½ï¿½     Manual R22 conversionï¿½ï¿½ï¿½ï¿½ï¿½   SELECT to SSELECT
+=======
+* DATE              WHO                REFERENCE                 DESCRIPTION
+* 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
+>>>>>>> Stashed changes
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE

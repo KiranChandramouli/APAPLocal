@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNDQyMDQxMjc3OkNwMTI1MjoxNjkwMjY0MzUyNjM1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:32
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMTgyODYwNzU1NTpDcDEyNTI6MTY4NDg1NDM4MTMyMzpJVFNTOi0xOi0xOjE2OToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 169
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.BCR.REPORT.DELIVERY
@@ -21,7 +35,11 @@ SUBROUTINE REDO.B.BCR.REPORT.DELIVERY
 *!
 *-------------------------------------------------------------------------------------
 *Modification
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION FM TO @FM AND ++ TO += 1 AND TNO TO C$T24.SESSION.NO
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------
@@ -29,8 +47,11 @@ SUBROUTINE REDO.B.BCR.REPORT.DELIVERY
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.INTERFACE.PARAM
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
 
     GOSUB INITIALISE
@@ -65,8 +86,12 @@ PROCESS:
 
     LOOP
         REMOVE Y.REDO.INT.PARAM.ID FROM Y.RID.LIST SETTING Y.POS
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 AUTO CONVERSTION TNO TO C$T24.SESSION.NO
         APAP.REDOCHNLS.redoInterfaceRecAct(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 AUTO CONVERSTION TNO TO C$T24.SESSION.NO
+>>>>>>> Stashed changes
     WHILE Y.POS : Y.REDO.INT.PARAM.ID
         CALL F.READ(FN.REDO.INT.PARAM, Y.REDO.INT.PARAM.ID, R.REDO.INT.PARAM,F.REDO.INT.PARAM, Y.ERR)
         IF Y.ERR NE '' THEN
@@ -74,23 +99,35 @@ PROCESS:
             CALL FATAL.ERROR('REDO.B.BCR.REPORT.BUILD' : Y.REDO.INT.PARAM.ID)
         END
         E = ''
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REPORT.DELIVERY(Y.REDO.INT.PARAM.ID,'BATCH',R.REDO.INT.PARAM)
         APAP.TAM.redoRBcrReportDelivery(Y.REDO.INT.PARAM.ID,'BATCH',R.REDO.INT.PARAM) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.R.BCR.REPORT.DELIVERY(Y.REDO.INT.PARAM.ID,'BATCH',R.REDO.INT.PARAM)
+>>>>>>> Stashed changes
 
         IF E NE '' THEN
             MON.TP = '08'
             ID.PROC = Y.CONT
             DESC = E
+<<<<<<< Updated upstream
 *         CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 AUTO CONVERSTION TNO TO C$T24.SESSION.NO
             APAP.REDOCHNLS.redoInterfaceRecAct(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 Manual Code Conversion
+=======
+            CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 AUTO CONVERSTION TNO TO C$T24.SESSION.NO
+>>>>>>> Stashed changes
         END
         Y.CONT += 1
     REPEAT
     MON.TP = '07'
     ID.PROC = Y.CONT
     DESC = "El proceso termino exitosamente."
+<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO)
     APAP.REDOCHNLS.redoInterfaceRecAct(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(Y.REDO.INT.PARAM.ID,'BATCH',Y.CONT,Y.NO.LIST,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,OPERATOR,C$T24.SESSION.NO)
+>>>>>>> Stashed changes
 RETURN
 
 *-----------------------------------------------------------------------------
@@ -99,8 +136,12 @@ INITIALISE:
 
     Y.RID.LIST = ''   ;* List of the records into REDO.INTERFACE.PARAM to process
 ;* Check if there are some to process
+<<<<<<< Updated upstream
 *   CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.RID.LIST)
     APAP.TAM.redoRBcrReportGenListGet(Y.RID.LIST) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.RID.LIST)
+>>>>>>> Stashed changes
     IF Y.RID.LIST EQ "" THEN
         RETURN          ;* Process must not be continued
     END

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMjM5MjE0NzA4OkNwMTI1MjoxNjkwMjY0NDI4NDYxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:48
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,13 +10,31 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotNDQ0MTY4MzY5OkNwMTI1MjoxNjg0ODU0Mzk1MDQ5OklUU1M6LTE6LTE6MTA0NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1046
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.RAISE.NAB.ACT.HOLI(Y.ID)
 *-------------------------------------------------------------------------------------
 *Modification
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM
+=======
+* Date                   who                   Reference              
+* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM 
+>>>>>>> Stashed changes
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -30,7 +49,10 @@ SUBROUTINE REDO.B.RAISE.NAB.ACT.HOLI(Y.ID)
 * Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES
 * Tus End
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 
 MAIN:
 
@@ -132,8 +154,12 @@ BEFORE.RAISE.ENTRIES:
     IF Y.INTERNAL.ACC THEN
 
         Y.LOAN.CO.CODE = R.ACCOUNT<AC.CO.CODE>
+<<<<<<< Updated upstream
 *       CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
         APAP.TAM.redoNabCreateIntAcc(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
+>>>>>>> Stashed changes
         Y.INTERNAL.ACC = Y.RET.INT.ACC
         CALL F.READ(FN.AC,Y.INTERNAL.ACC,R.INT.ACC,F.AC,ACC.ERR)
         IF R.INT.ACC ELSE

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTcyOTcyNzQzOTpDcDEyNTI6MTY5MDI2NDQ3NjU3NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMjEwODY3NTg4NDpDcDEyNTI6MTY4NDg1NDQwMzg1NjpJVFNTOi0xOi0xOi00MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:43
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : -42
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 * Version 9 16/05/01  GLOBUS Release No. 200511 31/10/05
@@ -37,7 +51,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.RECORD
 *!
 *-------------------------------------------------------------------------------------
 *Modification
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 * 17-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION = TO EQ AND ++ TO += 1 AND FM TO @FM
 * 17-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------------
@@ -46,8 +64,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.RECORD
     $INSERT I_EQUATE
     $INSERT I_GTS.COMMON
     $INSERT I_F.REDO.BCR.REPORT.EXEC
+<<<<<<< Updated upstream
     $USING APAP.TAM
     
+=======
+>>>>>>> Stashed changes
 
 * Check if the record is okay to input to
     GOSUB CHECK.RECORD
@@ -90,8 +111,12 @@ RETURN
 CHECK.I.FUNCTION:
 *-----------------------------------------------------------------------------
     IF NOT(OFS$BROWSER) AND R.NEW(REDO.BCR.REP.EXE.CURR.NO) EQ '' THEN
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
         APAP.TAM.redoRBcrRepCopyParam(ID.NEW)   ;*R22 Manual Code Converison
+=======
+        CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
         TEXT = "Paratemers were gotten from REDO.INTERFACE.PARAM"
         CALL OVE
         RETURN
@@ -100,8 +125,12 @@ CHECK.I.FUNCTION:
     IF OFS$BROWSER EQ 1 THEN
 * The record is being created
         IF OFS$GETRECORD EQ 1 AND R.NEW(REDO.BCR.REP.EXE.CURR.NO) EQ '' THEN
+<<<<<<< Updated upstream
 *           CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
             APAP.TAM.redoRBcrRepCopyParam(ID.NEW)  ;*R22 Manual Code Converison
+=======
+            CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
         END ELSE
             GOSUB RELOAD.PARAM
         END
@@ -132,8 +161,12 @@ RELOAD.PARAM:
 *
         getIntParam = R.GTS<1,2>
         IF getIntParam EQ 'SI' THEN
+<<<<<<< Updated upstream
 *           CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
             APAP.TAM.redoRBcrRepCopyParam(ID.NEW)    ;*R22 Manual Code Converison
+=======
+            CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
             R.GTS<1,2> = 'NO'
             TEXT = "Paratemers were gotten from REDO.INTERFACE.PARAM"
             CALL OVE

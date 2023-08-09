@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotNDY3NTIzNjk2OkNwMTI1MjoxNjkwMjY0MzY4MzQ3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:48
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotNjYzMDM0NjY4OkNwMTI1MjoxNjg0ODU0Mzg1NDgxOklUU1M6LTE6LTE6ODI5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:25
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 829
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.DIRECT.DEBIT(ID)
@@ -25,7 +39,11 @@ SUBROUTINE REDO.B.DIRECT.DEBIT(ID)
 *-----------------------------------------------------------------------------------
 *    NAME                 DATE                ODR              DESCRIPTION
 * JEEVA T              31-10-2011         B.9-DIRECT DEBIT
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1 + VAR2 TO += VAR2 AND VAR1 - VAR2 TO -= VAR2
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------
@@ -43,7 +61,11 @@ SUBROUTINE REDO.B.DIRECT.DEBIT(ID)
     $INSERT I_F.FT.TXN.TYPE.CONDITION
     $INSERT I_REDO.B.DIRECT.DEBIT.COMMON
     $INSERT I_F.REDO.W.DIRECT.DEBIT
+<<<<<<< Updated upstream
     $USING APAP.AA
+=======
+
+>>>>>>> Stashed changes
 
     ARR.ID = ID
     Y.BILL.GEN.FLAG = ''
@@ -233,8 +255,12 @@ CREDIT.ACCOUNT.CK:
     ERR.MSG = ''
     EFF.DATE = ''
     LS.LC.FLAG.WR = ''
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+>>>>>>> Stashed changes
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 
@@ -285,8 +311,12 @@ DEBIT.ACCOUNT.CK:
     EFF.DATE = ''
     ERR.MSG = ''
     R.INT.ARR.COND = ''
+<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
+>>>>>>> Stashed changes
 
     IF R.PAY.ARR.COND NE '' THEN
         Y.DEBIT.ACCT = R.PAY.ARR.COND<AA.PS.LOCAL.REF><1,DEBIT.ACCT.POS>

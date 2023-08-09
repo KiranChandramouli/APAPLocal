@@ -1,0 +1,19 @@
+* I_F.REDO.LOAN.STATUS Created 10 NOV 10 at 12:02PM by apapr8/SHANKARRAJU7
+*      PREFIX[REDO.LN.ST]
+        EQU REDO.LN.ST.DESCRIPTION TO 1,   RedoLoanStatus_Description TO 1,
+             REDO.LN.ST.RESERVED.5 TO 2,   RedoLoanStatus_Reserved5 TO 2,
+             REDO.LN.ST.RESERVED.4 TO 3,   RedoLoanStatus_Reserved4 TO 3,
+             REDO.LN.ST.RESERVED.3 TO 4,   RedoLoanStatus_Reserved3 TO 4,
+             REDO.LN.ST.RESERVED.2 TO 5,   RedoLoanStatus_Reserved2 TO 5,
+             REDO.LN.ST.RESERVED.1 TO 6,   RedoLoanStatus_Reserved1 TO 6,
+              REDO.LN.ST.LOCAL.REF TO 7,   RedoLoanStatus_LocalRef TO 7,
+               REDO.LN.ST.OVERRIDE TO 8,   RedoLoanStatus_Override TO 8,
+          REDO.LN.ST.RECORD.STATUS TO 9,   RedoLoanStatus_RecordStatus TO 9,
+                REDO.LN.ST.CURR.NO TO 10,  RedoLoanStatus_CurrNo TO 10,
+               REDO.LN.ST.INPUTTER TO 11,  RedoLoanStatus_Inputter TO 11,
+              REDO.LN.ST.DATE.TIME TO 12,  RedoLoanStatus_DateTime TO 12,
+             REDO.LN.ST.AUTHORISER TO 13,  RedoLoanStatus_Authoriser TO 13,
+                REDO.LN.ST.CO.CODE TO 14,  RedoLoanStatus_CoCode TO 14,
+              REDO.LN.ST.DEPT.CODE TO 15,  RedoLoanStatus_DeptCode TO 15,
+           REDO.LN.ST.AUDITOR.CODE TO 16,  RedoLoanStatus_AuditorCode TO 16,
+        REDO.LN.ST.AUDIT.DATE.TIME TO 17,  RedoLoanStatus_AuditDateTime TO 17

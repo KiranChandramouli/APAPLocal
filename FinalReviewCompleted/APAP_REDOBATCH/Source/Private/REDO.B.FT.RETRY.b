@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNTM5MTI4NzU1OkNwMTI1MjoxNjkwMjY0Mzc3MTQ3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:57
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMTM3MTc1NzM1NTpDcDEyNTI6MTY4NDg1NDM4Njc1NDpJVFNTOi0xOi0xOjEwNDQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:26
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1044
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.FT.RETRY(ARR.ID)
@@ -34,7 +48,11 @@ SUBROUTINE REDO.B.FT.RETRY(ARR.ID)
 *   Date               who           Reference            Description
 * 07-JUN-2010   N.Satheesh Kumar  TAM-ODR-2009-10-0331   Initial Creation
 * 28-APR-2011      H GANESH           CR009              Change the Vetting value of local field.
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - SM TO @SM AND VM TO @VM AND FM TO @FM AND ++ TO += 1
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 
@@ -53,8 +71,11 @@ SUBROUTINE REDO.B.FT.RETRY(ARR.ID)
     $INSERT I_F.REDO.STO.PENDING.RESUBMISSION
     $INSERT I_REDO.B.FT.RETRY.COMMON ;*Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES ;*Tus End
+<<<<<<< Updated upstream
     $USING APAP.AA
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 
     GOSUB INIT
     GOSUB GET.OD.STATUS.COND
@@ -162,8 +183,12 @@ GET.OD.STATUS.COND:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+>>>>>>> Stashed changes
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS
@@ -406,8 +431,12 @@ CREATE.FT.IN.HLD:
     R.FUNDS.TRANSFER<FT.COMMISSION.TYPE> = R.STO<STO.COMMISSION.TYPE>
     R.FUNDS.TRANSFER<FT.LOCAL.REF,FT.LOAN.STATUS.POS> = LOAN.STATUS
     R.FUNDS.TRANSFER<FT.LOCAL.REF,FT.LOAN.COND.POS> = LOAN.COND
+<<<<<<< Updated upstream
 *    CALL REDO.U.NEW.FT.IN.HOLD(ARR.ID,FT.ID,R.FUNDS.TRANSFER,R.STO)
     APAP.TAM.redoUNewFtInHold(ARR.ID,FT.ID,R.FUNDS.TRANSFER,R.STO) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.U.NEW.FT.IN.HOLD(ARR.ID,FT.ID,R.FUNDS.TRANSFER,R.STO)
+>>>>>>> Stashed changes
 
 RETURN
 

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNTkzOTA2MjU0OlVURi04OjE2ODkxNDMzNzU0NDc6SVRTUzotMTotMTo4NjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 12 Jul 2023 11:59:35
 * @ValidationInfo : Encoding          : UTF-8
@@ -5,6 +6,15 @@
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : 866
+=======
+* @ValidationCode : MjotOTMyNTY1NTA2OkNwMTI1MjoxNjg0MjIyODA4NjYzOklUU1M6LTE6LTE6ODY5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 16 May 2023 13:10:08
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 869
+>>>>>>> Stashed changes
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -92,9 +102,15 @@ MAIN.PROCESS:
         Y.NUMERO.PRESTAMO  = R.ARRANGEMENT<AA.ARR.LINKED.APPL.ID>
         Y.START.DATE = R.ARRANGEMENT<AA.ARR.START.DATE>
 
+<<<<<<< Updated upstream
 * IF Y.ARR.STATUS EQ 'CLOSE' THEN
 *    RETURN
 * END
+=======
+        IF Y.ARR.STATUS EQ 'CLOSE' THEN
+            RETURN
+        END
+>>>>>>> Stashed changes
 
         GOSUB CHECK.REPAYMENT.SCHEDULE
         GOSUB VERIFICAR.PROPIEDADES.PRESTAMO

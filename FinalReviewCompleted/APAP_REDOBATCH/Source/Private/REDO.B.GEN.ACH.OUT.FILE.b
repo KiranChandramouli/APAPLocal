@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTQ2MTQ4ODMyNDpDcDEyNTI6MTY5MDE2ODU2MDkxNjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 24 Jul 2023 08:46:00
 * @ValidationInfo : Encoding          : Cp1252
@@ -5,6 +6,15 @@
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
+=======
+* @ValidationCode : MjoxMDU3MTg4NzAxOkNwMTI1MjoxNjg0ODU0Mzg3MTgwOklUU1M6LTE6LTE6MTc5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1793
+>>>>>>> Stashed changes
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -28,9 +38,15 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
 *02-SEP-2010    Swaminathan.S.R        ODR-2009-12-0290     INITIAL CREATION
 *12-APR-2013 Karthik Sundararajan   PERF-CHANGE
 *12-Oct-2017 Saran.S
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - TNO TO C$T24.SESSION.NO AND ADDING END
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -CALL method format changed
+=======
+* Date                   who                   Reference              
+* 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - TNO TO C$T24.SESSION.NO AND ADDING END
+* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+>>>>>>> Stashed changes
 
 *---------------------------------------------------------------------------------
 
@@ -47,7 +63,10 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
     $INSERT I_F.REDO.ACH.PROCESS.DET
     $INSERT I_F.USER
     $INSERT I_F.LOCKING
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 *---------------------------------------------------------------------------------
 
     GOSUB SEL.ID
@@ -164,8 +183,12 @@ OPEN.FILE:
 *call C.22  FILE.OPEN.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
+<<<<<<< Updated upstream
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method format changed
+=======
+            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
             OPEN.ERR = '1'
         END
     END
@@ -176,8 +199,12 @@ OPEN.FILE:
 *call C.22  HIS.OPEN.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH.HIS ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
+<<<<<<< Updated upstream
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
                 APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual conversion - CALL method format changed
+=======
+                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
                 OPEN.ERR = '1'
             END
         END
@@ -200,8 +227,12 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Write ':PATH.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
+<<<<<<< Updated upstream
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method changed
+=======
+            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
             WRITE.ERR = '1'
         END
 
@@ -210,8 +241,12 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Write ':PATH.HIS.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
+<<<<<<< Updated upstream
                 APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method changed
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+=======
+                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
                 WRITE.ERR = '1'
             END
         END
@@ -329,8 +364,13 @@ SUCCESS.MSG:
 
     INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
     MON.TP = '01' ; DESC = 'Record generated successfully' ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
+<<<<<<< Updated upstream
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion - CALL method format changed
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+
+>>>>>>> Stashed changes
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 *******

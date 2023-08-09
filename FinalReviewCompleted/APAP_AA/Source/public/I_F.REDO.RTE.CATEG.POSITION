@@ -1,0 +1,21 @@
+* I_F.REDO.RTE.CATEG.POSITION Created 16 NOV 11 at 04:22PM by t24bbcr9/PRADEEP.01
+*      PREFIX[REDO.RTE.POS]
+        EQU REDO.RTE.POS.DESCRIPTION TO 1,   RedoRteCategPosition_Description TO 1,
+           REDO.RTE.POS.RTE.POSITION TO 2,   RedoRteCategPosition_RtePosition TO 2,
+             REDO.RTE.POS.CATEG.INIT TO 3,   RedoRteCategPosition_CategInit TO 3,
+              REDO.RTE.POS.CATEG.END TO 4,   RedoRteCategPosition_CategEnd TO 4,
+             REDO.RTE.POS.RESERVED.6 TO 5,   RedoRteCategPosition_Reserved6 TO 5,
+             REDO.RTE.POS.RESERVED.5 TO 6,   RedoRteCategPosition_Reserved5 TO 6,
+             REDO.RTE.POS.RESERVED.4 TO 7,   RedoRteCategPosition_Reserved4 TO 7,
+             REDO.RTE.POS.RESERVED.3 TO 8,   RedoRteCategPosition_Reserved3 TO 8,
+             REDO.RTE.POS.RESERVED.2 TO 9,   RedoRteCategPosition_Reserved2 TO 9,
+             REDO.RTE.POS.RESERVED.1 TO 10,  RedoRteCategPosition_Reserved1 TO 10,
+          REDO.RTE.POS.RECORD.STATUS TO 11,  RedoRteCategPosition_RecordStatus TO 11,
+                REDO.RTE.POS.CURR.NO TO 12,  RedoRteCategPosition_CurrNo TO 12,
+               REDO.RTE.POS.INPUTTER TO 13,  RedoRteCategPosition_Inputter TO 13,
+              REDO.RTE.POS.DATE.TIME TO 14,  RedoRteCategPosition_DateTime TO 14,
+             REDO.RTE.POS.AUTHORISER TO 15,  RedoRteCategPosition_Authoriser TO 15,
+                REDO.RTE.POS.CO.CODE TO 16,  RedoRteCategPosition_CoCode TO 16,
+              REDO.RTE.POS.DEPT.CODE TO 17,  RedoRteCategPosition_DeptCode TO 17,
+           REDO.RTE.POS.AUDITOR.CODE TO 18,  RedoRteCategPosition_AuditorCode TO 18,
+        REDO.RTE.POS.AUDIT.DATE.TIME TO 19,  RedoRteCategPosition_AuditDateTime TO 19

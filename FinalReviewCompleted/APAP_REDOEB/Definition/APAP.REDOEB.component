@@ -11,6 +11,10 @@ public method mbDefaultSdbInfo (
 }
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 public method mbEDsfGetPeriod (
     INOUT yData string
 )

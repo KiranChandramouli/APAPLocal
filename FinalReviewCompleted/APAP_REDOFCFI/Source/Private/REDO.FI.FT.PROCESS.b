@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTA2MjUzODQ4NDpDcDEyNTI6MTY5MDE3NDM5NDY5NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 24 Jul 2023 10:23:14
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjoyODc2NDQyOTI6Q3AxMjUyOjE2ODUxMDYwODQxMzA6SVRTUzotMTotMToxODU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 May 2023 18:31:24
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 185
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.FT.PROCESS(Y.REC.ID)
@@ -44,8 +58,13 @@ SUBROUTINE REDO.FI.FT.PROCESS(Y.REC.ID)
             APAP.TAM.redoFiDebitProcesBacen(rParams, outResp, outErr) ;*R22 Manual Conversion
 
         CASE R.REDO.TEMP.FI.CONTROL<FI.TEMP.INTER.TYPE> EQ 'INTNOMINA'
+<<<<<<< Updated upstream
 *            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.REF, OUT.RESP)
             APAP.TAM.redoFiDebitProces(R.PARAM, OUT.REF, OUT.RESP) ;*R22 Manual Conversion
+=======
+            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.REF, OUT.RESP)
+*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.REF, OUT.RESP) ;*R22 Manual Conversion
+>>>>>>> Stashed changes
        
         CASE R.REDO.TEMP.FI.CONTROL<FI.TEMP.INTER.TYPE> EQ 'EXTNOMINA'
 *APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM,OUT.REF,OUT.RESP)

@@ -1,0 +1,213 @@
+* @ValidationCode : MjoxNzk2MTc5NjA3OkNwMTI1MjoxNjgyNDEyMzI0NTk0OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:24
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOVER
+SUBROUTINE REDO.ATH.STLMT.ACCT.IN.RTN
+***********************************************************************
+* COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* DEVELOPED BY: Akthar Rasool S
+* PROGRAM NAME: REDO.ATH.STLMT.ACCT.IN.RTN
+* ODR NO      : ODR-2010-08-0469
+*----------------------------------------------------------------------
+*DESCRIPTION: This routine is to validate the accounting action need to be
+* done and raise accounting entries.for tc05,tc06,tc07
+
+
+*IN PARAMETER:  NA
+*OUT PARAMETER: NA
+*LINKED WITH: REDO.ATH.SETTLEMENT
+
+*----------------------------------------------------------------------
+* Modification History :
+*-----------------------
+* DATE          WHO                 REFERENCE                   DESCRIPTION
+* 03.12.2010    Akthar Rasool S     ODR-2010-08-0469           INITIAL CREATION
+* 22/01/2019    Vignesh Kumaar R                                BRD003 [UNARED]
+*04-04-2023      Conversion Tool     R22 AUTO CONVERSION         FM TO @FM , $INCLUDE TO $INSERT
+*04-04-2023      Samaran T           Manual R22 Code Conversion      No Changes
+*----------------------------------------------------------------------
+
+
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.REDO.ATH.SETTLMENT
+    $INSERT I_F.ATM.REVERSAL   ;* R22 AUTO CONVERSION
+    $INSERT I_F.REDO.APAP.H.PARAMETER
+    $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
+
+    GOSUB PROCESS
+RETURN
+
+*----------------------------------------------------------------------
+PROCESS:
+*----------------------------------------------------------------------
+
+    R.FUNDS.TRANSFER=''
+    Y.FILE.TRANS=R.REDO.STLMT.LINE<ATH.SETT.TRANS>
+    Y.FILE.TRANS=TRIM(Y.FILE.TRANS,' ','B')
+
+    IF ERROR.MESSAGE EQ '' THEN
+        LOCATE Y.FILE.TRANS IN R.REDO.APAP.H.PARAMETER<PARAM.ATH.TRANS,1> SETTING Y.POS THEN
+            GOSUB PROCESS.NEXT
+        END
+    END
+
+    IF ERROR.MESSAGE NE '' THEN
+        GOSUB ERROR.ENTRY
+    END
+
+RETURN
+*----------------------------------------------------------------------
+PROCESS.NEXT:
+*----------------------------------------------------------------------
+
+    Y.TC.CODE=R.REDO.APAP.H.PARAMETER<PARAM.TC.CODE>
+
+    LOCATE TC.CODE IN Y.TC.CODE<1,1> SETTING POS1 THEN
+
+        DR.ACCT=R.REDO.APAP.H.PARAMETER<PARAM.DR.ACCT,POS1>
+        CR.ACCT=R.REDO.APAP.H.PARAMETER<PARAM.CR.ACCT,POS1>
+        MODIFY.RTN=R.REDO.APAP.H.PARAMETER<PARAM.MODIFY.RTN,POS1>
+        Y.FT.VERSION= R.REDO.APAP.H.PARAMETER<PARAM.FT.VERSION,POS1>
+        Y.AC.LOCK.VERSION= R.REDO.APAP.H.PARAMETER<PARAM.AC.LCK.REV.VERSION,POS1>
+    END
+
+    IF MODIFY.RTN NE '' THEN
+        OUT.PARAM<1>=DR.ACCT
+        OUT.PARAM<2>=CR.ACCT
+        CALL @MODIFY.RTN(OUT.PARAM)
+    END
+
+* Fix for 2795723 [BRD003 UNARED #1]
+
+    IF R.ATM.REVERSAL<AT.REV.WAIVE.FLAG> EQ 'Y' THEN
+        R.FUNDS.TRANSFER<FT.CHARGE.CODE> = 'WAIVE'
+        R.FUNDS.TRANSFER<FT.COMMISSION.CODE> = 'WAIVE'
+    END
+
+* End of Fix
+
+    Y.ACC.NO= R.ATM.REVERSAL<AT.REV.ACCOUNT.NUMBER>
+    IF DR.ACCT EQ '' THEN
+        DR.ACCT=Y.ACC.NO
+    END
+    IF CR.ACCT EQ '' THEN
+        CR.ACCT=Y.ACC.NO
+    END
+
+    R.FUNDS.TRANSFER<FT.DEBIT.ACCT.NO>=DR.ACCT
+    R.FUNDS.TRANSFER<FT.CREDIT.ACCT.NO>=CR.ACCT
+    R.FUNDS.TRANSFER<FT.TRANSACTION.TYPE>=R.ATM.REVERSAL<AT.REV.FTTC.ID>
+    CALL F.READ(FN.ACCOUNT,DR.ACCT,R.DR.ACC,F.ACCOUNT,ACC.ERR)
+    CALL F.READ(FN.ACCOUNT,CR.ACCT,R.CR.ACC,F.ACCOUNT,ACC.ERR)
+    Y.DR.CCY=R.DR.ACC<AC.CURRENCY>
+    Y.CR.CCY=R.CR.ACC<AC.CURRENCY>
+
+    R.FUNDS.TRANSFER<FT.DEBIT.CURRENCY>=Y.DR.CCY  ;* Debit Account
+    R.FUNDS.TRANSFER<FT.CREDIT.CURRENCY>=Y.CR.CCY ;* Credit Account
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.AT.UNIQUE.ID>=ATM.REVERSAL.ID
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.POS.COND>=R.ATM.REVERSAL<AT.REV.POS.COND>
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.BIN.NO>=CARD.NUMBER[1,6]
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.AT.AUTH.CODE>=FIELD(ATM.REVERSAL.ID,'.',2)
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.ATM.TERM.ID>=TRIMB(R.REDO.STLMT.LINE<ATH.SETT.TERM.ID>)
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.L.STLMT.ID>=Y.STL.ID
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.L.STLMT.APPL>='REDO.ATH.SETTLMENT'
+    CR.AMT=R.REDO.STLMT.LINE<ATH.SETT.REQUESTED.AMT.RD>
+
+    R.FUNDS.TRANSFER<FT.CREDIT.AMOUNT>=CR.AMT     ;* Credit Amount
+    R.FUNDS.TRANSFER<FT.DEBIT.VALUE.DATE>=TODAY   ;* Debit Value Date
+    R.FUNDS.TRANSFER<FT.CREDIT.VALUE.DATE>=TODAY
+
+
+
+
+    GOSUB OFS.POST
+
+RETURN
+*----------------------------------------------------------------------
+OFS.POST:
+*----------------------------------------------------------------------
+
+    APP.NAME = 'FUNDS.TRANSFER'
+    OFSFUNCT='I'
+    PROCESS  = ''
+    OFSVERSION = Y.FT.VERSION
+    GTSMODE = ''
+    TRANSACTION.ID=''
+    OFSRECORD = ''
+    OFS.MSG.ID =''
+    OFS.ERR = ''
+    NO.OF.AUTH='0'
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCT,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.FUNDS.TRANSFER,OFSRECORD1)
+    OFS.SRC='REDO.VISA.OUTGOING'
+
+    APP.NAME ='AC.LOCKED.EVENTS'
+    OFSFUNCT='R'
+    PROCESS  = ''
+    OFSVERSION = Y.AC.LOCK.VERSION
+    GTSMODE = ''
+    TRANSACTION.ID=R.ATM.REVERSAL<AT.REV.TRANSACTION.ID>
+    OFSRECORD = ''
+    OFS.MSG.ID =''
+    OFS.ERR = ''
+    NO.OF.AUTH='0'
+    R.OFS.AC.LOCK=''
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCT,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.OFS.AC.LOCK,OFSRECORD2)
+    OFS.STRING.FINAL=OFSRECORD2:@FM:OFSRECORD1 ;*R22 AUTO CONVERSION
+    CALL OFS.POST.MESSAGE(OFS.STRING.FINAL,OFS.MSG.ID,OFS.SRC,OPTIONS)
+
+
+RETURN
+*----------------------------------------------------------------------
+ERROR.ENTRY:
+*----------------------------------------------------------------------
+
+
+    CR.AMT=R.REDO.STLMT.LINE<ATH.SETT.REQUESTED.AMT.RD>
+
+    R.FUNDS.TRANSFER<FT.CREDIT.AMOUNT>=CR.AMT     ;* Credit Amount
+    R.FUNDS.TRANSFER<FT.DEBIT.VALUE.DATE>=TODAY
+    R.FUNDS.TRANSFER<FT.CREDIT.VALUE.DATE>=TODAY
+    R.FUNDS.TRANSFER<FT.CREDIT.CURRENCY>='DOP'
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.L.STLMT.ID>=Y.STL.ID
+    R.FUNDS.TRANSFER<FT.LOCAL.REF,POS.L.STLMT.APPL>='REDO.ATH.SETTLMENT'
+
+    GOSUB OFS.POST.1
+
+RETURN
+*---------------------------------------------
+OFS.POST.1:
+*---------------------------------------------
+
+    APP.NAME = 'FUNDS.TRANSFER'
+    OFSFUNCT='I'
+    PROCESS  = ''
+    OFSVERSION ='FUNDS.TRANSFER,ATH.ERROR'
+    GTSMODE = ''
+    TRANSACTION.ID=''
+    OFSRECORD = ''
+    OFS.MSG.ID =''
+    OFS.ERR = ''
+    NO.OF.AUTH=''
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCT,PROCESS,OFSVERSION,GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.FUNDS.TRANSFER,OFSRECORD)
+    OFS.SRC='REDO.VISA.OUTGOING'
+    CALL OFS.POST.MESSAGE(OFSRECORD,OFS.ID,OFS.SRC,OPTIONS)
+
+    CALL ALLOCATE.UNIQUE.TIME(UNIQUE.TIME)
+    VAR.UNIQUE.ID=UNIQUE.TIME
+
+    CALL F.WRITE(FN.STLMT.POSTED.LOG,VAR.UNIQUE.ID,OFS.ID)
+RETURN
+END

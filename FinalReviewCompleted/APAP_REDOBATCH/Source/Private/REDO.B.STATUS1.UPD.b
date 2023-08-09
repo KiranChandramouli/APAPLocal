@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxNTQ2ODI2Nzg0OkNwMTI1MjoxNjkwMjY0NDUzMjcwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:13
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : Mjo1NTU0MjA2ODA6Q3AxMjUyOjE2ODUwOTI0OTk2OTE6SVRTUzotMTotMTo1MzA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 26 May 2023 14:44:59
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 530
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.STATUS1.UPD(ID)
@@ -58,7 +72,10 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
     $INSERT I_F.REDO.UPD.ACC.LIST
     $INSERT JBC.h
     $INSERT I_F.EB.CONTRACT.BALANCES    ;*Tus S/E
+<<<<<<< Updated upstream
     $USING APAP.REDOAPAP
+=======
+>>>>>>> Stashed changes
 
     LAST.CR.DT =''
     LAST.DR.DT = ''
@@ -368,8 +385,12 @@ CHANGE.STATUS:
         R.ACCOUNT<AC.LOCAL.REF,REF.POS>= Y.PREV.SELECT.STATUS
         Y.STATUS.UPD = 1
         Y.STATUS.CHG.UPD=1
+<<<<<<< Updated upstream
 *       CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
         APAP.REDOAPAP.redoUpdAccountStatusDate(ID,Y.PREV.SELECT.STATUS) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
+>>>>>>> Stashed changes
     END
 *PACS00308629-S
     VAR.ACCT.ID = ID

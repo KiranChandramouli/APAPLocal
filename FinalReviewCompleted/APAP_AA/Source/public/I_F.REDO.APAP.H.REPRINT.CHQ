@@ -1,0 +1,21 @@
+* I_F.REDO.APAP.H.REPRINT.CHQ Created 05 JAN 12 at 05:53PM by apap/SSUDHAR.1
+*      PREFIX[REDO.REP.CHQ]
+        EQU REDO.REP.CHQ.REPRINT.SEQ TO 1,   RedoApapHReprintChq_ReprintSeq TO 1,
+           REDO.REP.CHQ.REPRINT.FLAG TO 2,   RedoApapHReprintChq_ReprintFlag TO 2,
+             REDO.REP.CHQ.INIT.PRINT TO 3,   RedoApapHReprintChq_InitPrint TO 3,
+             REDO.REP.CHQ.PRINT.TYPE TO 4,   RedoApapHReprintChq_PrintType TO 4,
+             REDO.REP.CHQ.RESERVED.5 TO 5,   RedoApapHReprintChq_Reserved5 TO 5,
+             REDO.REP.CHQ.RESERVED.4 TO 6,   RedoApapHReprintChq_Reserved4 TO 6,
+             REDO.REP.CHQ.RESERVED.3 TO 7,   RedoApapHReprintChq_Reserved3 TO 7,
+             REDO.REP.CHQ.RESERVED.2 TO 8,   RedoApapHReprintChq_Reserved2 TO 8,
+              REDO.REP.CHQ.LOCAL.REF TO 9,   RedoApapHReprintChq_LocalRef TO 9,
+               REDO.REP.CHQ.OVERRIDE TO 10,  RedoApapHReprintChq_Override TO 10,
+          REDO.REP.CHQ.RECORD.STATUS TO 11,  RedoApapHReprintChq_RecordStatus TO 11,
+                REDO.REP.CHQ.CURR.NO TO 12,  RedoApapHReprintChq_CurrNo TO 12,
+               REDO.REP.CHQ.INPUTTER TO 13,  RedoApapHReprintChq_Inputter TO 13,
+              REDO.REP.CHQ.DATE.TIME TO 14,  RedoApapHReprintChq_DateTime TO 14,
+             REDO.REP.CHQ.AUTHORISER TO 15,  RedoApapHReprintChq_Authoriser TO 15,
+                REDO.REP.CHQ.CO.CODE TO 16,  RedoApapHReprintChq_CoCode TO 16,
+              REDO.REP.CHQ.DEPT.CODE TO 17,  RedoApapHReprintChq_DeptCode TO 17,
+           REDO.REP.CHQ.AUDITOR.CODE TO 18,  RedoApapHReprintChq_AuditorCode TO 18,
+        REDO.REP.CHQ.AUDIT.DATE.TIME TO 19,  RedoApapHReprintChq_AuditDateTime TO 19

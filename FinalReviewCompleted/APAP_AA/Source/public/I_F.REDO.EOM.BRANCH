@@ -1,0 +1,13 @@
+* I_F.REDO.EOM.BRANCH Created 30 JUN 17 at 03:41PM by da5tus/C.01252
+*      PREFIX[EM.BR]
+                        EQU EM.BR.MONTH TO 1,   RedoEomBranch_Month TO 1,
+                       EM.BR.AGENT.CODE TO 2,   RedoEomBranch_AgentCode TO 2,
+                    EM.BR.RECORD.STATUS TO 3,   RedoEomBranch_RecordStatus TO 3,
+                          EM.BR.CURR.NO TO 4,   RedoEomBranch_CurrNo TO 4,
+                         EM.BR.INPUTTER TO 5,   RedoEomBranch_Inputter TO 5,
+                        EM.BR.DATE.TIME TO 6,   RedoEomBranch_DateTime TO 6,
+                       EM.BR.AUTHORISER TO 7,   RedoEomBranch_Authoriser TO 7,
+                          EM.BR.CO.CODE TO 8,   RedoEomBranch_CoCode TO 8,
+                        EM.BR.DEPT.CODE TO 9,   RedoEomBranch_DeptCode TO 9,
+                     EM.BR.AUDITOR.CODE TO 10,  RedoEomBranch_AuditorCode TO 10,
+                  EM.BR.AUDIT.DATE.TIME TO 11,  RedoEomBranch_AuditDateTime TO 11

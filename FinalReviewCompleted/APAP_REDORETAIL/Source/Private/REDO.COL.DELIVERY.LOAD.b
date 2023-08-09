@@ -43,7 +43,11 @@ SUBROUTINE REDO.COL.DELIVERY.LOAD
     E = ''
 *CALL  REDO.COL.R.DEL.UPD.LOCKING("CREATE", Y.REPONSE)
    
+<<<<<<< Updated upstream
     APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
+=======
+    CALL APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
+>>>>>>> Stashed changes
     IF E NE '' THEN
         CALL OCOMO(E)
     END

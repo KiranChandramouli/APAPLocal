@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTY0Mzg0ODU0OkNwMTI1MjoxNjkwMTc3MTIyNzU5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 24 Jul 2023 11:08:42
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : Mjo4MDIzMDA1ODI6Q3AxMjUyOjE2ODQ5MjM4MzQ5MDM6SVRTUzotMTotMTo1NzM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 May 2023 15:53:54
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 573
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.RTE.EXCESS.TELLER(Y.TELLER.ID,Y.CCY,Y.AMT,TXN.CNT)
@@ -69,8 +83,13 @@ SUBROUTINE REDO.RTE.EXCESS.TELLER(Y.TELLER.ID,Y.CCY,Y.AMT,TXN.CNT)
     SAVE.CACHE.OFF = CACHE.OFF
     CACHE.OFF = 1
     IF Y.TEMP.DATA EQ '' THEN
+<<<<<<< Updated upstream
 *        CALL REDO.E.NOF.RTE.RTN(Y.DATA)
         APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*R22 MANUAL CODE CONVERSION
+=======
+        CALL REDO.E.NOF.RTE.RTN(Y.DATA)
+*APAP.REDOENQ.redoENofRteRtn(Y.DATA) ;*R22 MANUAL CODE CONVERSION
+>>>>>>> Stashed changes
         Y.TEMP.DATA = Y.DATA
     END ELSE
         Y.DATA = Y.TEMP.DATA

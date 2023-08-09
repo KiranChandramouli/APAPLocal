@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTYwNjYwOTg3OkNwMTI1MjoxNjkwMjY2NzkyNzM1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 12:03:12
 * @ValidationInfo : Encoding          : Cp1252
@@ -9,6 +10,19 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationCode : MjotMTM2NDU1NDYwODpDcDEyNTI6MTY4NDg0MjA5MjcyMjpJVFNTOi0xOi0xOjEzMzk6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 17:11:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1339
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_AMR.0
+>>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
@@ -46,7 +60,10 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
     $INSERT I_RAPID.APP.DEV.COMMON
 
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
+<<<<<<< Updated upstream
     $USING APAP.AA
+=======
+>>>>>>> Stashed changes
 
 * </region>
 
@@ -238,8 +255,12 @@ GET.LIMIT.PRODUCT:
     END
 
 * Get Limit Product
+<<<<<<< Updated upstream
 *    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
     APAP.AA.redoCreateAaRGetLimitProduct("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
+>>>>>>> Stashed changes
 
 * After restoring, check if LIMIT.GET.PRODUCT found an error
     IF E NE '' THEN
