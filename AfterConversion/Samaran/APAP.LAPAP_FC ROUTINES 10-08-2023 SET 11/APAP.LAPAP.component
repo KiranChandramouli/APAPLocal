@@ -1,0 +1,32 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+public method lapapBulkPrRtSelect (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.SELECT
+}
+
+
+public method lapapChkPayrollIdRt (
+)
+{
+    jBC: LAPAP.CHK.PAYROLL.ID.RT
+}
+
+
+
+public method lapapChkTellpRt (
+)
+{
+    jBC: LAPAP.CHK.TELLP.RT
+}
+
+
+public method lapapBulkPrRtLoad (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.LOAD
+}
+
