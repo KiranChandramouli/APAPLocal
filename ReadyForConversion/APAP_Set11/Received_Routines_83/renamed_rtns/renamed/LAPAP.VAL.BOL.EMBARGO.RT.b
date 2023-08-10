@@ -1,0 +1,82 @@
+*-----------------------------------------------------------------------------
+* <Rating>-30</Rating>
+*-----------------------------------------------------------------------------
+    SUBROUTINE LAPAP.VAL.BOL.EMBARGO.RT
+
+    $INSERT T24.BP I_COMMON
+    $INSERT T24.BP I_EQUATE
+    $INSERT T24.BP I_System
+    $INSERT T24.BP I_F.VERSION
+    $INSERT T24.BP I_F.AC.LOCKED.EVENTS
+    $INSERT T24.BP I_F.CUSTOMER
+    $INSERT T24.BP I_F.CUSTOMER.ACCOUNT
+    $INSERT TAM.BP I_F.APAP.H.GARNISH.DETAILS
+
+
+    GOSUB LOAD
+
+    IF Y.IDENTITY.TYPE EQ 'NINGUNO' THEN 
+       RETURN 
+    END
+    
+    GOSUB PROCESS
+*====
+LOAD:
+*====
+
+    Y.CED.ID                 = R.NEW(APAP.GAR.IDENTITY.NUMBER)
+    Y.IDENTITY.TYPE          = R.NEW(APAP.GAR.IDENTITY.TYPE)
+    Y.PARAMETER              = "BOLSILLO"
+
+    FN.AC.LOCKED.EVENTS = 'F.AC.LOCKED.EVENTS'
+    F.AC.LOCKED.EVENTS = ''
+    CALL OPF(FN.AC.LOCKED.EVENTS,F.AC.LOCKED.EVENTS)
+
+    FN.CUSTOMER.ACCOUNT = 'F.CUSTOMER.ACCOUNT'
+    F.CUSTOMER.ACCOUNT = ''
+    CALL OPF(FN.CUSTOMER.ACCOUNT,F.CUSTOMER.ACCOUNT)
+
+    FN.CUSTOMER = 'F.CUSTOMER'
+    F.CUSTOMER = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    RETURN
+
+*=======
+PROCESS:
+*=======
+
+    CUS.REC = ''; CUS.ERR = ''; Y.COUNT.CUS = ''; CUS.POS = '';
+    SEL.CMD = "SELECT ":FN.CUSTOMER:" WITH L.CU.CIDENT EQ " :Y.CED.ID:" OR L.CU.RNC EQ ":Y.CED.ID:" OR L.CU.PASS.NAT EQ ":Y.CED.ID""
+    CALL EB.READLIST(SEL.CMD, SEL.LIST, "", CUS.REC, CUS.ERR);
+
+    Y.CUSTOMER.ID              = SEL.LIST
+    R.CUSTOMER = ''; CUSTOMER.ERR = ''
+    CALL F.READ(FN.CUSTOMER,Y.CUSTOMER.ID,R.CUSTOMER,FN.CUSTOMER,CUSTOMER.ERR)
+    Y.CUS.NAME                 = R.CUSTOMER<EB.CUS.SHORT.NAME>
+
+    R.CUSTOMER.ACC = ''; CUSTOMER.ACC.ERR = ''
+    CALL F.READ(FN.CUSTOMER.ACCOUNT,Y.CUSTOMER.ID,R.CUSTOMER.ACC,F.CUSTOMER.ACCOUNT,CUSTOMER.ACC.ERR)
+
+    Y.ACC.NUM                = R.CUSTOMER.ACC
+    Y.ACC.NUM.COUNT          = DCOUNT(Y.ACC.NUM,FM)
+
+    i = 0;
+    FOR i = 1 TO Y.ACC.NUM.COUNT
+        CRT Y.ACC.NUM<i>
+        Y.ACCOUNT           = Y.ACC.NUM<i>
+
+        NO.OF.REC = ''; SEL.ERR = ''; Y.COUNT.LIST = ''; LIST.POS = '';
+        SEL.CMD = "SELECT ":FN.AC.LOCKED.EVENTS:" WITH ACCOUNT.NUMBER EQ " :Y.ACCOUNT:" AND L.AC.LOCKE.TYPE EQ " :Y.PARAMETER;
+        CALL EB.READLIST(SEL.CMD, SEL.LIST, "", NO.OF.REC, SEL.ERR);
+        Y.COUNT.LOCK = DCOUNT(SEL.LIST,FM);
+
+        IF Y.COUNT.LOCK GT 0 THEN
+            TEXT = "El cliente: ":Y.CUS.NAME:" tiene bolsillos asociados, por favor eliminar antes de proceder con el embargo" 
+            ETEXT = TEXT
+            E = TEXT
+            CALL ERR
+        END
+    NEXT i
+RETURN
+END
