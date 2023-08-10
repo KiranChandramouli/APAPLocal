@@ -146,12 +146,12 @@
     DEFFUN redoIsLastDay()    ;* Check if the date is the last day on its current month
 
 * Errors
-    EQU yRecordNotFound  TO "ST-REDO.COL.RECORD.NOT.FOUND" : VM : "RECORD & NOT FOUND IN &"         ;* ie: Record 1000 NOT FOUND ON F.ACCOUNT
-    EQU yValueMantatory  TO "ST-REDO.COL.MANDATORY.VALUE" : VM :"VALUE & IS REQUIRED, ID &"         ;* ie: Value on CUSTOMER>GENDER is required, ID 111999
-    EQU yNonMappingValue TO "ST-REDO.COL.NON.MAPPING" : VM : "VALUE -&- DOES NOT HAVE MAPPING ON &" ;* ie: Value ASD does not havae mapiing on CURRENCY
-    EQU yLocalRefFieldNotDef TO "ST-REDO.COL.LOCAL.FIELD.NO.DEF"  :VM : "LOCAL FIELD & WAS NOT DEF FOR & APPLICATION"
-    EQU yStaticMappingNoDef  TO "ST-REDO.COL.STA.MAP.DEFINITION" : VM : "WRONG DEF MAPPING IN RAD.CONDUIT.LINEAR FOR ENTRY & IN @ID &"
-    EQU yRoutineParamRequired TO "ST-REDO.COL.PARAM.RTN.REQUIRED" : VM : "PARAMETER & IS REQUIRED, ROUTINE &" ;* paramter x required, routine &
+    EQU yRecordNotFound  TO "ST-REDO.COL.RECORD.NOT.FOUND" : @VM : "RECORD & NOT FOUND IN &"         ;* ie: Record 1000 NOT FOUND ON F.ACCOUNT
+    EQU yValueMantatory  TO "ST-REDO.COL.MANDATORY.VALUE" : @VM :"VALUE & IS REQUIRED, ID &"         ;* ie: Value on CUSTOMER>GENDER is required, ID 111999
+    EQU yNonMappingValue TO "ST-REDO.COL.NON.MAPPING" : @VM : "VALUE -&- DOES NOT HAVE MAPPING ON &" ;* ie: Value ASD does not havae mapiing on CURRENCY
+    EQU yLocalRefFieldNotDef TO "ST-REDO.COL.LOCAL.FIELD.NO.DEF"  :@VM : "LOCAL FIELD & WAS NOT DEF FOR & APPLICATION"
+    EQU yStaticMappingNoDef  TO "ST-REDO.COL.STA.MAP.DEFINITION" : @VM : "WRONG DEF MAPPING IN RAD.CONDUIT.LINEAR FOR ENTRY & IN @ID &"
+    EQU yRoutineParamRequired TO "ST-REDO.COL.PARAM.RTN.REQUIRED" : @VM : "PARAMETER & IS REQUIRED, ROUTINE &" ;* paramter x required, routine &
 
 
 *
