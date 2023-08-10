@@ -1,3 +1,15 @@
+* @ValidationCode : MjotMjgxNzYzNDc3OkNwMTI1MjoxNjkxNjUyMDkyMTMxOmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 10 Aug 2023 12:51:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------
 * <Rating>1543</Rating>
@@ -276,7 +288,7 @@ CUSTOMER.STMT:      *EXTRACT INFORMATION ABOUT CUSTOMER
 *Tipo de Customer Registrado(Persona Fisica, Persona Jurida, etc...)
     Y.CLI.TIPO.PERSONA = R.CUSTOMER<EB.CUS.LOCAL.REF, Y.CLI.TIPO.CL.POS>
 
-    NRO.REL.CODE.PER = DCOUNT(Y.CLI.TIPO.PERSONA,SM)
+    NRO.REL.CODE.PER = DCOUNT(Y.CLI.TIPO.PERSONA,@SM)
 
 * PP, take first position   for NAME.1 & NAME.2
     I = NRO.REL.CODE.PER
@@ -319,7 +331,7 @@ CUSTOMER.STMT:      *EXTRACT INFORMATION ABOUT CUSTOMER
 
 *Y.CLI.CODIGO.ORIGEN = TRIM(CUSTOMER.ID,"","B")          ;* CN008947
     Y.CLI.CAMPO1.09 = CHANGE(R.CUSTOMER<EB.CUS.ADDRESS>,@VM,' ')
-    Y.CLI.CAMPO1.09 = CHANGE (Y.CLI.CAMPO1.09, SM, ' ')
+    Y.CLI.CAMPO1.09 = CHANGE (Y.CLI.CAMPO1.09, @SM, ' ')
     Y.CLI.CAMPO2.09 = CHANGE(R.CUSTOMER<EB.CUS.STREET>, @VM, ' ')
     Y.CLI.CAMPO3.09 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.CAMPO3.09.POS >
     Y.CLI.CAMPO4.09 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.CAMPO4.09.POS >
@@ -392,7 +404,7 @@ PHONES.STMT:
 
 
     Y.CLI.TELF.TYPE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.TYPE.POS>
-    NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,SM)
+    NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,@SM)
 
     Y.TEL.TYPE.LIST = ''
     Y.TEL.TYPE.SEQ  = ''
@@ -412,7 +424,7 @@ RETURN
 PROC.PHONES:
 *-------------------
     IF NUM(Y.CLI.TELF.TYPE) EQ @FALSE THEN        ;* Warning Message - Phone Number is not Numeric
-        Y.MSG = "EL TIPO DE TELEFONO -&- DEBE SER NUMERICO EN CLIENTE & " : @FM : Y.CLI.TELF.TYPE : VM : CUSTOMER.ID
+        Y.MSG = "EL TIPO DE TELEFONO -&- DEBE SER NUMERICO EN CLIENTE & " : @FM : Y.CLI.TELF.TYPE : @VM : CUSTOMER.ID
         CALL OCOMO(Y.MSG)
         RETURN
     END
@@ -468,7 +480,7 @@ RETURN
 END
 
 Y.CLI.TELF.TYPE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.TYPE.POS>
-NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,SM)
+NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,@SM)
 Y.CLI.CONTACTO=''
 I = NRO.REL.CODE.TEL
 LOOP WHILE I GE 1
@@ -524,7 +536,7 @@ ADDRESS.STMT:       *OBTENER TMPCLIENTEDIRECCIONES   18-inicio
 
         Y.CLI.COUNTRY = R.DE.ADDRESS<DE.ADD.COUNTRY,1>      ;* PACS00169639
         Y.CLI.COUNTRY.TOWN =  R.DE.ADDRESS<DE.ADD.TOWN.COUNTY,1>      ;* PACS00169639
-        Y.L.AUD.POSITION = DCOUNT(R.DE.ADDRESS<DE.ADD.INPUTTER>, VM)
+        Y.L.AUD.POSITION = DCOUNT(R.DE.ADDRESS<DE.ADD.INPUTTER>, @VM)
         Y.CLI.INPUTTER.LAST = FIELD(R.DE.ADDRESS<DE.ADD.INPUTTER, Y.L.AUD.POSITION>,'_',2)
         Y.CLI.DATE.TIME.LAST = R.DE.ADDRESS<DE.ADD.DATE.TIME, Y.L.AUD.POSITION>
         Y.CLI.DATE.TIME.LAST = ICONV(Y.CLI.DATE.TIME.LAST,'DI')
@@ -809,7 +821,7 @@ GET.ADDRESS.TYPE.COL:
     LOCATE Y.CLI.TIPO.DIRECCION IN Y.ADD.TYPE.LIST<1,1> SETTING Y.POS THEN
         Y.CLI.TIPO.DIRECCION = Y.ADD.TYPE.LIST<2,Y.POS>
     END ELSE
-        Y.MSG = yNonMappingValue : @FM : Y.CLI.TIPO.DIRECCION : @VM : "TIPO.DIRECCION" : VM : CUSTOMER.ID
+        Y.MSG = yNonMappingValue : @FM : Y.CLI.TIPO.DIRECCION : @VM : "TIPO.DIRECCION" : @VM : CUSTOMER.ID
         Y.TABLE.ID = Y.TMPDIRECCIONESCLIENTE
         Y.PROCESS.FLAG.TABLE<1,3> = ""
         GOSUB TRACE.ERROR
