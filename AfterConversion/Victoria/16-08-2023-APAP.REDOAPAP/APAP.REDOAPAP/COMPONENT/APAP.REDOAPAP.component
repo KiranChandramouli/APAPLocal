@@ -1,0 +1,15 @@
+component APAP.REDOAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+
+public method redoValAdjbillchargeCobros (
+)
+{
+    jBC: REDO.VAL.ADJBILLCHARGE.COBROS
+}
+
