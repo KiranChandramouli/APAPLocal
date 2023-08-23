@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo2MTM4NDg4Mzg6Q3AxMjUyOjE2OTAyNjQ0MzczMDg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:57
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMjE0NjU1MjMyOTpDcDEyNTI6MTY4NDg1NDM5NjUwOTpJVFNTOi0xOi0xOjkwNzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -57,7 +63,11 @@ SUBROUTINE REDO.B.RISK.GROUP.MEMBERS.POST
 * REGN4-GR03             Kalyani L K                     2014-02-14           Initial Draft
 *                        Thenmalar T                     2014-03-18           Fixes done as per the changes suggested
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -73,7 +83,10 @@ SUBROUTINE REDO.B.RISK.GROUP.MEMBERS.POST
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.RISK.GROUP.MEMBERS.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -157,8 +170,12 @@ GET.REPORT.LINES:
         REC.CON  = "GR03"
         DESC     = "GR03"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -189,8 +206,12 @@ GET.REPORT.LINES:
             REC.CON  = "GR03"
             DESC     = "GR03"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *           CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
             CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -272,8 +293,12 @@ OPEN.SEQ.FILE:
         REC.CON  = "GR03"
         DESC     = "GR03"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -295,8 +320,12 @@ WRITE.TO.FILE:
         REC.CON  = "GR03"
         DESC     = "GR03"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *      CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

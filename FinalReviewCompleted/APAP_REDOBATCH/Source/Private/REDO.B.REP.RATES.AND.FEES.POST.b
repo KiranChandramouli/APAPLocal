@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMzEwMjg2NjM3OkNwMTI1MjoxNjkwMjY0NDMzNjA2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:53
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTI0NzE4NDkzMzpDcDEyNTI6MTY4NDg1NDM5NTcyMTpJVFNTOi0xOi0xOjM1MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -60,8 +66,13 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES.POST
 *-----------------------------------------------------------------------------------------------------------------
 *XXXX                   <<name of modifier>>                                 <<modification details goes here>>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM
+=======
+* Date                   who                   Reference              
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
@@ -77,7 +88,10 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES.POST
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.REP.RATES.AND.FEES.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *
@@ -175,8 +189,12 @@ RAISE.ERR.C.22:
     EX.USER  = ''
     EX.PC    = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
     CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

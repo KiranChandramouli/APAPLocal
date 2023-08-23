@@ -72,7 +72,11 @@ PROCESS:
 
 *CALC THE REA VALUE
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     APAP.TAM.redoVValReaCollateral();* R22 Manual conversion
+=======
+    CALL  APAP.TAM.redoVValReaCollateral();* R22 Manual conversion
+>>>>>>> Stashed changes
 =======
     CALL  APAP.TAM.redoVValReaCollateral();* R22 Manual conversion
 >>>>>>> Stashed changes

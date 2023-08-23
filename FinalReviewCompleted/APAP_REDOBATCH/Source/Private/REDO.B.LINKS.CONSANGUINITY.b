@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoyMTExNjIwMzg0OkNwMTI1MjoxNjkwMjY0Mzk1MjEyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:15
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotNjExNjc4MTQzOkNwMTI1MjoxNjg0ODU0Mzg5MDM5OklUU1M6LTE6LTE6Mjc2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:29
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -59,7 +65,11 @@ SUBROUTINE REDO.B.LINKS.CONSANGUINITY(CUSTOMER.ID)
 *                                                                             as per the format
 * PACS00361957           Ashokkumar.V.P                  19/02/2015           Optimized the relation between the customer
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -76,7 +86,10 @@ SUBROUTINE REDO.B.LINKS.CONSANGUINITY(CUSTOMER.ID)
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.LINKS.CONSANGUINITY.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------------------------------------------
@@ -287,8 +300,12 @@ WRITE.FILE:
         REC.CON  = "GR05"
         DESC     = "GR05"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

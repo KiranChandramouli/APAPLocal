@@ -1,7 +1,13 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTc5OTc1MTI2MTpVVEYtODoxNjg5MTQzMzc1MjI1OklUU1M6LTE6LTE6MTg2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 12 Jul 2023 11:59:35
 * @ValidationInfo : Encoding          : UTF-8
+=======
+* @ValidationCode : MjoxMjYwMzA1MzgzOkNwMTI1MjoxNjgyMzMxMzIwOTI2OklUU1M6LTE6LTE6MTg2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Apr 2023 15:45:20
+* @ValidationInfo : Encoding          : Cp1252
+>>>>>>> Stashed changes
 =======
 * @ValidationCode : MjoxMjYwMzA1MzgzOkNwMTI1MjoxNjgyMzMxMzIwOTI2OklUU1M6LTE6LTE6MTg2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 24 Apr 2023 15:45:20
@@ -49,8 +55,12 @@ INIT:
 **-------------------------------------------------------
     SEL.LIST = ""; NO.OF.REC = ""; SEL.ERR = ""; FT.LIST.POS = ""
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     TXN.TYPE.FILTER = "OT33 OT30 OT32 OT31 OT37 OT34 OT36 OT35 AC25 AC08 AC28 AC86 AC14 AC90 ACIO AC88 AC2C AC92 AC2D AC2B AC91 AC93 AC87 AC89 AC77"
+=======
+    TXN.TYPE.FILTER = "OT33 OT30 OT32 OT31 OT37 OT34 OT36 OT35 AC25 AC08 AC28 AC86 AC14 AC90 ACIO AC88 AC2C AC92 AC2D AC2B"
+>>>>>>> Stashed changes
 =======
     TXN.TYPE.FILTER = "OT33 OT30 OT32 OT31 OT37 OT34 OT36 OT35 AC25 AC08 AC28 AC86 AC14 AC90 ACIO AC88 AC2C AC92 AC2D AC2B"
 >>>>>>> Stashed changes

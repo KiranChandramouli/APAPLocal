@@ -1,6 +1,11 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTA3NzA0NTA3NTpDcDEyNTI6MTY4ODUzNjg5MzY1NzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:33
+=======
+* @ValidationCode : MjotMTA3NzA0NTA3NTpDcDEyNTI6MTY4NjgyMjc3MzAzNTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 15 Jun 2023 15:22:53
+>>>>>>> Stashed changes
 =======
 * @ValidationCode : MjotMTA3NzA0NTA3NTpDcDEyNTI6MTY4NjgyMjc3MzAzNTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 15 Jun 2023 15:22:53
@@ -12,7 +17,11 @@
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
+=======
+* @ValidationInfo : Strict flag       : N/A
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Strict flag       : N/A
 >>>>>>> Stashed changes

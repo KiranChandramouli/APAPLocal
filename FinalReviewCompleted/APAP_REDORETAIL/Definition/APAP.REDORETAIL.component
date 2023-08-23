@@ -10,6 +10,10 @@ public method certifiedChequeDetails (
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -3292,6 +3296,7 @@ public method redoCardStatus (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: REDO.CARD.STATUS
 }
 
@@ -3347,6 +3352,10 @@ public method latamCardOrderSplitValidate4 (
    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.4
 }
 
+=======
+   jBC: REDO.CARD.STATUS
+}
+>>>>>>> Stashed changes
 =======
    jBC: REDO.CARD.STATUS
 }

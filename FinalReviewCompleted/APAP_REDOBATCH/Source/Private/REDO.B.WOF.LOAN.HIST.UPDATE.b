@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTY4NDk4ODU2NjpDcDEyNTI6MTY5MDI2NDQ3MTQ3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:31
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMjMzNzA4ODEyOkNwMTI1MjoxNjg0ODU0NDAyODI2OklUU1M6LTE6LTE6OTE2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:42
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -43,8 +49,13 @@ SUBROUTINE REDO.B.WOF.LOAN.HIST.UPDATE(ARR.ID)
 * Reference              Date                Description
 * ODR-2011-12-0017   21-Nov-2011          Initial draft
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 17-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -=
+=======
+* Date                   who                   Reference              
+* 17-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -= 
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 * 17-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -= 
@@ -63,7 +74,10 @@ SUBROUTINE REDO.B.WOF.LOAN.HIST.UPDATE(ARR.ID)
     $INSERT I_F.REDO.AA.NAB.HISTORY
     $INSERT I_F.AA.SCHEDULED.ACTIVITY
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -193,8 +207,12 @@ GET.OUTS.PRIN:
     Y.ACCOUNT.PROPERTY = ''
     OUT.ERR = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
 >>>>>>> Stashed changes
@@ -224,8 +242,12 @@ GET.OVERDUE.STATUS:
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
 >>>>>>> Stashed changes

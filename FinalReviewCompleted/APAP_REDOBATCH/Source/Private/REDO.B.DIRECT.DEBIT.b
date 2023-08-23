@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotNDY3NTIzNjk2OkNwMTI1MjoxNjkwMjY0MzY4MzQ3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:48
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotNjYzMDM0NjY4OkNwMTI1MjoxNjg0ODU0Mzg1NDgxOklUU1M6LTE6LTE6ODI5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:25
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -40,7 +46,11 @@ SUBROUTINE REDO.B.DIRECT.DEBIT(ID)
 *    NAME                 DATE                ODR              DESCRIPTION
 * JEEVA T              31-10-2011         B.9-DIRECT DEBIT
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -62,7 +72,11 @@ SUBROUTINE REDO.B.DIRECT.DEBIT(ID)
     $INSERT I_REDO.B.DIRECT.DEBIT.COMMON
     $INSERT I_F.REDO.W.DIRECT.DEBIT
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.AA
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -256,8 +270,12 @@ CREDIT.ACCOUNT.CK:
     EFF.DATE = ''
     LS.LC.FLAG.WR = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
 >>>>>>> Stashed changes
@@ -312,8 +330,12 @@ DEBIT.ACCOUNT.CK:
     ERR.MSG = ''
     R.INT.ARR.COND = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
 >>>>>>> Stashed changes

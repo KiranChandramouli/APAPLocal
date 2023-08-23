@@ -1,20 +1,30 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo3NTM3ODEzNjU6Q3AxMjUyOjE2ODg1MzY4OTk5OTk6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:39
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : Mjo3NTM3ODEzNjU6Q3AxMjUyOjE2ODY5MTgxNjQ5OTM6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 16 Jun 2023 17:52:44
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
+=======
+* @ValidationInfo : Strict flag       : N/A
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Strict flag       : N/A
 >>>>>>> Stashed changes

@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTcyOTcyNzQzOTpDcDEyNTI6MTY5MDI2NDQ3NjU3NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMjEwODY3NTg4NDpDcDEyNTI6MTY4NDg1NDQwMzg1NjpJVFNTOi0xOi0xOi00MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:43
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -52,7 +58,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.RECORD
 *-------------------------------------------------------------------------------------
 *Modification
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes
@@ -65,8 +75,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.RECORD
     $INSERT I_GTS.COMMON
     $INSERT I_F.REDO.BCR.REPORT.EXEC
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -112,8 +125,12 @@ CHECK.I.FUNCTION:
 *-----------------------------------------------------------------------------
     IF NOT(OFS$BROWSER) AND R.NEW(REDO.BCR.REP.EXE.CURR.NO) EQ '' THEN
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
         APAP.TAM.redoRBcrRepCopyParam(ID.NEW)   ;*R22 Manual Code Converison
+=======
+        CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
 =======
         CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
 >>>>>>> Stashed changes
@@ -126,8 +143,12 @@ CHECK.I.FUNCTION:
 * The record is being created
         IF OFS$GETRECORD EQ 1 AND R.NEW(REDO.BCR.REP.EXE.CURR.NO) EQ '' THEN
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *           CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
             APAP.TAM.redoRBcrRepCopyParam(ID.NEW)  ;*R22 Manual Code Converison
+=======
+            CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
 =======
             CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
 >>>>>>> Stashed changes
@@ -162,8 +183,12 @@ RELOAD.PARAM:
         getIntParam = R.GTS<1,2>
         IF getIntParam EQ 'SI' THEN
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *           CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
             APAP.TAM.redoRBcrRepCopyParam(ID.NEW)    ;*R22 Manual Code Converison
+=======
+            CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
+>>>>>>> Stashed changes
 =======
             CALL REDO.R.BCR.REP.COPY.PARAM(ID.NEW)
 >>>>>>> Stashed changes

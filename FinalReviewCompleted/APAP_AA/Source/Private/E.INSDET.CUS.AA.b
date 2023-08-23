@@ -70,7 +70,11 @@ PROCESS.GOAHEAD:
 
 * CALL THE APAP.CUS.AA.ARRANGEMENT TO BUILD AA.LIST
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *APAP.CUS.AA.ARRANGEMENT(CUST.LIST,AA.LIST)
+=======
+*CALL APAP.CUS.AA.ARRANGEMENT(CUST.LIST,AA.LIST)
+>>>>>>> Stashed changes
 =======
 *CALL APAP.CUS.AA.ARRANGEMENT(CUST.LIST,AA.LIST)
 >>>>>>> Stashed changes

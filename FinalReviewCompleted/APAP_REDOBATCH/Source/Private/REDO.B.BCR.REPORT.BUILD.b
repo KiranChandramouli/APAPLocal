@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTM3MDkxMTMzOTpDcDEyNTI6MTY5MDI3MzIwOTc5NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 13:50:09
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTAzNDQ5NjUxNjpDcDEyNTI6MTY4NDg1NDM4MTI5NDpJVFNTOi0xOi0xOjE4MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -35,7 +41,11 @@ SUBROUTINE REDO.B.BCR.REPORT.BUILD
 *-------------------------------------------------------------------------------------
 *Modification
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -48,9 +58,12 @@ SUBROUTINE REDO.B.BCR.REPORT.BUILD
     $INSERT I_F.REDO.INTERFACE.PARAM
     $INSERT I_REDO.B.BCR.REPORT.BUILD.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     $USING APAP.REDOCHNLS
     $USING APAP.LAPAP
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
@@ -90,6 +103,7 @@ PROCESS:
         END
         E=''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REPORT.BUILD(Y.REDO.INT.PARAM.ID,'BATCH',R.REDO.INT.PARAM)
         APAP.LAPAP.redoRBcrReportBuild() ;*R22 Manual Code Conversion
         IF E NE '' THEN
@@ -97,10 +111,15 @@ PROCESS:
 *           CALL REDO.INTERFACE.REC.ACT(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC) ;*R22 Manual Code Conversion
 =======
+=======
+>>>>>>> Stashed changes
         CALL REDO.R.BCR.REPORT.BUILD(Y.REDO.INT.PARAM.ID,'BATCH',R.REDO.INT.PARAM)
         IF E NE '' THEN
             K.INT.CODE=Y.REDO.INT.PARAM.ID
             CALL REDO.INTERFACE.REC.ACT(K.INT.CODE,K.INT.TYPE,K.BAT.NO,K.BAT.TOT,K.INFO.OR,K.INFO.DE,K.ID.PROC,K.MON.TP,K.DESC,K.REC.CON,K.EX.USER,K.EX.PC)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         END
         K.BAT.NO += 1
@@ -115,8 +134,12 @@ INITIALISE:
     Y.RID.LIST = ''   ;* List of the records into REDO.INTERFACE.PARAM to process
 * Check if there are some to process
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.RID.LIST)
     APAP.TAM.redoRBcrReportGenListGet(Y.RID.LIST) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.RID.LIST)
+>>>>>>> Stashed changes
 =======
     CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.RID.LIST)
 >>>>>>> Stashed changes

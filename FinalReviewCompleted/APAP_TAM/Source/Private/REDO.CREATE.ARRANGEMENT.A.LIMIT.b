@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTYwNjYwOTg3OkNwMTI1MjoxNjkwMjY2NzkyNzM1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 12:03:12
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTM2NDU1NDYwODpDcDEyNTI6MTY4NDg0MjA5MjcyMjpJVFNTOi0xOi0xOjEzMzk6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 23 May 2023 17:11:32
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
@@ -61,7 +67,10 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
 
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.AA
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -256,8 +265,12 @@ GET.LIMIT.PRODUCT:
 
 * Get Limit Product
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
     APAP.AA.redoCreateAaRGetLimitProduct("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
 >>>>>>> Stashed changes

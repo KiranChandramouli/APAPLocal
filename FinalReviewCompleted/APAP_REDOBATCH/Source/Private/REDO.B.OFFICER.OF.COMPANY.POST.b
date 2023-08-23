@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotNDEyNTMxNTcwOkNwMTI1MjoxNjkwMjY0NDI1NTU1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:45
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMzMzMjI0ODgxOkNwMTI1MjoxNjg0ODU0Mzk0MjY0OklUU1M6LTE6LTE6MzA2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:34
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -61,8 +67,13 @@ SUBROUTINE REDO.B.OFFICER.OF.COMPANY.POST
 *                                                                           then "0" should be displayed as prefix.
 * PACS00361956           Ashokkumar.V.P                  23/02/2015         Optimized the relation between the customer
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM
+=======
+* Date                   who                   Reference              
+* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
@@ -77,7 +88,10 @@ SUBROUTINE REDO.B.OFFICER.OF.COMPANY.POST
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.OFFICER.OF.COMPANY.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------------------------------------------
@@ -160,8 +174,12 @@ GET.REPORT.LINES:
         REC.CON  = "GR04"
         DESC     = "GR04"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -191,8 +209,12 @@ GET.REPORT.LINES:
             REC.CON  = "GR04"
             DESC     = "GR04"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+=======
+            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
             CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -257,8 +279,12 @@ OPEN.SEQ.FILE:
         REC.CON  = "GR04"
         DESC     = "GR04"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes
@@ -280,8 +306,12 @@ WRITE.TO.FILE:
         REC.CON  = "GR04"
         DESC     = "GR04"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *      CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

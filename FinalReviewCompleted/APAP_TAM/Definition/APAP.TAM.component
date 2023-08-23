@@ -20,6 +20,10 @@ public method redoFtLaunchSupportingEnq (
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -1927,6 +1931,11 @@ public method redoHReorderDetailsFields (
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 =======
 
 
@@ -1937,6 +1946,12 @@ public method redoHReorderLevel (
     jBC: REDO.H.REORDER.LEVEL
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 =======
 
 
@@ -1949,6 +1964,11 @@ public method redoHReorderLevelFields (
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 =======
 
 
@@ -15167,6 +15187,11 @@ public method redoVAutActivateAcc (
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 =======
 
 
@@ -15349,6 +15374,7 @@ public method redoVinRevFtId (
     jBC: REDO.VIN.REV.FT.ID
 }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 public method redoIsLastDay (
     INOUT yDate string
@@ -15761,11 +15787,17 @@ public method apapDynConvRtn (
 }
 
 =======
+=======
+>>>>>>> Stashed changes
 
 public method redoIsLastDay (
    INOUT yDate string
 )
 {
    jBC: redoIsLastDay
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes

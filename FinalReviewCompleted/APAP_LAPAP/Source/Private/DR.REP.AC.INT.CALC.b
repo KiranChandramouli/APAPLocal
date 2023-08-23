@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo1MDAyMDM4Mzk6Q3AxMjUyOjE2OTAxOTQ3OTgwMjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:18
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 $PACKAGE APAP.LAPAP
@@ -29,7 +32,11 @@ SUBROUTINE DR.REP.AC.INT.CALC(ACCT.ID,R.ACCOUNT,INT.RATE)
 *
 * 01-Dec-2014  Ashokkumar.V.P      PACS00305233:- Fixed the saving account interest calculation bug.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes

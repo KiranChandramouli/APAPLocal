@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo1NzQ0Mjk0MDY6Q3AxMjUyOjE2OTAyNjQzNTE1NTQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:31
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxMzA2NTQ2OTgwOkNwMTI1MjoxNjg0ODU0MzgxMjQwOklUU1M6LTE6LTE6MjgxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
@@ -40,7 +46,11 @@ SUBROUTINE REDO.B.BCR.PROCESS.LOG
 * --------   ----              ----------                    --------
 * 17.04.12   hpasquel           PACS00191153                1.0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes
@@ -51,7 +61,10 @@ SUBROUTINE REDO.B.BCR.PROCESS.LOG
     $INSERT I_COMMON
     $INSERT I_EQUATE
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *
@@ -85,8 +98,12 @@ PROCESS:
         INT.TYPE = R.REDO.LOG<12>
 *
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Converison
+=======
+        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
         CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

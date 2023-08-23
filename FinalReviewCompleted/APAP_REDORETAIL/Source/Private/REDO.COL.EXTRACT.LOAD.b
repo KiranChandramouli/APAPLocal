@@ -1,13 +1,19 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTkxNzExNTk2MTpDcDEyNTI6MTY5MDI2NjU1MjYwNDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:59:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxNjg2MzYzNTg6Q3AxMjUyOjE2ODI1OTgwMTczNjU6c2FtYXI6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:17
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : samar
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -16,7 +22,11 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : DEV_202108.0
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Compiler Version  : DEV_202108.0
 >>>>>>> Stashed changes
@@ -53,7 +63,10 @@ SUBROUTINE REDO.COL.EXTRACT.LOAD
     $INSERT I_REDO.COL.CUSTOMER.COMMON
     $INSERT I_REDO.COL.EXTRACT.CREDIT.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -281,9 +294,13 @@ GET.TABLES.IDS:
 *       CALL OCOMO(Y.PROCESS.FLAG.TABLE)
         Y.PROCESS.FLAG.TABLE = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.R.COL.CHECK.TABLES(Y.PROCESS.FLAG.TABLE)
         APAP.TAM.redoRColCheckTables(Y.PROCESS.FLAG.TABLE) ;*R22 Manual Conversion
         
+=======
+        CALL REDO.R.COL.CHECK.TABLES(Y.PROCESS.FLAG.TABLE)
+>>>>>>> Stashed changes
 =======
         CALL REDO.R.COL.CHECK.TABLES(Y.PROCESS.FLAG.TABLE)
 >>>>>>> Stashed changes

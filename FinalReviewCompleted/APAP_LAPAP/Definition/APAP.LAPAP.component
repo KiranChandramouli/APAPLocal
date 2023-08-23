@@ -7,16 +7,22 @@ public method acctActivityRebuild (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: ACCT.ACTIVITY.REBUILD 
 }
 
 
 =======
+=======
+>>>>>>> Stashed changes
     jBC: ACCT.ACTIVITY.REBUILD
 }
 
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 public method acctEcbBalFromActivity (
 )
@@ -5417,15 +5423,21 @@ public method lapapCobPending (
 
 public method lApapEnqPortalAhoTodas (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5433,15 +5445,21 @@ public method lApapEnqPortalAhoTodas (
 
 public method lApapEnqSwiftAccounts (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5449,15 +5467,21 @@ public method lApapEnqSwiftAccounts (
 
 public method lApapGetCusProducts (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.GET.CUS.PRODUCTS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: L.APAP.GET.CUS.PRODUCTS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5467,7 +5491,11 @@ public method lApapValAccOwner (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: L.APAP.VAL.ACC.OWNER
+=======
+   jBC: L.APAP.VAL.ACC.OWNER
+>>>>>>> Stashed changes
 =======
    jBC: L.APAP.VAL.ACC.OWNER
 >>>>>>> Stashed changes
@@ -5477,15 +5505,21 @@ public method lApapValAccOwner (
 
 public method lapapEnqReprecio (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: LAPAP.ENQ.REPRECIO
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: LAPAP.ENQ.REPRECIO
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5495,7 +5529,11 @@ public method drRegRegn16ExtractPost (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: DR.REG.REGN16.EXTRACT.POST
+=======
+   jBC: DR.REG.REGN16.EXTRACT.POST
+>>>>>>> Stashed changes
 =======
    jBC: DR.REG.REGN16.EXTRACT.POST
 >>>>>>> Stashed changes
@@ -5505,15 +5543,21 @@ public method drRegRegn16ExtractPost (
 
 public method drRegRien6Extract (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.RIEN6.EXTRACT
 =======
+=======
+>>>>>>> Stashed changes
    INOUT recId string
 )
 {
    jBC: DR.REG.RIEN6.EXTRACT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5521,15 +5565,21 @@ public method drRegRien6Extract (
 
 public method drRegRien9Extract (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.RIEN9.EXTRACT
 =======
+=======
+>>>>>>> Stashed changes
    INOUT recId string
 )
 {
    jBC: DR.REG.RIEN9.EXTRACT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5539,7 +5589,11 @@ public method drRegn16GetProductType (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: DR.REGN16.GET.PRODUCT.TYPE
+=======
+   jBC: DR.REGN16.GET.PRODUCT.TYPE
+>>>>>>> Stashed changes
 =======
    jBC: DR.REGN16.GET.PRODUCT.TYPE
 >>>>>>> Stashed changes
@@ -5549,15 +5603,21 @@ public method drRegn16GetProductType (
 
 public method lApapNofCartaSaldoPrRt (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5565,15 +5625,21 @@ public method lApapNofCartaSaldoPrRt (
 
 public method lApapRet10PrcRt (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.RET.10.PRC.RT
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinal string
 )
 {
    jBC: L.APAP.RET.10.PRC.RT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5583,7 +5649,11 @@ public method lApapSrvGetSoyBalRt (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: L.APAP.SRV.GET.SOY.BAL.RT
+=======
+   jBC: L.APAP.SRV.GET.SOY.BAL.RT
+>>>>>>> Stashed changes
 =======
    jBC: L.APAP.SRV.GET.SOY.BAL.RT
 >>>>>>> Stashed changes
@@ -5593,15 +5663,21 @@ public method lApapSrvGetSoyBalRt (
 
 public method redoBCusTaxRetentions (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yNcfCusId string
 )
 {
     jBC: REDO.B.CUS.TAX.RETENTIONS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yNcfCusId string
 )
 {
    jBC: REDO.B.CUS.TAX.RETENTIONS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5609,15 +5685,21 @@ public method redoBCusTaxRetentions (
 
 public method redoBInactiveAccts (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yAcctId string
 )
 {
     jBC: REDO.B.INACTIVE.ACCTS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yAcctId string
 )
 {
    jBC: REDO.B.INACTIVE.ACCTS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5625,15 +5707,21 @@ public method redoBInactiveAccts (
 
 public method redoBMgLnsByDebtor (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT yFinalArrangement string
 )
 {
     jBC: REDO.B.MG.LNS.BY.DEBTOR
 =======
+=======
+>>>>>>> Stashed changes
    INOUT yFinalArrangement string
 )
 {
    jBC: REDO.B.MG.LNS.BY.DEBTOR
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5641,15 +5729,21 @@ public method redoBMgLnsByDebtor (
 
 public method redoBPrevCertDeposits (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT azAccId string
 )
 {
     jBC: REDO.B.PREV.CERT.DEPOSITS
 =======
+=======
+>>>>>>> Stashed changes
    INOUT azAccId string
 )
 {
    jBC: REDO.B.PREV.CERT.DEPOSITS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5659,7 +5753,11 @@ public method redoBPrevCertDepositsSelect (
 )
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
+=======
+   jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
+>>>>>>> Stashed changes
 =======
    jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
 >>>>>>> Stashed changes
@@ -5694,15 +5792,21 @@ public method drRegPasivasConcat (
 
 public method drRegFd01LastdExtract (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.FD01.LASTD.EXTRACT
 =======
+=======
+>>>>>>> Stashed changes
    INOUT recId string
 )
 {
    jBC: DR.REG.FD01.LASTD.EXTRACT
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -5849,6 +5953,7 @@ public method lapapLyInputUsmov (
     jBC: LAPAP.LY.INPUT.USMOV
 }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
 public method lApapCusDirDoMandRt (
@@ -8904,5 +9009,7 @@ public method lApapMancyNotifyRt (
 {
     jBC: L.APAP.MANCY.NOTIFY.RT
 }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

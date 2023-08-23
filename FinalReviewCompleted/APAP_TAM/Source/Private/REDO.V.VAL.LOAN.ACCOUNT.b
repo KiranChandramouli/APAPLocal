@@ -59,7 +59,11 @@ PROCESS:
         ERR.TEXT = ''
 *CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 MANUAL CONVERSION
+=======
+        CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 MANUAL CONVERSION
+>>>>>>> Stashed changes
 =======
         CALL APAP.TAM.redoConvertAccount(IN.ACC.ID,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 MANUAL CONVERSION
 >>>>>>> Stashed changes

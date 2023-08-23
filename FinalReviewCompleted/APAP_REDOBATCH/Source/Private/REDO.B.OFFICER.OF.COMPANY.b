@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoyNTE1NDk1NDY6Q3AxMjUyOjE2OTAyNjQ0MjU2MDM6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:45
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxNTAzNDMzNTA6Q3AxMjUyOjE2ODExMTE4OTU4MDg6SVRTUzotMTotMTozNDM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 10 Apr 2023 13:01:35
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -73,8 +79,11 @@ SUBROUTINE REDO.B.OFFICER.OF.COMPANY(CUSTOMER.ID)
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.OFFICER.OF.COMPANY.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOSRTN
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------------------------------------------
@@ -170,8 +179,12 @@ GET.SL.CUST.VALUES:
     PRODUCT.GROUP = ''
     REL.CODE      = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.S.REP.CUSTOMER.EXTRACT(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR);*Manual R22 conversion
     APAP.REDOSRTN.redoSRepCustomerExtract(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR) ;*Manual R22 conversion
+=======
+    CALL REDOSRTN.REDO.S.REP.CUSTOMER.EXTRACT(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR);*Manual R22 conversion
+>>>>>>> Stashed changes
 =======
     CALL REDOSRTN.REDO.S.REP.CUSTOMER.EXTRACT(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR);*Manual R22 conversion
 >>>>>>> Stashed changes
@@ -365,8 +378,12 @@ WRITE.FILE:
         REC.CON  = "GR04"
         DESC     = "GR04"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+=======
+        CALL REDOCHNLS.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*Manual R22 conversion
+>>>>>>> Stashed changes
 =======
         CALL REDOCHNLS.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);*Manual R22 conversion
 >>>>>>> Stashed changes
