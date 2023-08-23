@@ -1,0 +1,31 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method lapapCardnoMigRt (
+    INOUT yKeyId string
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT
+}
+
+
+
+public method lapapCardnoMigRtSelect (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.SELECT
+}
+
+
+
+
+public method lapapCardnoMigRtLoad (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.LOAD
+}
+
+
+
