@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotOTIyNjgzNTcwOkNwMTI1MjoxNjkwMjY0NDE2MjA0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxMzc1ODE3Nzg1OkNwMTI1MjoxNjg0ODU0MzkzMjU2OklUU1M6LTE6LTE6NTkwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:33
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -37,8 +43,13 @@ SUBROUTINE REDO.B.NAB.ACCT.BK.DT.LOANS.LOAD
 * Date           Name        Dev Ref.                         Comments
 * 16 Oct 2012   H Ganesh     NAB Accounting-PACS00202156     Initial Draft
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION -  VM TO @VM
+=======
+* Date                   who                   Reference              
+* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION -  VM TO @VM 
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION -  VM TO @VM 
@@ -50,7 +61,10 @@ SUBROUTINE REDO.B.NAB.ACCT.BK.DT.LOANS.LOAD
     $INSERT I_EQUATE
     $INSERT I_REDO.B.NAB.ACCT.BK.DT.LOANS.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 

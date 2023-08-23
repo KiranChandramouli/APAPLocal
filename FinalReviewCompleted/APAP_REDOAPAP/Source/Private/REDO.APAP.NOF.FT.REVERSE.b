@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMDI2ODQ4NTE5OkNwMTI1MjoxNjkwMjY0MjY4MjI2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:08
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTk4ODIxMDM1NTpDcDEyNTI6MTY4NDgzNjA0ODE1NjpJVFNTOi0xOi0xOjU1MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 15:30:48
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
@@ -53,7 +59,10 @@ SUBROUTINE REDO.APAP.NOF.FT.REVERSE(Y.FIN.ARR)
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.REDO.APAP.REVERSAL.FTTC
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOENQ
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -124,10 +133,15 @@ PROCESS:
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD)
 *   CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD)
     APAP.REDOENQ.redoEFormSelStmt(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD) ;*R22 Manual Code Conversion
     APAP.REDOENQ.redoEFormSelStmt(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD)
+    CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD)
+>>>>>>> Stashed changes
 =======
     CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER, '', '', SEL.LIVE.CMD)
     CALL REDO.E.FORM.SEL.STMT(FN.FUNDS.TRANSFER.HIST, '', '', SEL.HIST.CMD)

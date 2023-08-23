@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTU4NzQ5OTYzMDpDcDEyNTI6MTY5MDI2NDQ2NzY3ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:27
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTc2MTE5MTM4MDpDcDEyNTI6MTY4NDg1NDQwMTkyNzpJVFNTOi0xOi0xOjQ3NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:41
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -46,7 +52,11 @@ SUBROUTINE REDO.B.VALID.ACCOUNTS.POST
 *   DATE         WHO                   ODR                      DESCRIPTION
 *  08-10-10      NATCHIMUTHU           ODR-2010-09-0171         Initial Creation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes
@@ -67,7 +77,10 @@ SUBROUTINE REDO.B.VALID.ACCOUNTS.POST
     $INSERT I_F.LOCKING
     $INSERT I_F.REDO.INTERFACE.PARAM
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -128,8 +141,12 @@ FINALLOG:
 
     INT.CODE = 'APA004'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.INTERFACE.ACT.POST(INT.CODE)
     APAP.REDOCHNLS.redoInterfaceActPost(INT.CODE) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.ACT.POST(INT.CODE)
+>>>>>>> Stashed changes
 =======
     CALL REDO.INTERFACE.ACT.POST(INT.CODE)
 >>>>>>> Stashed changes

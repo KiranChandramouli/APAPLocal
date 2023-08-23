@@ -205,7 +205,11 @@ INVOKE.VP.WS.CB:
 
 * Invoke VisionPlus Web Service
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
+=======
+*CALL APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
+>>>>>>> Stashed changes
 =======
 *CALL APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 >>>>>>> Stashed changes

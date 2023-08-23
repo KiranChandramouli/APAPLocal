@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMjUzODc3OTI5OkNwMTI1MjoxNjkwMjY0Mzg0NzEzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:04
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTQ0NDA1NzE0MTpDcDEyNTI6MTY4NDg1NDM4NzY5MDpJVFNTOi0xOi0xOjE0Njk6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -45,7 +51,11 @@ SUBROUTINE REDO.B.INT.ACCT.PMT.PROCESS
 *==============    ==============              =================    =================
 * 19.10.2010       Sakthi Sellappillai         ODR-2010-08-0031     INITIAL CREATION
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -64,7 +74,10 @@ SUBROUTINE REDO.B.INT.ACCT.PMT.PROCESS
     $INSERT I_F.EB.EXTERNAL.USER
     $INSERT I_EB.EXTERNAL.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -147,8 +160,12 @@ OFS.PROCESS.PARA:
 *------------------------------------------------------------------------------------------
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.UPLOAD.DEBIT.ACCOUNT.CHECK(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS)
     APAP.TAM.redoUploadDebitAccountCheck(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.UPLOAD.DEBIT.ACCOUNT.CHECK(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS)
+>>>>>>> Stashed changes
 =======
     CALL REDO.UPLOAD.DEBIT.ACCOUNT.CHECK(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS)
 >>>>>>> Stashed changes

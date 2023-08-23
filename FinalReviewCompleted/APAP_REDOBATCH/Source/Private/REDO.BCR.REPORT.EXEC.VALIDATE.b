@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMzQ2OTA4MzI5OkNwMTI1MjoxNjkwMjY0NDc2NTg4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxMDQ4MDEwMjQ6Q3AxMjUyOjE2ODQ4NTQ0MDM5MDA6SVRTUzotMTotMTotNjc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:43
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -41,7 +47,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.VALIDATE
 * 07/06/06 - BG_100011433
 *            Creation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes
@@ -54,7 +64,10 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.VALIDATE
     $INSERT I_EQUATE
     $INSERT I_F.REDO.BCR.REPORT.EXEC
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -75,8 +88,12 @@ VALIDATE:
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.R.INTERFACE.PARAM.VALIDATE("REDO.BCR.REPORT.EXEC")
     APAP.TAM.redoRInterfaceParamValidate("REDO.BCR.REPORT.EXEC")  ;*R22 Manual Code Converison
+=======
+    CALL REDO.R.INTERFACE.PARAM.VALIDATE("REDO.BCR.REPORT.EXEC")
+>>>>>>> Stashed changes
 =======
     CALL REDO.R.INTERFACE.PARAM.VALIDATE("REDO.BCR.REPORT.EXEC")
 >>>>>>> Stashed changes
@@ -98,8 +115,12 @@ VALIDATE:
     IF R.NEW(REDO.BCR.REP.EXE.RUN.PROCESS) EQ 'SI' THEN
 * << TSA.SERVICE REDO.BCR.REPORT.GEN must be stopped to allow execute a new action
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
         APAP.TAM.redoRBcrReportCheckTsa(Y.RESPONSE) ;*R22 Manual Code Converison
+=======
+        CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
+>>>>>>> Stashed changes
 =======
         CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
 >>>>>>> Stashed changes

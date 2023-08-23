@@ -1,13 +1,19 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMDU3MjMyMzc5OkNwMTI1MjoxNjkwMTY4NTEyMDgwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 24 Jul 2023 08:45:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMjEyNDk5OTAxMTpDcDEyNTI6MTY4NTU0NDA5NDY1ODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 31 May 2023 20:11:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -16,7 +22,11 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 >>>>>>> Stashed changes
@@ -229,8 +239,13 @@ PROCESS:
     LOOP
     WHILE Y.LOOP.CNT LE NO.OF.REC.RE
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.S.REC.ACCT.LIST(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY)
         APAP.REDOSRTN.redoSRecAcctList(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY);* R22 Manual conversion
+=======
+        CALL REDO.S.REC.ACCT.LIST(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY)
+*APAP.REDOSRTN.redoSRecAcctList(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY);* R22 Manual conversion
+>>>>>>> Stashed changes
 =======
         CALL REDO.S.REC.ACCT.LIST(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY)
 *APAP.REDOSRTN.redoSRecAcctList(Y.ACCT.LIST<Y.LOOP.CNT>,Y.FIN.ARRAY);* R22 Manual conversion

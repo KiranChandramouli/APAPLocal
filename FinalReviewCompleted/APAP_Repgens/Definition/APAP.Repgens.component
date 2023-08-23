@@ -3,7 +3,10 @@ component APAP.Repgens
 metamodelVersion 1.6
 # -------------------------------------------------
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 public method rgpCoExpiry (
@@ -1194,6 +1197,11 @@ public method rgpLiCoExcess (
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 =======
 
 
@@ -1203,6 +1211,7 @@ public method rgpLiCollatDet (
 {
     jBC: RGP.LI.COLLAT.DET
 }
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
 public method rgsCollectTracer (
@@ -1492,5 +1501,7 @@ public method rgpLcDrawings (
 {
     jBC: RGP.LC.DRAWINGS
 }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

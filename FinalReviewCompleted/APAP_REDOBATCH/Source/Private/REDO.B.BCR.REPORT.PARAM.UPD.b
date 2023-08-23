@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTc0MzMyMTEyNTpDcDEyNTI6MTY5MDI2NDM1MjY1MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:32
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : Mjo0NzcxNTUzMDM6Q3AxMjUyOjE2ODQ4NTQzODEzNTE6SVRTUzotMTotMToxODI6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:21
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -38,7 +44,11 @@ SUBROUTINE REDO.B.BCR.REPORT.PARAM.UPD
 *-------------------------------------------------------------------------------------
 *Modification
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -50,7 +60,10 @@ SUBROUTINE REDO.B.BCR.REPORT.PARAM.UPD
     $INSERT I_EQUATE
     $INSERT I_F.REDO.INTERFACE.PARAM
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
@@ -63,8 +76,12 @@ PROCESS:
 *-----------------------------------------------------------------------------
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.LIST)     ;* Get the list of REDO.INTERFACE.PARAM to process
     APAP.TAM.redoRBcrReportGenListGet(Y.LIST) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.LIST)     ;* Get the list of REDO.INTERFACE.PARAM to process
+>>>>>>> Stashed changes
 =======
     CALL REDO.R.BCR.REPORT.GEN.LIST.GET(Y.LIST)     ;* Get the list of REDO.INTERFACE.PARAM to process
 >>>>>>> Stashed changes

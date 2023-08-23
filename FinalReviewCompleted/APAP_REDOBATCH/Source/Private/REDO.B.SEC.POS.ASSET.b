@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTE5MzUyMjM3NTpDcDEyNTI6MTY5MDI2NDQ1MDQxOTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:10
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotODc2NTc4MDgyOkNwMTI1MjoxNjg0ODU0Mzk4NDQ0OklUU1M6LTE6LTE6NjcwOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:38
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -81,8 +87,11 @@ SUBROUTINE REDO.B.SEC.POS.ASSET(Y.FINAL.ARR)
     $INSERT I_SC.COMMON
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
     $USING APAP.REDOSRTN
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -328,8 +337,12 @@ TYPE.OF.CUSTOMER:
     Y.REL.REQ = ''
     OUT.ARR = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR)
     APAP.REDOSRTN.redoSRepCustomerExtract(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.CUSTOMER,Y.PROG.GRP,Y.REL.REQ,OUT.ARR)
 >>>>>>> Stashed changes
@@ -544,8 +557,12 @@ RAISE.ERR.C.22:
     EX.USER   = ''
     EX.PC     = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
     CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

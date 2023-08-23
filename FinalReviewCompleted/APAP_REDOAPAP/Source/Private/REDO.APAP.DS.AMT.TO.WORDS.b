@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMDcyODY1MTE1OkNwMTI1MjoxNjkwMjY0MjU5ODMwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:20:59
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTEzNTk1NDI2MzpDcDEyNTI6MTY4NDgzNjAzNjkwNDpJVFNTOi0xOi0xOi0xODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 15:30:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
@@ -58,8 +64,11 @@ SUBROUTINE REDO.APAP.DS.AMT.TO.WORDS(Y.AMT)
     $INSERT I_EQUATE
     $INSERT I_F.AZ.ACCOUNT
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -88,8 +97,12 @@ PROCESS.PARA:
         IF NOT(IN.AMT) THEN
             IN.AMT=R.NEW(AZ.PRINCIPAL)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *           CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
             APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;*R22 Manual Code Conversion
+=======
+            CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+>>>>>>> Stashed changes
 =======
             CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
 >>>>>>> Stashed changes
@@ -103,8 +116,12 @@ PROCESS.PARA:
     END
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
     APAP.TAM.redoConvertNumToWords(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CONVERT.NUM.TO.WORDS(IN.AMT, OUT.AMT, LINE.LENGTH, NO.OF.LINES, ERR.MSG)
 >>>>>>> Stashed changes

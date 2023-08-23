@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxMjkzOTQwNjA4OkNwMTI1MjoxNjkwMjY0NDI1NDcwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:45
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMjAyNDQyMDA4NjpDcDEyNTI6MTY4NDg1NDM5NDEzODpJVFNTOi0xOi0xOjI0OTA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:34
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -42,7 +48,11 @@ SUBROUTINE REDO.B.NEW.WOF.OS.ACC(Y.ID)
 * Reference              Date                Description
 * ODR-2011-12-0017      23-OCT-2011          WOF ACCOUTING - PACS00202156
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -63,7 +73,11 @@ SUBROUTINE REDO.B.NEW.WOF.OS.ACC(Y.ID)
     $INSERT I_F.REDO.ACCT.MRKWOF.PARAMETER
     $INSERT I_REDO.B.NEW.WOF.OS.ACC.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -563,8 +577,12 @@ GET.PRINCIPALINT.PROPERTY:
     ERR = ''
     PROP.NAME = 'PRINCIPAL'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.GET.INTEREST.PROPERTY(Y.ID,PROP.NAME,OUT.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.INTEREST.PROPERTY(Y.ID,PROP.NAME,OUT.PROP,ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.INTEREST.PROPERTY(Y.ID,PROP.NAME,OUT.PROP,ERR)
 >>>>>>> Stashed changes
@@ -577,8 +595,12 @@ GET.PRINCIPALINT.PROPERTY:
     Y.ACCOUNT.PROPERTY = ''
     OUT.ERR = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)  ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.PROPERTY.NAME(Y.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
 >>>>>>> Stashed changes
@@ -598,8 +620,12 @@ GET.OVERDUE.STATUS:
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''; Y.BILL.TYPE = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.CRR.GET.CONDITIONS(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CRR.GET.CONDITIONS(Y.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
 >>>>>>> Stashed changes

@@ -1,13 +1,19 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo2ODc5Nzc1NTc6Q3AxMjUyOjE2OTAyNjQwNzA1MTQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:17:50
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMzM2ODAyMDMxOkNwMTI1MjoxNjg2NjczOTg1NjYxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 13 Jun 2023 22:03:05
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -50,7 +56,10 @@ SUBROUTINE REDO.POST.PRINC.INTEREST
 *TUS AA Changes - 20161019
     $INSERT I_F.AA.ACCOUNT.DETAILS
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *TUS END
@@ -89,8 +98,12 @@ GET.ARRNG.ID:
 
     PROP.NAME='PRINCIPAL'       ;* Interest Property to obtain
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
 >>>>>>> Stashed changes

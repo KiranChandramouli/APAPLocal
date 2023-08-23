@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTg4NDE1MzM3MjpDcDEyNTI6MTY5MDI2NDQ3NjU1MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:36
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxODE2NzYyOTk3OkNwMTI1MjoxNjg0ODU0NDAzODM2OklUU1M6LTE6LTE6MjI3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:43
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -39,7 +45,11 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.PROCESS
 *-------------------------------------------------------------------------------------
 *Modification
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                  who                   Reference
+=======
+* Date                  who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                  who                   Reference              
 >>>>>>> Stashed changes
@@ -56,7 +66,10 @@ SUBROUTINE REDO.BCR.REPORT.EXEC.PROCESS
 *
     $INSERT I_F.REDO.BCR.REPORT.EXEC
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
@@ -92,8 +105,12 @@ INITIALISE:
     CALL OPF(FN.TSA.SERVICE, F.TSA.SERVICE)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
     APAP.TAM.redoRBcrReportCheckTsa(Y.RESPONSE) ;*R22 Manual Code Converison
+=======
+    CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
+>>>>>>> Stashed changes
 =======
     CALL REDO.R.BCR.REPORT.CHECK.TSA(Y.RESPONSE)
 >>>>>>> Stashed changes
@@ -221,8 +238,12 @@ SEND.FILE:
 *    CALL OFS.POST.MESSAGE(Y.OFS.MESSAGE, Y.OFS.ID, "BCR.PARAM", Y.OPTIONS)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.R.BCR.REPORT.DELIVERY(ID.NEW,'ONLINE',R.REDO.INT.PARAM)
     APAP.TAM.redoRBcrReportDelivery(ID.NEW,'ONLINE',R.REDO.INT.PARAM) ;*R22 Manual Code Converison
+=======
+    CALL REDO.R.BCR.REPORT.DELIVERY(ID.NEW,'ONLINE',R.REDO.INT.PARAM)
+>>>>>>> Stashed changes
 =======
     CALL REDO.R.BCR.REPORT.DELIVERY(ID.NEW,'ONLINE',R.REDO.INT.PARAM)
 >>>>>>> Stashed changes
@@ -243,8 +264,12 @@ GET.PARAM:
         fieldValue = ""
         fieldNoFrom    = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL TAM.R.FIELD.NAME.TO.NUMBER(APPLICATION, fieldName, fieldNoFrom)
         APAP.TAM.tamRFieldNameToNumber(APPLICATION, fieldName, fieldNoFrom) ;*R22 Manual Code Converison
+=======
+        CALL TAM.R.FIELD.NAME.TO.NUMBER(APPLICATION, fieldName, fieldNoFrom)
+>>>>>>> Stashed changes
 =======
         CALL TAM.R.FIELD.NAME.TO.NUMBER(APPLICATION, fieldName, fieldNoFrom)
 >>>>>>> Stashed changes
@@ -255,8 +280,12 @@ GET.PARAM:
         END
         fieldNoTo = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL TAM.R.FIELD.NAME.TO.NUMBER("REDO.INTERFACE.PARAM", fieldName, fieldNoTo)
         APAP.TAM.tamRFieldNameToNumber("REDO.INTERFACE.PARAM", fieldName, fieldNoTo) ;*R22 Manual Code Converison
+=======
+        CALL TAM.R.FIELD.NAME.TO.NUMBER("REDO.INTERFACE.PARAM", fieldName, fieldNoTo)
+>>>>>>> Stashed changes
 =======
         CALL TAM.R.FIELD.NAME.TO.NUMBER("REDO.INTERFACE.PARAM", fieldName, fieldNoTo)
 >>>>>>> Stashed changes

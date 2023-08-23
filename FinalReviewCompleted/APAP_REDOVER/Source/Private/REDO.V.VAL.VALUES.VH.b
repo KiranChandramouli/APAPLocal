@@ -58,7 +58,11 @@ PROCESS:
 *======
 *
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
+=======
+*CALL APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
+>>>>>>> Stashed changes
 =======
 *CALL APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
 >>>>>>> Stashed changes

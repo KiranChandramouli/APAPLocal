@@ -36,7 +36,11 @@ SUBROUTINE REDO.COL.DELIVERY.SELECT
     E = ''
 *CALL  REDO.COL.R.DEL.UPD.LOCKING("READ", ID.LIST)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
+=======
+    CALL APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
+>>>>>>> Stashed changes
 =======
     CALL APAP.REDORETAIL.redoColRDelUpdLoking("READ", ID.LIST) ;* R22 Manual Conversion
 >>>>>>> Stashed changes

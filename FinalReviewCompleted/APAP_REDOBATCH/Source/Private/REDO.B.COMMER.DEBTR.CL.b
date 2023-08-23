@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo1OTUwMDY4MjI6Q3AxMjUyOjE2OTAyNjQzNTczNDc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:37
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTY3ODU1MzUyMzpDcDEyNTI6MTY4NDg1NDM4Mjk5NTpJVFNTOi0xOi0xOjQ0NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:22
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -41,7 +47,11 @@ SUBROUTINE REDO.B.COMMER.DEBTR.CL(Y.AA.CUS.ID)
 * (RTC/TUT/PACS)
 * PACS00466001           Ashokkumar.V.P                 29/06/2016            Initial Release
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -64,9 +74,12 @@ SUBROUTINE REDO.B.COMMER.DEBTR.CL(Y.AA.CUS.ID)
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON ;*R22 AUTO CONVERSTION REMOVED TAM.BP
     $INSERT I_REDO.B.COMMER.DEBTR.CL.COMMON ;*R22 AUTO CONVERSTION REMOVED TAM.BP
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     $USING APAP.REDOSRTN
     $USING APAP.REDOCHNLS
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -150,8 +163,12 @@ CHK.LN.STATUS:
 *------------
     ARRAY.VAL = ''; Y.LOAN.STATUS = ''; Y.CLOSE.LN.FLG = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.RPT.CLSE.WRITE.LOANS(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL)
     APAP.TAM.redoRptClseWriteLoans(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.RPT.CLSE.WRITE.LOANS(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL)
+>>>>>>> Stashed changes
 =======
     CALL REDO.RPT.CLSE.WRITE.LOANS(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL)
 >>>>>>> Stashed changes
@@ -181,8 +198,12 @@ CHK.CUS.DTLS:
     YEXT.TCLI.VAL = ''; Y.L.CU.GRP.RIESGO = ''; YRISK.VAL = ''; NO.DEPDENT = ''
     YL.CU.TOT.ASSET = ''; YL.CU.DATE.INFO = ''; YL.CU.FIN.TYPE = ''; Y.SALARY = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR)
     APAP.REDOSRTN.redoSRepCustomerExtract(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR)
 >>>>>>> Stashed changes
@@ -298,8 +319,12 @@ RAISE.ERR.C.22:
     EX.USER = ''
     EX.PC = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+>>>>>>> Stashed changes
 =======
     CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
 >>>>>>> Stashed changes

@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotMTA0NDA1NjczNjpDcDEyNTI6MTY5MDI2NDQwODU4MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:28
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxNDU4MjkzOTA2OkNwMTI1MjoxNjg0ODU0MzkxNjM5OklUU1M6LTE6LTE6MzkwMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:31
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -47,7 +53,11 @@ SUBROUTINE REDO.B.LY.PGEN.EXPROD(CUS.ID)
 *   Date               who           Reference            Description
 * 17-JUN-2013   RMONDRAGON        ODR-2011-06-0243      Initial Creation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -65,8 +75,12 @@ SUBROUTINE REDO.B.LY.PGEN.EXPROD(CUS.ID)
     $INSERT I_REDO.B.LY.PGEN.EXPROD.COMMON ;*Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES ;*Tus End
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -224,9 +238,13 @@ GET.ACCT:
             ARR.ID = R.ACCOUNT<AC.ARRANGEMENT.ID>
             IF ARR.ID NE '' THEN
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *               CALL REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT)
                 APAP.TAM.redoGetTotalOutstandingSinUncUnd(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT) ;*R22 Manual Code Conversion
               
+=======
+                CALL REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT)
+>>>>>>> Stashed changes
 =======
                 CALL REDO.GET.TOTAL.OUTSTANDING.SIN.UNC.UND(ARR.ID,Y.PROP.AMT,Y.TOTAL.AMT)
 >>>>>>> Stashed changes

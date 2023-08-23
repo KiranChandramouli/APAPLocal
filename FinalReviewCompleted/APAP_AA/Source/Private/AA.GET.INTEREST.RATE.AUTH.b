@@ -1,13 +1,19 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotOTI2ODc4MzAwOkNwMTI1MjoxNjkwMjY0MDYwNDg1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:17:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : Mjo2NTY2NzcyNjA6Q3AxMjUyOjE2ODY2NzM4ODk4ODE6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 13 Jun 2023 22:01:29
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -51,7 +57,11 @@ SUBROUTINE AA.GET.INTEREST.RATE.AUTH
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -230,8 +240,12 @@ GET.INTEREST.PROP:
     PROP.NAME='PRINCIPAL'         ;* Interest Property to obtain
     OUT.PROP=''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code conversion
+=======
+    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.INTEREST.PROPERTY(Y.ARRANGEMENT.ID,PROP.NAME,OUT.PROP,ERR)
 >>>>>>> Stashed changes
@@ -248,9 +262,13 @@ GET.SCHEDULE.DETAILS:
     R.OUT.AA.RECORD=''
     OUT.PROPERTY=''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.GET.PROPERTY.NAME(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
     
     APAP.TAM.redoGetPropertyName(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR) ;*R22 Manual Code conversion
+=======
+    CALL REDO.GET.PROPERTY.NAME(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.PROPERTY.NAME(Y.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
 >>>>>>> Stashed changes

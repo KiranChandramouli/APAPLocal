@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo4ODA4OTMxNDU6Q3AxMjUyOjE2OTAyNjQzOTg2NzQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:18
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTQzNzAyMzcxMzpDcDEyNTI6MTY4NDg1NDM4OTg0MzpJVFNTOi0xOi0xOjM3MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:29
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -38,7 +44,11 @@ SUBROUTINE REDO.B.LOAN.CLOSURE(ARR.ID)
 *  DATE             WHO                   REFERENCE          DESCRIPTION
 * 02-JAN-2012     H GANESH              PACS00174524 - B.43 Initial Draft
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -54,7 +64,10 @@ SUBROUTINE REDO.B.LOAN.CLOSURE(ARR.ID)
     $INSERT I_REDO.B.LOAN.CLOSURE.COMMON
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -66,8 +79,12 @@ PROCESS:
 
     ACC.ID = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.GET.TOTAL.OUTSTANDING(ARR.ID,PROP.AMT,TOTAL.AMT)
     APAP.TAM.redoGetTotalOutstanding(ARR.ID,PROP.AMT,TOTAL.AMT) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.GET.TOTAL.OUTSTANDING(ARR.ID,PROP.AMT,TOTAL.AMT)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.TOTAL.OUTSTANDING(ARR.ID,PROP.AMT,TOTAL.AMT)
 >>>>>>> Stashed changes
@@ -76,8 +93,12 @@ PROCESS:
     END
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.CONVERT.ACCOUNT('',ARR.ID,ACC.ID,ERR.TEXT)
     APAP.TAM.redoConvertAccount('',ARR.ID,ACC.ID,ERR.TEXT) ;*;*R22 Manual Code Conversion
+=======
+    CALL REDO.CONVERT.ACCOUNT('',ARR.ID,ACC.ID,ERR.TEXT)
+>>>>>>> Stashed changes
 =======
     CALL REDO.CONVERT.ACCOUNT('',ARR.ID,ACC.ID,ERR.TEXT)
 >>>>>>> Stashed changes
@@ -135,9 +156,13 @@ UPDATE.INSURANCE.CHARGE:
 
     Y.CHRG.PROPERTY = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
     
+=======
+    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR)
+>>>>>>> Stashed changes
 =======
     CALL REDO.GET.PROPERTY.NAME(ARR.ID,'CHARGE',R.OUT.AA.RECORD,Y.CHRG.PROPERTY,OUT.ERR)
 >>>>>>> Stashed changes
@@ -154,8 +179,12 @@ UPDATE.INSURANCE.CHARGE:
         R.CONDITION.CHARGE = ''
         ERR.MSG = ''
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG)
         APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG)
+>>>>>>> Stashed changes
 =======
         CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CHARGE,ERR.MSG)
 >>>>>>> Stashed changes
@@ -181,8 +210,13 @@ WRITE.INSURANCE.DETAILS:
 
         Y.POL.NO = Y.POLICY.NO<1,1,Y.VAR2>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *       CALL REDO.UPDATE.INSURANCE.DETAILS(Y.POL.NO)
         APAP.TAM.redoUpdateInsuranceDetails(Y.POL.NO) ;*R22 Manual Code Conversion
+=======
+        CALL REDO.UPDATE.INSURANCE.DETAILS(Y.POL.NO)
+
+>>>>>>> Stashed changes
 =======
         CALL REDO.UPDATE.INSURANCE.DETAILS(Y.POL.NO)
 

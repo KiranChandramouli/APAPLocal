@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjoxODMyMjE2MTY5OkNwMTI1MjoxNjkwMjY0NDA1NDA2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:25
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,6 +12,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjoxNTIxMTMxMDUyOkNwMTI1MjoxNjg0ODU0MzkwODgwOklUU1M6LTE6LTE6MzMzNjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
 * @ValidationInfo : Encoding          : Cp1252
@@ -22,6 +25,9 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
@@ -47,7 +53,11 @@ SUBROUTINE REDO.B.LY.PGEN.ACCOP(ACCT.ID)
 *   Date               who           Reference            Description
 * 17-JUN-2013   RMONDRAGON        ODR-2011-06-0243      Initial Creation
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Date                   who                   Reference
+=======
+* Date                   who                   Reference              
+>>>>>>> Stashed changes
 =======
 * Date                   who                   Reference              
 >>>>>>> Stashed changes
@@ -64,7 +74,10 @@ SUBROUTINE REDO.B.LY.PGEN.ACCOP(ACCT.ID)
     $INSERT I_F.REDO.LY.MASTERPRGDR
     $INSERT I_REDO.B.LY.PGEN.ACCOP.COMMON
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.REDOSRTN
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -232,8 +245,12 @@ PROCESS.ACCT:
     ANTIG = PRG.ANTIG.IN.MOD<MOD.CNT,PRG.CNT>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *   CALL REDO.S.BY.EVENT(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG)
     APAP.REDOSRTN.redoSByEvent(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG) ;*R22 Manual Code Conversion
+=======
+    CALL REDO.S.BY.EVENT(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG)
+>>>>>>> Stashed changes
 =======
     CALL REDO.S.BY.EVENT(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG)
 >>>>>>> Stashed changes

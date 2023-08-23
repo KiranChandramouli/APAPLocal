@@ -44,7 +44,11 @@ SUBROUTINE REDO.COL.DELIVERY.LOAD
 *CALL  REDO.COL.R.DEL.UPD.LOCKING("CREATE", Y.REPONSE)
    
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
+=======
+    CALL APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
+>>>>>>> Stashed changes
 =======
     CALL APAP.REDORETAIL.redoColRDelUpdLoking("CREATE", Y.REPONSE) ;* R22 Manual Conversion
 >>>>>>> Stashed changes

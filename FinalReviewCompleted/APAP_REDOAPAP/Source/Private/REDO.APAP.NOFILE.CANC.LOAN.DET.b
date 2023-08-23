@@ -1,13 +1,19 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : MjotODcyMDM5MzcwOkNwMTI1MjoxNjkwMjY0MjY5ODU4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:09
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : MjotMTYzODQ4MDQwNDpDcDEyNTI6MTY4NTk0OTIzMzYwODpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 05 Jun 2023 12:43:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -16,7 +22,11 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
+=======
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 >>>>>>> Stashed changes
@@ -60,8 +70,11 @@ SUBROUTINE REDO.APAP.NOFILE.CANC.LOAN.DET(LN.ARRAY)
     $INSERT I_F.AA.ACTIVITY.HISTORY
     $INSERT I_F.REDO.AA.PAYOFF.DETAILS
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     $USING APAP.TAM
     $USING APAP.REDOENQ
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -224,8 +237,12 @@ PROCESS:
         Y.ACC.ID=R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL.ID>
         IF Y.ACC.ID NE '' THEN
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *           CALL REDO.E.NOF.GET.REGION(Y.ACC.ID,Y.REGION.VAL,Y.REGION,Y.REGION.NUMBER,Y.REGION.FLAG)
             APAP.REDOENQ.redoENofGetRegion(Y.ACC.ID,Y.REGION.VAL,Y.REGION,Y.REGION.NUMBER,Y.REGION.FLAG) ;*MANUAL R22 CODE CONVERSION
+=======
+            CALL REDO.E.NOF.GET.REGION(Y.ACC.ID,Y.REGION.VAL,Y.REGION,Y.REGION.NUMBER,Y.REGION.FLAG)
+>>>>>>> Stashed changes
 =======
             CALL REDO.E.NOF.GET.REGION(Y.ACC.ID,Y.REGION.VAL,Y.REGION,Y.REGION.NUMBER,Y.REGION.FLAG)
 >>>>>>> Stashed changes
@@ -262,8 +279,12 @@ WAY.PAYMENT:
     Y.TXN.SYS.ID=R.AA.ARRANGEMENT.ACTIVITY<AA.ARR.ACT.TXN.SYSTEM.ID>
     Y.TXN.CONT.ID =R.AA.ARRANGEMENT.ACTIVITY<AA.ARR.ACT.TXN.CONTRACT.ID>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.E.NOF.PAYMENT.TYPE(Y.TXN.SYS.ID,Y.TXN.CONT.ID,Y.CANCEL.AGENCY,Y.CANCEL.USER)
     APAP.REDOENQ.redoENofPaymentType(Y.TXN.SYS.ID,Y.TXN.CONT.ID,Y.CANCEL.AGENCY,Y.CANCEL.USER) ;*MANUAL R22 CODE CONVERSION
+=======
+    CALL REDO.E.NOF.PAYMENT.TYPE(Y.TXN.SYS.ID,Y.TXN.CONT.ID,Y.CANCEL.AGENCY,Y.CANCEL.USER)
+>>>>>>> Stashed changes
 =======
     CALL REDO.E.NOF.PAYMENT.TYPE(Y.TXN.SYS.ID,Y.TXN.CONT.ID,Y.CANCEL.AGENCY,Y.CANCEL.USER)
 >>>>>>> Stashed changes
@@ -433,6 +454,7 @@ ASSIGN.VALUES:
     Y.OPENING.DATE=R.AA.ARRANGEMENT<AA.ARR.PROD.EFF.DATE>
     Y.CANCEL.DATE=Y.EFF.DATE
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 *    CALL REDO.INT.PROPERTY(Y.AA.ID,Y.EFF.DATE,Y.INTEREST,Y.INT.FLAG)
     APAP.TAM.redoIntProperty(Y.AA.ID,Y.EFF.DATE,Y.INTEREST,Y.INT.FLAG) ;*MANUAL R22 CODE CONVERSION
 *    CALL REDO.E.NOF.BILL.AMOUNT(Y.AA.ID,Y.CANCEL.CHARAGE.AMOUNT,Y.CANCEL.CAPITAL.AMOUNT,Y.CANCEL.INT.AMOUNT)
@@ -441,10 +463,15 @@ ASSIGN.VALUES:
     APAP.REDOENQ.redoENofBillDetails(Y.AA.ID,Y.TOTAL.BALANCE.DUE,Y.COMMISSION.CHARGE.BALANCE) ;*MANUAL R22 CODE CONVERSION
  
 =======
+=======
+>>>>>>> Stashed changes
     CALL REDO.INT.PROPERTY(Y.AA.ID,Y.EFF.DATE,Y.INTEREST,Y.INT.FLAG)
     CALL REDO.E.NOF.BILL.AMOUNT(Y.AA.ID,Y.CANCEL.CHARAGE.AMOUNT,Y.CANCEL.CAPITAL.AMOUNT,Y.CANCEL.INT.AMOUNT)
     CALL REDO.E.NOF.BILL.DETAILS(Y.AA.ID,Y.TOTAL.BALANCE.DUE,Y.COMMISSION.CHARGE.BALANCE)
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 RETURN
 *-----------------------------------------------------------------------------

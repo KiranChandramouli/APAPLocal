@@ -1,20 +1,30 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationCode : Mjo1NTk5ODM1ODU6VVRGLTg6MTY4ODUzNjg5NDM2MzpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:34
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : ITSS
 =======
+=======
+>>>>>>> Stashed changes
 * @ValidationCode : Mjo1NTk5ODM1ODU6VVRGLTg6MTY4NjgzNTU1MDczMDpBZG1pbjotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 15 Jun 2023 18:55:50
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
+=======
+* @ValidationInfo : Strict flag       : N/A
+>>>>>>> Stashed changes
 =======
 * @ValidationInfo : Strict flag       : N/A
 >>>>>>> Stashed changes
@@ -29,8 +39,13 @@ REM "RGS.CO.RIGHT.EXPIRY",230614-4
 * MODIFICATION HISTORY:
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * DATEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WHOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ REFERENCEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DESCRIPTION
 * 15-JUNE-2023ï¿½ï¿½ï¿½ï¿½ï¿½Narmadha Vï¿½ï¿½     Manual R22 conversionï¿½ï¿½ï¿½ï¿½ï¿½   SELECT to SSELECT
+=======
+* DATE              WHO                REFERENCE                 DESCRIPTION
+* 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
+>>>>>>> Stashed changes
 =======
 * DATE              WHO                REFERENCE                 DESCRIPTION
 * 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
