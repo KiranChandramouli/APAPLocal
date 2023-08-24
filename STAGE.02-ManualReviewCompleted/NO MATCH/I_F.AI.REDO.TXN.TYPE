@@ -1,0 +1,12 @@
+* I_F.AI.REDO.TXN.TYPE Created 06 NOV 13 at 07:16PM by t24uatd/INPUTTER
+*      PREFIX[AI.TYPE]
+        EQU AI.TYPE.DESCRIPTION TO 1,   AiRedoTxnType_Description TO 1,
+          AI.TYPE.RECORD.STATUS TO 2,   AiRedoTxnType_RecordStatus TO 2,
+                AI.TYPE.CURR.NO TO 3,   AiRedoTxnType_CurrNo TO 3,
+               AI.TYPE.INPUTTER TO 4,   AiRedoTxnType_Inputter TO 4,
+              AI.TYPE.DATE.TIME TO 5,   AiRedoTxnType_DateTime TO 5,
+             AI.TYPE.AUTHORISER TO 6,   AiRedoTxnType_Authoriser TO 6,
+                AI.TYPE.CO.CODE TO 7,   AiRedoTxnType_CoCode TO 7,
+              AI.TYPE.DEPT.CODE TO 8,   AiRedoTxnType_DeptCode TO 8,
+           AI.TYPE.AUDITOR.CODE TO 9,   AiRedoTxnType_AuditorCode TO 9,
+        AI.TYPE.AUDIT.DATE.TIME TO 10,  AiRedoTxnType_AuditDateTime TO 10

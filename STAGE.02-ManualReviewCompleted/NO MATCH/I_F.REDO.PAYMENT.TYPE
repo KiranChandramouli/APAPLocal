@@ -1,0 +1,18 @@
+* I_F.REDO.PAYMENT.TYPE Created 23 SEP 10 at 12:42PM by apapr8/SUDHARSAN
+*      PREFIX[PAY.TYPE]
+        EQU PAY.TYPE.DESCRIPTION TO 1,   RedoPaymentType_Description TO 1,
+             PAY.TYPE.RESERVED.5 TO 2,   RedoPaymentType_Reserved5 TO 2,
+             PAY.TYPE.RESERVED.4 TO 3,   RedoPaymentType_Reserved4 TO 3,
+             PAY.TYPE.RESERVED.3 TO 4,   RedoPaymentType_Reserved3 TO 4,
+             PAY.TYPE.RESERVED.2 TO 5,   RedoPaymentType_Reserved2 TO 5,
+             PAY.TYPE.RESERVED.1 TO 6,   RedoPaymentType_Reserved1 TO 6,
+               PAY.TYPE.OVERRIDE TO 7,   RedoPaymentType_Override TO 7,
+          PAY.TYPE.RECORD.STATUS TO 8,   RedoPaymentType_RecordStatus TO 8,
+                PAY.TYPE.CURR.NO TO 9,   RedoPaymentType_CurrNo TO 9,
+               PAY.TYPE.INPUTTER TO 10,  RedoPaymentType_Inputter TO 10,
+              PAY.TYPE.DATE.TIME TO 11,  RedoPaymentType_DateTime TO 11,
+             PAY.TYPE.AUTHORISER TO 12,  RedoPaymentType_Authoriser TO 12,
+                PAY.TYPE.CO.CODE TO 13,  RedoPaymentType_CoCode TO 13,
+              PAY.TYPE.DEPT.CODE TO 14,  RedoPaymentType_DeptCode TO 14,
+           PAY.TYPE.AUDITOR.CODE TO 15,  RedoPaymentType_AuditorCode TO 15,
+        PAY.TYPE.AUDIT.DATE.TIME TO 16,  RedoPaymentType_AuditDateTime TO 16

@@ -1,0 +1,8 @@
+* File Layout for LAPAP.REPRECIO.TASA.MARGEN Created 21 DEC 21 at 01:48PM by t24dmpro
+*      PREFIX[ST.L.A6.]   
+EQU ST.L.A6.NUMERO.PRODUCTO TO 1,         ST.L.A6.TASA.MARGEN TO 2, 
+           ST.L.A6.OVERRIDE TO 3,       ST.L.A6.RECORD.STATUS TO 4, 
+            ST.L.A6.CURR.NO TO 5,            ST.L.A6.INPUTTER TO 6, 
+          ST.L.A6.DATE.TIME TO 7,          ST.L.A6.AUTHORISER TO 8, 
+            ST.L.A6.CO.CODE TO 9,          ST.L.A6.DEPT.CODE TO 10, 
+      ST.L.A6.AUDITOR.CODE TO 11,    ST.L.A6.AUDIT.DATE.TIME TO 12

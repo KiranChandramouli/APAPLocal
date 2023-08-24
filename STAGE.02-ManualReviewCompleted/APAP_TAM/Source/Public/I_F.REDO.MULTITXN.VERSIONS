@@ -1,0 +1,22 @@
+* I_F.REDO.MULTITXN.VERSIONS Created 26 DEC 12 at 09:41PM by apap/TEM.GANESHH1
+*      PREFIX[RMV]
+        EQU RMV.DESCRIPTION TO 1,   RedoMultitxnVersions_Description TO 1,
+              RMV.PROC.TYPE TO 2,   RedoMultitxnVersions_ProcType TO 2,
+           RMV.RECEP.METHOD TO 3,   RedoMultitxnVersions_RecepMethod TO 3,
+              RMV.PRIORIDAD TO 4,   RedoMultitxnVersions_Prioridad TO 4,
+               RMV.AUTOR.NO TO 5,   RedoMultitxnVersions_AutorNo TO 5,
+           RMV.VERSION.NAME TO 6,   RedoMultitxnVersions_VersionName TO 6,
+           RMV.VERSION.TYPE TO 7,   RedoMultitxnVersions_VersionType TO 7,
+            RMV.D.SLIP.NAME TO 8,   RedoMultitxnVersions_DSlipName TO 8,
+             RMV.RESERVED.1 TO 9,   RedoMultitxnVersions_Reserved1 TO 9,
+             RMV.RESERVED.2 TO 10,  RedoMultitxnVersions_Reserved2 TO 10,
+             RMV.RESERVED.3 TO 11,  RedoMultitxnVersions_Reserved3 TO 11,
+          RMV.RECORD.STATUS TO 12,  RedoMultitxnVersions_RecordStatus TO 12,
+                RMV.CURR.NO TO 13,  RedoMultitxnVersions_CurrNo TO 13,
+               RMV.INPUTTER TO 14,  RedoMultitxnVersions_Inputter TO 14,
+              RMV.DATE.TIME TO 15,  RedoMultitxnVersions_DateTime TO 15,
+             RMV.AUTHORISER TO 16,  RedoMultitxnVersions_Authoriser TO 16,
+                RMV.CO.CODE TO 17,  RedoMultitxnVersions_CoCode TO 17,
+              RMV.DEPT.CODE TO 18,  RedoMultitxnVersions_DeptCode TO 18,
+           RMV.AUDITOR.CODE TO 19,  RedoMultitxnVersions_AuditorCode TO 19,
+        RMV.AUDIT.DATE.TIME TO 20,  RedoMultitxnVersions_AuditDateTime TO 20

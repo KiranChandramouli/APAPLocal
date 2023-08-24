@@ -1,0 +1,12 @@
+* I_F.REDO.LY.EVENT Created 22 APR 10 at 02:44PM by apapr8/GANESH
+*      PREFIX[REDO.EVENT]
+         EQU REDO.EVENT.EVENT.NAME TO 1,   RedoLyEvent_EventName TO 1,
+          REDO.EVENT.RECORD.STATUS TO 2,   RedoLyEvent_RecordStatus TO 2,
+                REDO.EVENT.CURR.NO TO 3,   RedoLyEvent_CurrNo TO 3,
+               REDO.EVENT.INPUTTER TO 4,   RedoLyEvent_Inputter TO 4,
+              REDO.EVENT.DATE.TIME TO 5,   RedoLyEvent_DateTime TO 5,
+             REDO.EVENT.AUTHORISER TO 6,   RedoLyEvent_Authoriser TO 6,
+                REDO.EVENT.CO.CODE TO 7,   RedoLyEvent_CoCode TO 7,
+              REDO.EVENT.DEPT.CODE TO 8,   RedoLyEvent_DeptCode TO 8,
+           REDO.EVENT.AUDITOR.CODE TO 9,   RedoLyEvent_AuditorCode TO 9,
+        REDO.EVENT.AUDIT.DATE.TIME TO 10,  RedoLyEvent_AuditDateTime TO 10

@@ -1,0 +1,13 @@
+* I_F.REDO.PRINT.DEAL.SLIP Created 07 JAN 10 at 12:21PM by apapr8/HARISH.1
+*      PREFIX[RE.PRIN]
+        EQU RE.PRIN.CUSTOMER.NO TO 1,   RedoPrintDealSlip_CustomerNo TO 1,
+                   RE.PRIN.DATE TO 2,   RedoPrintDealSlip_Date TO 2,
+          RE.PRIN.RECORD.STATUS TO 3,   RedoPrintDealSlip_RecordStatus TO 3,
+                RE.PRIN.CURR.NO TO 4,   RedoPrintDealSlip_CurrNo TO 4,
+               RE.PRIN.INPUTTER TO 5,   RedoPrintDealSlip_Inputter TO 5,
+              RE.PRIN.DATE.TIME TO 6,   RedoPrintDealSlip_DateTime TO 6,
+             RE.PRIN.AUTHORISER TO 7,   RedoPrintDealSlip_Authoriser TO 7,
+                RE.PRIN.CO.CODE TO 8,   RedoPrintDealSlip_CoCode TO 8,
+              RE.PRIN.DEPT.CODE TO 9,   RedoPrintDealSlip_DeptCode TO 9,
+           RE.PRIN.AUDITOR.CODE TO 10,  RedoPrintDealSlip_AuditorCode TO 10,
+        RE.PRIN.AUDIT.DATE.TIME TO 11,  RedoPrintDealSlip_AuditDateTime TO 11

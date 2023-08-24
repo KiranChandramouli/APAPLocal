@@ -1,0 +1,19 @@
+* I_F.REDO.H.FOREX.AML Created 11 JUL 10 at 04:31PM by apapr8/CHANDRUT
+*      PREFIX[FX.AML]
+            EQU FX.AML.AML.CCY TO 1,   RedoHForexAml_AmlCcy TO 1,
+          FX.AML.AMT.LIMIT.FCY TO 2,   RedoHForexAml_AmtLimitFcy TO 2,
+          FX.AML.AMT.LIMIT.LCY TO 3,   RedoHForexAml_AmtLimitLcy TO 3,
+             FX.AML.RESERVED.1 TO 4,   RedoHForexAml_Reserved1 TO 4,
+             FX.AML.RESERVED.2 TO 5,   RedoHForexAml_Reserved2 TO 5,
+             FX.AML.RESERVED.3 TO 6,   RedoHForexAml_Reserved3 TO 6,
+             FX.AML.RESERVED.4 TO 7,   RedoHForexAml_Reserved4 TO 7,
+             FX.AML.RESERVED.5 TO 8,   RedoHForexAml_Reserved5 TO 8,
+          FX.AML.RECORD.STATUS TO 9,   RedoHForexAml_RecordStatus TO 9,
+                FX.AML.CURR.NO TO 10,  RedoHForexAml_CurrNo TO 10,
+               FX.AML.INPUTTER TO 11,  RedoHForexAml_Inputter TO 11,
+              FX.AML.DATE.TIME TO 12,  RedoHForexAml_DateTime TO 12,
+             FX.AML.AUTHORISER TO 13,  RedoHForexAml_Authoriser TO 13,
+                FX.AML.CO.CODE TO 14,  RedoHForexAml_CoCode TO 14,
+              FX.AML.DEPT.CODE TO 15,  RedoHForexAml_DeptCode TO 15,
+           FX.AML.AUDITOR.CODE TO 16,  RedoHForexAml_AuditorCode TO 16,
+        FX.AML.AUDIT.DATE.TIME TO 17,  RedoHForexAml_AuditDateTime TO 17

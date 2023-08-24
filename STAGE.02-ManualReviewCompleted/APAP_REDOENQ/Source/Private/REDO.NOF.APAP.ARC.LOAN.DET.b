@@ -1,0 +1,347 @@
+* @ValidationCode : MjotMjAwNjk1Njg2NDpDcDEyNTI6MTY4NDg1MTk4MTM0ODpJVFNTOi0xOi0xOjE1MDU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 May 2023 19:56:21
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 1505
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOENQ
+SUBROUTINE REDO.NOF.APAP.ARC.LOAN.DET(Y.OUT.ARRAY)
+**********************************************************************************************************
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.NOF.APAP.ARC.LOAN.DET
+*--------------------------------------------------------------------------------------------------------
+*Description       : This is a NO-FILE enquiry routine, the routine based on the selection criteria selects
+*                    the records from AA.ARRANGEMENT and displays the processed records
+*Linked With       : Enquiry REDO.APAP.ARC.LOAN.DETS
+
+*Files  Used       : AA.ARRANGEMENT
+*--------------------------------------------------------------------------------------------------------
+*Modification Details:
+*=====================
+*      Date                 Who                        Reference                   Description
+*     ------               -----                      -------------                -------------
+* 24 Dec 2010            Arulprakasam P               ODR-2010-08-0031 B.187      Initial Creation
+*********************************************************************************************************
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.AA.TERM.AMOUNT
+    $INSERT I_F.ACCT.ACTIVITY
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+    $INSERT I_F.AA.ACTIVITY.HISTORY
+    $INSERT I_F.AA.OVERDUE
+    $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
+    $INSERT I_F.AA.OFFICERS
+    $INSERT I_F.AA.INTEREST
+    $INSERT I_F.AA.PAYMENT.SCHEDULE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AA.SCHEDULE.DETAILS
+    $INSERT I_F.AA.REFERENCE.DETAILS
+    $INSERT I_F.AA.BILL.DETAILS
+    $INSERT I_System
+    $INSERT I_F.AA.PRODUCT
+    $USING APAP.TAM
+
+*-------------------------------------------------------------------------------------------------------
+**********
+MAIN.PARA:
+**********
+* This is the para from where the execution of the code starts
+
+    GOSUB OPEN.PARA
+    GOSUB CHECK.SELECTION
+    GOSUB PROCESS.PARA
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+
+**********
+OPEN.PARA:
+**********
+* In this para of the code, file variables are initialised and opened
+
+    FN.AA.ARRANGEMENT = 'F.AA.ARRANGEMENT'
+    F.AA.ARRANGEMENT = ''
+    CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
+
+    FN.AA.ARR.ACCOUNT = 'F.AA.ARR.ACCOUNT'
+    F.AA.ARR.ACCOUNT = ''
+    CALL OPF(FN.AA.ARR.ACCOUNT,F.AA.ARR.ACCOUNT)
+
+    FN.AA.ARR.TERM.AMOUNT = 'F.AA.ARR.TERM.AMOUNT'
+    F.AA.ARR.TERM.AMOUNT = ''
+    CALL OPF(FN.AA.ARR.TERM.AMOUNT,F.AA.ARR.TERM.AMOUNT)
+
+    FN.AA.ACCOUNT.DETAILS = 'F.AA.ACCOUNT.DETAILS'
+    F.AA.ACCOUNT.DETAILS = ''
+    CALL OPF(FN.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS)
+
+    FN.AA.ACTIVITY.HISTORY = 'F.AA.ACTIVITY.HISTORY'
+    F.AA.ACTIVITY.HISTORY = ''
+    CALL OPF(FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY)
+
+    FN.AA.BILL.DETAILS = 'F.AA.BILL.DETAILS'
+    F.AA.BILL.DETAILS = ''
+    CALL OPF(FN.AA.BILL.DETAILS,F.AA.BILL.DETAILS)
+
+    FN.AA.ARRANGEMENT.ACTIVITY = 'F.AA.ARRANGEMENT.ACTIVITY'
+    F.AA.ARRANGEMENT.ACTIVITY = ''
+    CALL OPF(FN.AA.ARRANGEMENT.ACTIVITY,F.AA.ARRANGEMENT.ACTIVITY)
+
+    FN.AA.SCHEDULE.DETAILS = 'F.AA.SCHEDULE.DETAILS'
+    F.AA.SCHEDULE.DETAILS = ''
+    CALL OPF(FN.AA.SCHEDULE.DETAILS,F.AA.SCHEDULE.DETAILS)
+
+    FN.AA.REF.DET = 'F.AA.REFERENCE.DETAILS'
+    F.AA.REF.DET = ''
+    CALL OPF(FN.AA.REF.DET,F.AA.REF.DET)
+
+    FN.AA.PRODUCT = 'F.AA.PRODUCT'
+    F.AA.PRODUCT  = ''
+    CALL OPF(FN.AA.PRODUCT,F.AA.PRODUCT)
+
+RETURN
+
+
+****************
+CHECK.SELECTION:
+****************
+
+    AA.ARRANGEMENT.ID = System.getVariable("CURRENT.ARR.ID")
+    IF E EQ "EB-UNKNOWN.VARIABLE" THEN
+        AA.ARRANGEMENT.ID = ""
+    END
+
+RETURN
+
+*************
+PROCESS.PARA:
+*************
+
+    GOSUB READ.AA.ARRANGEMENT
+    GOSUB READ.AA.REF.DET
+    IF R.AA.ARRANGEMENT NE '' THEN
+        Y.CONSULTATION.DATE  = TODAY
+        Y.LOAN.NUMBER        = AA.ARRANGEMENT.ID
+        Y.LOAN.TYPE          = R.AA.ARRANGEMENT<AA.ARR.PRODUCT,1>
+
+        CALL CACHE.READ(FN.AA.PRODUCT, Y.LOAN.TYPE, R.AA.PRODUCT, AA.PRODUCT.ERR)
+        Y.PROD.DESC = R.AA.PRODUCT<AA.PDT.DESCRIPTION,LNGG>
+        IF NOT(Y.PROD.DESC) THEN
+            Y.PROD.DESC = R.AA.PRODUCT<AA.PDT.DESCRIPTION,1>
+        END
+        Y.CUSTOMER           = R.AA.ARRANGEMENT<AA.ARR.CUSTOMER>
+        Y.CURRENCY           = R.AA.ARRANGEMENT<AA.ARR.CURRENCY>
+        Y.AA.STATUS          = R.AA.ARRANGEMENT<AA.ARR.ARR.STATUS>
+        Y.AGENCY             = R.AA.ARRANGEMENT<AA.ARR.CO.CODE>
+        Y.AA.ARR.LINK.APPLN = R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL>
+    END
+    IF Y.AA.ARR.LINK.APPLN EQ 'ACCOUNT' THEN
+        Y.AA.ACCT.NO =  R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL.ID>
+    END
+
+    BALANCE.TO.CHECK = 'CURACCOUNT'
+    GOSUB GET.BALANCES.DETAILS
+    IF NOT(Y.CUR.CAP.BAL) THEN
+        Y.CUR.CAP.BAL =  BAL.DETAILS<IC.ACT.BALANCE>
+    END
+
+    IN.PROPERTY.CLASS = 'TERM.AMOUNT'
+    APAP.TAM.redoGetPropertyName(AA.ARRANGEMENT.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,OUT.PROPERTY,OUT.ERR)
+
+    Y.TOTAL.CAP.BAL = ''
+    Y.BALANCE.TO.CHECK = 'TOT':OUT.PROPERTY
+    GOSUB GET.BALANCES.DETAILS
+    IF NOT(Y.TOTAL.CAP.BAL) THEN
+        Y.TOTAL.CAP.BAL =  BAL.DETAILS<IC.ACT.BALANCE>
+    END ELSE
+        Y.TOTAL.CAP.BAL = Y.TOTAL.CAP.BAL + BAL.DETAILS<IC.ACT.BALANCE>
+    END
+
+    CONTRIBUTION.DUE = ''
+    Y.BALANCE.TO.CHECK.ARRAY = 'DUEACCOUNT':@VM:'GRCACCOUNT':@VM:'DELACCOUNT':@VM:'NABACCOUNT'
+    LOOP
+        REMOVE BALANCE.TO.CHECK FROM Y.BALANCE.TO.CHECK.ARRAY SETTING Y.BAL.CHECK.POS
+    WHILE BALANCE.TO.CHECK:Y.BAL.CHECK.POS
+        GOSUB GET.BALANCES.DETAILS
+        IF NOT(Y.TOTAL.CAP.BAL) THEN
+            CONTRIBUTION.DUE =  BAL.DETAILS<IC.ACT.BALANCE>
+        END ELSE
+            CONTRIBUTION.DUE = Y.TOTAL.CAP.BAL + BAL.DETAILS<IC.ACT.BALANCE>
+        END
+    REPEAT
+
+*    TOT.DUE = ''
+*    Y.BALANCE.TO.CHECK.ARRAY = 'CURACCOUNT':VM:'DUEACCOUNT':VM:'GRCACCOUNT':VM:'DELACCOUNT':VM:'NABACCOUNT'
+*    LOOP
+*        REMOVE BALANCE.TO.CHECK FROM Y.BALANCE.TO.CHECK.ARRAY SETTING Y.BAL.CHECK.POS
+*    WHILE BALANCE.TO.CHECK:Y.BAL.CHECK.POS
+*        GOSUB GET.BALANCES.DETAILS
+*        IF NOT(Y.TOTAL.CAP.BAL) THEN
+*            TOT.DUE =  BAL.DETAILS<IC.ACT.BALANCE>
+*        END ELSE
+*            TOT.DUE = Y.TOTAL.CAP.BAL + BAL.DETAILS<IC.ACT.BALANCE>
+*        END
+*    REPEAT
+*    TOT.DUE = ABS(TOT.DUE)
+
+    GOSUB FIND.ACTIVITY
+    Y.PROPERTY = 'TERM.AMOUNT'  ;* Get the TERM.AMOUNT property details
+    GOSUB GET.AA.GET.DETAILS
+    Y.LOAN.AMT   = R.RECORD<AA.AMT.AMOUNT>
+    Y.TERM       = R.RECORD<AA.AMT.TERM>
+
+    Y.PROPERTY = 'INTEREST'     ;* Get the INTEREST property details
+    GOSUB GET.AA.GET.DETAILS
+    Y.INTEREST = R.RECORD<AA.INT.EFFECTIVE.RATE>
+
+    Y.PROPERTY = 'OFFICERS'     ;* Get the OFFICERS property details
+    GOSUB GET.AA.GET.DETAILS
+    PRI.OFFICER = R.RECORD<AA.OFF.PRIMARY.OFFICER>
+
+    Y.PROPERTY = 'PAYMENT.SCHEDULE'       ;* Get the PAYMENT.SCHEDULE property details
+    GOSUB GET.AA.GET.DETAILS
+*   Y.FEE = R.RECORD<AA.PS.CALC.AMOUNT>
+
+    CALL F.READ(FN.AA.ACCOUNT.DETAILS,AA.ARRANGEMENT.ID,R.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS,Y.AA.ERR)
+    IF R.AA.ACCOUNT.DETAILS THEN
+        Y.DISBUR.DATE    = R.AA.ACCOUNT.DETAILS<AA.AD.START.DATE>
+        Y.PAY.DATE       = R.AA.ACCOUNT.DETAILS<AA.AD.PAYMENT.START.DATE>
+        Y.SET.STATUS     = R.AA.ACCOUNT.DETAILS<AA.AD.SET.STATUS>
+        Y.BILL.ID.LIST   = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID>
+        IF Y.SET.STATUS THEN
+            CHANGE @VM TO @SM IN Y.SET.STATUS
+            CHANGE @SM TO @FM IN Y.SET.STATUS
+            Y.UNPAID.CNT = COUNT(Y.SET.STATUS,"UNPAID")
+            GOSUB UNPAID.TOT.OUTSTANDING.PARA
+        END
+    END
+
+
+    Y.OUT.ARRAY  = Y.CONSULTATION.DATE:'*':Y.LOAN.NUMBER:'*':Y.PROD.DESC:'*':Y.CUSTOMER:'*':Y.CURRENCY:'*':Y.LOAN.AMT:'*':Y.INTEREST:'*':
+    Y.OUT.ARRAY := Y.TERM:'*':Y.CUR.CAP.BAL:'*':Y.FEE:'*':Y.AA.STATUS:'*':Y.TOTAL.CAP.BAL:'*':LAST.TXN.DATE:'*':CONTRIBUTION.DUE:'*'
+    Y.OUT.ARRAY : = TOT.DUE:'*':Y.DISBUR.DATE:'*':Y.PAY.DATE:'*':PRI.OFFICER:'*':Y.AGENCY:"*":LAST.PAID.AMT:"*":Y.UNPAID.CNT
+RETURN
+****************************
+UNPAID.TOT.OUTSTANDING.PARA:
+****************************
+
+    TOT.DUE = 0
+    Y.FEE   = 0
+    CHANGE @VM TO @FM IN Y.BILL.ID.LIST
+    Y.BILL.TOT.CNT  = DCOUNT(Y.BILL.ID.LIST,@FM)
+    Y.BILL.CNT = 1
+    LOOP
+    WHILE Y.BILL.CNT LE Y.BILL.TOT.CNT
+        Y.AA.BILL.ID =Y.BILL.ID.LIST<Y.BILL.CNT>
+        CALL F.READ(FN.AA.BILL.DETAILS,Y.AA.BILL.ID,R.AA.BILL.DETAILS,F.AA.BILL.DETAILS,AA.BILL.DETAILS.ERR)
+        Y.BILL.STATUS     = R.AA.BILL.DETAILS<AA.BD.SETTLE.STATUS>
+        IF Y.BILL.STATUS EQ 'UNPAID' THEN
+            Y.PROPERTY.LIST = R.AA.BILL.DETAILS<AA.BD.PROPERTY>
+            CHANGE @VM TO @FM IN Y.PROPERTY.LIST
+            CHANGE @SM TO @FM IN Y.PROPERTY.LIST
+            Y.TOT.PROP.CNT = DCOUNT(Y.PROPERTY.LIST,@FM)
+            Y.PROP.CNT = 1
+            LOOP
+            WHILE Y.PROP.CNT LE Y.TOT.PROP.CNT
+                TOT.DUE + =R.AA.BILL.DETAILS<AA.BD.OS.PROP.AMOUNT,Y.PROP.CNT>
+                Y.PROP.CNT += 1
+            REPEAT
+        END
+        Y.BILL.CNT += 1
+    REPEAT
+
+    TOT.DUE = ABS(TOT.DUE)
+    Y.DATE = TODAY
+    APAP.TAM.redoGetNextPaymentAmount(AA.ARRANGEMENT.ID,Y.DATE,Y.FEE)
+
+RETURN
+*******************
+GET.AA.GET.DETAILS:
+*******************
+* Gosub is used to get the property details
+
+    CALL AA.GET.ARRANGEMENT.CONDITIONS(AA.ARRANGEMENT.ID, Y.PROPERTY,'','', RET.IDS, R.RECORD, RET.ERR)
+    R.RECORD = RAISE(R.RECORD)
+
+RETURN
+
+********************
+READ.AA.ARRANGEMENT:
+********************
+* In this para of the code, file AA.ARRANGEMENT is read
+    R.AA.ARRANGEMENT  = ''
+    AA.ARRANGEMENT.ER = ''
+    CALL F.READ(FN.AA.ARRANGEMENT,AA.ARRANGEMENT.ID,R.AA.ARRANGEMENT,F.AA.ARRANGEMENT,AA.ARRANGEMENT.ER)
+
+RETURN
+
+*********************
+GET.BALANCES.DETAILS:
+*********************
+
+    DATE.OPTIONS = ''
+    EFFECTIVE.DATE = TODAY
+    DATE.OPTIONS<4>  = 'ECB'
+    BALANCE.AMOUNT = ''
+    CALL AA.GET.PERIOD.BALANCES(Y.AA.ACCT.NO, BALANCE.TO.CHECK, DATE.OPTIONS, EFFECTIVE.DATE, "", "", BAL.DETAILS, "")
+
+RETURN
+
+
+*******************
+READ.AA.REF.DET:
+******************
+
+    R.AA.REF=''
+    CALL F.READ(FN.AA.REF.DET,AA.ARRANGEMENT.ID,R.AA.REF,F.AA.REF.DET,AA.REF.ERR)
+    IF NOT(AA.REF.ERR) THEN
+        TOT.AAA.ID=DCOUNT(R.AA.REF<AA.REF.AAA.ID>,@VM)
+        EXACT.AAA.ID=R.AA.REF<AA.REF.AAA.ID,TOT.AAA.ID>
+    END
+    R.ARR.ACT=''
+    Y.ACT.CLASS = ''
+    CALL F.READ(FN.AA.ARRANGEMENT.ACTIVITY,EXACT.AAA.ID,R.ARR.ACT,F.AA.ARRANGEMENT.ACTIVITY,ARR.ACT.ERR)
+    Y.ACT.CLASS = R.ARR.ACT<AA.ARR.ACT.ACTIVITY.CLASS>
+
+    IF NOT(ARR.ACT.ERR) AND Y.ACT.CLASS NE 'LENDING-DISBURSE-TERM.AMOUNT' THEN
+        LAST.PAID.AMT =R.ARR.ACT<AA.ARR.ACT.TXN.AMOUNT.LCY>
+    END
+
+RETURN
+**************
+FIND.ACTIVITY:
+**************
+    AA.ACTIVITY.HISTORY.ID = AA.ARRANGEMENT.ID
+    CALL F.READ(FN.AA.ACTIVITY.HISTORY,AA.ACTIVITY.HISTORY.ID,R.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY,AA.ACTIVITY.HISTORY.ER)
+    IF R.AA.ACTIVITY.HISTORY NE '' THEN
+        Y.CTR.ED = 1
+        LOOP
+            Y.EFFECTIVE.DATE.HIS = DCOUNT(R.AA.ACTIVITY.HISTORY<AA.AH.EFFECTIVE.DATE>,@VM)
+        WHILE Y.CTR.ED LE Y.EFFECTIVE.DATE.HIS
+            Y.ACTIVITY.HIS = DCOUNT(R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY,Y.CTR.ED>,@SM)
+            Y.CTR = 1
+            LOOP
+            WHILE Y.CTR LE Y.ACTIVITY.HIS
+                Y.ACTIVITY = R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY,Y.CTR.ED,Y.CTR>
+                FINDSTR 'LENDING-APPLYPAYMENT' IN Y.ACTIVITY SETTING ACTIVITY.POS THEN
+                    LAST.TXN.DATE =  R.AA.ACTIVITY.HISTORY<AA.AH.EFFECTIVE.DATE,Y.CTR.ED>
+                    Y.CTR.ED = Y.EFFECTIVE.DATE.HIS + 1
+                    Y.CTR = Y.ACTIVITY.HIS + 1
+                END
+                Y.CTR += 1
+            REPEAT
+            Y.CTR.ED += 1
+        REPEAT
+    END
+RETURN
+END

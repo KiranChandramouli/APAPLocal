@@ -1,0 +1,4 @@
+*
+* Common area for Flat Interface Processes
+*
+    COMMON /REDO.FI.ENQ.VAR.COMMON/ FI.BATCH.ID, FI.STMT.ENTRY.ID

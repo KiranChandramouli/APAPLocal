@@ -1,0 +1,25 @@
+*
+    * I_F.DR.REG.REGN8.CONCAT Created 09 JUN 13 at 01:02PM by apap/GANGADHAR1
+*      PREFIX[DR.REGN8.CONCAT]
+             EQU DR.REGN8.CONCAT.FIELD8 TO 1,   DrRegRegn8Concat_Field8 TO 1,
+                 DR.REGN8.CONCAT.FIELD9 TO 2,   DrRegRegn8Concat_Field9 TO 2,
+                DR.REGN8.CONCAT.FIELD10 TO 3,   DrRegRegn8Concat_Field10 TO 3,
+                DR.REGN8.CONCAT.FIELD11 TO 4,   DrRegRegn8Concat_Field11 TO 4,
+                DR.REGN8.CONCAT.FIELD12 TO 5,   DrRegRegn8Concat_Field12 TO 5,
+                DR.REGN8.CONCAT.FIELD13 TO 6,   DrRegRegn8Concat_Field13 TO 6,
+                DR.REGN8.CONCAT.FIELD14 TO 7,   DrRegRegn8Concat_Field14 TO 7,
+                DR.REGN8.CONCAT.FIELD15 TO 8,   DrRegRegn8Concat_Field15 TO 8,
+                DR.REGN8.CONCAT.FIELD16 TO 9,   DrRegRegn8Concat_Field16 TO 9,
+                DR.REGN8.CONCAT.FIELD17 TO 10,  DrRegRegn8Concat_Field17 TO 10,
+                DR.REGN8.CONCAT.FIELD18 TO 11,  DrRegRegn8Concat_Field18 TO 11,
+                DR.REGN8.CONCAT.FIELD19 TO 12,  DrRegRegn8Concat_Field19 TO 12,
+                DR.REGN8.CONCAT.FIELD20 TO 13,  DrRegRegn8Concat_Field20 TO 13,
+                DR.REGN8.CONCAT.FIELD21 TO 14,  DrRegRegn8Concat_Field21 TO 14,
+                DR.REGN8.CONCAT.FIELD22 TO 15,  DrRegRegn8Concat_Field22 TO 15,
+                DR.REGN8.CONCAT.FIELD23 TO 16,  DrRegRegn8Concat_Field23 TO 16,
+                DR.REGN8.CONCAT.FIELD24 TO 17,  DrRegRegn8Concat_Field24 TO 17,
+                DR.REGN8.CONCAT.FIELD25 TO 18,  DrRegRegn8Concat_Field25 TO 18,
+                DR.REGN8.CONCAT.FIELD26 TO 19,  DrRegRegn8Concat_Field26 TO 19,
+                DR.REGN8.CONCAT.FIELD27 TO 20,  DrRegRegn8Concat_Field27 TO 20,
+                DR.REGN8.CONCAT.FIELD28 TO 21,  DrRegRegn8Concat_Field28 TO 21,
+                DR.REGN8.CONCAT.FIELD29 TO 22,  DrRegRegn8Concat_Field29 TO 22

@@ -1,0 +1,18 @@
+* I_F.REDO.APAP.H.PAY.TYPE Created 13 NOV 10 at 01:04PM by apapr8/PRADEEPP1
+*      PREFIX[REDO.PAY.TYP]
+       EQU REDO.PAY.TYP.PAYMENT.LOAN TO 1,   RedoApapHPayType_PaymentLoan TO 1,
+           REDO.PAY.TYP.PAYMENT.CARD TO 2,   RedoApapHPayType_PaymentCard TO 2,
+          REDO.PAY.TYP.THIRD.PTY.PAY TO 3,   RedoApapHPayType_ThirdPtyPay TO 3,
+             REDO.PAY.TYP.RESERVED.2 TO 4,   RedoApapHPayType_Reserved2 TO 4,
+             REDO.PAY.TYP.RESERVED.1 TO 5,   RedoApapHPayType_Reserved1 TO 5,
+              REDO.PAY.TYP.LOCAL.REF TO 6,   RedoApapHPayType_LocalRef TO 6,
+               REDO.PAY.TYP.OVERRIDE TO 7,   RedoApapHPayType_Override TO 7,
+          REDO.PAY.TYP.RECORD.STATUS TO 8,   RedoApapHPayType_RecordStatus TO 8,
+                REDO.PAY.TYP.CURR.NO TO 9,   RedoApapHPayType_CurrNo TO 9,
+               REDO.PAY.TYP.INPUTTER TO 10,  RedoApapHPayType_Inputter TO 10,
+              REDO.PAY.TYP.DATE.TIME TO 11,  RedoApapHPayType_DateTime TO 11,
+             REDO.PAY.TYP.AUTHORISER TO 12,  RedoApapHPayType_Authoriser TO 12,
+                REDO.PAY.TYP.CO.CODE TO 13,  RedoApapHPayType_CoCode TO 13,
+              REDO.PAY.TYP.DEPT.CODE TO 14,  RedoApapHPayType_DeptCode TO 14,
+           REDO.PAY.TYP.AUDITOR.CODE TO 15,  RedoApapHPayType_AuditorCode TO 15,
+        REDO.PAY.TYP.AUDIT.DATE.TIME TO 16,  RedoApapHPayType_AuditDateTime TO 16

@@ -1,0 +1,9 @@
+* I_F.REDO.W.DIRECT.DEBIT Created 28 DEC 11 at 04:44PM by t24bbcr9/TEMENOS.03
+*      PREFIX[REDO.AA.DD]
+             EQU REDO.AA.DD.ARR.ID TO 1,   RedoWDirectDebit_ArrId TO 1,
+                  REDO.AA.DD.FT.ID TO 2,   RedoWDirectDebit_FtId TO 2,
+           REDO.AA.DD.CREDIT.AC.ID TO 3,   RedoWDirectDebit_CreditAcId TO 3,
+            REDO.AA.DD.DEBIT.AC.ID TO 4,   RedoWDirectDebit_DebitAcId TO 4,
+        REDO.AA.DD.BILL.AMT.ARR.ID TO 5,   RedoWDirectDebit_BillAmtArrId TO 5,
+                REDO.AA.DD.BILL.ID TO 6,   RedoWDirectDebit_BillId TO 6,
+                 REDO.AA.DD.REASON TO 7,   RedoWDirectDebit_Reason TO 7

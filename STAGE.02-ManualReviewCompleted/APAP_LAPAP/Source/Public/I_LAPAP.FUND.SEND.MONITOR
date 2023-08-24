@@ -1,0 +1,30 @@
+*========================================================================
+*    SUBROUTINE I_LAPAP.FUND.SEND.MONITOR
+*========================================================================
+* Technical report:
+* =================
+* Company Name   : APAP
+* Program Name   : LAPAP.MON.INJECT.DATA
+* Date           : 2018-05-04
+* Item ID        : CN004475
+*========================================================================
+* Brief description :
+* -------------------
+* This a multi-threading program for inject data in monitor interface
+* without use any version.
+*========================================================================
+* Modification History :
+* ======================
+* Date           Author            Modification Description
+* -------------  -----------       ---------------------------
+* 2018-05-04     Richard HC                Initial Development
+*========================================================================
+* Content summary :
+* =================
+* Table name     :
+* Auto Increment :
+* Views/versions :
+* EB record      :
+* Routine        :
+*========================================================================
+    COM/FUND.SEND.MONITOR/FN.FUND,F.FUND,FN.MON,F.MON
