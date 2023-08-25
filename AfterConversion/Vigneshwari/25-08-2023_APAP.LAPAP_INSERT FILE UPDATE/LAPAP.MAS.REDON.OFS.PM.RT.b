@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNDMzMjc3NDE0OkNwMTI1MjoxNjkyOTYxOTA0OTc5OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Aug 2023 16:41:44
+* @ValidationCode : MjoxMjAzNzA3MzIwOkNwMTI1MjoxNjkyOTY3NjY5OTQyOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Aug 2023 18:17:49
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -15,7 +15,7 @@ $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------------------------------------------------
 *Modification HISTORY:
 *DATE		  AUTHOR		     Modification                 DESCRIPTION
-*25/08/2023	 VIGNESHWARI       MANUAL R22 CODE CONVERSION	      NOCHANGE
+*25/08/2023	 VIGNESHWARI       MANUAL R22 CODE CONVERSION	      CALL ROUTINE MODIFIED
 *25/08/2023	 CONVERSION TOOL   AUTO R22 CODE CONVERSION	   T24.BP , BP  is removed in insertfile
 *-----------------------------------------------------------------------------------------------------------------------
 
@@ -81,7 +81,8 @@ PROCESS:
     IF Y.TXN.CODE[1,2] EQ 'FT' THEN
         IF Y.RETURN.CODE EQ '-1' OR Y.RETURN.CODE EQ '-2' OR Y.RETURN.CODE EQ '-3' OR Y.RETURN.CODE EQ '-4' THEN
             MSG<-1> = OFS.MESSAGE
-            CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+            ;*CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+            APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION
             GOSUB DO.MARK.ERROR
         END ELSE
             GOSUB DO.MARK.SUCCESS
@@ -157,7 +158,8 @@ DO.REVERSE.FT:
     CALL OFS.POST.MESSAGE(FINAL.OFS,OFS.MSG.ID,"GENOFS",'')
     MSG = ''
     MSG<-1> = Y.TXN.CODE : ', Deleted due to HOLD FT, check OFS CR.CTA.OFS.GL log'
-    CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+    ;*CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+    APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
 
     RETURN
 

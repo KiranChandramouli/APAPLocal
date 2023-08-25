@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNzMzMTA4ODAzOkNwMTI1MjoxNjkyOTYyOTAwMzc0OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Aug 2023 16:58:20
+* @ValidationCode : MjotNDczMzEwODcxOkNwMTI1MjoxNjkyOTY3OTExMzU4OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Aug 2023 18:21:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -55,7 +55,8 @@ TRANSFORM:
         RETURN
     END
 
-    CALL L.APAP.JSON.STRINGIFY(Y.PARAM , JSON.REQUEST)
+    ;*CALL L.APAP.JSON.STRINGIFY(Y.PARAM , JSON.REQUEST)
+    APAP.LAPAP.lApapJsonStringify(Y.PARAM , JSON.REQUEST);*MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
 *----------------LOAD DYN FROM JSON ---------------------------
     CALL L.APAP.JSON.TO.DYN.OFS(JSON.REQUEST, Y.DYN.REQUEST.KEY, Y.DYN.REQUEST.VALUE, Y.DYN.REQUEST.TYPE, Y.ERROR)
     IF Y.ERROR<1> = 1 THEN
