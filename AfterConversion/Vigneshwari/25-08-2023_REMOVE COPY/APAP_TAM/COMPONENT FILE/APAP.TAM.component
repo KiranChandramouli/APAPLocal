@@ -1,0 +1,72 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method copyReportsNw (
+)
+{
+   jBC: COPY.REPORTS.NW
+}
+
+
+
+public method ebCompile (
+)
+{
+   jBC: EB.COMPILE
+}
+
+
+
+public method redoRBcrReportDelivery (
+   INOUT yIntCode string,
+   INOUT yIntType string,
+   INOUT rRedoInterfaceParam string
+)
+{
+   jBC: REDO.R.BCR.REPORT.DELIVERY
+}
+
+
+
+public method redoSapClearFile (
+)
+{
+   jBC: REDO.SAP.CLEAR.FILE
+}
+
+
+
+public method redoSetFields1 (
+)
+{
+   jBC: REDO.SET.FIELDS1
+}
+
+
+
+
+
+
+
+public method tamEmailSendR (
+   INOUT rEmail string,
+   INOUT yResponse string
+)
+{
+   jBC: TAM.EMAIL.SEND.R
+}
+
+
+
+public method redoFiDebitProces (
+   INOUT rParams string,
+   INOUT outResp string,
+   INOUT outErr string
+)
+{
+   jBC: REDO.FI.DEBIT.PROCES
+}
+

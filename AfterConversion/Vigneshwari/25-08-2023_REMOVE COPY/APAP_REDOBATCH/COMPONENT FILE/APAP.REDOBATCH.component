@@ -1,0 +1,13 @@
+component APAP.REDOBATCH
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoBBatCheques (
+   INOUT yClrOutwardId1 string
+)
+{
+   jBC: REDO.B.BAT.CHEQUES
+}
+
