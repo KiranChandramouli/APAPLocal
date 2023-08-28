@@ -1,0 +1,166 @@
+* @ValidationCode : MjoxMjAzNzA3MzIwOkNwMTI1MjoxNjkyOTY3NjY5OTQyOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Aug 2023 18:17:49
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+    SUBROUTINE LAPAP.MAS.REDON.OFS.PM.RT(OFS.MESSAGE)
+*-----------------------------------------------------------------------------------------------------------------------
+*Modification HISTORY:
+*DATE		  AUTHOR		     Modification                 DESCRIPTION
+*25/08/2023	 VIGNESHWARI       MANUAL R22 CODE CONVERSION	      CALL ROUTINE MODIFIED
+*25/08/2023	 CONVERSION TOOL   AUTO R22 CODE CONVERSION	   T24.BP , BP  is removed in insertfile
+*-----------------------------------------------------------------------------------------------------------------------
+
+    $INSERT  I_COMMON ;*AUTO R22 CODE CONVERSION-START-T24.BP  is removed in insertfile
+    $INSERT  I_EQUATE
+    $INSERT  I_F.FUNDS.TRANSFER ;*AUTO R22 CODE CONVERSION-END
+    $INSERT  I_F.ST.LAPAP.CRC.ROUNDUP.DET ;*AUTO R22 CODE CONVERSION-START-BP  is removed in insertfile
+    $INSERT  I_F.ST.LAPAP.CRC.ROUNDUP  ;*AUTO R22 CODE CONVERSION -END
+*------------------------------------------------------------------
+*PGM Desc: This routine is attached to OFS.SOURCE>CR.CTA.OFS.GL
+*......... to fetch OFS Response data and determine whether or not
+*......... the payment was successful
+*By: J.Q. (APAP) on Feb 20, 2023
+*-------------------------------------------------------------------
+
+    Y.LOG.ID = 'CR.CTA.OFS.GL.log'
+*MSG<-1> = 'Valor de salida='
+*MSG<-1> = OFS.MESSAGE
+*CALL LAPAP.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+
+    GOSUB INIT
+    GOSUB PROCESS
+
+
+    RETURN
+*-----------------------------------------------------------------
+INIT:
+    FN.CRC.ROUNDUP = 'FBNK.ST.LAPAP.CRC.ROUNDUP'
+    F.CRC.ROUNDUP = ''
+    CALL OPF(FN.CRC.ROUNDUP,F.CRC.ROUNDUP)
+
+    FN.CRC.ROUNDUP.DET = 'FBNK.ST.LAPAP.CRC.ROUNDUP.DET'
+    F.CRC.ROUNDUP.DET = ''
+    CALL OPF(FN.CRC.ROUNDUP.DET,F.CRC.ROUNDUP.DET)
+
+    FN.FT = 'F.FUNDS.TRANSFER'
+    F.FT = ''
+    CALL OPF(FN.FT,F.FT)
+
+    FN.FT.N = 'F.FUNDS.TRANSFER$NAU'
+    F.FT.N = ''
+    CALL OPF(FN.FT.N,F.FT.N)
+
+
+    APPL.NAME.ARR = "FUNDS.TRANSFER"
+    FLD.NAME.ARR = "L.ROUNDUP.DET"
+    CALL MULTI.GET.LOC.REF(APPL.NAME.ARR,FLD.NAME.ARR,FLD.POS.ARR)
+    Y.L.ROUNDUP.DET.POS = FLD.POS.ARR<1,1>
+
+
+    RETURN
+
+PROCESS:
+
+    Y.OFS.DATA = OFS.MESSAGE
+
+    CHANGE '/' TO @FM IN Y.OFS.DATA
+
+    Y.RETURN.CODE = Y.OFS.DATA<3>
+    Y.OFS.ID = Y.OFS.DATA<2>
+    Y.TXN.CODE = Y.OFS.DATA<1>
+
+    IF Y.TXN.CODE[1,2] EQ 'FT' THEN
+        IF Y.RETURN.CODE EQ '-1' OR Y.RETURN.CODE EQ '-2' OR Y.RETURN.CODE EQ '-3' OR Y.RETURN.CODE EQ '-4' THEN
+            MSG<-1> = OFS.MESSAGE
+            ;*CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+            APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION
+            GOSUB DO.MARK.ERROR
+        END ELSE
+            GOSUB DO.MARK.SUCCESS
+        END
+    END
+
+    RETURN
+DO.MARK.ERROR:
+
+    CALL F.READ(FN.FT.N,Y.TXN.CODE,R.FTNAU,F.FT.N,FTNAU.ERR)
+    IF (R.FTNAU) THEN
+        Y.ROUNDUP = R.FTNAU<FT.LOCAL.REF,Y.L.ROUNDUP.DET.POS>
+    END
+    R.DET = ''
+    R.DET<ST.LAP50.TXN.OFS.DET.ID> = Y.OFS.ID
+    R.DET<ST.LAP50.STATUS> = 'FAILED'
+
+    Y.ERR.MSG = Y.OFS.DATA<4>
+    IF LEN(Y.ERR.MSG) GT 65 THEN
+        Y.ERR.MSG = Y.ERR.MSG[1,64]
+    END
+    R.DET<ST.LAP50.INT.COMMENTS> = Y.ERR.MSG
+
+    GOSUB DO.UPDATE.ROUNDUP.DET
+    GOSUB DO.REVERSE.FT
+    RETURN
+
+DO.MARK.SUCCESS:
+
+    CALL F.READ(FN.FT,Y.TXN.CODE,R.FT,F.FT,FT.ERR)
+    IF (R.FT) THEN
+        Y.ROUNDUP = R.FT<FT.LOCAL.REF,Y.L.ROUNDUP.DET.POS>
+    END
+    R.DET = ''
+    R.DET<ST.LAP50.TXN.OFS.DET.ID> = Y.OFS.ID
+    R.DET<ST.LAP50.STATUS> = 'APPLIED'
+    R.DET<ST.LAP50.INT.COMMENTS> = ''
+    R.DET<ST.LAP50.OUR.REFERENCE> = Y.TXN.CODE
+
+    GOSUB DO.UPDATE.ROUNDUP.DET
+    RETURN
+
+DO.UPDATE.ROUNDUP.DET:
+    Y.TRANS.ID = Y.ROUNDUP
+    Y.APP.NAME = "ST.LAPAP.CRC.ROUNDUP.DET"
+    Y.VER.NAME = Y.APP.NAME :",INPUT"
+    Y.FUNC = "I"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    FINAL.OFS = ""
+    OPTIONS = ""
+    OFS.MSG.ID = ''
+
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.DET,FINAL.OFS)
+    CALL OFS.POST.MESSAGE(FINAL.OFS,OFS.MSG.ID,"CR.CTA.OFS.GL",'')
+    RETURN
+
+DO.REVERSE.FT:
+    Y.TRANS.ID = Y.TXN.CODE
+    Y.APP.NAME = "FUNDS.TRANSFER"
+    Y.VER.NAME = Y.APP.NAME :",MB.DM.LOAD"
+    Y.FUNC = "D"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    FINAL.OFS = ""
+    OPTIONS = ""
+    OFS.MSG.ID = ''
+
+    R.DUMMY.FT = ''
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.DUMMY.FT,FINAL.OFS)
+    CALL OFS.POST.MESSAGE(FINAL.OFS,OFS.MSG.ID,"GENOFS",'')
+    MSG = ''
+    MSG<-1> = Y.TXN.CODE : ', Deleted due to HOLD FT, check OFS CR.CTA.OFS.GL log'
+    ;*CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+    APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
+
+    RETURN
+
+END
