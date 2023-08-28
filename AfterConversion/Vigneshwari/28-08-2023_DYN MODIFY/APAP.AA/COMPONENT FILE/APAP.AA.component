@@ -1,0 +1,20 @@
+component APAP.AA
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoFcSRevAa (
+)
+{
+   jBC: REDO.FC.S.REV.AA
+}
+
+
+
+public method redoFcClRegisterAa (
+)
+{
+   jBC: REDO.FC.CL.REGISTER.AA
+}
+

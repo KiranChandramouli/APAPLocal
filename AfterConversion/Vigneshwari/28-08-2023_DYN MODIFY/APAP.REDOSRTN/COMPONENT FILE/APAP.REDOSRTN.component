@@ -1,0 +1,44 @@
+component APAP.REDOSRTN
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoSFcLimiteGfuncemp (
+   INOUT custId string,
+   INOUT custOut string
+)
+{
+   jBC: REDO.S.FC.LIMITE.GFUNCEMP
+}
+
+
+
+public method redoSFcLimiteGrgar (
+   INOUT custId string,
+   INOUT custOut string
+)
+{
+   jBC: REDO.S.FC.LIMITE.GRGAR
+}
+
+
+
+public method redoSFcLimiteGrsgar (
+   INOUT custId string,
+   INOUT custOut string
+)
+{
+   jBC: REDO.S.FC.LIMITE.GRSGAR
+}
+
+
+
+public method redoSFcLimiteIfuncemp (
+   INOUT custId string,
+   INOUT custOut string
+)
+{
+   jBC: REDO.S.FC.LIMITE.IFUNCEMP
+}
+
