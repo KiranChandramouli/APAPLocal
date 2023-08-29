@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNjY3MjUzNTMyOkNwMTI1MjoxNjkzMjIxMzY5OTQwOnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Aug 2023 16:46:09
+* @ValidationCode : MjoxNzAwMzU1ODcwOkNwMTI1MjoxNjkzMjg3MjQ3MTUyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : victo
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *---------------------------------------------------------------------------------------
@@ -45,8 +45,8 @@ SUBROUTINE REDO.FI.DEBIT.PROCES.BACEN(R.PARAMS, OUT.RESP,OUT.ERR)
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.ACCOUNT
 
-    $INSERT I_RAPID.APP.DEV.COMMON ;*R22 AUTO CONVERSION
-    $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 AUTO CONVERSION
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 MANUAL CONVERSION
+*   $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 MANUAL CONVERSION
     $USING APAP.REDOENQ
 *
 *************************************************************************

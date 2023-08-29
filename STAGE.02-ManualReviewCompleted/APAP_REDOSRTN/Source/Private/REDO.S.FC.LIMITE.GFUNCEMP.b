@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODgwMjA1NjM2OkNwMTI1MjoxNjkzMjI0NjY4Mzg4OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Aug 2023 17:41:08
+* @ValidationCode : MjotNDg5MjYwOTU2OkNwMTI1MjoxNjkzMjg2MzE3ODc1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 10:48:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOSRTN
 SUBROUTINE REDO.S.FC.LIMITE.GFUNCEMP(CUST.ID, CUST.OUT)
@@ -44,7 +44,7 @@ SUBROUTINE REDO.S.FC.LIMITE.GFUNCEMP(CUST.ID, CUST.OUT)
     $INSERT I_GTS.COMMON
     $INSERT I_System
     $INSERT I_F.CUSTOMER
-    $INSERT I_RAPID.APP.DEV.COMMON  ;*AUTO R22 CODE CONVERSION
+*   $INSERT I_RAPID.APP.DEV.COMMON  ;*AUTO R22 CODE CONVERSION
     $INSERT I_F.REDO.CCRG.CUSTOMER
     $INSERT I_F.REDO.CCRG.RISK.LIMIT.PARAM
     $USING APAP.REDOFCFI
@@ -91,16 +91,16 @@ PROCESS:
 
 * Get Y.ID.CUST.LI from OFS result.
 *        Y.OFS.MSG.REQ = DYN.TO.OFS(R.REDO.CCRG.CUSTOMER, Y.APPLICATION, OFS.INFO.INPUT)
-     APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
-    OFS.FUNCTION = 'I'
-    OFS.PROCESS  = 'PROCESS'
-    OFS.VERSION  = Y.VER.INSURANCE
-    Y.GTSMODE    = ''
-    NO.OF.AUTH   = ''
-    TRANSACTION.ID = Y.INS.ID
-    R.RECORD     = R.REDO.CCRG.CUSTOMER
-    Y.OFS.STR   = ''
-    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.MSG.REQ)   ;*MANUAL R22 CODE CONVERSION-END
+        APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
+        OFS.FUNCTION = 'I'
+        OFS.PROCESS  = 'PROCESS'
+        OFS.VERSION  = Y.VER.INSURANCE
+        Y.GTSMODE    = ''
+        NO.OF.AUTH   = ''
+        TRANSACTION.ID = Y.INS.ID
+        R.RECORD     = R.REDO.CCRG.CUSTOMER
+        Y.OFS.STR   = ''
+        CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.MSG.REQ)   ;*MANUAL R22 CODE CONVERSION-END
 
 
         CALL OFS.GLOBUS.MANAGER(Y.OFS.SOURCE.ID, Y.OFS.MSG.REQ)
@@ -115,7 +115,7 @@ PROCESS:
     END
 
 * Evaluate Customer
-    *CALL REDO.FC.EVAL(Y.ID.CUST.LIM, Y.ID.NAME.LIM, OUT.RESULT)
+*CALL REDO.FC.EVAL(Y.ID.CUST.LIM, Y.ID.NAME.LIM, OUT.RESULT)
     APAP.REDOFCFI.redoFcEval(Y.ID.CUST.LIM, Y.ID.NAME.LIM, OUT.RESULT) ;*MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
     IF OUT.RESULT EQ 1 THEN
         GOSUB PROCESS.RESULT

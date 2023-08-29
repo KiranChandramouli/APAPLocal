@@ -55,6 +55,7 @@ SUBROUTINE APAP.USER.PASSWORD.CHANGE (Y.REQUEST, Y.RESPONSE)
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *11-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  FM to @FM , ++ to +=
 *11-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*24-08=2023       AJITH KUMAR S               MANUAL R22 CODE CONVERSION ENCRYPT WILL BE CHANGE
 *----------------------------------------------------------------------------------------
 
 *=======================================================================
@@ -69,6 +70,7 @@ SUBROUTINE APAP.USER.PASSWORD.CHANGE (Y.REQUEST, Y.RESPONSE)
     $INSERT I_F.STANDARD.SELECTION
     $INSERT I_F.OFS.SOURCE
     $INSERT I_GTS.COMMON
+    $INSERT JBC.h
 
 *************************************************************************
     GOSUB INITIALISE
@@ -154,8 +156,15 @@ PROCESS:
 
 *Insert the PIN number for IVR user
     IF CHANNEL EQ "IVR" THEN
-        KEYUSED = "7"
-        PWD = ENCRYPT(PWD,KEYUSED,2)
+*OLD - START
+*KEYUSED = "7"
+*PWD = ENCRYPT(PWD,KEYUSED,2)
+*OLD - END
+*NEW-START
+        KEYUSED="12345678" ;*R22-MANUAL CONVERSION
+        PWD = ENCRYPT(PWD,KEYUSED,JBASE_CRYPT_DES_BASE64)
+*NEW - END
+        
         OFS.REC  = "REDO.CH.PINADM,/I/PROCESS/1/0,":Y.USER:"/":Y.PWD:",": ID.USER :","
         OFS.REC  := "PIN:1:1=": PWD :","
         OFS.REC := "START.DATE:1:1=": Y.FECHA.INICIO :","

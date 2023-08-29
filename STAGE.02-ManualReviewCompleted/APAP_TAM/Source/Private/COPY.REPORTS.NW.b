@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTA3NzMyNzQyNDpDcDEyNTI6MTY4NDQ5MTAyNTU4MjpJVFNTOi0xOi0xOjQ5NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:25
+* @ValidationCode : MjotMTQ3NDQ3NDI0MzpDcDEyNTI6MTY5MzMxMzcxMzQ2ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:25:13
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 497
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -15,6 +15,7 @@ $PACKAGE APAP.TAM
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *24-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  T24.BP is removed , DCOUNT format can be changed
 *24-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*25-08-2023       VIGNESHWARI                 MANUAL R22 CODE CONVERSION  PATH IS MODIFIED  
 *----------------------------------------------------------------------------------------
 * Realializado por Elvis, Lo siguiente obtendra la fecha al dia.
 PROGRAM COPY.REPORTS.NW
@@ -35,7 +36,9 @@ PROGRAM COPY.REPORTS.NW
         CNT = DCOUNT(REC.LIST,@FM)
         FOR REC.IDX = 1 TO CNT ;*R22 AUTO CODE CONVERSION
             PRINT 'Copying ':REC.LIST<REC.IDX>
-            EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs/NWGL ':REC.LIST<REC.IDX>
+            *EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs/NWGL ':REC.LIST<REC.IDX>
+            EXECUTE 'sh -c cp  &HOLD& : /':REC.LIST<REC.IDX>' ': '../bnk.interface/REG.REPORTS/CRBs/NWGL' :'/':REC.LIST<REC.IDX>  ;*R22 MANUAL CONVERSION - PATH IS MODIFIED
+            
         NEXT REC.IDX
     END
 

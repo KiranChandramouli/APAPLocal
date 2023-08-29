@@ -1,17 +1,17 @@
-* @ValidationCode : MjotNzMzMTA4ODAzOkNwMTI1MjoxNjkyOTcxOTA2NDg1OklUU1M6LTE6LTE6NjczOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Aug 2023 19:28:26
+* @ValidationCode : Mjo5OTQ1NTYwMTg6Q3AxMjUyOjE2OTMyODU3MTQ5ODk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 10:38:34
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 673
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-    SUBROUTINE LAPAP.PROC.REDONDEO.MASIV(Y.PARAM, Y.USR_CREDENTIALS ,Y.RABBIT.MQ.OUT)
+SUBROUTINE LAPAP.PROC.REDONDEO.MASIV(Y.PARAM, Y.USR_CREDENTIALS ,Y.RABBIT.MQ.OUT)
 *--------------------------------------------------------------------------------
 *PGM Desc.:
 *By: J.Q. (APAP) on Feb 16, 2023
@@ -30,7 +30,7 @@ $PACKAGE APAP.LAPAP
 
     GOSUB INI
     GOSUB TRANSFORM
-    RETURN
+RETURN
 
 INI:
 *ENV VARIABLES
@@ -46,7 +46,7 @@ INI:
     FN.CRC.ROUNDUP.DET = 'FBNK.ST.LAPAP.CRC.ROUNDUP.DET'
     F.CRC.ROUNDUP.DET = ''
     CALL OPF(FN.CRC.ROUNDUP.DET,F.CRC.ROUNDUP.DET)
-    RETURN
+RETURN
 
 TRANSFORM:
     IF TRIM(Y.PARAM, " ", "R") = ""  THEN
@@ -55,9 +55,11 @@ TRANSFORM:
         RETURN
     END
 
-    CALL L.APAP.JSON.STRINGIFY(Y.PARAM , JSON.REQUEST)
+*    CALL L.APAP.JSON.STRINGIFY(Y.PARAM , JSON.REQUEST)
+    APAP.LAPAP.lApapJsonStringify(Y.PARAM , JSON.REQUEST) ;*MANUAL R22 CODE CONVERSION
 *----------------LOAD DYN FROM JSON ---------------------------
-    CALL L.APAP.JSON.TO.DYN.OFS(JSON.REQUEST, Y.DYN.REQUEST.KEY, Y.DYN.REQUEST.VALUE, Y.DYN.REQUEST.TYPE, Y.ERROR)
+*    CALL L.APAP.JSON.TO.DYN.OFS(JSON.REQUEST, Y.DYN.REQUEST.KEY, Y.DYN.REQUEST.VALUE, Y.DYN.REQUEST.TYPE, Y.ERROR)
+    APAP.LAPAP.lApapJsonToDynOfs(JSON.REQUEST, Y.DYN.REQUEST.KEY, Y.DYN.REQUEST.VALUE, Y.DYN.REQUEST.TYPE, Y.ERROR) ;*MANUAL R22 CODE CONVERSION
     IF Y.ERROR<1> = 1 THEN
         RETURN
     END
@@ -74,7 +76,7 @@ TRANSFORM:
     CHANGE ']'  TO @VM IN Y.TXNS
     GOSUB INS.DET
     GOSUB INS.HEAD
-    RETURN
+RETURN
 
 INS.DET:
     CANT_OBJECT = DCOUNT(Y.TXNS     , @VM)
@@ -103,7 +105,7 @@ INS.DET:
         CALL F.WRITE(FN.CRC.ROUNDUP.DET, Y.REC.ID, R.DET)
         CALL JOURNAL.UPDATE('')
     NEXT CONTA
-    RETURN
+RETURN
 
 INS.HEAD:
     CHANGE '-' TO '' IN Y.EXEC.DATE
@@ -115,5 +117,5 @@ INS.HEAD:
 
     CALL F.WRITE(FN.CRC.ROUNDUP, Y.BATCH.ID, R.HEAD)
     CALL JOURNAL.UPDATE('')
-    RETURN
+RETURN
 END

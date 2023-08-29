@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxODg5MzIyNDk4OkNwMTI1MjoxNjg0MjIyODEyOTg3OklUU1M6LTE6LTE6NDg3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:12
+* @ValidationCode : MjoxOTI5Nzc3ODcwOkNwMTI1MjoxNjkzMzExNTEyNTM2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 17:48:32
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 487
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -22,7 +22,7 @@ SUBROUTINE LAPAP.MOVE.NO.CUST.RPT
 * DATE              WHO             REFERENCE              DESCRIPTION
 
 * 21-APR-2023  Conversion tool   R22 Auto conversion    BP is removed in Insert File, INCLUDE to INSERT , FM to @FM
-* 21-APR-2023    Narmadha V      R22 Manual Conversion    No Changes
+* 21-APR-2023    Narmadha V      R22 Manual Conversion  PATH IS MODIFIED
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON ;*R22 Auto conversion - START
     $INSERT I_EQUATE
@@ -72,7 +72,8 @@ PROCESS:
     LOOP
         REMOVE Y.RPT.ID FROM SEL.LIST SETTING CUS.POS
     WHILE Y.RPT.ID DO
-        EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS ':Y.RPT.ID:",":Y.NAME.FINAL
+*    EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS ':Y.RPT.ID:",":Y.NAME.FINAL ;*R22 Manual Conversion PATH IS MODIFIED
+        EXECUTE 'SH -c cp &HOLD&/':Y.RPT.ID:' ':'../bnk.interface/REG.REPORTS/':Y.NAME.FINAL
     REPEAT
 RETURN
 END

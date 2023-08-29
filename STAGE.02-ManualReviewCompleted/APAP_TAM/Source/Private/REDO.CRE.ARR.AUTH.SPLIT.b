@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5NzQxODI5MTI6Q3AxMjUyOjE2OTMyMjkwNTgwNjA6SVRTUzotMTotMToxODA4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Aug 2023 18:54:18
+* @ValidationCode : MjoxMjE4NzI3MDY6Q3AxMjUyOjE2OTMyODcyMzU4NjQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:03:55
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1808
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CRE.ARR.AUTH.SPLIT(Y.OFS.SOURCE.ID)
@@ -56,7 +56,7 @@ SUBROUTINE REDO.CRE.ARR.AUTH.SPLIT(Y.OFS.SOURCE.ID)
     $INSERT I_F.COLLATERAL
     $INSERT I_F.OFS.SOURCE
 *
-    $INSERT I_RAPID.APP.DEV.COMMON ;*R22 AUTO CONVERSION
+*   $INSERT I_RAPID.APP.DEV.COMMON ;* MANUAL R22 CODE CONVERSION
 *
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
 *

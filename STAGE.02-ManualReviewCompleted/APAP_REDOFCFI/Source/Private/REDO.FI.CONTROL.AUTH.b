@@ -1,9 +1,22 @@
+* @ValidationCode : Mjo3NzQ2OTk4ODA6Q3AxMjUyOjE2OTMzMTQzNjA2Njg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:36:00
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *14-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *14-07-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL ROUTINE MODIFIED,VARIABLE NAME MODIFIED
+*14-07-2023    VIGNESHWARI S       R22 MANUAL CONVERSION   PATH IS MODIFIED
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.FI.CONTROL.AUTH
 ******************************************************************************
@@ -81,14 +94,14 @@ MOVE.FILE:
         IF F.INTERFACE EQ 'NOMINA' THEN ;*R22 MANUAL CONVERSION
 *CALL REDO.FI.DEBIT.PROCES(R.PARAMS, OUT.RESP, OUT.ERR)
 *R22 MANUAL CONVERSION
-            APAP.TAM.redoFiDebitProces(R.PARAMS, OUT.RESP, OUT.ERR)
+            APAP.TAM.redoFiDebitProces(R.PARAMS, OUT.RESP, OUT.ERR) 
         END
-
         IF OUT.ERR NE "" THEN
             E = "EB-ERROR.FAILED.FT"
         END
 
-        Y.CMD = "COPY FROM ":Y.PATH.WORK:" TO ":Y.PATH.OFS:" ":F.FILE
+       * Y.CMD = "COPY FROM ":Y.PATH.WORK:" TO ":Y.PATH.OFS:" ":F.FILE
+        Y.CMD = 'SH -c cp ':Y.PATH.WORK: '/':F.FILE:' ':Y.PATH.OFS:'/':F.FILE ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
 
         COPY.ERR = ''
         GOSUB EXECUTE.COPY
@@ -105,7 +118,8 @@ MOVE.FILE:
         END
 
     END ELSE
-        Y.CMD = "COPY FROM ":Y.PATH.WORK:" TO ":Y.PATH.REJ:" ":F.FILE
+        *Y.CMD = "COPY FROM ":Y.PATH.WORK:" TO ":Y.PATH.REJ:" ":F.FILE
+        Y.CMD = 'SH -c cp ':Y.PATH.WORK: '/':F.FILE:' ':Y.PATH.REJ:'/':F.FILE ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
         COPY.ERR = ''
         GOSUB EXECUTE.COPY
         IF COPY.ERR NE "" THEN

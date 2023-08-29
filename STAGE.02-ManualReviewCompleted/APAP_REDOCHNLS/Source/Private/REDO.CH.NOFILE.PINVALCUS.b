@@ -27,7 +27,7 @@ SUBROUTINE REDO.CH.NOFILE.PINVALCUS(R.DATA)
 *           rmondragon@temenos.com
 *
 * 04-APR-2023     Conversion tool    R22 Auto conversion       F.READ to CACHE.READ
-* 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 10-APR-2023      Harishvikram C   Manual R22 conversion      Decrypt Keyword is modified 
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -139,8 +139,14 @@ CHECK.PIN:
         RETURN
     END
 
-    KY = "7"
-    PN = DECRYPT(PN,KY,2)
+    *KY = "7"
+*PN = DECRYPT(PN,KY,2)
+    *New start-
+    KY = "12345678"  ;*R22 MANUAL CODE CONVERSION
+    PN = DECRYPT(PN,KY,JBASE_CRYPT_DES_BASE64) ;*R22 MANUAL CODE CONVERSION
+*New end-
+    
+    
 
     IF PIN.USR EQ PN THEN
         IF TYPE EQ "TEMPORAL" THEN

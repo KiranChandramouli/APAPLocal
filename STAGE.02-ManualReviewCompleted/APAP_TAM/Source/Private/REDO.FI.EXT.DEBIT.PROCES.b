@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTEyMjY2Mzk1NjpDcDEyNTI6MTY5MzIyNDgyODg1NDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Aug 2023 17:43:48
+* @ValidationCode : Mjo2MjM0MTUwMzI6Q3AxMjUyOjE2OTMyODcyNDc1OTY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
@@ -29,7 +29,7 @@ SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
 *DATE			AUTHOR					Modification                 DESCRIPTION
 *28/08/2023	 CONVERSION TOOL    AUTO R22 CODE CONVERSION			  RAD.BP is removed in insertfile , FM TO @FM,  Y to Y.VAR,
 *                                                                      "=" to EQ, "Y.POS = Y.POS + 2"  to "Y.POS += 2", 'Y.POS = Y.POS - 1' to 'Y.POS -= 1'
-*28/08/2023  VIGNESHWARI        MANUAL R22 CODE CONVERSION           DYN.TO.OFS Change to OFS.BUILD.RECORD, CALL RTN MODIFIED  
+*28/08/2023  VIGNESHWARI        MANUAL R22 CODE CONVERSION           DYN.TO.OFS Change to OFS.BUILD.RECORD, CALL RTN MODIFIED
 *---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *=======================================================================
 *
@@ -45,8 +45,8 @@ SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
     $INSERT I_F.ACCOUNT
     $INSERT I_REDO.FI.VARIABLES.COMMON
 
-    $INSERT I_RAPID.APP.DEV.COMMON	;*AUTO R22 CODE CONVERSION- RAD.BP is removed in insertfile
-    $INSERT I_RAPID.APP.DEV.EQUATE	;*AUTO R22 CODE CONVERSION- RAD.BP is removed in insertfile
+*   $INSERT I_RAPID.APP.DEV.COMMON	;*MANUAL R22 CODE CONVERSION
+*   $INSERT I_RAPID.APP.DEV.EQUATE	;*MANUAL R22 CODE CONVERSION
 * Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES
 * Tus End
@@ -103,7 +103,7 @@ ACCT.STATUS.CHECK:
     IF R.PARAMS<12> EQ 'NOMINA' AND NOT(WERROR.MSG) THEN
         IN.ACCT.TYPE = 'CREDIT'
         IN.ACCT.ID   = W.CUENTA.CREDITO
-       * CALL REDO.NOMINA.ACCT.STATUS.CHECK(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS)
+* CALL REDO.NOMINA.ACCT.STATUS.CHECK(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS)
         APAP.REDOENQ.redoNominaAcctStatusCheck(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS);* MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
         WERROR.MSG = OUT.ACCT.STATUS
     END

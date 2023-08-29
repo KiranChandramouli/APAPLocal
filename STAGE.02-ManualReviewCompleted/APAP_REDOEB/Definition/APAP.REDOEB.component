@@ -641,12 +641,12 @@ public method tafcMenuAccessValidate (
 public method apapMUpdProdCode (
 )
 {
-   jBC: APAP.M.UPD.PROD.CODE
+    jBC: APAP.M.UPD.PROD.CODE
 }
 
 public method apapTecItemChange (
 )
 {
-   jBC: APAP.TEC.ITEM.CHANGE
+    jBC: APAP.TEC.ITEM.CHANGE
 }
 

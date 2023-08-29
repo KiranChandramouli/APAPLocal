@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMzgwNzYyMjg6Q3AxMjUyOjE2OTMyMjkwNTgyOTQ6SVRTUzotMTotMTotNTU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Aug 2023 18:54:18
+* @ValidationCode : Mjo4OTQ4MDgxMjpDcDEyNTI6MTY5MzI4NzI0NzY0MzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -55
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.FI.LB.APPLY.PYMT.CR(DATA.IN,AA.ARR.ID,DATA.OUT)
@@ -46,7 +46,7 @@ SUBROUTINE REDO.FI.LB.APPLY.PYMT.CR(DATA.IN,AA.ARR.ID,DATA.OUT)
 * Date            : Nov. 26, 2010
 *DATE			AUTHOR					Modification                        DESCRIPTION
 *28/08/2023	 CONVERSION TOOL        AUTO R22 CODE CONVERSION			  RAD.BP is removed in insertfile
-*28/08/2023  VIGNESHWARI            MANUAL R22 CODE CONVERSION            DYN.TO.OFS Change to OFS.BUILD.RECORD 
+*28/08/2023  VIGNESHWARI            MANUAL R22 CODE CONVERSION            DYN.TO.OFS Change to OFS.BUILD.RECORD
 *-----------------------------------------------------------------------------------------------------------------------
 *=======================================================================
 
@@ -59,8 +59,8 @@ SUBROUTINE REDO.FI.LB.APPLY.PYMT.CR(DATA.IN,AA.ARR.ID,DATA.OUT)
     $INSERT I_REDO.FI.LB.GENERATE.DATA.COMMON
     $INSERT I_F.REDO.FI.LB.BPROC.DET
 *
-    $INSERT I_RAPID.APP.DEV.COMMON	;*AUTO R22 CODE CONVERSION-RAD.BP is removed in insertfile
-    $INSERT I_RAPID.APP.DEV.EQUATE	;*AUTO R22 CODE CONVERSION-RAD.BP is removed in insertfile
+*   $INSERT I_RAPID.APP.DEV.COMMON	;*MANUAL R22 CODE CONVERSION
+*   $INSERT I_RAPID.APP.DEV.EQUATE	;*MANUAL R22 CODE CONVERSION
 *
 *************************************************************************
 *

@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTYyNzQzMDQ5MDpVVEYtODoxNjgzNjE2MDk4MTMxOklUU1M6LTE6LTE6MzUxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:18
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : Mjo1MTU1NDE0Njg6Q3AxMjUyOjE2OTMzMTQzNjMwNjU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:36:03
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 351
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -20,6 +20,7 @@ SUBROUTINE REDO.FI.ORANGE.PAYMENTS.POST
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                 NO CHANGES
 *04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            "" ADDED IN LAST FMT ARGUMENT, CALL method format changed
+*25-08-2023          VIGNESHWARI S                   MANUAL R22 CODE CONVERSION               PATH IS MODIFIED
 ******************************************************************
 *
     $INSERT I_COMMON
@@ -175,6 +176,7 @@ PROCESS.MAIL:
 
 *APAP.TAM.TAM.EMAIL.SEND.R(R.EMAIL, Y.ERROR)
     APAP.TAM.tamEmailSendR(R.EMAIL, Y.ERROR);* R22 Manual Conversion - CALL method format changed
+    
 
     IF Y.ERROR THEN
         FOR Y.NUM.INTENTOS = 1 TO Y.INTENTOS
@@ -186,7 +188,7 @@ PROCESS.MAIL:
             END ELSE
                 EXIT
             END
-        NEXT Y.NUM.INTENTOS
+        NEXT Y.NUM.INTENTOS 
     END
 *
 *
@@ -205,9 +207,10 @@ PROCESS.MAIL:
 
 * Copy the file and move to PATH.SUCCESS or PATH.FAILURE
 *
-    Y.CMD  = "COPY FROM ":FILE.PATH:" TO ":Y.PATH.TO.MOVE:" "
-    Y.CMD := YFILE.NAME : "," : Y.FILE.SUCESS
-
+*    Y.CMD  = "COPY FROM ":FILE.PATH:" TO ":Y.PATH.TO.MOVE:" "
+*    
+*    Y.CMD := YFILE.NAME : "," : Y.FILE.SUCESS
+    Y.CMD = 'SH -c cp ':FILE.PATH: '/':YFILE.NAME:' ':Y.PATH.TO.MOVE:'/':Y.FILE.SUCESS ;*MANUAL R22 CODE CONVERSION-PATH IS MODIFIED
     Y.ERR.MSG = ''
     GOSUB EXECUTE.COPY
     IF Y.ERR.MSG NE "" THEN

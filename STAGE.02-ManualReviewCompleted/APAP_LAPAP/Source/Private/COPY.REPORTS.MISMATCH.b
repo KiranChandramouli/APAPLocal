@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTg4NTU3ODAwNDpDcDEyNTI6MTY4NDIxNTQyODg4NzpJVFNTOi0xOi0xOjQ5ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 16 May 2023 11:07:08
+* @ValidationCode : MjoyMDExODgzMzI6Q3AxMjUyOjE2OTMzMTE0NjY5NjA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 17:47:46
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 498
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -15,7 +15,7 @@ $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *24-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   T24.BP REMOVED , DCOUNT FORMAT CAN BE MODIFIED
-*24-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*24-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION PATH IS MODIFIED
 *----------------------------------------------------------------------------------------
 
 
@@ -40,10 +40,11 @@ PROGRAM COPY.REPORTS.MISMATCH
         CNT = DCOUNT(REC.LIST,@FM)
         FOR REC.IDX = 1 TO CNT ;*R22 AUTO CODE CONVERSION
             PRINT 'Copying ':REC.LIST<REC.IDX>
-            EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs/CRD ':REC.LIST<REC.IDX>
+*         EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs/CRD ':REC.LIST<REC.IDX> ;*R22 Manual Conversion PATH IS MODIFIED
+            EXECUTE 'SH -c cp &HOLD&/':REC.LIST<REC.IDX>:'../bnk.interface/REG.REPORTS/CRBs/CRD/':REC.LIST<REC.IDX>
         NEXT REC.IDX
     END
-
+ 
 RETURN
 
 END

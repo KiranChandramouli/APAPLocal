@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNjA4Mjk4MDA3OkNwMTI1MjoxNjkzMjI2MjI3Mjk5OnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Aug 2023 18:07:07
+* @ValidationCode : MjotMjA3MTg5MDI2NTpDcDEyNTI6MTY5MzI4NzIzNjYxNDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:03:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : victo
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CREATE.ARRANGEMENT.A.COLL(RESULT)
@@ -42,8 +42,8 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.COLL(RESULT)
     $INSERT I_EQUATE
     $INSERT I_GTS.COMMON
 
-    $INSERT I_RAPID.APP.DEV.COMMON ;*R22 AUTO CONVERSION
-    $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 AUTO CONVERSION
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 MANUAL CONVERSION
+*   $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 MANUAL CONVERSION
 
     $INSERT I_F.COLLATERAL.RIGHT
     $INSERT I_F.COLLATERAL

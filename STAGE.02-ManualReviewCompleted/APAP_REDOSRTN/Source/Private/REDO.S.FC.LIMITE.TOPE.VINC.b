@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNDUxNTY2NDU3OkNwMTI1MjoxNjgyNDE1MTQxMzEwOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 Apr 2023 15:02:21
+* @ValidationCode : MjotOTY1OTYzODA1OkNwMTI1MjoxNjkzMjg2MzE4MTg5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 10:48:38
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOSRTN
 SUBROUTINE REDO.S.FC.LIMITE.TOPE.VINC(CUST.ID, CUST.OUT)
@@ -47,7 +47,7 @@ SUBROUTINE REDO.S.FC.LIMITE.TOPE.VINC(CUST.ID, CUST.OUT)
     $INSERT I_GTS.COMMON
     $INSERT I_F.CUSTOMER
     $INSERT I_System
-    $INSERT I_RAPID.APP.DEV.COMMON
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual code conversion
     $INSERT I_F.REDO.CCRG.CUSTOMER
     $INSERT I_F.REDO.CCRG.RISK.LIMIT.PARAM
 

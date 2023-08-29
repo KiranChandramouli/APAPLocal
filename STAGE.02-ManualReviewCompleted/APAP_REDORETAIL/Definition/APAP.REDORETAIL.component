@@ -3339,6 +3339,6 @@ public method redoDsPepIType (
 public method latamCardOrderSplitValidate4 (
 )
 {
-   jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.4
+    jBC: LATAM.CARD.ORDER.SPLIT.VALIDATE.4
 }
 

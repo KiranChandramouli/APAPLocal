@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo3MTkwMTYwNTM6Q3AxMjUyOjE2OTI2OTEwOTIyMTQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 22 Aug 2023 13:28:12
+* @ValidationCode : MjotMTEyNTk1MTU4NjpDcDEyNTI6MTY4NDg1NDA1MjI5NjpJVFNTOi0xOi0xOi0zOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 May 2023 20:30:52
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -3
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.CH.A.USERPINCHG
@@ -28,6 +28,7 @@ SUBROUTINE REDO.CH.A.USERPINCHG
 *
 * 04-APR-2023     Conversion tool    R22 Auto conversion      REM to DISPLAY.MESSAGE(TEXT, '')
 * 04-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+*24-08-2023        AJITH KUMAR S    MANUAL R22 CONVERSION      ENCRYPT METHOD CHANGE
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -35,19 +36,23 @@ SUBROUTINE REDO.CH.A.USERPINCHG
     $INSERT I_GTS.COMMON
     $INSERT I_F.REDO.CH.PINADM
     $INSERT I_REDO.CH.V.USERPINCHG.COMMON
-    $INSERT JBC.h   ;*R22 Manual Code Conversion
+    $INSERT JBC.h
 *PIN Generation
     PINMAIL = RND(9) : RND(9) : RND(9) : RND(9)
     PIN = PINMAIL
     PIN.AS = PIN
 
 *PIN Encription
-*    KEYUSED = "7"
+*OLD - START
+*  KEYUSED = "7"
 *    PIN = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_3DES)
-*    PIN = ENCRYPT(PIN,KEYUSED,2)
-
-    KEYUSED = "12345678" ;*R22 Manual Code Conversion
-    PIN = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_DES_BASE64) ;*R22 Manual Code Conversion
+* PIN = ENCRYPT(PIN,KEYUSED,2)
+*OLD - END
+    
+*NEW - START
+    KEYUSE = "12345678" ;*R22 MANUAL CODE CONVERSION
+    PIN = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_DES_BASE64)
+*NEW-END
 
     R.NEW(REDO.CH.PINADMIN.PIN) = PIN
 

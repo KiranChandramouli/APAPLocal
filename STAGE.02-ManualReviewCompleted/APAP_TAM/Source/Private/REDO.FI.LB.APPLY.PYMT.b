@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY5MjgzOTk2OTpDcDEyNTI6MTY5MzIyODI3ODY0NTpJVFNTOi0xOi0xOi0zNToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Aug 2023 18:41:18
+* @ValidationCode : MjoxMDE2NTI0NzAxOkNwMTI1MjoxNjkzMjg3MjQ3OTMzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -35
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.FI.LB.APPLY.PYMT(DATA.IN,DATA.OUT)
@@ -54,8 +54,8 @@ SUBROUTINE REDO.FI.LB.APPLY.PYMT(DATA.IN,DATA.OUT)
     $INSERT I_REDO.FI.LB.GENERATE.DATA.COMMON
     $INSERT I_F.REDO.FI.LB.BPROC.DET
 *
-    $INSERT I_RAPID.APP.DEV.COMMON ;*R22 AUTO CONVERSION
-    $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 AUTO CONVERSION
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 MANUAL CONVERSION
+*   $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 MANUAL CONVERSION
 *
 *************************************************************************
 *

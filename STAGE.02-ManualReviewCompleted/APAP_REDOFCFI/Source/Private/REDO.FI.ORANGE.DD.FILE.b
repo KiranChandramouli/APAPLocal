@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo0NjY4OTE1NTk6Q3AxMjUyOjE2ODY2NzU4NDQ5MDI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:34:04
+* @ValidationCode : MjotMTYzMjU5NDM0NzpDcDEyNTI6MTY5MzMxNDM2MjkxOTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:36:02
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -32,6 +32,7 @@ SUBROUTINE REDO.FI.ORANGE.DD.FILE(IN.DIR,OUT.ERRO)
 *              Some APAP issues about report format and FT validations
 * 06-06-2023      Conversion Tool       R22 Auto Conversion - FM TO @FM AND VM TO @VM AND = TO EQ AND I TO I.VAR AND ++ TO + = 1AND F.READ TO CACHE.READ
 * 06-06-2023      ANIL KUMAR B          R22 Manual Conversion - ADDING the veribal Y.MAIL.MSG<-1> = R.REDO.TEMP.FI.CONTROL<FI.TEMP.MAIL.MSG> And alles changed for call routine
+* 25-08-2023      VIGNESHWARI S         R22 Manual Conversion - PATH IS MODIFIED.
 *=======================================================================
 
     $INSERT I_COMMON
@@ -81,7 +82,7 @@ SUBROUTINE REDO.FI.ORANGE.DD.FILE(IN.DIR,OUT.ERRO)
         I.VAR           = ""
         OUT.ERRO    = Y.ERR.MSG
     END
-    APAP.REDOFCFI.redoFiRecordControl(O.ERROR.MSG)  ;*R22 MANUAL CONVERSION
+    APAP.REDOFCFI.redoFiRecordControl(O.ERROR.MSG)  ;*R22 MANUAL CONVERSION 
     IF Y.ERR.MSG THEN
         GOSUB MAIL.GENERATION
     END
@@ -99,7 +100,7 @@ MAIL.GENERATION:
     Y.ATTACH.FILENAME = 'ATTACHMENT':'_':Y.UNIQUE.ID:'.TXT'
     R.RECORD1         = ''
     Y.REF.FILE.NAME   =  'ORANGE STATUS'
-    APAP.REDOFCFI.redoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION)  ;*R22 MANUAL CONVERSION
+    APAP.REDOFCFI.redoFiMailFormatGen(FI.W.REDO.FI.CONTROL.ID,Y.MAIL.DESCRIPTION)  ;*R22 MANUAL CONVERSION 
     R.RECORD1 = Y.FROM.MAIL.ADD.VAL:"#":Y.TO.MAIL.VALUE:'#':Y.REF.FILE.NAME:'#':Y.REF.FILE.NAME
     IF Y.MAIL.MSG THEN
         WRITE Y.MAIL.DESCRIPTION TO F.HRMS.ATTACH.FILE,Y.ATTACH.FILENAME
@@ -173,7 +174,9 @@ PROCESS.COPY:
     Y.DEST.PATH = Y.PATH.REJ
     FI.FILE.NEW = FI.FILE.ID
     GOSUB VALIDATE.TXT
-    Y.CMD = "COPY FROM ":FI.WORK.DIR:" TO ":Y.DEST.PATH:" ":FI.FILE.ID:", ":FI.FILE.NEW
+    *Y.CMD = "COPY FROM ":FI.WORK.DIR:" TO ":Y.DEST.PATH:" ":FI.FILE.ID:", ":FI.FILE.NEW
+     Y.CMD = 'SH -c cp ':FI.WORK.DIR: '/':FI.FILE.ID:' ':Y.DEST.PATH:'/':FI.FILE.NEW ;*MANUAL R22 CODE CONVERSION-PATH IS MODIFIED
+    
 
     COPY.ERR =""
     GOSUB EXECUTE.COPY
@@ -294,7 +297,7 @@ PROCESS.DEBIT.CREDIT:
 
 * CALL REDO.FI.MSG.FORMAT(FI.INTERFACE,N.DETAIL,DATO.OUT)
 
-    APAP.REDOFCFI.redoFiPreformatMsg(FI.INTERFACE,"D",N.DETAIL,OUT.MSG,Y.ERR.MSG)   ;*R22 MANUAL CONVERSION
+    APAP.REDOFCFI.redoFiPreformatMsg(FI.INTERFACE,"D",N.DETAIL,OUT.MSG,Y.ERR.MSG)   ;*R22 MANUAL CONVERSION 
 
     IF Y.ERR.MSG NE "" THEN
         W.STATUS = "04"

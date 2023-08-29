@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo5NzM2NTkyNzU6Q3AxMjUyOjE2ODQyMjI4MTMwMjI6SVRTUzotMTotMToxOTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:13
+* @ValidationCode : MjotOTMxMzM5MDU6Q3AxMjUyOjE2OTMzMTE1MTI1NTE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 17:48:32
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 197
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -30,7 +30,7 @@ SUBROUTINE LAPAP.MOVERENAMEFILE.TOHIST.DD
 * DATE             WHO              REFERENCE               DESCRIPTION
 
 * 21-APR-2023  Conversion tool      R22 Auto conversion       BP is removed in Insert File
-* 21-APR-2023    Narmadha V          R22 Manual Conversion    No Changes
+* 21-APR-2023    Narmadha V          R22 Manual Conversion    PATH IS MODIFIED
 *-----------------------------------------------------------------------------
     $INSERT I_F.DATES ;*R22 Auto conversion - START
     $INSERT I_F.REDO.VISION.PLUS.PARAM ;*R22 Auto conversion - END
@@ -52,10 +52,10 @@ SUBROUTINE LAPAP.MOVERENAMEFILE.TOHIST.DD
     Y.DD.FILENAME.NEW.ID=Y.DD.FILENAME:".":Y.DATETIME.FORMAT
 
 * Command that copy file, rename it with new ID and delete it from source
-    Y.COMMAND = 'COPY FROM ':Y.DD.FILEPATH: ' TO ../interface/DD/DD_BACKUP ' :Y.DD.FILENAME: ',':Y.DD.FILENAME.NEW.ID : ' OVERWRITING DELETING'
-
+*   Y.COMMAND = 'COPY FROM ':Y.DD.FILEPATH: ' TO ../interface/DD/DD_BACKUP ' :Y.DD.FILENAME: ',':Y.DD.FILENAME.NEW.ID : ' OVERWRITING DELETING' ;*R22 Manual Conversion PATH IS MODIFIED
+    Y.COMMAND = 'SH -c cp ':Y.DD.FILEPATH:'/':Y.DD.FILENAME:' ':'../interface/DD/DD_BACKUP':'/':Y.DD.FILENAME.NEW.ID : ' OVERWRITING DELETING'
     EXECUTE Y.COMMAND
-
+ 
 RETURN
 
 END

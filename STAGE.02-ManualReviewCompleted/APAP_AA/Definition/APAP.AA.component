@@ -3008,7 +3008,7 @@ public method redoAaUpdateOverdueStatus (
 public method redoFcClRegisterAa (
 )
 {
-   jBC: REDO.FC.CL.REGISTER.AA
+    jBC: REDO.FC.CL.REGISTER.AA
 }
 
 public method redoFcSRevAa (
