@@ -1422,13 +1422,43 @@ public method redoSGetTfsTotAmt (
     jBC: REDO.S.GET.TFS.TOT.AMT
 }
 
-
-
 public method redoSRecAcctList (
     INOUT yAcctId string,
     INOUT yFinArray string
 )
 {
     jBC: REDO.S.REC.ACCT.LIST
+}
+
+public method redoSFcLimiteGfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GFUNCEMP
+}
+
+public method redoSFcLimiteGrgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRGAR
+}
+
+public method redoSFcLimiteGrsgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRSGAR
+}
+
+public method redoSFcLimiteIfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.IFUNCEMP
 }
 

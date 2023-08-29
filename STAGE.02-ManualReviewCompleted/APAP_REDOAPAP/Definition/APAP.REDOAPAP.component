@@ -4421,4 +4421,10 @@ public method redoApapValTxnCode (
     jBC: REDO.APAP.VAL.TXN.CODE
 }
 
+public method redoBCrfNwglSelect (
+)
+{
+    jBC: REDO.B.CRF.NWGL.SELECT
+}
+
 

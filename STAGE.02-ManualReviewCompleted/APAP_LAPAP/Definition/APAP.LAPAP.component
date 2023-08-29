@@ -9068,3 +9068,124 @@ public method lapapBulkPrRtLoad (
 {
     jBC: LAPAP.BULK.PR.RT.LOAD
 }
+
+public method lapapCardnoMigRt (
+    INOUT yKeyId string
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT
+}
+
+public method lapapCardnoMigRtSelect (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.SELECT
+}
+
+public method lapapCardnoMigRtLoad (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.LOAD
+}
+
+public method lapapProcessTxnDiviLoad (
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI.LOAD
+}
+
+public method lapapProcessTxnDiviSelect (
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI.SELECT
+}
+
+public method lapapRtGetDtInfo (
+)
+{
+   jBC: LAPAP.RT.GET.DT.INFO
+}
+
+public method lapapRtLiqDtItem (
+)
+{
+   jBC: LAPAP.RT.LIQ.DT.ITEM
+}
+
+public method lapapATxnDiviTt (
+)
+{
+    jBC: LAPAP.A.TXN.DIVI.TT
+}
+
+public method lapapMigCardnoRt (
+)
+{
+    jBC: LAPAP.MIG.CARDNO.RT
+}
+
+public method lapapASendRcptRt (
+)
+{
+   jBC: LAPAP.A.SEND.RCPT.RT
+}
+
+public method lapapATxnDiviFt (
+)
+{
+   jBC: LAPAP.A.TXN.DIVI.FT
+}
+
+public method lapapOvrLowCardRt (
+)
+{
+   jBC: LAPAP.OVR.LOW.CARD.RT
+}
+
+public method lapapProcessTxnDivi (
+   INOUT yTxnId string
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI
+}
+
+public method lapapTransferDslipRt (
+)
+{
+   jBC: LAPAP.TRANSFER.DSLIP.RT
+}
+
+public method lapapMasRedonOfsPmRt (
+    INOUT ofsMessage string
+)
+{
+    jBC: LAPAP.MAS.REDON.OFS.PM.RT
+}
+
+public method lapapMasRedonRt (
+    INOUT yRoundup string
+)
+{
+    jBC: LAPAP.MAS.REDON.RT
+}
+
+public method lapapMasRedonRtSelect (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.SELECT
+}
+
+public method lapapProcRedondeoMasiv (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: LAPAP.PROC.REDONDEO.MASIV
+}
+
+public method lapapMasRedonPostRt (
+)
+{
+    jBC: LAPAP.MAS.REDON.POST.RT
+}

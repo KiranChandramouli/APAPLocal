@@ -10,23 +10,17 @@ public method correctAcctStmt (
     jBC: CORRECT.ACCT.STMT
 }
 
- 
-
 public method redoApapSLockBalUpdate (
 )
 {
     jBC: REDO.APAP.S.LOCK.BAL.UPDATE
 }
 
-
-
 public method redoCorrectionAzSha1 (
 )
 {
     jBC: REDO.CORRECTION.AZ.SHA1
 }
-
-
 
 public method redoCorrectionDirectDebit (
     INOUT yAaId string
@@ -35,15 +29,11 @@ public method redoCorrectionDirectDebit (
     jBC: REDO.CORRECTION.DIRECT.DEBIT
 }
 
-
-
 public method redoCorrectionDirectDebitLoad (
 )
 {
     jBC: REDO.CORRECTION.DIRECT.DEBIT.LOAD
 }
-
-
 
 public method redoCorrectionDirectDebitSelect (
 )
@@ -51,11 +41,14 @@ public method redoCorrectionDirectDebitSelect (
     jBC: REDO.CORRECTION.DIRECT.DEBIT.SELECT
 }
 
-
-
 public method redoCorrectionPostOfs (
 )
 {
     jBC: REDO.CORRECTION.POST.OFS
 }
 
+public method corrRedoCardNoLock (
+)
+{
+    jBC: CORR.REDO.CARD.NO.LOCK
+}

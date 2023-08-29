@@ -2998,7 +2998,6 @@ public method redoNvAaAmlCheck (
     jBC: REDO.NV.AA.AML.CHECK
 }
 
-
 public method redoAaUpdateOverdueStatus (
     INOUT yId string
 )
@@ -3006,11 +3005,14 @@ public method redoAaUpdateOverdueStatus (
     jBC: REDO.AA.UPDATE.OVERDUE.STATUS
 }
 
-
-
 public method redoFcClRegisterAa (
 )
 {
    jBC: REDO.FC.CL.REGISTER.AA
 }
 
+public method redoFcSRevAa (
+)
+{
+    jBC: REDO.FC.S.REV.AA
+}
