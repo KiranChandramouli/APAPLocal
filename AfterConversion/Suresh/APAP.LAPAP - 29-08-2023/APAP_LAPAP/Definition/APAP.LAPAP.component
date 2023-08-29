@@ -1,0 +1,28 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapCdfGenRtLoad (
+)
+{
+   jBC: L.APAP.CDF.GEN.RT.LOAD
+}
+
+
+
+public method lapapGetTotalDuePayoffMlv (
+)
+{
+   jBC: LAPAP.GET.TOTAL.DUE.PAYOFF.MLV
+}
+
+
+
+public method lApapCdfGenRtSelect (
+)
+{
+   jBC: L.APAP.CDF.GEN.RT.SELECT
+}
+
