@@ -1,0 +1,12 @@
+component APAP.REDOBATCH
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoBAtChangePass (
+)
+{
+    jBC: REDO.B.AT.CHANGE.PASS
+}
+

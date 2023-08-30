@@ -1,0 +1,356 @@
+* @ValidationCode : MjotMTQ0MzQyNTA0OTpDcDEyNTI6MTY4MTcyODUzMTAwMzphaml0aDotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 17 Apr 2023 16:18:51
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOAPAP
+SUBROUTINE REDO.APAP.NOF.INACTIVE.RPT(Y.ARRAY.OUT)
+*--------------------------------------------------------------------------------------------------------
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.APAP.NOF.INACTIVE.AC
+*--------------------------------------------------------------------------------------------------------
+*Description  : REDO.APAP.NOF.INACT.AC is the Nofile Enquiry routine
+*This routine is used to build data for Enquiry Display from ACCOUNT$HIS
+*Attached to  : Standard Selection For the Enquiry REDO.APAP.NOF.INACTIVE.AC
+*In Parameter : N/A
+*Out Parameter: Y.OUT.ARRAY
+*--------------------------------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+*    Date            Who                  Reference               Description
+*   ------         ------               -------------            -------------
+* 15 DEC 2010    Satish@Contractor      ODR-2010-03-0174        Initial Creation
+*23-SEP-2013     Prabhu N               PACS00309829
+*---------------------------------------------------------------------------------------
+*DATE               WHO                       REFERENCE                 DESCRIPTION
+*17-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  FM to @FM , VM to @VM ,++ to +=,F.READ to CACHE.READ
+*17-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*----------------------------------------------------------------------------------------
+
+*--------------------------------------------------------------------------------------------------------
+*
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.CATEGORY
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.TRANSACTION
+    $INSERT I_F.STMT.ENTRY
+    $INSERT I_F.COMPANY
+    $INSERT I_F.STMT.GEN.CONDITION
+    $INSERT I_F.USER
+    $INSERT I_F.EB.LOOKUP
+    $INSERT I_F.LATAM.CARD.CUSTOMER
+*
+
+MAIN.PARA:
+*==========
+*DEBUG
+    GOSUB OPEN.PARA
+    GOSUB PROCESS.PARA
+    GOSUB SORT.OUT.ARRAY
+
+*
+RETURN
+*
+OPEN.PARA:
+*==========
+    FN.CATEGORY = "F.CATEGORY" ;  F.CATEGORY = ''
+    CALL OPF(FN.CATEGORY,F.CATEGORY)
+*
+    FN.ACCOUNT = "F.ACCOUNT" ; F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+*
+    FN.ACCOUNT$HIS = "F.ACCOUNT$HIS" ; F.ACCOUNT$HIS = ''
+    CALL OPF(FN.ACCOUNT$HIS,F.ACCOUNT$HIS)
+*
+    FN.CUSTOMER = "F.CUSTOMER" ; F.CUSTOMER = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+*
+    FN.COMPANY = "F.COMPANY" ; F.COMPANY = ''
+    CALL OPF(FN.COMPANY,F.COMPANY)
+*
+    FN.USER = "F.USER" ; F.USER = ''
+    CALL OPF(FN.USER,F.USER)
+*
+    FN.STMT.ENTRY = "F.STMT.ENTRY" ; F.STMT.ENTRY = ''
+    CALL OPF(FN.STMT.ENTRY,F.STMT.ENTRY)
+*
+    FN.STMT.GEN.CONDITION = "F.STMT.GEN.CONDITION" ; F.STMT.GEN.CONDIITON = ''
+    CALL OPF(FN.STMT.GEN.CONDITION,F.STMT.GEN.CONDITION)
+*
+    FN.LATAM.CARD.CUSTOMER = "F.LATAM.CARD.CUSTOMER" ; F.LATAM.CARD.CUSTOMER = ''
+    CALL OPF(FN.LATAM.CARD.CUSTOMER,F.LATAM.CARD.CUSTOMER)
+*
+    FN.TRANSACTION = "F.TRANSACTION" ; F.TRANSACTION  = ''
+    CALL OPF(FN.TRANSACTION,F.TRANSACTION)
+
+    FN.REDO.ACCT.FROM.INACT.TO.ACT='F.REDO.ACCT.FROM.INACT.TO.ACT'
+    F.REDO.ACCT.FROM.INACT.TO.ACT =''
+    CALL OPF(FN.REDO.ACCT.FROM.INACT.TO.ACT,F.REDO.ACCT.FROM.INACT.TO.ACT)
+*
+
+    FN.MNEMONIC.COMP='F.MNEMONIC.COMPANY'
+    F.MNEMONIC.COMP=''
+    CALL OPF(FN.MNEMONIC.COMP,F.MNEMONIC.COMP)
+
+    Y.AC.LR.POS = ''
+    Y.APP='ACCOUNT':@FM:'EB.LOOKUP'
+    Y.FIELD='L.AC.STATUS1':@FM:'L.AC.MONTHS'
+    Y.AC.EB.POS=''
+    CALL MULTI.GET.LOC.REF(Y.APP,Y.FIELD,Y.AC.EB.POS)
+    Y.AC.LR.POS=Y.AC.EB.POS<1,1>
+    Y.EB.POS   =Y.AC.EB.POS<2,1>
+    FN.EB.LOOKUP='F.EB.LOOKUP'
+    F.EB.LOOKUP=''
+    CALL OPF(FN.EB.LOOKUP,F.EB.LOOKUP)
+    CALL F.READ(FN.EB.LOOKUP,'L.AC.STATUS1*6MINACTIVE',R.EB.LOOKUP,F.EB.LOOKUP,YY.ERR)
+    Y.PERIOD.INAC.POS=R.EB.LOOKUP<EB.LU.LOCAL.REF,Y.EB.POS>
+RETURN
+
+PROCESS.PARA:
+*============
+    GOSUB CHECK.SELECTION
+    IF SEL.LIST AND NOT(ENQ.ERROR) THEN
+        GOSUB PROCESS.SEL.RECORDS
+    END
+
+RETURN
+
+
+CHECK.SELECTION:
+*===============
+    Y.ARRAY.OUT = '' ; Y.SEL.DISP = '#' ; Y.CAT.SEL.FLAG = '' ; Y.TRAN.SEL.FLAG = ''
+    Y.DATE = '' ; Y.AGENCY = '' ; Y.TYPE.OF.ACCOUNT = '' ; Y.TYPE.OF.TRAN = ''
+    SEL.LIST = ''
+    GOSUB BUILD.SEL.CMD
+RETURN
+
+BUILD.SEL.CMD:
+*==============
+    Y.TODAY=TODAY
+*Y.TODAY = '20161219'
+    CALL F.READ(FN.REDO.ACCT.FROM.INACT.TO.ACT,Y.TODAY,SEL.LIST,F.REDO.ACCT.FROM.INACT.TO.ACT,ERR)
+
+RETURN
+PROCESS.SEL.RECORDS:
+*===================
+    NO.OF.REC=DCOUNT(SEL.LIST,@FM)
+    L.AC.STATUS1 = Y.AC.LR.POS
+
+    FOR AC.ID = 1 TO NO.OF.REC
+        Y.ACCT.NUM  = SEL.LIST<AC.ID>
+        GOSUB LIVE.ACCOUNT.READ
+    NEXT AC.ID
+
+RETURN
+**********************
+LIVE.ACCOUNT.READ:
+*********************
+    R.ACCOUNT=''
+    CALL F.READ(FN.ACCOUNT,Y.ACCT.NUM,R.ACCOUNT,F.ACCOUNT,ACT.ERR)
+    IF NOT(R.ACCOUNT) THEN
+        Y.ACCT.NUM.TEMP=Y.ACCT.NUM
+        CALL EB.READ.HISTORY.REC(F.ACCOUNT$HIS,Y.ACCT.NUM,R.ACCOUNT,Y.ACCOUNT.HIS.ERR)
+        Y.ACCT.NUM=Y.ACCT.NUM.TEMP
+    END
+    Y.LIVE.STATUS = R.ACCOUNT<AC.LOCAL.REF,L.AC.STATUS1>
+    Y.LIVE.CURR.NO = R.ACCOUNT<AC.CURR.NO>
+    Y.ACCOUNT.NAME =Y.ACCT.NUM
+    Y.PREVIOUS.ACCT.NO=''
+
+    IF Y.LIVE.CURR.NO THEN
+        Y.PREVIOUS.ACCT.NO = Y.ACCT.NUM:';':Y.LIVE.CURR.NO-1
+    END
+    GOSUB PREV.ACCOUNT.NUM
+
+RETURN
+
+********************
+PREV.ACCOUNT.NUM:
+********************
+
+    Y.HIS.SUB=1
+    LOOP
+        Y.PREVIOUS.ACCT.NO = Y.ACCT.NUM:';':Y.LIVE.CURR.NO-Y.HIS.SUB
+        CALL F.READ(FN.ACCOUNT$HIS,Y.PREVIOUS.ACCT.NO,R.AC.PREV.REC,F.ACCOUNT$HIS,AC.ERR.CH.HIS)
+        Y.CUR.STATUS = R.AC.PREV.REC<AC.LOCAL.REF,L.AC.STATUS1>
+        Y.HIS.SUB += 1 ;*R22 AUTO CODE CONVERSION
+    WHILE Y.CUR.STATUS EQ 'ACTIVE'
+    REPEAT
+
+    IF R.AC.PREV.REC THEN
+        Y.CUR.STATUS = R.AC.PREV.REC<AC.LOCAL.REF,L.AC.STATUS1>
+*        Y.LOCAL.DATE = R.AC.PREV.REC<AC.DATE.TIME>
+*        Y.DATE.TIME  = '20':Y.LOCAL.DATE[1,6]
+        IF Y.CUR.STATUS NE 'ACTIVE' AND Y.CUR.STATUS NE '' THEN
+
+            Y.DATE1 = R.AC.PREV.REC<AC.DATE.LAST.DR.CUST>
+            Y.DATE2= R.AC.PREV.REC<AC.DATE.LAST.CR.CUST>
+
+            IF NOT(Y.DATE2) THEN
+                Y.DATE2=R.AC.PREV.REC<AC.OPENING.DATE>
+            END
+            IF Y.DATE1 GE Y.DATE2 ELSE
+                Y.DATE1=Y.DATE2
+            END
+            Y.PERIOD.INAC=Y.PERIOD.INAC.POS
+            CALL CALENDAR.DAY(Y.DATE1,'+',Y.PERIOD.INAC)
+            Y.CATEG.ID          = R.AC.PREV.REC<AC.CATEGORY>
+            GOSUB GET.CATEGORY.DESC
+            GOSUB GET.FIELD.DETAILS
+            GOSUB READ.STMT.ENTRY
+
+        END
+
+    END
+RETURN
+
+GET.CATEGORY.DESC:
+*================
+    IF NOT(Y.TYPE.OF.ACCOUNT) OR NOT(Y.CAT.SEL.FLAG) THEN
+        Y.CATEG.DESC = ''
+        CALL CACHE.READ(FN.CATEGORY,Y.CATEG.ID,R.CATEG.REC,Y.CATEG.ERR)
+        Y.CATEG.DESC = R.CATEG.REC<EB.CAT.DESCRIPTION>
+    END
+
+RETURN
+
+GET.TRANSACTION.DESC:
+*====================
+    Y.TRAN.DESC = ''
+    CALL CACHE.READ(FN.TRANSACTION,Y.TRAN.CODE.ID,R.TRAN.REC,Y.TRAN.ERR)
+    Y.TRAN.DESC = R.TRAN.REC<AC.TRA.NARRATIVE,2>
+    IF NOT(Y.TRAN.DESC) THEN
+        Y.TRAN.DESC= R.TRAN.REC<AC.TRA.NARRATIVE,1>
+    END
+RETURN
+
+
+READ.STMT.ENTRY:
+*==============
+
+    GOSUB GET.STMT.ENTRY.ID
+    R.STMT.REC = ''
+    Y.ID.LIST.CNT=1
+    Y.ID.LIST.TOT=DCOUNT(Y.ID.LIST,@FM)
+    LOOP
+    WHILE Y.ID.LIST.CNT LE Y.ID.LIST.TOT
+        Y.SE.ID = FIELD(Y.ID.LIST<Y.ID.LIST.CNT>,'*',2,1)
+        CALL F.READ(FN.STMT.ENTRY,Y.SE.ID,R.STMT.REC,F.STMT.ENTRY,Y.STMT.ERROR)
+        Y.CO.CODE = R.STMT.REC<AC.STE.COMPANY.CODE>
+        Y.COMPANY.MNE=''
+        Y.COMPANY.MNE = FIELD(R.STMT.REC<AC.STE.TRANS.REFERENCE>,'\',2,1)
+        IF Y.COMPANY.MNE THEN
+            CALL CACHE.READ(FN.MNEMONIC.COMP, Y.COMPANY.MNE, R.COMPANY.MNE, ERR) ;*R22 AUTO CODE CONVERSION
+            Y.CO.CODE =R.COMPANY.MNE
+        END
+        Y.INP  = FIELD(R.STMT.REC<AC.STE.INPUTTER>,'_',2)
+        Y.AUTH =  FIELD(R.STMT.REC<AC.STE.AUTHORISER>,'_',2)
+        Y.TRAN.CODE.ID=R.STMT.REC<AC.STE.TRANSACTION.CODE>
+        Y.AMNT.LAST.DR.CUST=''
+        Y.AMNT.LAST.CR.CUST=''
+        IF R.STMT.REC<AC.STE.AMOUNT.LCY> LT 0 THEN
+            Y.AMNT.LAST.DR.CUST = R.STMT.REC<AC.STE.AMOUNT.LCY>
+        END
+        ELSE
+            Y.AMNT.LAST.CR.CUST = R.STMT.REC<AC.STE.AMOUNT.LCY>
+        END
+        Y.ACCOUNT.OFFICER   = R.ACCOUNT<AC.STE.ACCOUNT.OFFICER>
+        GOSUB GET.TRANSACTION.DESC
+        GOSUB OUTPUT.DATA
+        Y.ID.LIST.CNT += 1 ;*R22 AUTO CODE CONVERSION
+    REPEAT
+
+RETURN
+
+GET.STMT.ENTRY.ID:
+*=================
+
+    ENQ.SELECTION<2,1> = 'ACCOUNT'
+    ENQ.SELECTION<2,2> = 'BOOKING.DATE'
+    ENQ.SELECTION<3,1> = '1'
+    ENQ.SELECTION<3,2> = '1'
+    ENQ.SELECTION<4,1> = Y.ACCT.NUM
+    ENQ.SELECTION<4,2> = TODAY
+    Y.ID.LIST = ''
+    D.FIELDS            = 'ACCOUNT':@FM:'BOOKING.DATE'
+    D.RANGE.AND.VALUE   = Y.ACCT.NUM:@FM:TODAY
+    D.LOGICAL.OPERANDS  = '1':@FM:'1'
+    Y.ENQ.ERROR=ENQ.ERROR
+    CALL E.STMT.ENQ.BY.CONCAT(Y.ID.LIST)
+    ENQ.ERROR=Y.ENQ.ERROR
+RETURN
+
+GET.FIELD.DETAILS:
+*=================
+
+    Y.DR.CARD.ID = ''
+    CALL CACHE.READ(FN.LATAM.CARD.CUSTOMER,R.AC.PREV.REC<AC.CUSTOMER>,R.LAT.CARD.CUST,Y.CARD.ERR)
+    Y.ACCOUNT.CARD.LIST = R.LAT.CARD.CUST<APAP.DC.ACCOUNT.NO>
+    Y.DR.CARD.ID        = COUNT(Y.ACCOUNT.CARD.LIST,Y.ACCT.NUM)
+    Y.PREV.ACCT.NO      = R.AC.PREV.REC<AC.ALT.ACCT.ID>
+    Y.CURRENCY          = R.AC.PREV.REC<AC.CURRENCY>
+    Y.PREVIOUS.BALANCE  = R.AC.PREV.REC<AC.OPEN.ACTUAL.BAL>
+RETURN
+
+OUTPUT.DATA:
+*===========
+
+    Y.ARRAY.OUT1 = TODAY:"#":Y.CATEG.DESC:"#":Y.PREV.ACCT.NO:"#"
+    Y.ARRAY.OUT1:= Y.ACCT.NUM:"#":Y.DR.CARD.ID:"#":Y.ACCOUNT.NAME:"#"
+    Y.ARRAY.OUT1:= Y.CURRENCY:"#":Y.PERIOD.INAC:"#":Y.TRAN.DESC:"#"
+    Y.ARRAY.OUT1:= Y.TRAN.CODE.ID:"#":Y.PREVIOUS.BALANCE:"#":Y.AMNT.LAST.DR.CUST:"#"
+    Y.ARRAY.OUT1:= Y.AMNT.LAST.CR.CUST:"#":Y.CO.CODE:"#":Y.ACCOUNT.OFFICER:"#"
+    Y.ARRAY.OUT1:= Y.INP:"#":Y.AUTH:"#":Y.OVERRIDE
+    Y.ARRAY.OUT<-1> = Y.ARRAY.OUT1
+
+    Y.DATE.LAST.TRAN = ''
+
+RETURN
+Y.OVERRIDE = ''
+
+***************
+SORT.OUT.ARRAY:
+***************
+
+    Y.REC.COUNT = DCOUNT(Y.ARRAY.OUT,@FM)
+    Y.REC.START = 1
+    LOOP
+    WHILE Y.REC.START LE Y.REC.COUNT
+        Y.REC = Y.ARRAY.OUT<Y.REC.START>
+        Y.COMP = FIELD(Y.REC,'#',14)
+        Y.CCY = FIELD(Y.REC,'#',9)
+        Y.SORT.VAL = Y.COMP:Y.CCY
+        Y.AZ.SORT.VAL<-1> = Y.REC:@FM:Y.SORT.VAL
+        Y.SORT.ARR<-1>= Y.SORT.VAL
+        Y.REC.START += 1
+    REPEAT
+
+    Y.SORT.ARR = SORT(Y.SORT.ARR)
+
+    LOOP
+        REMOVE Y.ARR.ID FROM Y.SORT.ARR SETTING Y.ARR.POS
+    WHILE Y.ARR.ID : Y.ARR.POS
+        LOCATE Y.ARR.ID IN Y.AZ.SORT.VAL SETTING Y.FM.POS THEN
+            Y.OUT.ARRAY<-1> = Y.AZ.SORT.VAL<Y.FM.POS-1>
+            DEL Y.AZ.SORT.VAL<Y.FM.POS>
+            DEL Y.AZ.SORT.VAL<Y.FM.POS-1>
+        END
+    REPEAT
+
+    Y.ARRAY.OUT = Y.OUT.ARRAY
+
+    IF Y.ARRAY.OUT THEN
+        Y.ARRAY.OUT<1> := Y.SEL.DISP:"#"
+    END
+RETURN
+END

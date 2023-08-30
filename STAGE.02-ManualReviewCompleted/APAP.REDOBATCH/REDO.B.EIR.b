@@ -1,0 +1,246 @@
+* @ValidationCode : MjotMTgwMTU5MzY4OTpDcDEyNTI6MTY4MTE5MDM3OTg3MzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Apr 2023 10:49:39
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOBATCH
+SUBROUTINE REDO.B.EIR(Y.ID)
+*-----------------------------------------------------------------------------
+* DESCRIPTION : This BATCH routine will look for the own book records from SC.TRADING.POSITION to reverse the CATEG.ENTRY and re-calculate interest accrual based on
+*               effective interest rate method and raise accounting entries
+*-----------------------------------------------------------------------------
+* * Input / Output
+* --------------
+* IN Parameter    : NA
+* OUT Parameter   : NA
+*-----------------------------------------------------------------------------
+* COMPANY NAME : APAP
+* DEVELOPED BY : NAVEENKUMAR N
+* PROGRAM NAME : REDO.B.EIR
+*-----------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+* Date             Author             Reference           Description
+* 23 Oct 2010      Naveen Kumar N     ODR-2010-07-0081    Initial creation
+* 18 Jul 2011      Pradeep S          PACS00090196        CDD command changed
+* Date                   who                   Reference              
+* 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM AND VAR1 - VAR2 TO -= VAR2 AND COMMINTING I_F.SC.TRADING.POSITION
+* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+*-----------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.SC.TRADING.POSITION
+    $INSERT I_F.SECURITY.MASTER
+    $INSERT I_F.SEC.TRADE
+    $INSERT I_F.CATEG.ENTRY
+*   $INSERT I_F.SC.TRADING.POSITION    ;*R22 AUTO CONVERSTION COMMINTING I_F.SC.TRADING.POSITION
+    $INSERT I_F.REDO.APAP.L.AMORT.BALANCES
+    $INSERT I_REDO.B.EIR.COMMON
+    $INSERT I_F.REDO.AMORT.SEC.TRADE
+
+    GOSUB PROCESS
+
+RETURN
+*-----------------------------------------------------------------------------
+PROCESS:
+*-------
+
+    Y.SING.ID = Y.ID
+
+    CALL F.READ(FN.CATEG.ENTRY,Y.SING.ID,R.CATEG.ENTRY,F.CATEG.ENTRY,E.CATEG.ENTRY)
+
+    GOSUB PROCESS1
+
+RETURN
+*-----------------------------------------------------------------------------
+PROCESS1:
+*--------
+    Y.SUB.ASSEST.TYPE = ''
+    Y.SEC.TRADE.ID      = R.CATEG.ENTRY<AC.CAT.OUR.REFERENCE>
+    Y.SEC.CODE          = FIELD(Y.SEC.TRADE.ID,".",2)
+
+    CALL F.READ(FN.SECURITY.MASTER,Y.SEC.CODE,R.SECURITY.MASTER,F.SECURITY.MASTER,E.SECURITY.MASTER)
+
+    IF R.SECURITY.MASTER THEN
+        Y.SUB.ASSEST.TYPE   = R.SECURITY.MASTER<SC.SCM.SUB.ASSET.TYPE>
+        Y.SM.PAR.VALUE      = R.SECURITY.MASTER<SC.SCM.PAR.VALUE>
+    END
+
+    IF Y.SUB.ASSEST.TYPE THEN
+        LOCATE Y.SUB.ASSEST.TYPE IN SUB.ASSET.TYPE.TABLE.VAL<1,1> SETTING POS THEN
+            GOSUB REVERSAL.ENTRY
+            GOSUB RAISE.ANOTHER.ENTRY
+        END
+    END
+
+RETURN
+*-----------------------------------------------------------------------------
+REVERSAL.ENTRY:
+*--------------
+
+    GOSUB FORM.CATEG.1
+
+    COMMON.ARRAY = ''
+    COMMON.ARRAY = LOWER(R.CATEG.ENT)
+
+RETURN
+*-----------------------------------------------------------------------------
+RAISE.ANOTHER.ENTRY:
+*-------------------
+    CALL F.READ(FN.REDO.AMORT.SEC.TRADE, Y.SEC.TRADE.ID, R.REDO.AMORT.SEC.TRADE, F.REDO.AMORT.SEC.TRADE, ERR.RAST)
+
+    Y.NO.OF.BUY = DCOUNT(R.REDO.AMORT.SEC.TRADE<APAP.AMORT.ST.BALANCE.NOMINAL>,@VM)
+    Y.LOOP.VAR = 1
+    NEED.NO.READ = 0
+
+    LOOP
+    WHILE Y.LOOP.VAR LE Y.NO.OF.BUY
+
+        FACE.VALUE = R.REDO.AMORT.SEC.TRADE<APAP.AMORT.ST.BALANCE.NOMINAL,Y.LOOP.VAR>*Y.SM.PAR.VALUE
+        Y.BUY.VAL.DATE = R.REDO.AMORT.SEC.TRADE<APAP.AMORT.ST.BUY.VALUE.DT,Y.LOOP.VAR>
+
+        IF FACE.VALUE GT 0 AND Y.BUY.VAL.DATE LE TODAY THEN
+
+            NEED.NO.READ += 1
+
+            GOSUB ANOTHER.CALC
+
+            GOSUB FORM.CATEG
+
+            COMMON.ARRAY<-1> =  LOWER(R.CATEG.ENT)
+
+        END
+
+        Y.LOOP.VAR += 1
+    REPEAT
+
+    CALL EB.ACCOUNTING("CHQ","SAO",COMMON.ARRAY,'')
+
+RETURN
+*-----------------------------------------------------------------------------
+ANOTHER.CALC:
+*------------
+
+    Y.ST.ID = R.REDO.AMORT.SEC.TRADE<APAP.AMORT.ST.BUY.TXN.REF,Y.LOOP.VAR>
+
+    CALL F.READ(FN.SEC.TRADE,Y.ST.ID,R.SEC.TRADE,F.SEC.TRADE,E.SEC.TRADE)
+
+    Y.DISC.AMT = R.SEC.TRADE<SC.SBS.LOCAL.REF,L.DISC.AMOUNT.POS>
+
+    CALC.1 = (Y.DISC.AMT/FACE.VALUE)+1
+
+    Y.VALUE.DATE                                      = R.SEC.TRADE<SC.SBS.VALUE.DATE>
+    Y.MATURITY.DATE                                   = R.SEC.TRADE<SC.SBS.MATURITY.DATE>
+    REGION.CODE                                       = ""
+
+    VALUE.TODAY = "C"
+    MATUR.TODAY1 = "C"
+    MATUR.TODAY = ''
+
+    CALL CDD(REGION.CODE, Y.VALUE.DATE, TODAY, VALUE.TODAY)
+    VALUE.TODAY += 1
+
+*PACS00090196 - S
+    IF Y.MATURITY.DATE NE '' THEN
+        CALL CDD(REGION.CODE, TODAY, Y.MATURITY.DATE, MATUR.TODAY1)
+        IF MATUR.TODAY1 EQ 0 THEN
+            MATUR.TODAY1 = 1
+        END
+        MATUR.TODAY = MATUR.TODAY1
+    END
+*PACS00090196 - E
+
+    CALC.2 = VALUE.TODAY/MATUR.TODAY
+
+    CALC.3          = PWR(CALC.1,CALC.2)
+
+    EFF.RATE       = (CALC.3 - 1)
+
+    INT.ACCRUAL.VAL  = (FACE.VALUE*EFF.RATE)
+    INT.ACCRUAL.VAL  = DROUND(INT.ACCRUAL.VAL, 2)
+
+    IF NEED.NO.READ LE 1 THEN
+        CALL F.READ(FN.REDO.APAP.L.AMORT.BALANCES, Y.SEC.TRADE.ID,R.REDO.APAP.L.AMORT.BALANCES,F.REDO.APAP.L.AMORT.BALANCES,E.REDO.APAP.L.AMORT.BALANCES)
+    END
+
+    IF R.REDO.APAP.L.AMORT.BALANCES THEN
+
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.INT.AMRT.DATE,Y.LOOP.VAR>    = TODAY
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.INT.EFF.RATE,Y.LOOP.VAR>     = DROUND(EFF.RATE*100, 4)
+        ACCRUE.TO.DATE                                                     = R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.AMORT.TO.DATE,Y.LOOP.VAR>
+        INT.ACCRUAL.VAL -= ACCRUE.TO.DATE  ;*R22 AUTO CONVERSTION VAR1 - VAR2 TO -= VAR2
+        TOT.VAL                                                            = (INT.ACCRUAL.VAL+ACCRUE.TO.DATE)
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.AMORT.AMT,Y.LOOP.VAR>        = INT.ACCRUAL.VAL
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.AMORT.TO.DATE,Y.LOOP.VAR>    = TOT.VAL
+
+    END ELSE
+
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.INT.AMRT.DATE,Y.LOOP.VAR>    = TODAY
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.INT.EFF.RATE,Y.LOOP.VAR>     = DROUND(EFF.RATE*100, 4)
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.AMORT.AMT,Y.LOOP.VAR>        = INT.ACCRUAL.VAL
+        R.REDO.APAP.L.AMORT.BALANCES<AMRT.BAL.AMORT.TO.DATE,Y.LOOP.VAR>    = INT.ACCRUAL.VAL
+
+    END
+
+    CALL F.WRITE(FN.REDO.APAP.L.AMORT.BALANCES, Y.SEC.TRADE.ID,R.REDO.APAP.L.AMORT.BALANCES)
+
+RETURN
+*-----------------------------------------------------------------------------
+FORM.CATEG.1:
+*------------
+
+    R.CATEG.ENT = ''
+    R.CATEG.ENT<AC.CAT.ACCOUNT.NUMBER> = ''
+    R.CATEG.ENT<AC.CAT.COMPANY.CODE> = ID.COMPANY
+    R.CATEG.ENT<AC.CAT.AMOUNT.LCY> = R.CATEG.ENTRY<AC.CAT.AMOUNT.LCY> * -1
+    R.CATEG.ENT<AC.CAT.NARRATIVE> = "Amortisation"
+    R.CATEG.ENT<AC.CAT.DEPARTMENT.CODE> = R.CATEG.ENTRY<AC.CAT.DEPARTMENT.CODE>
+    R.CATEG.ENT<AC.CAT.ACCOUNT.OFFICER> = R.CATEG.ENTRY<AC.CAT.ACCOUNT.OFFICER>
+    R.CATEG.ENT<AC.CAT.PL.CATEGORY> = R.CATEG.ENTRY<AC.CAT.PL.CATEGORY>
+    R.CATEG.ENT<AC.CAT.PRODUCT.CATEGORY> = R.CATEG.ENTRY<AC.CAT.PRODUCT.CATEGORY>
+    R.CATEG.ENT<AC.CAT.VALUE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.CURRENCY> = R.CATEG.ENTRY<AC.CAT.CURRENCY>
+    R.CATEG.ENT<AC.CAT.OUR.REFERENCE> = R.CATEG.ENTRY<AC.CAT.OUR.REFERENCE>
+    R.CATEG.ENT<AC.CAT.TRANS.REFERENCE> = R.CATEG.ENTRY<AC.CAT.TRANS.REFERENCE>
+    R.CATEG.ENT<AC.CAT.SYSTEM.ID> = R.CATEG.ENTRY<AC.CAT.SYSTEM.ID>
+    R.CATEG.ENT<AC.CAT.BOOKING.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.EXPOSURE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.VALUE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.CURRENCY.MARKET> = R.CATEG.ENTRY<AC.CAT.CURRENCY.MARKET>
+
+RETURN
+*-----------------------------------------------------------------------------
+FORM.CATEG:
+*----------
+
+    R.CATEG.ENT = ''
+    R.CATEG.ENT<AC.CAT.ACCOUNT.NUMBER> = ''
+    R.CATEG.ENT<AC.CAT.COMPANY.CODE> = ID.COMPANY
+    R.CATEG.ENT<AC.CAT.AMOUNT.LCY> = INT.ACCRUAL.VAL
+    R.CATEG.ENT<AC.CAT.NARRATIVE> = "Amortisation"
+    R.CATEG.ENT<AC.CAT.DEPARTMENT.CODE> = R.CATEG.ENTRY<AC.CAT.DEPARTMENT.CODE>
+    R.CATEG.ENT<AC.CAT.ACCOUNT.OFFICER> = R.CATEG.ENTRY<AC.CAT.ACCOUNT.OFFICER>
+    R.CATEG.ENT<AC.CAT.PL.CATEGORY> = R.CATEG.ENTRY<AC.CAT.PL.CATEGORY>
+    R.CATEG.ENT<AC.CAT.PRODUCT.CATEGORY> = R.CATEG.ENTRY<AC.CAT.PRODUCT.CATEGORY>
+    R.CATEG.ENT<AC.CAT.VALUE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.CURRENCY> = R.CATEG.ENTRY<AC.CAT.CURRENCY>
+    R.CATEG.ENT<AC.CAT.OUR.REFERENCE> = R.CATEG.ENTRY<AC.CAT.OUR.REFERENCE>
+    R.CATEG.ENT<AC.CAT.TRANS.REFERENCE> = R.CATEG.ENTRY<AC.CAT.TRANS.REFERENCE>
+    R.CATEG.ENT<AC.CAT.SYSTEM.ID> = R.CATEG.ENTRY<AC.CAT.SYSTEM.ID>
+    R.CATEG.ENT<AC.CAT.BOOKING.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.EXPOSURE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.VALUE.DATE> = TODAY
+    R.CATEG.ENT<AC.CAT.CURRENCY.MARKET> = R.CATEG.ENTRY<AC.CAT.CURRENCY.MARKET>
+
+RETURN
+*-----------------------------------------------------------------------------
+END

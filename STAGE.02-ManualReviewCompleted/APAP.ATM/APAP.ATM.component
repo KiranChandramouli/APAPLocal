@@ -1,0 +1,60 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method eIsoRetSpfStatusRev (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.SPF.STATUS.REV
+}
+
+
+
+public method isoParser (
+)
+{
+    jBC: ISO.PARSER
+}
+
+
+
+public method redoAtmCardAcct (
+    INOUT cardNumm string,
+    INOUT retVal string
+)
+{
+    jBC: REDO.ATM.CARD.ACCT
+}
+
+
+
+
+
+
+public method redoChkAthRevMsg (
+)
+{
+    jBC: REDO.CHK.ATH.REV.MSG
+}
+
+
+
+public method redoEnqChgRev (
+    INOUT yIdList string
+)
+{
+    jBC: REDO.ENQ.CHG.REV
+}
+
+
+
+public method redoGetIsoResp (
+    INOUT yOutMsg string
+)
+{
+    jBC: REDO.GET.ISO.RESP
+}
+
