@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMjM5MjEyMjYwOkNwMTI1MjoxNjkwMjY0NDMzNzIzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:53
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotNDYyODIzMDYzOkNwMTI1MjoxNjg0ODU0Mzk1ODM5OklUU1M6LTE6LTE6MjY5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 269
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.REP.RATES.AND.FEES(Y.TXN.ID)
@@ -59,15 +39,7 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES(Y.TXN.ID)
 *---------------------------------------------------------------------------------------------
 * Defect Reference       Modified By                    Date of Change        Change Details
 * NA                     Thenmalar T                      19-Feb-2014           Modified as per clarificaiton received
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM AND SM TO @SM AND ! TO *
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
@@ -83,13 +55,7 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES(Y.TXN.ID)
     $INSERT I_REDO.B.REP.RATES.AND.FEES.COMMON
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_F.COMPANY
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *
 
     GOSUB PROCESS
@@ -411,16 +377,8 @@ RAISE.ERR.C.22:
     ID.PROC   = ''
     EX.USER   = ''
     EX.PC     = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
 *
 RETURN
 *---------------------------------------------------------------------------------------------

@@ -1,15 +1,5 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotNDA5NTk0MTM3OkNwMTI1MjoxNjg4MzE5NDQ5NzUzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 02 Jul 2023 23:07:29
-=======
-* @ValidationCode : MjoyMTQxNDkwMjk0OkNwMTI1MjoxNjg2NjczOTk5MDA1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:03:19
->>>>>>> Stashed changes
-=======
-* @ValidationCode : MjoyMTQxNDkwMjk0OkNwMTI1MjoxNjg2NjczOTk5MDA1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:03:19
->>>>>>> Stashed changes
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -20,15 +10,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 $PACKAGE APAP.TAM
-=======
-$PACKAGE APAP.AA
->>>>>>> Stashed changes
-=======
-$PACKAGE APAP.AA
->>>>>>> Stashed changes
 *-----------------------------------------------------------------------------
 * <Rating>-20</Rating>
 *-----------------------------------------------------------------------------
@@ -110,16 +92,8 @@ PROCESS:
     R.REDO.VISA.OUTGOING<VISA.OUT.PROCESS.DATE> = TODAY
     R.REDO.VISA.OUTGOING<VISA.OUT.STATUS> ='PENDING'
     GOSUB VISA.NEXT.ID
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *CALL REDO.VISA.OUTGOING.WRITE(Y.ID,R.REDO.VISA.OUTGOING)
     APAP.TAM.redoVisaOutgoingWrite(Y.ID,R.REDO.VISA.OUTGOING)    ;*R22 Manual Conv
-=======
-    CALL REDO.VISA.OUTGOING.WRITE(Y.ID,R.REDO.VISA.OUTGOING)
->>>>>>> Stashed changes
-=======
-    CALL REDO.VISA.OUTGOING.WRITE(Y.ID,R.REDO.VISA.OUTGOING)
->>>>>>> Stashed changes
     VAR.ID = Y.ID:'*':'REDO.VISA.OUTGOING'
     CALL F.WRITE(FN.REDO.VISA.GEN.OUT,VAR.ID,'')
 RETURN

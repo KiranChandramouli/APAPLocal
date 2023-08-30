@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY2MTcxOTU1NDpDcDEyNTI6MTY4MDE4NDY3MzU1MzpJVFNTOi0xOi0xOjQxNToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 30 Mar 2023 19:27:53
+* @ValidationCode : MjotMTA1OTMzNDQyOkNwMTI1MjoxNjkwNDU3MjQ0NzEwOklUU1MxOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Jul 2023 16:57:24
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 415
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 *
@@ -54,14 +54,14 @@ SUBROUTINE REDO.FC.FILL.AA
     $INSERT I_F.REDO.APP.MAPPING
     $INSERT I_GTS.COMMON
     $INSERT I_System
-
+    
     GOSUB INITIALISE
 
     IF PROCESS.GOAHEAD THEN
         GOSUB OPEN.FILES
         GOSUB PROCESS.MAIN
     END
-
+    
 RETURN          ;* Program RETURN
 
 

@@ -19,14 +19,6 @@ public method redoFtLaunchSupportingEnq (
 
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method redoFtNcfIdGen (
 )
 {
@@ -1930,49 +1922,17 @@ public method redoHReorderDetailsFields (
     jBC: REDO.H.REORDER.DETAILS.FIELDS
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
-=======
-
-
->>>>>>> Stashed changes
 public method redoHReorderLevel (
 )
 {
     jBC: REDO.H.REORDER.LEVEL
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
-=======
-
-
-
->>>>>>> Stashed changes
 public method redoHReorderLevelFields (
 )
 {
     jBC: REDO.H.REORDER.LEVEL.FIELDS
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
-=======
-
-
->>>>>>> Stashed changes
 public method redoHReorderLevelProcess (
 )
 {
@@ -15186,16 +15146,6 @@ public method redoVAutActivateAcc (
     jBC: REDO.V.AUT.ACTIVATE.ACC
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
-=======
-
-
->>>>>>> Stashed changes
 public method redoVGetPayMethod (
 )
 {
@@ -15374,8 +15324,6 @@ public method redoVinRevFtId (
     jBC: REDO.VIN.REV.FT.ID
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 public method redoIsLastDay (
     INOUT yDate string
 )
@@ -15767,7 +15715,7 @@ public method redoValCcyCheck (
 public method apapAuthMaskCard (
 )
 {
-   jBC: APAP.AUTH.MASK.CARD
+    jBC: APAP.AUTH.MASK.CARD
 }
 
 
@@ -15775,29 +15723,100 @@ public method apapAuthMaskCard (
 public method apapCheckMaskCard (
 )
 {
-   jBC: APAP.CHECK.MASK.CARD
+    jBC: APAP.CHECK.MASK.CARD
 }
-
-
 
 public method apapDynConvRtn (
 )
 {
-   jBC: APAP.DYN.CONV.RTN
+    jBC: APAP.DYN.CONV.RTN
 }
 
-=======
-=======
->>>>>>> Stashed changes
-
-public method redoIsLastDay (
-   INOUT yDate string
+public method redoTtiFmtDate (
+    INOUT yFieldName string
 )
 {
-   jBC: redoIsLastDay
-<<<<<<< Updated upstream
+    jBC: REDO.TTI.FMT.DATE
 }
->>>>>>> Stashed changes
-=======
+
+public method redoCreArrAuthSplit (
+    INOUT yOfsSourceId string
+)
+{
+    jBC: REDO.CRE.ARR.AUTH.SPLIT
 }
->>>>>>> Stashed changes
+
+public method redoCreateArrangementAColl (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.COLL
+}
+
+public method redoCreateArrangementAIns (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.INS
+}
+
+public method redoFiDebitProces (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES
+}
+
+public method redoFiDebitProcesBacen (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES.BACEN
+}
+
+public method redoFiDebitProcesOrange (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES.ORANGE
+}
+
+public method redoFiLbApplyPymt (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT
+}
+
+public method redoFiLbApplyPymtDb (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DB
+}
+
+public method redoFiLbApplyPymtDr (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DR
+}
+
+public method redoFiLbApplyPymtCr (
+   INOUT dataIn string,
+   INOUT aaArrId string,
+   INOUT dataOut string
+)
+{
+   jBC: REDO.FI.LB.APPLY.PYMT.CR
+}
+

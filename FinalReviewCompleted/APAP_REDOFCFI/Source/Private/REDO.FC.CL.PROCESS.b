@@ -1,20 +1,7 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxOTIwNTk0ODY5OkNwMTI1MjoxNjkwMjY2MzQzMTgxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:55:43
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxMjYyODQ3ODg3OkNwMTI1MjoxNjg1NTQzMzcxNjM1OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 31 May 2023 19:59:31
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -85,18 +72,8 @@ PROCESS:
 * ======
     BEGIN CASE
         CASE Y.OPTION EQ 'CREACION'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *           CALL REDO.FC.CL.REGISTER.AA
             APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
-=======
-            CALL REDO.FC.CL.REGISTER.AA
-*APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
->>>>>>> Stashed changes
-=======
-            CALL REDO.FC.CL.REGISTER.AA
-*APAP.AA.redoFcClRegisterAa() ;*R22 Manual Conversion
->>>>>>> Stashed changes
           
         CASE Y.OPTION EQ 'DESEMBOLSO'
 

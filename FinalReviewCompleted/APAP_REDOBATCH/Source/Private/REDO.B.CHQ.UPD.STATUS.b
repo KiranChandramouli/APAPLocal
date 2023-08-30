@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotNTI3NjQ1MzY0OkNwMTI1MjoxNjkwMjY0MzUzNTIyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:33
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxNTk5MTcwNjM4OkNwMTI1MjoxNjg0ODU0MzgyMTI5OklUU1M6LTE6LTE6MTcyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:22
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 172
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.CHQ.UPD.STATUS(Y.LOAN.NO)
@@ -48,15 +28,7 @@ SUBROUTINE REDO.B.CHQ.UPD.STATUS(Y.LOAN.NO)
 *    Date              Who                  Reference                Description
 *   ------            -----               -------------             -------------
 * 26 OCT 2011     MARIMUTHU S                                      Initial Creation
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION VM TO @VM AND SM TO @SM AND ++ TO += 1
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *
@@ -67,13 +39,7 @@ SUBROUTINE REDO.B.CHQ.UPD.STATUS(Y.LOAN.NO)
     $INSERT I_F.REDO.LOAN.CHQ.RETURN
     $INSERT I_REDO.B.CHQ.UPD.STATUS.COMMON
     $INSERT I_F.REDO.APAP.CLEAR.PARAM
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *--------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -140,46 +106,20 @@ UPDATE.OVERDUE:
     IF R.REDO.LOAN.CHQ.RETURN<LN.CQ.RET.NO.OF.RET.CHQ> LT Y.MAX.RETURN.CHQ THEN
         IN.ARR.ID = ''
         OUT.ID = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *      CALL REDO.CONVERT.ACCOUNT(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT)
         APAP.TAM.redoConvertAccount(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT) ;*R22 Manual Code Conversion
-=======
-        CALL REDO.CONVERT.ACCOUNT(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT)
->>>>>>> Stashed changes
-=======
-        CALL REDO.CONVERT.ACCOUNT(Y.LOAN.NO,IN.ARR.ID,OUT.ID,ERR.TEXT)
->>>>>>> Stashed changes
         ARR.ID = OUT.ID
 
         IN.PROPERTY.CLASS='OVERDUE'
         PROPERTY=''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *     CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR)
         APAP.TAM.redoGetPropertyName(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
-=======
-        CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR)
-
->>>>>>> Stashed changes
-=======
-        CALL REDO.GET.PROPERTY.NAME(ARR.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,PROPERTY,OUT.ERR)
-
->>>>>>> Stashed changes
         EFF.DATE = ''
         PROP.CLASS='OVERDUE'
         R.CONDITION = ''
         ERR.MSG = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *     CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
         APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)  ;*R22 Manual Code Conversion
-=======
-        CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
-=======
-        CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
         Y.STATUS = 'ThreeReturnedChecks'
 
         LOCATE Y.STATUS IN R.CONDITION<AA.OD.LOCAL.REF,POS.L.LOAN.COND,1> SETTING COND.POS THEN

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTE3MzY5Nzc2NTpVVEYtODoxNjgzNjE2MDg4OTIzOklUU1M6LTE6LTE6MTYyOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:08
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjoxNzMzNzAyNjU6Q3AxMjUyOjE2OTIwMDA5NjI3OTk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 14 Aug 2023 13:46:02
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1629
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FC.S.COLL.DI
@@ -53,7 +53,7 @@ SUBROUTINE REDO.FC.S.COLL.DI
     $INSERT I_F.COLLATERAL.CODE
     $INSERT I_F.CUSTOMER
 *
-    $INSERT I_RAPID.APP.DEV.COMMON
+*    $INSERT I_RAPID.APP.DEV.COMMON ;*MANUAL R22 CODE CONVERSION
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
     $INSERT I_F.REDO.FC.PROD.COLL.POLICY
     $INSERT I_F.REDO.FC.POL.TYPE.CLASS

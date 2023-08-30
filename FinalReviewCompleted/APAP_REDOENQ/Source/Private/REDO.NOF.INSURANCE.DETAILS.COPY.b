@@ -1,35 +1,14 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTYwODA1MDcxMjpDcDEyNTI6MTY5MDI2NTIxNzE2MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:36:57
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTM5NzcyMzc5NDpDcDEyNTI6MTY4NTk0OTY4ODAwMDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Jun 2023 12:51:28
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOF.INSURANCE.DETAILS.COPY(Y.FIN.ARR)
@@ -68,16 +47,8 @@ SUBROUTINE REDO.NOF.INSURANCE.DETAILS.COPY(Y.FIN.ARR)
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
     $INSERT I_F.REDO.FRONT.CLAIMS
     $INSERT I_ENQUIRY.COMMON
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
     
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
     GOSUB OPEN.FILES
     GOSUB FORM.SELECTION
     GOSUB PROCESS
@@ -129,15 +100,7 @@ FORM.SELECTION:
 *-------------------------------------------------
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD)  ;*R22 MANUAL Conversion
-=======
-     APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD)  ;*R22 MANUAL Conversion
->>>>>>> Stashed changes
-=======
-     APAP.REDOENQ.redoEFormSelStmt(FN.APAP.H.INSURANCE.DETAILS, '', '', SEL.CMD)  ;*R22 MANUAL Conversion
->>>>>>> Stashed changes
     SEL.CMD := ' BY ASSOCIATED.LOAN'
 
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,SEL.ERR)
@@ -236,8 +199,6 @@ GET.ALTERNATE.ID:
     PROPERTY        = ''
     R.ACC.CONDITION = ''
     ERR.MSG         = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.CONDITION,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.CONDITION,ERR.MSG);*R22 Manual Code Converison
     Y.PREV.LOAN.NO = R.ACC.CONDITION<AA.AC.ALT.ID>
@@ -245,18 +206,6 @@ GET.ALTERNATE.ID:
     IN.ACC.ID      = ''
 *   CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.NO,ERR.TEXT)
     APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.NO,ERR.TEXT) ;*R22 Manual Code Converison
-=======
-=======
->>>>>>> Stashed changes
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.ACC.CONDITION,ERR.MSG)
-    Y.PREV.LOAN.NO = R.ACC.CONDITION<AA.AC.ALT.ID>
-    Y.LOAN.NO      = ''
-    IN.ACC.ID      = ''
-    CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.NO,ERR.TEXT)
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 RETURN
 *-------------------------------------------------
@@ -278,16 +227,8 @@ GET.CUSTOMER.DETAILS:
     PROPERTY        = ''
     R.ACC.CONDITION = ''
     ERR.MSG         = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CUS.CONDITION,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CUS.CONDITION,ERR.MSG) ;*R22 Manual Code Converison
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CUS.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CUS.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
 *Y.CUS.IDS       = R.CUS.CONDITION<AA.CUS.PRIMARY.OWNER>
     Y.CUS.IDS       = R.CUS.CONDITION<AA.CUS.CUSTOMER>  ;*R22 Manual Conversion
 *Y.CUS.IDS<1,-1> = R.CUS.CONDITION<AA.CUS.OWNER>
@@ -339,16 +280,8 @@ GET.TERM.DETAILS:
     PROPERTY        = ''
     R.ACC.CONDITION = ''
     ERR.MSG         = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG)  ;*R22 Manual Code Converison
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.TERM.CONDITION,ERR.MSG)
->>>>>>> Stashed changes
     Y.TERM            =  R.TERM.CONDITION<AA.AMT.TERM>
     Y.COL.CODE = '' ; Y.COL.DESCD = ''
 *CHANGE VM TO VM IN Y.COLLATERAL.CODE

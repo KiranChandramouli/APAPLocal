@@ -1,16 +1,19 @@
-* @ValidationCode : MjotMjU1MTg4NjI6Q3AxMjUyOjE2ODU2ODkxMzg0Njg6SVRTUzotMTotMTozNDc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 02 Jun 2023 12:28:58
+* @ValidationCode : MjotNTIxNDYxNDc1OkNwMTI1MjoxNjkxNzQ3MDM0NDk2OklUU1M6LTE6LTE6MzYwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Aug 2023 15:13:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 347
+* @ValidationInfo : Rating            : 360
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
+*---------------------------------------------------------------------------------
+* <Rating>145</Rating>
+*---------------------------------------------------------------------------------
 SUBROUTINE REDO.V.VAL.CREDIT.VP
 *---------------------------------------------------------------------------------
 * Developer    : Luis Fernando Pazmino (lpazminodiaz@temenos.com)
@@ -32,12 +35,8 @@ SUBROUTINE REDO.V.VAL.CREDIT.VP
 * 2.0 MG
 * 2.1       09/05/2015     Vignesh Kumaar R                       PRODUCTION PERFORMANCE FIX
 * 2.2       26/06/2015     Marcelo.Gudino                          Disbursement Validation
+*10-08-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,FM TO @FM
 *---------------------------------------------------------------------------------
-*Modification History
-*DATE                       WHO                         REFERENCE                                   DESCRIPTION
-*13-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM,IF CONDITION ADDED
-*13-04-2023              Samaran T                R22 Manual Code conversion                         CALL RTN FORMAT MODIFIED
-*---------------------------------------------------------------------------------------------------------------------------
 
 * <region name="INSERTS">
 
@@ -54,8 +53,6 @@ SUBROUTINE REDO.V.VAL.CREDIT.VP
     $INSERT I_F.REDO.CARD.BIN
     $INSERT I_F.REDO.VPLUS.MAPPING
     $INSERT I_F.EB.EXTERNAL.USER
-    $USING APAP.TAM
-    $USING APAP.REDOSRTN
 
 * </region>
 
@@ -71,9 +68,6 @@ SUBROUTINE REDO.V.VAL.CREDIT.VP
 
     IF VP.FLAG THEN
         COMI = System.getVariable("CURRENT.CARD.ORG.NO")
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN    ;*R22 AUTO CODE CONVERSION.START
-            COMI = ""    ;*R22 AUTO CODE CONVERSION
-        END    ;*R22 AUTO CODE CONVERSION.END
         COMI = COMI[1,4] : '-xxxx-xxxx-' : COMI[13,4]
     END
 
@@ -155,14 +149,8 @@ INIT:
     VPL.SEQ.NO.POS = Y.LOCAL.FIELDS.POS<1,16>
 
     EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
-    IF E EQ "EB-UNKNOWN.VARIABLE" THEN   ;*R22 AUTO CODE CONVERSION.START
-        EXT.USER.ID = ""    ;*R22 AUTO CODE CONVERSION
-    END    ;*R22 AUTO CODE CONVERSION.END
     IF EXT.USER.ID NE 'EXT.EXTERNAL.USER' THEN
         COMI = System.getVariable("CURRENT.CARD.ORG.NO")
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN    ;*R22 AUTO CODE CONVERSION.START
-            COMI = ""     ;*R22 AUTO CODE CONVERSION
-        END   ;*R22 AUTO CODE CONVERSION.END
         VP.FLAG = 1
     END
 
@@ -207,8 +195,7 @@ INIT:
         RRCB.CURRENCIES = R.REDO.CARD.BIN<REDO.CARD.BIN.VP.CURRENCY>
     END
 
-    CHANGE @VM TO @FM IN RRCB.CURRENCIES
-
+    CHANGE @VM TO @FM IN RRCB.CURRENCIES ;*R22 MANUAL CONVERSION
 RETURN
 
 ***********************
@@ -237,15 +224,13 @@ INVOKE.VP.WS.CB:
     WS.DATA = ''
     WS.DATA<1> = 'CONSULTA_BALANCE'
     WS.DATA<2> = CREDIT.CARD.ID
-*CALL REDO.S.VP.SEL.CHANNEL(APPLICATION,PGM.VERSION,TRANS.CODE,Y.CHANNEL,Y.MON.CHANNEL)
-    APAP.TAM.redoSVpSelChannel(APPLICATION,PGM.VERSION,TRANS.CODE,Y.CHANNEL,Y.MON.CHANNEL)   ;*R22 MANUAL CODE CONVERSION
+    CALL REDO.S.VP.SEL.CHANNEL(APPLICATION,PGM.VERSION,TRANS.CODE,Y.CHANNEL,Y.MON.CHANNEL)
     WS.DATA<3> = Y.CHANNEL
 
 * Invoke VisionPlus Web Service
 
 
-*CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
-    APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)  ;*R22 MANUAL CODE CONVERSION
+    CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 
 * Credit Card exits - Info obtained OK
     IF WS.DATA<1> EQ 'OK' THEN
@@ -297,8 +282,7 @@ INVOKE.VP.WS.CB:
 * Fix for PACS00424073 [ACH Vision Plus Payment]
 
         IF (PGM.VERSION EQ ',CARD.IN' OR PGM.VERSION EQ ',REDO.VP.DIRECT.DEBIT') AND (ID.COMPORTAMIENTO EQ 1 OR ID.COMPORTAMIENTO EQ 2) THEN
-*CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA', ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
-            APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA', ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '');*R22 MANAUAL CODE CONVERSION
+            CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA', ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
             AF = Y.LOCAL.REF
             AV = CR.CARD.NO
             ETEXT = 'ST-VP-NO.CARD.PAY'
@@ -324,7 +308,7 @@ INVOKE.VP.WS.CB:
                     RETURN
                 CASE ID.COMPORTAMIENTO EQ 2 ;* Acepta Pago con Autorizacion
                     TEXT    = 'REDO.LEGAL.STATUS'
-                    CURR.NO = DCOUNT(R.NEW(Y.OVERRIDE),@VM)+ 1
+                    CURR.NO = DCOUNT(R.NEW(Y.OVERRIDE),@VM)+ 1 ;*R22 MANUAL CONVERSION
                     CALL STORE.OVERRIDE(CURR.NO)
                     RETURN
             END CASE
@@ -346,8 +330,7 @@ WS.NOT.OK:
     COMI = ''
 
     IF (PGM.VERSION EQ ',CARD.IN' OR PGM.VERSION EQ ',REDO.VP.DIRECT.DEBIT') THEN
-*CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA' , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
-        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA' , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '');*R22 MANAUAL CODE CONVERSION
+        CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email ':Y.CC.CARD.VAL:' TRANSACCION RECHAZADA-WS MASTERDATA' , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
         AF = Y.LOCAL.REF
         AV = CR.CARD.NO
         ETEXT = 'ST-VP-NO.CARD.PAY'
@@ -411,15 +394,14 @@ INVOKE.VP.WS.OI:
 * Obtain Org ID
     LOCATE TXN.CURRENCY IN RRCB.CURRENCIES SETTING TXN.CURRENCY.POS THEN
 * OrgId
-        ORG.ID = FIELD(R.REDO.CARD.BIN<REDO.CARD.BIN.ORG.ID>,@VM,TXN.CURRENCY.POS)
+        ORG.ID = FIELD(R.REDO.CARD.BIN<REDO.CARD.BIN.ORG.ID>,@VM,TXN.CURRENCY.POS) ;*R22 MANUAL CONVERSION
         WS.DATA<3> = ORG.ID
 * Mercant Number
         MERCHANT.NUMBER = R.REDO.CARD.BIN<REDO.CARD.BIN.MERCHANT.NUMBER>
         WS.DATA<4> = MERCHANT.NUMBER
 
 * Invoke VisionPlus Web Service
-*CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
-        APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)  ;*R22 MANAUAL CODE CONVERSION
+        CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
     END ELSE
         WS.DATA = ''
         WS.DATA<1> = 'ERROR'
@@ -433,12 +415,12 @@ INVOKE.VP.WS.OI:
 * Error handling (ERROR/OFFLINE)
 * IF WS.DATA<1> EQ 'ERROR' AND OFS$OPERATION EQ 'PROCESS' THEN
         IF VP.FLAG NE 1 THEN
-            TEXT = "ST-VP-NO.ONLINE.AVAIL" : @FM : WS.DATA<2>
+            TEXT = "ST-VP-NO.ONLINE.AVAIL" : @FM : WS.DATA<2> ;*R22 MANUAL CONVERSION
             AF = Y.LOCAL.REF
             AV = BAL.IN.LCY.POS
 
             IF R.NEW(Y.OVERRIDE) THEN
-                Y.OV.POS = DCOUNT(R.NEW(Y.OVERRIDE), @VM) + 1
+                Y.OV.POS = DCOUNT(R.NEW(Y.OVERRIDE), @VM) + 1 ;*R22 MANUAL CONVERSION
             END ELSE
                 Y.OV.POS = 1
             END
@@ -457,7 +439,7 @@ CHECK.CC.CCY:
         RETURN
     END
 
-    ETEXT = "ST-VP-NO.CCY.ALLOWED" : @FM : CREDIT.CARD.ID : @VM : TXN.CURRENCY
+    ETEXT = "ST-VP-NO.CCY.ALLOWED" : @FM : CREDIT.CARD.ID : @VM : TXN.CURRENCY ;*R22 MANUAL CONVERSION
     IF APPLICATION EQ 'TELLER' THEN
         AF = TT.TE.CURRENCY.1
     END

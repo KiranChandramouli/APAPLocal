@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTc2Mzg4NTY0NDpDcDEyNTI6MTY5MDI2NDQzMzg4MzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:53
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotODc1NzgxMjY5OkNwMTI1MjoxNjg0ODU0Mzk1ODg4OklUU1M6LTE6LTE6ODI1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 825
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.REPORTE.ACTIVIDAD.LOAD
@@ -57,15 +37,7 @@ SUBROUTINE REDO.B.REPORTE.ACTIVIDAD.LOAD
 *                                                                             Added new local ref 'L.CR.FACILITY, L.LOAN.STATUS.1'
 * PACS00363969           Ashokkumar.V.P                 03/03/2015            Replaced with AA.ARR.ACCOUNT>L.CR.FACILITY field to fetch details and group.
 * PACS00466618           Ashokkumar.V.P                 26/06/2015            Fixed the NAB account created on same date for old NAB loans.
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND SM TO @SM AND SESSION.NO TO AGENT.NUMBER
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -78,13 +50,7 @@ SUBROUTINE REDO.B.REPORTE.ACTIVIDAD.LOAD
 
     $INSERT I_TSA.COMMON
     $INSERT I_BATCH.FILES
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *
     GOSUB OPEN.PARA
     GOSUB PROCESS.PARA
@@ -237,15 +203,7 @@ RAISE.ERR.C.22:
     MON.TP = "04"
     REC.CON = "AA.ACTIVIDAD-":ERR.MSG
     DESC = "AA.ACTIVIDAD-":ERR.MSG
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
 RETURN
 END

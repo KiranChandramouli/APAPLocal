@@ -1,35 +1,14 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTMxNTM5MTQwNTpDcDEyNTI6MTY5MDI2NjU1NzEzNDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:59:17
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : Mjo2NzAwMTI3MTM6Q3AxMjUyOjE2ODU5NTAzMzUyNzg6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Jun 2023 13:02:15
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.DUE.FEE.LOANS.REPORT(Y.OUT.ARRAY)
@@ -75,15 +54,9 @@ SUBROUTINE REDO.DUE.FEE.LOANS.REPORT(Y.OUT.ARRAY)
 
     $INSERT I_F.AA.INTEREST.ACCRUALS
     $INSERT I_F.AA.OVERDUE
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
    
     
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     GOSUB INITIALISE
     GOSUB OPENFILES
@@ -290,16 +263,8 @@ GET.BILL.DETAILS:
     Y.BILL.DUE.DATE    = '' ; Y.TOT.CAPITAL.FEE = '' ; Y.TOT.FEE.INTEREST = '' ; Y.TOT.DUE.FEE = '' ; Y.TOT.CHRG.COMM.FEE = ''
     Y.TOT.CHRG.INS.FEE = '' ; Y.TOTAL.FEE = '' ; Y.AA.ID = '' ;* PACS00321228 - VNL - 20150817 - S/E
 *
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.GET.BILL.DETAILS(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE)
     APAP.TAM.redoGetBillDetails(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.GET.BILL.DETAILS(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.BILL.DETAILS(Y.BILL.ID,Y.AA.ID,INS.POLICY.TYPE.POS,Y.BILL.DUE.DATE,Y.TOT.CAPITAL.FEE,Y.TOT.FEE.INTEREST,Y.TOT.DUE.FEE,Y.TOT.CHRG.COMM.FEE,Y.TOT.CHRG.INS.FEE,Y.TOTAL.FEE)
->>>>>>> Stashed changes
 * PACS00321228 - 2014OCT04 - S
     Y.BILL.DATE   = Y.BILL.DUE.DATE
     Y.TOT.CAP.FEE = Y.TOT.CAPITAL.FEE

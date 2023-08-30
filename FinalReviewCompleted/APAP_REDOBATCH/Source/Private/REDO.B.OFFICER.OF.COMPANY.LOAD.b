@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTc4NjE3OTAwNzpDcDEyNTI6MTY5MDI2NDQyNTU0MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:45
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxOTY4ODExNTk6Q3AxMjUyOjE2ODA2OTA0NjAyMjk6SVRTUzotMTotMTo0MjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Apr 2023 15:57:40
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 426
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.OFFICER.OF.COMPANY.LOAD
@@ -75,13 +55,7 @@ SUBROUTINE REDO.B.OFFICER.OF.COMPANY.LOAD
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.OFFICER.OF.COMPANY.COMMON
     $INSERT I_TSA.COMMON
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *   $INSERT I_BATCH.FILES
 *-----------------------------------------------------------------------------------------------------------------
 **********
@@ -185,16 +159,8 @@ OPEN.TEMP.PATH:
         MON.TP   = 04
         REC.CON  = "GR04"
         DESC     = "GR04"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
     END
 
 RETURN

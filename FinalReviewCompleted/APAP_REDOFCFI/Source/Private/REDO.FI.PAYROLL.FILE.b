@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxNzYxMDk0MDU2OkNwMTI1MjoxNjkwMTc0Mzk3MzI5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 24 Jul 2023 10:23:17
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxMDc3MzA5MDI4OkNwMTI1MjoxNjg1MTA2MDg2MTMzOklUU1M6LTE6LTE6LTc1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 18:31:26
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -75
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.PAYROLL.FILE(IN.TXT.MSG,OUT.ERR.MSG)
@@ -388,18 +368,8 @@ FT.PROCESS:
 *
 * Paragraph that record the error message and move the file to the rejected directory renaming the file
 *
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
     APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*MANUAL R22 CODE CONVERSION
-=======
-    CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*MANUAL R22 CODE CONVERSION
->>>>>>> Stashed changes
-=======
-    CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*MANUAL R22 CODE CONVERSION
->>>>>>> Stashed changes
 
     IF OUT.ERR<2> NE "" THEN
         E =OUT.ERR

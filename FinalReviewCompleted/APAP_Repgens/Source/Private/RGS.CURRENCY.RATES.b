@@ -1,33 +1,12 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTM4NTg5ODEyOTpDcDEyNTI6MTY4ODUzNjg5NDQ5OTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTM4NTg5ODEyOTpDcDEyNTI6MTY4Njg5MDE3MjE5ODpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 Jun 2023 10:06:12
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
-=======
-* @ValidationInfo : Strict flag       : N/A
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Strict flag       : N/A
->>>>>>> Stashed changes
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -38,18 +17,8 @@ REM "RGS.CURRENCY.RATES",230614-4
 *************************************************************************
 * MODIFICATION HISTORY:
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * DATEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WHOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ REFERENCEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DESCRIPTION
 * 15-JUNE-2023ï¿½ï¿½ï¿½ï¿½ï¿½Narmadha Vï¿½ï¿½     Manual R22 conversionï¿½ï¿½ï¿½ï¿½ï¿½   SELECT to SSELECT
-=======
-* DATE              WHO                REFERENCE                 DESCRIPTION
-* 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
->>>>>>> Stashed changes
-=======
-* DATE              WHO                REFERENCE                 DESCRIPTION
-* 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
->>>>>>> Stashed changes
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE

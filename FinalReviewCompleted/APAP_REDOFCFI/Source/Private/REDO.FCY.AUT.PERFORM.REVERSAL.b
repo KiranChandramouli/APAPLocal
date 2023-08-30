@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTY3NDc5OTYxOTpDcDEyNTI6MTY5MDE3NDM5MzMzMzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 24 Jul 2023 10:23:13
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxNTE3MjU0Njg3OkNwMTI1MjoxNjg1MTA2MDgzNDI3OklUU1M6LTE6LTE6MjExNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 18:31:23
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2114
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FCY.AUT.PERFORM.REVERSAL
@@ -204,18 +184,8 @@ PROCESS:
         IF AMOUNT.VAL THEN
             VAR.CURRENCY = R.NEW(CLEAR.OUT.CURRENCY)
             REDO.OUTWARD.RETURN.ID = ID.NEW
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *           CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
             APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID);*R22 Manual Conversion
-=======
-            CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
-*APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID);*R22 Manual Conversion
->>>>>>> Stashed changes
-=======
-            CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
-*APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID);*R22 Manual Conversion
->>>>>>> Stashed changes
         END
     END
 

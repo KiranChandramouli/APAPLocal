@@ -19,14 +19,6 @@ public method redoAutConcatUptLog (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method redoAutDelIdTemp (
 )
 {
@@ -7012,8 +7004,6 @@ public method redoVValMaximumValueDi(
 )
 {
     jBC: REDO.V.VAL.MAXIMUM.VALUE.DI
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 } 
 
 public method redoInpPrRemainAmtRepay (
@@ -7067,7 +7057,7 @@ public method redoVAutReverseChg (
 public method redoAutOnlineMsg (
 )
 {
-   jBC: REDO.AUT.ONLINE.MSG
+    jBC: REDO.AUT.ONLINE.MSG
 }
 
 
@@ -7076,12 +7066,6 @@ public method redoAutOnlineMsg (
 public method redoInpLetterIssue (
 )
 {
-   jBC: REDO.INP.LETTER.ISSUE
+    jBC: REDO.INP.LETTER.ISSUE
 }
 
-=======
-} 
->>>>>>> Stashed changes
-=======
-} 
->>>>>>> Stashed changes

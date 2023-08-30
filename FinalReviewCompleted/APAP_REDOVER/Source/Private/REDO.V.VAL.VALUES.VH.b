@@ -57,15 +57,7 @@ RETURN  ;* Program RETURN
 PROCESS:
 *======
 *
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
-=======
-*CALL APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
->>>>>>> Stashed changes
-=======
-*CALL APAP.TAM.REDO.V.VAL.NOMINAL.VALUE
->>>>>>> Stashed changes
     APAP.REDOVER.redoVValNominalValue()   ;*R22 MANUAL CODE CONVERSION
 *CALL REDO.V.VAL.REA.COLLATERAL
     APAP.TAM.redoVValReaCollateral()      ;*R22 MANUAL CODE CONVERSION

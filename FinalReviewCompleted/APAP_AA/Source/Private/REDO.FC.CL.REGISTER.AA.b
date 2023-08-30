@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTQ4ODQzNDk0NjpVVEYtODoxNjkwMjY0MDY3MTI0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:17:47
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationCode : MjoxODUxNzY3ODIwOkNwMTI1MjoxNjkzMjI0NTkzNjMxOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Aug 2023 17:39:53
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -44,7 +44,11 @@ SUBROUTINE REDO.FC.CL.REGISTER.AA
 * Date            : 10/08/2017
 * Purpose         : Proof of warranty reuse / R15 Upgrade issue
 * Reference       : PACS00612954
-*27-06-2023 Narmadha V Manual R22 Conversion -commented the variable DYN.TO.OFS
+*DATE		   AUTHOR			Modification                 DESCRIPTION
+*28/08/2023  CONVERSION TOOL    AUTO R22 CODE CONVERSION      RAD.BP is removed in insertfile, FM TO @FM, VM TO @VM, ">=" TO GE
+*28/08/2023	 VIGNESHWARI	    MANUAL R22 CODE CONVERSION	      DYN.TO.OFS Change to OFS.BUILD.RECORD
+*------------------------------------------------------------------------------------------------------------------------------------------------
+
 ******************************************************************************
 ******************************************************************************
     $INSERT I_COMMON
@@ -53,7 +57,7 @@ SUBROUTINE REDO.FC.CL.REGISTER.AA
     $INSERT I_GTS.COMMON
     COMMON /NS/P.ID.TRX
 * PACS00612954 - S
-    $INSERT I_RAPID.APP.DEV.COMMON
+    $INSERT I_RAPID.APP.DEV.COMMON   ;*AUTO R22 CODE CONVERSION-RAD.BP is removed in insertfile
 * PACS00612954 - E
     $INSERT I_F.REDO.FC.LIMIT.AA
     $INSERT I_F.REDO.FC.CL.BALANCE
@@ -176,7 +180,7 @@ PROCESS:
     FOR Y.I = 1 TO Y.COUNT
 * Si es que una sola garantia cubre la totalidad del AA
 
-        IF Y.TOT.COLL.SD<1,Y.I> GE Y.AA.AMOUNT  THEN
+        IF Y.TOT.COLL.SD<1,Y.I> GE Y.AA.AMOUNT  THEN  ;*AUTO R22 CODE CONVERSION - ">=" Changed to GE
             MG.ACTUAL<1,Y.I> = Y.AA.AMOUNT
 * PACS00350509 - 2014JUN21 - S
             Y.AVA.BAL = Y.TOT.COLL.SD<1,Y.I> - Y.AA.AMOUNT
@@ -285,10 +289,22 @@ UPDATE.COLLATERAL:
     OFS.INFO.INPUT<2,6> = '0'
     OFS.INFO.INPUT<2,4> = ID.COLL
 
-*    Y.OFS.MSG.REQ = DYN.TO.OFS(R.COLLATERAL.MSG, Y.APPLICATION, OFS.INFO.INPUT); *Manual R22 Converion
+*    Y.OFS.MSG.REQ = DYN.TO.OFS(R.COLLATERAL.MSG, Y.APPLICATION, OFS.INFO.INPUT)
+    
+     APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
+    OFS.FUNCTION = 'I'
+    OFS.PROCESS  = 'PROCESS'
+    OFS.VERSION  = Y.VER.COLLATERAL
+    Y.GTSMODE    = ''
+    NO.OF.AUTH   = ''
+    TRANSACTION.ID = ID.COLL
+    R.RECORD     = R.COLLATERAL.MSG
+    Y.OFS.STR   = ''
+    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.MSG.REQ)   ;*MANUAL R22 CODE CONVERSION-END
+    
 
 * Process OFS Message
-* Y.OFS.MESSAGE = Y.OFS.MSG.REQ;*Manual R22 Conversion
+    Y.OFS.MESSAGE = Y.OFS.MSG.REQ
     OFS.SRC = 'FC.OFS'
     OFS.MSG.ID = ""
     OPTIONS = ""

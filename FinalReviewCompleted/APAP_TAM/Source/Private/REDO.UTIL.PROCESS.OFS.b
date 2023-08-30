@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMzk5OTM5MjI2OkNwMTI1MjoxNjgzMDE4MTAwODg4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 02 May 2023 14:31:40
+* @ValidationCode : MjoxNzA5MDE3OTc6Q3AxMjUyOjE2OTE5OTczMzgwNzM6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 14 Aug 2023 12:45:38
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *-----------------------------------------------------------------------------
@@ -47,7 +47,7 @@ SUBROUTINE REDO.UTIL.PROCESS.OFS(OFS.MSG.REQ, OFS.MSG.RES)
 *************PACS00708597********************************
     $INSERT I_F.OFS.SOURCE
 
-    $INSERT I_RAPID.APP.DEV.COMMON
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual Code Conersion
     
     $USING APAP.REDOCHNLS
 	$USING APAP.TAM

@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxNzIzMDYxODg1OkNwMTI1MjoxNjkwMjY0Mzk2OTg1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:16
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTU0MzIxOTU2MzpDcDEyNTI6MTY4NDg1NDM4OTMwNjpJVFNTOi0xOi0xOjEwOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:29
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 109
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LIST.OF.COMPANIES(CUSTOMER.ID)
@@ -63,15 +43,7 @@ SUBROUTINE REDO.B.LIST.OF.COMPANIES(CUSTOMER.ID)
 * MV31                   Mayurika Tiwary                 2014-02-14           Initial Draft
 *                        Rashmitha M                     2014-03-14           Company Id and company name displayed
 *                                                                             as per the required format
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - SM TO @SM AND VM TO @VM
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -85,13 +57,7 @@ SUBROUTINE REDO.B.LIST.OF.COMPANIES(CUSTOMER.ID)
     $INSERT I_BATCH.FILES
     $INSERT I_REDO.B.LIST.OF.COMPANIES.COMMON
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -320,16 +286,8 @@ WRITE.TO.FILE:
         MON.TP = 04
         REC.CON = 'MV31-':ERR.MSG
         DESC = 'MV31-':ERR.MSG
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
     END
 
 RETURN

@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotNTIxOTk5MzYwOkNwMTI1MjoxNjkwMjY0MzU3NTMyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:37
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : Mjo0MTM3MDI2MDpDcDEyNTI6MTY4NDg1NDM4MzIyNzpJVFNTOi0xOi0xOjkwMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:23
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 901
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.COMP.SHARE.GROUP.POST
@@ -65,15 +45,7 @@ SUBROUTINE REDO.B.COMP.SHARE.GROUP.POST
 *                                                                           should contain seven characters. If the
 *                                                                           number of characters is less than seven,
 *                                                                           then "0" should be displayed as prefix
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION VM TO @VM AND FM TO @FM AND ++ TO += 1 AND ! TO *
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
@@ -84,13 +56,7 @@ SUBROUTINE REDO.B.COMP.SHARE.GROUP.POST
     $INSERT I_F.DATES
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.COMP.SHARE.GROUP.COMMON
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -193,16 +159,8 @@ GET.REPORT.LINES:
         MON.TP   = 04
         REC.CON  = "GR02"
         DESC     = "GR02"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *      CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
     END
 *20140320 (S)
     SEQ.NO = 1
@@ -227,16 +185,8 @@ GET.REPORT.LINES:
             MON.TP   = 04
             REC.CON  = "GR02"
             DESC     = "GR02"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *           CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
         END
 
         REPORT.LINES = R.TEMP.PATH
@@ -305,16 +255,8 @@ OPEN.SEQ.FILE:
             MON.TP   = 04
             REC.CON  = "GR02"
             DESC     = "GR02"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *          CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)     ;*R22 Manual Code Conversion
-=======
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
         END
     END
 
@@ -334,16 +276,8 @@ WRITE.TO.FILE:
         MON.TP   = 04
         REC.CON  = "GR02"
         DESC     = "GR02"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
-=======
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
->>>>>>> Stashed changes
     END
 
 RETURN

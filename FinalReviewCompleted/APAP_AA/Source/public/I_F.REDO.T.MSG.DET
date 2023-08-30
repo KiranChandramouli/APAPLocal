@@ -1,3 +1,0 @@
-* I_F.REDO.T.MSG.DET Created 11 FEB 10 at 11:59AM by apapr8/TESTER
-*      PREFIX[MD]
-          EQU MD.SECURE.ID TO 1,   RedoTMsgDet_SecureId TO 1

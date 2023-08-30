@@ -1,30 +1,12 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxNzEwNDY2Mzk4OkNwMTI1MjoxNjg4NTM2ODkwMTc5OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:30
-=======
-* @ValidationCode : MjoxNzEwNDY2Mzk4OkNwMTI1MjoxNjg2ODIwNjA2NTM3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 Jun 2023 14:46:46
->>>>>>> Stashed changes
-=======
-* @ValidationCode : MjoxNzEwNDY2Mzk4OkNwMTI1MjoxNjg2ODIwNjA2NTM3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 Jun 2023 14:46:46
->>>>>>> Stashed changes
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
-=======
-* @ValidationInfo : Strict flag       : N/A
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Strict flag       : N/A
->>>>>>> Stashed changes
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.

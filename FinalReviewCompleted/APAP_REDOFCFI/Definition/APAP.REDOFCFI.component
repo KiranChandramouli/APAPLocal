@@ -17,14 +17,6 @@ public method redoFcBhValidationsFields (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method redoFcClAccounting (
     INOUT action string
 )
@@ -1771,8 +1763,6 @@ public method redoFiOrangePayments (
 )
 {
     jBC: REDO.FI.ORANGE.PAYMENTS
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 }
 
 
@@ -1782,9 +1772,3 @@ public method redoFiControlId (
     jBC: REDO.FI.CONTROL.ID
 }
 
-=======
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes
