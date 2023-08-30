@@ -6,24 +6,10 @@ metamodelVersion 1.6
 public method acctActivityRebuild (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: ACCT.ACTIVITY.REBUILD 
 }
 
 
-=======
-=======
->>>>>>> Stashed changes
-    jBC: ACCT.ACTIVITY.REBUILD
-}
-
-
-
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 public method acctEcbBalFromActivity (
 )
 {
@@ -5422,67 +5408,28 @@ public method lapapCobPending (
 
 
 public method lApapEnqPortalAhoTodas (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method lApapEnqSwiftAccounts (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method lApapGetCusProducts (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.GET.CUS.PRODUCTS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: L.APAP.GET.CUS.PRODUCTS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
@@ -5490,37 +5437,16 @@ public method lApapGetCusProducts (
 public method lApapValAccOwner (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: L.APAP.VAL.ACC.OWNER
-=======
-   jBC: L.APAP.VAL.ACC.OWNER
->>>>>>> Stashed changes
-=======
-   jBC: L.APAP.VAL.ACC.OWNER
->>>>>>> Stashed changes
 }
 
 
 
 public method lapapEnqReprecio (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: LAPAP.ENQ.REPRECIO
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: LAPAP.ENQ.REPRECIO
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
@@ -5528,59 +5454,25 @@ public method lapapEnqReprecio (
 public method drRegRegn16ExtractPost (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: DR.REG.REGN16.EXTRACT.POST
-=======
-   jBC: DR.REG.REGN16.EXTRACT.POST
->>>>>>> Stashed changes
-=======
-   jBC: DR.REG.REGN16.EXTRACT.POST
->>>>>>> Stashed changes
 }
 
 
 
 public method drRegRien6Extract (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.RIEN6.EXTRACT
-=======
-=======
->>>>>>> Stashed changes
-   INOUT recId string
-)
-{
-   jBC: DR.REG.RIEN6.EXTRACT
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method drRegRien9Extract (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.RIEN9.EXTRACT
-=======
-=======
->>>>>>> Stashed changes
-   INOUT recId string
-)
-{
-   jBC: DR.REG.RIEN9.EXTRACT
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
@@ -5588,59 +5480,25 @@ public method drRegRien9Extract (
 public method drRegn16GetProductType (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: DR.REGN16.GET.PRODUCT.TYPE
-=======
-   jBC: DR.REGN16.GET.PRODUCT.TYPE
->>>>>>> Stashed changes
-=======
-   jBC: DR.REGN16.GET.PRODUCT.TYPE
->>>>>>> Stashed changes
 }
 
 
 
 public method lApapNofCartaSaldoPrRt (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method lApapRet10PrcRt (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinal string
 )
 {
     jBC: L.APAP.RET.10.PRC.RT
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinal string
-)
-{
-   jBC: L.APAP.RET.10.PRC.RT
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
@@ -5648,103 +5506,43 @@ public method lApapRet10PrcRt (
 public method lApapSrvGetSoyBalRt (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: L.APAP.SRV.GET.SOY.BAL.RT
-=======
-   jBC: L.APAP.SRV.GET.SOY.BAL.RT
->>>>>>> Stashed changes
-=======
-   jBC: L.APAP.SRV.GET.SOY.BAL.RT
->>>>>>> Stashed changes
 }
 
 
 
 public method redoBCusTaxRetentions (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yNcfCusId string
 )
 {
     jBC: REDO.B.CUS.TAX.RETENTIONS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yNcfCusId string
-)
-{
-   jBC: REDO.B.CUS.TAX.RETENTIONS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method redoBInactiveAccts (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yAcctId string
 )
 {
     jBC: REDO.B.INACTIVE.ACCTS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yAcctId string
-)
-{
-   jBC: REDO.B.INACTIVE.ACCTS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method redoBMgLnsByDebtor (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT yFinalArrangement string
 )
 {
     jBC: REDO.B.MG.LNS.BY.DEBTOR
-=======
-=======
->>>>>>> Stashed changes
-   INOUT yFinalArrangement string
-)
-{
-   jBC: REDO.B.MG.LNS.BY.DEBTOR
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
 
 public method redoBPrevCertDeposits (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT azAccId string
 )
 {
     jBC: REDO.B.PREV.CERT.DEPOSITS
-=======
-=======
->>>>>>> Stashed changes
-   INOUT azAccId string
-)
-{
-   jBC: REDO.B.PREV.CERT.DEPOSITS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 
@@ -5752,15 +5550,7 @@ public method redoBPrevCertDeposits (
 public method redoBPrevCertDepositsSelect (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
-=======
-   jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
->>>>>>> Stashed changes
-=======
-   jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
->>>>>>> Stashed changes
 }
 
 
@@ -5791,23 +5581,10 @@ public method drRegPasivasConcat (
 }
 
 public method drRegFd01LastdExtract (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT recId string
 )
 {
     jBC: DR.REG.FD01.LASTD.EXTRACT
-=======
-=======
->>>>>>> Stashed changes
-   INOUT recId string
-)
-{
-   jBC: DR.REG.FD01.LASTD.EXTRACT
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 public method lApapDateTransEnq (
@@ -5953,8 +5730,6 @@ public method lapapLyInputUsmov (
     jBC: LAPAP.LY.INPUT.USMOV
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
 public method lApapCusDirDoMandRt (
 )
@@ -8983,19 +8758,19 @@ public method redoApapInpRteamlTfsCheck (
 public method lApapCantRelAc (
 )
 {
-   jBC: L.APAP.CANT.REL.AC
+    jBC: L.APAP.CANT.REL.AC
 }
 
 public method lApapPassbookPrintOvrd (
 )
 {
-   jBC: L.APAP.PASSBOOK.PRINT.OVRD
+    jBC: L.APAP.PASSBOOK.PRINT.OVRD
 }
 
 public method lapapRtnExtraePrest (
 )
 {
-   jBC: LAPAP.RTN.EXTRAE.PREST
+    jBC: LAPAP.RTN.EXTRAE.PREST
 }
 
 public method lApapActualizarReferido (
@@ -9009,7 +8784,432 @@ public method lApapMancyNotifyRt (
 {
     jBC: L.APAP.MANCY.NOTIFY.RT
 }
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+public method lapapClosCloscus ( 
+)
+{
+    jBC: LAPAP.CLOS.CLOSCUS
+}
+
+public method lapapConsultarCategoryDeposit (
+)
+{
+    jBC: LAPAP.CONSULTAR.CATEGORY.DEPOSIT
+}
+
+public method lapapGetOrcusRt (
+)
+{
+    jBC: LAPAP.GET.ORCUS.RT
+}
+
+public method lapapInTxnuniProCusRt (
+)
+{
+    jBC: LAPAP.IN.TXNUNI.PRO.CUS.RT
+}
+
+public method lapapMigCardnoRt (
+)
+{
+    jBC: LAPAP.MIG.CARDNO.RT
+}
+
+public method lapapNofAaInfoRtCan (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.CAN
+}
+
+public method lapapNofAaInfoRtAct (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.ACT
+}
+
+public method lapapOfsBuilder (
+    INOUT pApp string,
+    INOUT pVer string,
+    INOUT pFunc string,
+    INOUT pNoOfAuth string,
+    INOUT pProVal string,
+    INOUT pGtsControl string,
+    INOUT pUser string,
+    INOUT pPass string,
+    INOUT pCompany string,
+    INOUT pTxnId string,
+    INOUT rData string,
+    INOUT oOfs string
+)
+{
+    jBC: LAPAP.OFS.BUILDER
+}
+
+public method lapapProcCobrosCj (
+    INOUT yRegistros string
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ
+}
+
+public method lapapProcCobrosCjLoad (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.LOAD
+}
+
+public method lapapProcCobrosCjPost (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.POST
+}
+
+public method lapapProcCobrosCjSelect (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.SELECT
+}
+
+public method lapapVFtSwbankRt (
+)
+{
+    jBC: LAPAP.V.FT.SWBANK.RT
+}
+
+public method lapapVInpCalcChekDigit (
+    INOUT idCuenta string,
+    INOUT codigoEntidad string,
+    INOUT response string
+)
+{
+    jBC: LAPAP.V.INP.CALC.CHEK.DIGIT
+}
+
+public method lApapColFfCollector (
+    INOUT customerId string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR
+}
+
+public method lApapColFfCollectorCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string,
+    INOUT prGesgarantias string,
+    INOUT prGescreditosgarantias string,
+    INOUT prGestipogarantias string,
+    INOUT pGescreditointegracion string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.CREDIT
+}
+
+public method lApapColFfCollectorLoad (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.LOAD
+}
+
+public method lApapColFfCollectorPost (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.POST
+}
+
+public method lApapColFfCollectorTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.TXN
+}
+
+public method lapapWaiveImp0015Rt (
+)
+{
+    jBC: LAPAP.WAIVE.IMP0015.RT
+}
+
+public method lApapColFfCollectorSelect (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.SELECT
+}
+
+public method lApapCuentaRegMask (
+)
+{
+    jBC: L.APAP.CUENTA.REG.MASK
+}
+
+public method lApapJsonToDynOfs (
+    INOUT jsonRequest string,
+    INOUT yDynRequestKey string,
+    INOUT yDynRequestValue string,
+    INOUT yDynRequestType string,
+    INOUT yError string
+)
+{
+    jBC: L.APAP.JSON.TO.DYN.OFS
+}
+
+public method lApapProcesarPagosMasivos (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.PROCESAR.PAGOS.MASIVOS
+}
+
+public method lApapSetAccReg (
+)
+{
+    jBC: L.APAP.SET.ACC.REG
+}
+
+public method lApapVValOverdrftBalFx (
+)
+{
+    jBC: L.APAP.V.VAL.OVERDRFT.BAL.FX
+}
+
+public method lApapValidarCuentas (
+    INOUT yParam string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.VALIDAR.CUENTAS
+}
+
+public method lapapATxnDiviTt (
+)
+{
+    jBC: LAPAP.A.TXN.DIVI.TT
+}
+
+
+
+public method lapapAUpdPrStRt (
+)
+{
+    jBC: LAPAP.A.UPD.PR.ST.RT
+}
+
+public method lapapBldCcRncRt (
+    INOUT enqData string
+)
+{
+    jBC: LAPAP.BLD.CC.RNC.RT
+}
+
+public method lapapBulkPrNauPRt (
+    INOUT yNauFtId string
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT
+}
+
+public method lapapBulkPrNauPRtLoad (
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT.LOAD
+}
+
+public method lapapBulkPrNauPRtSelect (
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT.SELECT
+}
+
+public method lapapBulkPrPostPRt (
+)
+{
+    jBC: LAPAP.BULK.PR.POST.P.RT
+}
+
+public method lapapBulkPrRt (
+    INOUT yPayroll string
+)
+{
+    jBC: LAPAP.BULK.PR.RT
+}
+
+
+
+public method lapapBulkPrRtSelect (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.SELECT
+}
+
+public method lapapChkPayrollIdRt (
+)
+{
+    jBC: LAPAP.CHK.PAYROLL.ID.RT
+}
+
+public method lapapChkTellpRt (
+)
+{
+    jBC: LAPAP.CHK.TELLP.RT
+}
+
+public method lapapBulkPrRtLoad (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.LOAD
+}
+
+public method lapapCardnoMigRt (
+    INOUT yKeyId string
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT
+}
+
+public method lapapCardnoMigRtSelect (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.SELECT
+}
+
+public method lapapCardnoMigRtLoad (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.LOAD
+}
+
+public method lapapProcessTxnDiviLoad (
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI.LOAD
+}
+
+public method lapapProcessTxnDiviSelect (
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI.SELECT
+}
+
+public method lapapRtGetDtInfo (
+)
+{
+   jBC: LAPAP.RT.GET.DT.INFO
+}
+
+public method lapapRtLiqDtItem (
+)
+{
+   jBC: LAPAP.RT.LIQ.DT.ITEM
+}
+
+public method lapapATxnDiviTt (
+)
+{
+    jBC: LAPAP.A.TXN.DIVI.TT
+}
+
+public method lapapMigCardnoRt (
+)
+{
+    jBC: LAPAP.MIG.CARDNO.RT
+}
+
+public method lapapASendRcptRt (
+)
+{
+   jBC: LAPAP.A.SEND.RCPT.RT
+}
+
+public method lapapATxnDiviFt (
+)
+{
+   jBC: LAPAP.A.TXN.DIVI.FT
+}
+
+public method lapapOvrLowCardRt (
+)
+{
+   jBC: LAPAP.OVR.LOW.CARD.RT
+}
+
+public method lapapProcessTxnDivi (
+   INOUT yTxnId string
+)
+{
+   jBC: LAPAP.PROCESS.TXN.DIVI
+}
+
+public method lapapTransferDslipRt (
+)
+{
+   jBC: LAPAP.TRANSFER.DSLIP.RT
+}
+
+public method lapapMasRedonOfsPmRt (
+    INOUT ofsMessage string
+)
+{
+    jBC: LAPAP.MAS.REDON.OFS.PM.RT
+}
+
+public method lapapMasRedonRt (
+    INOUT yRoundup string
+)
+{
+    jBC: LAPAP.MAS.REDON.RT
+}
+
+public method lapapMasRedonRtSelect (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.SELECT
+}
+
+public method lapapProcRedondeoMasiv (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: LAPAP.PROC.REDONDEO.MASIV
+}
+
+public method lapapMasRedonPostRt (
+)
+{
+    jBC: LAPAP.MAS.REDON.POST.RT
+}
+
+public method lApapCdfGenRtLoad (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.LOAD
+}
+
+public method lapapGetTotalDuePayoffMlv (
+)
+{
+    jBC: LAPAP.GET.TOTAL.DUE.PAYOFF.MLV
+}
+
+public method lApapCdfGenRtSelect (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.SELECT
+}
+
+public method lapapExtraerTcCastigaCr (
+)
+{
+    jBC: LAPAP.EXTRAER.TC.CASTIGA.CR
+}

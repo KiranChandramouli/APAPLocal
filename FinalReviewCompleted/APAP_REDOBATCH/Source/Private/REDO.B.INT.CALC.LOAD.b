@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxMTQ3NTIxMjk3OkNwMTI1MjoxNjkwMjczMjE0MTU2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 13:50:14
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTA4NzA2NDY5NjpDcDEyNTI6MTY4NDg1NDM4NzgwNTpJVFNTOi0xOi0xOjg4NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 886
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.INT.CALC.LOAD
@@ -51,15 +31,7 @@ SUBROUTINE REDO.B.INT.CALC.LOAD
 * 21-09-10          ODR-2010-09-0251                 Initial Creation
 * 27-02-12         Shekar          Performance
 *            1. CDD is not required for every transaction.. now moved to .LOAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                  who                   Reference
-=======
-* Date                  who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                  who                   Reference              
->>>>>>> Stashed changes
 * 11-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - VM TO @VM
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------

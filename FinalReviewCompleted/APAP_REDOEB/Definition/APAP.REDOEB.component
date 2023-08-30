@@ -11,14 +11,6 @@ public method mbDefaultSdbInfo (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method mbEDsfGetPeriod (
     INOUT yData string
 )
@@ -602,5 +594,59 @@ public method redoEbMsgGen (
 )
 {
     jBC: REDO.EB.MSG.GEN
+}
+
+public method tafcAccessParam (
+)
+{
+    jBC: TAFC.ACCESS.PARAM
+}
+
+public method tafcAccessParamFields (
+)
+{
+    jBC: TAFC.ACCESS.PARAM.FIELDS
+}
+
+public method tafcAccessParamValidate (
+)
+{
+    jBC: TAFC.ACCESS.PARAM.VALIDATE
+}
+
+public method tafcMenuAccess (
+)
+{
+    jBC: TAFC.MENU.ACCESS
+}
+
+public method tafcMenuAccessFields (
+)
+{
+    jBC: TAFC.MENU.ACCESS.FIELDS
+}
+
+public method tafcMenuAccessOperations (
+)
+{
+    jBC: TAFC.MENU.ACCESS.OPERATIONS
+}
+
+public method tafcMenuAccessValidate (
+)
+{
+    jBC: TAFC.MENU.ACCESS.VALIDATE
+}
+
+public method apapMUpdProdCode (
+)
+{
+   jBC: APAP.M.UPD.PROD.CODE
+}
+
+public method apapTecItemChange (
+)
+{
+   jBC: APAP.TEC.ITEM.CHANGE
 }
 

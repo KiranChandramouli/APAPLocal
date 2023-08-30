@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxNTAwMDMyNDgzOkNwMTI1MjoxNjkwMjY0NDYxNzk5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:21
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotNDMxMDgxMzQ0OkNwMTI1MjoxNjg0ODU0NDAwNjExOklUU1M6LTE6LTE6MTUzOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:40
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 153
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.UPD.STO.CUR.AMT(STO.ID)
@@ -52,18 +32,8 @@ SUBROUTINE REDO.B.UPD.STO.CUR.AMT(STO.ID)
 *------------------
 *   Date               who           Reference            Description
 * 07-JUN-2010   N.Satheesh Kumar  TAM-ODR-2009-10-0331   Initial Creation
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND = TO EQ
-=======
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND = TO EQ 
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND = TO EQ 
->>>>>>> Stashed changes
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
 
@@ -73,13 +43,7 @@ SUBROUTINE REDO.B.UPD.STO.CUR.AMT(STO.ID)
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.AA.TERM.AMOUNT
     $INSERT I_REDO.B.UPD.STO.CUR.AMT.COMMON
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.AA
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     GOSUB INIT
     GOSUB PROCESS
@@ -133,16 +97,8 @@ GET.OD.STATUS.COND:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
     CHANGE @SM TO @VM IN LOAN.STATUS
@@ -161,16 +117,8 @@ GET.MATURITY.DATE:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
     MATURITY.DATE = R.Condition<AA.AMT.MATURITY.DATE>
     R.STANDING.ORDER<STO.CURRENT.END.DATE> = MATURITY.DATE
 RETURN

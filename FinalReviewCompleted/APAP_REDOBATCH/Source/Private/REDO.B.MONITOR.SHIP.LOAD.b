@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTI1NTM3NTIwMzpDcDEyNTI6MTY5MDI2NDQxNTkwNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:35
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotNzc2NTAwNDUzOkNwMTI1MjoxNjg0ODU0MzkzMDI5OklUU1M6LTE6LTE6MjUyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:33
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 252
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.MONITOR.SHIP.LOAD
@@ -40,15 +20,7 @@ SUBROUTINE REDO.B.MONITOR.SHIP.LOAD
 * 03/09/10 - Created by Victor Nava
 * 07/09/10 - Cesar Yepez. CALLJ to java program
 * 01/03/19 - PACS00731205 - Issue Fix by Gopala Krishnan R
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                  who                   Reference
-=======
-* Date                  who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                  who                   Reference              
->>>>>>> Stashed changes
 * 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION = TO EQ
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------
@@ -58,13 +30,7 @@ SUBROUTINE REDO.B.MONITOR.SHIP.LOAD
     $INSERT I_REDO.B.MONITOR.SHIP.COMMON
     $INSERT I_TSS.COMMON
     $INSERT I_F.REDO.MONITOR.CONNECTION
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOCHNLS
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *
 *--------------------------------------------------------------------------
 *
@@ -173,18 +139,8 @@ LOG.ERROR:
             MON.TP = 08
     END CASE
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
-
->>>>>>> Stashed changes
-=======
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
-
->>>>>>> Stashed changes
 RETURN
 
 *--------------------------------------------------------------------------

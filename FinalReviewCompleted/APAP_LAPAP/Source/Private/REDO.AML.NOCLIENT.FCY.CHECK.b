@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo2Njk1NjQ3OTQ6Q3AxMjUyOjE2OTAxOTQ4MzE4NTY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:51
+* @ValidationCode : MjotNjY1NTc0MTEwOkNwMTI1MjoxNjkxNzM2MTA5NTM4OklUU1M6LTE6LTE6MTQzMjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 Aug 2023 12:11:49
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1432
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -12,7 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------
-* <Rating>-65</Rating>
+* <Rating>-78</Rating>
 *-----------------------------------------------------------------------------
 SUBROUTINE REDO.AML.NOCLIENT.FCY.CHECK
 *-----------------------------------------------------------
@@ -22,9 +22,10 @@ SUBROUTINE REDO.AML.NOCLIENT.FCY.CHECK
 *-----------------------------------------------------------
 * Who           Date           Dev Ref              Modification
 * APAP          26 Feb 2017    AML No Client FCY Check      Initial Draft
-*13/07/2023      Conversion tool            R22 Auto Conversion             Nochange
-*13/07/2023      Suresh                     R22 Manual Conversion           Nochange
+* 12-Abr-2023      APAP      MDR-2459  Eliminar override no es cliente Apap*FXNC versiones compra/venta divisas t24
+*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED
 *-----------------------------------------------------------
+
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.CURRENCY
@@ -34,12 +35,13 @@ SUBROUTINE REDO.AML.NOCLIENT.FCY.CHECK
     $INSERT I_RC.COMMON
     $INSERT I_F.VERSION
     $INSERT I_F.CUSTOMER
-    $INSERT I_F.REDO.H.FOREX.AML
+    $INSERT I_F.REDO.H.FOREX.AML ;*R22 MANUAL CONVERSION START
     $INSERT I_F.REDO.AML.TXN.UPDATE
     $INSERT I_F.REDO.FXSN.TXN.VERSION
     $INSERT I_REDO.ID.CARD.CHECK.COMMON
     $INSERT JBC.h
     $INSERT I_System
+    $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 MANUAL CONVERSION END
 
     IF OFS$OPERATION NE 'PROCESS' THEN
         RETURN
@@ -89,16 +91,19 @@ PROCESS:
         TOT.AML.FCY.AMT = TOT.AML.LCY.AMT / AML.LCY.RT
     END ELSE
 *        AML.TXN.POS = -1
-        AML.TXN.POS = DCOUNT(R.REDO.AML.TXN.UPDATE<AML.TXN.ID>, @VM) + 1
+        AML.TXN.POS = DCOUNT(R.REDO.AML.TXN.UPDATE<AML.TXN.ID>, @VM) + 1 ;*R22 MANUAL CONVERSION
         TOT.AML.LCY.AMT = SUM(R.REDO.AML.TXN.UPDATE<AML.LCY.AMOUNT>) + AML.LCY.AMT
         TOT.AML.FCY.AMT = TOT.AML.LCY.AMT / AML.LCY.RT
     END
 
     IF TOT.AML.FCY.AMT GE AML.LIMIT.AMOUNT THEN
         AML.LMT.OVR = "Y"
-        AML.CURR.NO = DCOUNT(R.NEW(TT.TE.OVERRIDE),@VM)
-        TEXT = 'FXSN.TXN.AMT.EXCEED.AML'
-        CALL STORE.OVERRIDE(AML.CURR.NO+1)
+        AML.CURR.NO = DCOUNT(R.NEW(TT.TE.OVERRIDE),@VM) ;*R22 MANUAL CONVERSION
+**------------------------------------------TODO
+*TEXT = 'FXSN.TXN.AMT.EXCEED.AML'
+*CALL STORE.OVERRIDE(AML.CURR.NO+1)
+        GOSUB ALERTA.OVERRIDE
+**-------------------------------------
     END ELSE
         AML.LMT.OVR = "N"
     END
@@ -214,7 +219,7 @@ CHECK.T24.VERSION:
 
     CALL F.READ(FN.REDO.FXSN.TXN.VERSION,"SYSTEM",R.REDO.FXSN.TXN.VERSION,F.REDO.FXSN.TXN.VERSION,REDO.FXSN.TXN.VERSION.ERR)
     TXN.DESCS = R.REDO.FXSN.TXN.VERSION<REDO.TXN.VER.VERSION.NAME>
-    CHANGE @VM TO @FM IN TXN.DESCS
+    CHANGE @VM TO @FM IN TXN.DESCS ;*R22 MANUAL CONVERSION
     LOCATE TXN.VERSION IN TXN.DESCS SETTING VERSION.POS THEN
         PROCESS.GOAHEAD = 1
     END
@@ -224,9 +229,9 @@ RETURN
 GET.LOCAL.REF.POSITIONS:
 ************************
 
-    APP.NAME      = "CUSTOMER":@FM:"TELLER":@FM:"CURRENCY"
+    APP.NAME      = "CUSTOMER":@FM:"TELLER":@FM:"CURRENCY" ;*R22 MANUAL CONVERSION
 
-    FIELD.ARR     = "L.CU.CIDENT":@VM:"L.CU.RNC":@FM:"L.TT.CLIENT.COD":@VM:"L.TT.FXSN.NUM":@VM:"L.TT.LEGAL.ID":@FM:"L.CU.AMLBUY.RT"
+    FIELD.ARR     = "L.CU.CIDENT":@VM:"L.CU.RNC":@FM:"L.TT.CLIENT.COD":@VM:"L.TT.FXSN.NUM":@VM:"L.TT.LEGAL.ID":@FM:"L.CU.AMLBUY.RT" ;*R22 MANUAL CONVERSION
     FIELD.POS.ARR = ""
     CALL MULTI.GET.LOC.REF(APP.NAME,FIELD.ARR,FIELD.POS.ARR)
     L.CU.CIDENT.POS = FIELD.POS.ARR<1,1>
@@ -268,6 +273,15 @@ OPEN.FILES:
     F.REDO.AML.TXN.UPDATE = ''
     CALL OPF(FN.REDO.AML.TXN.UPDATE, F.REDO.AML.TXN.UPDATE)
 
+*--TODO MDR-2459
+*--Agrego Tabla de Parametros con Versiones de Divisa que no Dispararán
+*--Override de No CLIENTE
+    FN.REDO.H.REPORTS.PARAM = "F.REDO.H.REPORTS.PARAM"
+    F.REDO.H.REPORTS.PARAM  = ""
+    CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
+*--END TODO MDR-2459
+
+
     CIDENT.PROVIDED    = ""
     RNC.PROVIDED       = ""
     CUSTOMER.FULL.NAME = ""
@@ -277,3 +291,39 @@ OPEN.FILES:
     APAP.CUSTOMER      = ''
 
 RETURN
+
+ALERTA.OVERRIDE:
+
+    FN.REDO.H.REPORTS.PARAM = "F.REDO.H.REPORTS.PARAM"
+    F.REDO.H.REPORTS.PARAM  = ""
+    CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
+
+    R.REDO.H.REPORTS.PARAM = ''
+    RPT.PARAM.ERR = ''
+    RPT.PARAM.ID = 'VERSION.DIV.EXC'
+    CALL CACHE.READ(FN.REDO.H.REPORTS.PARAM,RPT.PARAM.ID,R.REDO.H.REPORTS.PARAM,RPT.PARAM.ERR)
+    IF  R.REDO.H.REPORTS.PARAM THEN
+        Y.FIELD.NME.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.NAME>
+        Y.FIELD.VAL.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.VALUE>
+
+        Y.FIELD.NME.ARR = CHANGE(Y.FIELD.NME.ARR,@VM,@FM) ;*R22 MANUAL CONVERSION START
+        Y.FIELD.NME.ARR = CHANGE(Y.FIELD.NME.ARR,@SM,@FM)
+        Y.FIELD.VAL.ARR = CHANGE(Y.FIELD.VAL.ARR,@VM,@FM)
+        Y.FIELD.VAL.ARR = CHANGE(Y.FIELD.VAL.ARR,@SM,@FM) ;*R22 MANUAL CONVERSION END
+        Y.VERSION.DIV = TXN.VERSION
+        LOCATE Y.VERSION.DIV IN Y.FIELD.VAL.ARR<1> SETTING RPT.VER.POS THEN
+            AML.LMT.OVR = "N"
+            RETURN
+        END ELSE
+            AML.LMT.OVR = "Y"
+            TEXT = 'FXSN.TXN.AMT.EXCEED.AML'
+            CALL STORE.OVERRIDE(AML.CURR.NO+1)
+        END
+
+    END
+
+
+RETURN
+
+
+END

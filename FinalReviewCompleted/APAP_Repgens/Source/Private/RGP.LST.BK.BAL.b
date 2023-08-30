@@ -1,40 +1,15 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoyMDE1NjQ2NTEwOkNwMTI1MjoxNjg4NTM2ODkxMjUyOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoyMDE1NjQ2NTEwOkNwMTI1MjoxNjg2ODI0ODQ5MTk2OmhhaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Jun 2023 15:57:29
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : hai
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-=======
-* @ValidationInfo : Strict flag       : N/A
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Strict flag       : N/A
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
 $PACKAGE APAP.Repgens
 SUBROUTINE RGP.LST.BK.BAL
 *----------------------------------------------------------------------------

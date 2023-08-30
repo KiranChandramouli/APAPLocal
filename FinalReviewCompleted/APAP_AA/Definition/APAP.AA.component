@@ -184,15 +184,7 @@ public method redoFcClPaymentAa (
 public method redoFcEnqAaProduct (
     INOUT enqData string
 )
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 { 
-=======
-{
->>>>>>> Stashed changes
-=======
-{
->>>>>>> Stashed changes
     jBC: REDO.FC.ENQ.AA.PRODUCT
 }
 
@@ -2992,8 +2984,6 @@ public method redoSFcDefPartDisb (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 public method redoVInpVerifyStaff (
 )
 {
@@ -3008,7 +2998,6 @@ public method redoNvAaAmlCheck (
     jBC: REDO.NV.AA.AML.CHECK
 }
 
-
 public method redoAaUpdateOverdueStatus (
     INOUT yId string
 )
@@ -3016,15 +3005,14 @@ public method redoAaUpdateOverdueStatus (
     jBC: REDO.AA.UPDATE.OVERDUE.STATUS
 }
 
-
-
 public method redoFcClRegisterAa (
 )
 {
    jBC: REDO.FC.CL.REGISTER.AA
 }
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
+public method redoFcSRevAa (
+)
+{
+    jBC: REDO.FC.S.REV.AA
+}

@@ -1,35 +1,14 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTExOTM4Mzg5MDpDcDEyNTI6MTY5MDI2NTIxMTU5NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:36:51
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTA2OTcxODIzNzpDcDEyNTI6MTY4NTk0OTY4MDA0MjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Jun 2023 12:51:20
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.NOF.LOAN.EXP.DATE(LN.ARRAY)
@@ -74,14 +53,8 @@ SUBROUTINE REDO.E.NOF.LOAN.EXP.DATE(LN.ARRAY)
     $INSERT I_F.ACCT.ACTIVITY
     $INSERT I_F.AA.ACTIVITY.HISTORY
     $INSERT I_F.AA.INTEREST
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.AA
     $USING APAP.TAM
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 
     GOSUB OPENFILES
@@ -248,18 +221,8 @@ ASSIGN.PROCESS:
     LOCATE Y.LOAN.OVERALL.STATUS IN Y.LOAN.OVER.STATUS SETTING L.POS1 ELSE
         Y.LOAN.OVERALL.STATUS.FLAG='1'
     END
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     APAP.REDOENQ.redoENofArrangmentProcess(Y.AA.ID,Y.PAYMENT.AGENCY,Y.DISBURSED.AMOUNT)  ;*R22 MANUAL CONVERSION
     APAP.REDOENQ.redoENofBillDetails(Y.AA.ID,Y.TOTAL.BALANCE.DUE,Y.COMMISSION.CHARGE.BALANCE)  ;*R22 MANUAL CONVERSION
-=======
-     APAP.REDOENQ.redoENofArrangmentProcess(Y.AA.ID,Y.PAYMENT.AGENCY,Y.DISBURSED.AMOUNT)  ;*R22 MANUAL CONVERSION
-     APAP.REDOENQ.redoENofBillDetails(Y.AA.ID,Y.TOTAL.BALANCE.DUE,Y.COMMISSION.CHARGE.BALANCE)  ;*R22 MANUAL CONVERSION
->>>>>>> Stashed changes
-=======
-     APAP.REDOENQ.redoENofArrangmentProcess(Y.AA.ID,Y.PAYMENT.AGENCY,Y.DISBURSED.AMOUNT)  ;*R22 MANUAL CONVERSION
-     APAP.REDOENQ.redoENofBillDetails(Y.AA.ID,Y.TOTAL.BALANCE.DUE,Y.COMMISSION.CHARGE.BALANCE)  ;*R22 MANUAL CONVERSION
->>>>>>> Stashed changes
     GOSUB CUSTOMER.CLASS
     GOSUB GET.AA.COLLATERALS    ;* PACS00312713 - S/E
     GOSUB ACCOUNT.CLASS
@@ -543,16 +506,8 @@ GET.AA.COLLATERALS:
 *-----------------------------------------------------------------------------
     COL.ID.LINKED      = ''             ; Y.COL.IDS        = ''
     Y.GUARANTEE.NUMBER = 'Sin Garantia' ; Y.GUARANTEE.TYPE = 'Sin Garantia'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.COL.AA.GET.LINKS.COL(Y.AA.ID,COL.ID.LINKED)
     APAP.AA.redoColAaGetLinksCol(Y.AA.ID,COL.ID.LINKED) ;*R22 Manual Code Converison
-=======
-    CALL REDO.COL.AA.GET.LINKS.COL(Y.AA.ID,COL.ID.LINKED)
->>>>>>> Stashed changes
-=======
-    CALL REDO.COL.AA.GET.LINKS.COL(Y.AA.ID,COL.ID.LINKED)
->>>>>>> Stashed changes
     IF COL.ID.LINKED NE "ERROR" THEN
         MMARK        = CHARX(251)
         Y.COL.IDS    = CHANGE(COL.ID.LINKED, MMARK , @VM )
@@ -606,16 +561,8 @@ GET.RATEINT.ARRCOND:
 
     Y.ARRG.ID = Y.AA.ID
     PROP.NAME = 'PRINCIPAL'     ;* Interest Property to obtain
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.INTEREST.PROPERTY(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR)
     APAP.TAM.redoGetInterestProperty(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR) ;*R22 Manual Code Converison
-=======
-    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.INTEREST.PROPERTY(Y.ARRG.ID,PROP.NAME,OUT.PROP,ERR)
->>>>>>> Stashed changes
     Y.PRIN.PROP = OUT.PROP      ;* This variable hold the value of principal interest property
 
     PROPERTY.CLASS = 'INTEREST'
@@ -624,16 +571,8 @@ GET.RATEINT.ARRCOND:
     ERR.MSG = ''
     R.INT.ARR.COND = ''
     Y.FIXED.RATE.ARR = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG) ;*R22 Manual Code Converison
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.INT.ARR.COND,ERR.MSG)
->>>>>>> Stashed changes
     IF R.INT.ARR.COND NE '' THEN
         Y.FIXED.RATE.ARR = R.INT.ARR.COND<AA.INT.FIXED.RATE>
     END

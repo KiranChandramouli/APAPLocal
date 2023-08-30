@@ -1,35 +1,14 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxMzQ2OTc0MTM0OkNwMTI1MjoxNjkwMjY1MjA5NDI3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:36:49
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTUxNzE2NjcxMTpDcDEyNTI6MTY4NjY3NTU3MzExMjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:29:33
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Compiler Version  : R21_AMR.0
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.GET.STMT.PERIOD(Y.FINAL.ARRAY)
@@ -59,13 +38,7 @@ SUBROUTINE REDO.E.GET.STMT.PERIOD(Y.FINAL.ARRAY)
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.CUSTOMER
     $INSERT I_System
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOVER
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     GOSUB INITIALISE
 *    GOSUB PROCESS
@@ -149,16 +122,8 @@ INITIALISE:
     WHILE Y.MTH.CNT LE Y.MTH
         Y.ARRAY='BE_K_TC.BE_P_CON_ESTCUENTATC_A'
         D.RANGE.AND.VALUE<Y.MON.POS>=D.RANGE.AND.VALUE<Y.MON.POS> + 1
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
         APAP.REDOVER.redoVWrapSunnel(Y.ARRAY) ;*R22 Manual Code Converison
-=======
-        CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
->>>>>>> Stashed changes
-=======
-        CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
->>>>>>> Stashed changes
         GOSUB PROCESS
         Y.MTH.CNT += 1
     REPEAT
@@ -171,16 +136,8 @@ INITIALISE:
     WHILE Y.MTH.CNT LE Y.MTH
         Y.ARRAY='BE_K_TC.BE_P_CON_ESTCUENTATC_A'
         D.RANGE.AND.VALUE<Y.MON.POS>=D.RANGE.AND.VALUE<Y.MON.POS> + 1
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
         APAP.REDOVER.redoVWrapSunnel(Y.ARRAY)   ;*R22 Manual Code Converison
-=======
-        CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
->>>>>>> Stashed changes
-=======
-        CALL REDO.V.WRAP.SUNNEL(Y.ARRAY)
->>>>>>> Stashed changes
         GOSUB PROCESS
 *    CARD.NO= System.getVariable('CURRENT.CARD.ID')
         Y.MTH.CNT += 1

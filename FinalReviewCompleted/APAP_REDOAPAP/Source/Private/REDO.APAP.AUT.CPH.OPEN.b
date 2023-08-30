@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoxMjI3ODk5NzM1OkNwMTI1MjoxNjkwMjY0MjU3MjA5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:20:57
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxODg1NTM3NjU5OkNwMTI1MjoxNjg0ODM2MDMzMDE2OklUU1M6LTE6LTE6NTAyOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:33
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 502
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.AUT.CPH.OPEN
@@ -65,13 +45,7 @@ SUBROUTINE REDO.APAP.AUT.CPH.OPEN
     $INSERT I_F.USER
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.REDO.APAP.CPH.DETAIL
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 *--------------------------------------------------------------------------------
 **********
@@ -179,16 +153,8 @@ GET.CONDITIONS:
     PROPERTY=''
     R.REC = ''
     ERR.MSG = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG)
->>>>>>> Stashed changes
 RETURN
 
 

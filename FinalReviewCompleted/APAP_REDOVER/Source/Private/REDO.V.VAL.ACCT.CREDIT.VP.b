@@ -204,15 +204,7 @@ INVOKE.VP.WS.CB:
     WS.DATA<3> = Y.CHANNEL
 
 * Invoke VisionPlus Web Service
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
-=======
-*CALL APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
->>>>>>> Stashed changes
-=======
-*CALL APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
->>>>>>> Stashed changes
     APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)   ;*R22 MANAUAL CODE CONVERSION
 
 * Credit Card exits - Info obtained OK

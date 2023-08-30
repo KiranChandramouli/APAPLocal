@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk1NDQ0NTMzMDpDcDEyNTI6MTY4NDg0MjE1MjcxODpJVFNTOi0xOi0xOjE3NDM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:32
+* @ValidationCode : Mjo1Nzg5MDQwNjY6Q3AxMjUyOjE2OTE5OTYwMjgxNzY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 14 Aug 2023 12:23:48
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1743
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VP.B.MON.FILE.GEN
@@ -39,8 +39,8 @@ SUBROUTINE REDO.VP.B.MON.FILE.GEN
     $INSERT I_F.REDO.VISION.PLUS.TXN.HDR
     $INSERT I_F.REDO.VISION.PLUS.TXN.DET
 
-    $INSERT I_RAPID.APP.DEV.COMMON
-    $INSERT I_RAPID.APP.DEV.EQUATE
+*  $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual Code Conersion
+*  $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 Manual Code Conersion
     $USING APAP.REDOSRTN
     
 * </region>

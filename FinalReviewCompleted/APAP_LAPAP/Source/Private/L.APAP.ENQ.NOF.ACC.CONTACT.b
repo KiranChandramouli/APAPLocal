@@ -1,27 +1,26 @@
-* @ValidationCode : MjotMTY4NjM4ODA2OkNwMTI1MjoxNjkwMTY3NTMwMzI3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Jul 2023 08:28:50
+* @ValidationCode : MjotNTY3MTc1NDg4OkNwMTI1MjoxNjkxNzM2MTA4Mzc3OklUU1M6LTE6LTE6MzEwMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 Aug 2023 12:11:48
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 3103
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-* @(#) L.APAP.ENQ.NOF.ACC.CONTACT Ported to jBASE 16:16:58  28 NOV 2017
 *-----------------------------------------------------------------------------
-SUBROUTINE L.APAP.ENQ.NOF.ACC.CONTACT(Y.FINAL)
+* @(#) L.APAP.ENQ.NOF.ACC.CONTACT Ported to jBASE 16:16:58  28 NOV 2017
+* <Rating>1091</Rating>
 *-----------------------------------------------------------------------------
 *MODIFICATION HISTORY:
-*
-* DATE              WHO                REFERENCE                 DESCRIPTION
-* 13-07-2023     Conversion tool    R22 Auto conversion       BP Removed, F.READ to CACHE.READ, J to J.VAR, ++ to +=, < to LT, CONVERT to CHANGE
-* 13-07-2023     Harishvikram C   Manual R22 conversion       No changes
-*-----------------------------------------------------------------------------
-    $INSERT I_COMMON                              ;*R22 Auto conversion - Start
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED, FM TO @FM
+*----------------------------------------------------------------------------------------
+SUBROUTINE L.APAP.ENQ.NOF.ACC.CONTACT(Y.FINAL)
+    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
     $INSERT I_EQUATE
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.CUSTOMER
@@ -29,7 +28,7 @@ SUBROUTINE L.APAP.ENQ.NOF.ACC.CONTACT(Y.FINAL)
     $INSERT I_F.CATEGORY
     $INSERT I_F.AZ.ACCOUNT
     $INSERT I_F.REDO.CUST.PRD.LIST
-    $INSERT I_F.APAP.PARAM.DB.CR.MASK              ;*R22 Auto conversion - End
+    $INSERT I_F.APAP.PARAM.DB.CR.MASK ;*R22 MANUAL CONVERSION END
 
 **----------------------------------------
 **ABRIR LA TABLA FBNK.REDO.CUST.PRD.LIST
@@ -152,14 +151,14 @@ SUBROUTINE L.APAP.ENQ.NOF.ACC.CONTACT(Y.FINAL)
         GOSUB GET_CATEGORY_D
         GOSUB GET_JOINT_JOLDER_D
         GOSUB GET_INFO_CERTIFICADO
-  
+
         Y.ARRANGEMENT.ID = R.ACC<AC.ARRANGEMENT.ID>
 
         Y.ALT.ACCT.ID  = R.ACC<AC.ALT.ACCT.ID,1>
 
         Y.CARD.NUM = R.ACC<AC.ALT.ACCT.ID,2>
 
-        IF LEN(Y.ALT.ACCT.ID) LT 5 THEN
+        IF LEN(Y.ALT.ACCT.ID) < 5 THEN
 
             Y.ALT.ACCT.ID = Y.CTA.ACTUAL
 
@@ -200,6 +199,97 @@ SUBROUTINE L.APAP.ENQ.NOF.ACC.CONTACT(Y.FINAL)
         GOSUB SET_FINAL
         GOSUB ADD_ALL_ACCT
     NEXT P
+
+    IF Y.CAN.CUS.PRD EQ 0 THEN
+*DEBUG
+        ACC.CMD = "SELECT FBNK.ACCOUNT WITH CUSTOMER EQ " : F.ID
+*        CRT ACC.CMD
+        CALL EB.READLIST(ACC.CMD,ACC.LIST,"",ACC.NO.RECS,ACC.SEL.ERROR)
+
+        LOOP REMOVE Y.ACC.ID FROM ACC.LIST SETTING ACC.POS
+
+        WHILE Y.ACC.ID:ACC.POS DO
+            T.CONTINUE.FLAG  = "NO"
+*           CRT Y.ACC.ID
+
+            CALL F.READ(FN.ACC,Y.ACC.ID,R.ACC, FV.ACC, ACC.ERR)
+*DEBUG
+            Y.RECORD.STATUS  = R.ACC<AC.RECORD.STATUS>
+            Y.CTA.ACTUAL = Y.ACC.ID
+            Y.ACCOUNT.NUMBER  = Y.CTA.ACTUAL
+            Y.CUSTOMER    = R.ACC<AC.CUSTOMER>
+            Y.ONLINE.ACTUAL.BAL = R.ACC<AC.ONLINE.ACTUAL.BAL>
+            Y.DATE.LAST.CR.CUST = R.ACC<AC.DATE.LAST.CR.CUST>
+            Y.DATE.LAST.DR.CUST = R.ACC<AC.DATE.LAST.DR.CUST>
+            Y.AMNT.LAST.CR.CUST = R.ACC<AC.AMNT.LAST.CR.CUST>
+            Y.AMNT.LAST.DR.CUST = R.ACC<AC.AMNT.LAST.DR.CUST>
+            Y.RELATION.CODE  = R.ACC<AC.RELATION.CODE>
+            Y.CATEGORY   = R.ACC<AC.CATEGORY>
+            Y.JOINT.HOLDER  = R.ACC<AC.JOINT.HOLDER>
+
+*---------------------------------------------------------------------------------------------------------------------------
+*Omitir cuentas de prestamos cancelados.
+*Excluir las cuentas entre las categorias 3000 a 3999 que en el registro de ACCOUNT tengan el ONLINE.ACTUA.BAL con valor 0
+*---------------------------------------------------------------------------------------------------------------------------
+            IF (Y.CATEGORY GE 3000 AND Y.CATEGORY LE 3999) AND Y.ONLINE.ACTUAL.BAL EQ 0 THEN
+                CONTINUE
+            END
+
+            GOSUB GET_CATEGORY_D
+            GOSUB GET_JOINT_JOLDER_D
+            GOSUB GET_INFO_CERTIFICADO
+
+            Y.ARRANGEMENT.ID = R.ACC<AC.ARRANGEMENT.ID>
+
+            Y.ALT.ACCT.ID  = R.ACC<AC.ALT.ACCT.ID,1>
+
+            Y.CARD.NUM = R.ACC<AC.ALT.ACCT.ID,2>
+
+            IF LEN(Y.ALT.ACCT.ID) < 5 THEN
+
+                Y.ALT.ACCT.ID = Y.CTA.ACTUAL
+
+            END
+
+
+            IF LEN(Y.CARD.NUM) GE 16 THEN
+
+                GOSUB MASK.CARD.NUM
+
+                Y.ALT.ACCT.ID  = Y.ALT.ACCT.ID: @VM : Y.MASK.CARD.NUM
+
+                Y.MASK.CARD.NUM = ''
+
+            END
+
+            Y.CARD.NUM = R.ACC<AC.ALT.ACCT.ID,3>
+
+            IF LEN(Y.CARD.NUM) GE 16 THEN
+
+                GOSUB MASK.CARD.NUM
+
+                Y.ALT.ACCT.ID  = Y.ALT.ACCT.ID: @VM : Y.MASK.CARD.NUM
+
+                Y.MASK.CARD.NUM = ''
+
+            END
+
+
+            CALL GET.LOC.REF("ACCOUNT", "L.AC.REINVESTED",ACC.POS)
+
+            Y.L.AC.REINVESTED = R.ACC<AC.LOCAL.REF,ACC.POS>
+
+            IF Y.CUSTOMER EQ '' THEN
+                GOSUB GET_HIST
+            END
+*DEBUG
+            GOSUB SET_FINAL
+            GOSUB ADD_ALL_ACCT
+
+        REPEAT
+
+    END
+
 
     GOSUB GET_JOINT_CONTRACTS
 
@@ -247,7 +337,7 @@ GET_JOINT_CONTRACTS:
     Y.CUS.PRD = R.JOINT.CONTRACTS.XREF
 
     Y.CAN.CUS.PRD = DCOUNT(Y.CUS.PRD,@FM)
-    FOR J.VAR = 1 TO Y.CAN.CUS.PRD STEP 1
+    FOR J = 1 TO Y.CAN.CUS.PRD STEP 1
         FINDSTR Y.CTA.ACTUAL IN Y.ALL.ACCOUNTS SETTING Ap, Vp THEN
 **No hago nada
             T.CONTINUE.FLAG  = "SI"
@@ -255,7 +345,7 @@ GET_JOINT_CONTRACTS:
         END ELSE
 
             T.CONTINUE.FLAG  = "NO"
-            Y.CTA.ACTUAL   = R.JOINT.CONTRACTS.XREF<J.VAR>
+            Y.CTA.ACTUAL   = R.JOINT.CONTRACTS.XREF<J>
 
             CALL F.READ(FN.ACC,Y.CTA.ACTUAL,R.ACC, FV.ACC, ACC.ERR)
             Y.RECORD.STATUS  = R.ACC<AC.RECORD.STATUS>
@@ -320,12 +410,12 @@ GET_JOINT_CONTRACTS:
             GOSUB ADD_ALL_ACCT
         END
 
-    NEXT J.VAR
+    NEXT J
 RETURN
 
 GET_CATEGORY_D:
     Y.CATEGORY.DESC = ""
-    CALL CACHE.READ(FN.CAT, Y.CATEGORY, R.CAT, CAT.ERR)      ;*R22 Auto conversion
+    CALL F.READ(FN.CAT,Y.CATEGORY,R.CAT, FV.CAT, CAT.ERR)
     Y.CATEGORY.DESC  = R.CAT<EB.CAT.DESCRIPTION>
 RETURN
 
@@ -373,7 +463,7 @@ MASK.CARD.NUM:
     CALL F.READ(FN.APAP.PARAM.DB.CR.MASK,"L.APAP.TD.PEND.LIQ",R.MASK.PARAM,F.APAP.PARAM.DB.CR.MASK,ERR.MASK.PARAM)
     IF R.MASK.PARAM THEN
         Y.PARAM.DIGIT = R.MASK.PARAM<APAP.MASK.MASKING.DIGITS>
-        CHANGE " " TO @FM IN Y.PARAM.DIGIT        ;*R22 Auto conversion
+        CONVERT " " TO @FM IN Y.PARAM.DIGIT ;*R22 MANUAL CONVERSION
         LOOP
         WHILE Y.INT LE Y.LEN.CARD
             Y.QUO = Y.INT/4
@@ -391,7 +481,7 @@ MASK.CARD.NUM:
                     Y.MASK.CARD.NUM := Y.CARD.NUM[Y.INT,1]:"-"
                 END
             END
-            Y.INT += 1
+            Y.INT++
         REPEAT
     END
 

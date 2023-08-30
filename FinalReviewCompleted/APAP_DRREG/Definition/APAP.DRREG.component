@@ -7,15 +7,7 @@ metamodelVersion 1.6
 public method drGetFreqCode (
     INOUT freqCode string,
     INOUT nFreqCode string
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 ) 
-=======
-)
->>>>>>> Stashed changes
-=======
-)
->>>>>>> Stashed changes
 {
     jBC: DR.GET.FREQ.CODE
 } 
@@ -1458,8 +1450,6 @@ public method drRegRegn16AcOpenRate (
 {
     jBC: DR.REG.REGN16.AC.OPEN.RATE
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
 
 public method drRegRien8ExtractSelect (
@@ -1468,7 +1458,3 @@ public method drRegRien8ExtractSelect (
     jBC: DR.REG.RIEN8.EXTRACT.SELECT
 }
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

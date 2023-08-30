@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMjkwMDc2NTk0OkNwMTI1MjoxNjkwMjY0MjYxMjQyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:01
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotNzExOTI5NTYxOkNwMTI1MjoxNjg0ODM2MDM5MzcyOklUU1M6LTE6LTE6MTk4NzoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:39
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1987
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.E.NOF.PAYMENT.DYNAMIC.RPT(Y.OUT.ARRAY)
@@ -67,14 +47,8 @@ SUBROUTINE REDO.APAP.E.NOF.PAYMENT.DYNAMIC.RPT(Y.OUT.ARRAY)
     $INSERT I_F.AA.CUSTOMER
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.AA.PAYMENT.SCHEDULE
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
     $USING APAP.REDOENQ
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 *--------------------------------------------------------------------------------------------------------
 
     GOSUB OPEN.FILES
@@ -202,16 +176,8 @@ PRIMARY.SELECTION:
     D.LOGICAL.OPERANDS<-1>     = 1
     D.FIELDS<-1>               = 'PRODUCT.LINE'
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.E.FORM.SEL.STMT(FN.AA.ARRANGEMENT, '', '', SEL.AA.PRIM.CMD)
     APAP.REDOENQ.redoEFormSelStmt(FN.AA.ARRANGEMENT, '', '', SEL.AA.PRIM.CMD);*R22 Manual Code Conversion
-=======
-    CALL REDO.E.FORM.SEL.STMT(FN.AA.ARRANGEMENT, '', '', SEL.AA.PRIM.CMD)
->>>>>>> Stashed changes
-=======
-    CALL REDO.E.FORM.SEL.STMT(FN.AA.ARRANGEMENT, '', '', SEL.AA.PRIM.CMD)
->>>>>>> Stashed changes
     CALL EB.READLIST(SEL.AA.PRIM.CMD,AA.PRIM.IDS,'',NO.OF.REC,SEL.ERR)
 
     GOSUB CHECK.DIRECT.DEBIT    ;* This report should select only the loans with has direct debit payment mode.
@@ -229,16 +195,8 @@ CHECK.DIRECT.DEBIT:
     WHILE Y.DD.VAR LE Y.DD.CNT
         Y.AA.ID = Y.DD.AA.PRIM.IDS<Y.DD.VAR>
         R.PAYSCH.CONDITION = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *        CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,"","PAYMENT.SCHEDULE","",R.PAYSCH.CONDITION,"")
         APAP.TAM.redoCrrGetConditions(Y.AA.ID,"","PAYMENT.SCHEDULE","",R.PAYSCH.CONDITION,"") ;*R22 Manual Code Conversion
-=======
-        CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,"","PAYMENT.SCHEDULE","",R.PAYSCH.CONDITION,"")
->>>>>>> Stashed changes
-=======
-        CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,"","PAYMENT.SCHEDULE","",R.PAYSCH.CONDITION,"")
->>>>>>> Stashed changes
         Y.PAY.METHOD = R.PAYSCH.CONDITION<AA.PS.LOCAL.REF,POS.L.AA.PAY.METHD>
         IF Y.PAY.METHOD EQ 'Direct Debit' THEN
             AA.PRIM.IDS<-1> = Y.AA.ID
@@ -527,16 +485,8 @@ GET.CUSTOMER.CONDITION:
     PROPERTY        = ''
     R.CONDITION.CUS = ''
     ERR.MSG = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.CUS,ERR.MSG)
->>>>>>> Stashed changes
     Y.CUS.AFF.COMP  = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.AFF.COM>
     Y.CUS.CAMP.TYPE = R.CONDITION.CUS<AA.CUS.LOCAL.REF,POS.L.AA.CAMP.TY>
 RETURN
@@ -575,16 +525,8 @@ CHECK.AGING.STATUS:
         Y.AA.ID = Y.CUS.AA.IDS<Y.AGE.VAR>
         IN.ACC.ID  = ''
         Y.LOAN.ACC = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *      CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
         APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT) ;*R22 AUTO CODE CONVERSION
-=======
-        CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
->>>>>>> Stashed changes
-=======
-        CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
->>>>>>> Stashed changes
         CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         IF R.ACCOUNT<AC.LOCAL.REF,POS.L.OD.STATUS> EQ Y.AGING.STATUS.VALUE THEN
             Y.AGE.AA.IDS<-1> = Y.AA.ID
@@ -619,16 +561,8 @@ CHECK.LOAN.AGING.STATUS:
         Y.AA.ID = Y.CUS.AA.IDS<Y.AGE.VAR>
         IN.ACC.ID  = ''
         Y.LOAN.ACC = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
         APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT) ;*R22 AUTO CODE CONVERSION
-=======
-        CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
->>>>>>> Stashed changes
-=======
-        CALL REDO.CONVERT.ACCOUNT(IN.ACC.ID,Y.AA.ID,Y.LOAN.ACC,ERR.TEXT)
->>>>>>> Stashed changes
         CALL F.READ(FN.ACCOUNT,Y.LOAN.ACC,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
         GOSUB GET.OVERDUE.COND
         IF R.ACCOUNT<AC.LOCAL.REF,POS.L.OD.STATUS> EQ Y.AGING.STATUS.VALUE AND Y.AA.LOAN.STATUS EQ Y.LOAN.STATUS.VALUE THEN
@@ -646,16 +580,8 @@ GET.OVERDUE.COND:
     PROPERTY        = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
     APAP.TAM.redoCrrGetConditions(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
->>>>>>> Stashed changes
     Y.AA.LOAN.STATUS = R.CONDITION.OVERDUE<AA.OD.LOCAL.REF,POS.L.LOAN.STATUS.1,1>
 
 RETURN

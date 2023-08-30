@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTY4NDY3NjE5NDpDcDEyNTI6MTY5MDE3NDM5NDYwMTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 24 Jul 2023 10:23:14
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMzA2MDMwMDY2OkNwMTI1MjoxNjg1MTA2MDg0MDk1OklUU1M6LTE6LTE6NTEzMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 18:31:24
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 5133
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.FT.PROCESS.POST
@@ -582,18 +562,8 @@ BAL.SET.INTNOMINA:
     R.PARAM<12> = "NOMINASET"
     R.PARAM<13> = RET.TXN.CODE
     IF W.TOT.FT.ERR GT 0 THEN
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *      CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
         APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
-=======
-        CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
->>>>>>> Stashed changes
-=======
-        CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
->>>>>>> Stashed changes
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.RET.FT.REF> = OUT.RESP
         Y.COMMISSION.AMT = W.TOT.FT.ERR * (Y.PAY.COM.PERCENT/100)
         CALL EB.ROUND.AMOUNT("DOP",Y.COMMISSION.AMT,"","")
@@ -601,18 +571,8 @@ BAL.SET.INTNOMINA:
             R.PARAM<6> = Y.PAY.CATEG.ACCOUNT
             R.PARAM<7> = Y.COMMISSION.AMT
             R.PARAM<13> = RET.TAX.CODE
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *         CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
             APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
-=======
-            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
->>>>>>> Stashed changes
-=======
-            CALL REDO.FI.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
-*APAP.TAM.redoFiDebitProces(R.PARAM, OUT.RESP, OUT.ERR) ;*R22 Manual Conversion
->>>>>>> Stashed changes
             FI.W.REDO.FI.CONTROL<REDO.FI.CON.RET.TAX.FT.REF> = OUT.RESP
 
         END

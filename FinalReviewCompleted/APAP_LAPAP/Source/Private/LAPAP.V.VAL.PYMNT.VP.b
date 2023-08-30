@@ -1,18 +1,6 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotNzc1NTM1MzgyOlVURi04OjE2ODkxNDMzNzU4NDE6SVRTUzotMTotMTo1MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 12 Jul 2023 11:59:35
 * @ValidationInfo : Encoding          : UTF-8
-=======
-* @ValidationCode : MjotMTgwODIwMDg3MjpDcDEyNTI6MTY4NDIyMjgxODUxNzpJVFNTOi0xOi0xOjUyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:18
-* @ValidationInfo : Encoding          : Cp1252
->>>>>>> Stashed changes
-=======
-* @ValidationCode : MjotMTgwODIwMDg3MjpDcDEyNTI6MTY4NDIyMjgxODUxNzpJVFNTOi0xOi0xOjUyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:18
-* @ValidationInfo : Encoding          : Cp1252
->>>>>>> Stashed changes
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
@@ -78,26 +66,14 @@ INIT:
         Y.LET = 'T'
         Y.OVERRIDE.LOCAL.REF = TT.TE.OVERRIDE
         MONTO.TRANSACCION = R.NEW(TT.TE.AMOUNT.LOCAL.1)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         MONEDA = R.NEW(TT.TE.CURRENCY.2)
         
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     END
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
         Y.LET = 'F'
         Y.OVERRIDE.LOCAL.REF = FT.OVERRIDE
         MONTO.TRANSACCION = R.NEW(FT.CREDIT.AMOUNT)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         MONEDA = R.NEW(FT.CREDIT.CURRENCY)
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     END
 
     ALLOW.OFFLINE = ''
@@ -144,16 +120,8 @@ PROCESS:
             CASE TXN.VERSION MATCHES '...CASHIN...' OR TXN.VERSION MATCHES '...TFR...'
                 GOSUB GET.CARD.INFO
                 ALLOW.OFFLINE = 1
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
                 IF IS.MLV.ACCOUNT EQ "true" AND MONEDA EQ "DOP"  THEN
-=======
-                IF IS.MLV.ACCOUNT EQ "true" THEN
->>>>>>> Stashed changes
-=======
-                IF IS.MLV.ACCOUNT EQ "true" THEN
->>>>>>> Stashed changes
                     IF (MONTO.TRANSACCION LT BALANCE.MINIMO.MLV) THEN
                         GOSUB PAYMENT
                     END
@@ -175,16 +143,8 @@ PROCESS:
         GOSUB GET.CARD.INFO
         ALLOW.OFFLINE = 1
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
         IF IS.MLV.ACCOUNT EQ "true" AND MONEDA EQ "DOP"  THEN
-=======
-        IF IS.MLV.ACCOUNT EQ "true" THEN
->>>>>>> Stashed changes
-=======
-        IF IS.MLV.ACCOUNT EQ "true" THEN
->>>>>>> Stashed changes
             IF (MONTO.TRANSACCION LT BALANCE.MINIMO.MLV) THEN
                 GOSUB PAYMENT
             END

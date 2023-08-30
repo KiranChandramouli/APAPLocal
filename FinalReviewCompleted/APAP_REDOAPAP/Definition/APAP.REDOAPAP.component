@@ -17,14 +17,6 @@ public method redoApapNofCashWindowDepOthInc (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method apapHGarnishDetailsValidate (
 )
 {
@@ -4211,15 +4203,7 @@ public method redoApapOutstandingLoanDetails (
 public method redoApapVAutMmCusProvUpd (
 )
 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
-=======
-   jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
->>>>>>> Stashed changes
-=======
-   jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
->>>>>>> Stashed changes
 }
 
 public method redoApplAudit (
@@ -4227,8 +4211,6 @@ public method redoApplAudit (
 {
     jBC: REDO.APPL.AUDIT
 }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
 public method redoApapAchMirrorAcctEnt (
     INOUT primaryAccount string,
@@ -4439,8 +4421,10 @@ public method redoApapValTxnCode (
     jBC: REDO.APAP.VAL.TXN.CODE
 }
 
+public method redoBCrfNwglSelect (
+)
+{
+    jBC: REDO.B.CRF.NWGL.SELECT
+}
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+

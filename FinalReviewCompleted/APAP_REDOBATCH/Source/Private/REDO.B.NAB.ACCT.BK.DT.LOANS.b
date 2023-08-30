@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotMTA1MzcyNzQ5OTpDcDEyNTI6MTY5MDI2NDQxNzc4MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:37
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjoxODMyNzc4MDAzOkNwMTI1MjoxNjg0ODU0MzkzMzg2OklUU1M6LTE6LTE6MTMzOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:33
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1339
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.NAB.ACCT.BK.DT.LOANS(ARR.ID)
@@ -42,18 +22,8 @@ SUBROUTINE REDO.B.NAB.ACCT.BK.DT.LOANS(ARR.ID)
 *--------------------------------------------------------
 * Date           Name        Dev Ref.                           Comments
 * 16 Oct 2012   H Ganesh     NAB Accounting - PACS00202156     Initial Draft
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM
-=======
-* Date                   who                   Reference              
-* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM 
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
-* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM 
->>>>>>> Stashed changes
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------
 
@@ -69,13 +39,7 @@ SUBROUTINE REDO.B.NAB.ACCT.BK.DT.LOANS(ARR.ID)
 *Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES
 * Tus End
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
     GOSUB PROCESS
 RETURN
@@ -264,16 +228,8 @@ BEFORE.RAISE.ENTRIES:
     IF Y.INTERNAL.ACC THEN
 
         Y.LOAN.CO.CODE = R.ACCOUNT<AC.CO.CODE>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *       CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
         APAP.TAM.redoNabCreateIntAcc(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC) ;*R22 Manual Code Converison
-=======
-        CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
->>>>>>> Stashed changes
-=======
-        CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
->>>>>>> Stashed changes
         Y.INTERNAL.ACC = Y.RET.INT.ACC
         CALL F.READ(FN.ACCOUNT,Y.INTERNAL.ACC,R.INT.ACC,F.ACCOUNT,ACC.ERR)
         IF R.INT.ACC ELSE

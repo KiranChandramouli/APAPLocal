@@ -80,15 +80,7 @@ PROCESS:
     Y.ARR.ID  = c_aalocArrId
     IN.ACC.ID = ''
     OUT.ID = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
-=======
-    CALL  APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
->>>>>>> Stashed changes
-=======
-    CALL  APAP.TAM.redoConvertAccount(IN.ACC.ID,Y.ARR.ID,OUT.ID,ERR.TEXT);* R22 Manual conversion
->>>>>>> Stashed changes
 
     Y.LOAN.ACC.NO = OUT.ID
 

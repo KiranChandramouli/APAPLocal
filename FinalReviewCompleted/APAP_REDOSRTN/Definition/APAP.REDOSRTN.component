@@ -15,14 +15,6 @@ public method redoSAccountParam (
 }
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 public method redoSAmtCredit (
     INOUT yAmtCredit string
 )
@@ -1320,8 +1312,6 @@ public method redoSByMthIncAvgBal (
 
 
 public method redoSGetUsrErrMsg (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     INOUT pErrCode string,
     INOUT pUsrMsg string
 )
@@ -1432,8 +1422,6 @@ public method redoSGetTfsTotAmt (
     jBC: REDO.S.GET.TFS.TOT.AMT
 }
 
-
-
 public method redoSRecAcctList (
     INOUT yAcctId string,
     INOUT yFinArray string
@@ -1442,17 +1430,35 @@ public method redoSRecAcctList (
     jBC: REDO.S.REC.ACCT.LIST
 }
 
-=======
-=======
->>>>>>> Stashed changes
-   INOUT pErrCode string,
-   INOUT pUsrMsg string
+public method redoSFcLimiteGfuncemp (
+    INOUT custId string,
+    INOUT custOut string
 )
 {
-   jBC: REDO.S.GET.USR.ERR.MSG
-<<<<<<< Updated upstream
+    jBC: REDO.S.FC.LIMITE.GFUNCEMP
 }
->>>>>>> Stashed changes
-=======
+
+public method redoSFcLimiteGrgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRGAR
 }
->>>>>>> Stashed changes
+
+public method redoSFcLimiteGrsgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRSGAR
+}
+
+public method redoSFcLimiteIfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.IFUNCEMP
+}
+

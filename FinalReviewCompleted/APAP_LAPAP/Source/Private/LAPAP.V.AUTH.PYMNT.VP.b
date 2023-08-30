@@ -1,28 +1,10 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoyOTIxODQ5OTpVVEYtODoxNjg5MTQzMzc1NjUxOklUU1M6LTE6LTE6NzE2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 12 Jul 2023 11:59:35
-=======
-* @ValidationCode : MjotMTQ4MzMwODU3NzpVVEYtODoxNjg0MjIyODE2NTMwOklUU1M6LTE6LTE6NTIyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:16
->>>>>>> Stashed changes
-=======
-* @ValidationCode : MjotMTQ4MzMwODU3NzpVVEYtODoxNjg0MjIyODE2NTMwOklUU1M6LTE6LTE6NTIyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:16
->>>>>>> Stashed changes
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationInfo : Rating            : 716
-=======
-* @ValidationInfo : Rating            : 522
->>>>>>> Stashed changes
-=======
-* @ValidationInfo : Rating            : 522
->>>>>>> Stashed changes
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -181,17 +163,9 @@ GET.TT.FIELDS:
     IF TXN.CURRENCY EQ LCCY THEN
         TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.LOCAL.1)
     END ELSE
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
         TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.FCY.2)
     
-=======
-        TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.FCY.1)
->>>>>>> Stashed changes
-=======
-        TXN.PAYMENT.AMT = R.NEW(TT.TE.AMOUNT.FCY.1)
->>>>>>> Stashed changes
     END
 
     TXN.TYPE = R.NEW(TT.TE.CO.CODE)[7,3]
@@ -318,23 +292,11 @@ REG.NEW.MON.TXN:
     R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.TXN.SEQ> = SEQ.NO
     CALL F.WRITE(FN.REDO.VISION.PLUS.PARAM, REDO.VISION.PLUS.PARAM.ID, R.REDO.VISION.PLUS.PARAM)
     CALL F.RELEASE(FN.REDO.VISION.PLUS.PARAM, REDO.VISION.PLUS.PARAM.ID, F.REDO.VISION.PLUS.PARAM)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     
 
 * Fill the remaining fields for the new VP Transaction of the payment
 
     REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : ID.NEW : '.' : FMT(SEQ.NO,"R%4")
-=======
-
-* Fill the remaining fields for the new VP Transaction of the payment
-    REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : FMT(SEQ.NO,"R%4")
->>>>>>> Stashed changes
-=======
-
-* Fill the remaining fields for the new VP Transaction of the payment
-    REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : FMT(SEQ.NO,"R%4")
->>>>>>> Stashed changes
 
 * TT/FT @ID
     R.REDO.VISION.PLUS.TXN<VP.TXN.TXN.REF> = ID.NEW
@@ -373,8 +335,6 @@ REG.NEW.MON.TXN:
 
 * Send VPlus Transaction Registration
     IF ( Y.INSERT.MONOSIN NE "XXXX") THEN
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *CALL OFS.BUILD.RECORD(Y.APPLICATION, TRANS.FUNC.VAL, TRANS.OPER.VAL, Y.VERSION, '', NO.AUTH, REDO.VISION.PLUS.TXN.ID, R.REDO.VISION.PLUS.TXN, OFS.MSG.REQ)
 *CALL OFS.POST.MESSAGE(OFS.MSG.REQ, OFS.MSG.ID, OFS.SOURCE, OFS.OPTIONS)
 *APAP : CDI-338
@@ -385,14 +345,6 @@ REG.NEW.MON.TXN:
 *MSG<-1> = 'Id used for ' : FN.REDO.VISION.PLUS.TXN : ', is :' : REDO.VISION.PLUS.TXN.ID
 *CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
         
-=======
-        CALL OFS.BUILD.RECORD(Y.APPLICATION, TRANS.FUNC.VAL, TRANS.OPER.VAL, Y.VERSION, '', NO.AUTH, REDO.VISION.PLUS.TXN.ID, R.REDO.VISION.PLUS.TXN, OFS.MSG.REQ)
-        CALL OFS.POST.MESSAGE(OFS.MSG.REQ, OFS.MSG.ID, OFS.SOURCE, OFS.OPTIONS)
->>>>>>> Stashed changes
-=======
-        CALL OFS.BUILD.RECORD(Y.APPLICATION, TRANS.FUNC.VAL, TRANS.OPER.VAL, Y.VERSION, '', NO.AUTH, REDO.VISION.PLUS.TXN.ID, R.REDO.VISION.PLUS.TXN, OFS.MSG.REQ)
-        CALL OFS.POST.MESSAGE(OFS.MSG.REQ, OFS.MSG.ID, OFS.SOURCE, OFS.OPTIONS)
->>>>>>> Stashed changes
     END
 
 RETURN

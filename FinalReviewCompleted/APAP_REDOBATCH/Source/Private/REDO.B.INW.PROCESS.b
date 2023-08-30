@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjoyODc4MjgzNDI6Q3AxMjUyOjE2OTAyNjQzOTM2MDc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:13
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMzA2OTk2NDIxOkNwMTI1MjoxNjg0ODU0Mzg4NzQ2OklUU1M6LTE6LTE6MjQyNzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:28
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2427
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.INW.PROCESS(SEL.LIST)
@@ -53,15 +33,7 @@ SUBROUTINE REDO.B.INW.PROCESS(SEL.LIST)
 * 30.08.2011  KAVITHA             PACS00112979      PACS00112979 FIX
 * 03.10.2011  JEEVA T             PACS00131732      FIX FOR PACS00131732
 * 18.10.2011  KAVITHA             PACS00146623      PACS00146623  FIX
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND SM TO @SM AND VM TO @VM AND CONVERT TO CHANGE
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 
@@ -89,16 +61,8 @@ SUBROUTINE REDO.B.INW.PROCESS(SEL.LIST)
     $INSERT I_F.EB.CONTRACT.BALANCES
     $INSERT I_F.CHEQUE.REGISTER.SUPPLEMENT ; *Tus End
     $INSERT I_F.CHEQUE.TYPE.ACCOUNT
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.REDOAPAP
     
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
     GOSUB INIT
     GOSUB PROCESS
 RETURN
@@ -626,18 +590,8 @@ RETURN
 
 GENERATE.ENTRIES:
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.APAP.GENERATE.ENTRIES(MULTI.STMT)
     APAP.REDOAPAP.redoApapGenerateEntries(MULTI.STMT) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.APAP.GENERATE.ENTRIES(MULTI.STMT)
-
->>>>>>> Stashed changes
-=======
-    CALL REDO.APAP.GENERATE.ENTRIES(MULTI.STMT)
-
->>>>>>> Stashed changes
 RETURN
 
 END

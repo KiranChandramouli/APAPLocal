@@ -1,24 +1,26 @@
-* @ValidationCode : MjotOTk2OTIyNDU6Q3AxMjUyOjE2ODUwMTUyMzMxNTY6dmljdG86LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 May 2023 17:17:13
+* @ValidationCode : MjoxNTU4NDU3NjE0OkNwMTI1MjoxNjkyOTQ3NTc2NTg2OklUU1M6LTE6LTE6LTQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Aug 2023 12:42:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : victo
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : -4
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
+*-----------------------------------------------------------------------------
+* <Rating>0</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.VAL.ADJBILLCHARGE.COBROS
 *-----------------------------------------------------------------------------
 *
 *-----------------------------------------------------------------------------
 * Modification History :
-*DATE           WHO                 REFERENCE               DESCRIPTION
-*25-05-2023    CONVERSION TOOL     R22 AUTO CONVERSION     VM TO @VM,FM TO @FM,SM TO @SM,++ TO +=1
-*25-05-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*16-08-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,FM TO @FM,SM TO @SM
 *-----------------------------------------------------------------------------
 
 *-----------------------------------------------------------------------------
@@ -44,34 +46,24 @@ SUBROUTINE REDO.VAL.ADJBILLCHARGE.COBROS
     CALL AA.GET.ARRANGEMENT.CONDITIONS(Y.ARR.ID, Idpropertyclass, Idproperty, Y.ACT.EFF.DATE, Returnids, Returnconditions, Returnerror)
     R.CHARGE = RAISE(Returnconditions)
     Y.CHARGE.AMT = R.CHARGE<AA.CHG.LOCAL.REF><1,Y.CHARGE.AMT.POS>
-
-    ARR.PAYMENT.DATE.LIST = R.ACCOUNT.DETAILS<AA.AD.PAYMENT.DATE>
-    ARR.PROPERTY.LIST = R.ACCOUNT.DETAILS<AA.AD.PROPERTY>
-
-    CHANGE @VM TO @FM IN ARR.PAYMENT.DATE.LIST ;*R22 AUTO CONVERSION
-    CHANGE @VM TO @FM IN ARR.PROPERTY.LIST ;*R22 AUTO CONVERSION
-
-    LOCATE Idproperty IN ARR.PROPERTY.LIST<1> SETTING PROP.AR.POS THEN
-        Y.BILL.DATE = ARR.PAYMENT.DATE.LIST<PROP.AR.POS>
-    END
-
+    Y.BILL.DATE = Y.ACT.EFF.DATE
+    CALL CDT(Y.REGION,Y.BILL.DATE,'-6C')
     Y.PAYMENT.DATE.LIST = R.NEW(AA.BM.PAYMENT.DATE)
     Y.PROPERTY.LIST = R.NEW(AA.BM.PROPERTY)
-    CHANGE @VM TO @FM IN Y.PAYMENT.DATE.LIST ;*R22 AUTO CONVERSION
-    CHANGE @VM TO @FM IN Y.PROPERTY.LIST ;*R22 AUTO CONVERSION
-
-    TOT.DATE.CNT = DCOUNT(Y.PAYMENT.DATE.LIST, @FM) ;*R22 AUTO CONVERSION
+    CHANGE @VM TO @FM IN Y.PAYMENT.DATE.LIST ;*R22 MANUAL CONVERSION
+    CHANGE @VM TO @FM IN Y.PROPERTY.LIST ;*R22 MANUAL CONVERSION
+    TOT.DATE.CNT = DCOUNT(Y.PAYMENT.DATE.LIST, @FM) ;*R22 MANUAL CONVERSION
     CNT = 1
     LOOP
     WHILE CNT LE TOT.DATE.CNT
         IF Y.BILL.DATE EQ Y.PAYMENT.DATE.LIST<CNT> THEN
             Y.TEMP.PROP.LIST = Y.PROPERTY.LIST<CNT>
-            CHANGE @SM TO @FM IN Y.TEMP.PROP.LIST ;*R22 AUTO CONVERSION
+            CHANGE @SM TO @FM IN Y.TEMP.PROP.LIST ;*R22 MANUAL CONVERSION
             LOCATE Idproperty IN Y.TEMP.PROP.LIST<1> SETTING PROP.POS THEN
                 R.NEW(AA.BM.NEW.PROP.AMT)<1,CNT,PROP.POS> = Y.CHARGE.AMT
             END
         END
-        CNT += 1 ;*R22 AUTO CONVERSION
+        CNT ++
     REPEAT
 
 RETURN

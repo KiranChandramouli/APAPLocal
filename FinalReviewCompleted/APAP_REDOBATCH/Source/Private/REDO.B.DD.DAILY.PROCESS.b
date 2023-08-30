@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : MjotNTM4OTI5MDcyOkNwMTI1MjoxNjkwMjY0MzY2MjY0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:46
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTQ0Njc4Mjc5ODpDcDEyNTI6MTY4NDg1NDM4NTAwODpJVFNTOi0xOi0xOjgzODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:25
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 838
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.DD.DAILY.PROCESS(ID)
@@ -45,15 +25,7 @@ SUBROUTINE REDO.B.DD.DAILY.PROCESS(ID)
 *-----------------------------------------------------------------------------------
 *    NAME                 DATE                ODR              DESCRIPTION
 * JEEVA T              31-10-2011         B.9-DIRECT DEBIT
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND SM TO @SM AND VM TO @VM AND VAR1 - VAR2 TO -= VAR2
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------
@@ -72,15 +44,7 @@ SUBROUTINE REDO.B.DD.DAILY.PROCESS(ID)
     $INSERT I_F.AA.BILL.DETAILS
     $INSERT I_REDO.B.DD.DAILY.PROCESS.COMMON
     $INSERT I_F.REDO.W.DIRECT.DEBIT
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.AA
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
     ARR.ID = ID
     Y.BILL.GEN.FLAG = ''
     Y.ERROR.MSG = ''
@@ -252,16 +216,8 @@ CREDIT.ACCOUNT.CK:
     R.Condition = ''
     ERR.MSG = ''
     EFF.DATE = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
     APAP.AA.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;* R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG)
->>>>>>> Stashed changes
     LOAN.STATUS = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.STATUS.POS>
     LOAN.COND = R.Condition<AA.OD.LOCAL.REF,OD.LOAN.COND.POS>
 
@@ -312,18 +268,8 @@ DEBIT.ACCOUNT.CK:
     EFF.DATE = ''
     ERR.MSG = ''
     R.INT.ARR.COND = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
     APAP.AA.redoCrrGetConditions(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
-
->>>>>>> Stashed changes
-=======
-    CALL REDO.CRR.GET.CONDITIONS(Y.ARRG.ID,EFF.DATE,PROPERTY.CLASS,PROPERTY,R.PAY.ARR.COND,ERR.MSG)
-
->>>>>>> Stashed changes
     IF R.PAY.ARR.COND NE '' THEN
         Y.DEBIT.ACCT = R.PAY.ARR.COND<AA.PS.LOCAL.REF><1,DEBIT.ACCT.POS>
         Y.STATUS.DD  = R.PAY.ARR.COND<AA.PS.LOCAL.REF><1,PAYMT.METHOD.POS>

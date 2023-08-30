@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * @ValidationCode : Mjo0OTg1NjEyMDI6Q3AxMjUyOjE2OTAyNjQzNjQzMTE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:44
 * @ValidationInfo : Encoding          : Cp1252
@@ -11,24 +9,6 @@
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
-=======
-=======
->>>>>>> Stashed changes
-* @ValidationCode : MjotMTE1NDE4NzU3MDpDcDEyNTI6MTY4NDg1NDM4NDcwMzpJVFNTOi0xOi0xOjQyOTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:24
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 4297
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.CUSTOMER.PROVISION(Y.CUS.ID)
@@ -54,15 +34,7 @@ SUBROUTINE REDO.B.CUSTOMER.PROVISION(Y.CUS.ID)
 * 28-APR-2011      H GANESH           CR009              Change the Vetting value of local field
 * 07-JULY-2011     JEEVA T      PACS00064596          changes in claculating overdue days
 * 03-Feb-2012      JEEVA T      SP interest removed
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 * Date                   who                   Reference
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
-=======
-* Date                   who                   Reference              
->>>>>>> Stashed changes
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION VM TO @VM AND FM TO @FM AND SM TO @SM AND ++ TO += 1 AND T.NO TO C$T24.SESSION.NO
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------------
@@ -86,15 +58,7 @@ SUBROUTINE REDO.B.CUSTOMER.PROVISION(Y.CUS.ID)
     $INSERT I_REDO.B.CUSTOMER.PROVISION.COMMON
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT
     $INSERT I_F.DATES
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     $USING APAP.TAM
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 
     CALL OCOMO("Processing started for the customer - ":Y.CUS.ID)
 
@@ -172,16 +136,8 @@ TO.FIND.TOTAL.COMMERCIAL.AMT:
 *-------------------------------------------------------------------------------
 
     Y.IDS.DETAILS = Y.AA.ID:@FM:'YES'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *    CALL REDO.GET.DISBURSEMENT.DETAILS(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)     ;* Get the disb amount.
     APAP.TAM.redoGetDisbursementDetails(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB) ;*R22 Manaul Code Conversion
-=======
-    CALL REDO.GET.DISBURSEMENT.DETAILS(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)     ;* Get the disb amount.
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.DISBURSEMENT.DETAILS(Y.IDS.DETAILS,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)     ;* Get the disb amount.
->>>>>>> Stashed changes
     Y.COMMERCIAL += R.DISB.DETAILS<3>
 
 RETURN
@@ -733,16 +689,8 @@ GET.PAID.BILL.DETAILS:
 *-------------------------------------------------------------------------------
     Y.ACC.PROPERTY = ''
     OUT.ERR = ''
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.AA.ID,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'ACCOUNT','',Y.ACC.PROPERTY,OUT.ERR)
->>>>>>> Stashed changes
 
     Y.BILL.FLAG          = 0
     Y.BILL.IDS           = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID>
@@ -810,46 +758,22 @@ NON.COMMERCIAL.PROCESS:
 *GOSUB GET.PERIOD.BALANCES
 
     IN.PROPERTY.CLASS = 'ACCOUNT'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
     Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
 *   CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
     APAP.TAM.redoGetTotalOutstandingByprop(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
     CALL OCOMO("Balance NON-Commercial- ":Y.AA.ID:" - Principal - ":Y.AMT)
     Y.PROV.PRINCIPLE = Y.AMT * Y.FACTOR
 
 *BALANCE.TO.CHECK = 'ACCPRINCIPALINT':VM:'DUEPRINCIPALINT':VM:'ACCPENALTYINT':VM:'GRCPRINCIPALINT':VM:'DELPRINCIPALINT':VM:'NABPRINCIPALINT':VM:'DE1PRINCIPALINT'
 *GOSUB GET.PERIOD.BALANCES
 *Y.PROV.INETREST = Y.AMT * Y.FACTOR
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
     Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
 *   CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
     APAP.TAM.redoGetTotalOutstandingByprop(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)  ;*R22 Manual Code Conversion
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
     CALL OCOMO("Balance NON-Commercial- ":Y.AA.ID:" - Interest - ":Y.AMT)
 
     Y.PROV.INETREST = Y.AMT * Y.INT.FACTOR
@@ -885,45 +809,21 @@ COMMERCIAL.PROCESS:
 *GOSUB GET.PERIOD.BALANCES
 
     IN.PROPERTY.CLASS = 'ACCOUNT'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
     Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
 *   CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
     APAP.TAM.redoGetTotalOutstandingByprop(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,IN.PROPERTY.CLASS,R.OUT.AA.RECORD,Y.ACC.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE = 'CUR':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.ACC.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
     CALL OCOMO("Balance Commercial- ":Y.AA.ID:" - Principal - ":Y.AMT)
     Y.OUT.PRINCIPLE = Y.AMT
 
 *BALANCE.TO.CHECK = 'ACCPRINCIPALINT':VM:'DUEPRINCIPALINT':VM:'ACCPENALTYINT':VM:'GRCPRINCIPALINT':VM:'DELPRINCIPALINT':VM:'NABPRINCIPALINT':VM:'DE1PRINCIPALINT'
 *GOSUB GET.PERIOD.BALANCES
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 *   CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
     APAP.TAM.redoGetPropertyName(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
     Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
 *   CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
     APAP.TAM.redoGetTotalOutstandingByprop(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT) ;*R22 Manual Code Conversion
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
-=======
-    CALL REDO.GET.PROPERTY.NAME(Y.AA.ID,'INTEREST',R.OUT.AA.RECORD,Y.INT.PROPERTY,OUT.ERR)
-    Y.BALANCE.TYPE  = 'ACC':@FM:'DUE':@FM:Y.AGING.BALANCE.TYPES
-    CALL REDO.GET.TOTAL.OUTSTANDING.BYPROP(Y.AA.ID,Y.INT.PROPERTY,Y.BALANCE.TYPE,Y.AMT)
->>>>>>> Stashed changes
     CALL OCOMO("Balance Commercial- ":Y.AA.ID:" - Interest - ":Y.AMT)
     Y.OUT.INETREST = Y.AMT
 
