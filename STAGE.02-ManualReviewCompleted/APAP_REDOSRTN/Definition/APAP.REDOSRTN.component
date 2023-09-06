@@ -108,14 +108,6 @@ public method redoSCalcFtAmt (
 }
 
 
-public method redoSCheckLimit (
-)
-{
-    jBC: REDO.S.CHECK.LIMIT
-}
-
-
-
 public method redoSColATsaRecord (
 )
 {
@@ -1117,16 +1109,6 @@ public method redoSPartPymtAut1 (
 {
     jBC: REDO.S.PART.PYMT.AUT1
 }
-
-
-
-public method redoSPaymentRule (
-)
-{
-    jBC: REDO.S.PAYMENT.RULE
-}
-
-
 
 public method redoSRejectDesc (
     INOUT desc string

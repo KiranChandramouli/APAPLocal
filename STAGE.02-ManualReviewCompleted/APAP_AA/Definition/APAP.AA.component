@@ -1517,16 +1517,6 @@ public method redoGetAaaIdPdis (
     jBC: REDO.GET.AAA.ID.PDIS
 }
 
-
-
-public method redoGetArrangementStatus (
-    INOUT arrangementId string
-)
-{
-    jBC: REDO.GET.ARRANGEMENT.STATUS
-}
-
-
 public method redoGetTotalInterest (
     INOUT arrId string,
     INOUT property string,
@@ -2265,17 +2255,6 @@ public method redoBCreArrAaOfsSelect (
 {
     jBC: REDO.B.CRE.ARR.AA.OFS.SELECT
 }
-
-
-
-public method redoBIntUpdate (
-    INOUT arrId string
-)
-{
-    jBC: REDO.B.INT.UPDATE
-}
-
-
 
 public method redoBLocUpdBalMain (
     INOUT arrId string
@@ -3016,3 +2995,5 @@ public method redoFcSRevAa (
 {
     jBC: REDO.FC.S.REV.AA
 }
+
+
