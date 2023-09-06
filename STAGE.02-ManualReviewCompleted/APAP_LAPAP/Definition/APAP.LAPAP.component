@@ -9170,3 +9170,23 @@ public method lApapCdfGenRtSelect (
 {
     jBC: L.APAP.CDF.GEN.RT.SELECT
 }
+
+public method lapapExtraerTcCastigaCr (
+)
+{
+    jBC: LAPAP.EXTRAER.TC.CASTIGA.CR
+}
+
+public method redoConduitLinearTranslation (
+    INOUT mapFmt string,
+    INOUT idRconL string,
+    INOUT app string,
+    INOUT idApp string,
+    INOUT rApp string,
+    INOUT rReturnMsg string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.CONDUIT.LINEAR.TRANSLATION
+}
+

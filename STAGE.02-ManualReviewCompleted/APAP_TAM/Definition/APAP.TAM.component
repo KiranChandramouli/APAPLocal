@@ -10862,15 +10862,6 @@ public method redoStatus (
 }
 
 
-
-public method redoStatusFields (
-)
-{
-    jBC:REDO.STATUS.FIELDS
-}
-
-
-
 public method redoStlmtAcctInRtn (
 )
 {
@@ -11891,17 +11882,6 @@ public method redoGetTempDisbPaymDetails (
     jBC:REDO.GET.TEMP.DISB.PAYM.DETAILS
 }
 
-
-
-public method redoGetTotalInterest (
-    INOUT ArrId string,
-    INOUT property string,
-    INOUT intAmt string
-)
-{
-    jBC:REDO.GET.TOTAL.INTEREST
-}
-
 public method redoGetWaiveCateg (
     INOUT WaiveCat string
 )
@@ -12082,16 +12062,6 @@ public method redoDcTxnInstFields (
 {
     jBC: REDO.DC.TXN.INST.FIELDS
 }
-
-
-
-public method redoDefaultCollateralVal (
-)
-{
-    jBC: REDO.DEFAULT.COLLATERAL.VAL
-}
-
-
 
 public method redoDelPendHis (
     INOUT delRec string
@@ -15000,16 +14970,6 @@ public method redoViApproveCrVoucher (
     jBC: REDO.VI.APPROVE.CR.VOUCHER
 }
 
-
-
-public method redoChangeNabStatus (
-)
-{
-    jBC: REDO.CHANGE.NAB.STATUS
-}
-
-
-
 public method redoChkDebitCardNumber (
 )
 {
@@ -15122,23 +15082,11 @@ public method redoUpdIntAmtOthr (
     jBC: REDO.UPD.INT.AMT.OTHR
 }
 
-
-
-public method redoUpdateChangeInterest (
-)
-{
-    jBC: REDO.UPDATE.CHANGE.INTEREST
-}
-
-
-
 public method redoUpdateVersionName (
 )
 {
     jBC: REDO.UPDATE.VERSION.NAME
 }
-
-
 
 public method redoVAutActivateAcc (
 )
@@ -15730,6 +15678,14 @@ public method apapDynConvRtn (
 )
 {
     jBC: APAP.DYN.CONV.RTN
+}
+
+public method redoBIntUpdate (
+
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.INT.UPDATE
 }
 
 
