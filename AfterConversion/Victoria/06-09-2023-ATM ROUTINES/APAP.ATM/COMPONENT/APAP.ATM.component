@@ -1,0 +1,85 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method vFtRevUpdAtmKeyId (
+)
+{
+    jBC: V.FT.REV.UPD.ATM.KEY.ID
+}
+
+
+
+
+public method vFtUpdEnqAtmKeyId (
+)
+{
+    jBC: V.FT.UPD.ENQ.ATM.KEY.ID
+}
+
+
+
+
+
+
+public method atGetBalAftTxn (
+   INOUT acctNo string,
+   INOUT fmtAcctBal string
+)
+{
+   jBC: AT.GET.BAL.AFT.TXN
+}
+
+
+
+public method atIsoFmtBalRtn (
+   INOUT rAcct string,
+   INOUT wrkBal string,
+   INOUT availBal string,
+   INOUT balanceFormatted string
+)
+{
+   jBC: AT.ISO.FMT.BAL.RTN
+}
+
+
+
+
+public method eIsoAtmBalEnqBldRtn (
+   INOUT yIdList string
+)
+{
+   jBC: E.ISO.ATM.BAL.ENQ.BLD.RTN
+}
+
+
+
+public method eIsoAtmMiniStmtBldRtn (
+   INOUT yIdList string
+)
+{
+   jBC: E.ISO.ATM.MINI.STMT.BLD.RTN
+}
+
+
+
+
+public method vFtRetBalAftTxn (
+)
+{
+   jBC: V.FT.RET.BAL.AFT.TXN
+}
+
+
+
+public method vFtRetCreditBalAftTxn (
+)
+{
+   jBC: V.FT.RET.CREDIT.BAL.AFT.TXN
+}
+
+

@@ -1,0 +1,20 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoUpdAtmRej (
+)
+{
+   jBC: REDO.UPD.ATM.REJ
+}
+
+
+
+public method redoVAtmNonAcctDef (
+)
+{
+   jBC: REDO.V.ATM.NON.ACCT.DEF
+}
+

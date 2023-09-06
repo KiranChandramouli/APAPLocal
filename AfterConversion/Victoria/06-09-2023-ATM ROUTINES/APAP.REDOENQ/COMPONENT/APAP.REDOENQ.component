@@ -1,0 +1,24 @@
+component APAP.REDOENQ
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method eIsoRetIstRej (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.IST.REJ
+}
+
+
+
+public method eRedoBuildAtmList (
+    INOUT enqData string
+)
+{
+    jBC: E.REDO.BUILD.ATM.LIST
+}
+
+
+
