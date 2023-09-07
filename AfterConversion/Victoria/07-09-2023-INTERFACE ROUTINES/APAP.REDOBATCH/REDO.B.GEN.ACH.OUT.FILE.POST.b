@@ -27,7 +27,7 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE.POST
 *   DATE              ODR                             DESCRIPTION
 * 08-10-10          ODR-2009-12-0290                  Initial Creation
 *14-04-15                                             performance fix -Prabhu
-* Date                   who                   Reference
+* Date                   who                   Reference              
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND ++ TO += 1 AND TNO TO C$T24.SESSION.NO
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------
@@ -49,7 +49,7 @@ RETURN
 
 INIT:
 *****
-    
+
     FN.FUNDS.TRANSFER = 'F.FUNDS.TRANSFER'
     F.FUNDS.TRANSFER = ''
     CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
@@ -113,7 +113,7 @@ RETURN
 *-----------------------------------------------------------------------------
 PROCESS:
 *-----------------------------------------------------------------------------
-    
+
     Y.INTERF.ID = 'ACH001'
 
     CALL CACHE.READ(FN.REDO.INTERFACE.PARAM,Y.INTERF.ID,R.REDO.INTERFACE.PARAM,Y.ERR)
@@ -123,18 +123,8 @@ PROCESS:
     Y.OUT.PATH.HIS  = R.REDO.ACH.PARAM<REDO.ACH.PARAM.OUTW.HIST.PATH>
     Y.TODAY = TODAY
     CALL F.READ(FN.REDO.ACH.DET.IDS,Y.TODAY,R.REDO.ACH.DET.IDS,F.REDO.ACH.DET.IDS,ID.ERR)
-
-* SJ start
-*   SEL.CMD = "SELECT ":CCY.OUT.PATH:" LIKE APAP.ACHOUT":"..." ;* SJ
-
-    OPEN CCY.OUT.PATH TO FILE.POINTER ELSE
-        CALL OCOMO("CANNOT OPEN SESSION FILE PATH: ":CCY.OUT.PATH)
-        CALL FATAL.ERROR("CANNOT OPEN SESSION FILE PATH")
-    END
-
-    SEL.CMD = "SELECT ":CCY.OUT.PATH
+    SEL.CMD = "SELECT ":CCY.OUT.PATH:" LIKE APAP.ACHOUT":"..."
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',CNT.REC,RET.CD)
-*SJ end
 
     NOW.TIME = TIMEDATE()
     NOW.HR = NOW.TIME[1,2]

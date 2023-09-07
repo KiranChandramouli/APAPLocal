@@ -1,0 +1,56 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoFiDebitProces (
+   INOUT rParams string,
+   INOUT outResp string,
+   INOUT outErr string
+)
+{
+   jBC: REDO.FI.DEBIT.PROCES
+}
+
+
+
+public method redoFiExtDebitProces (
+   INOUT rParams string,
+   INOUT outResp string,
+   INOUT outErr string
+)
+{
+   jBC: REDO.FI.EXT.DEBIT.PROCES
+}
+
+
+
+public method redoRColGetMapping (
+   INOUT pInStaticMappingId string,
+   INOUT pInRStaticMapping string,
+   INOUT pErrIfNofound string,
+   INOUT pOutRStaticMapping string,
+   INOUT pInMappingType string,
+   INOUT pMapValue string
+)
+{
+   jBC: REDO.R.COL.GET.MAPPING
+}
+
+
+
+public method redoVpBGetMonTxn (
+)
+{
+   jBC: REDO.VP.B.GET.MON.TXN
+}
+
+
+
+public method redoVpBMonFileGen (
+)
+{
+   jBC: REDO.VP.B.MON.FILE.GEN
+}
+

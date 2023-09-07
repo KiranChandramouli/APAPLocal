@@ -5,10 +5,10 @@ metamodelVersion 1.6
 
 
 public method redoBGenAchOutFile (
-    INOUT yAchSelList string
+   INOUT yAchSelList string
 )
 {
-    jBC: REDO.B.GEN.ACH.OUT.FILE
+   jBC: REDO.B.GEN.ACH.OUT.FILE
 }
 
 

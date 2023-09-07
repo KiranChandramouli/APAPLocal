@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNTQxNzY4MDU1OkNwMTI1MjoxNjk0MDY3NDkxMTAxOnZpY3RvOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 07 Sep 2023 11:48:11
+* @ValidationCode : MjotNjkyMzczMTAwOkNwMTI1MjoxNjkzOTc2NjkzNzQzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 06 Sep 2023 10:34:53
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : victo
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -30,7 +30,7 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
 *12-Oct-2017 Saran.S
 * Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - TNO TO C$T24.SESSION.NO AND ADDING END
-* 07-09-2023          VICTORIA S          CALL ROUTINE MODIFIED
+* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -R22 interface Unit testing changes
 
 *---------------------------------------------------------------------------------
 
@@ -47,8 +47,8 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
     $INSERT I_F.REDO.ACH.PROCESS.DET
     $INSERT I_F.USER
     $INSERT I_F.LOCKING
-    $USING APAP.LAPAP
     $USING APAP.REDOCHNLS
+    $USING APAP.LAPAP
 *---------------------------------------------------------------------------------
 
     GOSUB SEL.ID
@@ -97,7 +97,7 @@ RETURN
 ************
 RAD.TRAN:
 ************
-    MAP.FMT = 'O'
+    MAP.FMT = 'O' ;*R22 interface Unit testing changes
     ID.RCON.L = Y.RAD.ID
     Y.FT.HIS.APP = FIELD(Y.TXN.ID,';',2,1)
     IF Y.FT.HIS.APP NE '' THEN
@@ -108,10 +108,12 @@ RAD.TRAN:
     ID.APP = Y.TXN.ID
 
     IF Y.TXN.ID[1,2] EQ 'FT' THEN
+    *R22 interface Unit testing changes -START
         R.APP = R.FUNDS.TRANSFER
 *        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) SJ commented for test
 *CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
-        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 MANUAL CONVERSION
+        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG);* R22 Manual conversion
+	*R22 interface Unit testing changes -END
         PRINT "R.RETURN.MSG :" :R.RETURN.MSG
         Y.LINE.1 = R.RETURN.MSG[1,Y.LENG.LINE]
         Y.LINE.2 = R.RETURN.MSG[1+Y.LENG.LINE,Y.LENG.LINE]
@@ -142,7 +144,7 @@ WRITE.TRAN:
 *  IF TRIM(Y.OUTPUT.ARRAY,"","A") NE '' THEN
 *      RETURN
 *  END
-    
+
     PRINT "Y.OUTPUT.ARRAY :" :Y.OUTPUT.ARRAY
     OPEN.ERR = ''
     WRITE.ERR = ''
@@ -154,16 +156,12 @@ WRITE.TRAN:
             GOSUB ACH.PROC
             GOSUB ACH.PROC.DET
 *            GOSUB SUCCESS.MSG -commented for performance fix. No need to update for successful transactions
-            CLOSESEQ PATH.OUTPUT        ;*SJ
-            CLOSESEQ PATH.HIS.OUTPUT    ;*SJ
         END
-
     END
 RETURN
 *--------------------------------------------------------------------------------------------
 OPEN.FILE:
 *************
-    
     OPENSEQ Y.OUT.PATH,Y.FILE.NAME TO PATH.OUTPUT ELSE
         CREATE PATH.OUTPUT THEN
         END ELSE
@@ -193,7 +191,7 @@ RETURN
 *-------------------------------------------------------------------------------------------------------
 WRITE.FILE:
 *************
-    
+
     LOOP
         REMOVE Y.REC FROM Y.OUTPUT.ARRAY SETTING Y.REC.POS
     WHILE Y.REC:Y.REC.POS
@@ -283,18 +281,16 @@ ACH.PROC.DET:
     END
     CALL F.WRITE(FN.LOCK,Y.LOCKING.ID,R.LOCKING)
 
-    MAP.FMT = 'O'
+    MAP.FMT = 'O' ;*R22 interface Unit testing changes
     ID.RCON.L = 'REDO.ACH.OUTWARD'
     ID.APP = Y.TXN.ID
-    R.APP = R.FUNDS.TRANSFER  ;*'' SJ commeted for test
+    R.APP = R.FUNDS.TRANSFER  ;*'' SJ commeted for test ;*R22 interface Unit testing changes
     R.RETURN.MSG= ''
     ERR.MSG= ''
     
 *    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)  SJ commented for test
-*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 interface Unit testing changes
     APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 MANUAL CONVERSION
-    CHANGE "?" TO @FM IN R.RETURN.MSG
-    
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.CODE> = R.RETURN.MSG<1>
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.AMOUNT> = R.RETURN.MSG<2>
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.ACCOUNT> = R.RETURN.MSG<3>
@@ -340,7 +336,7 @@ SUCCESS.MSG:
     INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
     MON.TP = '01' ; DESC = 'Record generated successfully' ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
 *CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
-    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CONVERSION
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 *******
