@@ -987,14 +987,6 @@ public method redoVAutReprintTxn (
 }
 
 
-public method redoVAuthLockAcct (
-)
-{
-    jBC: REDO.V.AUTH.LOCK.ACCT
-}
-
-
-
 public method redoVAuthPayTeller (
 )
 {

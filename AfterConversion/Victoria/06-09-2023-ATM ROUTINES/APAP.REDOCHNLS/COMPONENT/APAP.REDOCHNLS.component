@@ -1,0 +1,71 @@
+component APAP.REDOCHNLS
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoAtmAcctVerify (
+)
+{
+    jBC: REDO.ATM.ACCT.VERIFY
+}
+
+
+
+public method redoAtmAdviceMsg (
+)
+{
+    jBC: REDO.ATM.ADVICE.MSG
+}
+
+
+
+public method redoAtmErrorLogParam (
+)
+{
+    jBC: REDO.ATM.ERROR.LOG.PARAM
+}
+
+
+
+public method redoAtmErrorLogParamFields (
+)
+{
+    jBC: REDO.ATM.ERROR.LOG.PARAM.FIELDS
+}
+
+
+
+public method redoAtmValDrCrAcct (
+)
+{
+    jBC: REDO.ATM.VAL.DR.CR.ACCT
+}
+
+
+
+public method redoAtmWaiveCharge (
+)
+{
+    jBC: REDO.ATM.WAIVE.CHARGE
+}
+
+
+
+public method redoAtmWaiveChargeFields (
+)
+{
+    jBC: REDO.ATM.WAIVE.CHARGE.FIELDS
+}
+
+
+
+public method redoAtmWaiveChargeRecord (
+)
+{
+    jBC: REDO.ATM.WAIVE.CHARGE.RECORD
+}
+
+
+
+

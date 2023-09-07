@@ -1,0 +1,60 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoIFtMaguana (
+)
+{
+    jBC: REDO.I.FT.MAGUANA
+}
+
+
+
+public method redoVAtmDefSettleAc (
+)
+{
+    jBC: REDO.V.ATM.DEF.SETTLE.AC
+}
+
+
+
+public method redoVInpAtmAcct (
+)
+{
+    jBC: REDO.V.INP.ATM.ACCT
+}
+
+
+
+public method redoVInpCheckTtBeneficary (
+)
+{
+    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
+}
+
+
+
+public method redoVInpPartProcess (
+)
+{
+    jBC: REDO.V.INP.PART.PROCESS
+}
+
+
+
+public method redoVUpdAtmLyUpd (
+)
+{
+    jBC: REDO.V.UPD.ATM.LY.UPD
+}
+
+
+
+public method redoVValLacBalance (
+)
+{
+    jBC: REDO.V.VAL.LAC.BALANCE
+}
+

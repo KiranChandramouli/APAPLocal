@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo2MjM0MTUwMzI6Q3AxMjUyOjE2OTMyODcyNDc1OTY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
+* @ValidationCode : MjotNjczMzY5MDE5OkNwMTI1MjoxNjkzOTIzODUzNTgxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Sep 2023 19:54:13
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
@@ -26,16 +26,15 @@ SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
 * 27/01/2012 - avelasco@temenos.com
 *              APAP C18 :
 *              Modifications
-*DATE			AUTHOR					Modification                 DESCRIPTION
-*28/08/2023	 CONVERSION TOOL    AUTO R22 CODE CONVERSION			  RAD.BP is removed in insertfile , FM TO @FM,  Y to Y.VAR,
-*                                                                      "=" to EQ, "Y.POS = Y.POS + 2"  to "Y.POS += 2", 'Y.POS = Y.POS - 1' to 'Y.POS -= 1'
-*28/08/2023  VIGNESHWARI        MANUAL R22 CODE CONVERSION           DYN.TO.OFS Change to OFS.BUILD.RECORD, CALL RTN MODIFIED
-*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *=======================================================================
-*
+*MODIFICATION HISTORY:
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*04-09-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL RTN MODIFIED
+*----------------------------------------------------------------------------------------
+
     $INSERT I_COMMON
     $INSERT I_EQUATE
-    $INSERT I_GTS.COMMON
+* $INSERT I_GTS.COMMON ;* ;*R22 MANUAL CONVERSION--Insert file commented
     $INSERT I_F.TELLER
     $INSERT I_F.REDO.INTERFACE.PARAM
     $INSERT I_F.REDO.FI.CONTROL
@@ -45,13 +44,15 @@ SUBROUTINE REDO.FI.EXT.DEBIT.PROCES(R.PARAMS, OUT.RESP,OUT.ERR)
     $INSERT I_F.ACCOUNT
     $INSERT I_REDO.FI.VARIABLES.COMMON
 
-*   $INSERT I_RAPID.APP.DEV.COMMON	;*MANUAL R22 CODE CONVERSION
-*   $INSERT I_RAPID.APP.DEV.EQUATE	;*MANUAL R22 CODE CONVERSION
+*    $INSERT I_RAPID.APP.DEV.COMMON
+*    $INSERT I_RAPID.APP.DEV.EQUATE
 * Tus Start
     $INSERT I_F.EB.CONTRACT.BALANCES
 * Tus End
-    $USING APAP.REDOENQ
+
 *
+    $USING APAP.REDOENQ
+    $USING EB.Interface
 *************************************************************************
 *
 
@@ -103,15 +104,15 @@ ACCT.STATUS.CHECK:
     IF R.PARAMS<12> EQ 'NOMINA' AND NOT(WERROR.MSG) THEN
         IN.ACCT.TYPE = 'CREDIT'
         IN.ACCT.ID   = W.CUENTA.CREDITO
-* CALL REDO.NOMINA.ACCT.STATUS.CHECK(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS)
-        APAP.REDOENQ.redoNominaAcctStatusCheck(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS);* MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
+*CALL REDO.NOMINA.ACCT.STATUS.CHECK(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS)
+        APAP.REDOENQ.redoNominaAcctStatusCheck(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS) ;*R22 MANUAL CONVERSION
         WERROR.MSG = OUT.ACCT.STATUS
     END
     IF R.PARAMS<12> EQ 'NOMINAEXT' AND NOT(WERROR.MSG) THEN
         IN.ACCT.TYPE = 'DEBIT'
         IN.ACCT.ID   = COMM.CUST.ACCT
 *CALL REDO.NOMINA.ACCT.STATUS.CHECK(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS)
-        APAP.REDOENQ.redoNominaAcctStatusCheck(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS);* MANUAL R22 CODE CONVERSION-CALL RTN MODIFIED
+        APAP.REDOENQ.redoNominaAcctStatusCheck(IN.ACCT.ID,IN.ACCT.TYPE,OUT.ACCT.STATUS) ;*R22 MANUAL CONVERSION
         WERROR.MSG = OUT.ACCT.STATUS
     END
 
@@ -236,30 +237,36 @@ MOVE.FUNDS:
     ADDNL.INFO<2,6>  = "0"    ;*   Authorization Number
 *
     R.FUNDS.TRANSFER<FT.ORDERING.BANK>="NOMINA"
+*
+*SJ start
 *    Y.OFS.STR = DYN.TO.OFS(R.FUNDS.TRANSFER,'FUNDS.TRANSFER',ADDNL.INFO)
-    APP.NAME     = 'FUNDS.TRANSFER'     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
+*    YWORK.CH  = COMM.USER : "//"
+*    YWORK.NEW = COMM.USER : "/" : COMM.PW : "/"
+*    CHANGE YWORK.CH TO YWORK.NEW IN Y.OFS.STR
+*
+
+    APP.NAME = "FUNDS.TRANSFER"
     OFS.FUNCTION = 'I'
     OFS.PROCESS  = 'PROCESS'
-    OFS.VERSION  = COMM.VERSION
+    OFS.VERSION  = "FUNDS.TRANSFER,":COMM.VERSION
     Y.GTSMODE    = ''
-    NO.OF.AUTH   = ''
-    TRANSACTION.ID = ""
-    R.RECORD     =R.FUNDS.TRANSFER
+    NO.OF.AUTH   = 0
+    TRANSACTION.ID = ''
     Y.OFS.STR   = ''
-    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.MSG.REQ)   ;*MANUAL R22 CODE CONVERSION-END
-    
-    YWORK.CH  = COMM.USER : "//"
-    YWORK.NEW = COMM.USER : "/" : COMM.PW : "/"
-    CHANGE YWORK.CH TO YWORK.NEW IN Y.OFS.STR
-*
+    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.FUNDS.TRANSFER, Y.OFS.STR)
+*SJ end
+
     OFS.RESP   = ""
     TXN.COMMIT = ""
     YERROR.POS = 0
     OFS.SOURCE.ID = "TAM.OFS.SRC"
+;*OFS.SOURCE.ID = "GCS"
     OFS.MSG.ER = ""
 *
-
-    CALL OFS.CALL.BULK.MANAGER(OFS.SOURCE.ID, Y.OFS.STR, OFS.RESP, TXN.COMMIT)
+    EB.Interface.OfsCallBulkManager(OFS.SOURCE.ID, Y.OFS.STR, OFS.RESP, TXN.COMMIT) ;*R22 MANUAL CONVERSION--Line uncommented
+*CALL OFS.CALL.BULK.MANAGER(OFS.SOURCE.ID, Y.OFS.STR, OFS.RESP, TXN.COMMIT)  ;*R22 MANUAL CONVERSION--Line commented
+	 
+	
 
     M.VALIDA = FIELD(OFS.RESP,"/",1)
     OUT.ERR = ""
@@ -283,15 +290,15 @@ FORMAT.MSG.ERR:
 *   Formated msg error
 *
     OUT.ERR<2> = "ERROR"
-    Y.VAR = FIELD(OFS.RESP,'-1/NO,',2) ;*AUTO R22 CODE CONVERSION- Y to Y.VAR
-    Z = INDEX(Y.VAR,",",1) - 1	;*AUTO R22 CODE CONVERSION- Y to Y.VAR
-    IF Z EQ '-1' THEN ;*AUTO R22 CODE CONVERSION- "=" to EQ
+    Y.VAR = FIELD(OFS.RESP,'-1/NO,',2)
+    Z = INDEX(Y.VAR,",",1) - 1
+    IF Z EQ '-1' THEN
         Z = 50
     END
 
     OUT.ERR<3> ="ERROR"
-    IF Y.VAR NE '' THEN		;*AUTO R22 CODE CONVERSION- Y to Y.VAR
-        OUT.ERR<4>=Y.VAR	;*AUTO R22 CODE CONVERSION- Y to Y.VAR
+    IF Y.VAR NE '' THEN
+        OUT.ERR<4>=Y.VAR
     END
 *
 RETURN
@@ -310,11 +317,11 @@ CHECK.PRELIM.CONDITIONS:
             CASE LOOP.CNT EQ 1
 * Get THE FIRST DOT
                 Y.POS = INDEX(WCONTROL.ID, '.', 1)
-                Y.POS -= 1  ;*AUTO R22 CODE CONVERSION- 'Y.POS = Y.POS - 1' to 'Y.POS -= 1'
+                Y.POS -= 1
 * Get the Company ID
 
                 Y.INTERFACE = R.PARAMS<5>
-                Y.POS += 2	;*AUTO R22 CODE CONVERSION- "Y.POS = Y.POS + 2"  to "Y.POS += 2"
+                Y.POS += 2
 * Get the Company ID
                 Y.COMPANY.ID = SUBSTRINGS (WCONTROL.ID, Y.POS, 4)
 
