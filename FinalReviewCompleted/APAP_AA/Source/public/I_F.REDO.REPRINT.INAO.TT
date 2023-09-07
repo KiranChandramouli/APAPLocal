@@ -1,0 +1,22 @@
+* I_F.REDO.REPRINT.INAO.TT Created 20 JUN 13 at 01:16PM by t24uatd/VIGNESH01
+*      PREFIX[REDO.TT.INAO]
+       EQU REDO.TT.INAO.HOLD.CTRL.ID TO 1,   RedoReprintInaoTt_HoldCtrlId TO 1,
+            REDO.TT.INAO.CHQ.PRINTED TO 2,   RedoReprintInaoTt_ChqPrinted TO 2,
+              REDO.TT.INAO.TILL.USER TO 3,   RedoReprintInaoTt_TillUser TO 3,
+             REDO.TT.INAO.RESERVED.5 TO 4,   RedoReprintInaoTt_Reserved5 TO 4,
+             REDO.TT.INAO.RESERVED.4 TO 5,   RedoReprintInaoTt_Reserved4 TO 5,
+             REDO.TT.INAO.RESERVED.3 TO 6,   RedoReprintInaoTt_Reserved3 TO 6,
+             REDO.TT.INAO.RESERVED.2 TO 7,   RedoReprintInaoTt_Reserved2 TO 7,
+             REDO.TT.INAO.RESERVED.1 TO 8,   RedoReprintInaoTt_Reserved1 TO 8,
+              REDO.TT.INAO.LOCAL.REF TO 9,   RedoReprintInaoTt_LocalRef TO 9,
+               REDO.TT.INAO.STMT.NOS TO 10,  RedoReprintInaoTt_StmtNos TO 10,
+               REDO.TT.INAO.OVERRIDE TO 11,  RedoReprintInaoTt_Override TO 11,
+          REDO.TT.INAO.RECORD.STATUS TO 12,  RedoReprintInaoTt_RecordStatus TO 12,
+                REDO.TT.INAO.CURR.NO TO 13,  RedoReprintInaoTt_CurrNo TO 13,
+               REDO.TT.INAO.INPUTTER TO 14,  RedoReprintInaoTt_Inputter TO 14,
+              REDO.TT.INAO.DATE.TIME TO 15,  RedoReprintInaoTt_DateTime TO 15,
+             REDO.TT.INAO.AUTHORISER TO 16,  RedoReprintInaoTt_Authoriser TO 16,
+                REDO.TT.INAO.CO.CODE TO 17,  RedoReprintInaoTt_CoCode TO 17,
+              REDO.TT.INAO.DEPT.CODE TO 18,  RedoReprintInaoTt_DeptCode TO 18,
+           REDO.TT.INAO.AUDITOR.CODE TO 19,  RedoReprintInaoTt_AuditorCode TO 19,
+        REDO.TT.INAO.AUDIT.DATE.TIME TO 20,  RedoReprintInaoTt_AuditDateTime TO 20

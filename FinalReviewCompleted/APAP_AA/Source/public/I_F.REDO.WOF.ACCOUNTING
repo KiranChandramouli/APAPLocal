@@ -1,0 +1,5 @@
+* I_F.REDO.WOF.ACCOUNTING Created 26 FEB 12 at 12:20PM by apap/MARI.1
+*      PREFIX[REDO.WOF.ACC]
+            EQU REDO.WOF.ACC.WOF.AMT TO 1,   RedoWofAccounting_WofAmt TO 1,
+            REDO.WOF.ACC.LOAN.STATUS TO 2,   RedoWofAccounting_LoanStatus TO 2,
+                REDO.WOF.ACC.PRODUCT TO 3,   RedoWofAccounting_Product TO 3

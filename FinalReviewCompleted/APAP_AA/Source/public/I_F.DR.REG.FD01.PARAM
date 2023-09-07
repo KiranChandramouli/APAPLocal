@@ -1,0 +1,22 @@
+* I_F.DR.REG.FD01.PARAM Created 25 SEP 14 at 05:45PM by t24uatd/INPUTTER
+*      PREFIX[DR.FD01.PARAM]
+          EQU DR.FD01.PARAM.FILE.NAME TO 1,   DrRegFd01Param_FileName TO 1,
+               DR.FD01.PARAM.OUT.PATH TO 2,   DrRegFd01Param_OutPath TO 2,
+            DR.FD01.PARAM.TT.TXN.TYPE TO 3,   DrRegFd01Param_TtTxnType TO 3,
+           DR.FD01.PARAM.FX.DEAL.TYPE TO 4,   DrRegFd01Param_FxDealType TO 4,
+             DR.FD01.PARAM.START.TIME TO 5,   DrRegFd01Param_StartTime TO 5,
+               DR.FD01.PARAM.END.TIME TO 6,   DrRegFd01Param_EndTime TO 6,
+               DR.FD01.PARAM.FLD.NAME TO 7,   DrRegFd01Param_FldName TO 7,
+              DR.FD01.PARAM.FLD.VALUE TO 8,   DrRegFd01Param_FldValue TO 8,
+         DR.FD01.PARAM.FLD.DISP.VALUE TO 9,   DrRegFd01Param_FldDispValue TO 9,
+            DR.FD01.PARAM.RESERVED.02 TO 10,  DrRegFd01Param_Reserved02 TO 10,
+            DR.FD01.PARAM.RESERVED.01 TO 11,  DrRegFd01Param_Reserved01 TO 11,
+          DR.FD01.PARAM.RECORD.STATUS TO 12,  DrRegFd01Param_RecordStatus TO 12,
+                DR.FD01.PARAM.CURR.NO TO 13,  DrRegFd01Param_CurrNo TO 13,
+               DR.FD01.PARAM.INPUTTER TO 14,  DrRegFd01Param_Inputter TO 14,
+              DR.FD01.PARAM.DATE.TIME TO 15,  DrRegFd01Param_DateTime TO 15,
+             DR.FD01.PARAM.AUTHORISER TO 16,  DrRegFd01Param_Authoriser TO 16,
+                DR.FD01.PARAM.CO.CODE TO 17,  DrRegFd01Param_CoCode TO 17,
+              DR.FD01.PARAM.DEPT.CODE TO 18,  DrRegFd01Param_DeptCode TO 18,
+           DR.FD01.PARAM.AUDITOR.CODE TO 19,  DrRegFd01Param_AuditorCode TO 19,
+        DR.FD01.PARAM.AUDIT.DATE.TIME TO 20,  DrRegFd01Param_AuditDateTime TO 20

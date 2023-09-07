@@ -1,0 +1,21 @@
+* I_F.REDO.FXSN.TXN.VERSION Created 19 JUL 10 at 10:13PM by apapr8/CHANDRUT
+*      PREFIX[REDO.TXN.VER]
+        EQU REDO.TXN.VER.DESCRIPTION TO 1,   RedoFxsnTxnVersion_Description TO 1,
+           REDO.TXN.VER.T24.TXN.DESC TO 2,   RedoFxsnTxnVersion_T24TxnDesc TO 2,
+           REDO.TXN.VER.VERSION.NAME TO 3,   RedoFxsnTxnVersion_VersionName TO 3,
+             REDO.TXN.VER.RESERVED.6 TO 4,   RedoFxsnTxnVersion_Reserved6 TO 4,
+             REDO.TXN.VER.RESERVED.5 TO 5,   RedoFxsnTxnVersion_Reserved5 TO 5,
+             REDO.TXN.VER.RESERVED.4 TO 6,   RedoFxsnTxnVersion_Reserved4 TO 6,
+             REDO.TXN.VER.RESERVED.3 TO 7,   RedoFxsnTxnVersion_Reserved3 TO 7,
+             REDO.TXN.VER.RESERVED.2 TO 8,   RedoFxsnTxnVersion_Reserved2 TO 8,
+             REDO.TXN.VER.RESERVED.1 TO 9,   RedoFxsnTxnVersion_Reserved1 TO 9,
+               REDO.TXN.VER.STMT.NOS TO 10,  RedoFxsnTxnVersion_StmtNos TO 10,
+          REDO.TXN.VER.RECORD.STATUS TO 11,  RedoFxsnTxnVersion_RecordStatus TO 11,
+                REDO.TXN.VER.CURR.NO TO 12,  RedoFxsnTxnVersion_CurrNo TO 12,
+               REDO.TXN.VER.INPUTTER TO 13,  RedoFxsnTxnVersion_Inputter TO 13,
+              REDO.TXN.VER.DATE.TIME TO 14,  RedoFxsnTxnVersion_DateTime TO 14,
+             REDO.TXN.VER.AUTHORISER TO 15,  RedoFxsnTxnVersion_Authoriser TO 15,
+                REDO.TXN.VER.CO.CODE TO 16,  RedoFxsnTxnVersion_CoCode TO 16,
+              REDO.TXN.VER.DEPT.CODE TO 17,  RedoFxsnTxnVersion_DeptCode TO 17,
+           REDO.TXN.VER.AUDITOR.CODE TO 18,  RedoFxsnTxnVersion_AuditorCode TO 18,
+        REDO.TXN.VER.AUDIT.DATE.TIME TO 19,  RedoFxsnTxnVersion_AuditDateTime TO 19

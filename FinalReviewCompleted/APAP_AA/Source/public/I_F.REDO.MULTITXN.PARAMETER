@@ -1,0 +1,18 @@
+* I_F.REDO.MULTITXN.PARAMETER Created 30 MAY 11 at 12:04PM by t24bqa04/TEM.JCOSTA.03
+*      PREFIX[RMP]
+       EQU RMP.ACTUAL.CATEG TO 1,   RedoMultitxnParameter_ActualCateg TO 1,
+              RMP.NEW.CATEG TO 2,   RedoMultitxnParameter_NewCateg TO 2,
+             RMP.SUSP.CATEG TO 3,   RedoMultitxnParameter_SuspCateg TO 3,
+             RMP.CATEG.CASH TO 4,   RedoMultitxnParameter_CategCash TO 4,
+            RMP.CATEG.CHECK TO 5,   RedoMultitxnParameter_CategCheck TO 5,
+          RMP.CHECK.ACCOUNT TO 6,   RedoMultitxnParameter_CheckAccount TO 6,
+         RMP.CHECK.TRANSACT TO 7,   RedoMultitxnParameter_CheckTransact TO 7,
+          RMP.RECORD.STATUS TO 8,   RedoMultitxnParameter_RecordStatus TO 8,
+                RMP.CURR.NO TO 9,   RedoMultitxnParameter_CurrNo TO 9,
+               RMP.INPUTTER TO 10,  RedoMultitxnParameter_Inputter TO 10,
+              RMP.DATE.TIME TO 11,  RedoMultitxnParameter_DateTime TO 11,
+             RMP.AUTHORISER TO 12,  RedoMultitxnParameter_Authoriser TO 12,
+                RMP.CO.CODE TO 13,  RedoMultitxnParameter_CoCode TO 13,
+              RMP.DEPT.CODE TO 14,  RedoMultitxnParameter_DeptCode TO 14,
+           RMP.AUDITOR.CODE TO 15,  RedoMultitxnParameter_AuditorCode TO 15,
+        RMP.AUDIT.DATE.TIME TO 16,  RedoMultitxnParameter_AuditDateTime TO 16

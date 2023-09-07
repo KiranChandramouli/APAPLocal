@@ -1,0 +1,18 @@
+* I_F.REDO.REPAY.NEXT.VER.PROCESS Created 08 AUG 11 at 09:21PM by t24tam01/J.MORALES
+*      PREFIX[REP.NX]
+     EQU REP.NX.PAYMENT.METHOD TO 1,   RedoRepayNextVerProcess_PaymentMethod TO 1,
+        REP.NX.PAYMENT.VERSION TO 2,   RedoRepayNextVerProcess_PaymentVersion TO 2,
+             REP.NX.RESERVED.5 TO 3,   RedoRepayNextVerProcess_Reserved5 TO 3,
+             REP.NX.RESERVED.4 TO 4,   RedoRepayNextVerProcess_Reserved4 TO 4,
+             REP.NX.RESERVED.3 TO 5,   RedoRepayNextVerProcess_Reserved3 TO 5,
+             REP.NX.RESERVED.2 TO 6,   RedoRepayNextVerProcess_Reserved2 TO 6,
+             REP.NX.RESERVED.1 TO 7,   RedoRepayNextVerProcess_Reserved1 TO 7,
+          REP.NX.RECORD.STATUS TO 8,   RedoRepayNextVerProcess_RecordStatus TO 8,
+                REP.NX.CURR.NO TO 9,   RedoRepayNextVerProcess_CurrNo TO 9,
+               REP.NX.INPUTTER TO 10,  RedoRepayNextVerProcess_Inputter TO 10,
+              REP.NX.DATE.TIME TO 11,  RedoRepayNextVerProcess_DateTime TO 11,
+             REP.NX.AUTHORISER TO 12,  RedoRepayNextVerProcess_Authoriser TO 12,
+                REP.NX.CO.CODE TO 13,  RedoRepayNextVerProcess_CoCode TO 13,
+              REP.NX.DEPT.CODE TO 14,  RedoRepayNextVerProcess_DeptCode TO 14,
+           REP.NX.AUDITOR.CODE TO 15,  RedoRepayNextVerProcess_AuditorCode TO 15,
+        REP.NX.AUDIT.DATE.TIME TO 16,  RedoRepayNextVerProcess_AuditDateTime TO 16

@@ -1,0 +1,19 @@
+* I_F.REDO.FC.COLL.CODE.PARAMS Created 14 JUL 11 at 10:09AM by t24bqa02/BTO
+*      PREFIX[FC.PR]
+       EQU FC.PR.TIP.REV.TASA TO 1,   RedoFcCollCodeParams_TipRevTasa TO 1,
+        FC.PR.PER.MAX.PRESTAR TO 2,   RedoFcCollCodeParams_PerMaxPrestar TO 2,
+             FC.PR.CAMPO.MAND TO 3,   RedoFcCollCodeParams_CampoMand TO 3,
+             FC.PR.RESERVED.5 TO 4,   RedoFcCollCodeParams_Reserved5 TO 4,
+             FC.PR.RESERVED.4 TO 5,   RedoFcCollCodeParams_Reserved4 TO 5,
+             FC.PR.RESERVED.3 TO 6,   RedoFcCollCodeParams_Reserved3 TO 6,
+             FC.PR.RESERVED.2 TO 7,   RedoFcCollCodeParams_Reserved2 TO 7,
+             FC.PR.RESERVED.1 TO 8,   RedoFcCollCodeParams_Reserved1 TO 8,
+          FC.PR.RECORD.STATUS TO 9,   RedoFcCollCodeParams_RecordStatus TO 9,
+                FC.PR.CURR.NO TO 10,  RedoFcCollCodeParams_CurrNo TO 10,
+               FC.PR.INPUTTER TO 11,  RedoFcCollCodeParams_Inputter TO 11,
+              FC.PR.DATE.TIME TO 12,  RedoFcCollCodeParams_DateTime TO 12,
+             FC.PR.AUTHORISER TO 13,  RedoFcCollCodeParams_Authoriser TO 13,
+                FC.PR.CO.CODE TO 14,  RedoFcCollCodeParams_CoCode TO 14,
+              FC.PR.DEPT.CODE TO 15,  RedoFcCollCodeParams_DeptCode TO 15,
+           FC.PR.AUDITOR.CODE TO 16,  RedoFcCollCodeParams_AuditorCode TO 16,
+        FC.PR.AUDIT.DATE.TIME TO 17,  RedoFcCollCodeParams_AuditDateTime TO 17
