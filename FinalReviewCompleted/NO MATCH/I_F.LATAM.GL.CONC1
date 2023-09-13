@@ -1,0 +1,3 @@
+* I_F.LATAM.GL.CONC1 Created 05 JAN 10 at 07:54PM by banco/RAFFIQ1
+*      PREFIX[GL.CONC1]
+          EQU GL.CONC1.ENTRY.KEY TO 1,   LatamGlConc1_EntryKey TO 1

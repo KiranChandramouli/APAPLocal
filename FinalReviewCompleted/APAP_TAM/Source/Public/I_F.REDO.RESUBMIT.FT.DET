@@ -1,0 +1,6 @@
+* I_F.REDO.RESUBMIT.FT.DET Created 23 JUL 10 at 10:33AM by apapr8/TEST01
+*      PREFIX[REDO.RESUB.DET]
+              EQU REDO.RESUB.DET.FT.ID TO 1,   RedoResubmitFtDet_FtId TO 1,
+                   REDO.RESUB.DET.DATE TO 2,   RedoResubmitFtDet_Date TO 2,
+               REDO.RESUB.DET.BILL.AMT TO 3,   RedoResubmitFtDet_BillAmt TO 3,
+             REDO.RESUB.DET.OFS.MSG.ID TO 4,   RedoResubmitFtDet_OfsMsgId TO 4

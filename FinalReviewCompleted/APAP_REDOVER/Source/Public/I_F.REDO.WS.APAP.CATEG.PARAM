@@ -1,0 +1,23 @@
+* I_F.REDO.WS.APAP.CATEG.PARAM Created 18 MAY 11 at 12:45PM by apapr8/DEVI11
+*      PREFIX[REDO.WS.CATEG]
+       EQU REDO.WS.CATEG.VERSION.NAME TO 1,   RedoWsApapCategParam_VersionName TO 1,
+           REDO.WS.CATEG.VERSION.DESC TO 2,   RedoWsApapCategParam_VersionDesc TO 2,
+               REDO.WS.CATEG.CATEGORY TO 3,   RedoWsApapCategParam_Category TO 3,
+             REDO.WS.CATEG.CATEG.DESC TO 4,   RedoWsApapCategParam_CategDesc TO 4,
+             REDO.WS.CATEG.RESERVED.6 TO 5,   RedoWsApapCategParam_Reserved6 TO 5,
+             REDO.WS.CATEG.RESERVED.5 TO 6,   RedoWsApapCategParam_Reserved5 TO 6,
+             REDO.WS.CATEG.RESERVED.4 TO 7,   RedoWsApapCategParam_Reserved4 TO 7,
+             REDO.WS.CATEG.RESERVED.3 TO 8,   RedoWsApapCategParam_Reserved3 TO 8,
+             REDO.WS.CATEG.RESERVED.2 TO 9,   RedoWsApapCategParam_Reserved2 TO 9,
+             REDO.WS.CATEG.RESERVED.1 TO 10,  RedoWsApapCategParam_Reserved1 TO 10,
+              REDO.WS.CATEG.LOCAL.REF TO 11,  RedoWsApapCategParam_LocalRef TO 11,
+               REDO.WS.CATEG.OVERRIDE TO 12,  RedoWsApapCategParam_Override TO 12,
+          REDO.WS.CATEG.RECORD.STATUS TO 13,  RedoWsApapCategParam_RecordStatus TO 13,
+                REDO.WS.CATEG.CURR.NO TO 14,  RedoWsApapCategParam_CurrNo TO 14,
+               REDO.WS.CATEG.INPUTTER TO 15,  RedoWsApapCategParam_Inputter TO 15,
+              REDO.WS.CATEG.DATE.TIME TO 16,  RedoWsApapCategParam_DateTime TO 16,
+             REDO.WS.CATEG.AUTHORISER TO 17,  RedoWsApapCategParam_Authoriser TO 17,
+                REDO.WS.CATEG.CO.CODE TO 18,  RedoWsApapCategParam_CoCode TO 18,
+              REDO.WS.CATEG.DEPT.CODE TO 19,  RedoWsApapCategParam_DeptCode TO 19,
+           REDO.WS.CATEG.AUDITOR.CODE TO 20,  RedoWsApapCategParam_AuditorCode TO 20,
+        REDO.WS.CATEG.AUDIT.DATE.TIME TO 21,  RedoWsApapCategParam_AuditDateTime TO 21
