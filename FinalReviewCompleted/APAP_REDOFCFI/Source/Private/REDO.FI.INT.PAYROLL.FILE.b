@@ -43,7 +43,7 @@ SUBROUTINE REDO.FI.INT.PAYROLL.FILE(IN.TXT.MSG,OUT.ERR.MSG)
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
-*04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION         call routine format modified
+*04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION         call routine format modified,R22 interface Unit testing changes
 
 *=====================================================================================================
 *
@@ -99,6 +99,7 @@ PROCESS:
 *   SaveFileToProcess
     IF Y.ERR.MSG EQ ''  THEN
         GOSUB SAVE.FILE.IN.DIR
+ 
         FI.W.REDO.FI.CONTROL<REDO.FI.CON.PROC.STATUS>       = Y.FINAL.STATUS
         APAP.REDOFCFI.redoFiRecordControl(Y.ERR.MSG) ;*R22 Manual Conversion
         CALL F.WRITE(FN.REDO.NOMINA.TEMP,FI.W.REDO.FI.CONTROL.ID,R.REDO.NOMINA.TEMP)
@@ -182,6 +183,8 @@ SAVE.FILE.IN.DIR:
     W.TOL.FILE.AMT = FIELD(IN.TXT.MSG<1>,',',4)
 * Debit to enterprise account
 
+
+*FORMA LA CADENA PARA EL MAPPING 
     R.PARAM<1>  = "NULL"
     R.PARAM<2>  = "N"
     R.PARAM<3>  = W.TOL.FILE.AMT
@@ -209,7 +212,12 @@ SAVE.FILE.IN.DIR:
     Y.STT.REC        = ""
     Y.IN.MSG         = FI.CTA.DESTINO:",":FI.DATO.MONTO.TOTAL:",DOP,-"
     Y.NEW.TXT.MSG<CONTADO.EXTRA> = Y.IN.MSG:",":W.ADDITIONAL.INFO
-    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*R22 Manual Conversion
+	;*BORRAR
+	;*PRIMER FT
+	ID.TEST = Y.NEW.TXT.MSG<CONTADO.EXTRA>
+
+    ;*APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;*R22 Manual Conversion ;*R22 interface Unit testing changes
+
 
     IF W.TOL.FILE.AMT GT 0 THEN
         GOSUB FT.PROCESS
@@ -261,7 +269,7 @@ APPEND.ADDITIONAL.INFO:
 *
 * Paragraph that add data to send to the FT
 *
-
+ 
     WRECORD.NUMBER        = I.VAR
     W.ADDITIONAL.INFO     = ""
     W.ADDITIONAL.INFO<1>  = FI.BATCH.ID : "." : WRECORD.NUMBER          ;* THEIR.REFERENCE
@@ -283,21 +291,31 @@ MESSAGE.FORMAT:
     Y.STT.REC        = ""
     Y.IN.MSG         = Y.NEW.TXT.MSG<I.VAR>
     Y.NEW.TXT.MSG<I.VAR> = Y.NEW.TXT.MSG<I.VAR>:",":W.ADDITIONAL.INFO
-    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*R22 Manual Conversion
-    R.PARAM<1>  = "NULL"
+    *R22 interface Unit testing changes -START
+	;*OTROS FTS
+    ;*APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;*R22 Manual Conversion
+	DATO.OUT = Y.NEW.TXT.MSG<I.VAR>
+    
+*ACORDE AL MAPPING DEBE PONER LOS CAMPOS PARA GUARDARLOS EN LA TABLA LOCAL 
+	R.PARAM<1>  = "NULL"
     R.PARAM<2>  = "N"
-    R.PARAM<3>  = FIELD(DATO.OUT,"|",3)
+	DATO3 = FIELD(DATO.OUT,",",2)
+    R.PARAM<3>  = FIELD(DATO.OUT,",",2)
     R.PARAM<4>  = FI.FILE.ID
     R.PARAM<5>  = FI.INTERFACE
     R.PARAM<6>  = FI.CTA.INTERMEDIA
-    R.PARAM<7>  = FIELD(DATO.OUT,"|",3)
-    R.PARAM<8>  = FIELD(DATO.OUT,"|",4)
+	DATO7 = FIELD(DATO.OUT,",",2)
+    R.PARAM<7>  = FIELD(DATO.OUT,",",2)
+	DATO8 = FIELD(DATO.OUT,",",3)
+    R.PARAM<8>  = FIELD(DATO.OUT,",",3)
     R.PARAM<9>  = FI.W.REDO.FI.CONTROL.ID
     R.PARAM<10> = "N"
-    R.PARAM<11> = FIELD(DATO.OUT,"|",2)
+	DATO11 = FIELD(DATO.OUT,",",1)
+    R.PARAM<11> = FIELD(DATO.OUT,",",1)
+    *R22 interface Unit testing changes END
     R.PARAM<12> = "NOMINA"
     R.PARAM<13> = CR.TXN.CODE
-
+ 
 *    GOSUB FT.PROCESS
 
     Y.TEMP.ID=TODAY:FI.FILE.ID:STR("0",(5-LEN(I.VAR))):I.VAR
@@ -320,6 +338,7 @@ REPORT.FORMAT:
 *   and save log in REDO.INTERFACE.REC.ACT
 *
 *
+
     IF Y.ERR.MSG NE "" THEN
         W.STATUS = "04"
         W.ERROR.MSG = Y.ERR.MSG
@@ -414,7 +433,11 @@ FT.PROCESS:
 *
 
 * APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
+
+
+	FIL ='PROCESO FT' ;*R22 interface Unit testing changes
     APAP.TAM.redoFiExtDebitProces(R.PARAM, OUT.RESP, OUT.ERR);* R22 Manual conversion
+	
 
     IF FIELD(OUT.ERR,'/',1)[1,2] NE 'FT' THEN
         Y.ERR.MSG = OUT.ERR

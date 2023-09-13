@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTI1ODg3NTg0ODpVVEYtODoxNjg5NzQ5NjU2ODQ2OklUU1M6LTE6LTE6MjgwMzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 Jul 2023 12:24:16
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjotMTM2NzQ1NDIzMDpDcDEyNTI6MTY5MzkyMjQ0MjcyNzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Sep 2023 19:30:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2803
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -17,7 +17,7 @@ SUBROUTINE LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
 * Modification History
 * DATE               AUTHOR              REFERENCE              DESCRIPTION
 * 14-07-2023    Conversion Tool        R22 Auto Conversion     BP is removed in insert file,INCLUDE to INSERT,T to C$T24.SESSION.,FM to @FM
-* 14-07-2023    Narmadha V             R22 Manual Conversion     call routine format modified
+* 05-09-2023    VICTORIA S             R22 Manual Conversion     call routine format modified,R22 interface Unit testing changes
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON ;*R22 Auto Conversion  -START
@@ -35,7 +35,7 @@ SUBROUTINE LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
     $INSERT I_F.REDO.ACH.PARAM
     $INSERT I_LAPAP.PROCESA.ACH.ENTRANTE.RT
     $INSERT I_F.CUSTOMER ;*R22 Auto Conversion - END
-
+ 
     SEL.LIST = ""
     NO.OF.REC = ""
     SEL.ERR = ""
@@ -44,7 +44,7 @@ SUBROUTINE LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
     GOSUB METHOD_INIT
     GOSUB METHOD_GET_GENERAL_PARAMETERS
     GOSUB METHOD_PROCESS
-
+    
     SEL.CMD = "SELECT " : FN.REDO.ACH.PROCESS.DET : " WITH @ID LIKE ": Y.FECHA :"... AND STATUS EQ '01'"
 
     CALL EB.READLIST(SEL.CMD, SEL.LIST,"", NO.OF.REC, SEL.ERR)
@@ -129,6 +129,7 @@ RETURN
 *------------------
 METHOD_PROCESS:
 *------------------
+    
     CALL OCOMO('Entrando al metodo METHOD_PROCESS')
 
     OPEN IN.DIR.PATH TO F.FILE.PATH ELSE
@@ -149,8 +150,9 @@ METHOD_PROCESS:
             GOSUB METHOD_VALIDA_ARC_PROCESADO
 
             IF Y.ARC.PROCESADO EQ 'N' THEN
-                Y.COMMAND = 'COPY FROM ':IN.DIR.PATH: ' TO ':HIST.PATH:' ':Y.INW.ID
-
+*                Y.COMMAND = 'COPY FROM ':IN.DIR.PATH: ' TO ':HIST.PATH:' ':Y.INW.ID  ;*SJ in this way doesn't work
+                Y.COMMAND = 'SH -c cp ':IN.DIR.PATH: '/':Y.INW.ID:' ':HIST.PATH:'/':Y.INW.ID ;*R22 interface Unit testing changes
+                
                 EXECUTE Y.COMMAND
 
                 GOSUB METHOD_INW_INDIR_PROC
@@ -165,7 +167,7 @@ RETURN
 *-------------------------------
 METHOD_VALIDA_ARC_PROCESADO:
 *-------------------------------
-
+    
     SEL.CMD.VAL.FILE = "SELECT " : FN.REDO.ACH.PROCESS : " WITH @ID LIKE ": Y.FECHA :"... AND FILE.NAME EQ '" : Y.FILE.NAME: "'"
     CALL EB.READLIST(SEL.CMD.VAL.FILE, SEL.LIST.VAL.FILE,"", NO.OF.REC.VAL.FILE, SEL.ERR.VAL.FILE)
 
@@ -179,6 +181,7 @@ RETURN
 *-------------------------
 METHOD_INW_INDIR_PROC:
 *-------------------------
+    
     CALL OCOMO('Entrando al metodo METHOD_INW_INDIR_PROC')
 
     READ Y.FILE.MSG FROM F.FILE.PATH,Y.FILE.NAME THEN
@@ -242,6 +245,7 @@ RETURN
 *---------------------------
 METHOD_ACH_PROC_PROCESS:
 *---------------------------
+    
     Y.EXP.FMT = DCOUNT(Y.INW.LINE,Y.DELIMITER)
 
     IF Y.EXP.FMT NE Y.NO.OF.ELEMENTS THEN
@@ -301,12 +305,13 @@ METHOD_ACH_PROC_DET:
     Y.ID.DETAIL = Y.ID.MASTER:".":Y.SEQUENCE
 **cambiando la generacion de id detalle
 *Y.ID.DETAIL = Y.ID.MASTER:Y.SEQUENCE
-    MAP.FMT = 'MAP'; ID.RCON.L = 'REDO.ACH.INWARD'; ID.APP = ''; R.APP = ''
+    MAP.FMT = 'I'; ID.RCON.L = 'REDO.ACH.INWARD'; ID.APP = ''; R.APP = '' ;*R22 interface Unit testing changes
     APP = ""; R.RETURN.MSG= ''; ERR.MSG= ''
     R.APP = Y.INW.LINE
-
-    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
-
+    
+*;    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) SJ comment for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 interface Unit testing changes
+    APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 MANUAL CONVERSION
     IF ERR.MSG EQ '' THEN
         Y.TXN.CODE = R.RETURN.MSG<1>
         GOSUB METHOD_SUCCESS_PROCESS
@@ -321,6 +326,7 @@ RETURN
 *--------------------------
 METHOD_SUCCESS_PROCESS:
 *--------------------------
+    
     Y.ACCOUNT.NO = R.RETURN.MSG<3>
     R.RETURN.MSG<3> = TRIM(R.RETURN.MSG<3>)
 
@@ -395,6 +401,7 @@ RETURN
 SET.VALIDAR.CONTRATO:
 *--------------------------
 ****rechazos si estan procesando préstamos como numero de cueta.
+    
     IF R.ACCOUNT<AC.CATEGORY> GE '3000' AND R.ACCOUNT<AC.CATEGORY> LE '3999' AND LEN (R.ACCOUNT<AC.CATEGORY>) LE 4 THEN
         IF R.RETURN.MSG<1> NE "52"  AND R.RETURN.MSG<7> NE "04" THEN
             Y.RECHAZO = 1
@@ -409,6 +416,7 @@ RETURN
 *--------------------------
 METHOD_VALIDA_ID_ACH:
 *--------------------------
+    
     Y.CUSTOMER.NO = R.ACCOUNT<AC.CUSTOMER>
     Y.REL.CONT = DCOUNT(R.ACCOUNT<AC.JOINT.HOLDER>,@VM)
     Y.ACH.CUS.ID = R.RETURN.MSG<6>
@@ -561,6 +569,7 @@ RETURN
 *-----------------------
 METHOD_OFS_RAD_PROC:
 *-----------------------
+    
     Y.TXN.PURPOSE = R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.DESCRIPTION>
 
     LOCATE Y.TXN.PURPOSE IN Y.PARAM.TXN.PURPOSE<1,1> SETTING TXN.PUR.POS THEN
@@ -578,16 +587,17 @@ METHOD_OFS_RAD_PROC:
         R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.STATUS> = '03'
         R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.REJECT.CODE> = 'R31'
     END ELSE
-        MAP.FMT = 'MAP'
+        MAP.FMT = 'I' ;*R22 interface Unit testing changes
         ID.RCON.L = Y.OFS.RAD.ID
         APP = ''
         ID.APP = ''
         R.APP = Y.MSG
         R.RETURN.MSG= ''
         ERR.MSG= ''
-
-        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
-
+        
+*        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;* SJ commented for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 interface Unit testing changes
+        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 MANUAL CONVERSION
         IF ERR.MSG NE '' THEN
             DESC = 'Error de conversion a formato RAD ' : ID.RCON.L : '. Error: ' : ERR.MSG
             CALL OCOMO(DESC)

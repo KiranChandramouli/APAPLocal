@@ -1,17 +1,17 @@
-* @ValidationCode : MjoxNDMzMjc3NDE0OkNwMTI1MjoxNjkyOTcxOTA2MjUzOklUU1M6LTE6LTE6NTY2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Aug 2023 19:28:26
+* @ValidationCode : MjotMTc5NTQ2OTkwNjpDcDEyNTI6MTY5MzI4NTkwNjI5NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 10:41:46
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 566
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-    SUBROUTINE LAPAP.MAS.REDON.OFS.PM.RT(OFS.MESSAGE)
+SUBROUTINE LAPAP.MAS.REDON.OFS.PM.RT(OFS.MESSAGE)
 *-----------------------------------------------------------------------------------------------------------------------
 *Modification HISTORY:
 *DATE		  AUTHOR		     Modification                 DESCRIPTION
@@ -40,7 +40,7 @@ $PACKAGE APAP.LAPAP
     GOSUB PROCESS
 
 
-    RETURN
+RETURN
 *-----------------------------------------------------------------
 INIT:
     FN.CRC.ROUNDUP = 'FBNK.ST.LAPAP.CRC.ROUNDUP'
@@ -66,7 +66,7 @@ INIT:
     Y.L.ROUNDUP.DET.POS = FLD.POS.ARR<1,1>
 
 
-    RETURN
+RETURN
 
 PROCESS:
 
@@ -81,14 +81,15 @@ PROCESS:
     IF Y.TXN.CODE[1,2] EQ 'FT' THEN
         IF Y.RETURN.CODE EQ '-1' OR Y.RETURN.CODE EQ '-2' OR Y.RETURN.CODE EQ '-3' OR Y.RETURN.CODE EQ '-4' THEN
             MSG<-1> = OFS.MESSAGE
-            CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+*           CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+            APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION
             GOSUB DO.MARK.ERROR
         END ELSE
             GOSUB DO.MARK.SUCCESS
         END
     END
 
-    RETURN
+RETURN
 DO.MARK.ERROR:
 
     CALL F.READ(FN.FT.N,Y.TXN.CODE,R.FTNAU,F.FT.N,FTNAU.ERR)
@@ -107,7 +108,7 @@ DO.MARK.ERROR:
 
     GOSUB DO.UPDATE.ROUNDUP.DET
     GOSUB DO.REVERSE.FT
-    RETURN
+RETURN
 
 DO.MARK.SUCCESS:
 
@@ -122,7 +123,7 @@ DO.MARK.SUCCESS:
     R.DET<ST.LAP50.OUR.REFERENCE> = Y.TXN.CODE
 
     GOSUB DO.UPDATE.ROUNDUP.DET
-    RETURN
+RETURN
 
 DO.UPDATE.ROUNDUP.DET:
     Y.TRANS.ID = Y.ROUNDUP
@@ -138,7 +139,7 @@ DO.UPDATE.ROUNDUP.DET:
 
     CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.DET,FINAL.OFS)
     CALL OFS.POST.MESSAGE(FINAL.OFS,OFS.MSG.ID,"CR.CTA.OFS.GL",'')
-    RETURN
+RETURN
 
 DO.REVERSE.FT:
     Y.TRANS.ID = Y.TXN.CODE
@@ -157,8 +158,9 @@ DO.REVERSE.FT:
     CALL OFS.POST.MESSAGE(FINAL.OFS,OFS.MSG.ID,"GENOFS",'')
     MSG = ''
     MSG<-1> = Y.TXN.CODE : ', Deleted due to HOLD FT, check OFS CR.CTA.OFS.GL log'
-    CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+*   CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+    APAP.LAPAP.lapapRawLogger('APAP.LOG',Y.LOG.ID,MSG) ;*MANUAL R22 CODE CONVERSION
 
-    RETURN
+RETURN
 
 END

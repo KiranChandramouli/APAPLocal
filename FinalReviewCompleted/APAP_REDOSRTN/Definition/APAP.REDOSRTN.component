@@ -108,14 +108,6 @@ public method redoSCalcFtAmt (
 }
 
 
-public method redoSCheckLimit (
-)
-{
-    jBC: REDO.S.CHECK.LIMIT
-}
-
-
-
 public method redoSColATsaRecord (
 )
 {
@@ -1118,16 +1110,6 @@ public method redoSPartPymtAut1 (
     jBC: REDO.S.PART.PYMT.AUT1
 }
 
-
-
-public method redoSPaymentRule (
-)
-{
-    jBC: REDO.S.PAYMENT.RULE
-}
-
-
-
 public method redoSRejectDesc (
     INOUT desc string
 )
@@ -1146,16 +1128,6 @@ public method redoSRepCustomerExtract (
 {
     jBC: REDO.S.REP.CUSTOMER.EXTRACT
 }
-
-
-
-public method redoSTermAmount (
-)
-{
-    jBC: REDO.S.TERM.AMOUNT
-}
-
-
 
 public method redoSUpdCusActanac (
     INOUT yCusId string
@@ -1211,14 +1183,6 @@ public method redoSVpInitProcessDate (
 )
 {
     jBC: REDO.S.VP.INIT.PROCESS.DATE
-}
-
-
-
-public method redoSWorkLimit (
-)
-{
-    jBC: REDO.S.WORK.LIMIT
 }
 
 public method redoSColGetPayFreq (
@@ -1430,35 +1394,6 @@ public method redoSRecAcctList (
     jBC: REDO.S.REC.ACCT.LIST
 }
 
-public method redoSFcLimiteGfuncemp (
-    INOUT custId string,
-    INOUT custOut string
-)
-{
-    jBC: REDO.S.FC.LIMITE.GFUNCEMP
-}
 
-public method redoSFcLimiteGrgar (
-    INOUT custId string,
-    INOUT custOut string
-)
-{
-    jBC: REDO.S.FC.LIMITE.GRGAR
-}
 
-public method redoSFcLimiteGrsgar (
-    INOUT custId string,
-    INOUT custOut string
-)
-{
-    jBC: REDO.S.FC.LIMITE.GRSGAR
-}
-
-public method redoSFcLimiteIfuncemp (
-    INOUT custId string,
-    INOUT custOut string
-)
-{
-    jBC: REDO.S.FC.LIMITE.IFUNCEMP
-}
 

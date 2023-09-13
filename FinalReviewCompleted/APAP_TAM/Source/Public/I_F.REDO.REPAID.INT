@@ -1,5 +1,0 @@
-* I_F.REDO.REPAID.INT Created 31 JAN 12 at 10:06AM by apap/TEMENOS.02
-*      PREFIX[REDO.REP.INT]
-         EQU REDO.REP.INT.REPAID.AMT TO 1,   RedoRepaidInt_RepaidAmt TO 1,
-            REDO.REP.INT.LOAN.STATUS TO 2,   RedoRepaidInt_LoanStatus TO 2,
-                REDO.REP.INT.PRODUCT TO 3,   RedoRepaidInt_Product TO 3

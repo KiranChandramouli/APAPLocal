@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxNDg4NDU4NjU6VVRGLTg6MTY4OTc0OTY1Njk0ODpJVFNTOi0xOi0xOjYxMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 Jul 2023 12:24:16
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjotODExMzU2MjkzOkNwMTI1MjoxNjkzOTIyNDQyODIxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Sep 2023 19:30:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 611
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -26,7 +26,7 @@ SUBROUTINE LAPAP.PROCESA.ACH.ENTRANTE.RT(Y.ID.ACH.DET)
 *13-NOV-2019      Melvy Martinez         ET-3820              Creacion de la rutina
 *02-JAN-2020      Melvy Martinez                              Cambio a multi service
 * 14-07-2023    Conversion Tool        R22 Auto Conversion    INCLUDE to INSERT,BP is removed in insert file
-* 14-07-2023    Narmadha V             R22 Manual Conversion  No Changes
+* 05-09-2023    VICTORIA S             R22 Manual Conversion  No Changes
 *---------------------------------------------------------------------------------
     $INSERT I_COMMON ;*R22 Auto Conversion -START
     $INSERT I_EQUATE
@@ -37,11 +37,11 @@ SUBROUTINE LAPAP.PROCESA.ACH.ENTRANTE.RT(Y.ID.ACH.DET)
     $INSERT I_F.REDO.ACH.PROCESS.DET
     $INSERT I_F.REDO.ACH.PARAM
     $INSERT I_LAPAP.PROCESA.ACH.ENTRANTE.RT ;*R22 Auto Conversion - END
-
+    
     Y.OFS.SOURCE.ID = 'LAPAP.ACH.INWARD'
     Y.CARD.TYPE = 'N'
     CALL F.READ(FN.REDO.ACH.PROCESS.DET,Y.ID.ACH.DET,R.REDO.ACH.PROCESS.DET,F.REDO.ACH.PROCESS.DET,Y.ERR.REDO.ACH.PROCESS.DET)
-
+    
     IF R.REDO.ACH.PROCESS.DET THEN
         Y.TXN.PURPOSE = R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.DESCRIPTION>
         Y.TXN.CODE = R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.CODE>

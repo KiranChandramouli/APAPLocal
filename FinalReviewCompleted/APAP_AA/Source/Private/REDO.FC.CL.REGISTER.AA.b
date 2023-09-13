@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODUxNzY3ODIwOkNwMTI1MjoxNjkzMjI0NTkzNjMxOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Aug 2023 17:39:53
+* @ValidationCode : MjotMTg2MzUzNDE2NDpDcDEyNTI6MTY5MzI4NTM3MTE0MjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 10:32:51
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
 ******************************************************************************
@@ -48,8 +48,6 @@ SUBROUTINE REDO.FC.CL.REGISTER.AA
 *28/08/2023  CONVERSION TOOL    AUTO R22 CODE CONVERSION      RAD.BP is removed in insertfile, FM TO @FM, VM TO @VM, ">=" TO GE
 *28/08/2023	 VIGNESHWARI	    MANUAL R22 CODE CONVERSION	      DYN.TO.OFS Change to OFS.BUILD.RECORD
 *------------------------------------------------------------------------------------------------------------------------------------------------
-
-******************************************************************************
 ******************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -57,7 +55,7 @@ SUBROUTINE REDO.FC.CL.REGISTER.AA
     $INSERT I_GTS.COMMON
     COMMON /NS/P.ID.TRX
 * PACS00612954 - S
-    $INSERT I_RAPID.APP.DEV.COMMON   ;*AUTO R22 CODE CONVERSION-RAD.BP is removed in insertfile
+*    $INSERT I_RAPID.APP.DEV.COMMON   ;*AUTO R22 CODE CONVERSION-RAD.BP is removed in insertfile
 * PACS00612954 - E
     $INSERT I_F.REDO.FC.LIMIT.AA
     $INSERT I_F.REDO.FC.CL.BALANCE
@@ -291,7 +289,7 @@ UPDATE.COLLATERAL:
 
 *    Y.OFS.MSG.REQ = DYN.TO.OFS(R.COLLATERAL.MSG, Y.APPLICATION, OFS.INFO.INPUT)
     
-     APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
+    APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
     OFS.FUNCTION = 'I'
     OFS.PROCESS  = 'PROCESS'
     OFS.VERSION  = Y.VER.COLLATERAL

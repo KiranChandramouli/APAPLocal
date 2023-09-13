@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo2MTAyNjQ5MjE6Q3AxMjUyOjE2ODEyMTUxNjQzMzg6SVRTUzotMTotMTo4ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 11 Apr 2023 17:42:44
+* @ValidationCode : Mjo2MTAyNjQ5MjE6Q3AxMjUyOjE2OTQ2MDUxNzI2OTM6SVRTUzotMTotMTo4ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 13 Sep 2023 17:09:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE REDO.ATH.VAL.DELAY
 **************************************************************************
 ******************************************************************************

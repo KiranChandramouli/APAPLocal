@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTM1MTg5MDgzNzpDcDEyNTI6MTY4MTczMzY4NjY0MjpJVFNTOi0xOi0xOjI4NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 17 Apr 2023 17:44:46
+* @ValidationCode : MjotMTQyMDYxODEwNjpDcDEyNTI6MTY5MzMxNDQwNTE5ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:36:45
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 286
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -12,6 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.ATH.REP.GEN
+    
 *********************************************************************************
 *  Company   Name    :Asociacion Popular de Ahorros y Prestamos
 *  Developed By      :DHAMU.S
@@ -33,6 +34,7 @@ SUBROUTINE REDO.ATH.REP.GEN
 *
 * 11-APR-2023     Conversion tool   R22 Auto conversion   SM to @SM
 * 12-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 25-SEP-2023      VIGNESHWARI      Manual R22 conversion    PATH IS MODIFIED
 *----------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -75,7 +77,8 @@ PROCESS:
         MAT R.NEW = MAT R.ENQUIRY.REPORT
         CALL ENQUIRY.REPORT.RUN
         REPORT.NUMBER=C$LAST.HOLD.ID
-        CPY.CMD =  'COPY FROM &HOLD& TO ' : BATCH.PATH : ' ' :REPORT.NUMBER :',':Y.ENQ.RPT :'.':TODAY
+       * CPY.CMD =  'COPY FROM &HOLD& TO ' : BATCH.PATH : ' ' :REPORT.NUMBER :',':Y.ENQ.RPT :'.':TODAY
+        CPY.CMD = 'sh -c cp  &HOLD& : /':REPORT.NUMBER:' ':BATCH.PATH:'/':Y.ENQ.RPT :".":TODAY ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
         EXECUTE CPY.CMD
 
     NEXT

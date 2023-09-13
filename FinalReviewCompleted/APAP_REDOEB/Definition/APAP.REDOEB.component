@@ -641,12 +641,73 @@ public method tafcMenuAccessValidate (
 public method apapMUpdProdCode (
 )
 {
-   jBC: APAP.M.UPD.PROD.CODE
+    jBC: APAP.M.UPD.PROD.CODE
 }
 
 public method apapTecItemChange (
 )
 {
-   jBC: APAP.TEC.ITEM.CHANGE
+    jBC: APAP.TEC.ITEM.CHANGE
 }
 
+public method apapMismatchRepGen (
+)
+{
+    jBC: APAP.MISMATCH.REP.GEN
+}
+
+public method reMismatchAppInfo (
+    INOUT yid string
+)
+{
+    jBC: RE.MISMATCH.APP.INFO
+}
+
+public method reMismatchAppInfoLoad (
+)
+{
+    jBC: RE.MISMATCH.APP.INFO.LOAD
+}
+
+public method reMismatchAppInfoSelect (
+)
+{
+    jBC: RE.MISMATCH.APP.INFO.SELECT
+}
+
+public method reMismatchConsRun (
+    INOUT lineNo string
+)
+{
+    jBC: RE.MISMATCH.CONS.RUN
+}
+
+public method reMismatchRunRun (
+)
+{
+    jBC: RE.MISMATCH.RUN.RUN
+}
+
+public method reMismatchConsRunLoad (
+)
+{
+    jBC: RE.MISMATCH.CONS.RUN.LOAD
+}
+
+public method reMismatchConsRunSelect (
+)
+{
+    jBC: RE.MISMATCH.CONS.RUN.SELECT
+}
+
+public method rgpAccountList (
+)
+{
+    jBC: RGP.ACCOUNT.LIST
+}
+
+public method rgpAvBqsTerme (
+)
+{
+    jBC: RGP.AV.BQS.TERME
+}

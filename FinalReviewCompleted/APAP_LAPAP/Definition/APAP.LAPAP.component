@@ -9091,104 +9091,67 @@ public method lapapCardnoMigRtLoad (
 public method lapapProcessTxnDiviLoad (
 )
 {
-   jBC: LAPAP.PROCESS.TXN.DIVI.LOAD
+    jBC: LAPAP.PROCESS.TXN.DIVI.LOAD
 }
 
 public method lapapProcessTxnDiviSelect (
 )
 {
-   jBC: LAPAP.PROCESS.TXN.DIVI.SELECT
+    jBC: LAPAP.PROCESS.TXN.DIVI.SELECT
 }
 
 public method lapapRtGetDtInfo (
 )
 {
-   jBC: LAPAP.RT.GET.DT.INFO
+    jBC: LAPAP.RT.GET.DT.INFO
 }
 
 public method lapapRtLiqDtItem (
 )
 {
-   jBC: LAPAP.RT.LIQ.DT.ITEM
+    jBC: LAPAP.RT.LIQ.DT.ITEM
 }
 
-public method lapapATxnDiviTt (
-)
-{
-    jBC: LAPAP.A.TXN.DIVI.TT
-}
-
-public method lapapMigCardnoRt (
-)
-{
-    jBC: LAPAP.MIG.CARDNO.RT
-}
 
 public method lapapASendRcptRt (
 )
 {
-   jBC: LAPAP.A.SEND.RCPT.RT
+    jBC: LAPAP.A.SEND.RCPT.RT
 }
 
 public method lapapATxnDiviFt (
 )
 {
-   jBC: LAPAP.A.TXN.DIVI.FT
+    jBC: LAPAP.A.TXN.DIVI.FT
 }
 
 public method lapapOvrLowCardRt (
 )
 {
-   jBC: LAPAP.OVR.LOW.CARD.RT
+    jBC: LAPAP.OVR.LOW.CARD.RT
 }
 
 public method lapapProcessTxnDivi (
-   INOUT yTxnId string
+    INOUT yTxnId string
 )
 {
-   jBC: LAPAP.PROCESS.TXN.DIVI
+    jBC: LAPAP.PROCESS.TXN.DIVI
 }
 
 public method lapapTransferDslipRt (
 )
 {
-   jBC: LAPAP.TRANSFER.DSLIP.RT
+    jBC: LAPAP.TRANSFER.DSLIP.RT
 }
 
-public method lapapMasRedonOfsPmRt (
-    INOUT ofsMessage string
-)
-{
-    jBC: LAPAP.MAS.REDON.OFS.PM.RT
-}
 
-public method lapapMasRedonRt (
-    INOUT yRoundup string
-)
-{
-    jBC: LAPAP.MAS.REDON.RT
-}
-
-public method lapapMasRedonRtSelect (
-)
-{
-    jBC: LAPAP.MAS.REDON.RT.SELECT
-}
-
-public method lapapProcRedondeoMasiv (
-    INOUT yParam string,
-    INOUT yUsr_credentials string,
-    INOUT yRabbitMqOut string
-)
-{
-    jBC: LAPAP.PROC.REDONDEO.MASIV
-}
 
 public method lapapMasRedonPostRt (
 )
 {
     jBC: LAPAP.MAS.REDON.POST.RT
 }
+
 
 public method lApapCdfGenRtLoad (
 )
@@ -9213,3 +9176,17 @@ public method lapapExtraerTcCastigaCr (
 {
     jBC: LAPAP.EXTRAER.TC.CASTIGA.CR
 }
+
+public method redoConduitLinearTranslation (
+    INOUT mapFmt string,
+    INOUT idRconL string,
+    INOUT app string,
+    INOUT idApp string,
+    INOUT rApp string,
+    INOUT rReturnMsg string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.CONDUIT.LINEAR.TRANSLATION
+}
+

@@ -949,15 +949,6 @@ public method redoVAuthFtUpdDisb (
 }
 
 
-
-public method redoVAuthGenAcLock (
-)
-{
-    jBC: REDO.V.AUTH.GEN.AC.LOCK
-}
-
-
-
 public method redoVAuthItemRequest (
 )
 {
@@ -985,14 +976,6 @@ public method redoVAutReprintTxn (
 {
     jBC: REDO.V.AUT.REPRINT.TXN
 }
-
-
-public method redoVAuthLockAcct (
-)
-{
-    jBC: REDO.V.AUTH.LOCK.ACCT
-}
-
 
 
 public method redoVAuthPayTeller (
@@ -4733,14 +4716,6 @@ public method redoVAutChequeNumber (
 
 
 
-public method redoVAutChkExstCust (
-)
-{
-    jBC: REDO.V.AUT.CHK.EXST.CUST
-}
-
-
-
 public method redoVAutChkLckEvnts (
 )
 {
@@ -5030,16 +5005,6 @@ public method redoVAutUpdSeqStatus (
 {
     jBC: REDO.V.AUT.UPD.SEQ.STATUS
 }
-
-
-
-public method redoVAutUpdateStatusAcCol (
-)
-{
-    jBC: REDO.V.AUT.UPDATE.STATUS.AC.COL
-}
-
-
 
 public method redoVAutUpdateStock (
 )

@@ -53,8 +53,11 @@ public method corrRedoCardNoLock (
     jBC: CORR.REDO.CARD.NO.LOCK
 }
 
-public method pacsUpdateBill (
+
+
+private method pacsUpdateBill (
 )
 {
     jBC: PACS.UPDATE.BILL
 }
+
