@@ -1,0 +1,18 @@
+* I_F.REDO.LY.CUSGROUP Created 24 SEP 10 at 12:45PM by apapr8/SUDHARSAN
+*      PREFIX[REDO.CUSGROUP]
+        EQU REDO.CUSGROUP.DESCRIPTION TO 1,   RedoLyCusgroup_Description TO 1,
+             REDO.CUSGROUP.RESERVED.5 TO 2,   RedoLyCusgroup_Reserved5 TO 2,
+             REDO.CUSGROUP.RESERVED.4 TO 3,   RedoLyCusgroup_Reserved4 TO 3,
+             REDO.CUSGROUP.RESERVED.3 TO 4,   RedoLyCusgroup_Reserved3 TO 4,
+             REDO.CUSGROUP.RESERVED.2 TO 5,   RedoLyCusgroup_Reserved2 TO 5,
+             REDO.CUSGROUP.RESERVED.1 TO 6,   RedoLyCusgroup_Reserved1 TO 6,
+               REDO.CUSGROUP.OVERRIDE TO 7,   RedoLyCusgroup_Override TO 7,
+          REDO.CUSGROUP.RECORD.STATUS TO 8,   RedoLyCusgroup_RecordStatus TO 8,
+                REDO.CUSGROUP.CURR.NO TO 9,   RedoLyCusgroup_CurrNo TO 9,
+               REDO.CUSGROUP.INPUTTER TO 10,  RedoLyCusgroup_Inputter TO 10,
+              REDO.CUSGROUP.DATE.TIME TO 11,  RedoLyCusgroup_DateTime TO 11,
+             REDO.CUSGROUP.AUTHORISER TO 12,  RedoLyCusgroup_Authoriser TO 12,
+                REDO.CUSGROUP.CO.CODE TO 13,  RedoLyCusgroup_CoCode TO 13,
+              REDO.CUSGROUP.DEPT.CODE TO 14,  RedoLyCusgroup_DeptCode TO 14,
+           REDO.CUSGROUP.AUDITOR.CODE TO 15,  RedoLyCusgroup_AuditorCode TO 15,
+        REDO.CUSGROUP.AUDIT.DATE.TIME TO 16,  RedoLyCusgroup_AuditDateTime TO 16

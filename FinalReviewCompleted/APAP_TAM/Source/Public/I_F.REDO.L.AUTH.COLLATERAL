@@ -1,0 +1,5 @@
+* I_F.REDO.L.AUTH.COLLATERAL Created 06 FEB 10 at 03:01PM by apapr8/GANES
+*      PREFIX[INT.AUTH]
+                EQU INT.AUTH.GCI TO 1,   RedoLAuthCollateral_Gci TO 1,
+                    INT.AUTH.ACI TO 2,   RedoLAuthCollateral_Aci TO 2,
+             INT.AUTH.AZ.ACCOUNT TO 3,   RedoLAuthCollateral_AzAccount TO 3

@@ -1,0 +1,17 @@
+* I_F.LATAM.CARD.REGISTER Created 24 JAN 11 at 04:30PM by apapr8/SRSWAM
+*      PREFIX[SBP.DC]
+               EQU SBP.DC.DATE TO 1,   LatamCardRegister_Date TO 1,
+               SBP.DC.CUSTOMER TO 2,   LatamCardRegister_Customer TO 2,
+              SBP.DC.CARD.NAME TO 3,   LatamCardRegister_CardName TO 3,
+            SBP.DC.CARD.NUMBER TO 4,   LatamCardRegister_CardNumber TO 4,
+           SBP.DC.TYPE.OF.CARD TO 5,   LatamCardRegister_TypeOfCard TO 5,
+         SBP.DC.PRINCIPAL.CARD TO 6,   LatamCardRegister_PrincipalCard TO 6,
+         SBP.DC.PRINCIPAL.CUST TO 7,   LatamCardRegister_PrincipalCust TO 7,
+        SBP.DC.PRINC.CUST.NAME TO 8,   LatamCardRegister_PrincCustName TO 8,
+               SBP.DC.ACCOUNTS TO 9,   LatamCardRegister_Accounts TO 9,
+             SBP.DC.CARD.STAGE TO 10,  LatamCardRegister_CardStage TO 10,
+            SBP.DC.EXPIRY.DATE TO 11,  LatamCardRegister_ExpiryDate TO 11,
+          SBP.DC.TYPE.OF.ISSUE TO 12,  LatamCardRegister_TypeOfIssue TO 12,
+           SBP.DC.ISSUE.NUMBER TO 13,  LatamCardRegister_IssueNumber TO 13,
+           SBP.DC.REISS.REASON TO 14,  LatamCardRegister_ReissReason TO 14,
+        SBP.DC.ISSUE.INDICATOR TO 15,  LatamCardRegister_IssueIndicator TO 15

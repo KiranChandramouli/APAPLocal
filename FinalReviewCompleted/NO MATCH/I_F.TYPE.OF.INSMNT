@@ -1,0 +1,12 @@
+* I_F.TYPE.OF.INSMNT Created 01 NOV 10 at 03:19PM by apapr8/RAJ1
+*      PREFIX[INST.TYPE]
+        EQU INST.TYPE.DESCRIPTION TO 1,   TypeOfInsmnt_Description TO 1,
+          INST.TYPE.RECORD.STATUS TO 2,   TypeOfInsmnt_RecordStatus TO 2,
+                INST.TYPE.CURR.NO TO 3,   TypeOfInsmnt_CurrNo TO 3,
+               INST.TYPE.INPUTTER TO 4,   TypeOfInsmnt_Inputter TO 4,
+              INST.TYPE.DATE.TIME TO 5,   TypeOfInsmnt_DateTime TO 5,
+             INST.TYPE.AUTHORISER TO 6,   TypeOfInsmnt_Authoriser TO 6,
+                INST.TYPE.CO.CODE TO 7,   TypeOfInsmnt_CoCode TO 7,
+              INST.TYPE.DEPT.CODE TO 8,   TypeOfInsmnt_DeptCode TO 8,
+           INST.TYPE.AUDITOR.CODE TO 9,   TypeOfInsmnt_AuditorCode TO 9,
+        INST.TYPE.AUDIT.DATE.TIME TO 10,  TypeOfInsmnt_AuditDateTime TO 10

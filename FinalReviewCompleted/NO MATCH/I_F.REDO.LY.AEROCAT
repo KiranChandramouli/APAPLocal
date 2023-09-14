@@ -1,0 +1,12 @@
+* I_F.REDO.LY.AEROCAT Created 03 DEC 13 at 12:06PM by t24uatd/R.MONDRAGON
+*      PREFIX[REDO.AERO]
+               EQU REDO.AERO.NAME TO 1,   RedoLyAerocat_Name TO 1,
+          REDO.AERO.RECORD.STATUS TO 2,   RedoLyAerocat_RecordStatus TO 2,
+                REDO.AERO.CURR.NO TO 3,   RedoLyAerocat_CurrNo TO 3,
+               REDO.AERO.INPUTTER TO 4,   RedoLyAerocat_Inputter TO 4,
+              REDO.AERO.DATE.TIME TO 5,   RedoLyAerocat_DateTime TO 5,
+             REDO.AERO.AUTHORISER TO 6,   RedoLyAerocat_Authoriser TO 6,
+                REDO.AERO.CO.CODE TO 7,   RedoLyAerocat_CoCode TO 7,
+              REDO.AERO.DEPT.CODE TO 8,   RedoLyAerocat_DeptCode TO 8,
+           REDO.AERO.AUDITOR.CODE TO 9,   RedoLyAerocat_AuditorCode TO 9,
+        REDO.AERO.AUDIT.DATE.TIME TO 10,  RedoLyAerocat_AuditDateTime TO 10

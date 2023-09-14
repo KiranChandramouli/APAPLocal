@@ -1,0 +1,5 @@
+* I_F.REDO.CUST.COMPLAINTS Created 06 AUG 10 at 03:34PM by apapr8/SUDHARSAN
+*      PREFIX[CUST.COM]
+            EQU CUST.COM.CUST.ID TO 1,   RedoCustComplaints_CustId TO 1,
+            CUST.COM.CUST.SEQ.NO TO 2,   RedoCustComplaints_CustSeqNo TO 2,
+            CUST.COM.APAP.SEQ.NO TO 3,   RedoCustComplaints_ApapSeqNo TO 3

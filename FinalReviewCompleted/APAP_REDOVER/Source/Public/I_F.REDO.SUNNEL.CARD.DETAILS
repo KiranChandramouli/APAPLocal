@@ -1,0 +1,3 @@
+* I_F.REDO.SUNNEL.CARD.DETAILS Created 02 JUN 11 at 10:12AM by apapr8/GANESH.4
+*      PREFIX[SUN]
+          EQU SUN.CARD.TYPE TO 1,   RedoSunnelCardDetails_CardType TO 1
