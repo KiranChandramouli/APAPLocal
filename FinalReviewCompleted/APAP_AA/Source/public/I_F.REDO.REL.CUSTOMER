@@ -1,3 +1,0 @@
-* I_F.REDO.REL.CUSTOMER Created 02 MAR 11 at 06:28PM by apapr8/JANANIKS
-*      PREFIX[REDO.REL]
-        EQU REDO.REL.EMP.CUST.ID TO 1,   RedoRelCustomer_EmpCustId TO 1

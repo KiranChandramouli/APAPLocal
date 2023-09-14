@@ -1,8 +1,0 @@
-* I_F.REDO.INTRANSIT.CHQ Created 30 MAR 12 at 03:16PM by apapr8/RKV000
-*      PREFIX[TRAN.CHQ]
-      EQU TRAN.CHQ.TFS.REFERENCE TO 1,   RedoIntransitChq_TfsReference TO 1,
-           TRAN.CHQ.CLEAR.OUT.ID TO 2,   RedoIntransitChq_ClearOutId TO 2,
-             TRAN.CHQ.CHQ.NUMBER TO 3,   RedoIntransitChq_ChqNumber TO 3,
-             TRAN.CHQ.CHQ.AMOUNT TO 4,   RedoIntransitChq_ChqAmount TO 4,
-          TRAN.CHQ.EXPOSURE.DATE TO 5,   RedoIntransitChq_ExposureDate TO 5,
-           TRAN.CHQ.UTILISED.AMT TO 6,   RedoIntransitChq_UtilisedAmt TO 6
