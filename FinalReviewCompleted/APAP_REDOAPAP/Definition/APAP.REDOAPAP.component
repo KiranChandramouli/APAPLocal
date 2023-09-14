@@ -2942,26 +2942,6 @@ public method redoApapSapGlDetailRepPost (
     jBC: REDO.APAP.SAP.GL.DETAIL.REP.POST
 }
 
-
-
-
-
-
-public method redoApapSapGlExtRepSel (
-    INOUT gitSelBuild string,
-    INOUT gitPgmRecordList string,
-    INOUT newIdCompany string,
-    INOUT gitFuture1 string,
-    INOUT gitFuture2 string,
-    INOUT gitFuture3 string,
-    INOUT gitErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.EXT.REP.SEL
-}
-
-
-
 public method redoApapSapGlNormalExt (
     INOUT gitMapValue string,
     INOUT convErr string

@@ -484,21 +484,11 @@ public method redoAAcctClosure (
 }
 
 
-
-public method redoAAtmRevLyPts (
-)
-{
-    jBC: REDO.A.ATM.REV.LY.PTS
-}
-
-
-
 public method redoACallAccountingDel (
 )
 {
     jBC: REDO.A.CALL.ACCOUNTING.DEL
 }
-
 
 
 public method redoACallAccountingNew (

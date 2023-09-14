@@ -806,16 +806,6 @@ public method lApapBill4Mon (
     jBC: L.APAP.BILL4.MON
 }
 
-
-
-public method lApapCashbackFt (
-)
-{
-    jBC: L.APAP.CASHBACK.FT
-}
-
-
-
 public method lApapCheckGarRt (
 )
 {
