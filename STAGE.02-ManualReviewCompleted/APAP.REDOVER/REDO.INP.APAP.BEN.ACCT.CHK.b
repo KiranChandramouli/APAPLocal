@@ -1,0 +1,217 @@
+* @ValidationCode : MjoxNDY4OTYwNjkxOkNwMTI1MjoxNjgwNzgxMzMxNDQzOm11dGh1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 06 Apr 2023 17:12:11
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : muthu
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOVER
+SUBROUTINE REDO.INP.APAP.BEN.ACCT.CHK
+*-----------------------------------------------------------------------------
+* Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By :
+* Program Name REDO.NOFILE.AI.LIST.APAP.BEN.ACCTS
+*-----------------------------------------------------------------------------
+* Description : This subroutine is attached as a BUILD routine in the Enquiry REDO.SAV.ACCOUNT.LIST
+* Linked with : Enquiry REDO.SAV.ACCOUNT.LIST  as BUILD routine
+* In Parameter : ENQ.DATA
+* Out Parameter : None
+*
+**DATE           ODR                   DEVELOPER               VERSION
+*
+*01/11/11       PACS00146410            PRABHU N                MODIFICAION
+* 06-04-2023	CONVERSION TOOL		AUTO R22 CODE CONVERSION	 FM to @FM, VM to @VM, SM to @SM
+* 06-04-2023	MUTHUKUMAR M		MANUAL R22 CODE CONVERSION	 NO CHANGE
+*-----------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_System
+    $INSERT I_EB.EXTERNAL.COMMON
+    $INSERT I_F.CUSTOMER.ACCOUNT
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.CATEGORY
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.STANDING.ORDER
+    $INSERT I_F.AI.REDO.ARCIB.PARAMETER
+    $INSERT I_F.AI.REDO.ARCIB.ALIAS.TABLE
+    $INSERT I_F.BENEFICIARY
+    $INSERT I_F.AI.REDO.ACCT.RESTRICT.PARAMETER
+
+    GOSUB INITIALISE
+    GOSUB FORM.ACCT.ARRAY
+
+RETURN
+*-----------------------------------------------------------------------------
+INITIALISE:
+*-----------------------------------------------------------------------------
+
+
+
+    FN.ACC = 'F.ACCOUNT'
+    F.ACC = ''
+    CALL OPF(FN.ACC,F.ACC)
+
+
+    FN.AI.REDO.ACCT.RESTRICT.PARAMETER = 'F.AI.REDO.ACCT.RESTRICT.PARAMETER'
+
+    Y.VAR.EXT.CUSTOMER = ''
+    Y.VAR.EXT.ACCOUNTS=''
+    FN.CATEGORY = "F.CATEGORY"
+    F.CATEGORY = ''
+
+    FN.CUS.BEN.LIST = 'F.CUS.BEN.LIST'
+    F.CUS.BEN.LIST  = ''
+    CALL OPF(FN.CUS.BEN.LIST,F.CUS.BEN.LIST)
+
+    Y.FIELD.COUNT = ''
+    R.ACCT.REC = ''
+    LOAN.FLG = ''
+    DEP.FLG = ''
+    Y.FLAG = ''
+    R.AZ.REC = ''
+    R.ACC = ''
+    LREF.POS = ''
+    LREF.APP='ACCOUNT':@FM:'BENEFICIARY'
+    LREF.FIELDS='L.AC.STATUS1':@VM:'L.AC.AV.BAL':@VM:'L.AC.NOTIFY.1':@VM:'L.AC.STATUS2':@FM:'L.BEN.CUST.NAME':@VM:'L.BEN.CEDULA':@VM:'L.BEN.BANK':@VM:':L.BEN.OWN.ACCT':@VM:'L.BEN.PROD.TYPE'
+    CALL MULTI.GET.LOC.REF(LREF.APP,LREF.FIELDS,LREF.POS)
+    ACCT.STATUS.POS  = LREF.POS<1,1>
+    ACCT.OUT.BAL.POS = LREF.POS<1,2>
+    NOTIFY.POS       = LREF.POS<1,3>
+    ACCT.STATUS2.POS = LREF.POS<1,4>
+    POS.L.BEN.CUST.NAME = LREF.POS<2,1>
+    POS.L.BEN.CEDULA    = LREF.POS<2,2>
+    POS.L.BEN.BANK      = LREF.POS<2,3>
+    POS.L.BEN.OWN.ACCT  = LREF.POS<2,4>
+    POS.L.BEN.PROD.TYPE = LREF.POS<2,5>
+
+RETURN
+******************
+FORM.ACCT.ARRAY:
+*****************
+
+
+    CALL CACHE.READ(FN.AI.REDO.ACCT.RESTRICT.PARAMETER,'SYSTEM',R.AI.REDO.ACCT.RESTRICT.PARAMETER,RES.ERR)
+    Y.RESTRICT.ACCT.TYPE = R.AI.REDO.ACCT.RESTRICT.PARAMETER<AI.RES.PARAM.RESTRICT.ACCT.TYPE>
+    CHANGE @VM TO @FM IN Y.RESTRICT.ACCT.TYPE
+
+    Y.FLAG = ''
+    IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
+        ACCT.ID = R.NEW(FT.CREDIT.ACCT.NO)
+        Y.CR.AMOUNT = R.NEW(FT.CREDIT.AMOUNT)
+        AF = FT.CREDIT.ACCT.NO
+
+    END
+
+    IF APPLICATION EQ 'STANDING.ORDER' THEN
+        ACCT.ID = R.NEW(STO.CPTY.ACCT.NO)
+        AF = STO.CPTY.ACCT.NO
+    END
+
+    CALL F.READ(FN.ACC,ACCT.ID,R.ACC,F.ACC,ACC.ERR)
+
+    AC.NOFITY.STATUS = R.ACC<AC.LOCAL.REF><1,NOTIFY.POS>
+    CUR.ACCT.STATUS1 = R.ACC<AC.LOCAL.REF><1,ACCT.STATUS.POS>
+    CUR.ACCT.STATUS2=R.ACC<AC.LOCAL.REF><1,ACCT.STATUS2.POS>
+    ACCT.BAL = R.ACC<AC.LOCAL.REF><1,ACCT.OUT.BAL.POS>
+    Y.POSTING.RESTRICT= R.ACC<AC.POSTING.RESTRICT>
+    CHANGE @SM TO @FM IN CUR.ACCT.STATUS2
+    CHANGE @SM TO @FM IN AC.NOFITY.STATUS
+    CHECK.CATEG = R.ACC<AC.CATEGORY>
+
+    LOCATE 'CREDIT' IN Y.RESTRICT.ACCT.TYPE SETTING RES.ACCT.POS THEN
+
+        GOSUB STATUS.RESTRICTION.PARA
+        GOSUB NOTIFY.RESTRICTION.PARA
+        GOSUB POSTING.RESTRICTION.PARA
+        GOSUB CHECK.BALANCE.PARA
+    END
+    IF Y.FLAG THEN
+        ETEXT = 'EB-CHECK.PAY.DATE'
+        CALL STORE.END.ERROR
+
+    END
+
+RETURN
+************************
+STATUS.RESTRICTION.PARA:
+************************
+
+    IF CUR.ACCT.STATUS1 THEN
+        CUR.ACCT.STATUS = CUR.ACCT.STATUS1
+    END
+    IF CUR.ACCT.STATUS2 THEN
+        CUR.ACCT.STATUS = CUR.ACCT.STATUS2
+    END
+    IF CUR.ACCT.STATUS1 AND CUR.ACCT.STATUS2 THEN
+        CUR.ACCT.STATUS = CUR.ACCT.STATUS1:@FM:CUR.ACCT.STATUS2
+    END
+
+    Y.CNT.STATUS = DCOUNT(CUR.ACCT.STATUS,@FM)
+    IF Y.CNT.STATUS GE 1 THEN
+        Y.INT.STATUS.CNT = 1
+        LOOP
+        WHILE Y.INT.STATUS.CNT LE Y.CNT.STATUS
+            Y.STATUS2 = CUR.ACCT.STATUS<Y.INT.STATUS.CNT>
+            Y.RESTRICT.STATUS = R.AI.REDO.ACCT.RESTRICT.PARAMETER<AI.RES.PARAM.ACCT.STATUS,RES.ACCT.POS>
+            CHANGE @SM TO @FM IN Y.RESTRICT.STATUS
+            LOCATE Y.STATUS2 IN Y.RESTRICT.STATUS SETTING RES.STATUS.POS THEN
+                Y.FLAG = 1
+                RETURN
+            END
+            Y.INT.STATUS.CNT += 1
+        REPEAT
+    END
+
+RETURN
+************************
+NOTIFY.RESTRICTION.PARA:
+************************
+
+    Y.CNT.NOTIFY = DCOUNT(AC.NOFITY.STATUS,@FM)
+    IF Y.CNT.NOTIFY GE 1 THEN
+        Y.INT.NOTIFY.CNT = 1
+        LOOP
+        WHILE Y.INT.NOTIFY.CNT LE Y.CNT.NOTIFY
+            Y.NOTIFY = AC.NOFITY.STATUS<Y.INT.NOTIFY.CNT>
+            Y.RESTRICT.NOTIFY = R.AI.REDO.ACCT.RESTRICT.PARAMETER<AI.RES.PARAM.ACCT.NOTIFY.1,RES.ACCT.POS>
+            CHANGE @SM TO @FM IN Y.RESTRICT.NOTIFY
+            LOCATE Y.NOTIFY IN Y.RESTRICT.NOTIFY SETTING RES.NOTIFY.POS THEN
+                Y.FLAG = 1
+                RETURN
+            END
+            Y.INT.NOTIFY.CNT += 1
+        REPEAT
+    END
+RETURN
+*************************
+POSTING.RESTRICTION.PARA:
+*************************
+    Y.RESTRICT.ACCT.POSTING = R.AI.REDO.ACCT.RESTRICT.PARAMETER<AI.RES.PARAM.POSTING.RESTRICT,RES.ACCT.POS>
+    CHANGE @SM TO @FM IN Y.RESTRICT.ACCT.POSTING
+    IF Y.POSTING.RESTRICT THEN
+        LOCATE Y.POSTING.RESTRICT IN Y.RESTRICT.ACCT.POSTING SETTING POSTING.POS THEN
+            Y.FLAG = 1
+        END
+    END
+RETURN
+
+*******************
+CHECK.BALANCE.PARA:
+*******************
+    IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
+        IF ACCT.BAL LT Y.CR.AMOUNT THEN
+            AF='FT.CREDIT.AMOUNT'
+            ETEXT = 'EB-AMT.NOT.AVAIL'
+            CALL STORE.END.ERROR
+        END
+    END
+RETURN
+*-----------------------------------------------------------------------------
+END
+*---------------------------*END OF SUBROUTINE*-------------------------------

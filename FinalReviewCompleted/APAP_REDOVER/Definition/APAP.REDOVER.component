@@ -346,11 +346,6 @@ public method redoInpCheckAdminAccts (
 
 
 
-public method redoInpCheckDcTxnAmt (
-)
-{
-    jBC: REDO.INP.CHECK.DC.TXN.AMT
-}
 
 
 
@@ -3409,12 +3404,6 @@ public method redoVInpOvrTlr (
 
 
 
-public method redoVInpPartProcess (
-)
-{
-    jBC: REDO.V.INP.PART.PROCESS
-}
-
 
 
 public method redoVInpPartialThrRetChq (
@@ -3854,11 +3843,7 @@ public method redoVInpTillCheckAcc (
 }
 
 
-public method redoAthStlmtAcctInRtn (
-)
-{
-    jBC: REDO.ATH.STLMT.ACCT.IN.RTN
-}
+
 
 
 
@@ -5689,11 +5674,6 @@ public method redoVInpCheckTransfer (
 
 
 
-public method redoVInpCheckTtBeneficary (
-)
-{
-    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
-}
 
 
 

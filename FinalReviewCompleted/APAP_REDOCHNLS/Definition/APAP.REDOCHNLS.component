@@ -462,14 +462,6 @@ public method redoAthInFmtAmount (
 
 
 
-public method redoAthInStlmtRtn (
-    INOUT stlmtLines string
-)
-{
-    jBC: REDO.ATH.IN.STLMT.RTN
-}
-
-
 
 public method redoAthInitialProcess (
     INOUT stlmtFile string

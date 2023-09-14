@@ -2942,14 +2942,6 @@ public method redoApapSapGlDetailRepPost (
     jBC: REDO.APAP.SAP.GL.DETAIL.REP.POST
 }
 
-public method redoApapSapGlNormalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.NORMAL.EXT
-}
-
 
 
 public method redoApapSapGlNrHdrExpLog (
@@ -2958,16 +2950,6 @@ public method redoApapSapGlNrHdrExpLog (
 )
 {
     jBC: REDO.APAP.SAP.GL.NR.HDR.EXP.LOG
-}
-
-
-
-public method redoApapSapGlRevalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.REVAL.EXT
 }
 
 

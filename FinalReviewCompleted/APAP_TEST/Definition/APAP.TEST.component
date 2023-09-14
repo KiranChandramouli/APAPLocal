@@ -27,12 +27,6 @@ public method calljtest (
     jBC: CALLJTEST
 }
 
-public method redoInpValidateTxnAmt (
-)
-{
-    jBC: REDO.INP.VALIDATE.TXN.AMT
-}
-
 
 
 public method redoTestInvUpd (

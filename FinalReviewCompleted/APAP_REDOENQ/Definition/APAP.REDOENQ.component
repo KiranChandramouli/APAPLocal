@@ -186,13 +186,6 @@ public method redoESelectAzAcc (
 
 
 
-public method redoEnqChg (
-    INOUT rAcct string
-)
-{
-    jBC: REDO.ENQ.CHG
-}
-
 
 
 public method redoEnqOppAcctOff (
@@ -704,12 +697,6 @@ public method redoENofRequestPrinting (
 
 
 
-public method redoENofTxnPosApap (
-    INOUT yFinalArray string
-)
-{
-    jBC: REDO.E.NOF.TXN.POS.APAP
-}
 
 
 
@@ -3055,12 +3042,6 @@ public method redoECnvAzAccount (
 
 
 
-public method redoECnvBrTerm (
-    INOUT EnqData string
-)
-{
-    jBC:REDO.E.CNV.BR.TERM
-}
 
 
 

@@ -1,0 +1,723 @@
+$PACKAGE APAP.LAPAP
+SUBROUTINE L.APAP.GET.LOAN.HIST (ENQ.DATA)
+*-----------------------------------------------------------------------------
+* Bank name: APAP
+* Decription: The loan payment history will be reflected in the Enquiry report REDO.AA.HIST.PAYM.DET.
+* Developed By: V.P.Ashokkumar
+*-----------------------------------------------------------------------------
+* MODIFICATIONS:
+*---------------
+* Autor: Anthony Martinez
+* Date: 15/04/2019
+* Desrciption:
+*  - Historico de prestamos, una campia de la rutina REDO.AA.HIST.PAYM.DET, con la adiccion de los desembolsos
+* Modificacion:
+* Nueva logica para excluir las actividades interna y solo considerar las actividades de pagos que generan FT
+* Fecha: 12/06/2020
+* Autor: APAP
+*Modificacion:
+*Excluir la actividad de pago rueda tu cuota LENDING-APPLYPAYMENT-RP.PAYMENT
+*Fecha: 24/06/2020
+*Autor APAP
+*  DATE             WHO                   REFERENCE                  
+* 21-APRIL-2023      Conversion Tool       R22 Auto Conversion  - F.READ to CACHE.READ , VM to @VM , FM to @FM , ++ to +=1 , -- to -=1 , Include to Insert , T24.BP is removed from Insert and SM to @SM
+* 21-APRIL-2023      Harsha                R22 Manual Conversion - No changes                             
+*------------------------------------------------------------------------
+*-----------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+    $INSERT I_F.AA.ACTIVITY.BALANCES
+    $INSERT I_F.AA.BILL.DETAILS
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.AA.TERM.AMOUNT
+    $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
+    $INSERT I_F.AA.ACTIVITY.HISTORY
+    $INSERT I_F.AA.ACTIVITY
+    $INSERT I_F.AA.PROPERTY
+    $INSERT I_F.STMT.ENTRY
+    $INSERT I_F.FUNDS.TRANSFER
+
+    GOSUB INIT
+    GOSUB LOCATE.VAL
+    GOSUB PROCESS
+RETURN
+
+INIT:
+*****
+
+    FINY.PRIN.BL = '0'; FINY.INT.BL = '0'; FINY.OT.BL = '0'
+    FINY.INS.BL = '0'; ENQ.DATA = ''; FIN.YMORA.BL = '0'
+    FIN.YINSUR.BL = '0'; YSTMT.NOS = '';
+
+    Y.TRANSFER.DATETIME = ''
+    Y.ID.TRANSACCION = ''
+
+    FN.AA.ARRANGEMENT = 'F.AA.ARRANGEMENT'; F.AA.ARRANGEMENT = ''
+    CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
+    FN.ACCOUNT = 'F.ACCOUNT'; F.ACCOUNT = ''
+
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+    FN.ACCOUNT.HST = 'F.ACCOUNT$HIS'; F.ACCOUNT.HST = ''
+
+    CALL OPF(FN.ACCOUNT.HST,F.ACCOUNT.HST)
+    FN.AA.ACTIVITY.HISTORY = 'F.AA.ACTIVITY.HISTORY'; F.AA.ACTIVITY.HISTORY  = ''
+    CALL OPF(FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY)
+
+    FN.AAA = 'F.AA.ARRANGEMENT.ACTIVITY'; F.AAA  = ''
+
+    CALL OPF(FN.AAA,F.AAA)
+    FN.AA.ACCOUNT.DETAILS = 'F.AA.ACCOUNT.DETAILS'; F.AA.ACCOUNT.DETAILS = ''
+
+    CALL OPF(FN.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS)
+    FN.AA.BILL.DETAILS = 'F.AA.BILL.DETAILS'; F.AA.BILL.DETAILS = ''
+
+    CALL OPF(FN.AA.BILL.DETAILS,F.AA.BILL.DETAILS)
+    FN.AA.BILL.DETAILS.HST = 'F.AA.BILL.DETAILS.HIST'; F.AA.BILL.DETAILS.HST = ''
+
+    CALL OPF(FN.AA.BILL.DETAILS.HST,F.AA.BILL.DETAILS.HST)
+    FN.AA.ACTIVITY = 'F.AA.ACTIVITY'; F.AA.ACTIVITY = ''
+
+    CALL OPF(FN.AA.ACTIVITY,F.AA.ACTIVITY)
+    FN.AA.ACT.BAL = 'F.AA.ACTIVITY.BALANCES'; F.AA.ACT.BAL = ''
+
+    CALL OPF(FN.AA.ACT.BAL,F.AA.ACT.BAL)
+    FN.AA.ACTIVITY.HISTORY.HIS = 'F.AA.ACTIVITY.HISTORY.HIST'; F.AA.ACTIVITY.HISTORY.HIS  = ''
+    CALL OPF(FN.AA.ACTIVITY.HISTORY.HIS,F.AA.ACTIVITY.HISTORY.HIS)
+
+    FN.STMT.ENTRY = 'F.STMT.ENTRY'; F.STMT.ENTRY = ''
+    CALL OPF(FN.STMT.ENTRY,F.STMT.ENTRY)
+
+RETURN
+
+LOCATE.VAL:
+***********
+
+    LOCATE "ARRANGEMENT.ID" IN D.FIELDS SETTING CUS.POS THEN
+        Y.ARR.ID = D.RANGE.AND.VALUE<CUS.POS>
+    END
+
+    Y.START.DATE = ''; Y.END.DATE = ''
+
+    LOCATE "START.DATE" IN D.FIELDS<1> SETTING START.DATE.POS THEN
+        Y.START.DATE = D.RANGE.AND.VALUE<START.DATE.POS>
+    END
+
+    LOCATE "END.DATE" IN D.FIELDS<1> SETTING END.DATE.POS THEN
+        Y.END.DATE = D.RANGE.AND.VALUE<END.DATE.POS>
+    END
+
+RETURN
+
+READ.ACCOUNT:
+*************
+
+    ERR.ACCOUNT = ''; R.ACCOUNT = ''; ACCOUNT.HIS.ERR = ''
+    CALL F.READ(FN.ACCOUNT,Y.ARR.ID,R.ACCOUNT,F.ACCOUNT,ERR.ACCOUNT)
+    IF NOT(R.ACCOUNT) THEN
+        Y.ARR.ID.HST = Y.ARR.ID
+        CALL EB.READ.HISTORY.REC(F.ACCOUNT.HST,Y.ARR.ID.HST,R.ACCOUNT,ACCOUNT.HIS.ERR)
+    END
+
+    Y.ARR.ID = R.ACCOUNT<AC.ARRANGEMENT.ID>
+
+RETURN
+
+
+READ.ARRANGEMENT:
+*****************
+
+    ERR.AA.ARRANGEMENT = ''; R.AA.ARRANGEMENT = ''
+    CALL F.READ(FN.AA.ARRANGEMENT,Y.ARR.ID,R.AA.ARRANGEMENT,F.AA.ARRANGEMENT,ERR.AA.ARRANGEMENT)
+    Y.LINKED.APPL = R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL>
+    Y.LINKED.APPL.ID = R.AA.ARRANGEMENT<AA.ARR.LINKED.APPL.ID>
+    Y.START = R.AA.ARRANGEMENT<AA.ARR.START.DATE,1>
+    LOCATE "ACCOUNT" IN Y.LINKED.APPL<1,1> SETTING Y.LINK.POS THEN
+        YACCT.ID =Y.LINKED.APPL.ID<Y.LINK.POS>
+    END
+
+    Y.ARR.ESTATUS = R.AA.ARRANGEMENT<AA.ARR.ARR.STATUS>
+
+RETURN
+
+PROCESS:
+********
+
+    GOSUB READ.ARRANGEMENT
+
+    IF NOT(R.AA.ARRANGEMENT) THEN
+
+        GOSUB READ.ACCOUNT
+
+        YACCT.ID = Y.ARR.ID
+        IF NOT(R.ACCOUNT) THEN
+            E = 'AA-INVALID.AA.LOAN.ID'
+            GOSUB PROGRAM.EXT
+        END
+    END
+
+    IF NOT(R.AA.ARRANGEMENT) THEN
+        GOSUB READ.ARRANGEMENT
+    END
+
+    ERR.AA.ACCOUNT.DETAILS = ''; R.AA.ACCOUNT.DETAILS = ''; YAAD.REFID = ''; YAAD.BILL = ''
+    CALL F.READ(FN.AA.ACCOUNT.DETAILS,Y.ARR.ID,R.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS,ERR.AA.ACCOUNT.DETAILS)
+    YAAD.REFID = R.AA.ACCOUNT.DETAILS<AA.AD.ACTIVITY.REF>
+    YAAD.BILL = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID>
+
+    YACT.RECS = ''; YACT.IDR = ''; YTOT.AMT = 0
+    REQD.MODE = ''; EFF.DATE = Y.START; R.AA.ACTIVITY.HISTORY = ''
+
+*CALL AA.READ.ACTIVITY.HISTORY(Y.ARR.ID, REQD.MODE, EFF.DATE, R.AA.ACTIVITY.HISTORY)
+    CALL F.READ(FN.AA.ACTIVITY.HISTORY,Y.ARR.ID,R.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY,ERR.AA.ACTIVITY.HISTORY)
+    YACT.ID.HIST = R.AA.ACTIVITY.HISTORY<AA.AH.ARC.ID>
+
+*-------------------------
+    CHANGE @SM TO @FM IN YACT.ID.HIST
+    CHANGE @VM TO @FM IN YACT.ID.HIST
+    YCNT.HIST = DCOUNT(YACT.ID.HIST,@FM)
+*-------------------------
+
+    IF Y.ARR.ESTATUS EQ 'CLOSE' OR Y.ARR.ESTATUS EQ 'PENDING.CLOSURE' OR YCNT.HIST GE 1 THEN
+        GOSUB GET.PROCESS.HIST.HIS
+    END
+
+******************CONSULTA AL LIVE HISTORICO******************
+    CALL F.READ(FN.AA.ACTIVITY.HISTORY,Y.ARR.ID,R.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY,ERR.AA.ACTIVITY.HISTORY)
+    YACT.RECS = R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY>
+    YACT.IDR = R.AA.ACTIVITY.HISTORY<AA.AH.ACTIVITY.REF>
+
+    CHANGE @SM TO @FM IN YACT.IDR
+    CHANGE @VM TO @FM IN YACT.IDR
+    YCNT = DCOUNT(YACT.IDR,@FM)
+
+***************************************************************
+
+    BAL.ERR = ''; R.AA.ACT.BAL = '' ; YACT.REF.BAL = ''
+    CALL F.READ(FN.AA.ACT.BAL,Y.ARR.ID,R.AA.ACT.BAL,F.AA.ACT.BAL,BAL.ERR)
+    YACT.REF.BAL = R.AA.ACT.BAL<AA.ACT.BAL.ACTIVITY.REF>
+
+    YTMP.CNT = 0
+    LOOP
+        REMOVE YACT.ID FROM YACT.IDR SETTING AA.POSN
+    WHILE YACT.ID:AA.POSN
+
+        YACT.ID = YACT.IDR<YCNT>
+        ERR.AAA = ''; R.AAA = ''; YORG.AMT = ''; YCO.CODE = ''; YEFF.DATE = ''; YACT.RSTVAL = ''
+        YPAGO.TOT = ''; Y.PRIN.BL = ''; Y.INT.BL = ''; Y.OT.BL = ''; Y.INS.BL = ''
+        YACTIVITY = ''; YMORA.BL = ''; YINSUR.BL = ''; PAGO.DTE = '';
+        CALL F.READ(FN.AAA,YACT.ID,R.AAA,F.AAA,ERR.AAA)
+
+        YORG.AMT  = R.AAA<AA.ARR.ACT.ORIG.TXN.AMT>
+        YCO.CODE = R.AAA<AA.ARR.ACT.CO.CODE>[8,2]
+        YEFF.DATE = R.AAA<AA.ARR.ACT.EFFECTIVE.DATE>
+        YACTIVITY = R.AAA<AA.ARR.ACT.ACTIVITY>
+        YFIELD.VALUE = R.AAA<AA.ARR.ACT.FIELD.VALUE>
+        YSTMT.NOS = R.AAA<AA.ARR.ACT.STMT.NOS>
+***---------------------------campos para nueva logica.
+*** Si la actividad no tiene un FT, asociado se excluye
+        Y.TXN.CONTRACT.ID = R.AAA<AA.ARR.ACT.TXN.CONTRACT.ID>
+        Y.TXN.SYSTEM.ID = R.AAA<AA.ARR.ACT.TXN.SYSTEM.ID>
+
+        IF Y.TXN.SYSTEM.ID NE 'FT' AND Y.TXN.CONTRACT.ID[1,2] NE 'FT' THEN
+            YCNT -= 1
+            CONTINUE
+        END
+
+***------------------------------------------------------
+        PAGO.DTE = YEFF.DATE
+        Y.TRANSFER.DATETIME = PAGO.DTE : R.AAA<AA.ARR.ACT.DATE.TIME>[7,10]
+        Y.ID.TRANSACCION =  R.AAA<AA.ARR.ACT.TXN.CONTRACT.ID>
+
+        AA.ACTIVITY.ERR = ''; R.AA.ACTIVITY = ''; YDESC = ''; YACT.2NDVAL = ''
+        YACT.2NDVAL = FIELD(YACTIVITY,'-',2)
+        YACT.RSTVAL = FIELD(YACTIVITY,'-',2,99)
+**----------------------------------------------------------------------------------
+*Excluir de la información transaccional de los canales este Código de Transacción
+        IF YACTIVITY EQ 'LENDING-APPLYPAYMENT-RP.PAYMENT' THEN
+            YCNT -= 1
+            CONTINUE
+        END
+**------------------------------------------------------------------------------------
+        IF YACTIVITY EQ 'LENDING-APPLYPAYMENT-RP.INT' OR RIGHT(YACTIVITY,11) EQ 'RADIACIOHIP' OR RIGHT(YACTIVITY,12) EQ 'RADIACIOHIP1' OR  LEFT(YACTIVITY,24) EQ 'LENDING-AGE-APAP.OVERDUE' OR YACTIVITY EQ 'LENDING-MAKEDUE-REPAYMENT.SCHEDULE' OR  YACTIVITY EQ  'LENDING-UPDATE-OD.STATUS' OR YACTIVITY EQ 'MORA.CHARGE.ADJUSTMENT' THEN
+            YCNT -= 1
+            CONTINUE
+        END
+
+
+        IF YEFF.DATE GE Y.START.DATE AND YEFF.DATE LE Y.END.DATE THEN
+
+            CALL CACHE.READ(FN.AA.ACTIVITY, YACTIVITY, R.AA.ACTIVITY, AA.ACTIVITY.ERR)	;*R22 Auto Conversion  - F.READ to CACHE.READ
+            YDESC  = R.AA.ACTIVITY<AA.ACT.DESCRIPTION,1>
+            YDESC2 = R.AA.ACTIVITY<AA.ACT.DESCRIPTION,2>
+
+            IF YDESC2 NE '' THEN
+                YDESC = YDESC2
+            END
+
+            IF RIGHT(YACTIVITY,15) EQ 'MANT.SALD.CUOTA' THEN
+                YORG.AMT = 1
+                YFIELD.VALUE  = 1
+            END
+
+            IF YACTIVITY EQ 'LENDING-TAKEOVER-ARRANGEMENT' THEN
+
+                Y.COMMITED.AMT = 0; Y.DISBURSE.DATE = ''; YMIG.STAT = ''
+
+                CALL REDO.L.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
+                Y.DISBURSE.AMT = R.DISB.DETAILS<3>
+                Y.DISBURSE.DATE= R.DISB.DETAILS<1>
+                CHANGE @VM TO @FM IN Y.DISBURSE.DATE
+                Y.DISBURSE.DATE = Y.DISBURSE.DATE<1>
+                YMIG.STAT = R.DISB.DETAILS<4>
+                YCNT -= 1
+                CONTINUE
+            END
+
+            YAAD.BILLID = ''; YAAD.BILLDTE = ''; YAAD.SETSTAT = ''; YTP.FLG = 0
+            LOCATE YACT.ID IN YAAD.REFID<1,1> SETTING Y.POSN THEN
+                YAAD.BILLID = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID,Y.POSN>
+                YAAD.BILLDTE = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.DATE,Y.POSN>
+                YAAD.SETSTAT = R.AA.ACCOUNT.DETAILS<AA.AD.SET.STATUS,Y.POSN>
+            END
+
+            IF YACTIVITY EQ 'LENDING-ADJUST.BALANCE-MANT.SALD.CUOTA' THEN
+                YTMP.CNT = -1
+            END
+
+            IF YACTIVITY EQ 'REDO.ADJUST.BILLS' OR  YACTIVITY EQ 'LENDING-ADJUST.BILL-MANT.SALD.CUOTA' OR  YACTIVITY EQ 'LENDING-ADJUST.ALL-MANT.SALD.CUOTA' THEN
+
+                IF YSTMT.NOS NE '' THEN
+                    GOSUB CHECK.ACTIVITY.ADJUST.MAT
+                    YTMP.CNT = -1
+                END ELSE
+                    YCNT -= 1
+                    CONTINUE
+                END
+
+            END ELSE
+
+                IF YAAD.BILLID THEN
+                    GOSUB GET.AA.BILL.DET
+                END
+
+                IF NOT(YAAD.BILLID) THEN
+                    GOSUB CAL.AMT
+                END
+
+*YORG.AMT: PAGO TOTAL
+                IF (YORG.AMT EQ '' OR YORG.AMT EQ 0) AND YFIELD.VALUE EQ '' AND NOT(YSTMT.NOS)  THEN
+                    YCNT -= 1
+                    CONTINUE
+                END
+
+            END
+            YTOT.AMT = (YTOT.AMT) - (Y.PRIN.BL)
+            YPAGO.TOT = Y.PRIN.BL + Y.INT.BL + Y.OT.BL + Y.INS.BL + YMORA.BL + YINSUR.BL
+
+            IF (LEFT(YACTIVITY,15) NE 'LENDING-CAPTURE') THEN
+                GOSUB ARRAY.FORM
+            END
+
+        END
+
+        YCNT -= 1
+    REPEAT
+RETURN
+
+*************
+* FUNCIONES *
+*************
+
+GET.PROCESS.HIST.HIS:
+********************
+
+    Y.ACHIS = ''
+    Y.ARR.ID.SEL =  "'":Y.ARR.ID:"'..."
+    SEL.CMD = ' SELECT ' : FN.AA.ACTIVITY.HISTORY.HIS : ' WITH @ID LIKE "' : Y.ARR.ID.SEL : '" BY EFFECTIVE.DATE'
+    CALL EB.READLIST(SEL.CMD, SEL.LIST, '',NO.OF.RECS,SEL.ERR)
+
+
+    LOOP
+        REMOVE Y.ACHIS FROM SEL.LIST SETTING FI.POST
+    WHILE Y.ACHIS DO
+
+        R.AA.ACTIVITY.HISTORY.HIS = ''; HIS.ERROR = ''
+        CALL F.READ(FN.AA.ACTIVITY.HISTORY.HIS, Y.ACHIS, R.AA.ACTIVITY.HISTORY.HIS, F.AA.ACTIVITY.HISTORY.HIS, HIS.ERROR)
+        YACT.RECS = R.AA.ACTIVITY.HISTORY.HIS<AA.AH.ACTIVITY>
+        YACT.IDR = R.AA.ACTIVITY.HISTORY.HIS<AA.AH.ACTIVITY.REF>
+        CHANGE @SM TO @FM IN YACT.IDR
+        CHANGE @VM TO @FM IN YACT.IDR
+        YCNT = DCOUNT(YACT.IDR,@FM)
+        BAL.ERR = ''; R.AA.ACT.BAL = '' ; YACT.REF.BAL = ''
+        CALL F.READ(FN.AA.ACT.BAL,Y.ARR.ID,R.AA.ACT.BAL,F.AA.ACT.BAL,BAL.ERR)
+        YACT.REF.BAL = R.AA.ACT.BAL<AA.ACT.BAL.ACTIVITY.REF>
+        YTMP.CNT = 0
+
+        LOOP
+            REMOVE YACT.ID FROM YACT.IDR SETTING AA.POSN
+        WHILE YACT.ID:AA.POSN
+
+            YACT.ID = YACT.IDR<YCNT>
+            ERR.AAA = ''; R.AAA = ''; YORG.AMT = ''; YCO.CODE = ''; YEFF.DATE = ''; YACT.RSTVAL = ''
+            YPAGO.TOT = ''; Y.PRIN.BL = ''; Y.INT.BL = ''; Y.OT.BL = ''; Y.INS.BL = ''
+            YACTIVITY = ''; YMORA.BL = ''; YINSUR.BL = ''; PAGO.DTE = ''; YSTMT.NOS = ''
+            CALL F.READ(FN.AAA,YACT.ID,R.AAA,F.AAA,ERR.AAA)
+
+            YORG.AMT  = R.AAA<AA.ARR.ACT.ORIG.TXN.AMT>
+            YCO.CODE = R.AAA<AA.ARR.ACT.CO.CODE>[8,2]
+            YEFF.DATE = R.AAA<AA.ARR.ACT.EFFECTIVE.DATE>
+            YACTIVITY = R.AAA<AA.ARR.ACT.ACTIVITY>
+            YFIELD.VALUE = R.AAA<AA.ARR.ACT.FIELD.VALUE>
+            YSTMT.NOS = R.AAA<AA.ARR.ACT.STMT.NOS>
+*PAGO.DTE = OCONV(ICONV(YEFF.DATE,'D'),'D')
+            PAGO.DTE = YEFF.DATE
+            Y.TRANSFER.DATETIME = PAGO.DTE : R.AAA<AA.ARR.ACT.DATE.TIME>[7,10]
+            Y.ID.TRANSACCION =  R.AAA<AA.ARR.ACT.TXN.CONTRACT.ID>
+
+***---------------------------campos para nueva logica.
+*** Si la actividad no tiene un FT, asociado se excluye
+            Y.TXN.CONTRACT.ID = R.AAA<AA.ARR.ACT.TXN.CONTRACT.ID>
+            Y.TXN.SYSTEM.ID = R.AAA<AA.ARR.ACT.TXN.SYSTEM.ID>
+
+            IF Y.TXN.SYSTEM.ID NE 'FT' AND Y.TXN.CONTRACT.ID[1,2] NE 'FT' THEN
+                YCNT -= 1
+                CONTINUE
+            END
+***------------------------------------------------------
+*Excluir de la información transaccional de los canales este Código de Transacción
+            IF YACTIVITY EQ 'LENDING-APPLYPAYMENT-RP.PAYMENT' THEN
+                YCNT -= 1
+                CONTINUE
+            END
+**------------------------------------------------------------------------------------
+
+            AA.ACTIVITY.ERR = ''; R.AA.ACTIVITY = ''; YDESC = ''; YACT.2NDVAL = ''
+            YACT.2NDVAL = FIELD(YACTIVITY,'-',2)
+            YACT.RSTVAL = FIELD(YACTIVITY,'-',2,99)
+            IF YACTIVITY EQ 'LENDING-APPLYPAYMENT-RP.INT' OR RIGHT(YACTIVITY,11) EQ 'RADIACIOHIP' OR RIGHT(YACTIVITY,12) EQ 'RADIACIOHIP1' OR  LEFT(YACTIVITY,24) EQ 'LENDING-AGE-APAP.OVERDUE' OR YACTIVITY EQ 'LENDING-MAKEDUE-REPAYMENT.SCHEDULE' OR  YACTIVITY EQ  'LENDING-UPDATE-OD.STATUS' OR YACTIVITY EQ 'MORA.CHARGE.ADJUSTMENT' THEN
+                YCNT -= 1
+                CONTINUE
+            END
+
+            IF YEFF.DATE GE Y.START.DATE AND YEFF.DATE LE Y.END.DATE THEN
+
+                CALL CACHE.READ(FN.AA.ACTIVITY, YACTIVITY, R.AA.ACTIVITY, AA.ACTIVITY.ERR)	;*R22 Auto Conversion  - F.READ to CACHE.READ
+                YDESC  = R.AA.ACTIVITY<AA.ACT.DESCRIPTION,1>
+                YDESC2 = R.AA.ACTIVITY<AA.ACT.DESCRIPTION,2>
+
+                IF YDESC2 NE '' THEN
+                    YDESC = YDESC2
+                END
+
+*----------------------------------------------
+                IF RIGHT(YACTIVITY,15) EQ 'MANT.SALD.CUOTA' THEN
+                    YORG.AMT = 1
+                    YFIELD.VALUE  = 1
+                END
+
+                IF YACTIVITY EQ 'LENDING-TAKEOVER-ARRANGEMENT' THEN
+
+                    Y.COMMITED.AMT = 0; Y.DISBURSE.DATE = ''; YMIG.STAT = ''
+
+                    CALL REDO.L.GET.DISBURSEMENT.DETAILS(Y.ARR.ID,R.DISB.DETAILS,Y.COMMITED.AMT,Y.PEND.DISB)
+                    Y.DISBURSE.AMT = R.DISB.DETAILS<3>
+                    Y.DISBURSE.DATE= R.DISB.DETAILS<1>
+                    CHANGE @VM TO @FM IN Y.DISBURSE.DATE
+                    Y.DISBURSE.DATE = Y.DISBURSE.DATE<1>
+                    YMIG.STAT = R.DISB.DETAILS<4>
+                    YCNT -= 1
+                    CONTINUE
+                END
+
+                YAAD.BILLID = ''; YAAD.BILLDTE = ''; YAAD.SETSTAT = ''; YTP.FLG = 0
+                LOCATE YACT.ID IN YAAD.REFID<1,1> SETTING Y.POSN THEN
+                    YAAD.BILLID = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID,Y.POSN>
+                    YAAD.BILLDTE = R.AA.ACCOUNT.DETAILS<AA.AD.BILL.DATE,Y.POSN>
+                    YAAD.SETSTAT = R.AA.ACCOUNT.DETAILS<AA.AD.SET.STATUS,Y.POSN>
+                END
+
+                IF YACTIVITY EQ 'LENDING-ADJUST.BALANCE-MANT.SALD.CUOTA' THEN
+                    YTMP.CNT = -1
+                END
+
+                IF YACTIVITY EQ 'REDO.ADJUST.BILLS' OR  YACTIVITY EQ 'LENDING-ADJUST.BILL-MANT.SALD.CUOTA' OR  YACTIVITY EQ 'LENDING-ADJUST.ALL-MANT.SALD.CUOTA' OR  YACTIVITY EQ 'LENDING-DISBURSE-COMMITMENT' THEN
+
+                    IF YSTMT.NOS NE '' THEN
+
+                        GOSUB CHECK.ACTIVITY.ADJUST.MAT
+                        YTMP.CNT = -1
+
+                    END ELSE
+                        YCNT -= 1
+                        CONTINUE
+                    END
+
+                END ELSE
+
+                    IF YAAD.BILLID THEN
+                        GOSUB GET.AA.BILL.DET
+                    END
+
+                    IF NOT(YAAD.BILLID) THEN
+                        GOSUB CAL.AMT
+                    END
+
+                    IF (YORG.AMT EQ '' OR YORG.AMT EQ 0) AND YFIELD.VALUE EQ '' AND NOT(YSTMT.NOS)  THEN
+                        YCNT -= 1
+                        CONTINUE
+                    END
+
+                END
+
+*CAPITAL PENDIENTE - CAPITAL VIGENTE
+                YTOT.AMT = ( YTOT.AMT) - (Y.PRIN.BL)
+                YPAGO.TOT = Y.PRIN.BL + Y.INT.BL + Y.OT.BL + Y.INS.BL + YMORA.BL + YINSUR.BL
+
+                IF (LEFT(YACTIVITY,15) NE 'LENDING-CAPTURE') THEN
+                    GOSUB ARRAY.FORM
+                END
+
+            END
+
+            YCNT -= 1
+        REPEAT
+
+    REPEAT
+
+
+RETURN
+
+GET.OUT.DETAIL:
+***************
+
+    BAL.OUTSTANDING = ''; BAL.OUTSTAND = 0
+    BALANCE.NAME.VAL =  'CURACCOUNT':@FM:'DUEACCOUNT':@FM:'DE1ACCOUNT':@FM:'DE3ACCOUNT':@FM:'DELACCOUNT':@FM:'NABACCOUNT'
+
+    LOOP
+        REMOVE BALANCE.NAME FROM BALANCE.NAME.VAL SETTING B.POSN
+    WHILE BALANCE.NAME:B.POSN
+
+        VALUE.TRADE = ''; BAL.DETS = ''; ERR.PROCESS = ''
+        VALUE.TRADE<4> = 'ECB'
+        VALUE.TRADE<4,2> = 'END'
+        Y.DISBURSE.DATE = YEFF.DATE
+
+        CALL AA.GET.PERIOD.BALANCES(YACCT.ID, BALANCE.NAME, VALUE.TRADE, Y.DISBURSE.DATE, Y.DISBURSE.DATE, "", BAL.DETS, ERR.PROCESS)
+        BAL.OUTSTANDING += BAL.DETS<4>
+
+        IF BALANCE.NAME NE 'DUEACCOUNT' THEN
+*BALANCE PENDIENTE
+            BAL.OUTSTAND -= BAL.DETS<2>
+            BAL.OUTSTAND += ABS(BAL.DETS<3>)
+        END
+
+    REPEAT
+
+    YTOT.AMT = ABS(BAL.OUTSTANDING);
+
+RETURN
+
+CHECK.ACTIVITY.ADJUST.MAT:
+*************************
+
+    YSTMT.NOS.ID = YSTMT.NOS<1,1>
+    Y.BALANCE.TYPE = "";
+    Y.BALANCE.VIGENTE = 0;
+
+    SEL.CMDS = " SELECT " : FN.STMT.ENTRY : " WITH @ID LIKE " :YSTMT.NOS.ID:"..."
+    CALL EB.READLIST(SEL.CMDS, SEL.LISTS, '', NO.OF.RECSS,SEL.ERRS)
+
+    LOOP
+        REMOVE  STMT.ENTRY.ID FROM SEL.LISTS SETTING LIST.POSN
+    WHILE  STMT.ENTRY.ID:LIST.POSN
+
+        R.STMT.ENTRY = ''; Y.ERR.STMT.ENTRY = '';
+        CALL F.READ(FN.STMT.ENTRY,STMT.ENTRY.ID, R.STMT.ENTRY,F.STMT.ENTRY,Y.ERR.STMT.ENTRY)
+
+        IF R.STMT.ENTRY NE '' THEN
+
+            Y.BALANCE.TYPE   = R.STMT.ENTRY<AC.STE.BALANCE.TYPE>
+
+            IF Y.BALANCE.TYPE NE '' THEN
+                Y.BALANCE.VIGENTE += R.STMT.ENTRY<AC.STE.AMOUNT.LCY>
+            END
+        END
+    REPEAT
+
+    Y.PRIN.BL = Y.BALANCE.VIGENTE
+RETURN
+
+CAL.AMT:
+********
+
+    POS.AAA = ''
+    LOCATE YACT.ID IN YACT.REF.BAL<1,1> SETTING POS.AAA THEN
+
+        Y.PROPS = R.AA.ACT.BAL<AA.ACT.BAL.PROPERTY,POS.AAA>
+
+*MONTO ORIGINAL
+        Y.PROPS.AMTS = R.AA.ACT.BAL<AA.ACT.BAL.PROPERTY.AMT,POS.AAA>
+
+        Y.PR.CNT = DCOUNT(Y.PROPS,@SM);
+        FLP = 1
+
+        GOSUB CAL.AMT.SUB
+    END
+RETURN
+
+
+CAL.AMT.SUB:
+************
+
+    LOOP
+    WHILE FLP LE Y.PR.CNT
+
+        Y.PR.CL = Y.PROPS<1,1,FLP>
+        Y.PR.CL = FIELD(Y.PR.CL,'.',1)
+
+*YACT.2NDVAL EQ 'CAPTURE.BALANCE'
+        IF YMIG.STAT EQ 'MIGRATE' AND (Y.PR.CL[1,10] EQ 'COMMITMENT'  OR YACT.2NDVAL EQ 'CAPTURE.BILL') THEN
+            FLP +=1
+            CONTINUE
+        END
+
+        IF Y.PR.CL[1,10] EQ 'COMMITMENT' THEN
+            FLP +=1
+            CONTINUE
+        END
+
+        IF YACT.RSTVAL EQ 'ADJUST.BALANCE-MANT.SALD.CUOTA' THEN
+
+            IF Y.PR.CL EQ 'PRINCIPALINT' THEN
+                FLP += 1
+                CONTINUE
+            END ELSE
+                YTP.FLG = 1
+            END
+        END
+
+        GOSUB CASE.SS
+        FLP += 1
+    REPEAT
+
+RETURN
+
+CASE.SS:
+*********
+
+    BEGIN CASE
+        CASE Y.PR.CL EQ 'ACCOUNT'
+*CAPITAL
+            Y.PRIN.BL += Y.PROPS.AMTS<1,1,FLP>
+        CASE Y.PR.CL EQ 'PRINCIPALINT'
+*INTERES CAPITAL
+            Y.INT.BL += Y.PROPS.AMTS<1,1,FLP>
+        CASE Y.PR.CL EQ 'PENALTINT'
+*INTERES VENCIDO
+            Y.OT.BL += Y.PROPS.AMTS<1,1,FLP>
+        CASE Y.PR.CL EQ 'PRMORA'
+*MORA
+            YMORA.BL += Y.PROPS.AMTS<1,1,FLP>
+        CASE Y.PR.CL[1,3] EQ 'SEG'
+*SERGURO
+            YINSUR.BL += Y.PROPS.AMTS<1,1,FLP>
+        CASE 1
+*CARGOS
+            Y.INS.BL += Y.PROPS.AMTS<1,1,FLP>
+    END CASE
+
+RETURN
+
+GET.AA.BILL.DET:
+****************
+
+    R.AA.BILL.DETAILS = ''; Y.ERR.BILL = ''; Y.PROP.CNT = 0
+    CALL F.READ(FN.AA.BILL.DETAILS,YAAD.BILLID,R.AA.BILL.DETAILS,F.AA.BILL.DETAILS,Y.ERR.BILL)
+    IF Y.ERR.BILL THEN
+        CALL F.READ(FN.AA.BILL.DETAILS.HST,YAAD.BILLID,R.AA.BILL.DETAILS,F.AA.BILL.DETAILS.HST,Y.ERR.BILL)
+    END
+
+    Y.TOT.BILL.AMT = R.AA.BILL.DETAILS<AA.BD.OR.TOTAL.AMOUNT>
+    Y.TOT.PROPERTY = R.AA.BILL.DETAILS<AA.BD.PROPERTY>
+    Y.PROP.CNT = DCOUNT(Y.TOT.PROPERTY,@VM)
+
+    LOOP
+    UNTIL Y.PROP.CNT LE 0
+        YADJ.AMT = ''; YPROD.ID = ''; YPAID.AMT = 0; YADJ.REF = ''
+
+        YPROPERTY = R.AA.BILL.DETAILS<AA.BD.PROPERTY,Y.PROP.CNT>
+        YPROD.ID = R.AA.BILL.DETAILS<AA.BD.OR.PROP.AMOUNT,Y.PROP.CNT>
+        YADJ.AMT = R.AA.BILL.DETAILS<AA.BD.ADJUST.AMT,Y.PROP.CNT>
+        YADJ.REF = R.AA.BILL.DETAILS<AA.BD.ADJUST.REF,Y.PROP.CNT>
+
+        IF YAAD.SETSTAT NE 'UNPAID' THEN
+            YPAID.AMT = YPROD.ID + YADJ.AMT
+        END ELSE
+
+            YPAID.AMT = YADJ.AMT
+            FINDSTR YACT.ID IN YADJ.REF<1> SETTING AD.POSN,SM.POSN,VM.POSN THEN
+                YPAID.AMT = R.AA.BILL.DETAILS<AA.BD.ADJUST.AMT,Y.PROP.CNT,VM.POSN>
+
+            END ELSE
+                Y.PROP.CNT -= 1
+                CONTINUE
+            END
+        END
+
+        BEGIN CASE
+            CASE YPROPERTY EQ 'ACCOUNT'
+                Y.PRIN.BL += YPAID.AMT
+            CASE YPROPERTY EQ 'PRINCIPALINT'
+                Y.INT.BL += YPAID.AMT
+            CASE YPROPERTY EQ 'PENALTINT'
+                Y.OT.BL += YPAID.AMT
+            CASE YPROPERTY EQ 'PRMORA'
+                YMORA.BL += YPAID.AMT
+            CASE YPROPERTY[1,3] EQ 'SEG'
+                YINSUR.BL += YPAID.AMT
+            CASE 1
+                Y.INS.BL += YPAID.AMT
+        END CASE
+        Y.PROP.CNT -= 1
+    REPEAT
+
+RETURN
+
+ARRAY.FORM:
+**********
+
+    IF (Y.PRIN.BL AND Y.PRIN.BL NE 0) OR (Y.INT.BL AND Y.INT.BL NE 0) OR (Y.OT.BL AND Y.OT.BL NE 0) OR (Y.INS.BL AND Y.INS.BL NE 0) OR (YMORA.BL AND YMORA.BL NE 0) OR (YINSUR.BL AND YINSUR.BL NE 0) THEN
+
+        YTMP.CNT += 1
+
+        IF YTMP.CNT GE 1 THEN
+            GOSUB GET.OUT.DETAIL
+        END
+
+        IF  YACTIVITY NE 'LENDING-APPLYPAYMENT-RP.CARGOS.DES' THEN
+
+            PAGO.DTE = Y.TRANSFER.DATETIME
+
+*--          FECHA DE PAGO    SUCU   TRANSACCION  PAGO TOTAL      CAPITAL      INTERES      VENCIDO      MORA         SEGURO       CARGOS  CAPITAL PENDIENTE
+            ENQ.DATA<-1> = PAGO.DTE:'*':Y.ID.TRANSACCION:'*':YDESC:'*':YPAGO.TOT
+
+            FIN.YPAGO.TOT += YPAGO.TOT
+            FINY.PRIN.BL += Y.PRIN.BL
+            FINY.INT.BL += Y.INT.BL
+            FINY.OT.BL += Y.OT.BL
+            FINY.INS.BL += Y.INS.BL
+            FIN.YMORA.BL += YMORA.BL
+            FIN.YINSUR.BL += YINSUR.BL
+        END
+
+    END
+
+RETURN
+
+
+PROGRAM.EXT:
+************
+END

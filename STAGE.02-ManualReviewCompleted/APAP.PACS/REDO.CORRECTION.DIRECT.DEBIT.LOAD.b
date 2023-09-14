@@ -1,0 +1,73 @@
+* @ValidationCode : MjoxOTExMjAzNDY3OkNwMTI1MjoxNjgxODkxNTkyNzU0OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Apr 2023 13:36:32
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.PACS
+*MODIFICATION HISTORY:
+*---------------------------------------------------------------------------------------
+*DATE               WHO                       REFERENCE                 DESCRIPTION
+*19-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  $INCLUDE to $INSERT,TAM.BP REMOVED,VM to @VM
+*19-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*----------------------------------------------------------------------------------------
+
+
+
+
+SUBROUTINE REDO.CORRECTION.DIRECT.DEBIT.LOAD
+
+
+
+
+
+    $INSERT I_COMMON ;*R22 AUTO CODE CONVERSION
+    $INSERT I_EQUATE
+    $INSERT I_REDO.CORRECTION.DIRECT.DEBIT.COMMON
+
+
+    FN.AA.ACTIVITY.HISTORY = "F.AA.ACTIVITY.HISTORY"
+    F.AA.ACTIVITY.HISTORY  = ""
+    CALL OPF(FN.AA.ACTIVITY.HISTORY,F.AA.ACTIVITY.HISTORY)
+
+    FN.AAA = "F.AA.ARRANGEMENT.ACTIVITY"
+    F.AAA  = ""
+    CALL OPF(FN.AAA,F.AAA)
+
+    FN.AA.ARR.PAYMENT.SCHEDULE = "F.AA.ARR.PAYMENT.SCHEDULE"
+    F.AA.ARR.PAYMENT.SCHEDULE  = ""
+    CALL OPF(FN.AA.ARR.PAYMENT.SCHEDULE,F.AA.ARR.PAYMENT.SCHEDULE)
+
+    FN.AA.ARR.PAYMENT.SCHEDULE$NAU = "F.AA.ARR.PAYMENT.SCHEDULE$NAU"
+    F.AA.ARR.PAYMENT.SCHEDULE$NAU  = ""
+    CALL OPF(FN.AA.ARR.PAYMENT.SCHEDULE$NAU,F.AA.ARR.PAYMENT.SCHEDULE$NAU)
+
+    FN.AA.ARRANGEMENT.DATED.XREF = "F.AA.ARRANGEMENT.DATED.XREF"
+    F.AA.ARRANGEMENT.DATED.XREF  = ""
+    CALL OPF(FN.AA.ARRANGEMENT.DATED.XREF,F.AA.ARRANGEMENT.DATED.XREF)
+
+    FN.REDO.DIRECT.DEBIT.ACCOUNTS = "F.REDO.DIRECT.DEBIT.ACCOUNTS"
+    F.REDO.DIRECT.DEBIT.ACCOUNTS  = ""
+    CALL OPF(FN.REDO.DIRECT.DEBIT.ACCOUNTS,F.REDO.DIRECT.DEBIT.ACCOUNTS)
+
+    FN.REDO.DIRECT.DEBIT.ACCOUNTS.DETAILS = "F.REDO.DIRECT.DEBIT.ACCOUNTS.DETAILS"
+    F.REDO.DIRECT.DEBIT.ACCOUNTS.DETAILS  = ""
+    CALL OPF(FN.REDO.DIRECT.DEBIT.ACCOUNTS.DETAILS,F.REDO.DIRECT.DEBIT.ACCOUNTS.DETAILS)
+
+    LOC.REF.APPLICATION   = "AA.PRD.DES.PAYMENT.SCHEDULE"
+    LOC.REF.FIELDS        = 'L.AA.DEBT.AC':@VM:'L.AA.PAY.METHD'
+    LOC.REF.POS           = ''
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
+    POS.L.AA.DEBT.AC      = LOC.REF.POS<1,1>
+    POS.L.AA.PAY.METHD    = LOC.REF.POS<1,2>
+
+
+RETURN
+
+END

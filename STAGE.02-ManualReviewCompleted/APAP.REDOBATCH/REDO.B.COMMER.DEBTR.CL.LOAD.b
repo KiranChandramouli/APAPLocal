@@ -1,0 +1,151 @@
+* @ValidationCode : MjotMTYxMzkwMzU1ODpDcDEyNTI6MTY4MTEwOTQxOTc4NDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 10 Apr 2023 12:20:19
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOBATCH
+SUBROUTINE REDO.B.COMMER.DEBTR.CL.LOAD
+*--------------------------------------------------------------------------------------------------
+*
+* Description           : This is the Batch Main Process Routine used to process the all AA Customer Id
+*                         and get the Report Related details and Write the details in file.
+*
+* Development Reference : CL01
+*
+*--------------------------------------------------------------------------------------------------
+*  M O D I F I C A T I O N S
+* ***************************
+*--------------------------------------------------------------------------------------------------
+* Defect Reference       Modified By                    Date of Change        Change Details
+* (RTC/TUT/PACS)
+* PACS00466001           Ashokkumar.V.P                 29/06/2016            Initial Release
+* Date                   who                   Reference              
+* 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION SM TO @SM AND VM TO @VM AND REMOVED TAM.BP
+* 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+*--------------------------------------------------------------------------------------------------
+* Include files
+*--------------------------------------------------------------------------------------------------
+*
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.CUSTOMER
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.DATES
+    $INSERT I_TSA.COMMON
+    $INSERT I_BATCH.FILES
+    $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 AUTO CONVERSTION REMOVED TAM.BP
+    $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT   ;*R22 AUTO CONVERSTION REMOVED TAM.BP
+    $INSERT I_REDO.GENERIC.FIELD.POS.COMMON  ;*R22 AUTO CONVERSTION REMOVED TAM.BP
+    $INSERT I_REDO.B.COMMER.DEBTR.CL.COMMON   ;*R22 AUTO CONVERSTION REMOVED TAM.BP
+*
+    GOSUB INIT
+    GOSUB FIND.LOC.REF
+    GOSUB PROCESS
+    GOSUB GET.VALUES
+    GOSUB GET.PARAM.DET
+RETURN
+
+INIT:
+*---
+    YTODAY.DAT = ''; L.LOCALIDAD.POS = ''; L.CU.GRP.RIESGO.POS = ''; L.CU.TOT.ASSET.POS = ''
+    YLST.TODAY = ''; L.CU.DATE.INFO.POS = ''; L.CU.FIN.TYPE.POS = ''; Y.FIELD.POS = ""
+RETURN
+
+FIND.LOC.REF:
+*-----------
+    Y.APP = "CUSTOMER"
+    Y.FIELDS = "L.LOCALIDAD":@VM:"L.CU.GRP.RIESGO":@VM:"L.CU.TOT.ASSET":@VM:"L.CU.DATE.INFO":@VM:"L.CU.FIN.TYPE":@VM:"L.CU.CIDENT":@VM:"L.CU.RNC":@VM:"L.CU.FOREIGN":@VM:"L.CU.TIPO.CL":@VM:"L.TIP.CLI":@VM:"L.APAP.INDUSTRY"
+    CALL MULTI.GET.LOC.REF(Y.APP,Y.FIELDS,Y.FIELD.POS)
+    L.LOCALIDAD.POS = Y.FIELD.POS<1,1>
+    L.CU.GRP.RIESGO.POS = Y.FIELD.POS<1,2>
+    L.CU.TOT.ASSET.POS = Y.FIELD.POS<1,3>
+    L.CU.DATE.INFO.POS = Y.FIELD.POS<1,4>
+    L.CU.FIN.TYPE.POS = Y.FIELD.POS<1,5>
+    L.CU.CIDENT.POS = Y.FIELD.POS<1,6>
+    L.CU.RNC.POS = Y.FIELD.POS<1,7>
+    L.CU.FOREIGN.POS = Y.FIELD.POS<1,8>
+    L.CU.TIPO.CL.POS = Y.FIELD.POS<1,9>
+    L.TIP.CLI.POS = Y.FIELD.POS<1,10>
+    L.APAP.INDUSTRY.POS = Y.FIELD.POS<1,11>
+RETURN
+
+PROCESS:
+*------
+    FN.AA.ARRANGEMENT = 'F.AA.ARRANGEMENT'; F.AA.ARRANGEMENT = ''
+    CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
+
+    FN.REDO.H.REPORTS.PARAM = "F.REDO.H.REPORTS.PARAM"; F.REDO.H.REPORTS.PARAM  = ""
+    CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
+
+    FN.REDO.CUSTOMER.ARRANGEMENT = 'F.REDO.CUSTOMER.ARRANGEMENT'; F.REDO.CUSTOMER.ARRANGEMENT = ''
+    CALL OPF(FN.REDO.CUSTOMER.ARRANGEMENT,F.REDO.CUSTOMER.ARRANGEMENT)
+
+    FN.CUSTOMER = 'F.CUSTOMER'; F.CUSTOMER = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    FN.ACCOUNT = 'F.ACCOUNT'; F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.CUSTOMER.ACCOUNT = 'F.CUSTOMER.ACCOUNT'; F.CUSTOMER.ACCOUNT = ''
+    CALL OPF(FN.CUSTOMER.ACCOUNT,F.CUSTOMER.ACCOUNT)
+
+    FN.DR.REG.CL01.WORKFILE = 'F.DR.REG.CL01.WORKFILE'; F.DR.REG.CL01.WORKFILE = ''
+    CALL OPF(FN.DR.REG.CL01.WORKFILE, F.DR.REG.CL01.WORKFILE)
+RETURN
+
+GET.VALUES:
+*----------
+    YLAST.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY)
+    YTODAY.DAT = TODAY
+    YLST.TODAY = YTODAY.DAT
+    CALL CDT('',YLST.TODAY,'-1C')
+    IF YLAST.DATE[5,2] NE YLST.TODAY[5,2] THEN
+        COMI = YLAST.DATE
+        CALL LAST.DAY.OF.THIS.MONTH
+        YLST.TODAY = COMI
+    END
+    Y.REP.PARAM.ID = "REDO.CL01"
+    Y.RCL.DEB.ID = "REDO.RCL.CL01"
+    CALL CACHE.READ(FN.REDO.H.REPORTS.PARAM,Y.REP.PARAM.ID,R.REDO.H.REPORTS.PARAM,REDO.H.REPORTS.PARAM.ERR)
+    IF R.REDO.H.REPORTS.PARAM THEN
+        Y.OUTPUT.DIR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.OUT.DIR>
+        Y.FILE.NAME  = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.OUT.FILE.NAME>
+        Y.FIELD.NME.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.NAME>
+        Y.FIELD.VAL.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.VALUE>
+        Y.DISP.TEXT.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.DISPLAY.TEXT>
+    END
+RETURN
+
+GET.PARAM.DET:
+**************
+    LOCATE "CURRENT.CATEG" IN Y.FIELD.NME.ARR<1,1> SETTING CURR.POS THEN
+        Y.CURR.VAL.ARR = Y.FIELD.VAL.ARR<1,CURR.POS>
+        Y.CURR.VAL.ARR = CHANGE(Y.CURR.VAL.ARR,@SM,@VM)
+    END
+    LOCATE "SAVING.CATEG" IN Y.FIELD.NME.ARR<1,1> SETTING SAVING.POS THEN
+        Y.SAVING.VAL.ARR = Y.FIELD.VAL.ARR<1,SAVING.POS>
+        Y.SAVING.VAL.ARR = CHANGE(Y.SAVING.VAL.ARR,@SM,@VM)
+    END
+    LOCATE "TIME.DEPOST.CATEG" IN Y.FIELD.NME.ARR<1,1> SETTING TMDEPT.POS THEN
+        Y.TMDEPT.VAL.ARR = Y.FIELD.VAL.ARR<1,TMDEPT.POS>
+        Y.TMDEPT.VAL.ARR = CHANGE(Y.TMDEPT.VAL.ARR,@SM,@VM)
+    END
+    LOCATE "NEG.VALU.CATEG" IN Y.FIELD.NME.ARR<1,1> SETTING NEGVAL.POS THEN
+        Y.NEGVAL.VAL.ARR = Y.FIELD.VAL.ARR<1,NEGVAL.POS>
+        Y.NEGVAL.VAL.ARR = CHANGE(Y.NEGVAL.VAL.ARR,@SM,@VM)
+    END
+    LOCATE "L.TIP.CLI.VAL" IN Y.FIELD.NME.ARR<1,1> SETTING TCLI.POS THEN
+        Y.TCLI.VAL.ARR = Y.FIELD.VAL.ARR<1,TCLI.POS>
+        Y.TCLI.DIS.ARR = Y.DISP.TEXT.ARR<1,TCLI.POS>
+        Y.TCLI.VAL.ARR = CHANGE(Y.TCLI.VAL.ARR,@SM,@VM)
+        Y.TCLI.DIS.ARR = CHANGE(Y.TCLI.DIS.ARR,@SM,@VM)
+    END
+RETURN
+END
