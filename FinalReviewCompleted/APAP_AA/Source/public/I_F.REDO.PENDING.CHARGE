@@ -1,0 +1,16 @@
+* I_F.REDO.PENDING.CHARGE Created 20 JUL 12 at 07:47PM by apap1/INPUTTER
+*      PREFIX[PEN.CHG]
+        EQU PEN.CHG.TRANSACTION TO 1,   RedoPendingCharge_Transaction TO 1,
+               PEN.CHG.CURRENCY TO 2,   RedoPendingCharge_Currency TO 2,
+                 PEN.CHG.AMOUNT TO 3,   RedoPendingCharge_Amount TO 3,
+                   PEN.CHG.DATE TO 4,   RedoPendingCharge_Date TO 4,
+                 PEN.CHG.REASON TO 5,   RedoPendingCharge_Reason TO 5,
+          PEN.CHG.RECORD.STATUS TO 6,   RedoPendingCharge_RecordStatus TO 6,
+                PEN.CHG.CURR.NO TO 7,   RedoPendingCharge_CurrNo TO 7,
+               PEN.CHG.INPUTTER TO 8,   RedoPendingCharge_Inputter TO 8,
+              PEN.CHG.DATE.TIME TO 9,   RedoPendingCharge_DateTime TO 9,
+             PEN.CHG.AUTHORISER TO 10,  RedoPendingCharge_Authoriser TO 10,
+                PEN.CHG.CO.CODE TO 11,  RedoPendingCharge_CoCode TO 11,
+              PEN.CHG.DEPT.CODE TO 12,  RedoPendingCharge_DeptCode TO 12,
+           PEN.CHG.AUDITOR.CODE TO 13,  RedoPendingCharge_AuditorCode TO 13,
+        PEN.CHG.AUDIT.DATE.TIME TO 14,  RedoPendingCharge_AuditDateTime TO 14

@@ -1,0 +1,12 @@
+* I_F.REDO.PRODUCT Created 26 FEB 11 at 12:04PM by t24tqa02/TEM.KR
+*      PREFIX[REDO.PROD]
+        EQU REDO.PROD.DESCRIPTION TO 1,   RedoProduct_Description TO 1,
+          REDO.PROD.RECORD.STATUS TO 2,   RedoProduct_RecordStatus TO 2,
+                REDO.PROD.CURR.NO TO 3,   RedoProduct_CurrNo TO 3,
+               REDO.PROD.INPUTTER TO 4,   RedoProduct_Inputter TO 4,
+              REDO.PROD.DATE.TIME TO 5,   RedoProduct_DateTime TO 5,
+             REDO.PROD.AUTHORISER TO 6,   RedoProduct_Authoriser TO 6,
+                REDO.PROD.CO.CODE TO 7,   RedoProduct_CoCode TO 7,
+              REDO.PROD.DEPT.CODE TO 8,   RedoProduct_DeptCode TO 8,
+           REDO.PROD.AUDITOR.CODE TO 9,   RedoProduct_AuditorCode TO 9,
+        REDO.PROD.AUDIT.DATE.TIME TO 10,  RedoProduct_AuditDateTime TO 10

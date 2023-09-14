@@ -1,0 +1,15 @@
+* I_F.REDO.PROTOCOL.USER.TABLE Created 11 NOV 10 at 04:28PM by apapr8/SANTHOSH1
+*      PREFIX[REDO.PROTO.USER.TBL]
+         EQU REDO.PROTO.USER.TBL.AUDIT.DATE TO 1,   RedoProtocolUserTable_AuditDate TO 1,
+          REDO.PROTO.USER.TBL.VERSION.APPLN TO 2,   RedoProtocolUserTable_VersionAppln TO 2,
+                REDO.PROTO.USER.TBL.APPP.ID TO 3,   RedoProtocolUserTable_ApppId TO 3,
+                   REDO.PROTO.USER.TBL.TIME TO 4,   RedoProtocolUserTable_Time TO 4,
+          REDO.PROTO.USER.TBL.RECORD.STATUS TO 5,   RedoProtocolUserTable_RecordStatus TO 5,
+                REDO.PROTO.USER.TBL.CURR.NO TO 6,   RedoProtocolUserTable_CurrNo TO 6,
+               REDO.PROTO.USER.TBL.INPUTTER TO 7,   RedoProtocolUserTable_Inputter TO 7,
+              REDO.PROTO.USER.TBL.DATE.TIME TO 8,   RedoProtocolUserTable_DateTime TO 8,
+             REDO.PROTO.USER.TBL.AUTHORISER TO 9,   RedoProtocolUserTable_Authoriser TO 9,
+                REDO.PROTO.USER.TBL.CO.CODE TO 10,  RedoProtocolUserTable_CoCode TO 10,
+              REDO.PROTO.USER.TBL.DEPT.CODE TO 11,  RedoProtocolUserTable_DeptCode TO 11,
+           REDO.PROTO.USER.TBL.AUDITOR.CODE TO 12,  RedoProtocolUserTable_AuditorCode TO 12,
+        REDO.PROTO.USER.TBL.AUDIT.DATE.TIME TO 13,  RedoProtocolUserTable_AuditDateTime TO 13

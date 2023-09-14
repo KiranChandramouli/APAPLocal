@@ -1,0 +1,14 @@
+* I_F.REDO.USER.REL.CODE Created 07 DEC 10 at 12:34PM by apapr8/SUJI1
+*      PREFIX[REDO.REL]
+           EQU REDO.REL.REL.DESC TO 1,   RedoUserRelCode_RelDesc TO 1,
+              REDO.REL.LOCAL.REF TO 2,   RedoUserRelCode_LocalRef TO 2,
+               REDO.REL.OVERRIDE TO 3,   RedoUserRelCode_Override TO 3,
+          REDO.REL.RECORD.STATUS TO 4,   RedoUserRelCode_RecordStatus TO 4,
+                REDO.REL.CURR.NO TO 5,   RedoUserRelCode_CurrNo TO 5,
+               REDO.REL.INPUTTER TO 6,   RedoUserRelCode_Inputter TO 6,
+              REDO.REL.DATE.TIME TO 7,   RedoUserRelCode_DateTime TO 7,
+             REDO.REL.AUTHORISER TO 8,   RedoUserRelCode_Authoriser TO 8,
+                REDO.REL.CO.CODE TO 9,   RedoUserRelCode_CoCode TO 9,
+              REDO.REL.DEPT.CODE TO 10,  RedoUserRelCode_DeptCode TO 10,
+           REDO.REL.AUDITOR.CODE TO 11,  RedoUserRelCode_AuditorCode TO 11,
+        REDO.REL.AUDIT.DATE.TIME TO 12,  RedoUserRelCode_AuditDateTime TO 12

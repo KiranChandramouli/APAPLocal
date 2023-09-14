@@ -1,0 +1,16 @@
+*
+* I_DR.REG.INT.TAX.COMMON
+*
+* Insert file to hold the common variables used by the service Impuesto al Pago de Intereses
+* and RCL side conversion routines
+*
+*-----------------------------------------------------------------------------
+** COMMON Array Position:
+* ----------------------
+*    RCL$INT.TAX(1)  - Position 1 for STMT.ACCT.CR          Details
+*    RCL$INT.TAX(3)  - Position 2 for CUSTOMER              Details
+*    RCL$INT.TAX(2)  - Position 3 for ACCOUNT               Details
+*    RCL$INT.TAX(4)  - Position 4 for Details
+*-----------------------------------------------------------------------------
+*
+    COMMON/DR.REG.INT.TAX.COMMON/RCL$INT.TAX(4)

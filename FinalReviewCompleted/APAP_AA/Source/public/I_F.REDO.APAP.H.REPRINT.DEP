@@ -1,0 +1,19 @@
+* I_F.REDO.APAP.H.REPRINT.DEP Created 20 MAY 13 at 11:36AM by t24uatd/SSUDHAR01
+*      PREFIX[REDO.REP.DEP]
+        EQU REDO.REP.DEP.REPRINT.SEQ TO 1,   RedoApapHReprintDep_ReprintSeq TO 1,
+           REDO.REP.DEP.REPRINT.FLAG TO 2,   RedoApapHReprintDep_ReprintFlag TO 2,
+             REDO.REP.DEP.RESERVED.5 TO 3,   RedoApapHReprintDep_Reserved5 TO 3,
+             REDO.REP.DEP.RESERVED.4 TO 4,   RedoApapHReprintDep_Reserved4 TO 4,
+             REDO.REP.DEP.RESERVED.3 TO 5,   RedoApapHReprintDep_Reserved3 TO 5,
+             REDO.REP.DEP.RESERVED.2 TO 6,   RedoApapHReprintDep_Reserved2 TO 6,
+              REDO.REP.DEP.LOCAL.REF TO 7,   RedoApapHReprintDep_LocalRef TO 7,
+               REDO.REP.DEP.OVERRIDE TO 8,   RedoApapHReprintDep_Override TO 8,
+          REDO.REP.DEP.RECORD.STATUS TO 9,   RedoApapHReprintDep_RecordStatus TO 9,
+                REDO.REP.DEP.CURR.NO TO 10,  RedoApapHReprintDep_CurrNo TO 10,
+               REDO.REP.DEP.INPUTTER TO 11,  RedoApapHReprintDep_Inputter TO 11,
+              REDO.REP.DEP.DATE.TIME TO 12,  RedoApapHReprintDep_DateTime TO 12,
+             REDO.REP.DEP.AUTHORISER TO 13,  RedoApapHReprintDep_Authoriser TO 13,
+                REDO.REP.DEP.CO.CODE TO 14,  RedoApapHReprintDep_CoCode TO 14,
+              REDO.REP.DEP.DEPT.CODE TO 15,  RedoApapHReprintDep_DeptCode TO 15,
+           REDO.REP.DEP.AUDITOR.CODE TO 16,  RedoApapHReprintDep_AuditorCode TO 16,
+        REDO.REP.DEP.AUDIT.DATE.TIME TO 17,  RedoApapHReprintDep_AuditDateTime TO 17
