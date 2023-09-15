@@ -186,12 +186,6 @@ public method redoESelectAzAcc (
 
 
 
-public method redoEnqChg (
-    INOUT rAcct string
-)
-{
-    jBC: REDO.ENQ.CHG
-}
 
 
 
@@ -704,12 +698,6 @@ public method redoENofRequestPrinting (
 
 
 
-public method redoENofTxnPosApap (
-    INOUT yFinalArray string
-)
-{
-    jBC: REDO.E.NOF.TXN.POS.APAP
-}
 
 
 
@@ -1352,12 +1340,6 @@ public method EInsuranceCombParamFields (
 
 
 
-public method EIsoRetIstRej (
-    INOUT YIdList string
-)
-{
-    jBC:E.ISO.RET.IST.REJ
-}
 
 
 
@@ -1366,15 +1348,6 @@ public method ENofileBatAllChqs (
 )
 {
     jBC:E.NOFILE.BAT.ALL.CHQS
-}
-
-
-
-public method ERedoBuildAtmList (
-    INOUT EnqData string
-)
-{
-    jBC:E.REDO.BUILD.ATM.LIST
 }
 
 

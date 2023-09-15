@@ -485,14 +485,6 @@ public method redoAAcctClosure (
 
 
 
-public method redoAAtmRevLyPts (
-)
-{
-    jBC: REDO.A.ATM.REV.LY.PTS
-}
-
-
-
 public method redoACallAccountingDel (
 )
 {
@@ -1332,14 +1324,6 @@ public method redoCardBranchIdDeliver (
 )
 {
     jBC: REDO.CARD.BRANCH.ID.DELIVER
-}
-
-
-
-public method redoCardChnVal (
-)
-{
-    jBC: REDO.CARD.CHN.VAL
 }
 
 

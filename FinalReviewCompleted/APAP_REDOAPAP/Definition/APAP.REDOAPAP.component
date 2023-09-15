@@ -2947,28 +2947,9 @@ public method redoApapSapGlDetailRepPost (
 
 
 
-public method redoApapSapGlExtRepSel (
-    INOUT gitSelBuild string,
-    INOUT gitPgmRecordList string,
-    INOUT newIdCompany string,
-    INOUT gitFuture1 string,
-    INOUT gitFuture2 string,
-    INOUT gitFuture3 string,
-    INOUT gitErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.EXT.REP.SEL
-}
 
 
 
-public method redoApapSapGlNormalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.NORMAL.EXT
-}
 
 
 
@@ -2979,18 +2960,6 @@ public method redoApapSapGlNrHdrExpLog (
 {
     jBC: REDO.APAP.SAP.GL.NR.HDR.EXP.LOG
 }
-
-
-
-public method redoApapSapGlRevalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.REVAL.EXT
-}
-
-
 
 public method redoApapSelCr (
 )

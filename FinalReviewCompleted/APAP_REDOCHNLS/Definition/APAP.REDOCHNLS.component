@@ -95,11 +95,6 @@ public method redoAthStlmtFileProcessLoad (
 
 
 
-public method redoAthVerifyTransaction (
-)
-{
-    jBC: REDO.ATH.VERIFY.TRANSACTION
-}
 
 
 
@@ -462,13 +457,6 @@ public method redoAthInFmtAmount (
 
 
 
-public method redoAthInStlmtRtn (
-    INOUT stlmtLines string
-)
-{
-    jBC: REDO.ATH.IN.STLMT.RTN
-}
-
 
 
 public method redoAthInitialProcess (
@@ -574,48 +562,6 @@ public method redoAthValDelay (
 {
     jBC: REDO.ATH.VAL.DELAY
 }
-
-
-
-public method redoAtmErrorLogParamFields (
-)
-{
-    jBC: REDO.ATM.ERROR.LOG.PARAM.FIELDS
-}
-
-
-
-public method redoAtmValDrCrAcct (
-)
-{
-    jBC: REDO.ATM.VAL.DR.CR.ACCT
-}
-
-
-
-public method redoAtmWaiveCharge (
-)
-{
-    jBC: REDO.ATM.WAIVE.CHARGE
-}
-
-
-
-public method redoAtmWaiveChargeFields (
-)
-{
-    jBC: REDO.ATM.WAIVE.CHARGE.FIELDS
-}
-
-
-
-public method redoAtmWaiveChargeRecord (
-)
-{
-    jBC: REDO.ATM.WAIVE.CHARGE.RECORD
-}
-
-
 
 public method redoChConfigFields (
 )
@@ -1134,39 +1080,6 @@ public method redoAthStlmtParam (
     jBC: REDO.ATH.STLMT.PARAM
 }
 
-
-
-public method redoAtmAcctVerify (
-)
-{
-    jBC: REDO.ATM.ACCT.VERIFY
-}
-
-
-
-public method redoAtmAdviceMsg (
-)
-{
-    jBC: REDO.ATM.ADVICE.MSG
-}
-
-
-
-public method redoAtmChkReversalRec (
-    INOUT yyAtmTxnRef string,
-    INOUT rAtmReversal string
-)
-{
-    jBC: REDO.ATM.CHK.REVERSAL.REC
-}
-
-
-
-public method redoAtmErrorLogParam (
-)
-{
-    jBC: REDO.ATM.ERROR.LOG.PARAM
-}
 
 
 

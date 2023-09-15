@@ -808,12 +808,6 @@ public method lApapBill4Mon (
 
 
 
-public method lApapCashbackFt (
-)
-{
-    jBC: L.APAP.CASHBACK.FT
-}
-
 
 
 public method lApapCheckGarRt (
@@ -1936,13 +1930,6 @@ public method redoBRecAcctListPost (
 
 
 
-public method redoBThirdResRecoveryLoad (
-)
-{
-    jBC: REDO.B.THIRD.RES.RECOVERY.LOAD
-}
-
-
 
 public method redoBThirdResRecoveryPost (
 )
@@ -1992,13 +1979,6 @@ public method redoOvrLoanReport (
     jBC: REDO.OVR.LOAN.REPORT
 }
 
-
-
-public method redoUpdAtmRej (
-)
-{
-    jBC: REDO.UPD.ATM.REJ
-}
 
 
 
@@ -2954,13 +2934,6 @@ public method redoConvGlExtraPayment (
     jBC: REDO.CONV.GL.EXTRA.PAYMENT
 }
 
-
-
-public method redoConvStmtMerchtName (
-)
-{
-    jBC: REDO.CONV.STMT.MERCHT.NAME
-}
 
 
 

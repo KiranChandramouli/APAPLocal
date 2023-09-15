@@ -257,15 +257,6 @@ public method redoIValC25Ben (
 }
 
 
-
-public method redoIFtMaguana (
-)
-{
-    jBC: REDO.I.FT.MAGUANA
-}
-
-
-
 public method redoIdCardCheck (
 )
 {
@@ -342,14 +333,6 @@ public method redoInpCheckAdminAccts (
 )
 {
     jBC: REDO.INP.CHECK.ADMIN.ACCTS
-}
-
-
-
-public method redoInpCheckDcTxnAmt (
-)
-{
-    jBC: REDO.INP.CHECK.DC.TXN.AMT
 }
 
 
@@ -2305,15 +2288,6 @@ public method redoVUpdAcceptedStk (
 }
 
 
-
-public method redoVUpdAtmLyUpd (
-)
-{
-    jBC: REDO.V.UPD.ATM.LY.UPD
-}
-
-
-
 public method redoVUpdLatamCardSeries (
 )
 {
@@ -3409,14 +3383,6 @@ public method redoVInpOvrTlr (
 
 
 
-public method redoVInpPartProcess (
-)
-{
-    jBC: REDO.V.INP.PART.PROCESS
-}
-
-
-
 public method redoVInpPartialThrRetChq (
 )
 {
@@ -3853,12 +3819,6 @@ public method redoVInpTillCheckAcc (
     jBC: REDO.V.INP.TILL.CHECK.ACC
 }
 
-
-public method redoAthStlmtAcctInRtn (
-)
-{
-    jBC: REDO.ATH.STLMT.ACCT.IN.RTN
-}
 
 
 
@@ -5688,12 +5648,6 @@ public method redoVInpCheckTransfer (
 }
 
 
-
-public method redoVInpCheckTtBeneficary (
-)
-{
-    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
-}
 
 
 
