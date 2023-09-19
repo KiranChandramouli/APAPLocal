@@ -3277,14 +3277,6 @@ public method redoVAaChequDisb (
 
 
 
-public method redoVAtmNonAcctDef (
-)
-{
-    jBC: REDO.V.ATM.NON.ACCT.DEF
-}
-
-
-
 public method redoVAzAccValid (
 )
 {

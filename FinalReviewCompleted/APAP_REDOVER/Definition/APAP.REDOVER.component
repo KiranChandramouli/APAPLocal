@@ -4652,14 +4652,6 @@ public method redoVAncUpdStatus (
 
 
 
-public method redoVAtmDefSettleAc (
-)
-{
-    jBC: REDO.V.ATM.DEF.SETTLE.AC
-}
-
-
-
 public method redoVAutAzLogUpdate (
 )
 {
@@ -5561,14 +5553,6 @@ public method redoVInpArcibCcard (
 
 
 
-public method redoVInpAtmAcct (
-)
-{
-    jBC: REDO.V.INP.ATM.ACCT
-}
-
-
-
 public method redoVInpAzAccDefTasaPool (
 )
 {
@@ -6462,13 +6446,6 @@ public method redoVValItemCode (
     jBC: REDO.V.VAL.ITEM.CODE
 }
 
-
-
-public method redoVValLacBalance (
-)
-{
-    jBC: REDO.V.VAL.LAC.BALANCE
-}
 
 
 public method redoVValLocalCheck (
