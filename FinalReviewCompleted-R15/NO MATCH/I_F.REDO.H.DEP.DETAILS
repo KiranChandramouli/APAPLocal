@@ -1,0 +1,18 @@
+* I_F.REDO.H.DEP.DETAILS Created 07 MAR 11 at 02:01PM by apapr8/JEEVA
+*      PREFIX[RE.DEP]
+        EQU RE.DEP.DESCRIPTION TO 1,   RedoHDepDetails_Description TO 1,
+             RE.DEP.RESERVED.5 TO 2,   RedoHDepDetails_Reserved5 TO 2,
+             RE.DEP.RESERVED.4 TO 3,   RedoHDepDetails_Reserved4 TO 3,
+             RE.DEP.RESERVED.3 TO 4,   RedoHDepDetails_Reserved3 TO 4,
+             RE.DEP.RESERVED.2 TO 5,   RedoHDepDetails_Reserved2 TO 5,
+             RE.DEP.RESERVED.1 TO 6,   RedoHDepDetails_Reserved1 TO 6,
+               RE.DEP.OVERRIDE TO 7,   RedoHDepDetails_Override TO 7,
+          RE.DEP.RECORD.STATUS TO 8,   RedoHDepDetails_RecordStatus TO 8,
+                RE.DEP.CURR.NO TO 9,   RedoHDepDetails_CurrNo TO 9,
+               RE.DEP.INPUTTER TO 10,  RedoHDepDetails_Inputter TO 10,
+              RE.DEP.DATE.TIME TO 11,  RedoHDepDetails_DateTime TO 11,
+             RE.DEP.AUTHORISER TO 12,  RedoHDepDetails_Authoriser TO 12,
+                RE.DEP.CO.CODE TO 13,  RedoHDepDetails_CoCode TO 13,
+              RE.DEP.DEPT.CODE TO 14,  RedoHDepDetails_DeptCode TO 14,
+           RE.DEP.AUDITOR.CODE TO 15,  RedoHDepDetails_AuditorCode TO 15,
+        RE.DEP.AUDIT.DATE.TIME TO 16,  RedoHDepDetails_AuditDateTime TO 16

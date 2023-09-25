@@ -1,0 +1,14 @@
+* I_F.ATM.RES.COD.TABLE Created 23 NOV 10 at 04:06PM by t24sit/TEMENOS2
+*      PREFIX[AT.RES.CDE]
+        EQU AT.RES.CDE.DESCRIPTION TO 1,   AtmResCodTable_Description TO 1,
+                AT.RES.CDE.MESSAGE TO 2,   AtmResCodTable_Message TO 2,
+          AT.RES.CDE.RESPONSE.CODE TO 3,   AtmResCodTable_ResponseCode TO 3,
+          AT.RES.CDE.RECORD.STATUS TO 4,   AtmResCodTable_RecordStatus TO 4,
+                AT.RES.CDE.CURR.NO TO 5,   AtmResCodTable_CurrNo TO 5,
+               AT.RES.CDE.INPUTTER TO 6,   AtmResCodTable_Inputter TO 6,
+              AT.RES.CDE.DATE.TIME TO 7,   AtmResCodTable_DateTime TO 7,
+             AT.RES.CDE.AUTHORISER TO 8,   AtmResCodTable_Authoriser TO 8,
+                AT.RES.CDE.CO.CODE TO 9,   AtmResCodTable_CoCode TO 9,
+              AT.RES.CDE.DEPT.CODE TO 10,  AtmResCodTable_DeptCode TO 10,
+           AT.RES.CDE.AUDITOR.CODE TO 11,  AtmResCodTable_AuditorCode TO 11,
+        AT.RES.CDE.AUDIT.DATE.TIME TO 12,  AtmResCodTable_AuditDateTime TO 12

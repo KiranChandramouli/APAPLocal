@@ -1,0 +1,18 @@
+* I_F.REDO.CHEQUE.STOP.PARA Created 08 FEB 11 at 01:53PM by apapr8/JEEVA
+*      PREFIX[CHQ.STOP]
+             EQU CHQ.STOP.STATUS TO 1,   RedoChequeStopPara_Status TO 1,
+               CHQ.STOP.EXP.DATE TO 2,   RedoChequeStopPara_ExpDate TO 2,
+         CHQ.STOP.ACCOUNT.NUMBER TO 3,   RedoChequeStopPara_AccountNumber TO 3,
+          CHQ.STOP.CHEQUE.NUMBER TO 4,   RedoChequeStopPara_ChequeNumber TO 4,
+             CHQ.STOP.RESERVED.8 TO 5,   RedoChequeStopPara_Reserved8 TO 5,
+             CHQ.STOP.RESERVED.7 TO 6,   RedoChequeStopPara_Reserved7 TO 6,
+             CHQ.STOP.RESERVED.6 TO 7,   RedoChequeStopPara_Reserved6 TO 7,
+          CHQ.STOP.RECORD.STATUS TO 8,   RedoChequeStopPara_RecordStatus TO 8,
+                CHQ.STOP.CURR.NO TO 9,   RedoChequeStopPara_CurrNo TO 9,
+               CHQ.STOP.INPUTTER TO 10,  RedoChequeStopPara_Inputter TO 10,
+              CHQ.STOP.DATE.TIME TO 11,  RedoChequeStopPara_DateTime TO 11,
+             CHQ.STOP.AUTHORISER TO 12,  RedoChequeStopPara_Authoriser TO 12,
+                CHQ.STOP.CO.CODE TO 13,  RedoChequeStopPara_CoCode TO 13,
+              CHQ.STOP.DEPT.CODE TO 14,  RedoChequeStopPara_DeptCode TO 14,
+           CHQ.STOP.AUDITOR.CODE TO 15,  RedoChequeStopPara_AuditorCode TO 15,
+        CHQ.STOP.AUDIT.DATE.TIME TO 16,  RedoChequeStopPara_AuditDateTime TO 16

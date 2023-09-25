@@ -1,0 +1,18 @@
+* I_F.REDO.FC.PARAMS Created 30 JUN 11 at 03:12PM by t24bqa02/TEM.JARMAS.01
+*      PREFIX[FC.PR]
+         EQU FC.PR.FIELD.NAME TO 1,   RedoFcParams_FieldName TO 1,
+            FC.PR.FIELD.VALUE TO 2,   RedoFcParams_FieldValue TO 2,
+             FC.PR.RESERVED.5 TO 3,   RedoFcParams_Reserved5 TO 3,
+             FC.PR.RESERVED.4 TO 4,   RedoFcParams_Reserved4 TO 4,
+             FC.PR.RESERVED.3 TO 5,   RedoFcParams_Reserved3 TO 5,
+             FC.PR.RESERVED.2 TO 6,   RedoFcParams_Reserved2 TO 6,
+             FC.PR.RESERVED.1 TO 7,   RedoFcParams_Reserved1 TO 7,
+          FC.PR.RECORD.STATUS TO 8,   RedoFcParams_RecordStatus TO 8,
+                FC.PR.CURR.NO TO 9,   RedoFcParams_CurrNo TO 9,
+               FC.PR.INPUTTER TO 10,  RedoFcParams_Inputter TO 10,
+              FC.PR.DATE.TIME TO 11,  RedoFcParams_DateTime TO 11,
+             FC.PR.AUTHORISER TO 12,  RedoFcParams_Authoriser TO 12,
+                FC.PR.CO.CODE TO 13,  RedoFcParams_CoCode TO 13,
+              FC.PR.DEPT.CODE TO 14,  RedoFcParams_DeptCode TO 14,
+           FC.PR.AUDITOR.CODE TO 15,  RedoFcParams_AuditorCode TO 15,
+        FC.PR.AUDIT.DATE.TIME TO 16,  RedoFcParams_AuditDateTime TO 16

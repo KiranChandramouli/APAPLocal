@@ -1,0 +1,25 @@
+*
+*I_DR.REG.FD03.UPDATE.CONCAT.COMMON
+*
+*Insert file to hold the common variables used by the service DR.REG.FD03.UPDATE.CONCAT
+*and RCL side
+*
+*-----------------------------------------------------------------------------
+*
+*Modification History :
+*----------------------
+*  Date      Author              Modification Description
+*
+*
+*-----------------------------------------------------------------------------
+
+   COMMON/DR.REG.FD03.UPDATE.CONCAT/LAST.WRK.DATE,
+
+   FN.DR.REG.FD03.PARAM,     F.DR.REG.FD03.PARAM,
+   FN.STMT.ENTRY,               F.STMT.ENTRY,
+   FN.ACCT.ENT.LWORK.DAY,       F.ACCT.ENT.LWORK.DAY,
+   FN.DR.REG.FD03.CONCAT,    F.DR.REG.FD03.CONCAT,
+   L.FTTC.PAY.TYPE.POS,
+   FN.FT.TXN.TYPE.CONDITION,F.FT.TXN.TYPE.CONDITION,
+   FTTC.PAY.TYPES,FN.FT.HIS,F.FT.HIS,AMT.CONV.LCY,
+   YTHRESHOLD.FAMT

@@ -1,0 +1,4 @@
+*
+    * I_F.DR.REG.RIEN3.CONCAT Created 29 JAN 14 at 05:14PM by t24uatq/SINGALA1
+*      PREFIX[RIEN3.CONCAT]
+        EQU RIEN3.CONCAT.TXN.REF.AMT TO 1,   DrRegRien3Concat_TxnRefAmt TO 1
