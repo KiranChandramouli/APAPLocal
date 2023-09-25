@@ -1,3 +1,15 @@
+* @ValidationCode : Mjo1MDAyMDM4Mzk6Q3AxMjUyOjE2OTAxOTQ3OTgwMjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Jul 2023 16:03:18
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE DR.REP.AC.INT.CALC(ACCT.ID,R.ACCOUNT,INT.RATE)
 *----------------------------------------------------------------------------
@@ -13,7 +25,7 @@ SUBROUTINE DR.REP.AC.INT.CALC(ACCT.ID,R.ACCOUNT,INT.RATE)
 *   Date       Author              Modification Description
 *
 * 01-Dec-2014  Ashokkumar.V.P      PACS00305233:- Fixed the saving account interest calculation bug.
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT AND VM TO @VM AND F.READ TO CACHE.READ AND REMOVED F.GROUP.CREDIT.INT AND F.BASIC.INTEREST AND F.GROUP.DATE
 * 21-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *----------------------------------------------------------------------------

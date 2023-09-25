@@ -1,16 +1,19 @@
-* @ValidationCode : Mjo2MjY1MzE5NTI6Q3AxMjUyOjE2ODI2OTE1MjM5MTE6SVRTUzotMTotMTo2NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:43
+* @ValidationCode : MjotODk0OTE1NjA1OkNwMTI1MjoxNjkxNzQ3MDM0NzA1OklUU1M6LTE6LTE6NzA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Aug 2023 15:13:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 66
+* @ValidationInfo : Rating            : 70
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
+*-----------------------------------------------------------------------------
+* <Rating>-36</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.V.VAL.PYMNT.VP
 *-----------------------------------------------------------------------------
 * Developer    : Luis Fernando Pazmino (lpazminodiaz@temenos.com)
@@ -26,10 +29,7 @@ SUBROUTINE REDO.V.VAL.PYMNT.VP
 *
 * Version   Date           Who            Reference         Description
 * 1.0       04.30.2013     lpazmino       -                 Initial Version
-*Modification history
-*Date                Who               Reference                  Description
-*20-04-2023      conversion tool     R22 Auto code conversion     IF Condition Added,VM TO @VM
-*20-04-2023      Mohanraj R          R22 Manual code conversion   CALL method format modified
+*10-08-2023    VICTORIA S          R22 MANUAL CONVERSION    VM TO @VM
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS">
@@ -41,9 +41,7 @@ SUBROUTINE REDO.V.VAL.PYMNT.VP
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_System
     $INSERT I_F.REDO.VISION.PLUS.TXN
-*   $INSERT I_GTS.COMMON
-    $USING APAP.TAM
-    $USING APAP.REDOSRTN
+    $INSERT I_GTS.COMMON
 
 * </region>
 
@@ -103,7 +101,7 @@ PROCESS:
 * Pago Caja Efectivo/TFR
             CASE TXN.VERSION MATCHES '...CASHIN...' OR TXN.VERSION MATCHES '...TFR...'
                 ALLOW.OFFLINE = 1
-                APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
+                CALL REDO.VP.CC.PAYMENT(ALLOW.OFFLINE, TXN.RESULT)
 
 * Pago Cheque
 * Estos pagos no se registran en linea, solo por archivo monetario
@@ -113,21 +111,18 @@ PROCESS:
     END
     IF APPLICATION EQ 'FUNDS.TRANSFER' THEN
         ALLOW.OFFLINE = 1
-        APAP.TAM.redoVpCcPayment(ALLOW.OFFLINE, TXN.RESULT) ;* R22 Manual Conversion - CALL method format modified
+        CALL REDO.VP.CC.PAYMENT(ALLOW.OFFLINE, TXN.RESULT)
     END
 
     IF TXN.RESULT<1> EQ 'OFFLINE' OR TXN.RESULT<1> EQ 'ERROR' THEN
 
-        APAP.REDOSRTN.redoSNotifyInterfaceAct('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '') ;* R22 Manual Conversion - CALL method format modified
+        CALL REDO.S.NOTIFY.INTERFACE.ACT('VPL003', 'ONLINE', '04', 'Email PAGO SE APLICARA OFFLINE - ID: ':ID.NEW , ' ' : TIMEDATE() : ' - LOG EN Jboss : server.log', '', '', '', '', '', OPERATOR, '')
 
         EXT.USER.ID = System.getVariable("EXT.EXTERNAL.USER")
-        IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;*R22 Auto code conversion-START
-            EXT.USER.ID = ""
-        END ;*R22 Auto code conversion-END
         IF EXT.USER.ID EQ 'EXT.EXTERNAL.USER' THEN
 
             TEXT    = 'ST-VP-NO.ONLINE.PYMNT'
-            CURR.NO = DCOUNT(R.NEW(Y.OVERRIDE.LOCAL.REF),@VM)+ 1
+            CURR.NO = DCOUNT(R.NEW(Y.OVERRIDE.LOCAL.REF),@VM)+ 1 ;*R22 MANUAL CONVERSION
             CALL STORE.OVERRIDE(CURR.NO)
         END
 

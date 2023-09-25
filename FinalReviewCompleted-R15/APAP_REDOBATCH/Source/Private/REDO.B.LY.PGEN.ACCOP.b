@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTIxMTMxMDUyOkNwMTI1MjoxNjg0ODU0MzkwODgwOklUU1M6LTE6LTE6MzMzNjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
+* @ValidationCode : MjoxODMyMjE2MTY5OkNwMTI1MjoxNjkwMjY0NDA1NDA2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:25
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 3336
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LY.PGEN.ACCOP(ACCT.ID)
@@ -32,7 +32,7 @@ SUBROUTINE REDO.B.LY.PGEN.ACCOP(ACCT.ID)
 *------------------
 *   Date               who           Reference            Description
 * 17-JUN-2013   RMONDRAGON        ODR-2011-06-0243      Initial Creation
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND ++ TO += 1 AND TNO TO C$T24.SESSION.NO
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *----------------------------------------------------------------------------------------------------------
@@ -45,6 +45,7 @@ SUBROUTINE REDO.B.LY.PGEN.ACCOP(ACCT.ID)
     $INSERT I_F.REDO.LY.POINTS.TOT
     $INSERT I_F.REDO.LY.MASTERPRGDR
     $INSERT I_REDO.B.LY.PGEN.ACCOP.COMMON
+    $USING APAP.REDOSRTN
 
     GOSUB OPEN.FILE
     GOSUB PROCESS
@@ -209,7 +210,8 @@ PROCESS.ACCT:
     CHK.VAL = ''
     ANTIG = PRG.ANTIG.IN.MOD<MOD.CNT,PRG.CNT>
 
-    CALL REDO.S.BY.EVENT(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG)
+*   CALL REDO.S.BY.EVENT(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG)
+    APAP.REDOSRTN.redoSByEvent(EVENT,ACCT.ID,R.ACCOUNT,CHK.VAL,ANTIG) ;*R22 Manual Code Conversion
 
     IF CHK.VAL THEN
         GOSUB CHECK.PT.GEN

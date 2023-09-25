@@ -1,7 +1,7 @@
-* @ValidationCode : MjotMTg0NDkyMjM3NzpDcDEyNTI6MTY4MjQxMjMzNTUwNzpIYXJpc2h2aWtyYW1DOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:35
+* @ValidationCode : MjotMTQ0NzY2NjM0OkNwMTI1MjoxNjkzMzE0MDA3Nzg1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:30:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -12,6 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.AUT.PAYROLL.FILE
+    
 *-----------------------------------------------------------------------------------------------------------
 *Company   Name    :Asociacion Popular de Ahorros y Prestamos
 *Developed By      :PRABHU.N
@@ -33,6 +34,7 @@ SUBROUTINE REDO.V.AUT.PAYROLL.FILE
 *Date                Who               Reference                  Description
 *12-04-2023      conversion tool     R22 Auto code conversion     VM TO @VM,FM TO @FM,F.READ TO CACHE.READ
 *12-04-2023      Mohanraj R          R22 Manual code conversion   No changes
+*25-08-2023      VIGNESHWARI S       R22 Manual code conversion   PATH IS MODIFIED
 *-----------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -140,7 +142,8 @@ COPY.FILE:
         NEW.FILEID.3=FIELD(Y.UPLOAD.FILE.ID,'.',3)
 
         FINAL.FILE.ID=NEW.FILEID.1:".T24.":NEW.FILEID.2:NEW.FILEID.3:".":Y.FILE.CURRENCY:".":Y.SRC.ACCOUNT:".":Y.PAY.DATE
-        Y.CPY.CMD = 'COPY FROM ':Y.FILE.PATH:' TO ':Y.FILE.DEST.PATH:' ': Y.UPLOAD.FILE.ID:',':FINAL.FILE.ID
+        *Y.CPY.CMD = 'COPY FROM ':Y.FILE.PATH:' TO ':Y.FILE.DEST.PATH:' ': Y.UPLOAD.FILE.ID:',':FINAL.FILE.ID
+        Y.CPY.CMD = 'SH -c cp ':Y.FILE.PATH: '/': Y.UPLOAD.FILE.ID:' ':Y.FILE.DEST.PATH:'/':FINAL.FILE.ID ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
         EXECUTE Y.CPY.CMD
         CALL F.DELETE(FN.FILE.PATH,Y.UPLOAD.FILE.ID)
 

@@ -28,6 +28,7 @@ SUBROUTINE REDO.CH.A.USERPINCHG
 *
 * 04-APR-2023     Conversion tool    R22 Auto conversion      REM to DISPLAY.MESSAGE(TEXT, '')
 * 04-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+*24-08-2023        AJITH KUMAR S    MANUAL R22 CONVERSION      ENCRYPT METHOD CHANGE
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -35,15 +36,23 @@ SUBROUTINE REDO.CH.A.USERPINCHG
     $INSERT I_GTS.COMMON
     $INSERT I_F.REDO.CH.PINADM
     $INSERT I_REDO.CH.V.USERPINCHG.COMMON
+    $INSERT JBC.h
 *PIN Generation
     PINMAIL = RND(9) : RND(9) : RND(9) : RND(9)
     PIN = PINMAIL
     PIN.AS = PIN
 
 *PIN Encription
-    KEYUSED = "7"
+*OLD - START
+*  KEYUSED = "7"
 *    PIN = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_3DES)
-    PIN = ENCRYPT(PIN,KEYUSED,2)
+* PIN = ENCRYPT(PIN,KEYUSED,2)
+*OLD - END
+    
+*NEW - START
+    KEYUSE = "12345678" ;*R22 MANUAL CODE CONVERSION
+    PIN = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_DES_BASE64)
+*NEW-END
 
     R.NEW(REDO.CH.PINADMIN.PIN) = PIN
 

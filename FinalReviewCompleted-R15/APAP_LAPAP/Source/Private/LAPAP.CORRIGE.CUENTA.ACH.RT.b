@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo2MTU3MDY0MjA6Q3AxMjUyOjE2ODQyMjI4MDYzMjc6SVRTUzotMTotMTo4NjM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:06
+* @ValidationCode : MjotMTA4MzE3MTAwMDpDcDEyNTI6MTY5MzMxMTUwNDMzMTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 17:48:24
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 863
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -14,7 +14,7 @@ $PACKAGE APAP.LAPAP
 *Modification history
 *Date                Who               Reference                  Description
 *21-04-2023      conversion tool     R22 Auto code conversion     > TO GT,FM TO @FM,= TO EQ
-*21-04-2023      Mohanraj R          R22 Manual code conversion   No changes
+*21-04-2023      Mohanraj R          R22 Manual code conversion    PATH IS MODIFIED
 SUBROUTINE LAPAP.CORRIGE.CUENTA.ACH.RT
 
     $INSERT I_COMMON
@@ -26,7 +26,7 @@ SUBROUTINE LAPAP.CORRIGE.CUENTA.ACH.RT
     GOSUB GET.FILE.NAME
     GOSUB READ.FILE.ACH
     GOSUB ESCRIBIR.ARCHIVO.FINAL
-
+ 
 RETURN
 ***********
 INITIALICE:
@@ -182,7 +182,8 @@ ESCRIBIR.ARCHIVO.FINAL:
 
     IF Y.TOTAL GT 0 THEN
 
-        Y.COMMAND = 'COPY FROM ':IN.DIR.PATH.CONV: ' TO ':HIST.PATH:' ':Y.FILE.NAME
+*    Y.COMMAND = 'COPY FROM ':IN.DIR.PATH.CONV: ' TO ':HIST.PATH:' ':Y.FILE.NAME ;*R22 Manual Conversion PATH IS MODIFIED
+        Y.COMMAND = 'SH -c cp ':IN.DIR.PATH.CONV: '/':Y.FILE.NAME:' ':HIST.PATH:'/':Y.FILE.NAME
         EXECUTE Y.COMMAND
 
         DEL.CMD = "DELETE ":IN.DIR.PATH.CONV:" ":Y.FILE.NAME
@@ -207,7 +208,8 @@ ESCRIBIR.ARCHIVO.FINAL:
 
         CLOSESEQ FV.PTR
 
-        Y.COMMAND = 'COPY FROM ':IN.DIR.PATH.CONV: ' TO ':IN.DIR.PATH:' ':Y.FILE.NAME.CONV
+*      Y.COMMAND = 'COPY FROM ':IN.DIR.PATH.CONV: ' TO ':IN.DIR.PATH:' ':Y.FILE.NAME.CONV ;*R22 Manual Conversion PATH IS MODIFIED
+        Y.COMMAND = 'SH -c cp ':IN.DIR.PATH.CONV: '/': Y.FILE.NAME.CONV:' ':IN.DIR.PATH:'/':Y.FILE.NAME.CONV
         EXECUTE Y.COMMAND
 
         DEL.CMD = "DELETE ":IN.DIR.PATH.CONV:" ":Y.FILE.NAME.CONV

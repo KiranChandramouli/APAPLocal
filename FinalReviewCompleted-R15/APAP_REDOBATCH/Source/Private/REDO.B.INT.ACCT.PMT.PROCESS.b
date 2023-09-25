@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQ0NDA1NzE0MTpDcDEyNTI6MTY4NDg1NDM4NzY5MDpJVFNTOi0xOi0xOjE0Njk6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationCode : MjoxMjUzODc3OTI5OkNwMTI1MjoxNjkwMjY0Mzg0NzEzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:04
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1469
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.INT.ACCT.PMT.PROCESS
@@ -30,7 +30,7 @@ SUBROUTINE REDO.B.INT.ACCT.PMT.PROCESS
 * DATE             WHO                         REFERENCE            DESCRIPTION
 *==============    ==============              =================    =================
 * 19.10.2010       Sakthi Sellappillai         ODR-2010-08-0031     INITIAL CREATION
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM  AND F.READ TO CACHE.READ AND REMOVED F.EB.EXTERNAL.USER
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *------------------------------------------------------------------------------------------
@@ -45,6 +45,7 @@ SUBROUTINE REDO.B.INT.ACCT.PMT.PROCESS
     $INSERT I_F.AI.REDO.ARCIB.PARAMETER
     $INSERT I_F.EB.EXTERNAL.USER
     $INSERT I_EB.EXTERNAL.COMMON
+    $USING APAP.TAM
 
     GOSUB INIT.PROCESS
     GOSUB MAIN.PROCESS
@@ -124,7 +125,8 @@ RETURN
 OFS.PROCESS.PARA:
 *------------------------------------------------------------------------------------------
 
-    CALL REDO.UPLOAD.DEBIT.ACCOUNT.CHECK(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS)
+*   CALL REDO.UPLOAD.DEBIT.ACCOUNT.CHECK(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS)
+    APAP.TAM.redoUploadDebitAccountCheck(Y.FILE.DEB.ACCT,Y.DR.ACCT.STATUS) ;*R22 Manual Code Conversion
     IF Y.DR.ACCT.STATUS THEN
         R.REDO.FILE.DATE.PROCESS<REDO.FILE.PRO.DEB.ACCT.STATUS> = Y.DR.ACCT.STATUS
         R.REDO.FILE.DATE.PROCESS<REDO.FILE.PRO.OFS.PROCESS> =  'FAILURE'

@@ -19,7 +19,6 @@ public method redoFtLaunchSupportingEnq (
 
 
 
-
 public method redoFtNcfIdGen (
 )
 {
@@ -993,26 +992,6 @@ public method redoGetVpCcyAi (
     jBC: REDO.GET.VP.CCY.AI
 }
 
-
-
-public method redoGitCusgrpFormat (
-    INOUT gitMapData string,
-    INOUT errMsg string
-)
-{
-    jBC: REDO.GIT.CUSGRP.FORMAT
-}
-
-
-
-public method redoGlBExtractRtn (
-)
-{
-    jBC: REDO.GL.B.EXTRACT.RTN
-}
-
-
-
 public method redoGlHExtractParameter (
 )
 {
@@ -1074,15 +1053,6 @@ public method redoGlWExtractOnlineFields (
 {
     jBC: REDO.GL.W.EXTRACT.ONLINE.FIELDS
 }
-
-
-
-public method redoGlWExtractOnlineRun (
-)
-{
-    jBC: REDO.GL.W.EXTRACT.ONLINE.RUN
-}
-
 
 
 public method redoGtExpDate (
@@ -1923,23 +1893,16 @@ public method redoHReorderDetailsFields (
     jBC: REDO.H.REORDER.DETAILS.FIELDS
 }
 
-
-
 public method redoHReorderLevel (
 )
 {
     jBC: REDO.H.REORDER.LEVEL
 }
-
-
-
 public method redoHReorderLevelFields (
 )
 {
     jBC: REDO.H.REORDER.LEVEL.FIELDS
 }
-
-
 
 public method redoHReorderLevelProcess (
 )
@@ -2271,13 +2234,6 @@ public method redoIndividualRefPdfGen (
     jBC: REDO.INDIVIDUAL.REF.PDF.GEN
 }
 
-
-
-public method redoInitCardVal (
-)
-{
-    jBC: REDO.INIT.CARD.VAL
-}
 
 
 
@@ -4262,17 +4218,6 @@ public method redoOrderTypeAuto (
 }
 
 
-
-public method redoOutAcrqRefNum (
-    INOUT yCardNumIn string,
-    INOUT retVal string
-)
-{
-    jBC: REDO.OUT.ACRQ.REF.NUM
-}
-
-
-
 public method redoOutClearFile (
 )
 {
@@ -4578,13 +4523,6 @@ public method redoPoolRateValidate (
     jBC: REDO.POOL.RATE.VALIDATE
 }
 
-
-
-public method redoPopulateFtDetails (
-)
-{
-    jBC: REDO.POPULATE.FT.DETAILS
-}
 
 
 
@@ -5812,13 +5750,6 @@ public method redoTcOutStlmtRtn (
 
 
 
-public method redoTc05InStlmtRtn (
-    INOUT stlmtLines string
-)
-{
-    jBC: REDO.TC05.IN.STLMT.RTN
-}
-
 public method redoTc1020ReasonCode (
 )
 {
@@ -5834,12 +5765,6 @@ public method redoTc1020ReasonCodeFields (
 }
 
 
-public method redoTc15InStlmtRtn (
-    INOUT stlmtLines string
-)
-{
-    jBC: REDO.TC15.IN.STLMT.RTN
-}
 
 public method redoTc15OutFrameFile (
 )
@@ -5855,19 +5780,6 @@ public method redoTc15OutStlmtRtn (
 }
 
 
-
-public method redoTc25InStlmtRtn (
-    INOUT stlmtLines string
-)
-{
-    jBC: REDO.TC25.IN.STLMT.RTN
-}
-
-public method redoTc25InVerifyRtn (
-)
-{
-    jBC: REDO.TC25.IN.VERIFY.RTN
-}
 
 public method redoTc35InStlmtRtn (
     INOUT stlmtLines string
@@ -6664,14 +6576,6 @@ public method redoTxnAuthCode (
 
 
 
-public method redoTxnAuthorise (
-)
-{
-    jBC: REDO.TXN.AUTHORISE
-}
-
-
-
 public method redoTxnProcessCode (
 )
 {
@@ -6793,11 +6697,6 @@ public method redoUpdAccListFields (
     jBC: REDO.UPD.ACC.LIST.FIELDS
 }
 
-public method redoUpdAtmWithdrawStatus (
-)
-{
-    jBC: REDO.UPD.ATM.WITHDRAW.STATUS
-}
 
 public method redoUpdateAzRollover (
 )
@@ -6996,29 +6895,6 @@ public method redoValAcMonthDuration (
     jBC:REDO.VAL.AC.MONTH.DURATION
 }
 
-public method redoValAccBusId (
-)
-{
-    jBC: REDO.VAL.ACC.BUS.ID
-}
-
-public method redoValAccNo (
-)
-{
-    jBC: REDO.VAL.ACC.NO
-}
-
-public method redoValAccNoExt (
-)
-{
-    jBC: REDO.VAL.ACC.NO.EXT
-}
-
-public method redoValAccSel (
-)
-{
-    jBC: REDO.VAL.ACC.SEL
-}
 
 public method redoValAcctItem (
 )
@@ -7207,25 +7083,6 @@ public method redoValLoanFtTtTxn (
     jBC: REDO.VAL.LOAN.FT.TT.TXN
 }
 
-public method redoValMerCity (
-)
-{
-    jBC: REDO.VAL.MER.CITY
-}
-
-public method redoValMerCntryCode (
-)
-{
-    jBC: REDO.VAL.MER.CNTRY.CODE
-}
-
-
-
-public method redoValMerName (
-)
-{
-    jBC: REDO.VAL.MER.NAME
-}
 
 public method redoValModeParam (
 )
@@ -7371,11 +7228,6 @@ public method redoValThrdprtyComp (
     jBC:REDO.VAL.THRDPRTY.COMP
 }
 
-public method redoValTransCode (
-)
-{
-    jBC: REDO.VAL.TRANS.CODE
-}
 
 public method redoValUtilAmt (
 )
@@ -7411,12 +7263,6 @@ public method redoValidateNominatedAccount (
     jBC: REDO.VALIDATE.NOMINATED.ACCOUNT
 }
 
-
-public method redoVerifyTransaction (
-)
-{
-    jBC:REDO.VERIFY.TRANSACTION
-}
 
 
 public method redoVisaSettleWrite (
@@ -8785,22 +8631,6 @@ public method redoBTaxpayerServices (
 
 
 
-public method redoBTaxpayerServicesLoad (
-)
-{
-    jBC:REDO.B.TAXPAYER.SERVICES.LOAD
-}
-
-
-
-public method redoBTaxpayerServicesPost (
-)
-{
-    jBC:REDO.B.TAXPAYER.SERVICES.POST
-}
-
-
-
 public method redoBTaxpayerServicesSelect (
 )
 {
@@ -9193,13 +9023,6 @@ public method apapParamDbCrMaskFields (
     jBC: APAP.PARAM.DB.CR.MASK.FIELDS
 }
 
-
-
-public method atmReversalFields (
-)
-{
-    jBC: ATM.REVERSAL.FIELDS
-}
 
 
 
@@ -10149,15 +9972,6 @@ public method tamRFieldNameToNumber (
 }
 
 
-
-public method tamUpdateHostDetails (
-)
-{
-    jBC:TAM.UPDATE.HOST.DETAILS
-}
-
-
-
 public method toleranceCategRangeFields (
 )
 {
@@ -10681,27 +10495,8 @@ public method redoVcrPartDisbFill (
     jBC:REDO.VCR.PART.DISB.FILL
 }
 
-public method redoViUpdRejFtref (
-)
-{
-    jBC:REDO.VI.UPD.REJ.FTREF
-}
 
 
-
-public method redoViVisaApprove (
-)
-{
-    jBC:REDO.VI.VISA.APPROVE
-}
-
-
-
-public method redoViVisaChgbck (
-)
-{
-    jBC:REDO.VI.VISA.CHGBCK
-}
 
 public method redoRelcusQtyDepsOne (
     INOUT CustId string,
@@ -10714,14 +10509,6 @@ public method redoRelcusQtyDepsOne (
     jBC:REDO.RELCUS.QTY.DEPS.ONE
 }
 
-
-public method redoRevTxnAuthCode (
-    INOUT YCardNumIn string,
-    INOUT retVal string
-)
-{
-    jBC:REDO.REV.TXN.AUTH.CODE
-}
 
 
 
@@ -10854,44 +10641,12 @@ public method redoSlaParamValidate (
 }
 
 
-
-public method redoSmsCheckActivity (
-)
-{
-    jBC:REDO.SMS.CHECK.ACTIVITY
-}
-
-
-
 public method redoStatus (
 )
 {
     jBC:REDO.STATUS
 }
 
-
-
-public method redoStatusFields (
-)
-{
-    jBC:REDO.STATUS.FIELDS
-}
-
-
-
-public method redoStlmtAcctInRtn (
-)
-{
-    jBC:REDO.STLMT.ACCT.IN.RTN
-}
-
-
-
-public method redoStlmtTc35inAcctRtn (
-)
-{
-    jBC:REDO.STLMT.TC35IN.ACCT.RTN
-}
 
 
 
@@ -11101,13 +10856,6 @@ public method redoVcrChequeNumber (
     jBC: REDO.VCR.CHEQUE.NUMBER
 }
 
-
-
-public method redoViAthReject (
-)
-{
-    jBC: REDO.VI.ATH.REJECT
-}
 
 
 
@@ -11597,11 +11345,6 @@ public method redoXrefCorrection (
     jBC: REDO.XREF.CORRECTION
 }
 
-public method redoViVoucherApplyChg (
-)
-{
-    jBC: REDO.VI.VOUCHER.APPLY.CHG
-}
 
 public method sRedoCcrgEvalBalTypCon (
     INOUT rRcbtp string,
@@ -11899,17 +11642,6 @@ public method redoGetTempDisbPaymDetails (
     jBC:REDO.GET.TEMP.DISB.PAYM.DETAILS
 }
 
-
-
-public method redoGetTotalInterest (
-    INOUT ArrId string,
-    INOUT property string,
-    INOUT intAmt string
-)
-{
-    jBC:REDO.GET.TOTAL.INTEREST
-}
-
 public method redoGetWaiveCateg (
     INOUT WaiveCat string
 )
@@ -12090,16 +11822,6 @@ public method redoDcTxnInstFields (
 {
     jBC: REDO.DC.TXN.INST.FIELDS
 }
-
-
-
-public method redoDefaultCollateralVal (
-)
-{
-    jBC: REDO.DEFAULT.COLLATERAL.VAL
-}
-
-
 
 public method redoDelPendHis (
     INOUT delRec string
@@ -12911,13 +12633,6 @@ public method redoFrontRequests (
     jBC: REDO.FRONT.REQUESTS
 }
 
-
-
-public method redoFtChargeAmt (
-)
-{
-    jBC: REDO.FT.CHARGE.AMT
-}
 
 
 
@@ -14962,77 +14677,11 @@ public method redoCallDepTfsReArr (
 
 
 
-public method redoViAppRepCrVoucher (
-)
-{
-    jBC: REDO.VI.APP.REP.CR.VOUCHER
-}
-
-
-
-public method redoVisaOutTc40Gen (
-)
-{
-    jBC: REDO.VISA.OUT.TC40.GEN
-}
-
-
-
-public method redoVisaOutMapProcess (
-)
-{
-    jBC: REDO.VISA.OUT.MAP.PROCESS
-}
-
-
-
-public method redoVisaAUpdateFtref (
-)
-{
-    jBC: REDO.VISA.A.UPDATE.FTREF
-}
-
-
-
-public method redoViVisaRepApprove (
-)
-{
-    jBC: REDO.VI.VISA.REP.APPROVE
-}
-
-
-
-public method redoViApproveCrVoucher (
-)
-{
-    jBC: REDO.VI.APPROVE.CR.VOUCHER
-}
-
-
-
-public method redoChangeNabStatus (
-)
-{
-    jBC: REDO.CHANGE.NAB.STATUS
-}
-
-
-
 public method redoChkDebitCardNumber (
 )
 {
     jBC: REDO.CHK.DEBIT.CARD.NUMBER
 }
-
-
-
-public method redoConcatPenaltyUpdate (
-)
-{
-    jBC: REDO.CONCAT.PENALTY.UPDATE
-}
-
-
 
 public method redoGetArrangementStatus (
     INOUT arrangementId string
@@ -15073,129 +14722,6 @@ public method redoMassiveFileProcess (
 
 
 
-public method redoNofAdjustClearReport (
-    INOUT yFinArr string
-)
-{
-    jBC: REDO.NOF.ADJUST.CLEAR.REPORT
-}
-
-
-
-public method redoNofChqNtPresent (
-    INOUT yFinalArray string
-)
-{
-    jBC: REDO.NOF.CHQ.NT.PRESENT
-}
-
-
-
-public method redoNofGenChqAgency (
-    INOUT yFinArr string
-)
-{
-    jBC: REDO.NOF.GEN.CHQ.AGENCY
-}
-
-
-
-public method redoStlmtTc25inAcctRtn (
-)
-{
-    jBC: REDO.STLMT.TC25IN.ACCT.RTN
-}
-
-
-
-public method redoTfsAutortn (
-)
-{
-    jBC: REDO.TFS.AUTORTN
-}
-
-
-
-public method redoTfsDenomCheck (
-)
-{
-    jBC: REDO.TFS.DENOM.CHECK
-}
-
-
-
-public method redoUpdIntAmtOthr (
-)
-{
-    jBC: REDO.UPD.INT.AMT.OTHR
-}
-
-
-
-public method redoUpdateChangeInterest (
-)
-{
-    jBC: REDO.UPDATE.CHANGE.INTEREST
-}
-
-
-
-public method redoUpdateVersionName (
-)
-{
-    jBC: REDO.UPDATE.VERSION.NAME
-}
-
-
-
-public method redoVAutActivateAcc (
-)
-{
-    jBC: REDO.V.AUT.ACTIVATE.ACC
-}
-
-
-
-public method redoVGetPayMethod (
-)
-{
-    jBC: REDO.V.GET.PAY.METHOD
-}
-
-
-
-public method redoVInpAmlFtChk (
-)
-{
-    jBC: REDO.V.INP.AML.FT.CHK
-}
-
-
-
-public method redoVInpTfsCheckAcc (
-)
-{
-    jBC: REDO.V.INP.TFS.CHECK.ACC
-}
-
-
-
-public method redoVInpTfsDealslip (
-)
-{
-    jBC: REDO.V.INP.TFS.DEALSLIP
-}
-
-
-
-public method redoVInpTfsLimit (
-)
-{
-    jBC: REDO.V.INP.TFS.LIMIT
-}
-
-
-
 public method redoGetRestructDetails (
     INOUT yArrangeId string,
     INOUT loanNum string,
@@ -15227,12 +14753,6 @@ public method redoGetDisbPaymDetails (
 }
 
 
-
-public method redoViAthApprove (
-)
-{
-    jBC: REDO.VI.ATH.APPROVE
-}
 
 
 
@@ -15334,10 +14854,492 @@ public method redoVinRevFtId (
     jBC: REDO.VIN.REV.FT.ID
 }
 
-
 public method redoIsLastDay (
-   INOUT yDate string
+    INOUT yDate string
 )
 {
-   jBC: redoIsLastDay
+    jBC: redoIsLastDay
 }
+
+public method redoCnvFtTtContId (
+)
+{
+    jBC: REDO.CNV.FT.TT.CONT.ID
+
+}
+
+public method redoInpIntransitCheck (
+)
+{
+    jBC: REDO.INP.INTRANSIT.CHECK
+}
+
+
+public method redoCnvFtTtVersion (
+)
+{
+    jBC: REDO.CNV.FT.TT.VERSION
+}
+
+
+public method apapDynEnqRtn (
+    INOUT recid string,
+    INOUT rLayering string
+)
+{
+    jBC: APAP.DYN.ENQ.RTN
+}
+
+
+
+public method apapIdMaskCard (
+)
+{
+    jBC: APAP.ID.MASK.CARD
+}
+
+
+
+public method apapUnauMaskCard (
+)
+{
+    jBC: APAP.UNAU.MASK.CARD
+}
+
+
+
+public method redoApapAuthPrintSlip (
+)
+{
+    jBC: REDO.APAP.AUTH.PRINT.SLIP
+}
+
+
+
+
+public method redoCallTfsDealSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: REDO.CALL.TFS.DEAL.SLIP
+}
+
+
+
+public method redoCcrgCalMaxAmountValRtn (
+)
+{
+    jBC: REDO.CCRG.CAL.MAX.AMOUNT.VAL.RTN
+}
+
+
+
+public method redoCheckAcctCcy (
+)
+{
+    jBC: REDO.CHECK.ACCT.CCY
+}
+
+
+
+public method redoCheckReversalDelete (
+)
+{
+    jBC: REDO.CHECK.REVERSAL.DELETE
+}
+
+
+public method redoChkIdStockVault (
+)
+{
+    jBC: REDO.CHK.ID.STOCK.VAULT
+}
+
+
+public method redoConvActualVersionName (
+)
+{
+    jBC: REDO.CONV.ACTUAL.VERSION.NAME
+}
+
+
+
+public method redoCreArrAuthSplit (
+    INOUT yOfsSourceId string
+)
+{
+    jBC: REDO.CRE.ARR.AUTH.SPLIT
+}
+
+
+
+public method redoCreateArrangementAColl (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.COLL
+}
+
+
+
+public method redoCreateArrangementAIns (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.INS
+}
+
+
+
+public method redoFiDebitProces (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES
+}
+
+
+
+public method redoFiLbApplyPymtCr (
+    INOUT dataIn string,
+    INOUT aaArrId string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.CR
+}
+
+
+
+public method redoFiLbApplyPymtDb (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DB
+}
+
+
+
+public method redoFiLbApplyPymtDr (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DR
+}
+
+
+
+
+
+
+public method redoGenTfsDealSlip (
+)
+{
+    jBC: REDO.GEN.TFS.DEAL.SLIP
+}
+
+
+
+public method redoGeneraPwd (
+)
+{
+    jBC: REDO.GENERA.PWD
+}
+
+
+
+public method redoGetAccCoCode (
+    INOUT accountVal string,
+    INOUT yAccCoCode string
+)
+{
+    jBC: REDO.GET.ACC.CO.CODE
+}
+
+
+
+public method redoGetLendingProducts (
+)
+{
+    jBC: REDO.GET.LENDING.PRODUCTS
+}
+
+
+
+
+public method redoIdTfsContextEnq (
+)
+{
+    jBC: REDO.ID.TFS.CONTEXT.ENQ
+}
+
+
+
+public method redoNofTellerIdDenom (
+    INOUT yOutArray string
+)
+{
+    jBC: REDO.NOF.TELLER.ID.DENOM
+}
+
+
+
+public method redoPartTfsAutortn (
+)
+{
+    jBC: REDO.PART.TFS.AUTORTN
+}
+
+
+
+public method redoPopulateFtCreditDetails (
+)
+{
+    jBC: REDO.POPULATE.FT.CREDIT.DETAILS
+}
+
+
+
+public method redoPrnVirginDamage (
+    INOUT yArray string
+)
+{
+    jBC: REDO.PRN.VIRGIN.DAMAGE
+}
+
+
+
+
+public method redoRaiseRepayAccounting (
+    INOUT repayId string
+)
+{
+    jBC: REDO.RAISE.REPAY.ACCOUNTING
+}
+
+
+
+public method redoRaiseWofAccounting (
+    INOUT wofId string
+)
+{
+    jBC: REDO.RAISE.WOF.ACCOUNTING
+}
+
+
+
+public method redoSortFinalArray (
+    INOUT yFinArr string,
+    INOUT yOutArray string
+)
+{
+    jBC: REDO.SORT.FINAL.ARRAY
+}
+
+
+
+public method redoTfsReverseCheck (
+)
+{
+    jBC: REDO.TFS.REVERSE.CHECK
+}
+
+
+
+public method redoTfsTransactionDup (
+)
+{
+    jBC: REDO.TFS.TRANSACTION.DUP
+}
+
+
+
+public method redoTfsWaiveChargeNo (
+)
+{
+    jBC: REDO.TFS.WAIVE.CHARGE.NO
+}
+
+
+
+public method redoTftGetAmount (
+    INOUT yFieldName string
+)
+{
+    jBC: REDO.TFT.GET.AMOUNT
+}
+
+
+
+public method redoUpdFundDep (
+)
+{
+    jBC: REDO.UPD.FUND.DEP
+}
+
+
+
+public method redoUpdateFtCreditDetails (
+)
+{
+    jBC: REDO.UPDATE.FT.CREDIT.DETAILS
+}
+
+
+
+public method redoVAutAleActions (
+)
+{
+    jBC: REDO.V.AUT.ALE.ACTIONS
+}
+
+
+
+public method redoVAuthRefUpd (
+)
+{
+    jBC: REDO.V.AUTH.REF.UPD
+}
+
+
+
+public method redoVAuthSunnelUpd (
+)
+{
+    jBC: REDO.V.AUTH.SUNNEL.UPD
+}
+
+
+
+public method redoVInpAmlTtChk (
+)
+{
+    jBC: REDO.V.INP.AML.TT.CHK
+}
+
+
+
+
+public method redoVInpTfsTp (
+)
+{
+    jBC: REDO.V.INP.TFS.TP
+}
+
+
+
+public method redoValCcyCheck (
+)
+{
+    jBC: REDO.VAL.CCY.CHECK
+}
+
+
+
+
+
+public method apapAuthMaskCard (
+)
+{
+    jBC: APAP.AUTH.MASK.CARD
+}
+
+
+
+public method apapCheckMaskCard (
+)
+{
+    jBC: APAP.CHECK.MASK.CARD
+}
+
+public method apapDynConvRtn (
+)
+{
+    jBC: APAP.DYN.CONV.RTN
+}
+
+public method redoBIntUpdate (
+
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.INT.UPDATE
+}
+
+public method redoValTransCode (
+)
+{
+    jBC: REDO.VAL.TRANS.CODE
+}
+
+public method redoValAccNoExt (
+)
+{
+    jBC: REDO.VAL.ACC.NO.EXT
+}
+
+public method redoValAccNo (
+)
+{
+    jBC: REDO.VAL.ACC.NO
+}
+
+public method redoValAccBusId (
+)
+{
+    jBC: REDO.VAL.ACC.BUS.ID
+}
+
+public method redoValAccSel (
+)
+{
+    jBC: REDO.VAL.ACC.SEL
+}
+
+public method redoValMerCity (
+)
+{
+    jBC: REDO.VAL.MER.CITY
+}
+
+public method redoValMerCntryCode (
+)
+{
+    jBC: REDO.VAL.MER.CNTRY.CODE
+}
+
+public method redoValMerName (
+)
+{
+    jBC: REDO.VAL.MER.NAME
+}
+
+
+
+
+public method redoBTaxpayerServicesPost (
+)
+{
+   jBC: REDO.B.TAXPAYER.SERVICES.POST
+}
+
+
+
+public method redoVInpAmlFtChk (
+)
+{
+   jBC: REDO.V.INP.AML.FT.CHK
+}
+
+
+
+public method redoVAutActivateAcc (
+)
+{
+   jBC: REDO.V.AUT.ACTIVATE.ACC
+}
+

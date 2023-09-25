@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTk1NDQ0NTMzMDpDcDEyNTI6MTY4NDg0MjE1MjcxODpJVFNTOi0xOi0xOjE3NDM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:32
+* @ValidationCode : MjoxMTY0MTU5MzExOkNwMTI1MjoxNjkzOTIzOTE2NzA3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Sep 2023 19:55:16
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1743
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -27,7 +27,7 @@ SUBROUTINE REDO.VP.B.MON.FILE.GEN
 * Version   Date           Who            Reference         Description
 * 1.0       04.30.2013     lpazmino       -                 Initial Version
 ** 19-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
-** 19-04-2023 Skanda R22 Manual Conversion - No changes, CALL routine format modified
+** 19-04-2023 Skanda R22 Manual Conversion - No changes, CALL routine format modified,R22 interface Unit testing changes
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS">
@@ -39,10 +39,10 @@ SUBROUTINE REDO.VP.B.MON.FILE.GEN
     $INSERT I_F.REDO.VISION.PLUS.TXN.HDR
     $INSERT I_F.REDO.VISION.PLUS.TXN.DET
 
-    $INSERT I_RAPID.APP.DEV.COMMON
-    $INSERT I_RAPID.APP.DEV.EQUATE
+*    $INSERT I_RAPID.APP.DEV.COMMON
+*    $INSERT I_RAPID.APP.DEV.EQUATE
     $USING APAP.REDOSRTN
-    
+    $USING APAP.LAPAP
 * </region>
 
     GOSUB INIT
@@ -75,7 +75,7 @@ INIT:
 
     HDR.RCL = 'VP.MON.FILE.HDR'
     DET.RCL = 'VP.MON.FILE.DET'
-    MAP.FMT = 'MAP'
+    MAP.FMT = 'O'
 
     HDR.RET.MSG = ''
     HDR.ERR.MSG = ''
@@ -119,8 +119,8 @@ PROCESS:
 
     VP.TXN.HDR.SEQ = 0
 
-* SELECT.STATEMENT  = 'SSELECT ' : FN.REDO.VISION.PLUS.TXN.HDR : ' BY HEADER.BATCH.NBR'                             ;*PACS00879311
-    SELECT.STATEMENT  = 'SSELECT ' : FN.REDO.VISION.PLUS.TXN.HDR : ' BY EVAL ':'"':'FIELD(@ID,':"'.'":',4)':'"'       ;*PACS00879311
+    SELECT.STATEMENT  = 'SSELECT ' : FN.REDO.VISION.PLUS.TXN.HDR : ' BY HEADER.BATCH.NBR'                             ;*PACS00879311 ;*R22 interface Unit testing changes
+*    SELECT.STATEMENT  = 'SSELECT ' : FN.REDO.VISION.PLUS.TXN.HDR : ' BY EVAL ':'"':'FIELD(@ID,':"'.'":',4)':'"'       ;*PACS00879311 ;*R22 interface Unit testing changes
     VP.HDR.LIST = ''
     VP.HDR.LIST.NAME = ''
     VP.HDR.SELECTED = ''
@@ -140,8 +140,9 @@ PROCESS:
         CRT 'HDR.ERR.MSG' : HDR.ERR.MSG
 
 * Apply RAD Mapping to header
-        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, HDR.RCL, FN.REDO.VISION.PLUS.TXN.HDR, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.HDR, HDR.RET.MSG, HDR.ERR.MSG)
-
+*        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, HDR.RCL, FN.REDO.VISION.PLUS.TXN.HDR, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.HDR, HDR.RET.MSG, HDR.ERR.MSG) SJ commented for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, HDR.RCL, FN.REDO.VISION.PLUS.TXN.HDR, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.HDR, HDR.RET.MSG, HDR.ERR.MSG) ;*R22 interface Unit testing changes
+        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT, HDR.RCL, FN.REDO.VISION.PLUS.TXN.HDR, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.HDR, HDR.RET.MSG, HDR.ERR.MSG);* R22 Manual conversion
         HDR.RET.MSG = EREPLACE(HDR.RET.MSG,";","")
         HDR.RET.MSG = EREPLACE(HDR.RET.MSG,"*"," ")
 
@@ -189,8 +190,9 @@ BUCLE.DETAILS:
         CALL F.READ(FN.REDO.VISION.PLUS.TXN.DET, VP.TXN.DET.ID, R.REDO.VISION.PLUS.TXN.DET, F.REDO.VISION.PLUS.TXN.DET, Y.ERR)
         CRT 'R.REDO.VISION.PLUS.TXN.DET GET' : R.REDO.VISION.PLUS.TXN.DET
 * Apply RAD Mapping to header
-        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, DET.RCL, FN.REDO.VISION.PLUS.TXN.DET, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.DET, DET.RET.MSG, DET.ERR.MSG)
-
+*        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, DET.RCL, FN.REDO.VISION.PLUS.TXN.DET, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.DET, DET.RET.MSG, DET.ERR.MSG)  SJ commented for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, DET.RCL, FN.REDO.VISION.PLUS.TXN.DET, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.DET, DET.RET.MSG, DET.ERR.MSG) ;*R22 interface Unit testing changes
+        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT, DET.RCL, FN.REDO.VISION.PLUS.TXN.DET, VP.TXN.HDR.ID, R.REDO.VISION.PLUS.TXN.DET, DET.RET.MSG, DET.ERR.MSG);* R22 Manual conversion
         DET.RET.MSG = EREPLACE(DET.RET.MSG,";","")
         DET.RET.MSG = EREPLACE(DET.RET.MSG,"*"," ")
 

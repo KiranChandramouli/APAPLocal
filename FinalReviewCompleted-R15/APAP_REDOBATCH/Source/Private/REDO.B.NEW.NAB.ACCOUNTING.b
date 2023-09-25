@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjY5NTI0MTA2OkNwMTI1MjoxNjg0ODU0MzkzNzg1OklUU1M6LTE6LTE6MTM0MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:33
+* @ValidationCode : MjoxODg5MjAyODkwOkNwMTI1MjoxNjkwMjY0NDIyNjk5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:42
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1340
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.NEW.NAB.ACCOUNTING(ARR.ID)
@@ -22,8 +22,8 @@ SUBROUTINE REDO.B.NEW.NAB.ACCOUNTING(ARR.ID)
 *--------------------------------------------------------
 * Date           Name        Dev Ref.                           Comments
 * 16 Oct 2012   H Ganesh     NAB Accounting - PACS00202156     Initial Draft
-* Date                   who                   Reference              
-* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM 
+* Date                   who                   Reference
+* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------
 
@@ -39,6 +39,7 @@ SUBROUTINE REDO.B.NEW.NAB.ACCOUNTING(ARR.ID)
 *TUS START
     $INSERT I_F.EB.CONTRACT.BALANCES
 *TUS END
+    $USING APAP.TAM
 
     GOSUB PROCESS
 RETURN
@@ -235,7 +236,8 @@ BEFORE.RAISE.ENTRIES:
     IF Y.INTERNAL.ACC THEN
 
         Y.LOAN.CO.CODE = R.ACCOUNT<AC.CO.CODE>
-        CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
+*       CALL REDO.NAB.CREATE.INT.ACC(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC)
+        APAP.TAM.redoNabCreateIntAcc(Y.LOAN.CO.CODE,Y.INTERNAL.ACC,Y.RET.INT.ACC) ;*R22 Manual Code Converison
         Y.INTERNAL.ACC = Y.RET.INT.ACC
         CALL F.READ(FN.ACCOUNT,Y.INTERNAL.ACC,R.INT.ACC,F.ACCOUNT,ACC.ERR)
         IF R.INT.ACC ELSE

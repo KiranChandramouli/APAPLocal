@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxMDU3MTg4NzAxOkNwMTI1MjoxNjg0ODU0Mzg3MTgwOklUU1M6LTE6LTE6MTc5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationCode : MjotNjkyMzczMTAwOkNwMTI1MjoxNjkzOTc2NjkzNzQzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 06 Sep 2023 10:34:53
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1793
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -28,9 +28,9 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
 *02-SEP-2010    Swaminathan.S.R        ODR-2009-12-0290     INITIAL CREATION
 *12-APR-2013 Karthik Sundararajan   PERF-CHANGE
 *12-Oct-2017 Saran.S
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - TNO TO C$T24.SESSION.NO AND ADDING END
-* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+* 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -R22 interface Unit testing changes
 
 *---------------------------------------------------------------------------------
 
@@ -47,6 +47,8 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE(Y.ACH.SEL.LIST)
     $INSERT I_F.REDO.ACH.PROCESS.DET
     $INSERT I_F.USER
     $INSERT I_F.LOCKING
+    $USING APAP.REDOCHNLS
+    $USING APAP.LAPAP
 *---------------------------------------------------------------------------------
 
     GOSUB SEL.ID
@@ -64,6 +66,7 @@ RETURN
 **********
 SEL.ID:
 **********
+    
     Y.LINE.1 = ''; Y.LINE.2 = ''
     Y.LINE.3 = ''; R.RETURN.MSG = ''
     TEMPTIME = ''
@@ -94,8 +97,7 @@ RETURN
 ************
 RAD.TRAN:
 ************
-
-    MAP.FMT = 'MAP'
+    MAP.FMT = 'O' ;*R22 interface Unit testing changes
     ID.RCON.L = Y.RAD.ID
     Y.FT.HIS.APP = FIELD(Y.TXN.ID,';',2,1)
     IF Y.FT.HIS.APP NE '' THEN
@@ -106,14 +108,17 @@ RAD.TRAN:
     ID.APP = Y.TXN.ID
 
     IF Y.TXN.ID[1,2] EQ 'FT' THEN
-
-
-        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
+    *R22 interface Unit testing changes -START
+        R.APP = R.FUNDS.TRANSFER
+*        CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) SJ commented for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
+        APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG);* R22 Manual conversion
+	*R22 interface Unit testing changes -END
         PRINT "R.RETURN.MSG :" :R.RETURN.MSG
         Y.LINE.1 = R.RETURN.MSG[1,Y.LENG.LINE]
         Y.LINE.2 = R.RETURN.MSG[1+Y.LENG.LINE,Y.LENG.LINE]
         Y.LINE.3 = R.RETURN.MSG[1+Y.LENG.LINE+Y.LENG.LINE,Y.LENG.LINE]
-
+        
         IF Y.LINE.1 OR Y.LINE.2 OR Y.LINE.3 THEN
             Y.OUTPUT.ARRAY<-1> = Y.LINE.1
             Y.OUTPUT.ARRAY<-1> = Y.LINE.2
@@ -163,10 +168,12 @@ OPEN.FILE:
 *call C.22  FILE.OPEN.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CONVERSION
             OPEN.ERR = '1'
         END
     END
+    
     IF OPEN.ERR NE '1' THEN
         OPENSEQ Y.OUT.PATH.HIS,Y.FILE.NAME TO PATH.HIS.OUTPUT ELSE
             CREATE PATH.HIS.OUTPUT THEN
@@ -174,7 +181,8 @@ OPEN.FILE:
 *call C.22  HIS.OPEN.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Open / Create ':Y.OUT.PATH.HIS ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+                APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CONVERSION
                 OPEN.ERR = '1'
             END
         END
@@ -197,7 +205,8 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
             INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
             MON.TP = '03' ; DESC = 'Unable to Write ':PATH.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-            CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+            APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CONVERSION
             WRITE.ERR = '1'
         END
 
@@ -206,7 +215,8 @@ WRITE.FILE:
 * call C.22  WRITE.ERR
                 INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
                 MON.TP = '03' ; DESC = 'Unable to Write ':PATH.HIS.OUTPUT ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-                CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+                APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CONVERSION
                 WRITE.ERR = '1'
             END
         END
@@ -271,15 +281,16 @@ ACH.PROC.DET:
     END
     CALL F.WRITE(FN.LOCK,Y.LOCKING.ID,R.LOCKING)
 
-    MAP.FMT = 'MAP'
+    MAP.FMT = 'O' ;*R22 interface Unit testing changes
     ID.RCON.L = 'REDO.ACH.OUTWARD'
     ID.APP = Y.TXN.ID
-    R.APP = ''
+    R.APP = R.FUNDS.TRANSFER  ;*'' SJ commeted for test ;*R22 interface Unit testing changes
     R.RETURN.MSG= ''
     ERR.MSG= ''
-
-    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
-
+    
+*    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)  SJ commented for test
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 interface Unit testing changes
+    APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG) ;*R22 MANUAL CONVERSION
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.CODE> = R.RETURN.MSG<1>
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.TXN.AMOUNT> = R.RETURN.MSG<2>
     R.REDO.ACH.PROCESS.DET<REDO.ACH.PROCESS.DET.ACCOUNT> = R.RETURN.MSG<3>
@@ -324,8 +335,8 @@ SUCCESS.MSG:
 
     INT.CODE = Y.INTERF.ID ; INT.TYPE = 'BATCH' ; BAT.NO = Y.COUNT ; BAT.TOT = Y.TOTAL ; INFO.OR = 'T24' ; INFO.DE = 'PAYBANK' ; ID.PROC = Y.TXN.ID
     MON.TP = '01' ; DESC = 'Record generated successfully' ; REC.CON = Y.ACH.SEL.LIST ; EX.USER = OPERATOR ; EX.PC = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
-
+*CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC);* R22 Manual conversion
 RETURN
 *-----------------------------------------------------------------------------------------------------------------
 *******

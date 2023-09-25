@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk0MzI1ODk1NDpDcDEyNTI6MTY4MDc4MzY2Nzc4NDpJVFNTOi0xOi0xOjE1NDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Apr 2023 17:51:07
+* @ValidationCode : MjotMjEyMjY1MjEyOkNwMTI1MjoxNjkyMDAwOTYzNDI5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 14 Aug 2023 13:46:03
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 154
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FC.S.COLL.VAL.NOMINAL
@@ -46,7 +46,7 @@ SUBROUTINE REDO.FC.S.COLL.VAL.NOMINAL
     $INSERT I_F.COLLATERAL
     $INSERT I_F.OFS.SOURCE
 *
-    $INSERT I_RAPID.APP.DEV.COMMON
+*    $INSERT I_RAPID.APP.DEV.COMMON ;*MANUAL R22 CODE CONVERSION
 *
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
     $INSERT I_F.REDO.FC.PROD.COLL.POLICY

@@ -1,7 +1,7 @@
-* @ValidationCode : MjotMTMxMDM1MDQyMDpDcDEyNTI6MTY4NjY3NTkxOTMxNjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:35:19
+* @ValidationCode : MjotNjUzMTM1Njk6Q3AxMjUyOjE2OTMzMTQyMjIxNjk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:33:42
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -13,6 +13,7 @@
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.ACH.INW.INDIR
 ********************************************************
+
 * COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 * DEVELOPED BY: Swaminathan.S.R
 * PROGRAM NAME: REDO.ACH.INW.INDIR
@@ -28,6 +29,7 @@ SUBROUTINE REDO.ACH.INW.INDIR
 *  DATE             WHO                   REFERENCE
 * 06-JUNE-2023      Conversion Tool       R22 Auto Conversion - FM to @FM , TNO to C$T24.SESSION.NO
 * 06-JUNE-2023      Harsha                R22 Manual Conversion - Added Package
+* 24-AUG-2023       VIGNESHWARI           R22 Manual Conversion - PATH IS MODIFIED
 *---------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -169,7 +171,8 @@ PROCESS:
             REMOVE Y.INW.ID FROM SEL.LIST.INW SETTING INW.POS
         WHILE Y.INW.ID : INW.POS
             Y.FILE.NAME = Y.INW.ID
-            Y.COMMAND = 'COPY FROM ':IN.DIR.PATH: ' TO ':HIST.PATH:' ':Y.INW.ID
+            * Y.COMMAND = 'COPY FROM ':IN.DIR.PATH: ' TO ':HIST.PATH:' ':Y.INW.ID
+            Y.COMMAND = 'SH -c cp ':IN.DIR.PATH: '/':Y.INW.ID:' ':HIST.PATH:'/':Y.INW.ID ;*R22 Manual Conversion - PATH IS MODIFIED 
             EXECUTE Y.COMMAND
             GOSUB INW.INDIR.PROC
             ACH.PROC.FLAG = ''

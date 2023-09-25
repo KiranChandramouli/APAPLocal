@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo2ODY1NTQ5MDI6Q3AxMjUyOjE2ODUwMDAwNTQ2OTg6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 May 2023 13:04:14
+* @ValidationCode : MjotMjA5MDcyMDY4OTpDcDEyNTI6MTY5MTc1MTc0NTU4NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Aug 2023 16:32:25
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -11,20 +11,21 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
-*---------------------------------------------------------------------------------------
-*Modification History:
-*DATE                 WHO                    REFERENCE                         DESCRIPTION
-*25/05/2023      CONVERSION TOOL         AUTO R22 CODE CONVERSION               T24.BP REMOVED
-*25/05/2023      HARISH VIKRAM              MANUAL R22 CODE CONVERSION           NOCHANGE
+*-----------------------------------------------------------------------------
+* <Rating>-20</Rating>
+*-----------------------------------------------------------------------------
+*MODIFICATION HISTORY:
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.VAL.DIF.BOLS.RT
 
-    $INSERT I_COMMON ;*AUTO R22 CODE CONVERSION - START
+    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
     $INSERT I_EQUATE
     $INSERT I_System
     $INSERT I_F.VERSION
     $INSERT I_F.AC.LOCKED.EVENTS
-    $INSERT I_F.ACCOUNT ;*AUTO R22 CODE CONVERSION - END
+    $INSERT I_F.ACCOUNT ;*R22 MANUAL CONVERSION END
 
 
     GOSUB LOAD
@@ -32,8 +33,7 @@ SUBROUTINE LAPAP.VAL.DIF.BOLS.RT
 *====
 LOAD:
 *====
-
-    Y.BOL.DEBIT                = R.NEW(AC.LCK.TRANS.REF)
+    Y.BOL.DEBIT                = ID.NEW
     Y.MONTO.BOL                = R.NEW(AC.LCK.LOCKED.AMOUNT)
     Y.ACCOUNT                  = R.NEW(AC.LCK.ACCOUNT.NUMBER)
 

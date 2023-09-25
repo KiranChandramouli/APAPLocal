@@ -6,9 +6,8 @@ metamodelVersion 1.6
 public method acctActivityRebuild (
 )
 {
-    jBC: ACCT.ACTIVITY.REBUILD
+    jBC: ACCT.ACTIVITY.REBUILD 
 }
-
 
 
 public method acctEcbBalFromActivity (
@@ -808,12 +807,6 @@ public method lApapBill4Mon (
 }
 
 
-
-public method lApapCashbackFt (
-)
-{
-    jBC: L.APAP.CASHBACK.FT
-}
 
 
 
@@ -1937,13 +1930,6 @@ public method redoBRecAcctListPost (
 
 
 
-public method redoBThirdResRecoveryLoad (
-)
-{
-    jBC: REDO.B.THIRD.RES.RECOVERY.LOAD
-}
-
-
 
 public method redoBThirdResRecoveryPost (
 )
@@ -1993,13 +1979,6 @@ public method redoOvrLoanReport (
     jBC: REDO.OVR.LOAN.REPORT
 }
 
-
-
-public method redoUpdAtmRej (
-)
-{
-    jBC: REDO.UPD.ATM.REJ
-}
 
 
 
@@ -2955,13 +2934,6 @@ public method redoConvGlExtraPayment (
     jBC: REDO.CONV.GL.EXTRA.PAYMENT
 }
 
-
-
-public method redoConvStmtMerchtName (
-)
-{
-    jBC: REDO.CONV.STMT.MERCHT.NAME
-}
 
 
 
@@ -5409,28 +5381,28 @@ public method lapapCobPending (
 
 
 public method lApapEnqPortalAhoTodas (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
+    jBC: L.APAP.ENQ.PORTAL.AHO.TODAS
 }
 
 
 
 public method lApapEnqSwiftAccounts (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
+    jBC: L.APAP.ENQ.SWIFT.ACCOUNTS
 }
 
 
 
 public method lApapGetCusProducts (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: L.APAP.GET.CUS.PRODUCTS
+    jBC: L.APAP.GET.CUS.PRODUCTS
 }
 
 
@@ -5438,16 +5410,16 @@ public method lApapGetCusProducts (
 public method lApapValAccOwner (
 )
 {
-   jBC: L.APAP.VAL.ACC.OWNER
+    jBC: L.APAP.VAL.ACC.OWNER
 }
 
 
 
 public method lapapEnqReprecio (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: LAPAP.ENQ.REPRECIO
+    jBC: LAPAP.ENQ.REPRECIO
 }
 
 
@@ -5455,25 +5427,25 @@ public method lapapEnqReprecio (
 public method drRegRegn16ExtractPost (
 )
 {
-   jBC: DR.REG.REGN16.EXTRACT.POST
+    jBC: DR.REG.REGN16.EXTRACT.POST
 }
 
 
 
 public method drRegRien6Extract (
-   INOUT recId string
+    INOUT recId string
 )
 {
-   jBC: DR.REG.RIEN6.EXTRACT
+    jBC: DR.REG.RIEN6.EXTRACT
 }
 
 
 
 public method drRegRien9Extract (
-   INOUT recId string
+    INOUT recId string
 )
 {
-   jBC: DR.REG.RIEN9.EXTRACT
+    jBC: DR.REG.RIEN9.EXTRACT
 }
 
 
@@ -5481,25 +5453,25 @@ public method drRegRien9Extract (
 public method drRegn16GetProductType (
 )
 {
-   jBC: DR.REGN16.GET.PRODUCT.TYPE
+    jBC: DR.REGN16.GET.PRODUCT.TYPE
 }
 
 
 
 public method lApapNofCartaSaldoPrRt (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
+    jBC: L.APAP.NOF.CARTA.SALDO.PR.RT
 }
 
 
 
 public method lApapRet10PrcRt (
-   INOUT yFinal string
+    INOUT yFinal string
 )
 {
-   jBC: L.APAP.RET.10.PRC.RT
+    jBC: L.APAP.RET.10.PRC.RT
 }
 
 
@@ -5507,43 +5479,43 @@ public method lApapRet10PrcRt (
 public method lApapSrvGetSoyBalRt (
 )
 {
-   jBC: L.APAP.SRV.GET.SOY.BAL.RT
+    jBC: L.APAP.SRV.GET.SOY.BAL.RT
 }
 
 
 
 public method redoBCusTaxRetentions (
-   INOUT yNcfCusId string
+    INOUT yNcfCusId string
 )
 {
-   jBC: REDO.B.CUS.TAX.RETENTIONS
+    jBC: REDO.B.CUS.TAX.RETENTIONS
 }
 
 
 
 public method redoBInactiveAccts (
-   INOUT yAcctId string
+    INOUT yAcctId string
 )
 {
-   jBC: REDO.B.INACTIVE.ACCTS
+    jBC: REDO.B.INACTIVE.ACCTS
 }
 
 
 
 public method redoBMgLnsByDebtor (
-   INOUT yFinalArrangement string
+    INOUT yFinalArrangement string
 )
 {
-   jBC: REDO.B.MG.LNS.BY.DEBTOR
+    jBC: REDO.B.MG.LNS.BY.DEBTOR
 }
 
 
 
 public method redoBPrevCertDeposits (
-   INOUT azAccId string
+    INOUT azAccId string
 )
 {
-   jBC: REDO.B.PREV.CERT.DEPOSITS
+    jBC: REDO.B.PREV.CERT.DEPOSITS
 }
 
 
@@ -5551,7 +5523,7 @@ public method redoBPrevCertDeposits (
 public method redoBPrevCertDepositsSelect (
 )
 {
-   jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
+    jBC: REDO.B.PREV.CERT.DEPOSITS.SELECT
 }
 
 
@@ -5582,10 +5554,10 @@ public method drRegPasivasConcat (
 }
 
 public method drRegFd01LastdExtract (
-   INOUT recId string
+    INOUT recId string
 )
 {
-   jBC: DR.REG.FD01.LASTD.EXTRACT
+    jBC: DR.REG.FD01.LASTD.EXTRACT
 }
 
 public method lApapDateTransEnq (
@@ -5729,5 +5701,3465 @@ public method lapapLyInputUsmov (
 )
 {
     jBC: LAPAP.LY.INPUT.USMOV
+}
+
+
+public method lApapCusDirDoMandRt (
+)
+{
+    jBC: L.APAP.CUS.DIR.DO.MAND.RT
+}
+
+
+
+public method lapapAccCanalApertura (
+)
+{
+    jBC: LAPAP.ACC.CANAL.APERTURA
+}
+
+public method lapapAManManRt (
+)
+{
+    jBC: LAPAP.A.MAN.MAN.RT
+}
+
+public method lapapGetNombreCusCajaRt (
+)
+{
+    jBC: LAPAP.GET.NOMBRE.CUS.CAJA.RT
+}
+
+public method lApapNotificacionCredit (
+)
+{
+    jBC: L.APAP.NOTIFICACION.CREDIT
+}
+
+public method lApapValDepMinAcc (
+)
+{
+    jBC: L.APAP.VAL.DEP.MIN.ACC
+}
+
+
+public method lapapVerifyParam (
+)
+{
+    jBC: LAPAP.VERIFY.PARAM
+}
+
+public method lapapVCusManManRt (
+)
+{
+    jBC: LAPAP.V.CUS.MAN.MAN.RT
+}
+
+public method lapapChAbonoBranchName (
+)
+{
+    jBC: LAPAP.CH.ABONO.BRANCH.NAME
+}
+
+public method lapapChAbonoCusCode (
+)
+{
+    jBC: LAPAP.CH.ABONO.CUS.CODE
+}
+
+public method lapapChAbonoCusName (
+)
+{
+    jBC: LAPAP.CH.ABONO.CUS.NAME
+}
+
+public method lapapChAbonoCusTime (
+)
+{
+    jBC: LAPAP.CH.ABONO.CUS.TIME
+}
+
+public method lapapChAbonoUsrAuth (
+)
+{
+    jBC: LAPAP.CH.ABONO.USR.AUTH
+}
+
+public method lapapChAbonoUsrInpu (
+)
+{
+    jBC: LAPAP.CH.ABONO.USR.INPU
+}
+
+
+public method Lapap1VProvinciaRt (
+)
+{
+    jBC:LAPAP.1.V.PROVINCIA.RT
+}
+
+
+
+public method Lapap1VResTypeRt (
+)
+{
+    jBC:LAPAP.1.V.RES.TYPE.RT
+}
+
+
+
+public method LapapAManManRt (
+)
+{
+    jBC:LAPAP.A.MAN.MAN.RT
+}
+
+
+
+public method LapapAccCanalApertura (
+)
+{
+    jBC:LAPAP.ACC.CANAL.APERTURA
+}
+
+
+
+public method LapapAccMassiveNotice (
+    INOUT SelList string
+)
+{
+    jBC:LAPAP.ACC.MASSIVE.NOTICE
+}
+
+
+
+public method LapapAccMassiveNoticeLoad (
+)
+{
+    jBC:LAPAP.ACC.MASSIVE.NOTICE.LOAD
+}
+
+
+
+public method LapapAccMassiveNoticeSelect (
+)
+{
+    jBC:LAPAP.ACC.MASSIVE.NOTICE.SELECT
+}
+
+
+
+public method LapapActivarCustomer (
+    INOUT CrOtherId string
+)
+{
+    jBC:LAPAP.ACTIVAR.CUSTOMER
+}
+
+
+
+public method LapapActivarCustomerLoad (
+)
+{
+    jBC:LAPAP.ACTIVAR.CUSTOMER.LOAD
+}
+
+
+
+public method LapapActivarCustomerSelect (
+)
+{
+    jBC:LAPAP.ACTIVAR.CUSTOMER.SELECT
+}
+
+
+
+public method LapapAddressRevWorkflow (
+)
+{
+    jBC:LAPAP.ADDRESS.REV.WORKFLOW
+}
+
+
+
+public method LapapAlertValidaPrestamo (
+)
+{
+    jBC:LAPAP.ALERT.VALIDA.PRESTAMO
+}
+
+
+
+public method LapapAlertaReprecio (
+)
+{
+    jBC:LAPAP.ALERTA.REPRECIO
+}
+
+
+
+public method LapapAlertaReprecioPost (
+)
+{
+    jBC:LAPAP.ALERTA.REPRECIO.POST
+}
+
+
+
+public method LapapAsaLVRt (
+    INOUT Participante string
+)
+{
+    jBC:LAPAP.ASA.L.V.RT
+}
+
+
+
+public method LapapAsaLVRtLoad (
+)
+{
+    jBC:LAPAP.ASA.L.V.RT.LOAD
+}
+
+
+
+public method LapapAsaLVRtSelect (
+)
+{
+    jBC:LAPAP.ASA.L.V.RT.SELECT
+}
+
+
+
+public method LapapAsaRt (
+    INOUT Account string
+)
+{
+    jBC:LAPAP.ASA.RT
+}
+
+
+
+public method LapapAsaRtLoad (
+)
+{
+    jBC:LAPAP.ASA.RT.LOAD
+}
+
+
+
+public method LapapAsaRtSelect (
+)
+{
+    jBC:LAPAP.ASA.RT.SELECT
+}
+
+
+
+public method LapapAsaUrlParamRt (
+)
+{
+    jBC:LAPAP.ASA.URL.PARAM.RT
+}
+
+
+
+public method LapapAuthAsaVotantesRt (
+)
+{
+    jBC:LAPAP.AUTH.ASA.VOTANTES.RT
+}
+
+
+
+public method LapapAuthTtNcBitRt (
+)
+{
+    jBC:LAPAP.AUTH.TT.NC.BIT.RT
+}
+
+
+
+public method LapapCastigadosRueda (
+    INOUT AaArrId string
+)
+{
+    jBC:LAPAP.CASTIGADOS.RUEDA
+}
+
+
+
+public method LapapCastigadosRuedaLoad (
+)
+{
+    jBC:LAPAP.CASTIGADOS.RUEDA.LOAD
+}
+
+
+
+public method LapapCastigadosRuedaSelect (
+)
+{
+    jBC:LAPAP.CASTIGADOS.RUEDA.SELECT
+}
+
+
+
+public method LapapCeritosFxJuvRt (
+    INOUT PAccount string
+)
+{
+    jBC:LAPAP.CERITOS.FX.JUV.RT
+}
+
+
+
+public method LapapCeritosFxJuvRtLoad (
+)
+{
+    jBC:LAPAP.CERITOS.FX.JUV.RT.LOAD
+}
+
+
+
+public method LapapCeritosFxJuvRtPost (
+)
+{
+    jBC:LAPAP.CERITOS.FX.JUV.RT.POST
+}
+
+
+
+public method LapapCeritosFxJuvRtSelect (
+)
+{
+    jBC:LAPAP.CERITOS.FX.JUV.RT.SELECT
+}
+
+
+
+public method LapapChargeMinBal (
+    INOUT YCustomerId string
+)
+{
+    jBC:LAPAP.CHARGE.MIN.BAL
+}
+
+
+
+public method LapapChargeMinBalLoad (
+)
+{
+    jBC:LAPAP.CHARGE.MIN.BAL.LOAD
+}
+
+
+
+public method LapapChargeMinBalSelect (
+)
+{
+    jBC:LAPAP.CHARGE.MIN.BAL.SELECT
+}
+
+
+
+public method lapapChargePayoffSegRt (
+    INOUT AaId string,
+    INOUT outRecord1 string
+)
+{
+    jBC:LAPAP.CHARGE.PAYOFF.SEG.RT
+}
+
+
+
+public method LapapCheckDaylyCusUsdLimite (
+)
+{
+    jBC:LAPAP.CHECK.DAYLY.CUS.USD.LIMITE
+}
+
+
+
+public method LapapCheckDaylyCusUsdLimite2 (
+)
+{
+    jBC:LAPAP.CHECK.DAYLY.CUS.USD.LIMITE2
+}
+
+
+
+public method LapapCheckDaylyCusUsdLimite3 (
+)
+{
+    jBC:LAPAP.CHECK.DAYLY.CUS.USD.LIMITE3
+}
+
+
+
+public method LapapChgDealticketStaRt (
+)
+{
+    jBC:LAPAP.CHG.DEALTICKET.STA.RT
+}
+
+
+
+public method LapapClearEcbBalancesIn (
+    INOUT AccId string
+)
+{
+    jBC:LAPAP.CLEAR.ECB.BALANCES.IN
+}
+
+
+
+public method LapapClearEcbBalancesInLoad (
+)
+{
+    jBC:LAPAP.CLEAR.ECB.BALANCES.IN.LOAD
+}
+
+
+
+public method LapapClearEcbBalancesInSelect (
+)
+{
+    jBC:LAPAP.CLEAR.ECB.BALANCES.IN.SELECT
+}
+
+
+
+public method LapapClearTransactionQrPin (
+)
+{
+    jBC:LAPAP.CLEAR.TRANSACTION.QR.PIN
+}
+
+
+
+public method LapapCloseAzAccount (
+)
+{
+    jBC:LAPAP.CLOSE.AZ.ACCOUNT
+}
+
+
+
+public method LapapCloseAzAccountValid (
+)
+{
+    jBC:LAPAP.CLOSE.AZ.ACCOUNT.VALID
+}
+
+
+
+public method LapapControlEstadosRt (
+    INOUT HoldId string
+)
+{
+    jBC:LAPAP.CONTROL.ESTADOS.RT
+}
+
+
+
+public method LapapControlEstadosRtLoad (
+)
+{
+    jBC:LAPAP.CONTROL.ESTADOS.RT.LOAD
+}
+
+
+
+public method LapapControlEstadosRtSelect (
+)
+{
+    jBC:LAPAP.CONTROL.ESTADOS.RT.SELECT
+}
+
+
+
+public method LapapDebitDirectCovid19 (
+    INOUT YArrangementId string
+)
+{
+    jBC:LAPAP.DEBIT.DIRECT.COVID19
+}
+
+
+
+public method LapapDebitDirectCovid19Load (
+)
+{
+    jBC:LAPAP.DEBIT.DIRECT.COVID19.LOAD
+}
+
+
+
+public method LapapDebitDirectCovid19Post (
+)
+{
+    jBC:LAPAP.DEBIT.DIRECT.COVID19.POST
+}
+
+
+
+public method LapapDebitDirectCovid19Select (
+)
+{
+    jBC:LAPAP.DEBIT.DIRECT.COVID19.SELECT
+}
+
+
+
+public method LapapDeleteCustPrdList (
+    INOUT Arr string
+)
+{
+    jBC:LAPAP.DELETE.CUST.PRD.LIST
+}
+
+
+
+public method LapapDeleteCustPrdListSelect (
+)
+{
+    jBC:LAPAP.DELETE.CUST.PRD.LIST.SELECT
+}
+
+
+
+public method LapapDesmRueda (
+    INOUT AaArrId string
+)
+{
+    jBC:LAPAP.DESM.RUEDA
+}
+
+
+
+public method LapapDesmRuedaLoad (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.LOAD
+}
+
+
+
+public method LapapDesmRuedaSelect (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.SELECT
+}
+
+
+
+public method LapapDesmRuedaTwo (
+    INOUT AaArrId string
+)
+{
+    jBC:LAPAP.DESM.RUEDA.TWO
+}
+
+
+
+public method LapapDesmRuedaTwoLoad (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.TWO.LOAD
+}
+
+
+
+public method LapapDesmRuedaTwoSelect (
+)
+{
+    jBC:LAPAP.DESM.RUEDA.TWO.SELECT
+}
+
+
+
+public method LapapFaseiiCovid (
+    INOUT AaArrId string
+)
+{
+    jBC:LAPAP.FASEII.COVID
+}
+
+
+
+public method LapapFaseiiCovidLoad (
+)
+{
+    jBC:LAPAP.FASEII.COVID.LOAD
+}
+
+
+
+public method LapapFaseiiCovidSelect (
+)
+{
+    jBC:LAPAP.FASEII.COVID.SELECT
+}
+
+
+
+public method LapapFundSendMonitor (
+    INOUT RecList string
+)
+{
+    jBC:LAPAP.FUND.SEND.MONITOR
+}
+
+
+
+public method LapapFundSendMonitorLoad (
+)
+{
+    jBC:LAPAP.FUND.SEND.MONITOR.LOAD
+}
+
+
+
+public method LapapFundSendMonitorSelect (
+)
+{
+    jBC:LAPAP.FUND.SEND.MONITOR.SELECT
+}
+
+
+
+public method LapapGenAcstmtFormRt (
+    INOUT HoldId string
+)
+{
+    jBC:LAPAP.GEN.ACSTMT.FORM.RT
+}
+
+
+
+public method LapapGenAcstmtFormRtLoad (
+)
+{
+    jBC:LAPAP.GEN.ACSTMT.FORM.RT.LOAD
+}
+
+
+
+public method LapapGenAcstmtFormRtSelect (
+)
+{
+    jBC:LAPAP.GEN.ACSTMT.FORM.RT.SELECT
+}
+
+
+
+public method LapapGetNameDslip (
+    INOUT YDepositante string
+)
+{
+    jBC:LAPAP.GET.NAME.DSLIP
+}
+
+
+
+public method LapapVCloperiodRt (
+)
+{
+    jBC:LAPAP.V.CLOPERIOD.RT
+}
+
+
+
+public method LapapVNonemptyRt (
+)
+{
+    jBC:LAPAP.V.NONEMPTY.RT
+}
+
+
+
+public method LapapWdrlPenalSRtSelect (
+)
+{
+    jBC:LAPAP.WDRL.PENAL.S.RT.SELECT
+}
+
+
+
+public method RedoApapCustSwiftUpd (
+)
+{
+    jBC:REDO.APAP.CUST.SWIFT.UPD
+}
+
+
+
+public method RedoAzReinvConsultaLoad (
+)
+{
+    jBC:REDO.AZ.REINV.CONSULTA.LOAD
+}
+
+
+
+public method lApapCorrCastigSeqprotLoad (
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT.LOAD
+}
+
+
+
+public method lApapCorrCastigSeqprotSelect (
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT.SELECT
+}
+
+
+public method lApapCusMayorMenor (
+    INOUT customerId string
+)
+{
+    jBC: L.APAP.CUS.MAYOR.MENOR
+}
+
+
+
+public method lApapCusMayorMenorSelect (
+)
+{
+    jBC: L.APAP.CUS.MAYOR.MENOR.SELECT
+}
+
+
+
+public method lApapCusMayorMenorLoad (
+)
+{
+    jBC: L.APAP.CUS.MAYOR.MENOR.LOAD
+}
+
+
+public method lApapDebDirectRtcAut (
+    INOUT yArrayIds string
+)
+{
+    jBC: L.APAP.DEB.DIRECT.RTC.AUT
+}
+
+
+
+public method lApapDebDirectRtcAutLoad (
+)
+{
+    jBC: L.APAP.DEB.DIRECT.RTC.AUT.LOAD
+}
+
+
+
+public method lApapDebDirectRtcAutPost (
+)
+{
+    jBC: L.APAP.DEB.DIRECT.RTC.AUT.POST
+}
+
+
+
+public method lApapDebDirectRtcAutSelect (
+)
+{
+    jBC: L.APAP.DEB.DIRECT.RTC.AUT.SELECT
+}
+
+
+public method lApapDemoChDatePend (
+)
+{
+    jBC: L.APAP.DEMO.CH.DATE.PEND
+}
+
+
+public method lApapEnqTablaCovid19 (
+    INOUT yArreglo string
+)
+{
+    jBC: L.APAP.ENQ.TABLA.COVID19
+}
+
+
+public method lApapGetCounterpartAccount (
+)
+{
+    jBC: L.APAP.GET.COUNTERPART.ACCOUNT
+}
+
+
+
+public method lApapGetJsonT24Mapping (
+    INOUT yMappingName string,
+    INOUT yDynMapping string,
+    INOUT yRabbitMq string,
+    INOUT yJsonObjectIn string,
+    INOUT yError string
+)
+{
+    jBC: L.APAP.GET.JSON.T24.MAPPING
+}
+
+
+
+public method lApapGetTxnComment (
+)
+{
+    jBC: L.APAP.GET.TXN.COMMENT
+}
+
+
+
+public method lApapGetTxnInfo (
+)
+{
+    jBC: L.APAP.GET.TXN.INFO
+}
+
+
+
+public method lApapGuardarPrinCov (
+)
+{
+    jBC: L.APAP.GUARDAR.PRIN.COV
+}
+
+
+
+public method lApapInTdRepoNoDupRt (
+)
+{
+    jBC: L.APAP.IN.TD.REPO.NO.DUP.RT
+}
+
+
+
+public method lApapLoadCampos (
+)
+{
+    jBC: L.APAP.LOAD.CAMPOS
+}
+
+
+public method lApapMassiveFileProcess (
+    INOUT yRecord string
+)
+{
+    jBC: L.APAP.MASSIVE.FILE.PROCESS
+}
+
+
+
+public method lApapMassiveFileProcessLoad (
+)
+{
+    jBC: L.APAP.MASSIVE.FILE.PROCESS.LOAD
+}
+
+
+
+public method lApapMassiveFileProcessSelect (
+)
+{
+    jBC: L.APAP.MASSIVE.FILE.PROCESS.SELECT
+}
+
+
+
+public method lApapMayorPrinCovid19 (
+)
+{
+    jBC: L.APAP.MAYOR.PRIN.COVID19
+}
+
+
+
+public method lApapMontoCuotaDia (
+    INOUT yArrId string,
+    INOUT ySalidad string
+)
+{
+    jBC: L.APAP.MONTO.CUOTA.DIA
+}
+
+
+
+public method lApapMontoSoloCovidPr (
+    INOUT yAaaId string,
+    INOUT ySalidad string
+)
+{
+    jBC: L.APAP.MONTO.SOLO.COVID.PR
+}
+
+
+
+public method lApapNotificacionDebit (
+)
+{
+    jBC: L.APAP.NOTIFICACION.DEBIT
+}
+
+
+
+public method lApapProcessRabbitJsonReq (
+    INOUT yServiceName string,
+    INOUT yT24Data string,
+    INOUT yParam string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.PROCESS.RABBIT.JSON.REQ
+}
+
+
+
+public method lApapProcessRabbitJsonReqNoval (
+    INOUT yServiceName string,
+    INOUT yT24Data string,
+    INOUT yParam string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.PROCESS.RABBIT.JSON.REQ.NOVAL
+}
+
+
+
+public method lApapRteCustAndDateTxn (
+    INOUT yFinal string
+)
+{
+    jBC: L.APAP.RTE.CUST.AND.DATE.TXN
+}
+
+
+public method lApapSColGetBillDetails (
+    INOUT aaId string,
+    INOUT rAaAccountDetails string,
+    INOUT yProcessDate string,
+    INOUT yMoraCtaVen string,
+    INOUT yTmpcreditodiasatraso string,
+    INOUT yTmpcreditocuotasvencidas string,
+    INOUT yTmpcreditocuotaspagadas string,
+    INOUT yTmpcreditomontomoroso string
+)
+{
+    jBC: L.APAP.S.COL.GET.BILL.DETAILS
+}
+
+
+public method lApapScheduleProjSelect (
+)
+{
+    jBC: L.APAP.SCHEDULE.PROJ.SELECT
+}
+
+
+
+public method lApapScheduleProj (
+    INOUT nextId string
+)
+{
+    jBC: L.APAP.SCHEDULE.PROJ
+}
+
+
+public method lApapUpdBenOactRt (
+    INOUT yBen string
+)
+{
+    jBC: L.APAP.UPD.BEN.OACT.RT
+}
+
+
+
+public method lApapUpdBenOactRtLoad (
+)
+{
+    jBC: L.APAP.UPD.BEN.OACT.RT.LOAD
+}
+
+
+
+public method lApapUpdBenOactRtSelect (
+)
+{
+    jBC: L.APAP.UPD.BEN.OACT.RT.SELECT
+}
+
+
+public method lApapValJsonOut (
+)
+{
+    jBC: L.APAP.VAL.JSON.OUT
+}
+
+
+
+public method lApapValPrinCovid19 (
+)
+{
+    jBC: L.APAP.VAL.PRIN.COVID19
+}
+
+
+public method lApapValidCuResSector (
+)
+{
+    jBC: L.APAP.VALID.CU.RES.SECTOR
+}
+
+
+public method lapap1VCalleRt (
+)
+{
+    jBC: LAPAP.1.V.CALLE.RT
+}
+
+
+public method lapap1VLocalidadRt (
+)
+{
+    jBC: LAPAP.1.V.LOCALIDAD.RT
+}
+
+
+
+public method lapap1VNumeroRt (
+)
+{
+    jBC: LAPAP.1.V.NUMERO.RT
+}
+
+
+public method lapap1VPaisRt (
+)
+{
+    jBC: LAPAP.1.V.PAIS.RT
+}
+
+
+
+public method redoApapCustSwiftDetAuthorise (
+)
+{
+    jBC: REDO.APAP.CUST.SWIFT.DET.AUTHORISE
+}
+
+
+
+public method redoAzReinvConsulta (
+    INOUT selId string
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA
+}
+
+
+
+
+public method lApapCredCanLoand (
+    INOUT arrId string
+)
+{
+    jBC: L.APAP.CRED.CAN.LOAND
+}
+
+
+
+public method lApapCredCanLoandLoad (
+)
+{
+    jBC: L.APAP.CRED.CAN.LOAND.LOAD
+}
+
+
+
+public method lApapCredCanLoandPost (
+)
+{
+    jBC: L.APAP.CRED.CAN.LOAND.POST
+}
+
+
+
+public method lApapCredCanLoandSelect (
+)
+{
+    jBC: L.APAP.CRED.CAN.LOAND.SELECT
+}
+
+
+
+public method lApapEnqNofAccContact (
+    INOUT yFinal string
+)
+{
+    jBC: L.APAP.ENQ.NOF.ACC.CONTACT
+}
+
+
+public method lApapValidateRefundInfo (
+)
+{
+    jBC: L.APAP.VALIDATE.REFUND.INFO
+}
+
+
+public method lapap1VCityDirRt (
+)
+{
+    jBC: LAPAP.1.V.CITY.DIR.RT
+}
+
+
+
+public method drReg213if01UpdateConcat (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.213IF01.UPDATE.CONCAT
+}
+
+
+public method drRegDivisasExtractLoad (
+)
+{
+    jBC: DR.REG.DIVISAS.EXTRACT.LOAD
+}
+
+
+
+public method drRegDivisasExtractSelect (
+)
+{
+    jBC: DR.REG.DIVISAS.EXTRACT.SELECT
+}
+
+
+
+public method lApapAaTcMigDreport (
+    INOUT aaActId string
+)
+{
+    jBC: L.APAP.AA.TC.MIG.DREPORT
+}
+
+
+
+public method lApapAaTcMigDreportLoad (
+)
+{
+    jBC: L.APAP.AA.TC.MIG.DREPORT.LOAD
+}
+
+
+
+public method lApapAaTcMigDreportPost (
+)
+{
+    jBC: L.APAP.AA.TC.MIG.DREPORT.POST
+}
+
+
+
+public method lApapAaTcMigDreportSelect (
+)
+{
+    jBC: L.APAP.AA.TC.MIG.DREPORT.SELECT
+}
+
+
+
+public method lApapBAcNcfChreq (
+    INOUT stmtId string
+)
+{
+    jBC: L.APAP.B.AC.NCF.CHREQ
+}
+
+
+
+public method lApapBAcNcfChreqLoad (
+)
+{
+    jBC: L.APAP.B.AC.NCF.CHREQ.LOAD
+}
+
+
+
+public method lApapBAcNcfChreqSelect (
+)
+{
+    jBC: L.APAP.B.AC.NCF.CHREQ.SELECT
+}
+
+
+
+public method lApapBColFfExtLastPay (
+    INOUT yAaId string,
+    INOUT yTotalCuotas string,
+    INOUT yLastpayAmt string,
+    INOUT yLastpayDat string,
+    INOUT yNextPayAmt string,
+    INOUT yNextPayDate string,
+    INOUT yAlPaidBillsCnt string
+)
+{
+    jBC: L.APAP.B.COL.FF.EXT.LAST.PAY
+}
+
+
+
+public method lApapBTasasActPasDupPost (
+)
+{
+    jBC: L.APAP.B.TASAS.ACT.PAS.DUP.POST
+}
+
+
+
+public method lApapBTasasActivPasivDupLoad (
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.DUP.LOAD
+}
+
+
+
+public method lApapBTasasActivPasivDupSelect (
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.DUP.SELECT
+}
+
+
+
+public method lApapBTasasActivPasivLoad (
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.LOAD
+}
+
+
+
+public method lApapBTasasActivPasivPost (
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.POST
+}
+
+
+
+public method lApapBTasasActivPasivSelect (
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.SELECT
+}
+
+
+public method lApapColExtractCreditRead (
+    INOUT aaId string,
+    INOUT rAa string,
+    INOUT rActHist string,
+    INOUT rPrincipalint string,
+    INOUT rMoraint string,
+    INOUT rAaAccountDetails string
+)
+{
+    jBC: L.APAP.COL.EXTRACT.CREDIT.READ
+}
+
+
+
+public method lApapColFfExtract (
+    INOUT customerId string
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT
+}
+
+
+
+public method lApapColFfExtractCredit2 (
+    INOUT pParagraphIn string,
+    INOUT pAccountId string,
+    INOUT pAaId string,
+    INOUT pgetCreditGranted string,
+    INOUT pGetAaCustomer string,
+    INOUT pProcessItemsDetails string
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.CREDIT.2
+}
+
+
+public method lApapColFfExtractLoad (
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.LOAD
+}
+
+
+
+public method lApapColFfExtractPost (
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.POST
+}
+
+
+
+public method lApapColFfExtractSelect (
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.SELECT
+}
+
+
+
+public method lApapColFfExtractTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.TXN
+}
+
+
+public method lApapColFfExtractCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string,
+    INOUT prGesgarantias string,
+    INOUT prGescreditosgarantias string,
+    INOUT prGestipogarantias string,
+    INOUT pGescreditointegracion string
+)
+{
+    jBC: L.APAP.COL.FF.EXTRACT.CREDIT
+}
+
+
+
+public method lApapCampoCuotaProgPost (
+)
+{
+    jBC: L.APAP.CAMPO.CUOTA.PROG.POST
+}
+
+
+public method lApapAuthTdAdiChRt (
+)
+{
+    jBC: L.APAP.AUTH.TD.ADI.CH.RT
+}
+
+
+public method lApapCdfGenRtPost (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.POST
+}
+
+
+
+public method lApapCorrCastigSeqprot (
+    INOUT aaArrId string
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT
+}
+
+
+
+public method lapapBolCreditRt (
+)
+{
+    jBC: LAPAP.BOL.CREDIT.RT
+}
+
+
+
+public method lapapBolDescRt (
+)
+{
+    jBC: LAPAP.BOL.DESC.RT
+}
+
+
+
+public method lapapTranBolCreRt (
+)
+{
+    jBC: LAPAP.TRAN.BOL.CRE.RT
+}
+
+
+
+public method lapapTranfBolsillosRt (
+)
+{
+    jBC: LAPAP.TRANF.BOLSILLOS.RT
+}
+
+
+
+public method lapapUpdateOpeningDateVal (
+)
+{
+    jBC: LAPAP.UPDATE.OPENING.DATE.VAL
+}
+
+
+
+public method lapapVLegalId (
+)
+{
+    jBC: LAPAP.V.LEGAL.ID
+}
+
+
+
+public method lapapVTranBolRt (
+)
+{
+    jBC: LAPAP.V.TRAN.BOL.RT
+}
+
+
+public method redoAutRteOverrideChk (
+)
+{
+    jBC: REDO.AUT.RTE.OVERRIDE.CHK
+}
+
+
+public method lapapVInpCalcCharge (
+)
+{
+    jBC: LAPAP.V.INP.CALC.CHARGE
+}
+
+
+
+
+public method redoApapCreditCardUpdLoad (
+)
+{
+    jBC: REDO.APAP.CREDIT.CARD.UPD.LOAD
+}
+
+
+
+public method redoApapTcDetUpdOt (
+)
+{
+    jBC: REDO.APAP.TC.DET.UPD.OT
+}
+
+
+
+public method redoAzReinvReverseSelect (
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE.SELECT
+}
+
+
+
+public method lapapVCussegmentRt (
+)
+{
+    jBC: LAPAP.V.CUSSEGMENT.RT
+}
+
+
+
+public method lapapValTxnReversed (
+)
+{
+    jBC: LAPAP.VAL.TXN.REVERSED
+}
+
+
+
+public method nofileLApapScheduleProA02 (
+    INOUT yData string
+)
+{
+    jBC: NOFILE.L.APAP.SCHEDULE.PRO.A02
+}
+
+
+
+public method redoApapNewConditionRt (
+    INOUT yRegistro string
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT
+}
+
+
+
+public method redoAzReinvConsultaSelect (
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA.SELECT
+}
+
+
+
+public method redoBAaAccNegVal (
+    INOUT arrLnData string
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL
+}
+
+
+
+public method redoBAaAccNegValLoad (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.LOAD
+}
+
+
+
+public method redoBAaAccNegValPost (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.POST
+}
+
+
+
+public method redoBAaAccNegValSelect (
+)
+{
+    jBC: REDO.B.AA.ACC.NEG.VAL.SELECT
+}
+
+
+
+public method redoBAaCpOverpay (
+    INOUT overpayId string
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY
+}
+
+
+
+public method redoBAaCpOverpayLoad (
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY.LOAD
+}
+
+
+
+public method redoBAaCpOverpaySelect (
+)
+{
+    jBC: REDO.B.AA.CP.OVERPAY.SELECT
+}
+
+
+
+public method redoBAaLoanUncBal (
+    INOUT aaArrList string
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL
+}
+
+
+
+public method redoBAaLoanUncBalLoad (
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL.LOAD
+}
+
+
+
+public method redoBAaLoanUncBalSelect (
+)
+{
+    jBC: REDO.B.AA.LOAN.UNC.BAL.SELECT
+}
+
+
+
+public method redoBAaZbalNegVal (
+    INOUT arrLnData string
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL
+}
+
+
+
+public method redoBAaZbalNegValLoad (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.LOAD
+}
+
+
+
+public method redoBAaZbalNegValPost (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.POST
+}
+
+
+
+public method redoBAaZbalNegValSelect (
+)
+{
+    jBC: REDO.B.AA.ZBAL.NEG.VAL.SELECT
+}
+
+
+
+public method redoBBcrTcReportGen (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN
+}
+
+
+
+public method redoBBcrTcReportGenLoad (
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN.LOAD
+}
+
+
+
+public method redoBBcrTcReportGenSelect (
+)
+{
+    jBC: REDO.B.BCR.TC.REPORT.GEN.SELECT
+}
+
+
+
+public method redoBCommerDebtorDet (
+    INOUT recId string
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET
+}
+
+
+
+public method redoBCommerDebtorUpd (
+    INOUT yAaCusId string
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD
+}
+
+
+
+public method redoBCommerDebtorUpdLoad (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD.LOAD
+}
+
+
+
+public method redoBCommerDebtorUpdSelect (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.UPD.SELECT
+}
+
+
+
+public method redoBDlyCardPayDet (
+    INOUT visionId string
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET
+}
+
+
+
+public method redoBDlyCardPayDetLoad (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.LOAD
+}
+
+
+
+public method redoBDlyCardPayDetPost (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.POST
+}
+
+
+
+public method redoBDlyCardPayDetSelect (
+)
+{
+    jBC: REDO.B.DLY.CARD.PAY.DET.SELECT
+}
+
+
+
+public method redoBOverdraftAcctRtn (
+    INOUT overArry string
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN
+}
+
+
+
+public method redoBOverdraftAcctRtnLoad (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.LOAD
+}
+
+
+
+public method redoBCommerDebtorDetLoad (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET.LOAD
+}
+
+
+
+public method redoBCommerDebtorDetSelect (
+)
+{
+    jBC: REDO.B.COMMER.DEBTOR.DET.SELECT
+}
+
+
+public method lApapScheduleProjLoad (
+)
+{
+    jBC: L.APAP.SCHEDULE.PROJ.LOAD
+}
+
+
+public method lapapIcManctaRt (
+    INOUT cusId string
+)
+{
+    jBC: LAPAP.IC.MANCTA.RT
+}
+
+public method lapapIcManctaRtLoad (
+)
+{
+    jBC: LAPAP.IC.MANCTA.RT.LOAD
+}
+
+
+public method lapapIcManctaRtSelect (
+)
+{
+    jBC: LAPAP.IC.MANCTA.RT.SELECT
+}
+
+public method lapapOfsTasaReprecio (
+)
+{
+    jBC: LAPAP.OFS.TASA.REPRECIO
+}
+
+public method lapapPrePayoffCharge (
+    INOUT chgProp string,
+    INOUT rChgRecord string,
+    INOUT baseAmt string,
+    INOUT chargeAmount string
+)
+{
+    jBC: LAPAP.PRE.PAYOFF.CHARGE
+}
+
+public method lapapPrePendAct (
+    INOUT yActId string
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT
+}
+
+public method lapapPrePendActLoad (
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT.LOAD
+}
+
+public method lapapPrePendActSelect (
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT.SELECT
+}
+
+public method lapapReporteAsambleaRt (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.REPORTE.ASAMBLEA.RT
+}
+
+public method lapapReporteUnicoWof (
+    INOUT yArrId string
+)
+{
+    jBC: LAPAP.REPORTE.UNICO.WOF
+}
+
+public method lapapReporteUnicoWofLoad (
+)
+{
+    jBC: LAPAP.REPORTE.UNICO.WOF.LOAD
+}
+
+public method lapapReporteUnicoWofPost (
+)
+{
+    jBC: LAPAP.REPORTE.UNICO.WOF.POST
+}
+
+public method lapapReporteUnicoWofSelect (
+)
+{
+    jBC: LAPAP.REPORTE.UNICO.WOF.SELECT
+}
+
+public method lapapSrv48hCusInfoRt (
+    INOUT recId string
+)
+{
+    jBC: LAPAP.SRV.48H.CUS.INFO.RT
+}
+
+public method lapapSrv48hCusInfoRtLoad (
+)
+{
+    jBC: LAPAP.SRV.48H.CUS.INFO.RT.LOAD
+}
+
+public method lapapSrv48hCusInfoRtSelect (
+)
+{
+    jBC: LAPAP.SRV.48H.CUS.INFO.RT.SELECT
+}
+
+public method lapapSrvAsambleaRepRt (
+)
+{
+    jBC: LAPAP.SRV.ASAMBLEA.REP.RT
+}
+
+public method lapapUpdateDaylyUsdLimite (
+)
+{
+    jBC: LAPAP.UPDATE.DAYLY.USD.LIMITE
+}
+
+public method lapapUpdateDaylyUsdLimite2 (
+)
+{
+    jBC: LAPAP.UPDATE.DAYLY.USD.LIMITE2
+}
+
+public method lapapUpdateDaylyUsdLimite3 (
+)
+{
+    jBC: LAPAP.UPDATE.DAYLY.USD.LIMITE3
+}
+
+
+public method lapapINocusDeclinedRt (
+)
+{
+    jBC: LAPAP.I.NOCUS.DECLINED.RT
+}
+
+public method lapapIdGetVotanteRt (
+)
+{
+    jBC: LAPAP.ID.GET.VOTANTE.RT
+}
+
+
+
+public method lApapRevPagoFtPrelac (
+    INOUT idFt string
+)
+{
+    jBC: L.APAP.REV.PAGO.FT.PRELAC
+}
+
+
+
+public method lApapRevPagoFtPrelacLoad (
+)
+{
+    jBC: L.APAP.REV.PAGO.FT.PRELAC.LOAD
+}
+
+
+public method lApapRevPagoFtPrelacSelect (
+)
+{
+    jBC: L.APAP.REV.PAGO.FT.PRELAC.SELECT
+}
+
+
+
+public method lApapSetPayCovidIn (
+    INOUT yAaaId string
+)
+{
+    jBC: L.APAP.SET.PAY.COVID.IN
+}
+
+
+
+public method lApapSoybBalRt (
+    INOUT accountId string
+)
+{
+    jBC: L.APAP.SOYB.BAL.RT
+}
+
+
+
+public method lApapSoybBalRtLoad (
+)
+{
+    jBC: L.APAP.SOYB.BAL.RT.LOAD
+}
+
+
+public method lApapTdanuchgRt (
+    INOUT yLcoId string
+)
+{
+    jBC: L.APAP.TDANUCHG.RT
+}
+
+
+
+public method lApapSoybBalRtSelect (
+)
+{
+    jBC: L.APAP.SOYB.BAL.RT.SELECT
+}
+
+
+
+public method lApapTdanuchgRtLoad (
+)
+{
+    jBC: L.APAP.TDANUCHG.RT.LOAD
+}
+
+
+
+public method lApapTdanuchgRtSelect (
+)
+{
+    jBC: L.APAP.TDANUCHG.RT.SELECT
+}
+
+
+public method lApapTdmenchgRtLoad (
+)
+{
+    jBC: L.APAP.TDMENCHG.RT.LOAD
+}
+
+
+
+public method lApapTdmenchgRtSelect (
+)
+{
+    jBC: L.APAP.TDMENCHG.RT.SELECT
+}
+
+
+public method lApapTdmenchgRt (
+    INOUT yLcoId string
+)
+{
+    jBC: L.APAP.TDMENCHG.RT
+}
+
+
+public method lApapValiPayCovidLoad (
+)
+{
+    jBC: L.APAP.VALI.PAY.COVID.LOAD
+}
+
+
+
+public method lApapValiPayCovidSelect (
+)
+{
+    jBC: L.APAP.VALI.PAY.COVID.SELECT
+}
+
+
+
+public method lApapValiPayCovid (
+    INOUT yAaaId string
+)
+{
+    jBC: L.APAP.VALI.PAY.COVID
+}
+
+
+public method lapapVAsambleaCed (
+)
+{
+    jBC: LAPAP.V.ASAMBLEA.CED
+}
+
+
+public method lapapVNocusLimitRt (
+)
+{
+    jBC: LAPAP.V.NOCUS.LIMIT.RT
+}
+
+
+
+public method lapapWdrlPenalSRtLoad (
+)
+{
+    jBC: LAPAP.WDRL.PENAL.S.RT.LOAD
+}
+
+
+
+public method lApapBServiceLstClear (
+    INOUT serviceId string
+)
+{
+    jBC: L.APAP.B.SERVICE.LST.CLEAR
+}
+
+
+
+public method drRegDivisasExtract (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.DIVISAS.EXTRACT
+}
+    
+public method lApapActualizarInfile (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.INFILE
+}
+
+
+
+public method lApapActualizarPrelacion (
+    INOUT yArregloValues string
+)
+{
+    jBC: L.APAP.ACTUALIZAR.PRELACION
+}
+
+
+
+public method lApapActualizarPrelacionLoad (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.PRELACION.LOAD
+}
+
+
+
+public method lApapActualizarPrelacionSelect (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.PRELACION.SELECT
+}
+
+
+
+public method lApapAuthTdRepoChRt (
+)
+{
+    jBC: L.APAP.AUTH.TD.REPO.CH.RT
+}
+
+public method lApapBTasasActivPasiv (
+    INOUT recId string
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV
+}
+
+
+
+public method lApapBTasasActivPasivDup (
+    INOUT recId string
+)
+{
+    jBC: L.APAP.B.TASAS.ACTIV.PASIV.DUP
+}
+
+public method lApapCampoCuotaProg (
+    INOUT arrangementId string
+)
+{
+    jBC: L.APAP.CAMPO.CUOTA.PROG
+}
+
+
+
+public method lApapCampoCuotaProgLoad (
+)
+{
+    jBC: L.APAP.CAMPO.CUOTA.PROG.LOAD
+}
+
+
+
+public method lApapCampoCuotaProgSelect (
+)
+{
+    jBC: L.APAP.CAMPO.CUOTA.PROG.SELECT
+}
+
+
+
+
+public method lApapBServiceLstClearLoad (
+)
+{
+    jBC: L.APAP.B.SERVICE.LST.CLEAR.LOAD
+}
+
+
+
+public method lApapBServiceLstClearSelect (
+)
+{
+    jBC: L.APAP.B.SERVICE.LST.CLEAR.SELECT
+}
+
+
+public method redoApapCreditCardUpdSelect (
+)
+{
+    jBC: REDO.APAP.CREDIT.CARD.UPD.SELECT
+}
+
+
+public method redoAmlNoclientFcyCheck (
+)
+{
+    jBC: REDO.AML.NOCLIENT.FCY.CHECK
+}
+
+
+
+public method redoApapReportsPasswReset (
+)
+{
+    jBC: REDO.APAP.REPORTS.PASSW.RESET
+}
+
+
+
+public method redoBBcrReportGenLoad (
+)
+{
+    jBC: REDO.B.BCR.REPORT.GEN.LOAD
+}
+
+
+
+public method redoRBcrReportBuild (
+)
+{
+    jBC: REDO.R.BCR.REPORT.BUILD
+}
+
+
+public method drReg213if01TxnExtract (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.213IF01.TXN.EXTRACT
+}
+
+
+public method lApapCdfGenRt (
+    INOUT yIdAcc string
+)
+{
+    jBC: L.APAP.CDF.GEN.RT
+}
+
+
+public method lApapCierreAccAhorro (
+    INOUT yAccountId string
+)
+{
+    jBC: L.APAP.CIERRE.ACC.AHORRO
+}
+
+
+public method lApapCierreAccAhorroLoad (
+)
+{
+    jBC: L.APAP.CIERRE.ACC.AHORRO.LOAD
+}
+
+
+public method lApapCierreAccAhorroSelect (
+)
+{
+    jBC: L.APAP.CIERRE.ACC.AHORRO.SELECT
+}
+
+
+public method lApapCompraPasAct (
+    INOUT cusId string
+)
+{
+    jBC: L.APAP.COMPRA.PAS.ACT
+}
+
+
+public method lApapCompraPasActLoad (
+)
+{
+    jBC: L.APAP.COMPRA.PAS.ACT.LOAD
+}
+
+
+public method lApapCompraPasActSelect (
+)
+{
+    jBC: L.APAP.COMPRA.PAS.ACT.SELECT
+}
+
+public method lapapWdrlPenalSRt (
+    INOUT accountId string
+)
+{
+    jBC: LAPAP.WDRL.PENAL.S.RT
+}
+
+public method lapapCusPepAutoRisk (
+)
+{
+    jBC: LAPAP.CUS.PEP.AUTO.RISK
+}
+
+public method lapapMonGetTypePerson (
+)
+{
+    jBC: LAPAP.MON.GET.TYPE.PERSON
+}
+
+public method lapapMonGetTypePersonHis (
+)
+{
+    jBC: LAPAP.MON.GET.TYPE.PERSON.HIS
+}
+
+public method redoApapCreditCardUpd (
+    INOUT buldId string
+)
+{
+    jBC: REDO.APAP.CREDIT.CARD.UPD
+}
+
+public method lapapAsaRt (
+    INOUT account string
+)
+{
+    jBC: LAPAP.ASA.RT
+}
+
+public method lapapAsaRtLoad (
+)
+{
+    jBC: LAPAP.ASA.RT.LOAD
+}
+
+public method lapapAsaRtSelect (
+)
+{
+    jBC: LAPAP.ASA.RT.SELECT
+}
+
+public method lapapFundSendMonitor (
+    INOUT recList string
+)
+{
+    jBC: LAPAP.FUND.SEND.MONITOR
+}
+
+public method lapapWdrlPenalSRtSelect (
+)
+{
+    jBC: LAPAP.WDRL.PENAL.S.RT.SELECT
+}
+
+public method lApapGetSlipMonExt (
+    INOUT yInpDeal string
+)
+{
+    jBC: L.APAP.GET.SLIP.MON.EXT
+}
+
+public method lapapMasRedonOfsPmRt (
+    INOUT ofsMessage string
+) 
+{
+    jBC: LAPAP.MAS.REDON.OFS.PM.RT
+}
+
+public method lapapMasRedonRt (
+    INOUT yRoundup string
+)
+{
+    jBC: LAPAP.MAS.REDON.RT
+}
+
+public method lapapMasRedonRtLoad (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.LOAD
+}
+
+public method lapapMasRedonRtSelect (
+)
+{
+    jBC: LAPAP.MAS.REDON.RT.SELECT
+}
+
+public method lapapProcRedondeoMasiv (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: LAPAP.PROC.REDONDEO.MASIV
+}
+
+public method lapapRevAbonoCharg (
+)
+{
+    jBC: LAPAP.REV.ABONO.CHARG
+}
+
+public method lapapRtnOfsCargo (
+)
+{
+    jBC: LAPAP.RTN.OFS.CARGO
+}
+
+public method lapapRtnOverCargo (
+)
+{
+    jBC: LAPAP.RTN.OVER.CARGO
+}
+
+public method lapapUpdateFieldBcr (
+)
+{
+    jBC: LAPAP.UPDATE.FIELD.BCR
+}
+
+public method lapapVEmailRt (
+)
+{
+    jBC: LAPAP.V.EMAIL.RT
+}
+
+public method lapapValidaActyRt (
+)
+{
+    jBC: LAPAP.VALIDA.ACTY.RT
+}
+
+public method redoApapNewConditionRtLoad (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.LOAD
+}
+
+public method redoAzReinvReverse (
+    INOUT selId string
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE
+}
+
+public method redoBOverdraftAcctRtnPost (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.POST
+}
+
+public method redoBOverdraftAcctRtnSelect (
+)
+{
+    jBC: REDO.B.OVERDRAFT.ACCT.RTN.SELECT
+}
+
+public method redoBOvrLoanReport (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT
+}
+
+public method redoBOvrLoanReportLoad (
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT.LOAD
+}
+
+public method redoBOvrLoanReportSelect (
+)
+{
+    jBC: REDO.B.OVR.LOAN.REPORT.SELECT
+}
+
+public method redoBRecAcctList (
+    INOUT yAcctId string
+)
+{
+    jBC: REDO.B.REC.ACCT.LIST
+}
+
+public method redoBStatusUpdateCs (
+    INOUT yCustId string
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS
+}
+
+public method redoBStatusUpdateCsLoad (
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS.LOAD
+}
+
+public method redoBStatusUpdateCsSelect (
+)
+{
+    jBC: REDO.B.STATUS.UPDATE.CS.SELECT
+}
+
+public method redoLAthTermLocName (
+    INOUT yAthId string
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME
+}
+
+public method redoLAthTermLocNameLoad (
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME.LOAD
+}
+
+public method redoLAthTermLocNameSelect (
+)
+{
+    jBC: REDO.L.ATH.TERM.LOC.NAME.SELECT
+}
+
+public method redoLapapRteCreditAccount (
+    INOUT yOut string
+)
+{
+    jBC: REDO.LAPAP.RTE.CREDIT.ACCOUNT
+}
+
+public method redoLapapRteDslipCashAmt (
+    INOUT yOut string
+)
+{
+    jBC: REDO.LAPAP.RTE.DSLIP.CASH.AMT
+}
+
+public method redoNofileRtePrintDealslip (
+    INOUT yData string
+)
+{ 
+    jBC: REDO.NOFILE.RTE.PRINT.DEALSLIP
+}
+
+public method redoRaiseRteOverride (
+)
+{
+    jBC: REDO.RAISE.RTE.OVERRIDE
+}
+
+public method redoSRteCcyDop (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.DOP
+}
+
+public method redoSRteCcyEur (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.EUR
+}
+
+public method redoSRteCcyGbp (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.GBP
+}
+
+public method redoSRteCcyOthers (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.OTHERS
+}
+
+public method redoSRteCcyUsd (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.CCY.USD
+}
+
+public method redoSRteFcyExgRate (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.FCY.EXG.RATE
+}
+
+public method redoSRteLdocNumber (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.LDOC.NUMBER
+}
+
+public method redoSRteLdocType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.LDOC.TYPE
+}
+
+public method redoSRteMarkOtherPerson (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.MARK.OTHER.PERSON
+}
+
+public method redoSRteOriginalAmt (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.ORIGINAL.AMT
+}
+
+public method redoSRteProductType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.PRODUCT.TYPE
+}
+
+public method redoSRteTxnType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.TXN.TYPE
+}
+
+public method redoSSetDsvariables (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.SET.DSVARIABLES
+}
+
+public method redoTtDateTimeFmt (
+    INOUT yFieldName string
+)
+{
+    jBC: REDO.TT.DATE.TIME.FMT
+}
+
+public method redoVAaAutCpOverpay (
+)
+{
+    jBC: REDO.V.AA.AUT.CP.OVERPAY
+}
+
+public method redoVUpdRteFlag (
+)
+{
+    jBC: REDO.V.UPD.RTE.FLAG
+}
+
+public method lapapIdentDataRt (
+)
+{
+    jBC: LAPAP.IDENT.DATA.RT
+}
+
+public method lapapInpOcccusRt (
+)
+{
+    jBC: LAPAP.INP.OCCCUS.RT
+}
+
+
+
+public method redoAzReinvReverseLoad (
+)
+{
+    jBC: REDO.AZ.REINV.REVERSE.LOAD
+}
+
+
+
+public method redoAzReinvConsultaPost (
+)
+{
+    jBC: REDO.AZ.REINV.CONSULTA.POST
+}
+
+
+
+public method redoApapNewConditionRtSelect (
+)
+{
+    jBC: REDO.APAP.NEW.CONDITION.RT.SELECT
+}
+
+
+
+public method lapapMigracionCovi (
+    INOUT yArrangementId string
+)
+{
+    jBC: LAPAP.MIGRACION.COVI
+}
+
+
+
+public method lapapMigracionCoviLoad (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.LOAD
+}
+
+
+
+public method lapapMigracionCoviSelect (
+)
+{
+    jBC: LAPAP.MIGRACION.COVI.SELECT
+}
+
+
+
+public method lapapMigrateWoff (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF
+}
+
+
+
+public method lapapMigrateWoffPost (
+)
+{
+    jBC: LAPAP.MIGRATE.WOFF.POST
+}
+
+
+
+public method lapapMlOccusMigRt (
+)
+{
+    jBC: LAPAP.ML.OCCUS.MIG.RT
+}
+
+
+
+public method lapapModDirecciones (
+)
+{
+    jBC: LAPAP.MOD.DIRECCIONES
+}
+
+
+
+public method lapapMoveNcfRt (
+)
+{
+    jBC: LAPAP.MOVE.NCF.RT
+}
+
+
+
+public method lapapNoCusIdenTipe (
+)
+{
+    jBC: LAPAP.NO.CUS.IDEN.TIPE
+}
+
+
+
+public method lapapNoCusIdentification (
+)
+{
+    jBC: LAPAP.NO.CUS.IDENTIFICATION
+}
+
+
+
+public method lapapNoCusName (
+)
+{
+    jBC: LAPAP.NO.CUS.NAME
+}
+
+
+
+public method lapapNoCusTime (
+)
+{
+    jBC: LAPAP.NO.CUS.TIME
+}
+
+
+
+public method lapapOfsInterestPaid (
+    INOUT selListAz string
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID
+}
+
+
+
+public method lapapOfsInterestPaidLoad (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.LOAD
+}
+
+
+
+public method lapapOfsInterestPaidSelect (
+)
+{
+    jBC: LAPAP.OFS.INTEREST.PAID.SELECT
+}
+
+
+
+public method lapapPciRtn (
+)
+{
+    jBC: LAPAP.PCI.RTN
+}
+
+
+
+public method lapapPrePendActPost (
+)
+{
+    jBC: LAPAP.PRE.PEND.ACT.POST
+}
+
+
+
+public method lapapProcesRnRt (
+    INOUT yAaaId string
+)
+{
+    jBC: LAPAP.PROCES.RN.RT
+}
+
+
+
+public method lapapProcesRnRtLoad (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.LOAD
+}
+
+
+
+public method lapapProcesRnRtPost (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.POST
+}
+
+
+
+public method lapapProcesRnRtSelect (
+)
+{
+    jBC: LAPAP.PROCES.RN.RT.SELECT
+}
+
+
+
+public method lapapProcesaAchEntranteRt (
+    INOUT yIdAchDet string
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT
+}
+
+
+
+public method lapapProcesaAchEntranteRtLoad (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.LOAD
+}
+
+
+
+public method lapapProcesaAchEntranteRtSelect (
+)
+{
+    jBC: LAPAP.PROCESA.ACH.ENTRANTE.RT.SELECT
+}
+
+
+
+public method lapapPurgalOfsrequestd (
+    INOUT purgaId string
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD
+}
+
+
+
+public method lapapPurgalOfsrequestdLoad (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.LOAD
+}
+
+
+
+public method lapapPurgalOfsrequestdSelect (
+)
+{
+    jBC: LAPAP.PURGAL.OFSREQUESTD.SELECT
+}
+
+
+
+public method lapapRaiseEntryIn (
+    INOUT arrId string
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN
+}
+
+
+
+public method lapapRaiseEntryInLoad (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.LOAD
+}
+
+
+
+public method lapapRaiseEntryInSelect (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.SELECT
+}
+
+
+
+public method lapapRteUserAuth (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.AUTH
+}
+
+
+
+public method lapapRteUserIn (
+    INOUT yOut string
+)
+{
+    jBC: LAPAP.RTE.USER.IN
+}
+
+
+
+public method lapapServReprecioOfs (
+)
+{
+    jBC: LAPAP.SERV.REPRECIO.OFS
+}
+
+
+
+public method lapapSumatoriaQrPin (
+)
+{
+    jBC: LAPAP.SUMATORIA.QR.PIN
+}
+
+
+
+public method lapapTriggerEnqAsaPrt (
+)
+{
+    jBC: LAPAP.TRIGGER.ENQ.ASA.PRT
+}
+
+
+
+public method lapapUpdAvBal (
+)
+{
+    jBC: LAPAP.UPD.AV.BAL
+}
+
+
+
+public method lapapUpdateOpeningDate (
+)
+{
+    jBC: LAPAP.UPDATE.OPENING.DATE
+}
+
+
+
+public method lapapVIdVotanteRt (
+)
+{
+    jBC: LAPAP.V.ID.VOTANTE.RT
+}
+
+
+
+public method lapapVOcusFieldsRt (
+)
+{
+    jBC: LAPAP.V.OCUS.FIELDS.RT
+}
+
+
+
+public method lapapVerifyCategoryParam (
+    INOUT cusi string,
+    INOUT cati string,
+    INOUT res string
+)
+{
+    jBC: LAPAP.VERIFY.CATEGORY.PARAM
+}
+
+
+
+public method nofileLApapScheduleProA01 (
+    INOUT yData string
+)
+{
+    jBC: NOFILE.L.APAP.SCHEDULE.PRO.A01
+}
+
+
+
+public method redoApapInpRteamlTfsCheck (
+)
+{
+    jBC: REDO.APAP.INP.RTEAML.TFS.CHECK
+}
+
+public method lApapCantRelAc (
+)
+{
+    jBC: L.APAP.CANT.REL.AC
+}
+
+public method lApapPassbookPrintOvrd (
+)
+{
+    jBC: L.APAP.PASSBOOK.PRINT.OVRD
+}
+
+public method lapapRtnExtraePrest (
+)
+{
+    jBC: LAPAP.RTN.EXTRAE.PREST
+}
+
+public method lApapActualizarReferido (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.REFERIDO
+}
+
+public method lApapMancyNotifyRt (
+)
+{
+    jBC: L.APAP.MANCY.NOTIFY.RT
+}
+
+public method lapapClosCloscus ( 
+)
+{
+    jBC: LAPAP.CLOS.CLOSCUS
+}
+
+public method lapapConsultarCategoryDeposit (
+)
+{
+    jBC: LAPAP.CONSULTAR.CATEGORY.DEPOSIT
+}
+
+public method lapapGetOrcusRt (
+)
+{
+    jBC: LAPAP.GET.ORCUS.RT
+}
+
+public method lapapInTxnuniProCusRt (
+)
+{
+    jBC: LAPAP.IN.TXNUNI.PRO.CUS.RT
+}
+
+public method lapapMigCardnoRt (
+)
+{
+    jBC: LAPAP.MIG.CARDNO.RT
+}
+
+public method lapapNofAaInfoRtCan (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.CAN
+}
+
+public method lapapNofAaInfoRtAct (
+    INOUT yFinal string
+)
+{
+    jBC: LAPAP.NOF.AA.INFO.RT.ACT
+}
+
+public method lapapOfsBuilder (
+    INOUT pApp string,
+    INOUT pVer string,
+    INOUT pFunc string,
+    INOUT pNoOfAuth string,
+    INOUT pProVal string,
+    INOUT pGtsControl string,
+    INOUT pUser string,
+    INOUT pPass string,
+    INOUT pCompany string,
+    INOUT pTxnId string,
+    INOUT rData string,
+    INOUT oOfs string
+)
+{
+    jBC: LAPAP.OFS.BUILDER
+}
+
+public method lapapProcCobrosCj (
+    INOUT yRegistros string
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ
+}
+
+public method lapapProcCobrosCjLoad (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.LOAD
+}
+
+public method lapapProcCobrosCjPost (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.POST
+}
+
+public method lapapProcCobrosCjSelect (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.SELECT
+}
+
+public method lapapVFtSwbankRt (
+)
+{
+    jBC: LAPAP.V.FT.SWBANK.RT
+}
+
+public method lapapVInpCalcChekDigit (
+    INOUT idCuenta string,
+    INOUT codigoEntidad string,
+    INOUT response string
+)
+{
+    jBC: LAPAP.V.INP.CALC.CHEK.DIGIT
+}
+
+public method lApapColFfCollector (
+    INOUT customerId string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR
+}
+
+public method lApapColFfCollectorCredit (
+    INOUT yCustomerId string,
+    INOUT yCredit string,
+    INOUT yCreditTxn string,
+    INOUT prGesgarantias string,
+    INOUT prGescreditosgarantias string,
+    INOUT prGestipogarantias string,
+    INOUT pGescreditointegracion string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.CREDIT
+}
+
+public method lApapColFfCollectorLoad (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.LOAD
+}
+
+public method lApapColFfCollectorPost (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.POST
+}
+
+public method lApapColFfCollectorTxn (
+    INOUT yProcessDate string,
+    INOUT yAaId string,
+    INOUT rStaticMapping string,
+    INOUT yAccountId string,
+    INOUT yProductId string,
+    INOUT yAgencyCode string,
+    INOUT yCreditTxn string
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.TXN
+}
+
+public method lapapWaiveImp0015Rt (
+)
+{
+    jBC: LAPAP.WAIVE.IMP0015.RT
+}
+
+public method lApapColFfCollectorSelect (
+)
+{
+    jBC: L.APAP.COL.FF.COLLECTOR.SELECT
+}
+
+public method lApapCuentaRegMask (
+)
+{
+    jBC: L.APAP.CUENTA.REG.MASK
+}
+
+public method lApapJsonToDynOfs (
+    INOUT jsonRequest string,
+    INOUT yDynRequestKey string,
+    INOUT yDynRequestValue string,
+    INOUT yDynRequestType string,
+    INOUT yError string
+)
+{
+    jBC: L.APAP.JSON.TO.DYN.OFS
+}
+
+public method lApapProcesarPagosMasivos (
+    INOUT yParam string,
+    INOUT yUsr_credentials string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.PROCESAR.PAGOS.MASIVOS
+}
+
+public method lApapSetAccReg (
+)
+{
+    jBC: L.APAP.SET.ACC.REG
+}
+
+public method lApapVValOverdrftBalFx (
+)
+{
+    jBC: L.APAP.V.VAL.OVERDRFT.BAL.FX
+}
+
+public method lApapValidarCuentas (
+    INOUT yParam string,
+    INOUT yRabbitMqOut string
+)
+{
+    jBC: L.APAP.VALIDAR.CUENTAS
+}
+
+public method lapapATxnDiviTt (
+)
+{
+    jBC: LAPAP.A.TXN.DIVI.TT
+}
+
+
+
+public method lapapAUpdPrStRt (
+)
+{
+    jBC: LAPAP.A.UPD.PR.ST.RT
+}
+
+public method lapapBldCcRncRt (
+    INOUT enqData string
+)
+{
+    jBC: LAPAP.BLD.CC.RNC.RT
+}
+
+public method lapapBulkPrNauPRt (
+    INOUT yNauFtId string
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT
+}
+
+public method lapapBulkPrNauPRtLoad (
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT.LOAD
+}
+
+public method lapapBulkPrNauPRtSelect (
+)
+{
+    jBC: LAPAP.BULK.PR.NAU.P.RT.SELECT
+}
+
+public method lapapBulkPrPostPRt (
+)
+{
+    jBC: LAPAP.BULK.PR.POST.P.RT
+}
+
+public method lapapBulkPrRt (
+    INOUT yPayroll string
+)
+{
+    jBC: LAPAP.BULK.PR.RT
+}
+
+
+
+public method lapapBulkPrRtSelect (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.SELECT
+}
+
+public method lapapChkPayrollIdRt (
+)
+{
+    jBC: LAPAP.CHK.PAYROLL.ID.RT
+}
+
+public method lapapChkTellpRt (
+)
+{
+    jBC: LAPAP.CHK.TELLP.RT
+}
+
+public method lapapBulkPrRtLoad (
+)
+{
+    jBC: LAPAP.BULK.PR.RT.LOAD
+}
+
+public method lapapCardnoMigRt (
+    INOUT yKeyId string
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT
+}
+
+public method lapapCardnoMigRtSelect (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.SELECT
+}
+
+public method lapapCardnoMigRtLoad (
+)
+{
+    jBC: LAPAP.CARDNO.MIG.RT.LOAD
+}
+
+public method lapapProcessTxnDiviLoad (
+)
+{
+    jBC: LAPAP.PROCESS.TXN.DIVI.LOAD
+}
+
+public method lapapProcessTxnDiviSelect (
+)
+{
+    jBC: LAPAP.PROCESS.TXN.DIVI.SELECT
+}
+
+public method lapapRtGetDtInfo (
+)
+{
+    jBC: LAPAP.RT.GET.DT.INFO
+}
+
+public method lapapRtLiqDtItem (
+)
+{
+    jBC: LAPAP.RT.LIQ.DT.ITEM
+}
+
+
+public method lapapASendRcptRt (
+)
+{
+    jBC: LAPAP.A.SEND.RCPT.RT
+}
+
+public method lapapATxnDiviFt (
+)
+{
+    jBC: LAPAP.A.TXN.DIVI.FT
+}
+
+public method lapapOvrLowCardRt (
+)
+{
+    jBC: LAPAP.OVR.LOW.CARD.RT
+}
+
+public method lapapProcessTxnDivi (
+    INOUT yTxnId string
+)
+{
+    jBC: LAPAP.PROCESS.TXN.DIVI
+}
+
+public method lapapTransferDslipRt (
+)
+{
+    jBC: LAPAP.TRANSFER.DSLIP.RT
+}
+
+
+
+public method lapapMasRedonPostRt (
+)
+{
+    jBC: LAPAP.MAS.REDON.POST.RT
+}
+
+
+public method lApapCdfGenRtLoad (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.LOAD
+}
+
+public method lapapGetTotalDuePayoffMlv (
+)
+{
+    jBC: LAPAP.GET.TOTAL.DUE.PAYOFF.MLV
+}
+
+public method lApapCdfGenRtSelect (
+)
+{
+    jBC: L.APAP.CDF.GEN.RT.SELECT
+}
+
+public method lapapExtraerTcCastigaCr (
+)
+{
+    jBC: LAPAP.EXTRAER.TC.CASTIGA.CR
+}
+
+public method redoConduitLinearTranslation (
+    INOUT mapFmt string,
+    INOUT idRconL string,
+    INOUT app string,
+    INOUT idApp string,
+    INOUT rApp string,
+    INOUT rReturnMsg string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.CONDUIT.LINEAR.TRANSLATION
 }
 

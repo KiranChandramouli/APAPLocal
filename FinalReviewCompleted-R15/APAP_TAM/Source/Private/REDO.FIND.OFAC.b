@@ -74,8 +74,8 @@ RETURN
 *-----------------------------------------------------------------
 INITIALISE:
 *-----------------------------------------------------------------
-
-    KEY1="123456"
+*    KEY1="123456"  SJ commented - R22 interface Unit testing changes
+    KEY1="12345678"
 ******************************************
 * OFAC Case Review - PACS00087206 - Update
 * OVERRIDE MESSAGES
@@ -180,10 +180,9 @@ READING:
 *    PORT.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.PORT>,KEY1,JBASE_CRYPT_DES)
 *    DBNAME.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.NAME>,KEY1,JBASE_CRYPT_DES)
 *    TBNAME.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.TB.NAME>,KEY1,JBASE_CRYPT_DES)
+    
     USER.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.USER>,KEY1,JBASE_CRYPT_DES_BASE64)
     PWD.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.PWD>,KEY1,JBASE_CRYPT_DES_BASE64)
-
-
 
     IPADD.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.IP.ADD>
     PORT.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.PORT>
@@ -213,7 +212,6 @@ READING:
     SEL.CMD:=' WITH ID.INTERFACE = ':INT.CODE
 
     CALL EB.READLIST(SEL.CMD, Y.REDO.INTERFACE.ACT.SELLIST, '', NO.REC, ER.SEL)
-
     INT.ID = Y.REDO.INTERFACE.ACT.SELLIST<1>
 
 RETURN
@@ -224,7 +222,6 @@ CHECKING.LOCAL:
 * and based on its value,we assign the names for PARAM9 and PARAM10
 
 *-------------------------------------------------------------------------------------------
-
     BEGIN CASE
         CASE R.NEW(EB.CUS.LOCAL.REF)<1,REF.POS> EQ "PERSONA FISICA" OR R.NEW(EB.CUS.LOCAL.REF)<1,REF.POS> EQ "CLIENTE MENOR"
             PARAM9 = R.NEW(EB.CUS.GIVEN.NAMES)
@@ -275,22 +272,21 @@ RETURN
 USING.CALLJ:
 *------------------------------------------------------------------------------
 * Initialize the variables for using CALLJ function
-
 *------------------------------------------------------------------------------
-
     className = "com.temenos.redo.ofac"
     methodName = "searchCusOfac"
 
     CALLJ className,methodName, ALLPARAM SETTING ret ON ERROR
         GOSUB ERROR.HANDLER
     END
+
 *------------------------------------------------------------------------------
 * Message handling block
 
 * We are displaying the message based on the return value from CALLJ function
 
 *------------------------------------------------------------------------------
-
+    
     IF ret NE 0 THEN
         BEGIN CASE
             CASE ret EQ 1 ;* R22 Auto conversion
@@ -343,7 +339,6 @@ ERROR.HANDLER:
 * The error value if results from CALLJ function are handled using this block
 
 *------------------------------------------------------------------------------
-
     ERR = SYSTEM(0)
     BEGIN CASE
         CASE ERR EQ 1
@@ -375,7 +370,6 @@ PARAM.CHECK1:
 * Given Names and Family name are checked for their value
 
 *----------------------------------------------------------
-
     BEGIN CASE
         CASE PARAM9 EQ '' AND PARAM10 EQ ''
             AF = EB.CUS.GIVEN.NAMES
@@ -436,7 +430,6 @@ FORM.SQLPARAM:
 *-----------------------------------------------------------
 * Form the Customer name as selection criteria for SQL
 *-----------------------------------------------------------
-
     Y.PARAM.VAL.NO = DCOUNT(Y.PARAM1," ")
     IF Y.PARAM.VAL.NO NE "1" THEN
         Y.PARAM.NEW = ""

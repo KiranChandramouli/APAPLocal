@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTY3ODU1MzUyMzpDcDEyNTI6MTY4NDg1NDM4Mjk5NTpJVFNTOi0xOi0xOjQ0NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:22
+* @ValidationCode : Mjo1OTUwMDY4MjI6Q3AxMjUyOjE2OTAyNjQzNTczNDc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 446
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.COMMER.DEBTR.CL(Y.AA.CUS.ID)
@@ -26,7 +26,7 @@ SUBROUTINE REDO.B.COMMER.DEBTR.CL(Y.AA.CUS.ID)
 * Defect Reference       Modified By                    Date of Change        Change Details
 * (RTC/TUT/PACS)
 * PACS00466001           Ashokkumar.V.P                 29/06/2016            Initial Release
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 10-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION FM TO @FM AND REMOVED TAM.BP
 * 10-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *--------------------------------------------------------------------------------------------------
@@ -45,6 +45,9 @@ SUBROUTINE REDO.B.COMMER.DEBTR.CL(Y.AA.CUS.ID)
     $INSERT I_F.REDO.CUSTOMER.ARRANGEMENT ;*R22 AUTO CONVERSTION REMOVED TAM.BP
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON ;*R22 AUTO CONVERSTION REMOVED TAM.BP
     $INSERT I_REDO.B.COMMER.DEBTR.CL.COMMON ;*R22 AUTO CONVERSTION REMOVED TAM.BP
+    $USING APAP.TAM
+    $USING APAP.REDOSRTN
+    $USING APAP.REDOCHNLS
 
     GOSUB PROCESS
 RETURN
@@ -125,7 +128,8 @@ RETURN
 CHK.LN.STATUS:
 *------------
     ARRAY.VAL = ''; Y.LOAN.STATUS = ''; Y.CLOSE.LN.FLG = 0
-    CALL REDO.RPT.CLSE.WRITE.LOANS(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL)
+*   CALL REDO.RPT.CLSE.WRITE.LOANS(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL)
+    APAP.TAM.redoRptClseWriteLoans(AA.ARR.ID,R.ARR.APPL,ARRAY.VAL) ;*R22 Manual Code Conversion
     Y.LOAN.STATUS = ARRAY.VAL<1>
     Y.CLOSE.LN.FLG = ARRAY.VAL<2>
     IF Y.LOAN.STATUS EQ "Write-off" THEN
@@ -151,7 +155,8 @@ CHK.CUS.DTLS:
     Y.INDUS.CODE = ''; Y.CUST.GN.NAME = ''; Y.L.TIP.CLI = ''; Y.L.LOCALIDAD = ''
     YEXT.TCLI.VAL = ''; Y.L.CU.GRP.RIESGO = ''; YRISK.VAL = ''; NO.DEPDENT = ''
     YL.CU.TOT.ASSET = ''; YL.CU.DATE.INFO = ''; YL.CU.FIN.TYPE = ''; Y.SALARY = ''
-    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR)
+*    CALL REDO.S.REP.CUSTOMER.EXTRACT(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR)
+    APAP.REDOSRTN.redoSRepCustomerExtract(Y.AA.CUS.ID,Y.MAIN.PROD.GROUP,Y.REL.CODE,OUT.ARR) ;*R22 Manual Code Conversion
     Y.CUST.IDEN    = OUT.ARR<1>
     Y.CUST.TYPE    = OUT.ARR<2>
     Y.CUST.NAME    = OUT.ARR<3>
@@ -263,6 +268,7 @@ RAISE.ERR.C.22:
     ID.PROC = ''
     EX.USER = ''
     EX.PC = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
 RETURN
 END

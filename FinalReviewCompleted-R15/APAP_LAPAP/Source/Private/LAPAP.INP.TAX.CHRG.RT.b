@@ -1,34 +1,47 @@
-* @ValidationCode : MjotMTA4MDc3MTE5OkNwMTI1MjoxNjg0MjIyODEwNDQwOklUU1M6LTE6LTE6MTc0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:10
+* @ValidationCode : Mjo0OTkyOTk2MDY6Q3AxMjUyOjE2OTE3MzYxMDg1NTA6SVRTUzotMTotMTo4MDQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Aug 2023 12:11:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 174
+* @ValidationInfo : Rating            : 804
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+*-----------------------------------------------------------------------------
+* <Rating>255</Rating>
+*-----------------------------------------------------------------------------
+*-----------------------------------------------------------------------------
 SUBROUTINE LAPAP.INP.TAX.CHRG.RT
 *-----------------------------------------------------------------------------
-
-*MODIFICATION HISTORY:
-
+* Develop By                 : APAP, Requerimiento para Tranferencias Únicas
 *
-
-* DATE              WHO             REFERENCE               DESCRIPTION
-
-* 21-APR-2023   Conversion tool     R22 Auto conversion      VM to @VM,BP is removed in Insert File
-* 21-APR-2023    Narmadha V         R22 Manual Conversion    No Changes
-
+* Developed On               : 23/2/2023
+*
+* Development Reference      : CDI-307
+*
+* Development Description    : Basada en la rutina de TEMENOS REDO.INP.TAX.CHRG.RT,
+*                              es la encargada de generar el número de Comprobante Fiscal (NCF)
+*                              relacionado al impuesto de la transacción es decir
+*                              el 0.15% para un FT generado desde una version LAPAP
+*                              cuando el FTTC esta bien parametrizado.
+*
+* Attached to                : LAPAP.BP>LAPAP.INP.TAX.CHRG.RT
+* Attached as                : SAVEDLISTS>APAP001.CDI307
 *-----------------------------------------------------------------------------
-    $INSERT I_COMMON ;*R22 Auto conversion - START
+*MODIFICATION HISTORY:
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED,VM TO @VM
+*----------------------------------------------------------------------------------------
+    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
     $INSERT I_EQUATE
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.FT.COMMISSION.TYPE
-    $INSERT I_F.FT.TXN.TYPE.CONDITION ;*R22 Auto conversion - END
+    $INSERT I_F.FT.TXN.TYPE.CONDITION
+    $INSERT I_F.CURRENCY ;*R22 MANUAL CONVERSION END
 
     IF V$FUNCTION EQ 'I' AND APPLICATION EQ 'FUNDS.TRANSFER' THEN
         GOSUB ABRIDORES
@@ -50,11 +63,15 @@ ABRIDORES:
     CALL OPF(FN.FTTTC,FV.FTTTC)
 
 *
+    FN.CURRENCY = 'F.CURRENCY'
+    F.CURRENCY = ''
+    CALL OPF(FN.CURRENCY,F.CURRENCY)
+*
     Y.LOC.APPL = "FUNDS.TRANSFER"
-    Y.LOC.FLD  = "L.TT.COMM.CODE":@VM:"L.TT.WV.COMM":@VM:"L.TT.COMM.AMT"
+    Y.LOC.FLD  = "L.TT.COMM.CODE":@VM:"L.TT.WV.COMM":@VM:"L.TT.COMM.AMT" ;*R22 MANUAL CONVERSION START
     Y.LOC.FLD := @VM:"L.TT.TAX.CODE":@VM:"L.TT.WV.TAX":@VM:"L.TT.TAX.AMT"
     Y.LOC.FLD := @VM:"L.TT.WV.TAX.AMT":@VM:'L.TT.BASE.AMT':@VM:'L.TT.TRANS.AMT'
-    Y.LOC.FLD := @VM:"L.FT.COMM.CODE"
+    Y.LOC.FLD := @VM:"L.FT.COMM.CODE" ;*R22 MANUAL CONVERSION END
 *
     CALL MULTI.GET.LOC.REF(Y.LOC.APPL,Y.LOC.FLD,Y.LOC.POS)
 *
@@ -75,7 +92,7 @@ RETURN
 
 BUSCAR.TXN.TYPE:
     FT.CODE = R.NEW(FT.TRANSACTION.TYPE)
-    CALL CACHE.READ(FN.FTTTC, FT.CODE, R.FTTTC, FTTTC.ERR) ;* R22 Auto conversion
+    CALL F.READ(FN.FTTTC ,FT.CODE,R.FTTTC , FV.FTTTC , FTTTC.ERR)
 *FT6.COMM.TYPES
     IF R.FTTTC THEN
         V.COMM.TYPES = R.FTTTC<FT6.COMM.TYPES>
@@ -83,6 +100,8 @@ BUSCAR.TXN.TYPE:
         FOR A = 1 TO V.CAN.CT
             V.ACTUAL = A
             V.TMP.CT = V.COMM.TYPES<1,A>
+*MSG<-1> = 'Comision a calcular: ' : V.TMP.CT
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
             GOSUB BUSCAR.COMM.TYPE
 
         NEXT A
@@ -91,12 +110,42 @@ BUSCAR.TXN.TYPE:
 *DEBUG
 RETURN
 BUSCAR.COMM.TYPE:
-    CALL CACHE.READ(FN.FTCT, V.TMP.CT, R.FTCT, FTCT.ERR) ;* R22 Auto conversion
+    CALL F.READ(FN.FTCT ,V.TMP.CT,R.FTCT , FV.FTCT , FTCT.ERR)
     IF R.FTCT THEN
         V.MONTO.TXN = R.NEW(FT.CREDIT.AMOUNT)
+        V.MONEDA.TXN = R.NEW(FT.CREDIT.CURRENCY)
+        V.MONEDA.MARKET = R.NEW(FT.CURRENCY.MKT.CR)
+        IF V.MONTO.TXN EQ '' THEN
+            V.MONTO.TXN = R.NEW(FT.DEBIT.AMOUNT)
+            V.MONEDA.TXN = R.NEW(FT.DEBIT.CURRENCY)
+            V.MONEDA.MARKET = R.NEW(FT.CURRENCY.MKT.DR)
+        END
+
+        IF V.MONEDA.TXN NE 'DOP' THEN
+            V.MONTO.ORIG = V.MONTO.TXN
+            CALL F.READ(FN.CURRENCY ,V.MONEDA.TXN,R.CURR , FV.CURRENCY , CURRENCY.ERR)
+            IF R.CURR THEN
+                Y.CURR.MARKET = R.CURR<EB.CUR.CURRENCY.MARKET>
+                FIND V.MONEDA.MARKET IN Y.CURR.MARKET SETTING Ap, Vp THEN
+                    Y.CURRENT.CURRENCY.MARKET = R.CURR<EB.CUR.CURRENCY.MARKET,Vp>
+*Y.CURRENT.MID.RATE = R.CURR<EB.CUR.MID.REVAL.RATE,Vp>
+                    Y.CURRENT.SELL.RATE = R.CURR<EB.CUR.SELL.RATE,Vp>
+*Y.CURRENT.MID.RATE = Y.CURRENT.MID.RATE *1;
+                    Y.CURRENT.SELL.RATE = Y.CURRENT.SELL.RATE * 1;
+                    V.MONTO.TXN = V.MONTO.TXN * Y.CURRENT.SELL.RATE;
+                END
+            END
+        END
+
+
         CALL GET.LOC.REF("FT.COMMISSION.TYPE","L.FT4.TX.CMM.FL",Y.L.FT4.TX.CMM.FL.POS)
         V.T.O.C = R.FTCT<FT4.LOCAL.REF,Y.L.FT4.TX.CMM.FL.POS>
         V.CALC.TYPE = R.FTCT<FT4.CALC.TYPE>
+
+*MSG = ''
+*MSG<-1> = 'V.T.O.C : ': V.T.O.C
+*MSG<-1> = 'Calc type: ' : V.CALC.TYPE
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
         IF V.T.O.C EQ "T" THEN
 
             V.CONT.TAX += 1
@@ -104,11 +153,19 @@ BUSCAR.COMM.TYPE:
             R.NEW(FT.LOCAL.REF)<1,Y.L.TT.TAX.CODE,V.CONT.TAX> = V.TMP.CT
 
             IF V.CALC.TYPE EQ "FLAT" THEN
-                R.NEW(FT.LOCAL.REF)<1,Y.L.TT.TAX.AMT,V.CONT.COMM>  = R.FTCT<FT4.FLAT.AMT>
+                R.NEW(FT.LOCAL.REF)<1,Y.L.TT.TAX.AMT,V.CONT.TAX>  = R.FTCT<FT4.FLAT.AMT>
             END ELSE
                 V.PERCENT = R.FTCT<FT4.PERCENTAGE>
-                R.NEW(FT.LOCAL.REF)<1,Y.L.TT.TAX.AMT,V.CONT.COMM>  = (V.PERCENT*V.MONTO.TXN)/100
+                R.NEW(FT.LOCAL.REF)<1,Y.L.TT.TAX.AMT,V.CONT.TAX>  = (V.PERCENT*V.MONTO.TXN)/100
                 V.TEMP.MONTO.TAX = (V.PERCENT*V.MONTO.TXN)/100
+
+*MSG = ''
+*MSG<-1> = 'V.PERCENT: ' : V.PERCENT
+*MSG<-1> = 'V.MONTO.TXN : ' : V.MONTO.TXN
+*MSG<-1> = 'V.CONT.COMM : ' : V.CONT.COMM
+*MSG<-1> = 'V.CONT.TAX el que se esta utilizando.. ' : V.CONT.TAX
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
+
             END
 
         END

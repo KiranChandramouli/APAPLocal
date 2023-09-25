@@ -2,6 +2,7 @@ component APAP.Repgens
 # Component Isolation Definition
 metamodelVersion 1.6
 # -------------------------------------------------
+
 public method rgpCoExpiry (
 )
 {
@@ -957,19 +958,6 @@ public method rgsOverdraftList (
 }
 
 
-
-public method rgpAccountList (
-)
-{
-    jBC: RGP.ACCOUNT.LIST
-}
-
-public method rgpAvBqsTerme (
-)
-{
-    jBC: RGP.AV.BQS.TERME
-}
-
 public method rgpBalanceList (
 )
 {
@@ -1189,10 +1177,311 @@ public method rgpLiCoExcess (
     jBC: RGP.LI.CO.EXCESS
 }
 
-
-
 public method rgpLiCollatDet (
 )
 {
     jBC: RGP.LI.COLLAT.DET
+}
+
+public method rgsCollectTracer (
+)
+{
+    jBC: RGS.COLLECT.TRACER
+}
+
+public method rgsLcAcceptances (
+)
+{
+    jBC: RGS.LC.ACCEPTANCES
+}
+
+public method rgsLcDiscount (
+)
+{
+    jBC: RGS.LC.DISCOUNT
+}
+
+public method rgsLcDiscounts (
+)
+{
+    jBC: RGS.LC.DISCOUNTS
+}
+
+public method rgsLcDrawings (
+)
+{
+    jBC: RGS.LC.DRAWINGS
+}
+
+public method rgsLcOutIparty (
+)
+{
+    jBC: RGS.LC.OUT.IPARTY
+}
+
+public method rgsLcOutRskpty (
+)
+{
+    jBC: RGS.LC.OUT.RSKPTY
+}
+
+public method rgsLcsByBene (
+)
+{
+    jBC: RGS.LCS.BY.BENE
+}
+
+public method rgsLcsByBenef (
+)
+{
+    jBC: RGS.LCS.BY.BENEF
+}
+
+public method rgsLcsByCust (
+)
+{
+    jBC: RGS.LCS.BY.CUST
+}
+
+public method rgsLcsByExpiry (
+)
+{
+    jBC: RGS.LCS.BY.EXPIRY
+}
+
+public method rgsLcsByRskpty (
+)
+{
+    jBC: RGS.LCS.BY.RSKPTY
+}
+
+public method rgsLcsExpLiab (
+)
+{
+    jBC: RGS.LCS.EXP.LIAB
+}
+
+public method rgsLcsExpiryDue (
+)
+{
+    jBC: RGS.LCS.EXPIRY.DUE
+}
+
+public method rgsListAcpt (
+)
+{
+    jBC: RGS.LIST.ACPT
+}
+
+public method rgsListColl (
+)
+{
+    jBC: RGS.LIST.COLL
+}
+
+public method rgsListLcs (
+)
+{
+    jBC: RGS.LIST.LCS
+}
+
+public method rgsListPreLcs (
+)
+{
+    jBC: RGS.LIST.PRE.LCS
+}
+
+public method rgsMgRateConEx (
+)
+{
+    jBC: RGS.MG.RATE.CON.EX
+}
+
+public method rgsMgRateEx (
+)
+{
+    jBC: RGS.MG.RATE.EX
+}
+
+public method rgpLcOutIparty (
+)
+{
+    jBC: RGP.LC.OUT.IPARTY
+}
+
+public method rgpLcOutRskpty (
+)
+{
+    jBC: RGP.LC.OUT.RSKPTY
+}
+
+public method rgpLcsByBene (
+)
+{
+    jBC: RGP.LCS.BY.BENE
+}
+
+public method rgpLcsByBenef (
+)
+{
+    jBC: RGP.LCS.BY.BENEF
+}
+
+public method rgpLcsByCust (
+)
+{
+    jBC: RGP.LCS.BY.CUST
+}
+
+public method rgpLcsByExpiry (
+)
+{
+    jBC: RGP.LCS.BY.EXPIRY
+}
+
+public method rgpLcsByRskpty (
+)
+{
+    jBC: RGP.LCS.BY.RSKPTY
+}
+
+public method rgpLcsExpLiab (
+)
+{
+    jBC: RGP.LCS.EXP.LIAB
+}
+
+public method rgpLcsExpiryDue (
+)
+{
+    jBC: RGP.LCS.EXPIRY.DUE
+}
+
+public method rgpListAcpt (
+)
+{
+    jBC: RGP.LIST.ACPT
+}
+
+public method rgpListColl (
+)
+{
+    jBC: RGP.LIST.COLL
+}
+
+public method rgpListLcs (
+)
+{
+    jBC: RGP.LIST.LCS
+}
+
+public method rgpListPreLcs (
+)
+{
+    jBC: RGP.LIST.PRE.LCS
+}
+
+public method rgpMgRateConEx (
+)
+{
+    jBC: RGP.MG.RATE.CON.EX
+}
+
+public method rgpMgRateEx (
+)
+{
+    jBC: RGP.MG.RATE.EX
+}
+
+public method rgsCollectionsDue (
+)
+{
+    jBC: RGS.COLLECTIONS.DUE
+}
+
+public method rgsLcAccept (
+)
+{
+    jBC: RGS.LC.ACCEPT
+}
+
+public method rgsLcAcptDue (
+)
+{
+    jBC: RGS.LC.ACPT.DUE
+}
+
+public method rgsLcCollDue (
+)
+{
+    jBC: RGS.LC.COLL.DUE
+}
+
+public method rgpCollectTracer (
+)
+{
+    jBC: RGP.COLLECT.TRACER
+}
+
+public method rgpCollectionsDue (
+)
+{
+    jBC: RGP.COLLECTIONS.DUE
+}
+
+public method rgpLcAccept (
+)
+{
+    jBC: RGP.LC.ACCEPT
+}
+
+public method rgpLcAcceptances (
+)
+{
+    jBC: RGP.LC.ACCEPTANCES
+}
+
+public method rgpLcAcptDue (
+)
+{
+    jBC: RGP.LC.ACPT.DUE
+}
+
+public method rgpLcCollDue (
+)
+{
+    jBC: RGP.LC.COLL.DUE
+}
+
+public method rgpLcDiscount (
+)
+{
+    jBC: RGP.LC.DISCOUNT
+}
+
+public method rgpLcDiscounts (
+)
+{
+    jBC: RGP.LC.DISCOUNTS
+}
+
+public method rgpLcDrawings (
+)
+{
+    jBC: RGP.LC.DRAWINGS
+}
+
+
+public method rgpAvBqsTerme (
+)
+{
+    jBC: RGP.AV.BQS.TERME
+}
+
+
+
+public method rgpAccountList (
+)
+{
+    jBC: RGP.ACCOUNT.LIST
 }

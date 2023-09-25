@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5MTg3NDE4NjE6Q3AxMjUyOjE2ODQ0OTEwMzg5OTY6SVRTUzotMTotMToyNzI6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:38
+* @ValidationCode : MjoxMTAwMDE3OTkyOkNwMTI1MjoxNjkzMzEzNzYxNDgwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:26:01
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 272
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *---------------------------------------------------------------------------------------
@@ -16,6 +16,7 @@ $PACKAGE APAP.TAM
 *DATE           WHO                 REFERENCE               DESCRIPTION
 *24-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *24-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
+*25-08-2023     VIGNESHWARI S       R22 MANUAL CONVERSION   PATH IS MODIFIED
 *----------------------------------------------------------------------------------------
 
 SUBROUTINE REDO.SAP.CLEAR.FILE
@@ -70,7 +71,9 @@ TAKE.BACKUP:
     BACKUP.DIR = R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.BACKUP.PATH>
     SOURCE.DIR = R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.EXTRACT.OUT.PATH,1>
 
-    COPY.CMD = "COPY FROM ":SOURCE.DIR:" TO ":BACKUP.DIR:" ALL"
+*    COPY.CMD = "COPY FROM ":SOURCE.DIR:" TO ":BACKUP.DIR:" ALL"
+*    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" ALL":' ':BACKUP.DIR:'/':" ALL" ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
+    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" *":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED	
     EXECUTE COPY.CMD
 
 

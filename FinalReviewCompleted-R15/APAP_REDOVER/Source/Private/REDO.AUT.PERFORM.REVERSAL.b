@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTEyMDY4MTM3MjpDcDEyNTI6MTY4NTU0MzYwMDY0MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 31 May 2023 20:03:20
+* @ValidationCode : MjoxOTc0ODU1MDk4OkNwMTI1MjoxNjkwMTc1NzM5ODU0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 10:45:39
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.AUT.PERFORM.REVERSAL
@@ -308,8 +308,8 @@ CHECK.NOTIFICATION:
         IF AMOUNT.VAL THEN
             VAR.CURRENCY = R.NEW(CLEAR.OUT.CURRENCY)
             REDO.OUTWARD.RETURN.ID = ID.NEW
-            CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
-*APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID) ;*MANUAL R22 CODE CONVERSION
+*         CALL REDO.APAP.INF.SUFF.ACCT.ENT(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID)
+            APAP.REDOAPAP.redoApapInfSuffAcctEnt(AMOUNT.VAL,VAR.CURRENCY,REDO.OUTWARD.RETURN.ID) ;*MANUAL R22 CODE CONVERSION
         END
     END
 

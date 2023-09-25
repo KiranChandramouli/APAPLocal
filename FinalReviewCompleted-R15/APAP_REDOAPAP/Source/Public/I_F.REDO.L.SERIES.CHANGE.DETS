@@ -1,0 +1,8 @@
+* I_F.REDO.L.SERIES.CHANGE.DETS Created 27 SEP 13 at 07:26PM by t24uatd/DEEPAK2
+*      PREFIX[AZ.CH.DETS]
+             EQU AZ.CH.DETS.STATUS TO 1,   RedoLSeriesChangeDets_Status TO 1,
+               AZ.CH.DETS.CATEGORY TO 2,   RedoLSeriesChangeDets_Category TO 2,
+                  AZ.CH.DETS.AZ.ID TO 3,   RedoLSeriesChangeDets_AzId TO 3,
+                 AZ.CH.DETS.DEP.ID TO 4,   RedoLSeriesChangeDets_DepId TO 4,
+                   AZ.CH.DETS.DATE TO 5,   RedoLSeriesChangeDets_Date TO 5,
+             AZ.CH.DETS.Reserved.1 TO 6,   RedoLSeriesChangeDets_Reserved1 TO 6

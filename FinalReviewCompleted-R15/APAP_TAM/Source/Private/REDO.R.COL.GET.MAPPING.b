@@ -1,10 +1,10 @@
-* @ValidationCode : MjoyMDg3MzUyNTU3OkNwMTI1MjoxNjg0ODQyMTI2MDE4OklUU1M6LTE6LTE6LTU1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:06
+* @ValidationCode : MjotMTY0ODExMDAyNTpDcDEyNTI6MTY5MzkyMzg4Mzc1NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Sep 2023 19:54:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -55
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -96,12 +96,13 @@ SUBROUTINE REDO.R.COL.GET.MAPPING(P.IN.STATIC.MAPPING.ID, P.IN.R.STATIC.MAPPING,
 *Modification History
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *18-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM,I TO I.VAR
-*18-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
+*18-04-2023              Samaran T                R22 Manual Code conversion                     R22 interface Unit testing changes
 *-------------------------------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.COL.CUSTOMER.COMMON
+    $USING APAP.LAPAP
 *
 *
 *************************************************************************
@@ -205,7 +206,9 @@ CHECK.PRELIM.CONDITIONS:
     END
 
     IF P.OUT.R.STATIC.MAPPING EQ "" THEN
-        CALL RAD.CONDUIT.LINEAR.TRANSLATION("MAP", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR)
+*        CALL RAD.CONDUIT.LINEAR.TRANSLATION("MAP", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) *SJ
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION("O", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) ;*R22 interface Unit testing changes
+        APAP.LAPAP.redoConduitLinearTranslation("O", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) ;*R22 MANUAL CONVERSION
         IF Y.ERR THEN
 
             E ="ERROR GETTING STATIC MAPPING FROM RAD " : Y.ERR

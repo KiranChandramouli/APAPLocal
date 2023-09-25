@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNTA1NDk0MzQ0OlVURi04OjE2ODY4MzUyNTMzNjQ6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 Jun 2023 18:50:53
+* @ValidationCode : MjotNTA1NDk0MzQ0OlVURi04OjE2ODg1MzY4OTQ0MTI6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Jul 2023 11:31:34
 * @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : Admin
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -16,8 +16,8 @@ REM "RGS.CO.RIGHT.REVIEW",230614-4
 *************************************************************************
 * MODIFICATION HISTORY:
 
-* DATE              WHO                REFERENCE                 DESCRIPTION
-* 15-JUNE-2023     Narmadha V       Manual R22 conversion        SELECT to SSELECT
+* DATEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ WHOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ REFERENCEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DESCRIPTION
+* 15-JUNE-2023ï¿½ï¿½ï¿½ï¿½ï¿½Narmadha Vï¿½ï¿½     Manual R22 conversionï¿½ï¿½ï¿½ï¿½ï¿½   SELECT to SSELECT
 *************************************************************************
     $INSERT I_COMMON
     $INSERT I_EQUATE

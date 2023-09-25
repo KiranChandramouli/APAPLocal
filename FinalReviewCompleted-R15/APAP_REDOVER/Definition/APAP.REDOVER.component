@@ -19,7 +19,6 @@ public method redoAutConcatUptLog (
 }
 
 
-
 public method redoAutDelIdTemp (
 )
 {
@@ -258,15 +257,6 @@ public method redoIValC25Ben (
 }
 
 
-
-public method redoIFtMaguana (
-)
-{
-    jBC: REDO.I.FT.MAGUANA
-}
-
-
-
 public method redoIdCardCheck (
 )
 {
@@ -343,14 +333,6 @@ public method redoInpCheckAdminAccts (
 )
 {
     jBC: REDO.INP.CHECK.ADMIN.ACCTS
-}
-
-
-
-public method redoInpCheckDcTxnAmt (
-)
-{
-    jBC: REDO.INP.CHECK.DC.TXN.AMT
 }
 
 
@@ -950,15 +932,6 @@ public method redoVAuthFtUpdDisb (
 }
 
 
-
-public method redoVAuthGenAcLock (
-)
-{
-    jBC: REDO.V.AUTH.GEN.AC.LOCK
-}
-
-
-
 public method redoVAuthItemRequest (
 )
 {
@@ -986,14 +959,6 @@ public method redoVAutReprintTxn (
 {
     jBC: REDO.V.AUT.REPRINT.TXN
 }
-
-
-public method redoVAuthLockAcct (
-)
-{
-    jBC: REDO.V.AUTH.LOCK.ACCT
-}
-
 
 
 public method redoVAuthPayTeller (
@@ -2323,15 +2288,6 @@ public method redoVUpdAcceptedStk (
 }
 
 
-
-public method redoVUpdAtmLyUpd (
-)
-{
-    jBC: REDO.V.UPD.ATM.LY.UPD
-}
-
-
-
 public method redoVUpdLatamCardSeries (
 )
 {
@@ -3427,14 +3383,6 @@ public method redoVInpOvrTlr (
 
 
 
-public method redoVInpPartProcess (
-)
-{
-    jBC: REDO.V.INP.PART.PROCESS
-}
-
-
-
 public method redoVInpPartialThrRetChq (
 )
 {
@@ -3871,12 +3819,6 @@ public method redoVInpTillCheckAcc (
     jBC: REDO.V.INP.TILL.CHECK.ACC
 }
 
-
-public method redoAthStlmtAcctInRtn (
-)
-{
-    jBC: REDO.ATH.STLMT.ACCT.IN.RTN
-}
 
 
 
@@ -4734,14 +4676,6 @@ public method redoVAutChequeNumber (
 
 
 
-public method redoVAutChkExstCust (
-)
-{
-    jBC: REDO.V.AUT.CHK.EXST.CUST
-}
-
-
-
 public method redoVAutChkLckEvnts (
 )
 {
@@ -5031,16 +4965,6 @@ public method redoVAutUpdSeqStatus (
 {
     jBC: REDO.V.AUT.UPD.SEQ.STATUS
 }
-
-
-
-public method redoVAutUpdateStatusAcCol (
-)
-{
-    jBC: REDO.V.AUT.UPDATE.STATUS.AC.COL
-}
-
-
 
 public method redoVAutUpdateStock (
 )
@@ -5724,12 +5648,6 @@ public method redoVInpCheckTransfer (
 }
 
 
-
-public method redoVInpCheckTtBeneficary (
-)
-{
-    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
-}
 
 
 
@@ -7006,3 +6924,67 @@ public method redoVValMaximumValueDi(
 {
     jBC: REDO.V.VAL.MAXIMUM.VALUE.DI
 } 
+
+public method redoInpPrRemainAmtRepay (
+)
+{
+    jBC: REDO.INP.PR.REMAIN.AMT.REPAY
+}
+
+
+
+public method redoInpUpdLoanLocTab (
+)
+{
+    jBC: REDO.INP.UPD.LOAN.LOC.TAB
+}
+
+
+
+public method redoVAuthDepReceipts (
+)
+{
+    jBC: REDO.V.AUTH.DEP.RECEIPTS
+}
+
+
+
+public method redoVTelGroup (
+)
+{
+    jBC: REDO.V.TEL.GROUP
+}
+
+
+
+public method redoVValDisbLoan (
+)
+{
+    jBC: REDO.V.VAL.DISB.LOAN
+}
+
+
+
+public method redoVAutReverseChg (
+)
+{
+    jBC: REDO.V.AUT.REVERSE.CHG
+}
+
+
+
+public method redoAutOnlineMsg (
+)
+{
+    jBC: REDO.AUT.ONLINE.MSG
+}
+
+
+
+
+public method redoInpLetterIssue (
+)
+{
+    jBC: REDO.INP.LETTER.ISSUE
+}
+

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTc2MTE5MTM4MDpDcDEyNTI6MTY4NDg1NDQwMTkyNzpJVFNTOi0xOi0xOjQ3NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:41
+* @ValidationCode : MjotMTU4NzQ5OTYzMDpDcDEyNTI6MTY5MDI2NDQ2NzY3ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:27
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 476
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.VALID.ACCOUNTS.POST
@@ -31,7 +31,7 @@ SUBROUTINE REDO.B.VALID.ACCOUNTS.POST
 *--------------------------------------------------------------------------
 *   DATE         WHO                   ODR                      DESCRIPTION
 *  08-10-10      NATCHIMUTHU           ODR-2010-09-0171         Initial Creation
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 17-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION - ! TO *
 * 17-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 
@@ -48,6 +48,7 @@ SUBROUTINE REDO.B.VALID.ACCOUNTS.POST
     $INSERT I_F.REDO.INTERFACE.ACT.DETAILS
     $INSERT I_F.LOCKING
     $INSERT I_F.REDO.INTERFACE.PARAM
+    $USING APAP.REDOCHNLS
 
 *  DEBUG
     GOSUB INIT
@@ -105,7 +106,8 @@ FINALLOG:
 **********
 
     INT.CODE = 'APA004'
-    CALL REDO.INTERFACE.ACT.POST(INT.CODE)
+*    CALL REDO.INTERFACE.ACT.POST(INT.CODE)
+    APAP.REDOCHNLS.redoInterfaceActPost(INT.CODE) ;*R22 Manual Code Conversion
 RETURN
 END
 

@@ -15,7 +15,7 @@ $PACKAGE APAP.TAM
 * Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *06/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION            ++ TO +=,CHAR TO CHAX,VM TO @VM
-*06/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*06/04/2023         SURESH           MANUAL R22 CODE CONVERSION          R22 interface Unit testing changes
 *-----------------------------------------------------------------------------------
 SUBROUTINE REDO.FIND.CUST.OFAC(OFAC.TIPO.CL,Y.CUST.NAME,OFAC.GIVEN.NAMES,OFAC.FAMILY.NAME,OFAC.CUS.NAME1,OFAC.CUS.NAME2,OFAC.CUS.TEXT,OFAC.RET)
 
@@ -35,7 +35,7 @@ SUBROUTINE REDO.FIND.CUST.OFAC(OFAC.TIPO.CL,Y.CUST.NAME,OFAC.GIVEN.NAMES,OFAC.FA
 RETURN
 
 INITIALISE.OFAC:
-    KEY1="123456"
+    KEY1="12345678" ;*R22 interface Unit testing changes
     IPADD.DESC = ''
     PORT.DESC = ''
     DBNAME.DESC = ''
@@ -111,6 +111,7 @@ OPEN.OFAC.FILES:
 RETURN
 
 PREPARE.OFAC:
+    
     CALL CACHE.READ(FN.REDO.OFAC.DBCM,REDO.OFAC.DBCM.ID,R.REDO.OFAC.DBCM,ERR.REDO.OFAC.DBCM)
 
 * 20170217 /S
@@ -118,15 +119,15 @@ PREPARE.OFAC:
 *    PORT.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.PORT>,KEY1,JBASE_CRYPT_DES)
 *    DBNAME.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.NAME>,KEY1,JBASE_CRYPT_DES)
 *    TBNAME.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.TB.NAME>,KEY1,JBASE_CRYPT_DES)
-*    USER.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.USER>,KEY1,JBASE_CRYPT_DES_BASE64)
-*    PWD.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.PWD>,KEY1,JBASE_CRYPT_DES_BASE64)
+    USER.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.USER>,KEY1,JBASE_CRYPT_DES_BASE64) ;*R22 interface Unit testing changes
+    PWD.DESC = DECRYPT(R.REDO.OFAC.DBCM<REDO.DBCM.DB.PWD>,KEY1,JBASE_CRYPT_DES_BASE64) ;*R22 interface Unit testing changes
 
     IPADD.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.IP.ADD>
     PORT.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.PORT>
     DBNAME.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.DB.NAME>
     TBNAME.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.TB.NAME>
-    USER.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.DB.USER>
-    PWD.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.DB.PWD>
+*    USER.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.DB.USER> ;*R22 interface Unit testing changes
+*    PWD.DESC = R.REDO.OFAC.DBCM<REDO.DBCM.DB.PWD> ;*R22 interface Unit testing changes
 * 20170217 /E
 
     PARAM1 = IPADD.DESC
@@ -168,7 +169,7 @@ PREPARE.OFAC:
     PARAM10 = PARAM9
 
     GOSUB PARAM.CHECK1
-
+    
     PARAM10 = ''
 
 *IF OFAC.TIPO.CL EQ "PERSONA FISICA" OR OFAC.TIPO.CL EQ "CLIENTE MENOR" THEN
@@ -269,6 +270,7 @@ FORM.SQLPARAM:
 *-----------------------------------------------------------
 *    Form the Customer name as selection criteria for SQL.
 *-----------------------------------------------------------
+    
     Y.PARAM.VAL.NO = DCOUNT(Y.PARAM1," ")
     IF Y.PARAM.VAL.NO NE "1" THEN
         Y.PARAM.NEW = ""
@@ -292,6 +294,7 @@ PARAM.CHECK1:
 *----------------------------------------------------------
 * Given Names and Family name are checked for their value
 *----------------------------------------------------------
+    
     IF PARAM9 EQ '' AND PARAM10 EQ '' THEN
         AF = EB.CUS.GIVEN.NAMES
         ETEXT = 'EB-MANDATORY.INP.MISSING'
@@ -320,6 +323,7 @@ PARAM.CHECK2:
 *-----------------------------------------------------------
 * Name1 , Name2 and Text are checked for their value
 *-----------------------------------------------------------
+    
     IF PARAM10 EQ '' THEN
         AF = EB.CUS.TEXT
         ETEXT = 'EB-MANDATORY.INP.MISSING'

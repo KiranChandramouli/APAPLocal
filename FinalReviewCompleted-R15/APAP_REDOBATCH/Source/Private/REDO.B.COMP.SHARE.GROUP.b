@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTg2ODM4NDcxNzpDcDEyNTI6MTY4NDg1NDM4MzMyNzpJVFNTOi0xOi0xOjQzNjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:23
+* @ValidationCode : MjoxNzE3NTE2MjExOkNwMTI1MjoxNjkwMjY0MzU5OTE5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:22:39
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 436
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.COMP.SHARE.GROUP(CUSTOMER.ID)
@@ -58,6 +58,8 @@ SUBROUTINE REDO.B.COMP.SHARE.GROUP(CUSTOMER.ID)
     $INSERT I_REDO.GENERIC.FIELD.POS.COMMON
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.COMP.SHARE.GROUP.COMMON
+    $USING APAP.REDOCHNLS
+    $USING APAP.REDOSRTN
 *-----------------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -176,7 +178,8 @@ GET.SL.CUST.VALUES:
 
     PRODUCT.GROUP = ''
     REL.CODE      = ''
-    CALL REDO.S.REP.CUSTOMER.EXTRACT(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR)
+*    CALL REDO.S.REP.CUSTOMER.EXTRACT(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR)
+    APAP.REDOSRTN.redoSRepCustomerExtract(SL.CUSTOMER.ID,PRODUCT.GROUP,REL.CODE,OUT.ARR) ;*R22 Manual Code Conversion
 
     GOSUB GET.SL.CSPARE.VALUES
     GOSUB GET.SL.DOC.LAST.PAY
@@ -446,7 +449,8 @@ WRITE.FILE:
         MON.TP   = 04
         REC.CON  = "GR02"
         DESC     = "GR02"
-        CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*       CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
     END
 
 RETURN
