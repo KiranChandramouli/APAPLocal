@@ -1,15 +1,16 @@
-* @ValidationCode : MjotMTI4MDc0NDcwMDpDcDEyNTI6MTY5MDI2NDE3MDU0NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:19:30
+* @ValidationCode : MjotMTk5NzEyNzExNTpDcDEyNTI6MTY5NTEzMjgwMDA3NjpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Sep 2023 19:43:20
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
 $PACKAGE APAP.LAPAP
 SUBROUTINE L.APAP.COL.FF.EXTRACT.TXN(Y.PROCESS.DATE, Y.AA.ID, R.STATIC.MAPPING, Y.ACCOUNT.ID, Y.PRODUCT.ID, Y.AGENCY.CODE, Y.CREDIT.TXN)
 *******************************************************************************
@@ -23,12 +24,14 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.TXN(Y.PROCESS.DATE, Y.AA.ID, R.STATIC.MAPPING, 
 *             Y.PRODUCT.ID                  (in)          Producto Number
 *             Y.AGENCY.CODE                 (in)          Agency Code
 *             Y.CREDIT.TXN                  (out)         <1>List of insert <2> Details
-*---------------------------------------------------------------------------------------
+
+*------------------------------------------------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
-*DATE          WHO                 REFERENCE               DESCRIPTION
-*13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     LAPAP.BP is Removed , VM,SM to @VM ,@SM,++ to +=
-*13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION   NO CHANGE
-*---------------------------------------------------------------------------------------	-
+*DATE          WHO                 REFERENCE                               DESCRIPTION
+*13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION                  LAPAP.BP is Removed , VM,SM to @VM ,@SM,++ to +=
+*13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION                NO CHANGE
+*19/09/2023	   VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES  LINES IS ADDED-Interface Change by Santiago
+*-------------------------------------------------------------------------------------------------------------------------------	-
 *
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -40,12 +43,12 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.TXN(Y.PROCESS.DATE, Y.AA.ID, R.STATIC.MAPPING, 
     $INSERT I_F.STMT.ENTRY
     $INSERT I_F.TRANSACTION
     $USING APAP.TAM
-*
     $INSERT I_L.APAP.COL.CUSTOMER.COMMON ;*R22 Auto code conversion
 *   $INSERT I_F.AA.ACTIVITY.HISTORY
 *
 *************************************************************************
 *
+
     Y.START.TIME = TIME()
     GOSUB INITIALISE
     GOSUB CHECK.PRELIM.CONDITIONS
@@ -155,7 +158,7 @@ PROCESS.ACTIVITY.1:
 
     GOSUB INSERT.STMT
 
-    Y.CREDIT.TXN<-1> = Y.INS.VALUES : @VM : Y.TYPE.TXN
+    Y.CREDIT.TXN<-1> = Y.INS.VALUES : @FM : Y.TYPE.TXN  ;*Interface Change by Santiago- @VM changed to @FM
 RETURN
 
 * ---------
@@ -183,7 +186,7 @@ INITIALISE:
     Y.TMPMOVPRODUCTO  = Y.PRODUCT.ID
     Y.MAP.VALUE = Y.PRODUCT.ID
     Y.MAP.TYPE  = "PRODUCT.GROUP"
-    GOSUB GET.STATIC.MAPPING
+;*GOSUB GET.STATIC.MAPPING   ;*AJUSTE -Interface Change by Santiago
     Y.TMPMOVPRODUCTO  = Y.MAP.VALUE
 
     GOSUB GET.TXN.CODE.LIST
@@ -261,6 +264,7 @@ GET.STATIC.MAPPING:
     E = ""
 *   CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
     APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE) ;*R22 Manual Code Conversion
+	TEST.MAP = Y.MAP.VALUE ;*Interface Change by Santiago
 RETURN
 
 *
@@ -386,9 +390,10 @@ GET.TXN.DETAILS:
 
     Y.MAP.VALUE = Y.CCY
     Y.MAP.TYPE  = "CURRENCY"
-    GOSUB GET.STATIC.MAPPING
+;*GOSUB GET.STATIC.MAPPING  ;*AJUSTE - Interface Change by Santiago
 *    Y.TMPMOVMONTOMONEDAORIGEN = Y.MAP.VALUE
-    Y.TMPMOVMONEDACODIGO=Y.MAP.VALUE
+
+    Y.TMPMOVMONEDACODIGO = Y.MAP.VALUE
     IF E NE "" THEN
         RETURN
     END

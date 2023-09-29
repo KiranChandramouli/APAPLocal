@@ -700,14 +700,9 @@ public method reMismatchConsRunSelect (
     jBC: RE.MISMATCH.CONS.RUN.SELECT
 }
 
-public method rgpAccountList (
+public method bAmendServiceItems (
 )
 {
-    jBC: RGP.ACCOUNT.LIST
+    jBC: B.AMEND.SERVICE.ITEMS
 }
 
-public method rgpAvBqsTerme (
-)
-{
-    jBC: RGP.AV.BQS.TERME
-}
