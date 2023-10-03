@@ -1,0 +1,31 @@
+component APAP.REDOENQ
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoECnvBrTerm (
+    INOUT enqData string
+)
+{
+    jBC: REDO.E.CNV.BR.TERM
+}
+
+
+ 
+public method redoENofTxnPosApap (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.E.NOF.TXN.POS.APAP
+}
+
+
+
+public method redoEnqChg (
+    INOUT rAcct string
+)
+{
+    jBC: REDO.ENQ.CHG
+}
+

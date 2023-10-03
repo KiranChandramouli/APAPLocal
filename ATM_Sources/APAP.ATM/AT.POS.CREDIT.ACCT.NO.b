@@ -1,0 +1,126 @@
+* @ValidationCode : MjoxMjQ3Mzg1ODY4OkNwMTI1MjoxNjkzODk1OTY2MzQ5OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Sep 2023 12:09:26
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.ATM
+*-----------------------------------------------------------------------------
+* <Rating>-49</Rating>
+*-----------------------------------------------------------------------------
+SUBROUTINE AT.POS.CREDIT.ACCT.NO(INCOMING,CREDIT.ACCT.NO)
+    
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*05/09/2023      Conversion tool            R22 Auto Conversion             Nochange
+*05/09/2023      Suresh                     R22 Manual Conversion          BP file removed
+*-------------------------------------------------------------------------------
+    $INCLUDE I_COMMON ;*R22 Manual Conversion - Start
+    $INCLUDE I_EQUATE
+    $INCLUDE I_F.AT.POS.MERCHANT.ACCT
+    $INCLUDE I_F.ATM.BRANCH
+ 
+    $INCLUDE I_F.AT.POS.BIN.ACCT
+    $INCLUDE I_F.ATM.PARAMETER
+    $INCLUDE I_F.REDO.APAP.H.PARAMETER ;*R22 Manual Conversion - End
+
+*developed by anitha for anbb on 05/06/08
+
+* INCOMING ----> 32*%*41
+* 32 - Acquirer BIN (Money Issuer BIN) - 6 digits
+* 41 - Merchant ID - 15 digits
+
+    Y.ISSU.BIN.NO=FIELD(INCOMING,'%',1)
+    Y.MERCH.ID=FIELD(INCOMING,'%',2)
+
+    GOSUB OPEN.FILES
+    GOSUB BIN.CHK
+RETURN
+
+BIN.CHK:
+
+* Fix for 2795720 [BRD001 - FAST FUNDS SERVICES]
+
+    IF Y.ISSU.BIN.NO EQ '26' THEN
+
+        FN.REDO.APAP.H.PARAMETER = 'F.REDO.APAP.H.PARAMETER'
+        CALL CACHE.READ(FN.REDO.APAP.H.PARAMETER,'SYSTEM',R.REDO.APAP.H.PARAMETER,ERR.PARAM)
+
+        LOCATE 'COBRAR' IN R.REDO.APAP.H.PARAMETER<PARAM.OCT.FF.ACCT,1> SETTING OCT.POS THEN
+            CREDIT.ACCT.NO = R.REDO.APAP.H.PARAMETER<PARAM.OCT.DOP.ACCT,OCT.POS>
+        END
+        RETURN
+    END
+
+* End of Fix
+
+    IF Y.ISSU.BIN.NO EQ '1' THEN
+        GOSUB OUR.PROCESS
+    END ELSE
+        GOSUB OTH.PROCESS
+    END
+
+RETURN
+
+*-------------------------------------------------------------------------------
+OPEN.FILES:
+*
+    FN.ATM.PARAMETER = 'F.ATM.PARAMETER'
+    CALL OPF(FN.ATM.PARAMETER,F.ATM.PARAMETER)
+
+    CALL F.READ(FN.ATM.PARAMETER,'SYSTEM',R.ATM.PARAMETER,F.ATM.PARAMETER,ER.ATM.PARAMETER)
+    OUR.BIN = R.ATM.PARAMETER<ATM.PARA.BANK.IMD>
+
+    FN.ATM.ISO.BRANCH = 'F.ATM.BRANCH'
+    F.ATM.ISO.BRANCH = ''
+    CALL OPF(FN.ATM.ISO.BRANCH,F.ATM.ISO.BRANCH)
+
+    FN.AT.POS.BIN.ACCT = 'F.AT.POS.BIN.ACCT'
+    F.AT.POS.BIN.ACCT = ''
+    CALL OPF(FN.AT.POS.BIN.ACCT,F.AT.POS.BIN.ACCT)
+
+    FN.AT.POS.MERCHANT.ACCT = 'F.AT.POS.MERCHANT.ACCT'
+    F.AT.POS.MERCHANT.ACCT = ''
+    CALL OPF(FN.AT.POS.MERCHANT.ACCT,F.AT.POS.MERCHANT.ACCT)
+
+RETURN          ;* open files
+
+*-------------------------------------------------------------------------------
+OUR.PROCESS:
+*
+    R.AT.POS.MERCHANT.ACCT = ''
+    ER.AT.POS.MERCHANT.ACCT = ''
+    CALL F.READ(FN.AT.POS.MERCHANT.ACCT,Y.MERCH.ID,R.AT.POS.MERCHANT.ACCT,F.AT.POS.MERCHANT.ACCT,ER.AT.POS.MERCHANT.ACCT)
+    CREDIT.ACCT.NO = R.AT.POS.MERCHANT.ACCT<AT.PMA.MERCHANT.ACCT.NO>
+
+    IF NOT(CREDIT.ACCT.NO) THEN
+        DEFAULT.MERCHANT.ID = '123456'
+        CALL F.READ(FN.AT.POS.MERCHANT.ACCT,DEFAULT.MERCHANT.ID,R.AT.POS.MERCHANT.ACCT,F.AT.POS.MERCHANT.ACCT,ER.AT.POS.MERCHANT.ACCT)
+        CREDIT.ACCT.NO = R.AT.POS.MERCHANT.ACCT<AT.PMA.MERCHANT.ACCT.NO>
+    END
+
+RETURN          ;* from OUR.PROCESS
+
+*-------------------------------------------------------------------------------
+OTH.PROCESS:
+*
+    R.AT.POS.BIN.ACCT = ''
+    ER.AT.POS.BIN.ACCT = ''
+    CALL F.READ(FN.AT.POS.BIN.ACCT,Y.ISSU.BIN.NO,R.AT.POS.BIN.ACCT,F.AT.POS.BIN.ACCT,ER.AT.POS.BIN.ACCT)
+
+    IF NOT(R.AT.POS.BIN.ACCT) THEN
+        DEFAULT.BIN = '123123'
+        CALL F.READ(FN.AT.POS.BIN.ACCT,DEFAULT.BIN,R.AT.POS.BIN.ACCT,F.AT.POS.BIN.ACCT,ER.AT.POS.BIN.ACCT)
+    END
+    CREDIT.ACCT.NO = R.AT.POS.BIN.ACCT<POS.POS.PAY.ACCT>
+
+RETURN          ;* from OTH.PROCESS
+
+*-------------------------------------------------------------------------------

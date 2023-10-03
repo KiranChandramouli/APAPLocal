@@ -1,0 +1,12 @@
+* I_F.REDO.LY.PARAMTCM Created 19 OCT 10 at 08:03PM by apapr8/HGANESH
+*      PREFIX[REDO.PARAM]
+        EQU REDO.PARAM.GEN.PATH.FG TO 1,   RedoLyParamtcm_GenPathFg TO 1,
+          REDO.PARAM.RECORD.STATUS TO 2,   RedoLyParamtcm_RecordStatus TO 2,
+                REDO.PARAM.CURR.NO TO 3,   RedoLyParamtcm_CurrNo TO 3,
+               REDO.PARAM.INPUTTER TO 4,   RedoLyParamtcm_Inputter TO 4,
+              REDO.PARAM.DATE.TIME TO 5,   RedoLyParamtcm_DateTime TO 5,
+             REDO.PARAM.AUTHORISER TO 6,   RedoLyParamtcm_Authoriser TO 6,
+                REDO.PARAM.CO.CODE TO 7,   RedoLyParamtcm_CoCode TO 7,
+              REDO.PARAM.DEPT.CODE TO 8,   RedoLyParamtcm_DeptCode TO 8,
+           REDO.PARAM.AUDITOR.CODE TO 9,   RedoLyParamtcm_AuditorCode TO 9,
+        REDO.PARAM.AUDIT.DATE.TIME TO 10,  RedoLyParamtcm_AuditDateTime TO 10

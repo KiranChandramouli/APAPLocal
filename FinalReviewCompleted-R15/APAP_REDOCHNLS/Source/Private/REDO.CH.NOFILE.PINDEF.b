@@ -41,6 +41,7 @@ SUBROUTINE REDO.CH.NOFILE.PINDEF(R.DATA)
 *
 * 10-APR-2023     Conversion tool   R22 Auto conversion  F.READ to CACHE.READ
 * 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 24-08-2023        Samaran T        Manual code conversion    Encrypt method is changed
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -51,6 +52,7 @@ SUBROUTINE REDO.CH.NOFILE.PINDEF(R.DATA)
     $INSERT I_F.ACCOUNT
     $INSERT I_F.EB.EXTERNAL.USER
     $INSERT I_F.REDO.CH.PINADM
+    $INSERT JBC.h
 
     FN.ACCOUNT = 'F.ACCOUNT'
     F.ACCOUNT = ''
@@ -93,8 +95,11 @@ SUBROUTINE REDO.CH.NOFILE.PINDEF(R.DATA)
     END
 
 *PIN Encription.
-    KEYUSED = "7"
-    PIN = ENCRYPT(PIN.USR,KEYUSED,2)
+*KEYUSED = "7"
+*PIN = ENCRYPT(PIN.USR,KEYUSED,2)
+    KEYUSED = "12345678" ;*R22 MANUAL CODE CONVERSION
+    PIN = ENCRYPT(PIN.USR,KEYUSED,JBASE_CRYPT_DES_BASE64)  ;*R22 MANUAL CODE CONVERSION
+*NEW - END
 
     STARTTIME = FIELD(TIMEDATE()," ",0)
 

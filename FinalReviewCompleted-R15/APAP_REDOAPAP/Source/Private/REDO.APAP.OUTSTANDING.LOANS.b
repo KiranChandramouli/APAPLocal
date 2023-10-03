@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo5ODk4NTQxODU6Q3AxMjUyOjE2ODU5NDk0MjE4NDc6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Jun 2023 12:47:01
+* @ValidationCode : MjoxNjQ3MTU2MjA1OkNwMTI1MjoxNjkwMjY0MjcxMTc2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:21:11
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -49,6 +49,7 @@ SUBROUTINE REDO.APAP.OUTSTANDING.LOANS(ENQ.OUT)
     $INSERT I_F.AA.ACCOUNT.DETAILS
     $USING APAP.TAM
     $USING APAP.AA
+    $USING APAP.REDOENQ
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -123,7 +124,7 @@ PROCESS:
             D.LOGICAL.OPERANDS = Y.OPERANDS
             D.FIELDS           = Y.FIELDS
 *CALL REDO.APAP.OUTSTANDING.LOAN.DETAILS(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
-            CALL APAP.REDOAPAP.redoApapOutstandingLoanDetails(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
+            APAP.REDOAPAP.redoApapOutstandingLoanDetails(Y.FINAL.PASS.IDS,Y.DATE.SEL,Y.CRITERIA.SEL,ENQ.OUT) ;*R22 MANUAL CODE CONVERSION
         END
     END
 RETURN
@@ -212,7 +213,8 @@ AA.ARRANGEMENT.FORM:
 
     IF D.FIELDS NE '' THEN
         FILE.NAME = FN.AA.ARRANGEMENT
-        CALL REDO.E.FORM.SEL.STMT(FILE.NAME, '', '', SEL.AA.ARR.CMD)
+*        CALL REDO.E.FORM.SEL.STMT(FILE.NAME, '', '', SEL.AA.ARR.CMD)
+        APAP.REDOENQ.redoEFormSelStmt(FILE.NAME, '', '', SEL.AA.ARR.CMD) ;*R22 Manual Code Conversion
         CALL EB.READLIST(SEL.AA.ARR.CMD,AA.ARR.ID.LST,'',NO.OF.REC.ARR,SEL.ERR)
     END
 

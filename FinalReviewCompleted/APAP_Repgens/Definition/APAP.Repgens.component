@@ -1472,3 +1472,16 @@ public method rgpLcDrawings (
 }
 
 
+public method rgpAvBqsTerme (
+)
+{
+    jBC: RGP.AV.BQS.TERME
+}
+
+
+
+public method rgpAccountList (
+)
+{
+    jBC: RGP.ACCOUNT.LIST
+}

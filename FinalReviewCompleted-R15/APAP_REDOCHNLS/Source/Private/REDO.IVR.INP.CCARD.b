@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMjgyOTI5ODpDcDEyNTI6MTY4MTM4MDg2NDUzMjpJVFNTOi0xOi0xOi0xNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Apr 2023 15:44:24
+* @ValidationCode : MjotMjExODA0NjUzOkNwMTI1MjoxNjkxNzQ2OTk1MTE3OklUU1M6LTE6LTE6LTE0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Aug 2023 15:13:15
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,9 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+*-----------------------------------------------------------------------------
+* <Rating>-20</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.IVR.INP.CCARD
 **
 * Subroutine Type : VERSION
@@ -26,9 +29,8 @@ SUBROUTINE REDO.IVR.INP.CCARD
 *            Project: NCD Asociacion Popular de Ahorros y Prestamos (APAP)
 *            Roberto Mondragon - TAM Latin America
 *            rmondragon@temenos.com
-*
-* 11-APR-2023     Conversion tool    R22 Auto conversion       No changes
-* 11-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+*DATE          WHO                 REFERENCE               DESCRIPTION
+*10-08-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *------------------------------------------------------------------------------
 
     $INSERT I_COMMON

@@ -17,7 +17,6 @@ public method redoApapNofCashWindowDepOthInc (
 }
 
 
-
 public method apapHGarnishDetailsValidate (
 )
 {
@@ -580,14 +579,11 @@ public method redoApapHReprintSeqFields (
     jBC: REDO.APAP.H.REPRINT.SEQ.FIELDS
 }
 
-
-
 public method redoApapIncrDecrAtmPosAmtUpd (
 )
 {
     jBC: REDO.APAP.INCR.DECR.ATM.POS.AMT.UPD
 }
-
 
 
 public method redoApapInpCphModify (
@@ -596,15 +592,11 @@ public method redoApapInpCphModify (
     jBC: REDO.APAP.INP.CPH.MODIFY
 }
 
-
-
 public method redoApapInpCphOpen (
 )
 {
     jBC: REDO.APAP.INP.CPH.OPEN
 }
-
-
 
 public method redoApapInpExtRepay (
 )
@@ -612,15 +604,11 @@ public method redoApapInpExtRepay (
     jBC: REDO.APAP.INP.EXT.REPAY
 }
 
-
-
 public method redoApapInsuranceEnrichment (
 )
 {
     jBC: REDO.APAP.INSURANCE.ENRICHMENT
 }
-
-
 
 public method redoApapInsuranceGenerate (
 )
@@ -2948,28 +2936,9 @@ public method redoApapSapGlDetailRepPost (
 
 
 
-public method redoApapSapGlExtRepSel (
-    INOUT gitSelBuild string,
-    INOUT gitPgmRecordList string,
-    INOUT newIdCompany string,
-    INOUT gitFuture1 string,
-    INOUT gitFuture2 string,
-    INOUT gitFuture3 string,
-    INOUT gitErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.EXT.REP.SEL
-}
 
 
 
-public method redoApapSapGlNormalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.NORMAL.EXT
-}
 
 
 
@@ -2980,18 +2949,6 @@ public method redoApapSapGlNrHdrExpLog (
 {
     jBC: REDO.APAP.SAP.GL.NR.HDR.EXP.LOG
 }
-
-
-
-public method redoApapSapGlRevalExt (
-    INOUT gitMapValue string,
-    INOUT convErr string
-)
-{
-    jBC: REDO.APAP.SAP.GL.REVAL.EXT
-}
-
-
 
 public method redoApapSelCr (
 )
@@ -4204,7 +4161,7 @@ public method redoApapOutstandingLoanDetails (
 public method redoApapVAutMmCusProvUpd (
 )
 {
-   jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
+    jBC: REDO.APAP.V.AUT.MM.CUS.PROV.UPD
 }
 
 public method redoApplAudit (
@@ -4212,3 +4169,220 @@ public method redoApplAudit (
 {
     jBC: REDO.APPL.AUDIT
 }
+
+public method redoApapAchMirrorAcctEnt (
+    INOUT primaryAccount string,
+    INOUT yTotalAmount string,
+    INOUT varCurrency string,
+    INOUT tfsReferenceId string
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.ACCT.ENT
+}
+
+public method redoApapAchMirrorRetAcctEnt (
+    INOUT amountVal string,
+    INOUT varCurrency string,
+    INOUT redoOutwardReturnId string
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.RET.ACCT.ENT
+}
+
+public method redoApapAchMirrorRevAcctEnt (
+)
+{
+    jBC: REDO.APAP.ACH.MIRROR.REV.ACCT.ENT
+}
+
+public method redoApapAutAdminChq (
+)
+{
+    jBC: REDO.APAP.AUT.ADMIN.CHQ
+}
+
+public method redoApapAutBillPymtUpd (
+)
+{
+    jBC: REDO.APAP.AUT.BILL.PYMT.UPD
+}
+
+public method redoApapAutChqDeposit (
+)
+{
+    jBC: REDO.APAP.AUT.CHQ.DEPOSIT
+}
+
+public method redoApapAutGenDealSlip (
+)
+{
+    jBC: REDO.APAP.AUT.GEN.DEAL.SLIP
+}
+
+public method redoApapAutGenEntries (
+)
+{
+    jBC: REDO.APAP.AUT.GEN.ENTRIES
+}
+
+public method redoApapAutMulTxnUpd (
+)
+{
+    jBC: REDO.APAP.AUT.MUL.TXN.UPD
+}
+
+public method redoApapAutTfsRevTxn (
+)
+{
+    jBC: REDO.APAP.AUT.TFS.REV.TXN
+}
+
+
+public method redoApapBranchClrAcctEnt (
+)
+{
+    jBC: REDO.APAP.BRANCH.CLR.ACCT.ENT
+}
+
+public method redoApapClrAcctEntries (
+)
+{
+    jBC: REDO.APAP.CLR.ACCT.ENTRIES
+}
+
+public method redoApapInfSuffAcctEnt (
+    INOUT amountVal string,
+    INOUT varCurrency string,
+    INOUT redoOutwardReturnId string
+)
+{
+    jBC: REDO.APAP.INF.SUFF.ACCT.ENT
+}
+
+public method redoApapInpAmlTfsCheck (
+)
+{
+    jBC: REDO.APAP.INP.AML.TFS.CHECK
+}
+
+public method redoApapInpBillPayment (
+)
+{
+    jBC: REDO.APAP.INP.BILL.PAYMENT
+}
+
+public method redoApapInpTfsLinesAmt (
+)
+{
+    jBC: REDO.APAP.INP.TFS.LINES.AMT
+}
+
+public method redoApapInpTfsNcfGen (
+)
+{
+    jBC: REDO.APAP.INP.TFS.NCF.GEN
+}
+
+public method redoApapInpTfsTtCheck (
+)
+{
+    jBC: REDO.APAP.INP.TFS.TT.CHECK
+}
+
+
+
+public method redoApapInsuranceVal (
+)
+{
+    jBC: REDO.APAP.INSURANCE.VAL
+}
+
+
+
+public method redoApapNofileArrPayments (
+    INOUT yCommonArray string,
+    INOUT varEffectiveDate string,
+    INOUT yEffDate string,
+    INOUT yFormPay string,
+    INOUT varFormPay string,
+    INOUT yPayType string,
+    INOUT varPay string,
+    INOUT yArray string
+)
+{
+    jBC: REDO.APAP.NOFILE.ARR.PAYMENTS
+}
+
+public method redoApapSapGlDetailRpt (
+    INOUT gitMapValue string,
+    INOUT convErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.RPT
+}
+
+
+public method redoApapSapGlExtDetEnc (
+    INOUT gitOutMsg string,
+    INOUT gitErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.EXT.DET.ENC
+}
+
+public method redoApapSapGlExtHdrExpLog (
+    INOUT gitOutMsg string,
+    INOUT gitErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.EXT.HDR.EXP.LOG
+}
+
+public method redoApapSapGlExtRepRec (
+    INOUT gitIdMapped string,
+    INOUT gitMappedRec string,
+    INOUT gitMisn string,
+    INOUT gitRProcess string,
+    INOUT gitErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.EXT.REP.REC
+}
+
+public method redoApapValAdminChq (
+)
+{
+    jBC: REDO.APAP.VAL.ADMIN.CHQ
+}
+
+public method redoApapValBenList (
+)
+{
+    jBC: REDO.APAP.VAL.BEN.LIST
+}
+
+public method redoApapValCompId (
+)
+{
+    jBC: REDO.APAP.VAL.COMP.ID
+}
+
+public method redoApapValOrgRef (
+)
+{
+    jBC: REDO.APAP.VAL.ORG.REF
+}
+
+public method redoApapValTxnCode (
+)
+{
+    jBC: REDO.APAP.VAL.TXN.CODE
+}
+
+public method redoBCrfNwglSelect (
+)
+{
+    jBC: REDO.B.CRF.NWGL.SELECT
+}
+
+

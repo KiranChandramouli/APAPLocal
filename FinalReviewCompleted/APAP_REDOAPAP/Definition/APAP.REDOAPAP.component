@@ -579,14 +579,11 @@ public method redoApapHReprintSeqFields (
     jBC: REDO.APAP.H.REPRINT.SEQ.FIELDS
 }
 
-
-
 public method redoApapIncrDecrAtmPosAmtUpd (
 )
 {
     jBC: REDO.APAP.INCR.DECR.ATM.POS.AMT.UPD
 }
-
 
 
 public method redoApapInpCphModify (
@@ -595,15 +592,11 @@ public method redoApapInpCphModify (
     jBC: REDO.APAP.INP.CPH.MODIFY
 }
 
-
-
 public method redoApapInpCphOpen (
 )
 {
     jBC: REDO.APAP.INP.CPH.OPEN
 }
-
-
 
 public method redoApapInpExtRepay (
 )
@@ -611,15 +604,11 @@ public method redoApapInpExtRepay (
     jBC: REDO.APAP.INP.EXT.REPAY
 }
 
-
-
 public method redoApapInsuranceEnrichment (
 )
 {
     jBC: REDO.APAP.INSURANCE.ENRICHMENT
 }
-
-
 
 public method redoApapInsuranceGenerate (
 )

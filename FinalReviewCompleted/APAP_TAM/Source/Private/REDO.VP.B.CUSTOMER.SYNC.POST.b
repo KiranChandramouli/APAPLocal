@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNzQzNjc3ODIxOkNwMTI1MjoxNjg0ODQyMTUyNDc1OklUU1M6LTE6LTE6MjY2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:32
+* @ValidationCode : MjotMTEyMjI3MDI2NDpDcDEyNTI6MTY5NTIwNzk3NDkyODpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Sep 2023 16:36:14
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 266
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VP.B.CUSTOMER.SYNC.POST
@@ -47,7 +47,7 @@ SUBROUTINE REDO.VP.B.CUSTOMER.SYNC.POST
 * Date             Who                   Reference      Description
 * 11.04.2023       Conversion Tool       R22            Auto Conversion     - No changes
 * 11.04.2023       Shanmugapriya M       R22            Manual Conversion   - Add call routine prefix
-*
+* 20.09.2023	   VIGNESHWARI           ADDED COMMENT FOR INTERFACE CHANGES- LINES IS ADDED
 *-----------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -90,24 +90,31 @@ PROCESS.PARA:
 *************
 **
 
-    SEL.CMD = "SELECT " :CS.PATH: " LIKE " :'CS':PROCESS.DATE: ".temp..."
+*    SEL.CMD = "SELECT " :CS.PATH: " LIKE " :'CS':PROCESS.DATE: ".temp..."  ;*-Interface Change by Santiago
+    SEL.CMD = "SELECT " :CS.PATH   ;*-Interface Change by Santiago
+
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,RET.CODE)
     IF NOT(SEL.LIST) THEN
         RETURN
     END
-
+    
     SHELL.CMD ='SH -c '
     EXEC.COM="cat "
     OLD.OUT.FILES = 'CS':PROCESS.DATE:'.temp*'
     LOG.FILE.NAME = 'CS':PROCESS.DATE:'.log'
-
-    EXE.CAT = "cat ":CS.PATH:"/":OLD.OUT.FILES:" >> ":CS.PATH:"/":LOG.FILE.NAME
+    
+    LOOP   ;*-Interface Change by Santiago - Start
+        REMOVE Y.FILE FROM SEL.LIST SETTING POS
+    WHILE Y.FILE:POS
+        IF INDEX(Y.FILE,'CS':PROCESS.DATE:'.temp',1) THEN
+            EXE.CAT = "cat ":CS.PATH:"/":Y.FILE:" >> ":CS.PATH:"/":LOG.FILE.NAME
+            DAEMON.CMD = SHELL.CMD:EXE.CAT
+            EXECUTE DAEMON.CMD RETURNING RETURN.VALUE CAPTURING CAPTURE.CAT.VALUE
+        END
+    REPEAT  ;*-Interface Change by Santiago - End
+  
     EXE.RM="rm ":CS.PATH:"/":OLD.OUT.FILES
-
-    DAEMON.CMD = SHELL.CMD:EXE.CAT
     DAEMON.REM.CMD = SHELL.CMD:EXE.RM
-
-    EXECUTE DAEMON.CMD RETURNING RETURN.VALUE CAPTURING CAPTURE.CAT.VALUE
     EXECUTE DAEMON.REM.CMD RETURNING RETURN.VALUE CAPTURING CAPTURE.REM.VALUE
 
     GOSUB WRITE.PARA

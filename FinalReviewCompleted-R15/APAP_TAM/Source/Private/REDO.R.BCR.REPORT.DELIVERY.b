@@ -1,7 +1,7 @@
-* @ValidationCode : MjoyMDk3MzQyMjk2OkNwMTI1MjoxNjgyNTk0Mzk2ODMxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 16:49:56
+* @ValidationCode : MjotNjgxNTkxODg0OkNwMTI1MjoxNjkzMzEzNzUzOTYwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:25:53
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -30,6 +30,7 @@ SUBROUTINE REDO.R.BCR.REPORT.DELIVERY(Y.INT.CODE,Y.INT.TYPE,R.REDO.INTERFACE.PAR
 *
 ** 13-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
 ** 13-04-2023 Skanda R22 Manual Conversion - CALL routine prefix added
+* 24-08-2023 VIGNESHWARI R22 Manual Conversion - PATH IS MODIFIED
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -162,7 +163,9 @@ PROCESS_FTP:
     END
 
 * Take the file and copy on FTP.LISTENER
-    Y.CMD = "COPY FROM ":Y.DIR.PATH:" TO ":Y.FTP.LISTENER.PATH:" ":Y.FILE.NAME
+ *   Y.CMD = "COPY FROM ":Y.DIR.PATH:" TO ":Y.FTP.LISTENER.PATH:" ":Y.FILE.NAME
+    Y.CMD = 'SH -c cp ':Y.DIR.PATH: '/':Y.FILE.NAME:' ':Y.FTP.LISTENER.PATH:'/':Y.FILE.NAME ;*R22 Manual Conversion-PATH IS MODIFIED
+    
     Y.ERR.MSG = ''
     GOSUB EXECUTE.COPY
     IF Y.ERR.MSG NE "" THEN
@@ -187,8 +190,9 @@ PROCESS_FTP:
     END
 
     Y.CMD = ""
-    Y.CMD := "COPY FROM ":Y.DIR.PATH:" TO ":Y.PATH.SUCCESS:" "
-    Y.CMD := Y.FILE.NAME : "," : Y.FILE.SUCESS
+    *Y.CMD := "COPY FROM ":Y.DIR.PATH:" TO ":Y.PATH.SUCCESS:" "
+    *Y.CMD := Y.FILE.NAME : "," : Y.FILE.SUCESS
+    Y.CMD = 'SH -c cp ':Y.DIR.PATH:'/':Y.FILE.NAME:' ':Y.PATH.SUCCESS:'/':Y.FILE.SUCESS ;*R22 Manual Conversion- PATH IS MODIFIED
     Y.ERR.MSG = ''
     GOSUB EXECUTE.COPY
     IF Y.ERR.MSG NE "" THEN
@@ -289,9 +293,11 @@ PROCESS_MAIL:
 
 * Copy the file and moved to PATH.SUCCESS or PATH.FAILURE
     Y.CMD = ""
-    Y.CMD := "COPY FROM ":Y.DIR.PATH:" TO ":Y.PATH.TO.MOVE:" "
+ *   Y.CMD := "COPY FROM ":Y.DIR.PATH:" TO ":Y.PATH.TO.MOVE:" "
 *      Y.FILE.MOVE = CHANGE(Y.FILE.NAME, ".", "_" : TODAY : ".")
-    Y.CMD := Y.FILE.NAME : "," : Y.FILE.SUCESS
+*    Y.CMD := Y.FILE.NAME : "," : Y.FILE.SUCESS
+    
+    Y.CMD = 'SH -c cp ':Y.DIR.PATH: '/':Y.FILE.NAME:' ':Y.PATH.TO.MOVE:'/':Y.FILE.NAME ;*R22 Manual Conversion-PATH IS MODIFIED
 
 *      E = '' ;* don't do this, because we can lost the real problem when the mail was tried to be sent
 

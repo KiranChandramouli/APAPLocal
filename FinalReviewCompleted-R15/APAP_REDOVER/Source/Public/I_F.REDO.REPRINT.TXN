@@ -1,0 +1,20 @@
+* I_F.REDO.REPRINT.TXN Created 20 NOV 12 at 01:32PM by t24bldr9/TEM.VNAVA.01
+*      PREFIX[REP.TXN]
+        EQU REP.TXN.CONTRACT.NO TO 1,   RedoReprintTxn_ContractNo TO 1,
+                   REP.TXN.DATE TO 2,   RedoReprintTxn_Date TO 2,
+        REP.TXN.REASONS.REPRINT TO 3,   RedoReprintTxn_ReasonsReprint TO 3,
+        REP.TXN.HOLD.CONTROL.ID TO 4,   RedoReprintTxn_HoldControlId TO 4,
+             REP.TXN.RESERVED.5 TO 5,   RedoReprintTxn_Reserved5 TO 5,
+             REP.TXN.RESERVED.4 TO 6,   RedoReprintTxn_Reserved4 TO 6,
+             REP.TXN.RESERVED.3 TO 7,   RedoReprintTxn_Reserved3 TO 7,
+             REP.TXN.RESERVED.2 TO 8,   RedoReprintTxn_Reserved2 TO 8,
+             REP.TXN.RESERVED.1 TO 9,   RedoReprintTxn_Reserved1 TO 9,
+          REP.TXN.RECORD.STATUS TO 10,  RedoReprintTxn_RecordStatus TO 10,
+                REP.TXN.CURR.NO TO 11,  RedoReprintTxn_CurrNo TO 11,
+               REP.TXN.INPUTTER TO 12,  RedoReprintTxn_Inputter TO 12,
+              REP.TXN.DATE.TIME TO 13,  RedoReprintTxn_DateTime TO 13,
+             REP.TXN.AUTHORISER TO 14,  RedoReprintTxn_Authoriser TO 14,
+                REP.TXN.CO.CODE TO 15,  RedoReprintTxn_CoCode TO 15,
+              REP.TXN.DEPT.CODE TO 16,  RedoReprintTxn_DeptCode TO 16,
+           REP.TXN.AUDITOR.CODE TO 17,  RedoReprintTxn_AuditorCode TO 17,
+        REP.TXN.AUDIT.DATE.TIME TO 18,  RedoReprintTxn_AuditDateTime TO 18

@@ -16,7 +16,6 @@ public method redoECnvBillType (
 }
 
 
-
 public method redoECnvDsBenfNames (
     INOUT yAccountNo string
 )
@@ -187,12 +186,6 @@ public method redoESelectAzAcc (
 
 
 
-public method redoEnqChg (
-    INOUT rAcct string
-)
-{
-    jBC: REDO.ENQ.CHG
-}
 
 
 
@@ -705,12 +698,6 @@ public method redoENofRequestPrinting (
 
 
 
-public method redoENofTxnPosApap (
-    INOUT yFinalArray string
-)
-{
-    jBC: REDO.E.NOF.TXN.POS.APAP
-}
 
 
 
@@ -1353,12 +1340,6 @@ public method EInsuranceCombParamFields (
 
 
 
-public method EIsoRetIstRej (
-    INOUT YIdList string
-)
-{
-    jBC:E.ISO.RET.IST.REJ
-}
 
 
 
@@ -1367,15 +1348,6 @@ public method ENofileBatAllChqs (
 )
 {
     jBC:E.NOFILE.BAT.ALL.CHQS
-}
-
-
-
-public method ERedoBuildAtmList (
-    INOUT EnqData string
-)
-{
-    jBC:E.REDO.BUILD.ATM.LIST
 }
 
 
@@ -5460,3 +5432,64 @@ public method redoEGetStmtPeriod (
 {
     jBC: REDO.E.GET.STMT.PERIOD
 }
+
+
+public method redoECheckUser (
+    INOUT enqData string
+)
+{
+    jBC: REDO.E.CHECK.USER
+}
+
+
+
+public method redoENofClicuent (
+    INOUT cuDetArr string
+)
+{
+    jBC: REDO.E.NOF.CLICUENT
+}
+
+
+
+public method redoNofGetRetChqTrans (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.NOF.GET.RET.CHQ.TRANS
+}
+
+
+
+public method nofileApapDetailLoansPayments (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.APAP.DETAIL.LOANS.PAYMENTS
+}
+
+
+public method redoENofRteRevRtn (
+   INOUT txnRevArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.REV.RTN
+}
+
+
+public method redoENofRteRtn (
+   INOUT txnArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.RTN
+}
+
+
+
+public method nofileRedoEnqAthAcquirer (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.REDO.ENQ.ATH.ACQUIRER
+}
+

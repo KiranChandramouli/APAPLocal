@@ -1,7 +1,7 @@
-* @ValidationCode : MjotMTk0NjM2MTQ3OTpDcDEyNTI6MTY4NjY3NzA5NzM5MTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:54:57
+* @ValidationCode : Mjo3NTE0MzkyMTc6Q3AxMjUyOjE2OTE5OTYwMjg0MjA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 14 Aug 2023 12:23:48
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -41,8 +41,9 @@ SUBROUTINE REDO.VP.B.REG.DD.TXN
     $INSERT I_F.REDO.VISION.PLUS.PARAM
     $INSERT I_F.REDO.VISION.PLUS.DD
 
-    $INSERT I_RAPID.APP.DEV.COMMON
-    $INSERT I_RAPID.APP.DEV.EQUATE
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual Code Conersion
+*   $INSERT I_RAPID.APP.DEV.EQUATE ;*R22 Manual Code Conersion
+
     $USING APAP.REDOSRTN
 *    DEFFUN REDO.S.GET.USR.ERR.MSG() ;*R22 Manual Code Conersion
 

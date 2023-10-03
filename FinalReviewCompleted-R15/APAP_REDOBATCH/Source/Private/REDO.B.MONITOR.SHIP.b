@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTgzNzcxODA5OkNwMTI1MjoxNjg0ODU0MzkzMDczOklUU1M6LTE6LTE6MzU4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:33
+* @ValidationCode : MjotOTgyNTMzOTI4OkNwMTI1MjoxNjkwMjY0NDE1OTIxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:35
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 358
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.MONITOR.SHIP(MSG.ID)
@@ -18,7 +18,7 @@ SUBROUTINE REDO.B.MONITOR.SHIP(MSG.ID)
 *
 * 03/09/10 - Created by Victor Nava
 * 07/09/10 - Cesar Yepez. CALLJ to java program
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - = TO EQ
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *
@@ -27,6 +27,7 @@ SUBROUTINE REDO.B.MONITOR.SHIP(MSG.ID)
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.B.MONITOR.SHIP.COMMON
+    $USING APAP.REDOCHNLS
 *
 *----------------------------------------------------------------------------------------
 *
@@ -157,8 +158,8 @@ LOG.ERROR:
             MON.TP = '01'
     END CASE
 
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
-
+*    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC) ;*R22 Manual Code Conversion
 RETURN
 
 *--------------------------------------------------------------------------

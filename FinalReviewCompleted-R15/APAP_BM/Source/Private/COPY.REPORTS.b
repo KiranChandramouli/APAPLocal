@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo3MzI2NDY1ODk6Q3AxMjUyOjE2ODQ4NTc0MTEyMTU6SVRTUzotMTotMTo0OTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 21:26:51
+* @ValidationCode : MjotMTUzODY0MDA4NTpDcDEyNTI6MTY5MzMxNTEzMTE3MjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:48:51
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 497
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -16,7 +16,7 @@ PROGRAM COPY.REPORTS
 *---------------------------------------------------------------------------------------
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *21-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   INSERT FILE MODIFIED, DCOUNT CAN BE MODIFIED
-*21-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*21-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION PATH IS MODIFIED
 *----------------------------------------------------------------------------------------
 * Realializado por Elvis, Lo siguiente obtendra la fecha al dia.
     
@@ -37,10 +37,11 @@ PROGRAM COPY.REPORTS
         CNT = DCOUNT(REC.LIST,@FM);*R22 AUTO CODE CONVERSION
         FOR REC.IDX = 1 TO CNT
             PRINT 'Copying ':REC.LIST<REC.IDX>
-            EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs ':REC.LIST<REC.IDX>
+*       EXECUTE 'COPY FROM &HOLD& TO ../bnk.interface/REG.REPORTS/CRBs ':REC.LIST<REC.IDX> ;*R22 Manual Conversion
+            EXECUTE 'SH -c cp &HOLD&/':REC.LIST<REC.IDX>:' ':'../bnk.interface/REG.REPORTS/CRBs/':REC.LIST<REC.IDX>
         NEXT REC.IDX
     END
-
+ 
 RETURN
 
 END

@@ -30,6 +30,7 @@ SUBROUTINE REDO.S.NOTIFY.INTERFACE.ACT(INT.CODE, INT.TYPE, MON.TP, DESC, REC.CON
 *Date                Who               Reference                  Description
 *11-04-2023      conversion tool     R22 Auto code conversion     VM TO @VM, ++ TO +=1,
 *11-04-2023      Mohanraj R          R22 Manual code conversion   Add call routine prefix
+*08-09-2023      Santiago            R22 interface Unit testing changes
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -50,9 +51,11 @@ INIT:
 
     Y.ERROR = ''
 
-    FN.REDO.SEND.EMAIL.LIST = 'F.REDO.SEND.EMAIL.LIST'
-    F.REDO.SEND.EMAIL.LIST = ''
-    CALL OPF(FN.REDO.SEND.EMAIL.LIST, F.REDO.SEND.EMAIL.LIST)
+*SJ start (this table dont exists even in R15) - *R22 interface Unit testing changes
+*    FN.REDO.SEND.EMAIL.LIST = 'F.REDO.SEND.EMAIL.LIST'
+*    F.REDO.SEND.EMAIL.LIST = ''
+*    CALL OPF(FN.REDO.SEND.EMAIL.LIST, F.REDO.SEND.EMAIL.LIST)
+*SJ end - *R22 interface Unit testing changes
 
     T.DIR = '/tmp'
     OPENSEQ T.DIR,INT.CODE TO FILE

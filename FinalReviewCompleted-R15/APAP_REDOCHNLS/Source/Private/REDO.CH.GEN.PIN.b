@@ -37,6 +37,7 @@ SUBROUTINE REDO.CH.GEN.PIN
 *
 * 10-APR-2023      Conversion tool    R22 Auto conversion       No changes
 * 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 24-08-2023        Samaran T        Manual code conversion    Encrypt method is changed
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -46,15 +47,21 @@ SUBROUTINE REDO.CH.GEN.PIN
     $INSERT I_F.EB.EXTERNAL.USER
     $INSERT I_F.REDO.CH.PINADM
     $INSERT I_REDO.CH.GENNEWUSR.COMMON
+    $INSERT JBC.h
 
     FN.REDO.CH.PINADM = 'F.REDO.CH.PINADM'
     FV.REDO.CH.PINADM = ''
     CALL OPF(FN.REDO.CH.PINADM,FV.REDO.CH.PINADM)
 
 *PIN Encription.
-    KEYUSED = "7"
+*KEYUSED = "7"
 *    PINSTORE = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_3DES)
-    PINSTORE = ENCRYPT(PIN,KEYUSED,2)
+*PINSTORE = ENCRYPT(PIN,KEYUSED,2)
+*NEW = START
+    KEYUSED="12345678"   ;*R22 MANUAL CODE CONVERSION
+    PINSTORE = ENCRYPT(PIN,KEYUSED,JBASE_CRYPT_DES_BASE64)  ;*R22 MANUAL CODE CONVERSION
+*NEW = END
+    
     STARTTIME = FIELD(TIMEDATE()," ",0)
 
 *PIN record creation for REDO.CH.PINADM application as an OFS message.

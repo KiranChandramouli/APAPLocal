@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTU0OTA1NzM2MzpDcDEyNTI6MTY4MzA4MTcwMTY2MjpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 May 2023 08:11:41
+* @ValidationCode : MjoxNjQ2NDc4MjQ5OkNwMTI1MjoxNjkxOTk3MzEzNDE0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 14 Aug 2023 12:45:13
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *-----------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ SUBROUTINE REDO.MON.INQUIRE.DB(P.VALIDATE.PROCESS,P.CONV.FUNCTION,P.CONV.PARAM)
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
-    $INSERT I_RAPID.APP.DEV.COMMON
+*   $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual Code Conersion
     $INSERT I_F.STANDARD.SELECTION
 
  

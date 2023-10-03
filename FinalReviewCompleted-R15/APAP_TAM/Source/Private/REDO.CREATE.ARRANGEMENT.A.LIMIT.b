@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTM2NDU1NDYwODpDcDEyNTI6MTY4NDg0MjA5MjcyMjpJVFNTOi0xOi0xOjEzMzk6MTpmYWxzZTpOL0E6UjIyX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 17:11:32
+* @ValidationCode : MjoxNjI4NzcxNjQ1OkNwMTI1MjoxNjkxOTk1OTU2MDM5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 14 Aug 2023 12:22:36
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1339
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
@@ -43,9 +43,10 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
     $INSERT I_F.AA.ACCOUNT
     $INSERT I_F.LIMIT
 
-    $INSERT I_RAPID.APP.DEV.COMMON
+*  $INSERT I_RAPID.APP.DEV.COMMON ;*R22 Manual Code Conersion
 
     $INSERT I_F.REDO.CREATE.ARRANGEMENT
+    $USING APAP.AA
 
 * </region>
 
@@ -237,7 +238,8 @@ GET.LIMIT.PRODUCT:
     END
 
 * Get Limit Product
-    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
+*    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
+    APAP.AA.redoCreateAaRGetLimitProduct("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT) ;*R22 Manual Code Conversion
 
 * After restoring, check if LIMIT.GET.PRODUCT found an error
     IF E NE '' THEN

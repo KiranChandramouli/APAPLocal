@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTQyMDE4ODgwNzpDcDEyNTI6MTY4NDgzNjAzNDEzNTpJVFNTOi0xOi0xOjM3MDoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:34
+* @ValidationCode : MjoxNzgwNzM0OTYxOkNwMTI1MjoxNjkwMjY0MjU4MTA1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:20:58
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 370
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.B.UPD.OUTS.PRINC(MG.ACC.NO)
@@ -44,6 +44,7 @@ SUBROUTINE REDO.APAP.B.UPD.OUTS.PRINC(MG.ACC.NO)
     $INSERT I_REDO.APAP.B.UPD.OUTS.PRINC.COMMON
     $INSERT I_F.REDO.APAP.MORTGAGES.DETAIL
     $INSERT I_F.REDO.APAP.CPH.DETAIL
+    $USING APAP.TAM
 
     GOSUB PROCESS
 RETURN
@@ -86,7 +87,8 @@ GET.CONDITIONS:
     PROPERTY = ''
     R.CONDITION = ''
     ERR.MSG = ''
-    CALL REDO.CRR.GET.CONDITIONS(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG)
+*   CALL REDO.CRR.GET.CONDITIONS(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG)
+    APAP.TAM.redoCrrGetConditions(AA.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.REC,ERR.MSG) ;*R22 Manual Code Conversion
     OVERDUE.CONDITION=R.REC
 
 RETURN

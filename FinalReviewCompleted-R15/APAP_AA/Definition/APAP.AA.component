@@ -184,7 +184,7 @@ public method redoFcClPaymentAa (
 public method redoFcEnqAaProduct (
     INOUT enqData string
 )
-{
+{ 
     jBC: REDO.FC.ENQ.AA.PRODUCT
 }
 
@@ -1517,16 +1517,6 @@ public method redoGetAaaIdPdis (
     jBC: REDO.GET.AAA.ID.PDIS
 }
 
-
-
-public method redoGetArrangementStatus (
-    INOUT arrangementId string
-)
-{
-    jBC: REDO.GET.ARRANGEMENT.STATUS
-}
-
-
 public method redoGetTotalInterest (
     INOUT arrId string,
     INOUT property string,
@@ -2266,17 +2256,6 @@ public method redoBCreArrAaOfsSelect (
     jBC: REDO.B.CRE.ARR.AA.OFS.SELECT
 }
 
-
-
-public method redoBIntUpdate (
-    INOUT arrId string
-)
-{
-    jBC: REDO.B.INT.UPDATE
-}
-
-
-
 public method redoBLocUpdBalMain (
     INOUT arrId string
 )
@@ -2983,5 +2962,38 @@ public method redoSFcDefPartDisb (
     jBC: REDO.S.FC.DEF.PART.DISB
 }
 
+
+public method redoVInpVerifyStaff (
+)
+{
+    jBC: REDO.V.INP.VERIFY.STAFF
+}
+
+
+
+public method redoNvAaAmlCheck (
+)
+{
+    jBC: REDO.NV.AA.AML.CHECK
+}
+
+public method redoAaUpdateOverdueStatus (
+    INOUT yId string
+)
+{
+    jBC: REDO.AA.UPDATE.OVERDUE.STATUS
+}
+
+public method redoFcClRegisterAa (
+)
+{
+    jBC: REDO.FC.CL.REGISTER.AA
+}
+
+public method redoFcSRevAa (
+)
+{
+    jBC: REDO.FC.S.REV.AA
+}
 
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTg5NzI1MjUyNjpDcDEyNTI6MTY4NDg1NDQwMjk2MzpJVFNTOi0xOi0xOjI2MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:42
+* @ValidationCode : Mjo0MjI3MDYwMjc6Q3AxMjUyOjE2OTAyNjQ0NzMxNzY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:33
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 261
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.YER.END.FX.SALE.PRE(Y.FX.ID)
@@ -44,7 +44,7 @@ SUBROUTINE REDO.B.YER.END.FX.SALE.PRE(Y.FX.ID)
 *(RTC/TUT/PACS)                                        (YYYY-MM-DD)
 *----------------------------------------------------------------------------------------------------------
 *XXXX                   <<name of modifier>>                                 <<modification details goes he
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 17-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION --1 TO -= 1
 * 17-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *----------------------------------------------------------------------------------------------------------
@@ -53,6 +53,7 @@ SUBROUTINE REDO.B.YER.END.FX.SALE.PRE(Y.FX.ID)
     $INSERT I_REDO.B.YER.END.FX.SALE.PRE.COMMON
     $INSERT I_F.FOREX
     $INSERT I_F.DATES
+    $USING APAP.REDOCHNLS
     GOSUB INIT
     GOSUB PROCESS
 RETURN
@@ -132,6 +133,7 @@ RAISE.ERR.C.22:
     ID.PROC   = ''
     EX.USER   = ''
     EX.PC     = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
 RETURN
 END

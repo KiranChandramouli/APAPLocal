@@ -2202,6 +2202,22 @@ public method redoInFmtAmount (
 
 
 
+public method redoIncrDecrAtmPosAmt (
+)
+{
+    jBC: REDO.INCR.DECR.ATM.POS.AMT
+}
+
+
+
+public method redoIncrDecrAtmPosAmtFields (
+)
+{
+    jBC: REDO.INCR.DECR.ATM.POS.AMT.FIELDS
+}
+
+
+
 public method redoIndivExecutiveEmp (
     INOUT aaArray string
 )
@@ -6287,6 +6303,14 @@ public method redoTtAccountSelect (
 
 
 
+public method redoTtAtmTilltfr (
+    INOUT VDrDenominatio string
+)
+{
+    jBC:REDO.TT.ATM.TILLTFR
+}
+
+
 
 public method redoTtAutoDefault (
 )
@@ -6506,6 +6530,14 @@ public method redoTtTillme (
 }
 
 
+
+public method redoTtTilltfrAtm (
+    INOUT VDrDenominatio string
+)
+{
+    jBC:REDO.TT.TILLTFR.ATM
+}
+
 public method redoTtTilltotill (
     INOUT vDrDenominatio string
 )
@@ -6532,6 +6564,14 @@ public method redoTtiFmtDate (
 )
 {
     jBC: REDO.TTI.FMT.DATE
+}
+
+public method redoTxnAuthCode (
+    INOUT yCardNumIn string,
+    INOUT retVal string
+)
+{
+    jBC: REDO.TXN.AUTH.CODE
 }
 
 
@@ -14503,6 +14543,12 @@ public method redoClaimStatusMapValidate (
 
 
 
+public method redoViAcLockDays (
+)
+{
+    jBC: REDO.VI.AC.LOCK.DAYS
+}
+
 
 
 
@@ -14628,8 +14674,6 @@ public method redoCallDepTfsReArr (
 {
     jBC: REDO.CALL.DEP.TFS.RE.ARR
 }
-
-
 
 
 
@@ -15226,4 +15270,76 @@ public method redoBIntUpdate (
     jBC: REDO.B.INT.UPDATE
 }
 
+public method redoValTransCode (
+)
+{
+    jBC: REDO.VAL.TRANS.CODE
+}
+
+public method redoValAccNoExt (
+)
+{
+    jBC: REDO.VAL.ACC.NO.EXT
+}
+
+public method redoValAccNo (
+)
+{
+    jBC: REDO.VAL.ACC.NO
+}
+
+public method redoValAccBusId (
+)
+{
+    jBC: REDO.VAL.ACC.BUS.ID
+}
+
+public method redoValAccSel (
+)
+{
+    jBC: REDO.VAL.ACC.SEL
+}
+
+public method redoValMerCity (
+)
+{
+    jBC: REDO.VAL.MER.CITY
+}
+
+public method redoValMerCntryCode (
+)
+{
+    jBC: REDO.VAL.MER.CNTRY.CODE
+}
+
+public method redoValMerName (
+)
+{
+    jBC: REDO.VAL.MER.NAME
+}
+
+
+
+
+public method redoBTaxpayerServicesPost (
+)
+{
+   jBC: REDO.B.TAXPAYER.SERVICES.POST
+}
+
+
+
+public method redoVInpAmlFtChk (
+)
+{
+   jBC: REDO.V.INP.AML.FT.CHK
+}
+
+
+
+public method redoVAutActivateAcc (
+)
+{
+   jBC: REDO.V.AUT.ACTIVATE.ACC
+}
 

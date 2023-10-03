@@ -15,7 +15,6 @@ public method redoSAccountParam (
 }
 
 
-
 public method redoSAmtCredit (
     INOUT yAmtCredit string
 )
@@ -107,14 +106,6 @@ public method redoSCalcFtAmt (
 {
     jBC: REDO.S.CALC.FT.AMT
 }
-
-
-public method redoSCheckLimit (
-)
-{
-    jBC: REDO.S.CHECK.LIMIT
-}
-
 
 
 public method redoSColATsaRecord (
@@ -1119,16 +1110,6 @@ public method redoSPartPymtAut1 (
     jBC: REDO.S.PART.PYMT.AUT1
 }
 
-
-
-public method redoSPaymentRule (
-)
-{
-    jBC: REDO.S.PAYMENT.RULE
-}
-
-
-
 public method redoSRejectDesc (
     INOUT desc string
 )
@@ -1147,16 +1128,6 @@ public method redoSRepCustomerExtract (
 {
     jBC: REDO.S.REP.CUSTOMER.EXTRACT
 }
-
-
-
-public method redoSTermAmount (
-)
-{
-    jBC: REDO.S.TERM.AMOUNT
-}
-
-
 
 public method redoSUpdCusActanac (
     INOUT yCusId string
@@ -1212,14 +1183,6 @@ public method redoSVpInitProcessDate (
 )
 {
     jBC: REDO.S.VP.INIT.PROCESS.DATE
-}
-
-
-
-public method redoSWorkLimit (
-)
-{
-    jBC: REDO.S.WORK.LIMIT
 }
 
 public method redoSColGetPayFreq (
@@ -1313,9 +1276,124 @@ public method redoSByMthIncAvgBal (
 
 
 public method redoSGetUsrErrMsg (
-   INOUT pErrCode string,
-   INOUT pUsrMsg string
+    INOUT pErrCode string,
+    INOUT pUsrMsg string
 )
 {
-   jBC: REDO.S.GET.USR.ERR.MSG
+    jBC: REDO.S.GET.USR.ERR.MSG
 }
+
+
+public method redoSCalcDisbDateAmt (
+    INOUT inRecVal string,
+    INOUT outRecVal string
+)
+{
+    jBC: REDO.S.CALC.DISB.DATE.AMT
+}
+
+
+
+public method redoSCheckAmount (
+    INOUT chqAmt string
+)
+{
+    jBC: REDO.S.CHECK.AMOUNT
+}
+
+
+
+public method redoSCustomerName1 (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NAME1
+}
+
+
+
+public method redoSCustomerName1Nv (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.CUSTOMER.NAME1.NV
+}
+
+
+
+public method redoSFcLimiteGfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GFUNCEMP
+}
+
+
+
+public method redoSFcLimiteGrgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRGAR
+}
+
+
+
+public method redoSFcLimiteGrsgar (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.GRSGAR
+}
+
+
+
+public method redoSFcLimiteIfuncemp (
+    INOUT custId string,
+    INOUT custOut string
+)
+{
+    jBC: REDO.S.FC.LIMITE.IFUNCEMP
+}
+
+
+
+public method redoSGetAzAccRef (
+    INOUT customerName string
+)
+{
+    jBC: REDO.S.GET.AZ.ACC.REF
+}
+
+
+
+public method redoSGetCashAmount (
+    INOUT cashAmt string
+)
+{
+    jBC: REDO.S.GET.CASH.AMOUNT
+}
+
+
+
+public method redoSGetTfsTotAmt (
+    INOUT yTotalAmt string
+)
+{
+    jBC: REDO.S.GET.TFS.TOT.AMT
+}
+
+public method redoSRecAcctList (
+    INOUT yAcctId string,
+    INOUT yFinArray string
+)
+{
+    jBC: REDO.S.REC.ACCT.LIST
+}
+
+
+
+

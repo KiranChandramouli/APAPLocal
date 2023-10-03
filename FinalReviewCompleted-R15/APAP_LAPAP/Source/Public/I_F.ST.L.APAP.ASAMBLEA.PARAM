@@ -1,0 +1,9 @@
+* File Layout for ST.L.APAP.ASAMBLEA.PARAM Created 11 FEB 19 at 04:03PM by t24dmpro
+*      PREFIX[ST.L.A95.]   
+EQU ST.L.A95.CODIGO.PARAMETRO TO 1,                ST.L.A95.VALOR TO 2, 
+         ST.L.A95.DESCRIPCION TO 3,             ST.L.A95.OVERRIDE TO 4, 
+       ST.L.A95.RECORD.STATUS TO 5,              ST.L.A95.CURR.NO TO 6, 
+            ST.L.A95.INPUTTER TO 7,            ST.L.A95.DATE.TIME TO 8, 
+          ST.L.A95.AUTHORISER TO 9,             ST.L.A95.CO.CODE TO 10, 
+          ST.L.A95.DEPT.CODE TO 11,        ST.L.A95.AUDITOR.CODE TO 12, 
+    ST.L.A95.AUDIT.DATE.TIME TO 13

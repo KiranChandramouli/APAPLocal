@@ -1,12 +1,23 @@
+<<<<<<< HEAD
 * @ValidationCode : MjoxOTQ2NTk4MjEzOkNwMTI1MjoxNjgwNjk1Nzg0NzA2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
 * @ValidationInfo : Timestamp         : 05 Apr 2023 17:26:24
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
+=======
+* @ValidationCode : MjoxOTQ2NTk4MjEzOkNwMTI1MjoxNjkzOTkyNzU0OTAwOnZpY3RvOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 06 Sep 2023 15:02:34
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : victo
+>>>>>>> 4828de48766c734a2c5d1e0a0cbec9c2469445fe
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
+<<<<<<< HEAD
 * @ValidationInfo : Strict flag       : N/A
+=======
+* @ValidationInfo : Strict flag       : true
+>>>>>>> 4828de48766c734a2c5d1e0a0cbec9c2469445fe
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.

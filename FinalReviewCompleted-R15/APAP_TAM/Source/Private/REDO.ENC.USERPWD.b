@@ -30,7 +30,7 @@ SUBROUTINE REDO.ENC.USERPWD
 * Modification History:
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *06/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
-*06/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*06/04/2023         SURESH           MANUAL R22 CODE CONVERSION           R22 interface Unit testing changes
 
 *--------------------------------------------------------------------
 *--------------------------------------------------------------------
@@ -48,7 +48,7 @@ RETURN
 INITIALIZE:
 * Description : Encryption key value is assigned here
 *-------------------------------------------------
-    KEY1="123456"
+    KEY1="12345678" ;*R22 interface Unit testing changes
 RETURN
 *-------------------------------------------------------------------------
 ENCRYPT.AND.UPDATE:

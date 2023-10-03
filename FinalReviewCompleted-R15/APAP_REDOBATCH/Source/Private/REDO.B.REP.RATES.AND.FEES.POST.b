@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTI0NzE4NDkzMzpDcDEyNTI6MTY4NDg1NDM5NTcyMTpJVFNTOi0xOi0xOjM1MjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:35
+* @ValidationCode : MjoxMzEwMjg2NjM3OkNwMTI1MjoxNjkwMjY0NDMzNjA2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:53
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 352
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.REP.RATES.AND.FEES.POST
@@ -45,8 +45,8 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES.POST
 *(RTC/TUT/PACS)                                        (YYYY-MM-DD)
 *-----------------------------------------------------------------------------------------------------------------
 *XXXX                   <<name of modifier>>                                 <<modification details goes here>>
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM 
+* Date                   who                   Reference
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------------------------------------------
 * Include files
@@ -57,6 +57,7 @@ SUBROUTINE REDO.B.REP.RATES.AND.FEES.POST
     $INSERT I_BATCH.FILES
     $INSERT I_F.REDO.H.REPORTS.PARAM
     $INSERT I_REDO.B.REP.RATES.AND.FEES.COMMON
+    $USING APAP.REDOCHNLS
 *
     GOSUB INITIALIZE
     GOSUB PROCESS
@@ -151,7 +152,8 @@ RAISE.ERR.C.22:
     ID.PROC  = ''
     EX.USER  = ''
     EX.PC    = ''
-    CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+*   CALL REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion
 *
 RETURN
 *-----------------------------------------------------------------------------------------------------------------

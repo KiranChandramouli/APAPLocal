@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMDg5NTQ1OTM2OkNwMTI1MjoxNjg0ODU0NDAwMzAyOklUU1M6LTE6LTE6MTk5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:40
+* @ValidationCode : MjotMjE3NTk4NjEyOkNwMTI1MjoxNjkwMjY0NDYwMTg2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:20
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 199
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.UPD.LAST.PRICE(Y.SM.ID)
@@ -29,8 +29,8 @@ SUBROUTINE REDO.B.UPD.LAST.PRICE(Y.SM.ID)
 *-----------------------
 *
 * 18.11.2010      Krishna Murthy T.S     SC006         INITIAL CREATION
-* Date                   who                   Reference              
-* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM 
+* Date                   who                   Reference
+* 13-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM
 * 13-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 *
 *-------------------------------------------------------------------------------------------------
@@ -40,6 +40,7 @@ SUBROUTINE REDO.B.UPD.LAST.PRICE(Y.SM.ID)
     $INSERT I_F.PRICE.TYPE
     $INSERT I_F.DATES
     $INSERT I_REDO.B.UPD.LAST.PRICE.COMMON
+    $USING APAP.TAM
 
     Y.REDEM = 100
     Y.TODAY = R.DATES(EB.DAT.NEXT.WORKING.DAY)
@@ -62,9 +63,11 @@ SUBROUTINE REDO.B.UPD.LAST.PRICE(Y.SM.ID)
 
         BEGIN CASE
             CASE Y.CALC.METHOD EQ 'PRICE'
-                CALL REDO.SC.CALCULATE.PRICE(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,RESERVED.1)
+*              CALL REDO.SC.CALCULATE.PRICE(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,RESERVED.1)
+                APAP.TAM.redoScCalculatePrice(Y.TODAY,Y.MAT.DATE,Y.INT.RATE,Y.YLD,Y.REDEM,Y.FREQ,Y.INT.BASIS,Y.PRICE,Y.ROUNDING,Y.ACCR.ST.DATE,RESERVED.1) ;*R22 Manual Code Conversion
             CASE Y.CALC.METHOD EQ 'DPRICE'
-                CALL REDO.SC.CALCULATE.DPRICE(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1)
+*              CALL REDO.SC.CALCULATE.DPRICE(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1)
+                APAP.TAM.redoScCalculateDprice(Y.TODAY,Y.MAT.DATE,Y.YLD,Y.INT.BASIS,Y.PRICE,RESERVED.2,RESERVED.1) ;*R22 Manual Code Conversion
         END CASE
 
 *Posting OFS message to update the LAST.PRICE in SECURITY.MASTER table

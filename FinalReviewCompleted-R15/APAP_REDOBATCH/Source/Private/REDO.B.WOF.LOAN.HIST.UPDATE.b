@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjMzNzA4ODEyOkNwMTI1MjoxNjg0ODU0NDAyODI2OklUU1M6LTE6LTE6OTE2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:42
+* @ValidationCode : MjotMTY4NDk4ODU2NjpDcDEyNTI6MTY5MDI2NDQ3MTQ3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:31
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 916
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.WOF.LOAN.HIST.UPDATE(ARR.ID)
@@ -28,8 +28,8 @@ SUBROUTINE REDO.B.WOF.LOAN.HIST.UPDATE(ARR.ID)
 *-----------------------
 * Reference              Date                Description
 * ODR-2011-12-0017   21-Nov-2011          Initial draft
-* Date                   who                   Reference              
-* 17-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -= 
+* Date                   who                   Reference
+* 17-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND SM TO @SM AND ++ TO += 1 AND VAR1- TO -=
 * 17-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 * ----------------------------------------------------------------
     $INSERT I_COMMON
@@ -43,6 +43,7 @@ SUBROUTINE REDO.B.WOF.LOAN.HIST.UPDATE(ARR.ID)
     $INSERT I_F.AA.OVERDUE
     $INSERT I_F.REDO.AA.NAB.HISTORY
     $INSERT I_F.AA.SCHEDULED.ACTIVITY
+    $USING APAP.TAM
 
 MAIN:
 
@@ -169,7 +170,8 @@ GET.OUTS.PRIN:
 
     Y.ACCOUNT.PROPERTY = ''
     OUT.ERR = ''
-    CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+*   CALL REDO.GET.PROPERTY.NAME(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR)
+    APAP.TAM.redoGetPropertyName(ARR.ID,'ACCOUNT',R.OUT.AA.RECORD,Y.ACCOUNT.PROPERTY,OUT.ERR) ;*R22 Manual Code Conversion
 
     BALANCE.TYPE = Y.OVERDUE.STATUS:@FM:'DUE':@FM:'CUR'
     Y.BAL.PROPERTY = Y.ACCOUNT.PROPERTY
@@ -195,7 +197,8 @@ GET.OVERDUE.STATUS:
     PROPERTY = ''
     R.CONDITION.OVERDUE = ''
     ERR.MSG = ''
-    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+*    CALL REDO.CRR.GET.CONDITIONS(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG)
+    APAP.TAM.redoCrrGetConditions(ARR.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.CONDITION.OVERDUE,ERR.MSG) ;*R22 Manual Code Conversion
     Y.BILL.TYPE = R.CONDITION.OVERDUE<AA.OD.BILL.TYPE>
     LOCATE 'PAYMENT' IN Y.BILL.TYPE<1,1> SETTING YPOSN THEN
         Y.OVERDUE.STATUS = R.CONDITION.OVERDUE<AA.OD.OVERDUE.STATUS,YPOSN>
