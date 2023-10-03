@@ -1,0 +1,288 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method atmReversalFields (
+)
+{
+    jBC: ATM.REVERSAL.FIELDS
+}
+
+
+
+public method eIsoRetIstRej (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.IST.REJ
+}
+
+
+
+public method eRedoBuildAtmList (
+    INOUT enqData string
+)
+{
+    jBC: E.REDO.BUILD.ATM.LIST
+}
+
+
+
+public method lApapCashbackFt (
+)
+{
+    jBC: L.APAP.CASHBACK.FT
+}
+
+
+
+public method redoAAtmRevLyPts (
+)
+{
+    jBC: REDO.A.ATM.REV.LY.PTS
+}
+
+
+
+public method redoApapSapGlExtRepSel (
+    INOUT gitSelBuild string,
+    INOUT gitPgmRecordList string,
+    INOUT newIdCompany string,
+    INOUT gitFuture1 string,
+    INOUT gitFuture2 string,
+    INOUT gitFuture3 string,
+    INOUT gitErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.EXT.REP.SEL
+}
+
+
+
+public method redoApapSapGlNormalExt (
+    INOUT gitMapValue string,
+    INOUT convErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.NORMAL.EXT
+}
+
+
+
+public method redoApapSapGlRevalExt (
+    INOUT gitMapValue string,
+    INOUT convErr string
+)
+{
+    jBC: REDO.APAP.SAP.GL.REVAL.EXT
+}
+
+
+
+public method redoAtmChkReversalRec (
+    INOUT yyAtmTxnRef string,
+    INOUT rAtmReversal string
+)
+{
+    jBC: REDO.ATM.CHK.REVERSAL.REC
+}
+
+
+
+public method redoAtmErrorLogParam (
+)
+{
+    jBC: REDO.ATM.ERROR.LOG.PARAM
+}
+
+
+
+public method redoAtmErrorLogParamFields (
+)
+{
+    jBC: REDO.ATM.ERROR.LOG.PARAM.FIELDS
+}
+
+
+
+public method redoAtmWaiveCharge (
+)
+{
+    jBC: REDO.ATM.WAIVE.CHARGE
+}
+
+
+
+public method redoAtmWaiveChargeFields (
+)
+{
+    jBC: REDO.ATM.WAIVE.CHARGE.FIELDS
+}
+ 
+
+
+public method redoBTaxpayerServicesLoad (
+)
+{
+    jBC: REDO.B.TAXPAYER.SERVICES.LOAD
+}
+
+
+
+public method redoBThirdResRecoveryLoad (
+)
+{
+    jBC: REDO.B.THIRD.RES.RECOVERY.LOAD
+}
+
+
+
+public method redoECnvBrTerm (
+    INOUT enqData string
+)
+{
+    jBC: REDO.E.CNV.BR.TERM
+}
+
+
+
+public method redoENofTxnPosApap (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.E.NOF.TXN.POS.APAP
+}
+
+
+
+public method redoEnqChg (
+    INOUT rAcct string
+)
+{
+    jBC: REDO.ENQ.CHG
+}
+
+
+
+public method redoGitCusgrpFormat (
+    INOUT gitMapData string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.GIT.CUSGRP.FORMAT
+}
+
+
+
+public method redoGlBExtractRtn (
+)
+{
+    jBC: REDO.GL.B.EXTRACT.RTN
+}
+
+
+
+public method redoGlWExtractOnlineRun (
+)
+{
+    jBC: REDO.GL.W.EXTRACT.ONLINE.RUN
+}
+
+
+
+public method redoInpCheckDcTxnAmt (
+)
+{
+    jBC: REDO.INP.CHECK.DC.TXN.AMT
+}
+
+
+
+public method redoUpdAtmRej (
+)
+{
+    jBC: REDO.UPD.ATM.REJ
+}
+
+
+
+public method redoVAtmDefSettleAc (
+)
+{
+    jBC: REDO.V.ATM.DEF.SETTLE.AC
+}
+
+
+
+public method redoVAtmNonAcctDef (
+)
+{
+    jBC: REDO.V.ATM.NON.ACCT.DEF
+}
+
+
+
+public method redoVInpAtmAcct (
+)
+{
+    jBC: REDO.V.INP.ATM.ACCT
+}
+
+
+
+public method redoVInpCheckTtBeneficary (
+)
+{
+    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
+}
+
+
+
+public method redoVInpPartProcess (
+)
+{
+    jBC: REDO.V.INP.PART.PROCESS
+}
+
+
+
+public method redoVUpdAtmLyUpd (
+)
+{
+    jBC: REDO.V.UPD.ATM.LY.UPD
+}
+
+
+
+public method redoVValLacBalance (
+)
+{
+    jBC: REDO.V.VAL.LAC.BALANCE
+}
+
+
+
+public method vFtRetBalAftTxn (
+)
+{
+    jBC: V.FT.RET.BAL.AFT.TXN
+}
+
+
+
+public method vFtRetCreditBalAftTxn (
+)
+{
+    jBC: V.FT.RET.CREDIT.BAL.AFT.TXN
+}
+
+
+
+public method vFtUpdEnqAtmKeyId (
+)
+{
+    jBC: V.FT.UPD.ENQ.ATM.KEY.ID
+}
+
