@@ -1,0 +1,14 @@
+* I_F.REDO.H.CCY.RULES Created 28 JUN 10 at 05:12PM by apapr8/NAVEEN.1
+*      PREFIX[REDO.CCY]
+           EQU REDO.CCY.FWD.DAYS TO 1,   RedoHCcyRules_FwdDays TO 1,
+                 REDO.CCY.AMOUNT TO 2,   RedoHCcyRules_Amount TO 2,
+                REDO.CCY.OPERAND TO 3,   RedoHCcyRules_Operand TO 3,
+          REDO.CCY.RECORD.STATUS TO 4,   RedoHCcyRules_RecordStatus TO 4,
+                REDO.CCY.CURR.NO TO 5,   RedoHCcyRules_CurrNo TO 5,
+               REDO.CCY.INPUTTER TO 6,   RedoHCcyRules_Inputter TO 6,
+              REDO.CCY.DATE.TIME TO 7,   RedoHCcyRules_DateTime TO 7,
+             REDO.CCY.AUTHORISER TO 8,   RedoHCcyRules_Authoriser TO 8,
+                REDO.CCY.CO.CODE TO 9,   RedoHCcyRules_CoCode TO 9,
+              REDO.CCY.DEPT.CODE TO 10,  RedoHCcyRules_DeptCode TO 10,
+           REDO.CCY.AUDITOR.CODE TO 11,  RedoHCcyRules_AuditorCode TO 11,
+        REDO.CCY.AUDIT.DATE.TIME TO 12,  RedoHCcyRules_AuditDateTime TO 12

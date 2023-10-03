@@ -1,0 +1,13 @@
+* I_F.REDO.H.ITEM.DETAILS Created 05 APR 10 at 06:52PM by apapr8/AUTHORISER
+*      PREFIX[IT.DT]
+        EQU IT.DT.SUPPLY.CODE TO 1,   RedoHItemDetails_SupplyCode TO 1,
+            IT.DT.DESCRIPTION TO 2,   RedoHItemDetails_Description TO 2,
+          IT.DT.RECORD.STATUS TO 3,   RedoHItemDetails_RecordStatus TO 3,
+                IT.DT.CURR.NO TO 4,   RedoHItemDetails_CurrNo TO 4,
+               IT.DT.INPUTTER TO 5,   RedoHItemDetails_Inputter TO 5,
+              IT.DT.DATE.TIME TO 6,   RedoHItemDetails_DateTime TO 6,
+             IT.DT.AUTHORISER TO 7,   RedoHItemDetails_Authoriser TO 7,
+                IT.DT.CO.CODE TO 8,   RedoHItemDetails_CoCode TO 8,
+              IT.DT.DEPT.CODE TO 9,   RedoHItemDetails_DeptCode TO 9,
+           IT.DT.AUDITOR.CODE TO 10,  RedoHItemDetails_AuditorCode TO 10,
+        IT.DT.AUDIT.DATE.TIME TO 11,  RedoHItemDetails_AuditDateTime TO 11

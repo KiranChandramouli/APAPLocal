@@ -1,0 +1,18 @@
+* I_F.REDO.CONFIG.EMAIL.AI Created 14 DEC 10 at 05:49AM by R09/ROBERTO.01
+*      PREFIX[LOC.CE]
+             EQU LOC.CE.MAILTO TO 1,   RedoConfigEmailAi_Mailto TO 1,
+                LOC.CE.SUBJECT TO 2,   RedoConfigEmailAi_Subject TO 2,
+                   LOC.CE.BODY TO 3,   RedoConfigEmailAi_Body TO 3,
+               LOC.CE.MAILFROM TO 4,   RedoConfigEmailAi_Mailfrom TO 4,
+             LOC.CE.RESERVED.3 TO 5,   RedoConfigEmailAi_Reserved3 TO 5,
+             LOC.CE.RESERVED.2 TO 6,   RedoConfigEmailAi_Reserved2 TO 6,
+             LOC.CE.RESERVED.1 TO 7,   RedoConfigEmailAi_Reserved1 TO 7,
+          LOC.CE.RECORD.STATUS TO 8,   RedoConfigEmailAi_RecordStatus TO 8,
+                LOC.CE.CURR.NO TO 9,   RedoConfigEmailAi_CurrNo TO 9,
+               LOC.CE.INPUTTER TO 10,  RedoConfigEmailAi_Inputter TO 10,
+              LOC.CE.DATE.TIME TO 11,  RedoConfigEmailAi_DateTime TO 11,
+             LOC.CE.AUTHORISER TO 12,  RedoConfigEmailAi_Authoriser TO 12,
+                LOC.CE.CO.CODE TO 13,  RedoConfigEmailAi_CoCode TO 13,
+              LOC.CE.DEPT.CODE TO 14,  RedoConfigEmailAi_DeptCode TO 14,
+           LOC.CE.AUDITOR.CODE TO 15,  RedoConfigEmailAi_AuditorCode TO 15,
+        LOC.CE.AUDIT.DATE.TIME TO 16,  RedoConfigEmailAi_AuditDateTime TO 16

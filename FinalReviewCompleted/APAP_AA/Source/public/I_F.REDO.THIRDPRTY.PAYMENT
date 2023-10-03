@@ -1,0 +1,13 @@
+* I_F.REDO.THIRDPRTY.PAYMENT Created 12 JUL 13 at 12:01PM by t24uatd/VIGNESH01
+*      PREFIX[TPT]
+             EQU TPT.BRANCH TO 1,   RedoThirdprtyPayment_Branch TO 1,
+              TPT.TELLER.ID TO 2,   RedoThirdprtyPayment_TellerId TO 2,
+            TPT.TELLER.NAME TO 3,   RedoThirdprtyPayment_TellerName TO 3,
+              TPT.COMP.NAME TO 4,   RedoThirdprtyPayment_CompName TO 4,
+              TPT.BILL.COND TO 5,   RedoThirdprtyPayment_BillCond TO 5,
+              TPT.BILL.TYPE TO 6,   RedoThirdprtyPayment_BillType TO 6,
+            TPT.BILL.NUMBER TO 7,   RedoThirdprtyPayment_BillNumber TO 7,
+          TPT.METHOD.OF.PAY TO 8,   RedoThirdprtyPayment_MethodOfPay TO 8,
+                 TPT.AMOUNT TO 9,   RedoThirdprtyPayment_Amount TO 9,
+          TPT.CHEQUE.NUMBER TO 10,  RedoThirdprtyPayment_ChequeNumber TO 10,
+            TPT.PAY.COMPANY TO 11,  RedoThirdprtyPayment_PayCompany TO 11

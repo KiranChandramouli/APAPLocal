@@ -1,0 +1,21 @@
+* Version 1 13/04/00  GLOBUS Release No. G14.0.00 03/07/03
+*
+* Modulo de Lealtad
+* Service: REDO.B.LY.GEN.ACCMOV
+*-----------------------------------------------------------------------------
+* Modification History:
+*                      2011-06-21 : avelasco@temenos.com
+*                                   First version
+*                      2013-09-23 : rmondragon@temenos.com
+*                                   Update to use EB.ACCOUNTING
+*-----------------------------------------------------------------------------
+    COMMON /REDO.B.LY.GEN.ACCMOV/ FN.REDO.LY.PROGRAM,
+    F.REDO.LY.PROGRAM,
+    R.REDO.LY.PROGRAM,
+    FN.REDO.LY.POINTS.TOT,
+    F.REDO.LY.POINTS.TOT,
+    R.REDO.LY.POINTS.TOT,
+    FN.FT.TXN.TYPE.CONDITION,
+    F.FT.TXN.TYPE.CONDITION,
+    FN.ACCOUNT,
+    F.ACCOUNT

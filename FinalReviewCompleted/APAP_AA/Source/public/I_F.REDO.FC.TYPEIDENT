@@ -1,0 +1,18 @@
+* I_F.REDO.FC.TYPEIDENT Created 20 SEP 10 at 04:19PM by apapr8/TEM.JARMAS.01
+*      PREFIX[FC.TI]
+        EQU FC.TI.DESCRIPCION TO 1,   RedoFcTypeident_Descripcion TO 1,
+             FC.TI.ENQMAIN.ID TO 2,   RedoFcTypeident_EnqmainId TO 2,
+             FC.TI.RESERVED.5 TO 3,   RedoFcTypeident_Reserved5 TO 3,
+             FC.TI.RESERVED.4 TO 4,   RedoFcTypeident_Reserved4 TO 4,
+             FC.TI.RESERVED.3 TO 5,   RedoFcTypeident_Reserved3 TO 5,
+             FC.TI.RESERVED.2 TO 6,   RedoFcTypeident_Reserved2 TO 6,
+             FC.TI.RESERVED.1 TO 7,   RedoFcTypeident_Reserved1 TO 7,
+          FC.TI.RECORD.STATUS TO 8,   RedoFcTypeident_RecordStatus TO 8,
+                FC.TI.CURR.NO TO 9,   RedoFcTypeident_CurrNo TO 9,
+               FC.TI.INPUTTER TO 10,  RedoFcTypeident_Inputter TO 10,
+              FC.TI.DATE.TIME TO 11,  RedoFcTypeident_DateTime TO 11,
+             FC.TI.AUTHORISER TO 12,  RedoFcTypeident_Authoriser TO 12,
+                FC.TI.CO.CODE TO 13,  RedoFcTypeident_CoCode TO 13,
+              FC.TI.DEPT.CODE TO 14,  RedoFcTypeident_DeptCode TO 14,
+           FC.TI.AUDITOR.CODE TO 15,  RedoFcTypeident_AuditorCode TO 15,
+        FC.TI.AUDIT.DATE.TIME TO 16,  RedoFcTypeident_AuditDateTime TO 16
