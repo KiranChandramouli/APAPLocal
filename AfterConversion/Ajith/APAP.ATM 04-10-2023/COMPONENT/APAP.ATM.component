@@ -1,0 +1,308 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method atIsoCalcCreditAcctNo (
+    INOUT incoming string,
+    INOUT creditAcctNo string
+)
+{
+    jBC: AT.ISO.CALC.CREDIT.ACCT.NO
+}
+
+
+
+public method atmBranchCheckFields (
+)
+{
+    jBC: ATM.BRANCH.CHECK.FIELDS
+}
+
+
+
+public method atmBranchCrossval (
+)
+{
+    jBC: ATM.BRANCH.CROSSVAL
+}
+
+
+
+public method atmIsoSysErrRtn (
+    INOUT outMsg string
+)
+{
+    jBC: ATM.ISO.SYS.ERR.RTN
+}
+
+
+
+public method atmPrev (
+    INOUT atmidUniqueId string,
+    INOUT outgoing string
+)
+{
+    jBC: ATM.PREV
+}
+
+
+
+public method eIsoAtmBalEnqBldRtn (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.ATM.BAL.ENQ.BLD.RTN
+}
+
+
+
+public method eIsoAtmMiniStmtBldRtn (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.ATM.MINI.STMT.BLD.RTN
+}
+
+
+
+public method redoDeviceIdPopulate (
+)
+{
+    jBC: REDO.DEVICE.ID.POPULATE
+}
+
+
+
+public method redoEnqChgRev (
+    INOUT yIdList string
+)
+{
+    jBC: REDO.ENQ.CHG.REV
+}
+
+
+
+public method redoGetIsoResp (
+    INOUT yOutMsg string
+)
+{
+    jBC: REDO.GET.ISO.RESP
+}
+
+public method atCalcAvailBalance (
+    INOUT rAcct string,
+    INOUT wrkBal string,
+    INOUT availBal string
+)
+{
+    jBC: AT.CALC.AVAIL.BALANCE
+}
+
+
+
+public method atGetAcctBranch (
+    INOUT incoming string,
+    INOUT returnval string
+)
+{
+    jBC: AT.GET.ACCT.BRANCH
+}
+
+
+
+public method atGetBalAftTxn (
+    INOUT acctNo string,
+    INOUT fmtAcctBal string
+)
+{
+    jBC: AT.GET.BAL.AFT.TXN
+}
+
+
+
+
+
+
+
+public method atIsoFmtBalRtn (
+    INOUT rAcct string,
+    INOUT wrkBal string,
+    INOUT availBal string,
+    INOUT balanceFormatted string
+)
+{
+    jBC: AT.ISO.FMT.BAL.RTN
+}
+
+
+
+
+
+
+public method atIsoChgAmt (
+    INOUT inArg string,
+    INOUT outArg string
+)
+{
+    jBC: AT.ISO.CHG.AMT
+}
+
+
+
+public method atPosMerchantAcct (
+)
+{
+    jBC: AT.POS.MERCHANT.ACCT
+}
+
+
+
+public method atPosMerchantFieldDefinitions (
+)
+{
+    jBC: AT.POS.MERCHANT.FIELD.DEFINITIONS
+}
+
+
+
+public method atmBinAcct (
+)
+{
+    jBC: ATM.BIN.ACCT
+}
+
+
+
+public method atmBinAcctFieldDefinitions (
+)
+{
+    jBC: ATM.BIN.ACCT.FIELD.DEFINITIONS
+}
+
+public method atmBranchFieldDefinitions (
+)
+{
+    jBC: ATM.BRANCH.FIELD.DEFINITIONS
+}
+
+
+
+public method atmIsoErrCodeRtnBak (
+    INOUT outMsg string
+)
+{
+    jBC: ATM.ISO.ERR.CODE.RTN.BAK
+}
+
+
+
+
+
+
+
+public method atmParameterCrossval (
+)
+{
+    jBC: ATM.PARAMETER.CROSSVAL
+}
+
+
+
+public method atmParameterFieldDefinitions (
+)
+{
+    jBC: ATM.PARAMETER.FIELD.DEFINITIONS 
+}
+
+
+
+
+
+
+
+public method atmParameterOverride (
+)
+{
+    jBC: ATM.PARAMETER.OVERRIDE
+}
+
+
+
+
+public method atmResCodTable (
+)
+{
+    jBC: ATM.RES.COD.TABLE
+}
+
+
+
+public method atmResCodTableFields (
+)
+{
+    jBC: ATM.RES.COD.TABLE.FIELDS
+}
+
+
+
+
+
+
+public method eIsoRetSpfStatusRev (
+    INOUT yIdList string
+)
+{
+    jBC: E.ISO.RET.SPF.STATUS.REV
+}
+
+
+
+public method intrfMappingFieldDefinitions (
+)
+{
+    jBC: INTRF.MAPPING.FIELD.DEFINITIONS
+}
+
+
+
+public method intrfMessageFieldDefinitions (
+)
+{
+    jBC: INTRF.MESSAGE.FIELD.DEFINITIONS
+}
+
+
+
+public method intrfParameter (
+)
+{
+    jBC: INTRF.PARAMETER
+}
+
+
+
+public method intrfParameterFieldDefinitions (
+)
+{
+    jBC: INTRF.PARAMETER.FIELD.DEFINITIONS
+}
+
+
+
+public method redoChkAthRevMsg (
+)
+{
+    jBC: REDO.CHK.ATH.REV.MSG
+}
+
+public method atmBranch (
+)
+{
+    jBC: ATM.BRANCH
+}
+
+
+
+
