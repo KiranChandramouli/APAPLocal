@@ -123,11 +123,6 @@ public method redoAtmWaiveChargeFields (
  
 
 
-public method redoBTaxpayerServicesLoad (
-)
-{
-    jBC: REDO.B.TAXPAYER.SERVICES.LOAD
-}
 
 
 
@@ -166,31 +161,6 @@ public method redoEnqChg (
 
 
 
-public method redoGitCusgrpFormat (
-    INOUT gitMapData string,
-    INOUT errMsg string
-)
-{
-    jBC: REDO.GIT.CUSGRP.FORMAT
-}
-
-
-
-public method redoGlBExtractRtn (
-)
-{
-    jBC: REDO.GL.B.EXTRACT.RTN
-}
-
-
-
-public method redoGlWExtractOnlineRun (
-)
-{
-    jBC: REDO.GL.W.EXTRACT.ONLINE.RUN
-}
-
-
 
 public method redoInpCheckDcTxnAmt (
 )
@@ -224,35 +194,11 @@ public method redoVAtmNonAcctDef (
 
 
 
-public method redoVInpAtmAcct (
-)
-{
-    jBC: REDO.V.INP.ATM.ACCT
-}
 
 
 
-public method redoVInpCheckTtBeneficary (
-)
-{
-    jBC: REDO.V.INP.CHECK.TT.BENEFICARY
-}
 
 
-
-public method redoVInpPartProcess (
-)
-{
-    jBC: REDO.V.INP.PART.PROCESS
-}
-
-
-
-public method redoVUpdAtmLyUpd (
-)
-{
-    jBC: REDO.V.UPD.ATM.LY.UPD
-}
 
 
 
@@ -284,5 +230,24 @@ public method vFtUpdEnqAtmKeyId (
 )
 {
     jBC: V.FT.UPD.ENQ.ATM.KEY.ID
+}
+
+ 
+
+public method vFtUpdAtmKeyId (
+)
+{
+    jBC: V.FT.UPD.ATM.KEY.ID
+}
+
+
+
+public method atCalcAvailBalance (
+    INOUT rAcct string,
+    INOUT wrkBal string,
+    INOUT availBal string
+)
+{
+    jBC: AT.CALC.AVAIL.BALANCE
 }
 

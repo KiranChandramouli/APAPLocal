@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNTE1ODY0OTI3OkNwMTI1MjoxNjk2MzQwNjA4MDAzOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 Oct 2023 19:13:28
+* @ValidationCode : Mjo0MDEwNTE3MDE6Q3AxMjUyOjE2OTY0OTE4NTkyNTU6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:14:19
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -121,7 +121,7 @@ PROCESS:
             BAL.AFT.TXN1 = AVAIL.BAL
         END
     END
-
+ 
     IF BAL.BFR.TXN LE '0' THEN
         BAL.SIGN ='D'
     END ELSE

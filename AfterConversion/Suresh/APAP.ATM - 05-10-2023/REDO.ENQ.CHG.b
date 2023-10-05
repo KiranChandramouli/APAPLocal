@@ -1,6 +1,5 @@
-
-* @ValidationCode : MjoxNjA1NTE2MDIyOkNwMTI1MjoxNjk2MzM5NTkxODk5OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:56:31
+* @ValidationCode : MjotMjk0MDc1MzAwOkNwMTI1MjoxNjk2NDkyMzQ3MDE5OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:22:27
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +10,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
 $PACKAGE APAP.ATM
 
 SUBROUTINE  REDO.ENQ.CHG(R.ACCT)
@@ -92,7 +92,7 @@ PROCESS:
 
     Y.SYS.ID='SYSTEM'
     ENQ.ERROR.COM=''
-
+ 
     CALL APAP.TAM.redoInitCardVal() ;*Manual R22 conversion
     CALL APAP.TAM.redoInitCardVal();*Manual R22 conversion
 

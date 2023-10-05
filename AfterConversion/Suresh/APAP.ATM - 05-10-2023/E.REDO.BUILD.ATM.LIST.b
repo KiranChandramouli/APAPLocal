@@ -1,5 +1,6 @@
-* @ValidationCode : MjotODkxMTQ4NzkwOkNwMTI1MjoxNjk2MzM2OTcxNjg4OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:12:51
+
+* @ValidationCode : MjoyMDY2Njg3NzcwOkNwMTI1MjoxNjk2NTA4MzIwMDAzOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Oct 2023 17:48:40
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +12,8 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.ATM
+ 
+
 
 SUBROUTINE E.REDO.BUILD.ATM.LIST(ENQ.DATA)
 *
