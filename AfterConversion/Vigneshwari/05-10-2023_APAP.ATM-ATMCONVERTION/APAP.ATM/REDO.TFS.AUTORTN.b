@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTIxODUxMTM2MzpDcDEyNTI6MTY5NjMzNzk3ODI1Njp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:29:38
+* @ValidationCode : MjotMTY5NzUxNDA0NTpDcDEyNTI6MTY5NjQ5MjI2MDk2Mzp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:21:00
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,7 +10,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
+
 
 SUBROUTINE REDO.TFS.AUTORTN
     

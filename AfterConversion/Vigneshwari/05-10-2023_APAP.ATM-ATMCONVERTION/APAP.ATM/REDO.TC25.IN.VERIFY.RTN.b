@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjA3MTM1MDI2NTpDcDEyNTI6MTY5NjMzNzk3NTI0MTp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:29:35
+* @ValidationCode : Mjo1Mjg4MjkyNjE6Q3AxMjUyOjE2OTY0OTIyMzc3NDI6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:20:37
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,7 +10,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
+
 
 SUBROUTINE REDO.TC25.IN.VERIFY.RTN
 *----------------------------------------------------------------

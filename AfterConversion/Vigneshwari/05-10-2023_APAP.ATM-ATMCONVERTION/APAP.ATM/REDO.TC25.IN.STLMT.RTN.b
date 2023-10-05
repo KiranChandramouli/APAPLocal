@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo2NDU0OTQ0NDU6Q3AxMjUyOjE2OTYzMzc5MjI2NDQ6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:28:42
+* @ValidationCode : MjotMzU2ODM0MTUxOkNwMTI1MjoxNjk2NDk0NjAxNDE3OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Oct 2023 14:00:01
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,7 +10,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
+
 
 SUBROUTINE REDO.TC25.IN.STLMT.RTN(STLMT.LINES)
 ***********************************************************************
@@ -45,6 +46,7 @@ SUBROUTINE REDO.TC25.IN.STLMT.RTN(STLMT.LINES)
     $INSERT I_F.REDO.VISA.STLMT.PARAM
     $INSERT I_F.REDO.DC.STLMT.ERR.CODE
     $INSERT I_F.ATM.REVERSAL
+    $USING APAP.TAM
 
 
     GOSUB PROCESS

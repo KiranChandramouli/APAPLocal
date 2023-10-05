@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo4MjI5MjU4NzQ6Q3AxMjUyOjE2OTYzMzg2Mzc4NTA6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:40:37
+* @ValidationCode : Mjo5NTM5MzU1MDpDcDEyNTI6MTY5NjQ5MjQyMTM5MDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:23:41
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,13 +10,13 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
 
-SUBROUTINE REDO.TT.TILLTFR.ATM(V.DR.DENOMINATIO)
+SUBROUTINE REDO.TT.ATM.TILLTFR(V.DR.DENOMINATIO)
 *--------------------------------------------------------------------------------
-*Company   Name    :Asociacion Popular de Ahorros y Prestamos......
+*Company   Name    :Asociacion Popular de Ahorros y Prestamos
 *Developed By      :btorresalbornoz
-*Program   Name    :REDO.TT.TILLTFR.ATM DS
+*Program   Name    :REDO.TT.ATM.TILLTFR
 *---------------------------------------------------------------------------------
 *DESCRIPTION       :This program is used to get the SELL DESTINATION value from EB.LOOKUP TABLE
 
@@ -58,7 +58,7 @@ INITIALISE:
     V.DR.DENOMINATIO=''
     Y.VAR2      = 1
     Y.DENOM.NUM = 0
-    W.DENOM     = R.NEW(TT.TE.DR.DENOM)
+    W.DENOM     = R.NEW(TT.TE.DENOMINATION)
     Y.DENOM.NUM = DCOUNT(W.DENOM,@VM)
     W.UNIT = R.NEW(TT.TE.DR.UNIT)
     Y.DENOM.UNIT = DCOUNT(W.UNIT,@VM)
@@ -84,7 +84,7 @@ PROCESS:
     WHILE Y.VAR.FIJA LE DATA.FIJA
         GOSUB ESTRUCTURA
         GOSUB SEGUNDA.ESTRUCTURA
-        Y.VAR.FIJA += 1  ;* R22 Auto conversion
+        Y.VAR.FIJA += 1 ;* R22 Auto conversion
 
     REPEAT
 
@@ -97,31 +97,27 @@ ESTRUCTURA:
     BEGIN  CASE
 
     CASE Y.VAR.FIJA EQ '1'
-        PART1= "Referencia:":SPACE(25):ID.NEW
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART1:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+        PART1= "Referencia:":SPACE(24):ID.NEW
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART1:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+
+    CASE Y.VAR.FIJA EQ '2' ;* R22 Auto conversion
+        GOSUB TELLER.ID.USER
+        PART2="De Cajero (Crédito):":SPACE(15):R.NEW(TT.TE.TELLER.ID.1):"/":Y.USER[1,7]
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART2:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
-
-    CASE Y.VAR.FIJA EQ '2'
+    CASE Y.VAR.FIJA EQ '3'
 
         GOSUB ACCOUNT.NAME
-        PART3= "De ATM(Crédito):":Y.ACCOUNT.NAME
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART3:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
-
-    CASE Y.VAR.FIJA EQ '3' ;* R22 Auto conversion
-        GOSUB TELLER.ID.USER
-        PART2="A Cajero (Débito):":SPACE(18):R.NEW(TT.TE.TELLER.ID.1):"/":Y.USER[1,7]
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART2:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
-
-
-
+        PART3= "A ATM(Débito):":SPACE(1):Y.ACCOUNT.NAME
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART3:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
     CASE Y.VAR.FIJA EQ '4'
         GOSUB CURRENCY.NAME
         Y.CURRENCY=R.CURRENCY<EB.CUR.CCY.NAME>
-        PART4="Moneda:":SPACE(19):"RD$(":Y.CURRENCY:")"
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART4:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+        PART4="Moneda:":SPACE(18):"RD$(":Y.CURRENCY:")"
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART4:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
 
@@ -129,8 +125,8 @@ ESTRUCTURA:
 
         Y.MONTO=R.NEW(TT.TE.AMOUNT.LOCAL.1)
         Y.MONTO=FMT(Y.MONTO,"R2,#16")
-        PART5="Monto :":SPACE(25):Y.MONTO
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART5:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+        PART5="Monto :":SPACE(24):Y.MONTO
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART5:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
 
@@ -143,8 +139,8 @@ ESTRUCTURA:
     CASE Y.VAR.FIJA EQ '7'
         GET.DATE.TIME = R.NEW(TT.TE.DATE.TIME)
         GOSUB GET.DATE.TIME.INFO
-        PART7="Fecha - Hora:":SPACE(20):GET.DATE.TIME
-        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART7:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+        PART7="Fecha - Hora:":SPACE(19):GET.DATE.TIME
+        V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART7:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
 
@@ -160,18 +156,16 @@ SEGUNDA.ESTRUCTURA:
         CASE Y.VAR.FIJA EQ '8'
             GET.CO.CODE ='APAP':" ":R.COMPANY(EB.COM.COMPANY.NAME):"-":R.NEW(TT.TE.TELLER.ID.1)
             GET.CO.CODE = FMT(GET.CO.CODE,"28R")
-            PART8="Oficina - Cajero: ":SPACE(2):GET.CO.CODE
-            V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART8:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
+            PART8="Oficina - Cajero: ":SPACE(1):GET.CO.CODE
+            V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART8:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
 
         CASE Y.VAR.FIJA EQ '9'
             Y.COMENTARIO=R.NEW(TT.TE.NARRATIVE.2)[1,32]
             Y.COMENTARIO=FMT(Y.COMENTARIO,"R#32")
 
-            PART9="Comentarios:":SPACE(4):Y.COMENTARIO
-            V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART9:SPACE(5):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
-
-
+            PART9="Comentarios:":SPACE(3):Y.COMENTARIO
+            V.DR.DENOMINATIO<1,Y.VAR.FIJA>=PART9:SPACE(6):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 
         CASE Y.VAR.FIJA EQ '10'
 *        IF R.NEW(TT.TE.UNIT)<1,Y.VAR.FIJA> NE "0" THEN
@@ -193,7 +187,7 @@ SEGUNDA.ESTRUCTURA:
                 V.DR.DENOMINATIO<1,Y.VAR.FIJA>=SPACE(53):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
             END
 
-        CASE Y.VAR.FIJA = '13'
+*    CASE Y.VAR.FIJA = '13'
 *        IF R.NEW(TT.TE.UNIT)<1,Y.VAR.FIJA> NE "0" THEN
 *            V.DR.DENOMINATIO<1,Y.VAR.FIJA>=SPACE(53):V.DR.DENOMINATIO<1,Y.VAR.FIJA>
 *        END
@@ -232,21 +226,21 @@ RETURN
 **********************************************************
 DENOMINATION:
 **********************************************************
-    Y.DENOMINATION=R.NEW(TT.TE.DR.DENOM)<1,Y.VAR1>
+    Y.DENOMINATION=R.NEW(TT.TE.DENOMINATION)<1,Y.VAR1>
     Y.UNIT=R.NEW(TT.TE.DR.UNIT)<1,Y.VAR1>
 
     LOOP
     WHILE Y.VAR1 LE Y.DENOM.NUM
 
-        IF R.NEW(TT.TE.DR.UNIT)<1,Y.VAR1> NE "0" THEN
+        IF R.NEW(TT.TE.UNIT)<1,Y.VAR1> NE "0" THEN
 
 
             GOSUB GET.VALUE
-            Y.DENOMINATION=R.NEW(TT.TE.DR.DENOM)<1,Y.VAR1>
+            Y.DENOMINATION=R.NEW(TT.TE.DENOMINATION)<1,Y.VAR1>
             Y.DENOMINATION=FMT(Y.DENOMINATION,"11L")
             V.DR.DENOMINATIO<-1>=Y.DENOMINATION
             V.DR.DENOMINATIO= CHANGE(V.DR.DENOMINATIO,@FM,@VM)
-            V.DR.UN = FMT(R.NEW(TT.TE.DR.UNIT)<1,Y.VAR1>,"7R")
+            V.DR.UN = FMT(R.NEW(TT.TE.UNIT)<1,Y.VAR1>,"7R")
             V.DR.DENOMINATIO=V.DR.DENOMINATIO:SPACE(7):V.DR.UN:V.DR.VALUE
 
         END
@@ -276,8 +270,8 @@ RETURN
 *************************************************
 GET.VALUE:
 *************************************************
-    Y.DENOM=R.NEW(TT.TE.DR.DENOM)<1,Y.VAR1>
-    Y.UNIT=R.NEW(TT.TE.DR.UNIT)<1,Y.VAR1>
+    Y.DENOM=R.NEW(TT.TE.DENOMINATION)<1,Y.VAR1>
+    Y.UNIT=R.NEW(TT.TE.UNIT)<1,Y.VAR1>
     CALL CACHE.READ(FN.TELLER.DENOM,Y.DENOM,R.TELLER.DENOM,DENOM.ERR)
     DEN.VALUE = R.TELLER.DENOM<TT.DEN.VALUE>
     Y.VALUE = Y.UNIT * DEN.VALUE
@@ -293,7 +287,7 @@ ACCOUNT.NAME:
 *******************************************************
 
 
-    Y.ACCOUNT=R.NEW(TT.TE.ACCOUNT.2)
+    Y.ACCOUNT=R.NEW(TT.TE.ACCOUNT.1)
 
     CALL F.READ(FN.ACCOUNT,Y.ACCOUNT,R.ACCOUNT,F.ACCOUNT,IA.ERR)
 

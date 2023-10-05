@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo1MzU4NTY1Njg6Q3AxMjUyOjE2OTYzMzc0NDk1MDM6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:20:49
+* @ValidationCode : MjotMTAxODgwODQ1MDpDcDEyNTI6MTY5NjQ5MjIxMjk0OTp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:20:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,7 +10,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
 
 SUBROUTINE REDO.STLMT.TC25IN.ACCT.RTN
 **************************************************************************

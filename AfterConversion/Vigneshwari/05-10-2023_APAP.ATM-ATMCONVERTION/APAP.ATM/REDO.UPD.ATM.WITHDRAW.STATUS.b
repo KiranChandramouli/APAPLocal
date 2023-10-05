@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMjU1MzI1MzgzOkNwMTI1MjoxNjk2MzM4NjU3NjkyOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:40:57
+* @ValidationCode : MjotMTcwNTk1NTUxOTpDcDEyNTI6MTY5NjQ5MzE5NDc4ODp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Oct 2023 13:36:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,7 +10,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.TAM
+$PACKAGE APAP.ATM
+
 
 SUBROUTINE REDO.UPD.ATM.WITHDRAW.STATUS
 
