@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo1ODk2MzIxMDY6Q3AxMjUyOjE2ODQ1MDI5NDM3NTI6YWppdGg6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 May 2023 18:59:03
+* @ValidationCode : MjotMzI4Mjc4MjgyOkNwMTI1MjoxNjk2NTAwMjQyNjU4OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Oct 2023 15:34:02
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ajith
 * @ValidationInfo : Nb tests success  : N/A
@@ -214,7 +214,7 @@ RETURN
 REVERSE.PROC:
 **************
     Y.UNIQUE.ID = Y.INC.ISO
-    CALL APAP.ATM.vFtUpdEnqAtmKeyId();* R22 Manual conversion
+    APAP.ATM.vFtUpdEnqAtmKeyId();* R22 Manual conversion
 RETURN          ;*From GET.UNIQUE.ID
 
 END

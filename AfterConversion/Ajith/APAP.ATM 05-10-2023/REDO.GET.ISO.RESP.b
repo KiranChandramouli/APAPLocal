@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTkzNTIwMjkwOTpDcDEyNTI6MTY5NjMzODI4MjY4Nzphaml0aDotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 03 Oct 2023 18:34:42
+* @ValidationCode : MjoxODIyOTczMTgzOkNwMTI1MjoxNjk2NTAwMjg4MzMzOmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Oct 2023 15:34:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ajith
 * @ValidationInfo : Nb tests success  : N/A
@@ -83,7 +83,7 @@ PROCESS:
             GOSUB LOG.C22
         END
         AT$AT.ISO.RESP.CODE=ISO.RESPONSE
-        CALL APAP.LAPAP.redoUpdAtmRej() ;*r22 manual conversion
+        APAP.LAPAP.redoUpdAtmRej() ;*r22 manual conversion
  
         Y.OUT.MSG<1>=ISO.RESPONSE
         Y.OUT.MSG<2>=LOC.MSG
