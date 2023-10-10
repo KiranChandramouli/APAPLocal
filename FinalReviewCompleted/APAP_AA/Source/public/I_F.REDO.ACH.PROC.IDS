@@ -1,3 +1,0 @@
-* I_F.REDO.ACH.PROC.IDS Created 03 NOV 10 at 10:38AM by apapr8/SWAMI.1
-*      PREFIX[REDO.ACH.PROC.IDS]
-        EQU REDO.ACH.PROC.IDS.ACH.PROC.ID TO 1,   RedoAchProcIds_AchProcId TO 1

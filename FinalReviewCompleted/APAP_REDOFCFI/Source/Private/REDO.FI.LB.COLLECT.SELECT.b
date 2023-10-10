@@ -54,7 +54,6 @@ RETURN
 * ======
 PROCESS:
 * ======
-
     IF CONTROL.LIST EQ '' THEN
         CALL OCOMO('Running BNK/REDO.FI.PLANILLA.COLLECT to apply PAYMENTS reported in APAP-Planillas')
         CONTROL.LIST = 'BATCH.PROCESS':@FM:'PROCESS.DET':@FM:'BALANCE.ADJUST'
@@ -66,13 +65,17 @@ PROCESS:
 
     BEGIN CASE
         CASE YACTION EQ 'BATCH.PROCESS'
-            Y.SEL.CMD = "SELECT " : FI.QUEUE.PATH
-            CALL EB.READLIST(Y.SEL.CMD,PLANILLA.LIST,"",NO.OF.REC,YER.SEL)
-
+            GOSUB VALID.BATCH  ;*R22 interface Unit testing changes
             CALL BATCH.BUILD.LIST(LIST.PARAM,PLANILLA.LIST)
-            Y.PARAM.IDS = PLANILLA.LIST
-
+            
         CASE YACTION EQ 'PROCESS.DET'
+*R22 interface Unit testing changes - START
+            GOSUB VALID.BATCH
+            IF Y.PARAM.IDS EQ '' THEN
+                RETURN
+            END
+*R22 interface Unit testing changes - END
+        
             Y.SEL.CMD = "SELECT ":FN.REDO.FI.LB.BATCH.PROCESS.DET: " WITH ( "
             LOOP
                 REMOVE Y.PARAM.ID FROM Y.PARAM.IDS SETTING Y.POS.FILE
@@ -93,5 +96,12 @@ PROCESS:
     END CASE
 
 RETURN
+*R22 interface Unit testing changes- START
+VALID.BATCH:
+    Y.SEL.CMD = "SELECT " : FI.QUEUE.PATH
+    CALL EB.READLIST(Y.SEL.CMD,PLANILLA.LIST,"",NO.OF.REC,YER.SEL)
+    Y.PARAM.IDS = PLANILLA.LIST
+RETURN
+*R22 interface Unit testing changes - END
 
 END

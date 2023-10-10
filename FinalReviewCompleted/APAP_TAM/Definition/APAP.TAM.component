@@ -15343,3 +15343,9 @@ public method redoVAutActivateAcc (
    jBC: REDO.V.AUT.ACTIVATE.ACC
 }
 
+
+public method redoUpdateVersionName (
+)
+{
+    jBC: REDO.UPDATE.VERSION.NAME
+}

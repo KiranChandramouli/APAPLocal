@@ -22,7 +22,7 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.SELECT
     $INSERT I_F.DATES
     $INSERT I_BATCH.FILES
 *-----------------------------------------------------------------------------
-
+    
     IF NOT(CONTROL.LIST) THEN
         GOSUB REMOVE.FILES
         GOSUB BUILD.CONTROL.LIST
@@ -40,25 +40,30 @@ SEL.AP.LOANS:
 *************
 
     LIST.PARAMETERS = '' ; ID.LIST = ''
-
+    
     GOSUB CRITERIA.VALUE
 
     Y.SELECT.CMD='SELECT ':FN.AA.ARRANGEMENT :' WITH ':CRITERIA
 
     CALL EB.READLIST(Y.SELECT.CMD,Y.LIST,'',NO.OF.REC,ERR)
-    Y.LIST=SORT(Y.LIST)
-    Y.REC.CNT=1
-    LOOP
-    WHILE Y.REC.CNT LE NO.OF.REC
-        IF Y.LIST<Y.REC.CNT> EQ Y.LIST<Y.REC.CNT-1> THEN
-            DEL Y.LIST<Y.REC.CNT>
-            NO.OF.REC-=1
-            Y.REC.CNT -= 1 ;*R22 Auto code conversion
-        END
-        Y.REC.CNT += 1 ;*R22 Auto code conversion
-    REPEAT
+* SJ start
 
-    Y.LIST.CNT=DCOUNT(Y.LIST,@FM)
+*R22 interface Unit testing changes - START
+*    Y.LIST=SORT(Y.LIST)
+*    Y.REC.CNT=1
+*    LOOP
+*    WHILE Y.REC.CNT LE NO.OF.REC
+*        IF Y.LIST<Y.REC.CNT> EQ Y.LIST<Y.REC.CNT-1> THEN
+*            DEL Y.LIST<Y.REC.CNT>
+*            NO.OF.REC-=1
+*            Y.REC.CNT -= 1 ;*R22 Auto code conversion
+*        END
+*        Y.REC.CNT += 1 ;*R22 Auto code conversion
+*    REPEAT
+*
+*    Y.LIST.CNT=DCOUNT(Y.LIST,@FM)
+*R22 interface Unit testing changes - END
+* SJ end
     CALL BATCH.BUILD.LIST(LIST.PARAMETERS,Y.LIST)
 
 RETURN
@@ -83,7 +88,9 @@ CRITERIA.VALUE:
     IF NUM.STATUS THEN
         CRITERIA := ')'
     END
-    CRITERIA   :=' CUSTOMER'
+*   CRITERIA   :='CUSTOMER' ;*SJ
+    CRITERIA   :=' BY CUSTOMER' ;*R22 interface Unit testing changes - START
+    
 RETURN
 
 *************

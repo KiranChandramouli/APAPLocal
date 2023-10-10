@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMDYxMDAzODY5OkNwMTI1MjoxNjkwMTY3ODkxNTI0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Jul 2023 08:34:51
+* @ValidationCode : MjoxMTU1ODU3MDA1OkNwMTI1MjoxNjk2MzMyMDY1NjY1OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 03 Oct 2023 16:51:05
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * This subroutine allows to extract fields from Customer in T24
@@ -31,7 +31,6 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT(CUSTOMER.ID)
     $INSERT I_F.REDO.COL.TRACE.PHONE
     $INSERT I_BATCH.FILES
     $INSERT I_F.AA.ARRANGEMENT
-
 
     BEGIN CASE
         CASE CONTROL.LIST<1,1> EQ 'Y.AP.LOANS' ;*R22 Auto Code conversion
@@ -163,10 +162,10 @@ GET.CUSTOMER.REC:
     R.CUSTOMER = ''; YERR = ''
     CALL F.READ(FN.CUSTOMER, CUSTOMER.ID, R.CUSTOMER, F.CUSTOMER, YERR)
 
-    CUST.ID.HST = CUSTOMER.ID:';1'
-    ERR.CUSTOMER.HST = ''; R.CUSTOMER.HST = ''
-    CALL F.READ(FN.CUSTOMER.HST,CUST.ID.HST,R.CUSTOMER.HST,F.CUSTOMER.HST,ERR.CUSTOMER.HST)
-    IF NOT(R.CUSTOMER.HST) THEN
+    IF NOT(R.CUSTOMER.HST) THEN ;*R22 interface Unit testing changes
+        CUST.ID.HST = CUSTOMER.ID:';1'
+        ERR.CUSTOMER.HST = ''; R.CUSTOMER.HST = ''
+        CALL F.READ(FN.CUSTOMER.HST,CUST.ID.HST,R.CUSTOMER.HST,F.CUSTOMER.HST,ERR.CUSTOMER.HST)
         R.CUSTOMER.HST = R.CUSTOMER
     END
     IF R.CUSTOMER THEN
@@ -595,7 +594,7 @@ PROCESS.AA:         * Call to process each AA
 *-----------------------------------------------------------------------------------
     Y.CREDIT = ""; PR.GESTIPOGARANTIAS = ''; Y.CREDIT.TXN = ""; PR.GESGARANTIAS = ''; PR.GESCREDITOSGARANTIAS = '';P.GESCREDITOINTEGRACION = ''
 * CALL L.APAP.COL.FF.EXTRACT.CREDIT(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
-    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
+    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION);* R22 Manual conversion - CAll method format changed
 *   IF E THEN
 *       RETURN
 *   END
@@ -684,10 +683,11 @@ FINAL.WRITE.RECORD:
 *-----------------------------------------------------------------------------------
     I.VAR = 1
     LOOP WHILE I.VAR LE Y.TOTAL.INSERT
-
-        Y.QUEUE.ID = ''
-        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
-        Y.QUEUE.ID = DATE():Y.QUEUE.ID
+*R22 interface Unit testing changes-START
+*        Y.QUEUE.ID = ''
+*        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
+*        Y.QUEUE.ID = DATE():Y.QUEUE.ID
+*R22 interface Unit testing changes-END
 
         R.REDO.COL.QUEUE = LIST.INSERTS.STMT(I.VAR)
         Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>
@@ -702,6 +702,8 @@ FINAL.WRITE.RECORD:
         WRITESEQ R.REDO.COL.QUEUE<2> APPEND TO Y.FILE.PATH ELSE
             CALL OCOMO("CANNOT WRITE TO SESSION FILE OF ID ":Y.FILE.ID)
         END
+        
+        CLOSESEQ Y.FILE.PATH ;*R22 interface Unit testing changes
 
         I.VAR += 1
     REPEAT
