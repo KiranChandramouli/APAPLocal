@@ -1,0 +1,20 @@
+component APAP.ATM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoInitAcctVal (
+)
+{
+    jBC: REDO.INIT.ACCT.VAL
+}
+
+
+
+public method redoInitCardVal (
+)
+{
+    jBC: REDO.INIT.CARD.VAL
+}
+
