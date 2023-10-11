@@ -1,0 +1,39 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapColFfExtract (
+   INOUT customerId string
+)
+{
+   jBC: L.APAP.COL.FF.EXTRACT
+}
+
+
+
+public method lApapColFfExtractSelect (
+)
+{
+   jBC: L.APAP.COL.FF.EXTRACT.SELECT
+}
+
+
+
+public method lApapColFfExtractCredit (
+   INOUT yCustomerId string,
+   INOUT yCredit string,
+   INOUT yCreditTxn string,
+   INOUT prGesgarantias string,
+   INOUT prGescreditosgarantias string,
+   INOUT prGestipogarantias string,
+   INOUT pGescreditointegracion string
+)
+{
+   jBC: L.APAP.COL.FF.EXTRACT.CREDIT
+}
+
+
+
+
