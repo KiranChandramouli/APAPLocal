@@ -1,0 +1,4 @@
+* I_F.REDO.OUT.CLEAR.FILE Created 08 DEC 10 at 05:45PM by apapr8/KAVI
+*      PREFIX[REDO.OUT.CLEAR.FILE]
+    EQU REDO.OUT.CLEAR.FILE.CLEARING.OUT.ID TO 1,   RedoOutClearFile_ClearingOutId TO 1,
+                 REDO.OUT.CLEAR.FILE.TFS.ID TO 2,   RedoOutClearFile_TfsId TO 2

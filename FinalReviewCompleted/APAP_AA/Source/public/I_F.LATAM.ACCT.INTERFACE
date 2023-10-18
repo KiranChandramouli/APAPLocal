@@ -1,0 +1,3 @@
+* I_F.LATAM.ACCT.INTERFACE Created 19 JAN 10 at 02:15AM by banco/RAFFIQ1
+*      PREFIX[LATAM.ACINT]
+          EQU LATAM.ACINT.ENTRY.KEY TO 1,   LatamAcctInterface_EntryKey TO 1

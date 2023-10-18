@@ -1,0 +1,17 @@
+* I_F.REDO.L.USER.LOG Created 25 MAY 15 at 04:38PM by t24uatd/INPUTTER
+*      PREFIX[REDO.PRO]
+         EQU REDO.PRO.LOGIN.DATE TO 1,   RedoLUserLog_LoginDate TO 1,
+              REDO.PRO.LOGINTIME TO 2,   RedoLUserLog_Logintime TO 2,
+                 REDO.PRO.REMARK TO 3,   RedoLUserLog_Remark TO 3,
+              REDO.PRO.CLIENT.IP TO 4,   RedoLUserLog_ClientIp TO 4,
+             REDO.PRO.RESERVED.9 TO 5,   RedoLUserLog_Reserved9 TO 5,
+             REDO.PRO.RESERVED.8 TO 6,   RedoLUserLog_Reserved8 TO 6,
+             REDO.PRO.RESERVED.7 TO 7,   RedoLUserLog_Reserved7 TO 7,
+             REDO.PRO.RESERVED.6 TO 8,   RedoLUserLog_Reserved6 TO 8,
+             REDO.PRO.RESERVED.5 TO 9,   RedoLUserLog_Reserved5 TO 9,
+             REDO.PRO.RESERVED.4 TO 10,  RedoLUserLog_Reserved4 TO 10,
+             REDO.PRO.RESERVED.3 TO 11,  RedoLUserLog_Reserved3 TO 11,
+             REDO.PRO.RESERVED.2 TO 12,  RedoLUserLog_Reserved2 TO 12,
+             REDO.PRO.RESERVED.1 TO 13,  RedoLUserLog_Reserved1 TO 13,
+              REDO.PRO.LOCAL.REF TO 14,  RedoLUserLog_LocalRef TO 14,
+               REDO.PRO.OVERRIDE TO 15,  RedoLUserLog_Override TO 15

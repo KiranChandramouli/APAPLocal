@@ -1,0 +1,18 @@
+* I_F.REDO.FC.ENQMAIN Created 20 SEP 10 at 03:26PM by apapr8/TEM.JARMAS.01
+*      PREFIX[FC.PP]
+        EQU FC.PP.DESCRIPCION TO 1,   RedoFcEnqmain_Descripcion TO 1,
+            FC.PP.ENQPARMS.ID TO 2,   RedoFcEnqmain_EnqparmsId TO 2,
+             FC.PP.RESERVED.5 TO 3,   RedoFcEnqmain_Reserved5 TO 3,
+             FC.PP.RESERVED.4 TO 4,   RedoFcEnqmain_Reserved4 TO 4,
+             FC.PP.RESERVED.3 TO 5,   RedoFcEnqmain_Reserved3 TO 5,
+             FC.PP.RESERVED.2 TO 6,   RedoFcEnqmain_Reserved2 TO 6,
+             FC.PP.RESERVED.1 TO 7,   RedoFcEnqmain_Reserved1 TO 7,
+          FC.PP.RECORD.STATUS TO 8,   RedoFcEnqmain_RecordStatus TO 8,
+                FC.PP.CURR.NO TO 9,   RedoFcEnqmain_CurrNo TO 9,
+               FC.PP.INPUTTER TO 10,  RedoFcEnqmain_Inputter TO 10,
+              FC.PP.DATE.TIME TO 11,  RedoFcEnqmain_DateTime TO 11,
+             FC.PP.AUTHORISER TO 12,  RedoFcEnqmain_Authoriser TO 12,
+                FC.PP.CO.CODE TO 13,  RedoFcEnqmain_CoCode TO 13,
+              FC.PP.DEPT.CODE TO 14,  RedoFcEnqmain_DeptCode TO 14,
+           FC.PP.AUDITOR.CODE TO 15,  RedoFcEnqmain_AuditorCode TO 15,
+        FC.PP.AUDIT.DATE.TIME TO 16,  RedoFcEnqmain_AuditDateTime TO 16
