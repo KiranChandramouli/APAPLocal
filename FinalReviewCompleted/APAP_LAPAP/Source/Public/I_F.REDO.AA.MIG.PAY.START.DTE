@@ -1,0 +1,20 @@
+* I_F.REDO.AA.MIG.PAY.START.DTE Created 26 MAY 15 at 05:00PM by t24teme/INPUTTER
+*      PREFIX[REDO.AA.MPSD]
+     EQU REDO.AA.MPSD.FIRST.PAY.DATE TO 1,   RedoAaMigPayStartDte_FirstPayDate TO 1,
+             REDO.AA.MPSD.RESERVED.8 TO 2,   RedoAaMigPayStartDte_Reserved8 TO 2,
+             REDO.AA.MPSD.RESERVED.7 TO 3,   RedoAaMigPayStartDte_Reserved7 TO 3,
+             REDO.AA.MPSD.RESERVED.6 TO 4,   RedoAaMigPayStartDte_Reserved6 TO 4,
+             REDO.AA.MPSD.RESERVED.5 TO 5,   RedoAaMigPayStartDte_Reserved5 TO 5,
+             REDO.AA.MPSD.RESERVED.4 TO 6,   RedoAaMigPayStartDte_Reserved4 TO 6,
+             REDO.AA.MPSD.RESERVED.3 TO 7,   RedoAaMigPayStartDte_Reserved3 TO 7,
+             REDO.AA.MPSD.RESERVED.2 TO 8,   RedoAaMigPayStartDte_Reserved2 TO 8,
+             REDO.AA.MPSD.RESERVED.1 TO 9,   RedoAaMigPayStartDte_Reserved1 TO 9,
+          REDO.AA.MPSD.RECORD.STATUS TO 10,  RedoAaMigPayStartDte_RecordStatus TO 10,
+                REDO.AA.MPSD.CURR.NO TO 11,  RedoAaMigPayStartDte_CurrNo TO 11,
+               REDO.AA.MPSD.INPUTTER TO 12,  RedoAaMigPayStartDte_Inputter TO 12,
+              REDO.AA.MPSD.DATE.TIME TO 13,  RedoAaMigPayStartDte_DateTime TO 13,
+             REDO.AA.MPSD.AUTHORISER TO 14,  RedoAaMigPayStartDte_Authoriser TO 14,
+                REDO.AA.MPSD.CO.CODE TO 15,  RedoAaMigPayStartDte_CoCode TO 15,
+              REDO.AA.MPSD.DEPT.CODE TO 16,  RedoAaMigPayStartDte_DeptCode TO 16,
+           REDO.AA.MPSD.AUDITOR.CODE TO 17,  RedoAaMigPayStartDte_AuditorCode TO 17,
+        REDO.AA.MPSD.AUDIT.DATE.TIME TO 18,  RedoAaMigPayStartDte_AuditDateTime TO 18

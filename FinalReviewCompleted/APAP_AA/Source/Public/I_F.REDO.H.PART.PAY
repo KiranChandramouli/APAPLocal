@@ -1,0 +1,18 @@
+* I_F.REDO.H.PART.PAY Created 28 DEC 10 at 04:43PM by apap/JEEVA
+*      PREFIX[PART.PAY]
+     EQU PART.PAY.ARRANGEMENT.ID TO 1,   RedoHPartPay_ArrangementId TO 1,
+            PART.PAY.BILL.NUMBER TO 2,   RedoHPartPay_BillNumber TO 2,
+        PART.PAY.PARTL.PYMT.PCNT TO 3,   RedoHPartPay_PartlPymtPcnt TO 3,
+           PART.PAY.NUM.OF.PYMTS TO 4,   RedoHPartPay_NumOfPymts TO 4,
+                 PART.PAY.AMOUNT TO 5,   RedoHPartPay_Amount TO 5,
+               PART.PAY.CURRENCY TO 6,   RedoHPartPay_Currency TO 6,
+             PART.PAY.VALUE.DATE TO 7,   RedoHPartPay_ValueDate TO 7,
+          PART.PAY.RECORD.STATUS TO 8,   RedoHPartPay_RecordStatus TO 8,
+                PART.PAY.CURR.NO TO 9,   RedoHPartPay_CurrNo TO 9,
+               PART.PAY.INPUTTER TO 10,  RedoHPartPay_Inputter TO 10,
+              PART.PAY.DATE.TIME TO 11,  RedoHPartPay_DateTime TO 11,
+             PART.PAY.AUTHORISER TO 12,  RedoHPartPay_Authoriser TO 12,
+                PART.PAY.CO.CODE TO 13,  RedoHPartPay_CoCode TO 13,
+              PART.PAY.DEPT.CODE TO 14,  RedoHPartPay_DeptCode TO 14,
+           PART.PAY.AUDITOR.CODE TO 15,  RedoHPartPay_AuditorCode TO 15,
+        PART.PAY.AUDIT.DATE.TIME TO 16,  RedoHPartPay_AuditDateTime TO 16

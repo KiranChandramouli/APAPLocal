@@ -1,0 +1,18 @@
+* Version 1 13/04/00  GLOBUS Release No. G14.0.00 03/07/03
+*
+* Common area for REDO.B.CRE.ARR.AA.OFS multi-threaded 
+* This will contain things such as filename, file variables and standard variables
+*-----------------------------------------------------------------------------
+* Modification History:
+*           hpasquel@temenos.com                   2011-01-11
+*-----------------------------------------------------------------------------
+      COMMON /REDO.B.CRE.ARR.AA.OFS.COMMON/ FN.REDO.CREATE.ARRANGEMENT,
+             F.REDO.CREATE.ARRANGEMENT,
+             FN.REDO.CRE.ARR.AA.OFS.LIST,
+             F.REDO.CRE.ARR.AA.OFS.LIST,
+             FN.OFS.RESPONSE.QUEUE,
+             F.OFS.RESPONSE.QUEUE,
+             FN.OFS.MESSAGE.QUEUE,
+             F.OFS.MESSAGE.QUEUE,
+             FN.AA.ARRANGEMENT,
+             F.AA.ARRANGEMENT

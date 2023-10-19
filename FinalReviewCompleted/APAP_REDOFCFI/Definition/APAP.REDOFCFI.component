@@ -1,0 +1,1774 @@
+component APAP.REDOFCFI
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoFcActPres (
+)
+{
+    jBC: REDO.FC.ACT.PRES
+}
+
+
+public method redoFcBhValidationsFields (
+)
+{
+    jBC: REDO.FC.BH.VALIDATIONS.FIELDS
+}
+
+
+public method redoFcClAccounting (
+    INOUT action string
+)
+{
+    jBC: REDO.FC.CL.ACCOUNTING
+}
+
+
+
+public method redoFcClAccountingValidate (
+)
+{
+    jBC: REDO.FC.CL.ACCOUNTING.VALIDATE
+}
+
+
+
+public method redoFcClAuthorise (
+)
+{
+    jBC: REDO.FC.CL.AUTHORISE
+}
+
+
+
+public method redoFcClBalance (
+)
+{
+    jBC: REDO.FC.CL.BALANCE
+}
+
+
+
+public method redoFcClBalanceFields (
+)
+{
+    jBC: REDO.FC.CL.BALANCE.FIELDS
+}
+
+
+
+public method redoFcClBalanceHis (
+)
+{
+    jBC: REDO.FC.CL.BALANCE.HIS
+}
+
+
+
+public method redoFcClVerifyBalance (
+)
+{
+    jBC: REDO.FC.CL.VERIFY.BALANCE
+}
+
+
+
+public method redoFcClVerifyDisAmount (
+)
+{
+    jBC: REDO.FC.CL.VERIFY.DIS.AMOUNT
+}
+
+
+
+public method redoFcClVerifyDistbAmount (
+)
+{
+    jBC: REDO.FC.CL.VERIFY.DISTB.AMOUNT
+}
+
+
+
+public method redoFcClVerifyMaint (
+)
+{
+    jBC: REDO.FC.CL.VERIFY.MAINT
+}
+
+
+
+public method redoFcCollCodeParams (
+)
+{
+    jBC: REDO.FC.COLL.CODE.PARAMS
+}
+
+
+
+public method redoFcCollCodeParamsFields (
+)
+{
+    jBC: REDO.FC.COLL.CODE.PARAMS.FIELDS
+}
+
+
+
+public method redoFcCollTypeParams (
+)
+{
+    jBC: REDO.FC.COLL.TYPE.PARAMS
+}
+
+
+
+public method redoFcDdTypeGar (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR
+}
+
+
+
+public method redoFcDdTypeGarDe (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR.DE
+}
+
+
+
+public method redoFcDdTypeGarDi (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR.DI
+}
+
+
+
+public method redoFcDdTypeGarFs (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR.FS
+}
+
+
+
+public method redoFcDdTypeGarTp (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR.TP
+}
+
+
+
+public method redoFcDdTypeGarVh (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.DD.TYPE.GAR.VH
+}
+
+
+
+public method redoFcDis (
+)
+{
+    jBC: REDO.FC.DIS
+}
+
+
+
+public method redoFcEMain (
+    INOUT yCusId string,
+    INOUT dataEnq string
+)
+{
+    jBC: REDO.FC.E.MAIN
+}
+
+
+
+public method redoFcEnqActPres (
+)
+{
+    jBC: REDO.FC.ENQ.ACT.PRES
+}
+
+
+
+public method redoFcEnqBuildInsType (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.BUILD.INS.TYPE
+}
+
+
+
+public method redoFcEnqBuildInsTypeDe (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.BUILD.INS.TYPE.DE
+}
+
+
+
+public method redoFcEnqBuildInsTypeDi (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.BUILD.INS.TYPE.DI
+}
+
+
+
+public method redoFcEnqNoColl (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL
+}
+
+
+
+
+
+public method redoFcEnqNoCollVs (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL.VS
+}
+
+
+
+public method redoFcEnqmain (
+)
+{
+    jBC: REDO.FC.ENQMAIN
+}
+
+
+
+public method redoFcEnqmainFields (
+)
+{
+    jBC: REDO.FC.ENQMAIN.FIELDS
+}
+
+
+
+public method redoFcEnqparms (
+)
+{
+    jBC: REDO.FC.ENQPARMS
+}
+
+
+
+public method redoFcEnqparmsFields (
+)
+{
+    jBC: REDO.FC.ENQPARMS.FIELDS
+}
+
+
+
+public method redoFcEnqNoCollDe (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL.DE
+}
+
+public method redoFcFillAct (
+)
+{
+    jBC: REDO.FC.FILL.ACT
+}
+
+
+
+public method redoFcFormDisbFields (
+)
+{
+    jBC: REDO.FC.FORM.DISB.FIELDS
+}
+
+
+
+public method redoFcGenPolId (
+    INOUT pId string
+)
+{
+    jBC: REDO.FC.GEN.POL.ID
+}
+
+
+
+public method redoFcGetVersion (
+)
+{
+    jBC: REDO.FC.GET.VERSION
+}
+
+
+
+public method redoFcInstDisb (
+)
+{
+    jBC: REDO.FC.INST.DISB
+}
+
+
+
+public method redoFcInstDisbFields (
+)
+{
+    jBC: REDO.FC.INST.DISB.FIELDS
+}
+
+
+
+public method redoFcIntB2 (
+)
+{
+    jBC: REDO.FC.INT.B2
+}
+
+
+
+public method redoFcIntB2New (
+)
+{
+    jBC: REDO.FC.INT.B2.NEW
+}
+
+
+
+public method redoFcNofEnqDocLoan (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.NOF.ENQ.DOC.LOAN
+}
+
+
+
+public method redoFcNofileChargesDis (
+    INOUT rData string
+)
+{
+    jBC: REDO.FC.NOFILE.CHARGES.DIS
+}
+
+
+
+public method redoFcNomextEmpresa (
+)
+{
+    jBC: REDO.FC.NOMEXT.EMPRESA
+}
+
+
+
+public method redoFcNomextEmpresaFields (
+)
+{
+    jBC: REDO.FC.NOMEXT.EMPRESA.FIELDS
+}
+
+
+
+public method redoFcOrigFunds (
+)
+{
+    jBC: REDO.FC.ORIG.FUNDS
+}
+
+
+
+public method redoFcOrigFundsFields (
+)
+{
+    jBC: REDO.FC.ORIG.FUNDS.FIELDS
+}
+
+
+
+public method redoFcParams (
+)
+{
+    jBC: REDO.FC.PARAMS
+}
+
+public method redoFcPopulatedLim (
+)
+{
+    jBC: REDO.FC.POPULATED.LIM
+}
+
+
+
+public method redoFcPrincipalVal (
+)
+{
+    jBC: REDO.FC.PRINCIPAL.VAL
+}
+
+
+
+public method redoFcProdCollPolicy (
+)
+{
+    jBC: REDO.FC.PROD.COLL.POLICY
+}
+
+
+
+public method redoFcProdCollPolicyFields (
+)
+{
+    jBC: REDO.FC.PROD.COLL.POLICY.FIELDS
+}
+
+
+
+public method redoFcProdDesc (
+)
+{
+    jBC: REDO.FC.PROD.DESC
+}
+
+
+
+public method redoFcRevVal (
+)
+{
+    jBC: REDO.FC.REV.VAL
+}
+
+
+
+public method redoFcSAccVal (
+)
+{
+    jBC: REDO.FC.S.ACC.VAL
+}
+
+
+
+public method redoFcSCiuuVal (
+)
+{
+    jBC: REDO.FC.S.CIUU.VAL
+}
+
+
+
+public method redoFcSClBalance (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FC.S.CL.BALANCE
+}
+
+
+
+public method redoFcSCoStatus (
+    INOUT collId string
+)
+{
+    jBC: REDO.FC.S.CO.STATUS
+}
+
+
+
+public method redoFcSCollBr (
+)
+{
+    jBC: REDO.FC.S.COLL.BR
+}
+
+
+
+public method redoFcSCollBrDateTasacion (
+)
+{
+    jBC: REDO.FC.S.COLL.BR.DATE.TASACION
+}
+
+
+
+public method redoFcSCollBrVa (
+)
+{
+    jBC: REDO.FC.S.COLL.BR.VA
+}
+
+
+
+public method redoFcSCollDe (
+)
+{
+    jBC: REDO.FC.S.COLL.DE
+}
+
+
+
+public method redoFcSCollFs (
+)
+{
+    jBC: REDO.FC.S.COLL.FS
+}
+
+
+
+public method redoFcSCollFsHf (
+)
+{
+    jBC: REDO.FC.S.COLL.FS.HF
+}
+
+
+
+public method redoFcSCollFsVa (
+)
+{
+    jBC: REDO.FC.S.COLL.FS.VA
+}
+
+
+
+public method redoFcSCollTp (
+)
+{
+    jBC: REDO.FC.S.COLL.TP
+}
+
+
+
+public method redoFcSCollTpVa (
+)
+{
+    jBC: REDO.FC.S.COLL.TP.VA
+}
+
+
+
+public method redoFcSCollValNominal (
+)
+{
+    jBC: REDO.FC.S.COLL.VAL.NOMINAL
+}
+
+
+
+
+public method redoFcSFieldValidPol (
+    INOUT fieldNo string,
+    INOUT behaviour string,
+    INOUT value string,
+    INOUT fieldName string,
+    INOUT mvPos string,
+    INOUT svPos string
+)
+{
+    jBC: REDO.FC.S.FIELD.VALID.POL
+}
+
+
+
+public method redoFcSFillPysh (
+)
+{
+    jBC: REDO.FC.S.FILL.PYSH
+}
+
+
+
+public method redoFcSGetCollTypeCg (
+    INOUT info string,
+    INOUT enqData string
+)
+{
+    jBC: REDO.FC.S.GET.COLL.TYPE.CG
+}
+
+
+
+public method redoFcSHotIdCurr (
+)
+{
+    jBC: REDO.FC.S.HOT.ID.CURR
+}
+
+
+
+public method redoFcSHotIdGar (
+)
+{
+    jBC: REDO.FC.S.HOT.ID.GAR
+}
+
+
+
+public method redoFcSInsMaping (
+    INOUT pFieldName string,
+    INOUT fieldNo string
+)
+{
+    jBC: REDO.FC.S.INS.MAPING
+}
+
+
+
+public method redoFcSPolicyAssingment (
+)
+{
+    jBC: REDO.FC.S.POLICY.ASSINGMENT
+}
+
+
+
+public method redoFcSPolicyBehav (
+)
+{
+    jBC: REDO.FC.S.POLICY.BEHAV
+}
+
+
+
+public method redoFcSPolyEventfield (
+)
+{
+    jBC: REDO.FC.S.POLY.EVENTFIELD
+}
+
+
+
+public method redoFcSPopCollRight (
+    INOUT inCollId string,
+    INOUT inPos string
+)
+{
+    jBC: REDO.FC.S.POP.COLL.RIGHT
+}
+
+
+
+public method redoFcSPopulateCollDi (
+)
+{
+    jBC: REDO.FC.S.POPULATE.COLL.DI
+}
+
+
+
+public method redoFcSProdCollType (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FC.S.PROD.COLL.TYPE
+}
+
+
+
+public method redoFcSRepayment (
+)
+{
+    jBC: REDO.FC.S.REPAYMENT
+}
+
+
+
+public method redoFcSSetMandatory (
+)
+{
+    jBC: REDO.FC.S.SET.MANDATORY
+}
+public method redoFcSSetValLimit (
+)
+{
+    jBC: REDO.FC.S.SET.VAL.LIMIT
+}
+public method redoFcSStatusCancel (
+)
+{
+    jBC: REDO.FC.S.STATUS.CANCEL
+}
+
+
+
+public method redoFcSolicitudAuthorise (
+)
+{
+    jBC: REDO.FC.SOLICITUD.AUTHORISE
+}
+
+
+
+public method redoFcSolicitud (
+)
+{
+    jBC: REDO.FC.SOLICITUD
+}
+
+
+
+public method redoFcTypeident (
+)
+{
+    jBC: REDO.FC.TYPEIDENT
+}
+
+
+
+public method redoFcTypeidentFields (
+)
+{
+    jBC: REDO.FC.TYPEIDENT.FIELDS
+}
+
+
+
+public method redoFcVLoadDisb (
+)
+{
+    jBC: REDO.FC.V.LOAD.DISB
+}
+
+
+
+public method redoFcVLoadPartDisb (
+)
+{
+    jBC: REDO.FC.V.LOAD.PART.DISB
+}
+
+
+
+public method redoFcValAmount (
+)
+{
+    jBC: REDO.FC.VAL.AMOUNT
+}
+
+
+
+public method redoFcValCurrency (
+)
+{
+    jBC: REDO.FC.VAL.CURRENCY
+}
+
+
+
+public method redoFeeCollectInp (
+)
+{
+    jBC: REDO.FEE.COLLECT.INP
+}
+
+
+
+public method redoFeecollect (
+)
+{
+    jBC: REDO.FEECOLLECT
+}
+
+
+
+public method redoFeecollectFields (
+)
+{
+    jBC: REDO.FEECOLLECT.FIELDS
+}
+
+
+
+public method redoFeecollectValidate (
+)
+{
+    jBC: REDO.FEECOLLECT.VALIDATE
+}
+
+
+
+public method redoFiAccountCustomerInfo (
+    INOUT iAccount string,
+    INOUT oCustomerInfo string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.ACCOUNT.CUSTOMER.INFO
+}
+
+
+
+public method redoFiCalcCheckDigit (
+    INOUT fiStandardAccount string,
+    INOUT werrorMsg string
+)
+{
+    jBC: REDO.FI.CALC.CHECK.DIGIT
+}
+
+
+
+public method redoFiControlFields (
+)
+{
+    jBC: REDO.FI.CONTROL.FIELDS
+}
+
+
+
+
+
+
+public method redoFiConvertXmlToTxt (
+    INOUT iXmlMsg string,
+    INOUT oRTxtMsg string,
+    INOUT oErrMsg string
+)
+{
+    jBC: REDO.FI.CONVERT.XML.TO.TXT
+}
+
+
+
+public method redoFiENofReport (
+    INOUT datrep string
+)
+{
+    jBC: REDO.FI.E.NOF.REPORT
+}
+
+
+
+public method redoFiEPlanillaMain (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.E.PLANILLA.MAIN
+}
+
+
+
+public method redoFiExtPayrollFile (
+    INOUT inTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.EXT.PAYROLL.FILE
+}
+
+
+
+public method redoFiFtProcessSelect (
+)
+{
+    jBC: REDO.FI.FT.PROCESS.SELECT
+}
+
+
+
+public method redoFiGetDirList (
+    INOUT paramId string,
+    INOUT wError string
+)
+{
+    jBC: REDO.FI.GET.DIR.LIST
+}
+
+
+
+public method redoFiInMsg (
+    INOUT yInMsg string
+)
+{
+    jBC: REDO.FI.IN.MSG
+}
+
+
+
+public method redoFiInputDaemon (
+)
+{
+    jBC: REDO.FI.INPUT.DAEMON
+}
+
+
+
+public method redoFiIntPayrollFile (
+    INOUT inTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.INT.PAYROLL.FILE
+}
+
+
+
+public method redoFiLbBproc (
+)
+{
+    jBC: REDO.FI.LB.BPROC
+}
+
+
+
+public method redoFiLbBuildRtn (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FI.LB.BUILD.RTN
+}
+
+
+
+public method redoFiLbCollTxnProcess (
+    INOUT dataIn string,
+    INOUT pmtRefId string
+)
+{
+    jBC: REDO.FI.LB.COLL.TXN.PROCESS
+}
+
+
+
+public method redoFiLbCollect (
+    INOUT paramAnsId string
+)
+{
+    jBC: REDO.FI.LB.COLLECT
+}
+
+
+
+public method redoFiLbCollectBuildRtn (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FI.LB.COLLECT.BUILD.RTN
+}
+
+
+
+public method redoFiLbCollectLoad (
+)
+{
+    jBC: REDO.FI.LB.COLLECT.LOAD
+}
+
+
+
+public method redoFiLbCollectSelect (
+)
+{
+    jBC: REDO.FI.LB.COLLECT.SELECT
+}
+
+
+
+public method redoFiLbGenerateDataPost (
+)
+{
+    jBC: REDO.FI.LB.GENERATE.DATA.POST
+}
+
+
+
+public method redoFiLbGenerateDataSelect (
+)
+{
+    jBC: REDO.FI.LB.GENERATE.DATA.SELECT
+}
+
+
+
+public method redoFiLbRecalcBuildRtn (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FI.LB.RECALC.BUILD.RTN
+}
+
+
+
+public method redoFiLbRecalcData (
+    INOUT aaPaySchId string
+)
+{
+    jBC: REDO.FI.LB.RECALC.DATA
+}
+
+
+
+public method redoFiLbRecalcDataLoad (
+)
+{
+    jBC: REDO.FI.LB.RECALC.DATA.LOAD
+}
+
+
+
+public method redoFiLbRecalcDataPost (
+)
+{
+    jBC: REDO.FI.LB.RECALC.DATA.POST
+}
+
+
+
+public method redoFiOrangePaymentsInit (
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS.INIT
+}
+
+
+
+public method redoFiOrangePaymentsLoad (
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS.LOAD
+}
+
+
+
+public method redoFiOrangePaymentsPost (
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS.POST
+}
+
+
+
+public method redoFiOrangePaymentsSelect (
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS.SELECT
+}
+
+
+
+public method redoFiPayrollFile (
+    INOUT inTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.PAYROLL.FILE
+}
+
+
+
+public method redoFiRecordTxnDetails (
+    INOUT rParams string,
+    INOUT inResult string,
+    INOUT inRef string,
+    INOUT outArray string
+)
+{
+    jBC: REDO.FI.RECORD.TXN.DETAILS
+}
+
+
+
+public method redoFiRipPlanillaInpRtn (
+)
+{
+    jBC: REDO.FI.RIP.PLANILLA.INP.RTN
+}
+
+
+
+public method redoFiValidateHeadAndData (
+    INOUT yInpTxtMsg string,
+    INOUT iRPosValues string,
+    INOUT oRValues string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.VALIDATE.HEAD.AND.DATA
+}
+
+public method redoFcActPresFields (
+)
+{
+    jBC: REDO.FC.ACT.PRES.FIELDS
+}
+
+
+
+public method redoFcArrangementAuth (
+)
+{
+    jBC: REDO.FC.ARRANGEMENT.AUTH
+}
+
+
+
+public method redoFcBhValidations (
+)
+{
+    jBC: REDO.FC.BH.VALIDATIONS
+}
+
+
+
+public method redoFcClBalanceHisFields (
+)
+{
+    jBC: REDO.FC.CL.BALANCE.HIS.FIELDS
+}
+
+
+
+public method redoFcClProcess (
+    INOUT yOption string
+)
+{
+    jBC: REDO.FC.CL.PROCESS
+}
+
+
+
+public method redoFcClValidate (
+)
+{
+    jBC: REDO.FC.CL.VALIDATE
+}
+
+
+
+public method redoFcCollTypeParamsFields (
+)
+{
+    jBC: REDO.FC.COLL.TYPE.PARAMS.FIELDS
+}
+
+
+
+public method redoFcCustSolicitud (
+)
+{
+    jBC: REDO.FC.CUST.SOLICITUD
+}
+
+
+
+public method redoFcCustSolicitudFields (
+)
+{
+    jBC: REDO.FC.CUST.SOLICITUD.FIELDS
+}
+
+
+
+public method redoFcDisFields (
+)
+{
+    jBC: REDO.FC.DIS.FIELDS
+}
+
+
+
+public method redoFcDisParam (
+)
+{
+    jBC: REDO.FC.DIS.PARAM
+}
+
+
+
+public method redoFcDisParamFields (
+)
+{
+    jBC: REDO.FC.DIS.PARAM.FIELDS
+}
+
+
+
+public method redoFcEnqNoCollDi (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL.DI
+}
+
+
+
+public method redoFcEnqNoCollFs (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL.FS
+}
+
+
+
+public method redoFcEnqNoCollTp (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.ENQ.NO.COLL.TP
+}
+
+
+
+public method redoFcFillPyshLife (
+)
+{
+    jBC: REDO.FC.FILL.PYSH.LIFE
+}
+
+
+
+public method redoFcFillPyshLifeFields (
+)
+{
+    jBC: REDO.FC.FILL.PYSH.LIFE.FIELDS
+}
+
+
+
+public method redoFcFormDisb (
+)
+{
+    jBC: REDO.FC.FORM.DISB
+}
+
+
+
+public method redoFcMethPagoVal (
+)
+{
+    jBC: REDO.FC.METH.PAGO.VAL
+}
+
+
+
+public method redoFcNfDesCat (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FC.NF.DES.CAT
+}
+
+
+
+public method redoFcNfNominaExt (
+    INOUT rData string
+)
+{
+    jBC: REDO.FC.NF.NOMINA.EXT
+}
+
+
+
+public method redoFcParamsFields (
+)
+{
+    jBC: REDO.FC.PARAMS.FIELDS
+}
+
+
+
+public method redoFcPolTypeClass (
+)
+{
+    jBC: REDO.FC.POL.TYPE.CLASS
+}
+
+
+
+public method redoFcPolTypeClassFields (
+)
+{
+    jBC: REDO.FC.POL.TYPE.CLASS.FIELDS
+}
+
+
+
+public method redoFcSAuthorise (
+    INOUT result string
+)
+{
+    jBC: REDO.FC.S.AUTHORISE
+}
+
+
+
+public method redoFcSBalFall (
+)
+{
+    jBC: REDO.FC.S.BAL.FALL
+}
+
+
+
+public method redoFcSCalcDtVh (
+)
+{
+    jBC: REDO.FC.S.CALC.DT.VH
+}
+
+
+
+public method redoFcSCollDeVa (
+)
+{
+    jBC: REDO.FC.S.COLL.DE.VA
+}
+
+
+
+public method redoFcSCollDi (
+)
+{
+    jBC: REDO.FC.S.COLL.DI
+}
+
+
+
+public method redoFcSCollDiMontDisp (
+)
+{
+    jBC: REDO.FC.S.COLL.DI.MONT.DISP
+}
+
+
+
+public method redoFcSCollVhVa (
+)
+{
+    jBC: REDO.FC.S.COLL.VH.VA
+}
+
+
+
+public method redoFcSConditionVh (
+)
+{
+    jBC: REDO.FC.S.CONDITION.VH
+}
+
+
+
+public method redoFcSDocValidate (
+)
+{
+    jBC: REDO.FC.S.DOC.VALIDATE
+}
+
+
+
+public method redoFcSInsPolAmt (
+)
+{
+    jBC: REDO.FC.S.INS.POL.AMT
+}
+
+
+
+public method redoFcSInsVal (
+)
+{
+    jBC: REDO.FC.S.INS.VAL
+}
+
+
+
+public method redoFcSMapping (
+    INOUT pCollCode string,
+    INOUT yIdColl string,
+    INOUT yAv string
+)
+{
+    jBC: REDO.FC.S.MAPPING
+}
+
+
+
+public method redoFcSModchr (
+)
+{
+    jBC: REDO.FC.S.MODCHR
+}
+
+
+public method redoFcSProdCollTypeCg (
+    INOUT enqData string
+)
+{
+    jBC: REDO.FC.S.PROD.COLL.TYPE.CG
+}
+
+public method redoFcSProdVal (
+)
+{
+    jBC: REDO.FC.S.PROD.VAL
+}
+
+
+
+public method redoFcSProdValDao (
+)
+{
+    jBC: REDO.FC.S.PROD.VAL.DAO
+}
+
+
+
+public method redoFcSProductColl (
+)
+{
+    jBC: REDO.FC.S.PRODUCT.COLL
+}
+
+
+
+public method redoFcSolicitudData (
+    INOUT solData string
+)
+{
+    jBC: REDO.FC.SOLICITUD.DATA
+}
+
+
+
+public method redoFcSolicitudFields (
+)
+{
+    jBC: REDO.FC.SOLICITUD.FIELDS
+}
+
+
+
+public method redoFcTempDisb (
+)
+{
+    jBC: REDO.FC.TEMP.DISB
+}
+
+
+
+public method redoFcTempDisbFields (
+)
+{
+    jBC: REDO.FC.TEMP.DISB.FIELDS
+}
+
+
+
+public method redoFcValPlazo (
+)
+{
+    jBC: REDO.FC.VAL.PLAZO
+}
+
+
+
+public method redoFcValTt (
+)
+{
+    jBC: REDO.FC.VAL.TT
+}
+
+
+
+public method redoFcValValueDate (
+)
+{
+    jBC: REDO.FC.VAL.VALUE.DATE
+}
+
+
+
+public method redoFcyAutPerformReversal (
+)
+{
+    jBC: REDO.FCY.AUT.PERFORM.REVERSAL
+}
+
+
+
+public method redoFiCentralBankFile (
+    INOUT iXmlMsg string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.CENTRAL.BANK.FILE
+}
+
+
+
+public method redoFiControlAuth (
+)
+{
+    jBC: REDO.FI.CONTROL.AUTH
+}
+
+
+
+public method redoFiControl (
+)
+{
+    jBC: REDO.FI.CONTROL
+}
+
+
+
+public method redoFiControlDigit (
+    INOUT inText string,
+    INOUT inDig string,
+    INOUT inErr string
+)
+{
+    jBC: REDO.FI.CONTROL.DIGIT
+}
+
+
+
+public method redoFiExtPayrollValidate (
+    INOUT inTxtMsg string,
+    INOUT outVarWork string,
+    INOUT outTxtMsg string,
+    INOUT updInTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.EXT.PAYROLL.VALIDATE
+}
+
+
+
+public method redoFiFtProcess (
+    INOUT yRecId string
+)
+{
+    jBC: REDO.FI.FT.PROCESS
+}
+
+
+
+public method redoFiFtProcessLoad (
+)
+{
+    jBC: REDO.FI.FT.PROCESS.LOAD
+}
+
+
+
+public method redoFiFtProcessPost (
+)
+{
+    jBC: REDO.FI.FT.PROCESS.POST
+}
+
+
+
+public method redoFiLbBprocDet (
+)
+{
+    jBC: REDO.FI.LB.BPROC.DET
+}
+
+
+
+public method redoFiLbBprocDetFields (
+)
+{
+    jBC: REDO.FI.LB.BPROC.DET.FIELDS
+}
+
+
+
+public method redoFiLbBprocFields (
+)
+{
+    jBC: REDO.FI.LB.BPROC.FIELDS
+}
+
+
+
+public method redoFiLbBprocValidaStatus (
+)
+{
+    jBC: REDO.FI.LB.BPROC.VALIDA.STATUS
+}
+
+
+
+public method redoFiLbEExtrParam (
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.E.EXTR.PARAM
+}
+
+
+
+public method redoFiLbGenerateAmnts (
+    INOUT compType string,
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.GENERATE.AMNTS
+}
+
+
+
+public method redoFiLbGenerateData (
+    INOUT aaPaySchId string
+)
+{
+    jBC: REDO.FI.LB.GENERATE.DATA
+}
+
+
+
+public method redoFiLbGenerateDataLoad (
+)
+{
+    jBC: REDO.FI.LB.GENERATE.DATA.LOAD
+}
+
+
+
+public method redoFiLbRecalcDataSelect (
+)
+{
+    jBC: REDO.FI.LB.RECALC.DATA.SELECT
+}
+
+
+
+public method redoFiMailFormatGen (
+    INOUT yFiControl string,
+    INOUT datrep string
+)
+{
+    jBC: REDO.FI.MAIL.FORMAT.GEN
+}
+
+
+
+public method redoFiMsgFormat (
+    INOUT interfaceId string,
+    INOUT datoIn string,
+    INOUT datoOut string
+)
+{
+    jBC: REDO.FI.MSG.FORMAT
+}
+
+
+
+public method redoFiOrangeDdFile (
+    INOUT inDir string,
+    INOUT outErro string
+)
+{
+    jBC: REDO.FI.ORANGE.DD.FILE
+}
+
+
+
+public method redoFiPayrollValidate (
+    INOUT inTxtMsg string,
+    INOUT outVarWork string,
+    INOUT outTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.PAYROLL.VALIDATE
+}
+
+
+
+public method redoFiPreformatMsg (
+    INOUT inInterface string,
+    INOUT inFieldType string,
+    INOUT inMsg string,
+    INOUT outMsg string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.PREFORMAT.MSG
+}
+
+
+
+public method redoFiRclUsd (
+)
+{
+    jBC: REDO.FI.RCL.USD
+}
+
+
+
+public method redoFiRecordControl (
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.RECORD.CONTROL
+}
+
+public method redoFcEval (
+    INOUT idCustLim string,
+    INOUT idNameLim string,
+    INOUT outResult string
+)
+{
+    jBC: REDO.FC.EVAL
+}
+
+public method redoFcSCollVh (
+)
+{
+    jBC: REDO.FC.S.COLL.VH
+}
+
+public method RedoFiCentralBankFile (
+    INOUT iXmlMsg string,
+    INOUT oErrorMsg string
+)
+{
+    jBC: REDO.FI.CENTRAL.BANK.FILE
+}
+
+public method RedoFiOrangeDdFile (
+    INOUT inDir string,
+    INOUT outErro string
+)
+{
+    jBC: REDO.FI.ORANGE.DD.FILE
+}
+
+
+public method redoFiOrangePayments (
+    INOUT yRecordId string
+)
+{
+    jBC: REDO.FI.ORANGE.PAYMENTS
+}
+
+
+public method redoFiControlId (
+)
+{
+    jBC: REDO.FI.CONTROL.ID
+}
+

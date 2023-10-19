@@ -1,0 +1,21 @@
+* I_F.REDO.EMP.RESP.MVMT Created 14 JUN 10 at 07:55PM by apapr8/SHIVA.1
+*      PREFIX[EMP.RES]
+           EQU EMP.RES.EMP.NAME TO 1,   RedoEmpRespMvmt_EmpName TO 1,
+           EMP.RES.EMP.POSITION TO 2,   RedoEmpRespMvmt_EmpPosition TO 2,
+               EMP.RES.ORG.UNIT TO 3,   RedoEmpRespMvmt_OrgUnit TO 3,
+            EMP.RES.RESERVED.05 TO 4,   RedoEmpRespMvmt_Reserved05 TO 4,
+            EMP.RES.RESERVED.04 TO 5,   RedoEmpRespMvmt_Reserved04 TO 5,
+            EMP.RES.RESERVED.03 TO 6,   RedoEmpRespMvmt_Reserved03 TO 6,
+            EMP.RES.RESERVED.02 TO 7,   RedoEmpRespMvmt_Reserved02 TO 7,
+            EMP.RES.RESERVED.01 TO 8,   RedoEmpRespMvmt_Reserved01 TO 8,
+              EMP.RES.LOCAL.REF TO 9,   RedoEmpRespMvmt_LocalRef TO 9,
+               EMP.RES.OVERRIDE TO 10,  RedoEmpRespMvmt_Override TO 10,
+          EMP.RES.RECORD.STATUS TO 11,  RedoEmpRespMvmt_RecordStatus TO 11,
+                EMP.RES.CURR.NO TO 12,  RedoEmpRespMvmt_CurrNo TO 12,
+               EMP.RES.INPUTTER TO 13,  RedoEmpRespMvmt_Inputter TO 13,
+              EMP.RES.DATE.TIME TO 14,  RedoEmpRespMvmt_DateTime TO 14,
+             EMP.RES.AUTHORISER TO 15,  RedoEmpRespMvmt_Authoriser TO 15,
+                EMP.RES.CO.CODE TO 16,  RedoEmpRespMvmt_CoCode TO 16,
+              EMP.RES.DEPT.CODE TO 17,  RedoEmpRespMvmt_DeptCode TO 17,
+           EMP.RES.AUDITOR.CODE TO 18,  RedoEmpRespMvmt_AuditorCode TO 18,
+        EMP.RES.AUDIT.DATE.TIME TO 19,  RedoEmpRespMvmt_AuditDateTime TO 19

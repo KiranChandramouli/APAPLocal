@@ -1,0 +1,935 @@
+* @ValidationCode : MjotNDQ0NjY0MzYxOkNwMTI1MjoxNjkzMzE0MjI1NDA0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 29 Aug 2023 18:33:45
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDORETAIL
+*--------------------------------------------------------------------------------------------------------
+* <Rating>205</Rating>
+*--------------------------------------------------------------------------------------------------------
+SUBROUTINE REDO.CARD.GENERATION.AUTHORISE
+*--------------------------------------------------------------------------------------------------------
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.CARD.GENERATION.AUTH
+*--------------------------------------------------------------------------------------------------------
+*Description  : This is a authorisation routine to
+*Linked With  : REDO.CARD.GENERATION
+*--------------------------------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+*    Date            Who                      Reference               Description
+*   ------         ------                    -------------            -------------
+* 03 Aug 2010    Mohammed Anies K           ODR-2010-03-0400         Initial Creation
+* 1 Feb 2011     Kavitha                    ODR-2010-03-0400         HD1101688  Fix
+* 8-Apr-2011     Kavitha                    ODR-2010-03-0400         PACS00036007  fix
+* 13-MAY-2011    KAVITHA                    ODR-2010-08-0467         PACS00055017  FIX
+*10 JUN 2011     KAVITHA                    ODR-2010-08-0467         PACS00063138 FIX
+*21 FEB 2012     PRABHU                     PACS00177874             PACS00177874 Changes made to calculate magnetic strip name
+* 09 JUN 2023    J.Q.                       CTO-171                  Non Sequential RANDOM PAN Generation, 8 digits BIN , 7 digits PAN
+*23-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED,FM TO @FM, VM TO @VM
+*--------------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
+    $INSERT I_EQUATE
+    $INSERT I_F.COMPANY
+    $INSERT I_F.CARD.TYPE
+    $INSERT I_F.CUSTOMER
+    $INSERT I_F.ACCOUNT
+    $INSERT JBC.h
+    $INSERT I_TSS.COMMON
+    $INSERT I_F.REDO.CARD.GENERATION
+    $INSERT I_F.REDO.CARD.REQUEST
+    $INSERT I_F.REDO.CARD.NUMBERS
+    $INSERT I_F.REDO.CARD.NO.LOCK
+    $INSERT I_F.REDO.CARD.RENEWAL
+    $INSERT I_F.REDO.APAP.H.PARAMETER
+    $INSERT I_F.REDO.CARD.BIN
+    $INSERT I_REDO.CARD.GEN.COMMON
+    $INSERT I_F.REDO.CARD.REG.STOCK
+    $INSERT I_F.LATAM.CARD.ORDER
+    $INSERT I_F.LAPAP.CARD.GEN.CARDS
+    $INSERT I_F.LAPAP.BIN.SEQ.CTRL
+    $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 MANUAL CONVERSION END
+
+*--------------------------------------------------------------------------------------------------------
+**********
+MAIN.PARA:
+**********
+
+    IF V$FUNCTION NE "R" OR R.NEW(REDO.CARD.GEN.RECORD.STATUS) NE 'RNAU' THEN
+        GOSUB OPEN.PARA
+        GOSUB PROCESS.PARA
+    END
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+**********
+OPEN.PARA:
+**********
+* In this para of code file variables are initialised and opened
+
+    FN.REDO.CARD.REG.STK = 'F.REDO.CARD.REG.STOCK'
+    F.REDO.CARD.REG.STK = ''
+    CALL OPF(FN.REDO.CARD.REG.STK,F.REDO.CARD.REG.STK)
+
+    FN.CARD.RENEWAL = 'F.REDO.CARD.RENEWAL'
+    F.CARD.RENEWAL = ''
+    CALL OPF(FN.CARD.RENEWAL,F.CARD.RENEWAL)
+
+    FN.REDO.CARD.NO.LOCK = 'F.REDO.CARD.NO.LOCK'
+    F.REDO.CARD.NO.LOCK = ''
+    CALL OPF(FN.REDO.CARD.NO.LOCK,F.REDO.CARD.NO.LOCK)
+
+    FN.CARD.REQUEST = 'F.REDO.CARD.REQUEST'
+    F.CARD.REQUEST = ''
+    CALL OPF(FN.CARD.REQUEST,F.CARD.REQUEST)
+
+    FN.REDO.CARD.NUMBERS = 'F.REDO.CARD.NUMBERS'
+    F.REDO.CARD.NUMBERS = ''
+    CALL OPF(FN.REDO.CARD.NUMBERS,F.REDO.CARD.NUMBERS)
+
+    FN.COMPANY='F.COMPANY'
+    F.COMPANY=''
+    CALL OPF(FN.COMPANY,F.COMPANY)
+
+    FN.REDO.INTERFACE.MON.TYPE='F.REDO.INTERFACE.MON.TYPE'
+    F.REDO.INTERFACE.MON.TYPE=''
+    CALL OPF(FN.REDO.INTERFACE.MON.TYPE,F.REDO.INTERFACE.MON.TYPE)
+
+    FN.CARD.TYPE = 'F.CARD.TYPE'
+    F.CARD.TYPE = ''
+    CALL OPF(FN.CARD.TYPE,F.CARD.TYPE)
+
+    FN.REDO.CARD.BIN = 'F.REDO.CARD.BIN'
+    F.REDO.CARD.BIN = ''
+    CALL OPF(FN.REDO.CARD.BIN,F.REDO.CARD.BIN)
+
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.CUSTOMER = 'F.CUSTOMER'
+    F.CUSTOMER= ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    FN.ST.LAPAP.CARD.GEN.CARDS = 'F.ST.LAPAP.CARD.GEN.CARDS'
+    F.ST.LAPAP.CARD.GEN.CARDS = ''
+    CALL OPF(FN.ST.LAPAP.CARD.GEN.CARDS,F.ST.LAPAP.CARD.GEN.CARDS)
+
+    Y.LOG.ID = 'LOG-':ID.NEW:'-':TODAY
+
+    FN.BIN.CTRL = "F.ST.LAPAP.BIN.SEQ.CTRL"
+    F.BIN.CTRL = ""
+    CALL OPF(FN.BIN.CTRL , F.BIN.CTRL)
+
+    FN.REDO.H.REPORT.PARAM = 'F.REDO.H.REPORTS.PARAM'
+    F.REDO.H.REPORT.PARAM = 'F.REDO.H.REPORTS.PARAM'
+    CALL OPF(FN.REDO.H.REPORT.PARAM,F.REDO.H.REPORT.PARAM)
+
+    GOSUB INIT.TWO
+RETURN
+
+*--------
+INIT.TWO:
+*--------
+    LOC.REF.APPLICATION="COMPANY":@FM:"CARD.TYPE" ;*R22 MANUAL CONVERSION
+    LOC.REF.FIELDS='L.CO.BOOK':@FM:'L.CT.BIN' ;*R22 MANUAL CONVERSION
+    LOC.REF.POS=''
+    CALL MULTI.GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
+    POS.L.CO.BOOK=LOC.REF.POS<1,1>
+    POS.L.CT.BIN = LOC.REF.POS<2,1>
+    Y.ENT.ID = '' ; CUSTOMER.NO = ''
+    ACCT.NO = ''
+    Y.WRITE.FLAG=0
+
+    FN.LCO = 'F.LATAM.CARD.ORDER'   ; F.LCO = ''
+    CALL OPF(FN.LCO,F.LCO)
+    RENEWAL.CNTR = 0 ; REISSUE.CNTR = 0 ; CardIndicator = ''
+
+    GOSUB DO.READ.PARAM
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+PROCESS.PARA:
+* Main processing section
+
+    Y.ID.NEW=ID.NEW
+
+    CALL F.READ(FN.CARD.REQUEST,Y.ID.NEW,R.CARD.REQUEST,F.CARD.REQUEST,CARD.ERR)
+    IF R.CARD.REQUEST THEN
+*HD1101688 -S
+        RENEW.FLAG = R.CARD.REQUEST<REDO.CARD.REQ.RENEWAL.FLAG>
+        REQ.CARD.TYPE = R.CARD.REQUEST<REDO.CARD.REQ.CARD.TYPE>
+    END
+
+    Y.TOT.CARD.TYPES = DCOUNT(R.NEW(REDO.CARD.GEN.CARD.TYPE),@VM) ;*R22 MANUAL CONVERSION
+    Y.INIT.COUNT = 1
+
+    LOOP
+    WHILE Y.INIT.COUNT LE Y.TOT.CARD.TYPES
+*PACS00063138 -S
+        INPUT_PARAM_CARD.REQUEST = ''
+        INPUT_PARAM_CMSACT.REQUEST = ''
+        INPUT_PARAM_CMS.CARD.REQUEST = ''
+
+        COMMENTS =   R.CARD.REQUEST<REDO.CARD.REQ.VAULT.QTY,Y.INIT.COUNT>
+        EMBOSS.NAME = R.CARD.REQUEST<REDO.CARD.REQ.CUSTOMER.NAME,Y.INIT.COUNT>
+        PREV.CARD = FIELD(COMMENTS,":",2)
+        PREV.CARD = TRIM(PREV.CARD)
+
+        FETCH.CARD.NUM = FIELD(PREV.CARD,".",2)
+        ISSUE.INDICATOR = TRIM(FIELD(COMMENTS,":",1))
+
+        CALL F.READ(FN.LCO,PREV.CARD,R.LCO,F.LCO,LCO.ERR)
+        IF R.LCO THEN
+            Y.EXP.DATE.OLD=''
+            RENEWAL.CNTR = R.LCO<CARD.IS.RENEWAL.COUNTER>
+            REISSUE.CNTR = R.LCO<CARD.IS.REISSUE.COUNTER>
+            IF ISSUE.INDICATOR EQ "SAME" THEN
+                Y.EXP.DATE.OLD=R.LCO<CARD.IS.EXPIRY.DATE>
+            END
+        END
+
+**PACS00055017-S -S
+
+        Y.SERIES.ID = R.NEW(REDO.CARD.GEN.CARD.TYPE)<1,Y.INIT.COUNT>
+        Y.BIN.NO = R.NEW(REDO.CARD.GEN.BIN)<1,Y.INIT.COUNT>
+        Y.STOCK.ID = Y.BIN.NO
+**PACS00055017-E
+
+        GOSUB DO.READ.BIN.CONTROL       ;*CTO-171
+
+        IF ISSUE.INDICATOR NE "SAME" THEN
+            LOCATE Y.STOCK.ID IN Y.STOCK.ID.LIST SETTING Y.STOCK.ID.POS THEN
+                R.REDO.CARD.REG.STK= R.REDO.CARD.REG.STK.ARR<Y.STOCK.ID.POS>
+            END
+            ELSE
+                GOSUB READ.NEXT.SEQ
+                Y.STOCK.ID.LIST<-1>=Y.STOCK.ID
+                R.REDO.CARD.REG.STK.ARR<-1>=R.REDO.CARD.REG.STK
+            END
+            IF R.REDO.CARD.REG.STK EQ "" THEN
+                Y.SEQ.NO = "000001"
+                Y.LAST.SEQ = 0          ;* CTO-171
+            END ELSE
+                Y.SEQ.NO = R.REDO.CARD.REG.STK<REDO.CARD.REG.STOCK.SERIES.BAL>
+                Y.LAST.SEQ = Y.SEQ.NO * 1         ;* CTO-171
+            END
+
+**CTO-171 -A --START
+            Y.SHOULD.GENERATE.SEQ = @TRUE
+            Y.SEQ.NO = '';
+            SEQ_LENGTH = 7;
+            Y.LOOP.COUNT = 0;
+            LOOP
+            WHILE Y.SHOULD.GENERATE.SEQ EQ @TRUE DO
+
+                Y.SEQ.NO = '';
+                Y.LOOP.COUNT += 1;
+                FOR A = 1 TO SEQ_LENGTH STEP 1
+                    Y.SEQ.NO := RND(10)
+                NEXT A
+
+*Add two zeroes to form an 8 digits BIN
+
+                GOSUB DO.CHECK.EXISTING.CARDS
+
+            REPEAT
+**CTO-171 -A --END
+        END
+*PACS00177874 ---START----------------------
+        Y.CUST.PROSP.NO = R.CARD.REQUEST<REDO.CARD.REQ.PROSPECT.ID>
+        IF NOT(Y.CUST.PROSP.NO) THEN
+            LOCATE Y.SERIES.ID IN REQ.CARD.TYPE<1,1> SETTING Y.CUS.PROS.POS THEN
+                Y.CUST.PROSP.NO = R.CARD.REQUEST<REDO.CARD.REQ.CUSTOMER.NO,Y.CUS.PROS.POS,Y.INIT.COUNT>
+            END
+        END
+        IF Y.CUST.PROSP.NO THEN
+            CALL F.READ(FN.CUSTOMER,Y.CUST.PROSP.NO,R.CUSTOMER,F.CUSTOMER,ERR)
+            Y.MAGNETIC.ST.NAME=R.CUSTOMER<EB.CUS.FAMILY.NAME>:'/':R.CUSTOMER<EB.CUS.GIVEN.NAMES>
+            Y.MAGNETIC.ST.NAME =Y.MAGNETIC.ST.NAME[1,26]
+        END
+*PACS00177874---END----------------------------
+        GOSUB FETCH.REQ.VALUES
+
+        GOSUB GENERATE.CARD.NOS
+
+        GOSUB UPDATE.REDO.CARD.NUMBERS
+**************************************************************************************************************
+        Y.CARD.NO = R.NEW(REDO.CARD.GEN.CARD.NUMBERS)<1,Y.INIT.COUNT>
+        Y.CARD.TYPE = R.NEW(REDO.CARD.GEN.CARD.TYPE)<1,Y.INIT.COUNT>
+        Y.COMP.CODE = R.NEW(REDO.CARD.GEN.AGENCY)<1,Y.INIT.COUNT>
+
+        IF ISSUE.INDICATOR NE "SAME" THEN
+            R.REDO.CARD.REG.STK<REDO.CARD.REG.STOCK.SERIES.BAL> = Y.SEQ.NO
+
+            CALL LOG.WRITE(FN.REDO.CARD.REG.STK,Y.STOCK.ID,R.REDO.CARD.REG.STK,'')
+            LOCATE Y.STOCK.ID IN Y.STOCK.ID.LIST SETTING Y.STOCK.ID.POS THEN
+                R.REDO.CARD.REG.STK.ARR<Y.STOCK.ID.POS>=R.REDO.CARD.REG.STK
+            END
+            CALL F.RELEASE(FN.REDO.CARD.REG.STK,Y.STOCK.ID,F.REDO.CARD.REG.STK)
+        END
+
+
+*       CALL REDO.CARD.GENERATION.WS
+        APAP.REDORETAIL.redoCardGenerationWs() ;*R22 MANUAL CONVERSION START
+
+****************************************************************************************************************
+        IF R.NEW(REDO.CARD.GEN.RESPONSE.MSG) EQ 'ERROR' THEN
+            Y.INIT.COUNT=Y.TOT.CARD.TYPES
+        END ELSE
+            CALL JOURNAL.UPDATE('')     ;*CTO-171
+        END
+        Y.INIT.COUNT +=1
+
+
+    REPEAT
+*HD1101688 -E
+
+RETURN
+*---------------------------------------------------------------------------------------------------------
+FETCH.REQ.VALUES:
+
+    Y.CARD.QTY = R.NEW(REDO.CARD.GEN.QTY)<1,Y.INIT.COUNT>
+    Y.ACCOUNT.REQ = R.CARD.REQUEST<REDO.CARD.REQ.ACCOUNT.NO,Y.INIT.COUNT>
+    Y.PERS.CARD.REQ = R.CARD.REQUEST<REDO.CARD.REQ.PERS.CARD,Y.INIT.COUNT>
+    Y.BIN.ID = Y.BIN.NO
+    CALL F.READ(FN.REDO.CARD.BIN,Y.BIN.ID,R.REDO.CARD.BIN,F.REDO.CARD.BIN,Y.ERR.BIN)
+    IF R.REDO.CARD.BIN THEN
+        Y.ENT.ID = R.REDO.CARD.BIN<REDO.CARD.BIN.ENTITY.ID>
+    END
+
+    CALL CACHE.READ('F.REDO.APAP.H.PARAMETER','SYSTEM',R.APAP.PARAM,PARAM.ERR)
+    Y.DEM=R.APAP.PARAM<PARAM.DELIMITER>
+
+    ACTIVATION = "APAP_EMBOZADO_WEBSERVICES"      ;*Activation key
+    EX.USER=OPERATOR
+    EX.PC= TSS$CLIENTIP
+    ID.PROC=ID.NEW
+    MON.TP.REJ = "03"
+***ADDED DEFAULT IN LATAM CARD ORDER
+    GOSUB FETCH.REQ.VALUES.TWO
+RETURN
+
+*-----------------
+FETCH.REQ.VALUES.TWO:
+*-----------------
+    Y.EXPIRY.DATE = R.NEW(REDO.CARD.GEN.EXPIRY)<1,Y.INIT.COUNT>
+    Y.AGENCY.GEN = R.NEW(REDO.CARD.GEN.AGENCY)<1,Y.INIT.COUNT>
+    Y.TYPE.OF.CARD = R.CARD.REQUEST<REDO.CARD.REQ.TYPE.OF.CARD,Y.INIT.COUNT>
+    Y.CARD.NO.AND.LOCK.ID = R.NEW(REDO.CARD.GEN.CARD.TYPE)<1,Y.INIT.COUNT>:'.':R.NEW(REDO.CARD.GEN.AGENCY)
+    Y.CARD.NOS.LIST = ''
+    Y.CARD.NOS.STATUS = ''
+
+RETURN
+*----------------------------------------------------------------------------------------------------------------
+
+******************
+GENERATE.CARD.NOS:
+******************
+*PACS00055017-S
+
+    IF R.NEW(REDO.CARD.GEN.PERSONLISED)<1,Y.INIT.COUNT> EQ '' THEN
+        Y.EMBOSS.TYPE = 'PREEMBOZADA'
+    END ELSE
+        Y.EMBOSS.TYPE = 'PERSONALIZADA'
+    END
+
+*PACS00055017 -E
+
+    IF ISSUE.INDICATOR NE "SAME" THEN
+        GOSUB DIFFERENT.CARD.PROCESS
+    END ELSE
+
+        Y.PERSONALISE.TYPE = R.NEW(REDO.CARD.GEN.PERSONLISED)<1,Y.INIT.COUNT>
+        R.NEW(REDO.CARD.GEN.CARD.NUMBERS)<1,1,1> = FETCH.CARD.NUM
+        Y.CARD.NOS.LIST = FETCH.CARD.NUM
+        Y.GEN.CARD.NO = FETCH.CARD.NUM
+        Y.CARD.NOS.STATUS = 'INUSE'
+        Y.EMBOSS = Y.EMBOSS.TYPE
+        Y.PERSONALISE = Y.PERSONALISE.TYPE
+        Y.EXPIRY = Y.EXPIRY.DATE
+        Y.CARD.TYPE.NUM = Y.TYPE.OF.CARD
+        Y.REQ.ID = ID.NEW
+        GOSUB UPDATE.CARD.REQUEST.WEB.SERVICES
+        GOSUB UPDATE.CMS.CARD.REQUEST.WEB.SERVICES
+        GOSUB UPDATE.CMSACT.REQUEST.WEB.SERVICES
+
+    END
+
+    GOSUB UPDATE.RENEW.NO
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+DIFFERENT.CARD.PROCESS:
+
+    Y.PERSONALISE.TYPE = R.NEW(REDO.CARD.GEN.PERSONLISED)<1,Y.INIT.COUNT>
+    Y.BIN.SEQ.ARR = ''
+    Y.INIT.CARD.COUNT = 1
+    Y.CARD.NO.ARR = ''
+    LOOP
+    WHILE Y.INIT.CARD.COUNT LE Y.CARD.QTY
+        Y.MSG = ''
+        Y.MSG<-1> = 'Genereating card ' : Y.INIT.CARD.COUNT : ', of ' : Y.CARD.QTY
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+
+        Y.BRANCH.AGENCY = R.NEW(REDO.CARD.GEN.AGENCY)
+        BRANCH.DIGIT = Y.BRANCH.AGENCY[7,3]
+*PACS00148241 -S
+        Y.SEQ.NO = FMT(Y.SEQ.NO,"R%7")  ;*CTO-171, 7 instead of 9.
+
+        Y.BIN.SEQ = Y.BIN.NO: '00' :Y.SEQ.NO
+        Y.BIN.SEQ.ARR<-1> = Y.BIN.SEQ
+        GOSUB CALC.CHECK.DIGIT
+        Y.GEN.CARD.NO = ''
+
+        Y.GEN.CARD.NO = Y.BIN.NO: '00' :Y.SEQ.NO:Y.CHECK.DIGIT
+        Y.MSG = ''
+        Y.MSG<-1> = 'Card No genned = ' : Y.GEN.CARD.NO
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+
+**PACS00148241-E
+**CTO-171 --START Comment following line, we need to sort the array first...
+*R.NEW(REDO.CARD.GEN.CARD.NUMBERS)<1,Y.INIT.COUNT,Y.INIT.CARD.COUNT> = Y.GEN.CARD.NO
+        Y.CARD.NO.ARR<-1> = Y.GEN.CARD.NO
+**Following GOSUBs are commented, we will call them in another loop once card nos are sorted.
+*GOSUB ASSIGN.CARD.VALUES
+
+*GOSUB UPDATE.CARD.REQUEST.WEB.SERVICES
+*GOSUB UPDATE.CMS.CARD.REQUEST.WEB.SERVICES
+*GOSUB UPDATE.CMSACT.REQUEST.WEB.SERVICES
+** CTO-171 --END
+        Y.INIT.CARD.COUNT +=1
+** CTO-171 --START
+        GOSUB DO.INSERT.CARD;
+*Y.SEQ.NO += 1 ;*No longer needed as we are generating random seq. CTO-171
+        GOSUB DO.GEN.RANDOM.SEQ
+** CTO-171 --END
+    REPEAT
+
+    GOSUB DO.SORT.CARDS
+
+    GOSUB DO.UPDATE.BIN.CONTROL         ;*CTO-171
+
+RETURN
+*--------------------
+ASSIGN.CARD.VALUES:
+
+    IF Y.CARD.NOS.LIST EQ '' THEN
+        Y.CARD.NOS.LIST = Y.GEN.CARD.NO
+*PACS00055017 -S
+        IF Y.EMBOSS.TYPE EQ 'PREEMBOZADA' THEN
+            Y.CARD.NOS.STATUS = 'AVAILABLE'
+        END ELSE
+            Y.CARD.NOS.STATUS = 'INUSE'
+        END
+
+        Y.EMBOSS = Y.EMBOSS.TYPE
+        Y.PERSONALISE = Y.PERSONALISE.TYPE
+        Y.EXPIRY = Y.EXPIRY.DATE
+        Y.CARD.TYPE.NUM = Y.TYPE.OF.CARD
+        Y.REQ.ID = ID.NEW
+        Y.GEN.DATE=TODAY
+    END ELSE
+        Y.CARD.NOS.LIST := @VM:Y.GEN.CARD.NO ;*R22 MANUAL CONVERSION
+
+        IF Y.EMBOSS.TYPE EQ 'PREEMBOZADA' THEN
+            Y.CARD.NOS.STATUS := @VM:'AVAILABLE' ;*R22 MANUAL CONVERSION
+        END ELSE
+            Y.CARD.NOS.STATUS := @VM:'INUSE' ;*R22 MANUAL CONVERSION
+        END
+*PACS00055017-E
+        Y.EMBOSS := @VM:Y.EMBOSS.TYPE ;*R22 MANUAL CONVERSION
+        Y.PERSONALISE := @VM:Y.PERSONALISE.TYPE ;*R22 MANUAL CONVERSION
+        Y.EXPIRY := @VM:Y.EXPIRY.DATE ;*R22 MANUAL CONVERSION
+        Y.CARD.TYPE.NUM := @VM:Y.TYPE.OF.CARD ;*R22 MANUAL CONVERSION
+        Y.REQ.ID := @VM:ID.NEW ;*R22 MANUAL CONVERSION
+        Y.GEN.DATE:= @VM:TODAY ;*R22 MANUAL CONVERSION
+    END
+
+RETURN
+*-------------------------------------------------------------------------------------
+READ.NEXT.SEQ:
+**********************
+*PACS00055017-S
+
+    R.REDO.CARD.REG.STK = ''
+    SEQ.ERR = ''
+    Y.OPTIONS = ''
+    CALL F.READU(FN.REDO.CARD.REG.STK,Y.STOCK.ID,R.REDO.CARD.REG.STK,F.REDO.CARD.REG.STK,SEQ.ERR,Y.OPTIONS)
+
+*    READU R.REDO.CARD.REG.STK FROM F.REDO.CARD.REG.STK,Y.STOCK.ID SETTING Y.REDO.CARD.REG.STK.POS THEN
+*END
+*PACS00055017-E
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+CALC.CHECK.DIGIT:
+*****************
+    Y.CHECK.DIGIT = ""
+    Y.SUM.CHK = ""
+    Y.DIGIT.COUNT = 1
+    Y.DIGIT.SUM =0
+    Y.LEN.DIGIT = LEN(Y.BIN.SEQ)
+    Y.CONTINUE.FLAG=1
+    LOOP
+    WHILE Y.DIGIT.COUNT LE Y.LEN.DIGIT
+
+        Y.DIGIT = Y.BIN.SEQ[Y.DIGIT.COUNT,1]
+        Y.EVEN.DIGIT = MOD(Y.DIGIT.COUNT,2)
+
+        IF Y.EVEN.DIGIT NE 0 THEN       ;* Check the odd digit and mu
+            Y.DIGIT = Y.DIGIT*2
+            IF Y.DIGIT GE 10 THEN
+                Y.DIGIT.SUM = Y.DIGIT.SUM+Y.DIGIT[1,1]+Y.DIGIT[2,1]
+                Y.DIGIT.COUNT = Y.DIGIT.COUNT+1
+                Y.CONTINUE.FLAG=0
+            END
+
+        END
+        IF Y.CONTINUE.FLAG THEN
+            Y.DIGIT.SUM = Y.DIGIT.SUM+Y.DIGIT
+            Y.DIGIT.COUNT = Y.DIGIT.COUNT+1
+        END
+        Y.CONTINUE.FLAG=1
+    REPEAT
+
+    Y.QUOTIENT = INT(Y.DIGIT.SUM/10)
+    Y.REM.DIGIT = MOD(Y.DIGIT.SUM,10)
+
+    IF Y.REM.DIGIT THEN
+        Y.CHECK.DIGIT = ((Y.QUOTIENT+1)*10) - Y.DIGIT.SUM
+    END ELSE
+        Y.CHECK.DIGIT = Y.DIGIT.SUM[2,1]
+    END
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+UPDATE.REDO.CARD.NUMBERS:
+
+    GOSUB READ.REDO.CARD.NUMBERS
+    IF Y.EMBOSS.TYPE = 'PREEMBOZADA' THEN
+        GOSUB UPDATE.REDO.CARD.NO.LOCK
+    END
+
+    CNT.VAL=DCOUNT(R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER>,@VM) ;*R22 MANUAL CONVERSION
+    IF R.REDO.CARD.NUMBERS<REDO.CARD.NUM.GEN.DATE> EQ '' AND R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER> NE '' THEN
+        R.REDO.CARD.NUMBERS<REDO.CARD.NUM.GEN.DATE,CNT.VAL>=''
+    END
+
+    IF ISSUE.INDICATOR NE "SAME" THEN
+        IF R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER> EQ '' THEN
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER> = Y.CARD.NOS.LIST
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.STATUS> = Y.CARD.NOS.STATUS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EMBOSS.TYPE>= Y.EMBOSS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.PERSONAL.TYPE>=Y.PERSONALISE
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EXPIRY.DATE> = Y.EXPIRY
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.TYPE.OF.CARD> = Y.CARD.TYPE.NUM
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CRD.REQ.ID> = Y.REQ.ID
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.GEN.DATE> =Y.GEN.DATE
+        END ELSE
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER> := @VM:Y.CARD.NOS.LIST ;*R22 MANUAL CONVERSION START
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.STATUS> := @VM:Y.CARD.NOS.STATUS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EMBOSS.TYPE> := @VM:Y.EMBOSS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.PERSONAL.TYPE> := @VM:Y.PERSONALISE
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EXPIRY.DATE> := @VM:Y.EXPIRY
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.TYPE.OF.CARD> := @VM:Y.CARD.TYPE.NUM
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CRD.REQ.ID> := @VM:Y.REQ.ID
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.GEN.DATE> := @VM:Y.GEN.DATE ;*R22 MANUAL CONVERSION END
+        END
+    END ELSE
+        FETCH.AVAIL.NUMBERS = R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CARD.NUMBER>
+        CHANGE @VM TO @FM IN FETCH.AVAIL.NUMBERS ;*R22 MANUAL CONVERSION
+        LOCATE Y.CARD.NOS.LIST IN FETCH.AVAIL.NUMBERS SETTING CARD.AVL.POS THEN
+
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.STATUS,CARD.AVL.POS> = Y.CARD.NOS.STATUS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EMBOSS.TYPE,CARD.AVL.POS> = Y.EMBOSS
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.PERSONAL.TYPE,CARD.AVL.POS> = Y.PERSONALISE
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.EXPIRY.DATE,CARD.AVL.POS> = Y.EXPIRY
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.TYPE.OF.CARD,CARD.AVL.POS> = Y.CARD.TYPE.NUM
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.CRD.REQ.ID,CARD.AVL.POS> = Y.REQ.ID
+            R.REDO.CARD.NUMBERS<REDO.CARD.NUM.GEN.DATE,CARD.AVL.POS> = TODAY
+        END
+    END
+
+    CALL F.WRITE(FN.REDO.CARD.NUMBERS,Y.CARD.NO.AND.LOCK.ID,R.REDO.CARD.NUMBERS)
+    IF Y.WRITE.FLAG EQ 0 THEN
+        R.CARD.REQUEST<REDO.CARD.REQ.NUMBERS.GEN>='YES'
+        Y.ID.NEW=ID.NEW
+        CALL F.WRITE(FN.CARD.REQUEST,Y.ID.NEW,R.CARD.REQUEST)
+        Y.WRITE.FLAG=1
+    END
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+UPDATE.REDO.CARD.NO.LOCK:
+************************
+    GOSUB READ.REDO.CARD.NO.LOCK
+    IF R.REDO.CARD.NO.LOCK THEN
+        IF R.REDO.CARD.NO.LOCK<REDO.CARD.LOCK.CARD.NUMBER,1> EQ '' THEN
+            R.REDO.CARD.NO.LOCK<REDO.CARD.LOCK.CARD.NUMBER,1> = Y.CARD.NOS.LIST<1,1>
+        END
+    END ELSE
+        R.REDO.CARD.NO.LOCK<REDO.CARD.LOCK.CARD.NUMBER,1> = Y.CARD.NOS.LIST<1,1>
+    END
+    CALL F.WRITE(FN.REDO.CARD.NO.LOCK,Y.CARD.NO.AND.LOCK.ID,R.REDO.CARD.NO.LOCK)
+*    WRITE R.REDO.CARD.NO.LOCK ON F.REDO.CARD.NO.LOCK,Y.CARD.NO.AND.LOCK.ID
+*    CALL LOG.WRITE(FN.REDO.CARD.NO.LOCK,Y.CARD.NO.AND.LOCK.ID,R.REDO.CARD.NO.LOCK,'')
+
+RETURN
+*--------------------------------------------------------------------------------------------------------
+READ.REDO.CARD.NUMBERS:
+
+    R.REDO.CARD.NUMBERS = ''
+    REDO.CARD.NUMBERS.ERR = ''
+    CALL F.READU(FN.REDO.CARD.NUMBERS,Y.CARD.NO.AND.LOCK.ID,R.REDO.CARD.NUMBERS,F.REDO.CARD.NUMBERS,REDO.CARD.NUMBERS.ERR,Y.OPTIONS)
+RETURN
+*--------------------------------------------------------------------------------------------------------
+**********************
+READ.REDO.CARD.NO.LOCK:
+**********************
+    R.REDO.CARD.NO.LOCK = ''
+    REDO.CARD.NO.LOCK.ERR = ''
+    CALL F.READU(FN.REDO.CARD.NO.LOCK,Y.CARD.NO.AND.LOCK.ID,R.REDO.CARD.NO.LOCK,F.REDO.CARD.NO.LOCK,REDO.CARD.NO.LOCK.ERR,Y.OPTIONS)
+RETURN
+*--------------------------------------------------------------------------------------------------------
+UPDATE.RENEW.NO:
+
+    LOCATE Y.SERIES.ID IN REQ.CARD.TYPE<1,1> SETTING REQ.POS THEN
+        CUSTOMER.NO = R.CARD.REQUEST<REDO.CARD.REQ.CUSTOMER.NO,REQ.POS,Y.INIT.COUNT>
+        ACCT.NO = R.CARD.REQUEST<REDO.CARD.REQ.ACCOUNT.NO,REQ.POS,Y.INIT.COUNT>
+    END
+    CARD.RENEW.ID = CUSTOMER.NO:"-":ACCT.NO
+    CALL F.READ(FN.CARD.RENEWAL,CARD.RENEW.ID,R.CARD.RENEWAL,F.CARD.RENEWAL,RENEW.ERR)
+    IF R.CARD.RENEWAL THEN
+
+        GET.CARD.NUMBERS = R.CARD.RENEWAL<REDO.RENEW.PREV.CARD.NO>
+        CHANGE @VM TO @FM IN GET.CARD.NUMBERS ;*R22 MANUAL CONVERSION
+        LOCATE PREV.CARD IN GET.CARD.NUMBERS SETTING CARD.POS THEN
+            R.CARD.RENEWAL<REDO.RENEW.NEXT.CARD.NO,CARD.POS> = Y.SERIES.ID:".":Y.GEN.CARD.NO
+            R.CARD.RENEWAL<REDO.RENEW.ISSUE.TYPE,CARD.POS> = ISSUE.INDICATOR
+        END
+        CALL F.WRITE(FN.CARD.RENEWAL,CARD.RENEW.ID,R.CARD.RENEWAL)
+    END
+*PACS00063138-E
+RETURN
+*------------------------------------------------------------------------------
+************************************
+UPDATE.CARD.REQUEST.WEB.SERVICES:
+
+
+    RESPONSE.CODE=''
+    Pan = Y.GEN.CARD.NO
+    IF Y.EXP.DATE.OLD THEN
+        ExpiryDate=Y.EXP.DATE.OLD
+    END
+    ELSE
+        ExpiryDate = Y.EXPIRY.DATE
+    END
+    PinRetryCount = 0
+    CardPVV = ' '
+    CardPVKI=' '
+    RegionCode = R.APAP.PARAM<PARAM.REGION.CODE>
+    Y.COMP.CODE = Y.AGENCY.GEN
+    CALL F.READ(FN.COMPANY,Y.COMP.CODE,R.COMPANY.REC,F.COMPANY,COMP.ERR)
+    IF R.COMPANY.REC THEN
+        BranchId=R.COMPANY.REC<EB.COM.LOCAL.REF,POS.L.CO.BOOK>
+        BranchId=FMT(BranchId,'3"0"R')
+    END
+    AllowInternetTxn = '0'
+    CardType = Y.ENT.ID
+    CardStatus=70
+*PACS00177874 -S
+    IF RENEW.FLAG EQ 'YES' THEN
+        CardStatus=70
+    END
+*PACS00177874-E
+    CardLanguage = R.APAP.PARAM<PARAM.CARD.LANGG>
+    ConsentDate  = '        '
+    IF INPUT_PARAM_CARD.REQUEST EQ '' THEN
+        INPUT_PARAM_CARD.REQUEST = Pan:Y.DEM:ExpiryDate:Y.DEM:PinRetryCount:Y.DEM:CardPVV:Y.DEM:CardPVKI:Y.DEM:RegionCode:Y.DEM:BranchId:Y.DEM:AllowInternetTxn:Y.DEM:CardType:Y.DEM:CardStatus:Y.DEM:CardLanguage:Y.DEM:ConsentDate
+    END ELSE
+        INPUT_PARAM_CARD.REQUEST<1,-1> = Pan:Y.DEM:ExpiryDate:Y.DEM:PinRetryCount:Y.DEM:CardPVV:Y.DEM:CardPVKI:Y.DEM:RegionCode:Y.DEM:BranchId:Y.DEM:AllowInternetTxn:Y.DEM:CardType:Y.DEM:CardStatus:Y.DEM:CardLanguage:Y.DEM:ConsentDate
+    END
+
+RETURN
+*------------------------------------------------------------------------------
+***************************************
+UPDATE.CMS.CARD.REQUEST.WEB.SERVICES:
+***************************************
+
+    DESC=''
+    EXP.DATE = Y.EXPIRY.DATE
+    IF Y.EMBOSS.TYPE EQ 'PREEMBOZADA' THEN
+        CardIndicator= R.APAP.PARAM<PARAM.PRINCIPAL.IND>
+        EmbossingType = 1
+        EmbossedName = ' '
+        MagneticStripName = 'VISA CARDHOLDER'
+    END ELSE
+        GOSUB PERSONALISE.CARD.IND
+    END
+
+    CardIssueDate= TODAY
+*PACS00055017-S
+    IF Y.PERS.CARD.REQ EQ 'URGENTE' THEN
+        EmbossingType:=1
+    END ELSE
+        EmbossingType:=0
+    END
+*PACS00055017-E
+    IF INPUT_PARAM_CMS.CARD.REQUEST EQ '' THEN
+        INPUT_PARAM_CMS.CARD.REQUEST = Pan:Y.DEM:EXP.DATE:Y.DEM:CardIndicator:Y.DEM:CardIssueDate:Y.DEM:EmbossedName:Y.DEM:MagneticStripName:Y.DEM:EmbossingType
+    END ELSE
+        INPUT_PARAM_CMS.CARD.REQUEST<1,-1> = Pan:Y.DEM:EXP.DATE:Y.DEM:CardIndicator:Y.DEM:CardIssueDate:Y.DEM:EmbossedName:Y.DEM:MagneticStripName:Y.DEM:EmbossingType
+    END
+
+RETURN
+*------------------------------------------------------------------------------
+PERSONALISE.CARD.IND:
+
+    EmbossingType= 0
+
+    IF Y.TYPE.OF.CARD EQ "PRINCIPAL" THEN
+        CardIndicator= R.APAP.PARAM<PARAM.PRINCIPAL.IND>
+    END ELSE
+        CardIndicator=R.APAP.PARAM<PARAM.ADITIONAL.IND>
+    END
+    Y.ACC.NO=Y.ACCOUNT.REQ
+    CALL F.READ(FN.ACCOUNT,Y.ACC.NO,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
+    IF R.ACCOUNT THEN
+
+* IF CardIndicator EQ '' THEN
+*     Y.CATEGORY=R.ACCOUNT<AC.CATEGORY>
+*    Y.PARAM.CATEG=R.APAP.PARAM<PARAM.CORPORATE.CATEG>
+*    CHANGE VM TO FM IN Y.PARAM.CATEG
+*    LOCATE Y.CATEGORY IN Y.PARAM.CATEG SETTING CAT.POS THEN
+*        CardIndicator=R.APAP.PARAM<PARAM.CORPORATE.IND>
+*    END
+*END
+*PACS00094453-S
+        EmbossedName = EMBOSS.NAME
+*PACS00177874 -S
+        MagneticStripName = Y.MAGNETIC.ST.NAME
+*PACS00177874 -E
+*PACS00094453-E
+    END
+
+RETURN
+*-----------------------------------------------------------------------------
+**************************************
+UPDATE.CMSACT.REQUEST.WEB.SERVICES:
+**************************************
+    DESC=''
+    CardSequence = RENEWAL.CNTR + REISSUE.CNTR + 1
+    CardType = Y.ENT.ID
+
+    IF ISSUE.INDICATOR EQ "SAME" THEN
+        CMSFunction='03'
+    END ELSE
+        CMSFunction='01'
+    END
+    Y.DATE.TIME = R.NEW(REDO.CARD.GEN.DATE.TIME)
+    ActivityDate = TODAY
+    TEMPTIME = OCONV(TIME(),"MTS")
+    Y.F = FIELD(TEMPTIME,':',1,1)
+    Y.S = FIELD(TEMPTIME,':',2,1)
+    Y.T     = FIELD(TEMPTIME,':',3,1)
+    Y.DATE.TIME = Y.F:Y.S:Y.T
+    ActivityTime  = Y.DATE.TIME
+
+    IF INPUT_PARAM_CMSACT.REQUEST EQ '' THEN
+        INPUT_PARAM_CMSACT.REQUEST = Pan:Y.DEM:CardSequence:Y.DEM:CardType:Y.DEM:RegionCode:Y.DEM:BranchId:Y.DEM:CMSFunction:Y.DEM:ActivityDate:Y.DEM:ActivityTime
+    END ELSE
+        INPUT_PARAM_CMSACT.REQUEST<1,-1> = Pan:Y.DEM:CardSequence:Y.DEM:CardType:Y.DEM:RegionCode:Y.DEM:BranchId:Y.DEM:CMSFunction:Y.DEM:ActivityDate:Y.DEM:ActivityTime
+    END
+RETURN
+*------------------------------------------------------------------------------
+*------------------------------------------------------------------------------
+***************************************
+DO.CHECK.EXISTING.CARDS:
+*If exists then Y.SHOULD.GENERATE.SEQ = @TRUE
+
+    IF (Y.BIN.SEQ EQ '') THEN
+        Y.BIN.SEQ = Y.BIN.NO: '00' :Y.SEQ.NO
+    END
+    Y.MSG = ''
+    Y.MSG<-1> = 'Validating BINSEQ = ' : Y.BIN.SEQ
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+    CMND = 'SELECT F.ST.LAPAP.CARD.GEN.CARDS WITH @ID LIKE ' : Y.BIN.SEQ : '...'
+
+    CALL EB.READLIST(CMND,KEY.LIST,'',Y.SELECTED,SYSTEM.RET.CODE)
+
+    IF KEY.LIST NE '' THEN
+        Y.SHOULD.GENERATE.SEQ = @TRUE
+    END ELSE
+        Y.SHOULD.GENERATE.SEQ = @FALSE
+    END
+RETURN
+*------------------------------------------------------------------------------
+***************************************
+DO.INSERT.CARD:
+    Y.CARD.ID = Y.GEN.CARD.NO
+    R.GEN.CARD<ST.LAP21.CARD.GEN.ID> = Y.ID.NEW
+    R.GEN.CARD<ST.LAP21.BIN> = Y.BIN.NO : '00'
+    R.GEN.CARD<ST.LAP21.SEQ.NO> = Y.SEQ.NO
+    R.GEN.CARD<ST.LAP21.LOOPS.PERFORMED> = Y.LOOP.COUNT
+    CALL F.WRITE(FN.ST.LAPAP.CARD.GEN.CARDS, Y.CARD.ID, R.GEN.CARD)
+    CALL F.RELEASE(FN.ST.LAPAP.CARD.GEN.CARDS,Y.CARD.ID,F.ST.LAPAP.CARD.GEN.CARDS)
+
+    MSG = ''
+    MSG<-1> = 'Card Number ' : LEFT(Y.GEN.CARD.NO,4):'********':RIGHT(Y.GEN.CARD.NO,4) : ', generated and inserted.'
+    CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+
+    Y.MSG = ''
+    Y.MSG<-1> = 'Number ' : Y.GEN.CARD.NO : ', inserted to cache, loops made : ' : Y.LOOP.COUNT
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+
+RETURN
+*------------------------------------------------------------------------------
+*------------------------------------------------------------------------------
+DO.GEN.RANDOM.SEQ:
+    Y.SHOULD.GENERATE.SEQ = @TRUE
+    Y.SEQ.NO = '';
+    SEQ_LENGTH = 7;
+    Y.LOOP.COUNT = 0;
+    LOOP
+    WHILE Y.SHOULD.GENERATE.SEQ EQ @TRUE DO
+        Y.SEQ.NO = '';
+        Y.LOOP.COUNT += 1;
+        FOR A = 1 TO SEQ_LENGTH STEP 1
+            Y.SEQ.NO := RND(10)
+        NEXT A
+
+**Here we are utterly forced to clear Y.BIN.SEQ value to force re-asignation in the following sub
+        Y.BIN.SEQ = ''
+        GOSUB DO.CHECK.EXISTING.CARDS
+        IF Y.LOOP.COUNT GE 30 THEN
+            Y.MSG = ''
+            Y.MSG<-1> = 'More than 30 loops has been made. ' : Y.LOOP.COUNT : ', Seq to val.: ' : Y.SEQ.NO
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+        END
+    REPEAT
+
+RETURN
+*----------------------------------------------------------------------------
+*----------------------------------------------------------------------------
+DO.UPDATE.BIN.CONTROL:
+
+    Y.BIN.REC.ID       = Y.BIN.NO : '00'
+    Y.INUSE.UPDATED      = Y.INUSE.COUNT + (Y.INIT.CARD.COUNT-1);
+    Y.AVL.COUNT.UPDATED     = Y.CAP.NUMBER - Y.INUSE.UPDATED;
+    R.BIN.CTRL<ST.LAP73.INUSE.COUNT>   = Y.INUSE.UPDATED
+    R.BIN.CTRL<ST.LAP73.AVL.COUNT>     = Y.AVL.COUNT.UPDATED
+    R.BIN.CTRL<ST.LAP73.CAP.NUMBER>    = Y.CAP.NUMBER
+    IF Y.EXISTS.FLAG EQ @TRUE THEN
+        CALL F.LIVE.WRITE(FN.BIN.CTRL, Y.BIN.REC.ID, R.BIN.CTRL)
+    END ELSE
+        CALL F.WRITE(FN.BIN.CTRL, Y.BIN.REC.ID, R.BIN.CTRL)
+        CALL F.RELEASE(FN.BIN.CTRL,Y.BIN.REC.ID,F.BIN.CTRL)
+
+    END
+*CALL JOURNAL.UPDATE(Y.BIN.REC.ID)
+
+    MSG = ''
+    MSG<-1> = 'BIN.CONTROL ' : Y.BIN.REC.ID : ' , Updated'
+    MSG<-1> = 'Values with values ?'
+    MSG<-1> = RAISE(R.BIN.CTRL)
+
+    CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+RETURN
+*----------------------------------------------------------------------------
+DO.READ.BIN.CONTROL:
+
+    Y.BIN.REC.ID.READ  = Y.BIN.NO
+    IF LEN(Y.BIN.REC.ID) LE 6 THEN
+        Y.BIN.REC.ID.READ := '00'
+    END
+    CALL F.READ(FN.BIN.CTRL, Y.BIN.REC.ID.READ, R.B.C, F.BIN.CTRL, BIN.CTRL.ERR)
+    Y.INUSE.COUNT   = 0;
+    IF Y.CAP.NUMBER EQ '' THEN
+        Y.CAP.NUMBER   = 9999999;
+    END
+
+    IF BIN.CTRL.ERR EQ 'RECORD NOT FOUND' THEN
+        CALL F.READU(FN.BIN.CTRL, Y.BIN.REC.ID.READ, R.B.C, F.BIN.CTRL, BIN.CTRL.ERR,'')
+
+    END
+
+    IF R.B.C THEN
+        Y.INUSE.COUNT  = R.B.C<ST.LAP73.INUSE.COUNT>
+        Y.AVL.COUNT    = R.B.C<ST.LAP73.AVL.COUNT>
+        Y.CAP.NUMBER   = R.B.C<ST.LAP73.CAP.NUMBER>
+        Y.EXISTS.FLAG = @TRUE
+    END
+    MSG = ''
+    MSG<-1> = 'LAPAP.BIN.SEQ.CTRL @ID ' : Y.BIN.REC.ID.READ
+    MSG<-1> = 'INUSE.COUNT      =' : Y.INUSE.COUNT
+    MSG<-1> = 'AVL.COUNT    =' : Y.AVL.COUNT
+    MSG<-1> = 'CAP.NUMBER   =' : Y.CAP.NUMBER
+    MSG<-1> = 'READ MSG = ' : BIN.CTRL.ERR
+    CALL LAPAP.RAW.LOGGER('APAP.LOG',Y.LOG.ID,MSG)
+RETURN
+*----------------------------------------------------------------------------
+DO.READ.PARAM:
+    CALL F.READ(FN.REDO.H.REPORT.PARAM, "RANDOM.PAN", R.PARAM1, F.REDO.H.REPORT.PARAM, PARAM1.ERR)
+
+    FIND "CAP.COUNT.BIN" IN R.PARAM1<REDO.REP.PARAM.FIELD.NAME> SETTING F.POS, V.POS THEN
+        Y.CAP.NUMBER = R.PARAM1<REDO.REP.PARAM.FIELD.VALUE,V.POS>
+    END
+
+    FIND "AVL.ALERT.COUNT" IN R.PARAM1<REDO.REP.PARAM.FIELD.NAME> SETTING F.POS, V.POS THEN
+        Y.ALERT.NUMBER = R.PARAM1<REDO.REP.PARAM.FIELD.VALUE,V.POS>
+    END
+
+RETURN
+*----------------------------------------------------------------------------
+*----------------------------------------------------------------------------
+DO.SORT.CARDS:
+    Y.CARDS.QTY = DCOUNT(Y.CARD.NO.ARR,@FM)
+
+    FOR A = 1 TO Y.CARDS.QTY STEP 1
+        Y.SWAPPED = @FALSE
+
+        FOR B = 1 TO (Y.CARDS.QTY - A) STEP 1
+            IF Y.CARD.NO.ARR<B> GT Y.CARD.NO.ARR<B+1> THEN
+                Y.SWAPPED = @TRUE
+                Y.TEMP = Y.CARD.NO.ARR<B>
+                Y.CARD.NO.ARR<B> = Y.CARD.NO.ARR<B+1>
+                Y.CARD.NO.ARR<B+1> = Y.TEMP
+            END
+        NEXT B
+
+        IF Y.SWAPPED EQ @FALSE THEN
+            BREAK;
+        END
+    NEXT A
+    GOSUB DO.DEFERRED.OPERATIONS
+RETURN
+*----------------------------------------------------------------------------
+*----------------------------------------------------------------------------
+DO.DEFERRED.OPERATIONS:
+    Y.INIT.CARD.COUNT = 0;
+    Y.MSG = ''
+    Y.MSG<-1> = 'Calls to be made to IST = ' : Y.CARDS.QTY
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,Y.MSG)
+    FOR CURR.CARD.NO = 1 TO Y.CARDS.QTY STEP 1
+        Y.GEN.CARD.NO = Y.CARD.NO.ARR<CURR.CARD.NO>         ;*--> Current Generated Card Number
+        Y.INIT.CARD.COUNT = CURR.CARD.NO          ;*-->Current counter
+        R.NEW(REDO.CARD.GEN.CARD.NUMBERS)<1,Y.INIT.COUNT,Y.INIT.CARD.COUNT> = Y.GEN.CARD.NO;
+
+        GOSUB ASSIGN.CARD.VALUES
+        GOSUB UPDATE.CARD.REQUEST.WEB.SERVICES
+        GOSUB UPDATE.CMS.CARD.REQUEST.WEB.SERVICES
+        GOSUB UPDATE.CMSACT.REQUEST.WEB.SERVICES
+    NEXT CURR.CARD.NO
+RETURN
+*----------------------------------------------------------------------------
+
+END
