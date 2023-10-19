@@ -992,6 +992,14 @@ public method redoGetVpCcyAi (
     jBC: REDO.GET.VP.CCY.AI
 }
 
+
+
+
+
+
+
+
+
 public method redoGlHExtractParameter (
 )
 {
@@ -1053,6 +1061,9 @@ public method redoGlWExtractOnlineFields (
 {
     jBC: REDO.GL.W.EXTRACT.ONLINE.FIELDS
 }
+
+
+
 
 
 public method redoGtExpDate (
@@ -2234,6 +2245,13 @@ public method redoIndividualRefPdfGen (
     jBC: REDO.INDIVIDUAL.REF.PDF.GEN
 }
 
+
+
+public method redoInitCardVal (
+)
+{
+    jBC: REDO.INIT.CARD.VAL
+}
 
 
 
@@ -4218,6 +4236,10 @@ public method redoOrderTypeAuto (
 }
 
 
+
+
+
+
 public method redoOutClearFile (
 )
 {
@@ -4522,6 +4544,9 @@ public method redoPoolRateValidate (
 {
     jBC: REDO.POOL.RATE.VALIDATE
 }
+
+
+
 
 
 
@@ -5750,6 +5775,8 @@ public method redoTcOutStlmtRtn (
 
 
 
+
+
 public method redoTc1020ReasonCode (
 )
 {
@@ -5765,7 +5792,6 @@ public method redoTc1020ReasonCodeFields (
 }
 
 
-
 public method redoTc15OutFrameFile (
 )
 {
@@ -5778,6 +5804,9 @@ public method redoTc15OutStlmtRtn (
 {
     jBC: REDO.TC15.OUT.STLMT.RTN
 }
+
+
+
 
 
 
@@ -6576,6 +6605,9 @@ public method redoTxnAuthCode (
 
 
 
+
+
+
 public method redoTxnProcessCode (
 )
 {
@@ -6895,8 +6927,6 @@ public method redoValAcMonthDuration (
     jBC:REDO.VAL.AC.MONTH.DURATION
 }
 
-<<<<<<< Updated upstream
-=======
 
 
 
@@ -6906,7 +6936,6 @@ public method redoValAccSel (
 {
     jBC: REDO.VAL.ACC.SEL
 }
->>>>>>> Stashed changes
 
 public method redoValAcctItem (
 )
@@ -7095,12 +7124,9 @@ public method redoValLoanFtTtTxn (
     jBC: REDO.VAL.LOAN.FT.TT.TXN
 }
 
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
 
 public method redoValModeParam (
 )
@@ -7246,6 +7272,11 @@ public method redoValThrdprtyComp (
     jBC:REDO.VAL.THRDPRTY.COMP
 }
 
+public method redoValTransCode (
+)
+{
+    jBC: REDO.VAL.TRANS.CODE
+}
 
 public method redoValUtilAmt (
 )
@@ -7281,6 +7312,12 @@ public method redoValidateNominatedAccount (
     jBC: REDO.VALIDATE.NOMINATED.ACCOUNT
 }
 
+
+public method redoVerifyTransaction (
+)
+{
+    jBC:REDO.VERIFY.TRANSACTION
+}
 
 
 public method redoVisaSettleWrite (
@@ -8649,6 +8686,16 @@ public method redoBTaxpayerServices (
 
 
 
+
+
+public method redoBTaxpayerServicesPost (
+)
+{
+    jBC:REDO.B.TAXPAYER.SERVICES.POST
+}
+
+
+
 public method redoBTaxpayerServicesSelect (
 )
 {
@@ -9041,6 +9088,13 @@ public method apapParamDbCrMaskFields (
     jBC: APAP.PARAM.DB.CR.MASK.FIELDS
 }
 
+
+
+public method atmReversalFields (
+)
+{
+    jBC: ATM.REVERSAL.FIELDS
+}
 
 
 
@@ -10513,22 +10567,24 @@ public method redoVcrPartDisbFill (
     jBC:REDO.VCR.PART.DISB.FILL
 }
 
-
-
-
-<<<<<<< Updated upstream
-=======
-
-
-
-
-public method redoViVisaChgbck (
+public method redoViUpdRejFtref (
 )
 {
-    jBC:REDO.VI.VISA.CHGBCK
+    jBC:REDO.VI.UPD.REJ.FTREF
 }
 
->>>>>>> Stashed changes
+
+
+public method redoViVisaApprove (
+)
+{
+    jBC:REDO.VI.VISA.APPROVE
+}
+
+
+
+
+
 public method redoRelcusQtyDepsOne (
     INOUT CustId string,
     INOUT depCntr string,
@@ -10540,6 +10596,14 @@ public method redoRelcusQtyDepsOne (
     jBC:REDO.RELCUS.QTY.DEPS.ONE
 }
 
+
+public method redoRevTxnAuthCode (
+    INOUT YCardNumIn string,
+    INOUT retVal string
+)
+{
+    jBC:REDO.REV.TXN.AUTH.CODE
+}
 
 
 
@@ -10677,6 +10741,9 @@ public method redoStatus (
 {
     jBC:REDO.STATUS
 }
+
+
+
 
 
 
@@ -10889,11 +10956,13 @@ public method redoVcrChequeNumber (
 
 
 
-<<<<<<< Updated upstream
-=======
+public method redoViAthReject (
+)
+{
+    jBC: REDO.VI.ATH.REJECT
+}
 
 
->>>>>>> Stashed changes
 
 public method redoViFtFttc (
 )
@@ -11157,11 +11226,6 @@ public method redoSapErrorNotify (
 
 
 
-public method redoSapTest (
-)
-{
-    jBC: REDO.SAP.TEST
-}
 
 
 
@@ -11381,6 +11445,11 @@ public method redoXrefCorrection (
     jBC: REDO.XREF.CORRECTION
 }
 
+public method redoViVoucherApplyChg (
+)
+{
+    jBC: REDO.VI.VOUCHER.APPLY.CHG
+}
 
 public method sRedoCcrgEvalBalTypCon (
     INOUT rRcbtp string,
@@ -12668,6 +12737,8 @@ public method redoFrontRequests (
 {
     jBC: REDO.FRONT.REQUESTS
 }
+
+
 
 
 
@@ -14713,9 +14784,11 @@ public method redoCallDepTfsReArr (
 
 
 
-<<<<<<< Updated upstream
-=======
-
+public method redoViAppRepCrVoucher (
+)
+{
+    jBC: REDO.VI.APP.REP.CR.VOUCHER
+}
 
 
 
@@ -14751,9 +14824,12 @@ public method redoViVisaRepApprove (
 
 
 
+public method redoViApproveCrVoucher (
+)
+{
+    jBC: REDO.VI.APPROVE.CR.VOUCHER
+}
 
-
->>>>>>> Stashed changes
 public method redoChkDebitCardNumber (
 )
 {
@@ -14799,8 +14875,6 @@ public method redoMassiveFileProcess (
 
 
 
-<<<<<<< Updated upstream
-=======
 
 public method redoVInpTfsDealslip (
 )
@@ -14814,7 +14888,6 @@ public method redoVInpTfsDealslip (
 
 
 
->>>>>>> Stashed changes
 public method redoGetRestructDetails (
     INOUT yArrangeId string,
     INOUT loanNum string,
@@ -14844,6 +14917,7 @@ public method redoGetDisbPaymDetails (
 {
     jBC: REDO.GET.DISB.PAYM.DETAILS
 }
+
 
 
 
@@ -15363,82 +15437,4 @@ public method redoBIntUpdate (
     jBC: REDO.B.INT.UPDATE
 }
 
-public method redoValTransCode (
-)
-{
-    jBC: REDO.VAL.TRANS.CODE
-}
 
-public method redoValAccNoExt (
-)
-{
-    jBC: REDO.VAL.ACC.NO.EXT
-}
-
-public method redoValAccNo (
-)
-{
-    jBC: REDO.VAL.ACC.NO
-}
-
-public method redoValAccBusId (
-)
-{
-    jBC: REDO.VAL.ACC.BUS.ID
-}
-
-public method redoValAccSel (
-)
-{
-    jBC: REDO.VAL.ACC.SEL
-}
-
-public method redoValMerCity (
-)
-{
-    jBC: REDO.VAL.MER.CITY
-}
-
-public method redoValMerCntryCode (
-)
-{
-    jBC: REDO.VAL.MER.CNTRY.CODE
-}
-
-public method redoValMerName (
-)
-{
-    jBC: REDO.VAL.MER.NAME
-}
-
-
-
-
-public method redoBTaxpayerServicesPost (
-)
-{
-   jBC: REDO.B.TAXPAYER.SERVICES.POST
-}
-
-
-
-public method redoVInpAmlFtChk (
-)
-{
-   jBC: REDO.V.INP.AML.FT.CHK
-}
-
-
-
-public method redoVAutActivateAcc (
-)
-{
-   jBC: REDO.V.AUT.ACTIVATE.ACC
-}
-
-
-public method redoUpdateVersionName (
-)
-{
-    jBC: REDO.UPDATE.VERSION.NAME
-}
