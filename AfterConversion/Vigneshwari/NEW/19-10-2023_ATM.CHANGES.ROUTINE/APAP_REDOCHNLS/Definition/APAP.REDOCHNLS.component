@@ -61,22 +61,3 @@ public method redoAthStlmtFileProcessSelect (
 }
 
 
-
-public method redoInterfaceRecAct (
-    INOUT intCode string,
-    INOUT intType string,
-    INOUT batNo string,
-    INOUT batTot string,
-    INOUT infoOr string,
-    INOUT infoDe string,
-    INOUT idProc string,
-    INOUT monTp string,
-    INOUT desc string,
-    INOUT recCon string,
-    INOUT exUser string,
-    INOUT exPc string
-)
-{
-    jBC: REDO.INTERFACE.REC.ACT
-}
-

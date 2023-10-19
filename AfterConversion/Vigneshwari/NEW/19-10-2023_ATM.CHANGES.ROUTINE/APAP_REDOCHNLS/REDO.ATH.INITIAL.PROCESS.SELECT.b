@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDM5NjYzNjQzOkNwMTI1MjoxNjk3NTM4ODgxNTUzOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:04:41
+* @ValidationCode : MjoxOTM0NDg1MTM3OkNwMTI1MjoxNjk3NjkyNTY3MjY2OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:46:07
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -40,7 +40,7 @@ SUBROUTINE  REDO.ATH.INITIAL.PROCESS.SELECT
     $INSERT I_F.REDO.ATH.PROCESS.INFO
     $INSERT I_REDO.ATH.INITIAL.PROCESS.COMMON
 
-	DEBUG   ;* ATM changes by Mario
+
 
     GOSUB READING
     GOSUB PROCESS
@@ -51,7 +51,7 @@ RETURN
 READING:
 *------------------------------------------------------------------------------------
 *READING F.REDO.ATH.STLMT.FILE.DETAILS APPLICATION WITH ID AS 'SYSTEM' ;*R22 Auto conversion
-DEBUG	;* ATM changes by Mario
+
     FILES.NAME=''
     REDO.ID='SYSTEM'
     CALL CACHE.READ(FN.REDO.ATH.STLMT.FILE.DETAILS,REDO.ID,R.REDO.ATH.STLMT.FILE.DETAILS,REDO.ERR)

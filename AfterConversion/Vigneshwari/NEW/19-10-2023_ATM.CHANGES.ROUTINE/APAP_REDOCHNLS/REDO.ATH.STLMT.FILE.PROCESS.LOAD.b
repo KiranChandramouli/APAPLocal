@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNzgwNDMyNjY4OkNwMTI1MjoxNjk3NTM4OTEyMDI1OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:05:12
+* @ValidationCode : MjotMTUwOTk4NTYxOkNwMTI1MjoxNjk3NjkyNTM5ODE5OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:45:39
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -39,7 +39,6 @@ SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS.LOAD
     $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
     $INSERT I_F.REDO.DC.STLMT.ERR.CODE
 
-	DEBUG  ;* ATM changes by Mario
     GOSUB OPEN.FILES
     GOSUB READING
 RETURN

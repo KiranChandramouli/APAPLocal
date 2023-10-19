@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMzU2OTEzNzg5OkNwMTI1MjoxNjk3NTM4ODY3MDE3OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:04:27
+* @ValidationCode : MjotMTg0MzIxMTgyNDpDcDEyNTI6MTY5NzY5MjU3ODQyMjp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:46:18
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -31,14 +31,12 @@ SUBROUTINE REDO.ATH.INITIAL.PROCESS.LOAD
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 04-APR-2023     Conversion tool    R22 Auto conversion             No changes
 * 10-APR-2023      Harishvikram C   Manual R22 conversion             No changes
-*17/10/2023	  VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
-
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.ATH.INITIAL.PROCESS.COMMON
 	
-	DEBUG      ;* ATM changes by Mario
+
     GOSUB INITIALISE
 
 RETURN

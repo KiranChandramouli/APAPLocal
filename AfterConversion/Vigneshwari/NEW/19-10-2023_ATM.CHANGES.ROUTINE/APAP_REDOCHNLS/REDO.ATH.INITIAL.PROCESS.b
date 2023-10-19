@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjEyNTY0NTc4MzpDcDEyNTI6MTY5NzUzODg0ODY5MDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:04:08
+* @ValidationCode : MjotMTQ3NjMwNjQ0ODpDcDEyNTI6MTY5NzY5MjU5MDcxMDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:46:30
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-
 SUBROUTINE REDO.ATH.INITIAL.PROCESS(STLMT.FILE)
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -32,7 +31,7 @@ SUBROUTINE REDO.ATH.INITIAL.PROCESS(STLMT.FILE)
 
 * 10-APR-2023     Conversion tool    R22 Auto conversion       	    FM TO @FM, ++ to +=
 * 10-APR-2023      Harishvikram C   Manual R22 conversion           CALL routine format modified
-* 17/10/2023 	   VIGNESHWARI     ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
+
 
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -52,7 +51,7 @@ RETURN
 *-------------------------------------------------------------------------
 MAIN.PARA:
 *-------------------------------------------------------------------------
-DEBUG	;* ATM changes by Mario
+
     LINE.COUNT.PREV=0
     FILE.NAME=FIELD(STLMT.FILE,"*",1)
     FILE.PATH=FIELD(STLMT.FILE,"*",2)

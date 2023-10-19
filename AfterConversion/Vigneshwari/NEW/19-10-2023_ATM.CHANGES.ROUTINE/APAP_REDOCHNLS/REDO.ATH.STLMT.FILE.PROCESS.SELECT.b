@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjc2NjExODIyOkNwMTI1MjoxNjk3NTM4OTM4MTgwOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:05:38
+* @ValidationCode : MjoxMTI1MDM4MzAzOkNwMTI1MjoxNjk3NjkyNTIyNDc4OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:45:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -31,14 +31,12 @@ SUBROUTINE  REDO.ATH.STLMT.FILE.PROCESS.SELECT
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 12-APR-2023     Conversion tool    R22 Auto conversion       No changes
 * 12-APR-2023      Harishvikram C   Manual R22 conversion      No changes
-* 17/10/2023	   VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
 
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
 
-	DEBUG	;* ATM changes by Mario
     GOSUB PROCESS
 
 RETURN
@@ -46,7 +44,7 @@ RETURN
 *------------------------------------------------------------------------------------
 PROCESS:
 *------------------------------------------------------------------------------------
-DEBUG	;* ATM changes by Mario
+
 
     SEL.CMD="SELECT ":FN.REDO.ATH.STLMT.CNCT.FILE
 

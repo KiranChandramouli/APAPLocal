@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMTQ0Njc2NzIzOkNwMTI1MjoxNjk3NTM4OTA4ODAxOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Oct 2023 16:05:08
+* @ValidationCode : MjoxMTgyMTMyNTgyOkNwMTI1MjoxNjk3NjkyNTU0NDgwOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 10:45:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -31,7 +31,6 @@ SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS(STML.FILE)
 *23/11/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 04-APR-2023     Conversion tool    R22 Auto conversion       No changes
 * 10-APR-2023      Harishvikram C     Manual R22 conversion      No changes
-*17/10/2023	VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
 
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -39,7 +38,7 @@ SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS(STML.FILE)
     $INSERT I_F.REDO.ATH.STLMT.PARAM
     $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
 
-	DEBUG	;* ATM changes by Mario
+
     GOSUB PROCESS
 
 RETURN
@@ -47,7 +46,7 @@ RETURN
 *-------------------------------------------------------------------------
 PROCESS:
 *-------------------------------------------------------------------------
-DEBUG	;* ATM changes by Mario
+
 
     CALL F.READ(FN.REDO.ATH.STLMT.CNCT.FILE,STML.FILE,R.REDO.ATH.STLMT.CNCT.FILE,F.REDO.ATH.STLMT.CNCT.FILE,CNCT.ERR)
 
