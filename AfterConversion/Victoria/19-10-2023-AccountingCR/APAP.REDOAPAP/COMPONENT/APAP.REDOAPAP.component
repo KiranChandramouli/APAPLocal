@@ -1,0 +1,264 @@
+component APAP.REDOAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method apapHGarnishmentReverse (
+)
+{
+    jBC: APAP.H.GARNISHMENT.REVERSE
+}
+
+
+
+public method apapHGarnishmentReverseFields (
+)
+{
+    jBC: APAP.H.GARNISHMENT.REVERSE.FIELDS
+}
+
+
+
+public method redoApapSapGlDetailRepPost (
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.REP.POST
+}
+
+
+
+public method redoApapSapGlDetailSelect (
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.SELECT
+}
+
+
+
+public method redoBCrfNwglLoad (
+)
+{
+    jBC: REDO.B.CRF.NWGL.LOAD
+}
+
+
+
+public method redoBCrfNwglSelect (
+)
+{
+    jBC: REDO.B.CRF.NWGL.SELECT
+}
+
+
+
+public method redoBLAcStatus1Upd (
+    INOUT acId string
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD
+}
+
+
+
+public method redoBLAcStatus1UpdLoad (
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD.LOAD
+}
+
+
+
+public method redoBLAcStatus1UpdSelect (
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD.SELECT
+}
+
+
+
+public method redoConvMnemToStatus (
+    INOUT acctId string,
+    INOUT yStatus string
+)
+{
+    jBC: REDO.CONV.MNEM.TO.STATUS
+}
+
+
+
+public method redoNofileCrbReportRegl (
+    INOUT yArray string
+)
+{
+    jBC: REDO.NOFILE.CRB.REPORT.REGL
+}
+
+
+
+public method redoReCrfNwgl (
+)
+{
+    jBC: REDO.RE.CRF.NWGL
+}
+
+
+
+public method redoReCrfNwglFields (
+)
+{
+    jBC: REDO.RE.CRF.NWGL.FIELDS
+}
+
+
+
+public method redoSNofileAcStatus (
+    INOUT yFinalArr string
+)
+{
+    jBC: REDO.S.NOFILE.AC.STATUS
+}
+
+
+
+public method redoStatusFields (
+)
+{
+    jBC: REDO.STATUS.FIELDS
+}
+
+
+
+public method redoTAcctstatByDate (
+)
+{
+    jBC: REDO.T.ACCTSTAT.BY.DATE
+}
+
+
+
+public method redoTAcctstatByDateFields (
+)
+{
+    jBC: REDO.T.ACCTSTAT.BY.DATE.FIELDS
+}
+
+
+
+public method redoTStatseqByAcct (
+)
+{
+    jBC: REDO.T.STATSEQ.BY.ACCT
+}
+
+
+
+public method redoTStatseqByAcctFields (
+)
+{
+    jBC: REDO.T.STATSEQ.BY.ACCT.FIELDS
+}
+
+
+
+public method redoUpdAccountRevGarnish (
+)
+{
+    jBC: REDO.UPD.ACCOUNT.REV.GARNISH
+}
+
+
+
+public method redoVAutChkExstCust (
+)
+{
+    jBC: REDO.V.AUT.CHK.EXST.CUST
+}
+
+
+
+public method redoVAutUpdateStatusAcCol (
+)
+{
+    jBC: REDO.V.AUT.UPDATE.STATUS.AC.COL
+}
+
+
+
+public method redoVAuthGenAcLock (
+)
+{
+    jBC: REDO.V.AUTH.GEN.AC.LOCK
+}
+
+
+
+public method redoVAuthLockAcct (
+)
+{
+    jBC: REDO.V.AUTH.LOCK.ACCT
+}
+
+
+
+public method redoVAuthNewAcctStatus (
+)
+{
+    jBC: REDO.V.AUTH.NEW.ACCT.STATUS
+}
+
+
+
+public method redoApapSapGlDetail (
+    INOUT reStatLineBalId string
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL
+}
+
+
+
+public method redoApapSapGlDetailLoad (
+)
+{
+    jBC: REDO.APAP.SAP.GL.DETAIL.LOAD
+}
+
+
+
+public method redoBCrfNwgl (
+    INOUT acctId string
+)
+{
+    jBC: REDO.B.CRF.NWGL
+}
+
+
+
+public method redoUpdAccountStatusDate (
+    INOUT accountId string,
+    INOUT statusSeq string
+)
+{
+    jBC: REDO.UPD.ACCOUNT.STATUS.DATE
+}
+
+
+
+public method redoVCheckBalIntEntries (
+    INOUT acctId string,
+    INOUT balance string,
+    INOUT balCrAmt string,
+    INOUT balDrAmt string,
+    INOUT yAccInt string,
+    INOUT intCrAmt string,
+    INOUT intDrAmt string,
+    INOUT yBalDet string,
+    INOUT yIntDet string
+)
+{
+    jBC: REDO.V.CHECK.BAL.INT.ENTRIES
+}
+
+
+

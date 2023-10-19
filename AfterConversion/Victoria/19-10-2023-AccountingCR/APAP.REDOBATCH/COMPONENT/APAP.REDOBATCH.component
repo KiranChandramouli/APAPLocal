@@ -1,0 +1,50 @@
+component APAP.REDOBATCH
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoBPrevelenceStatusUpd (
+    INOUT id string,
+    INOUT rAccount string,
+    INOUT yAcStatusPos string,
+    INOUT yStatusChgUpd string,
+    INOUT rAzAccount string
+)
+{
+    jBC: REDO.B.PREVELENCE.STATUS.UPD
+}
+
+
+
+public method redoBStatus1Upd (
+    INOUT id string
+)
+{
+    jBC: REDO.B.STATUS1.UPD
+}
+
+
+
+public method redoBStatus1UpdLoad (
+)
+{
+    jBC: REDO.B.STATUS1.UPD.LOAD
+}
+
+
+
+public method redoBStatus1UpdSelect (
+)
+{
+    jBC: REDO.B.STATUS1.UPD.SELECT
+}
+
+
+
+public method redoBStatus1Update (
+)
+{
+    jBC: REDO.B.STATUS1.UPDATE
+}
+
