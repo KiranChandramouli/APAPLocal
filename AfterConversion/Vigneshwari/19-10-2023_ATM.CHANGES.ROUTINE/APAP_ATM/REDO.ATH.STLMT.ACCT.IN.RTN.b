@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTk1NzIwODEyODpDcDEyNTI6MTY5NzY5NzQyMDA0Mzp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 Oct 2023 12:07:00
+* @ValidationCode : MjoyNDE0OTQxMjU6Q3AxMjUyOjE2OTc3MTczODY4NzU6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:39:46
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -34,7 +34,7 @@ SUBROUTINE REDO.ATH.STLMT.ACCT.IN.RTN
 *04-04-2023      Conversion Tool     R22 AUTO CONVERSION         FM TO @FM , $INCLUDE TO $INSERT
 *04-04-2023      Samaran T           Manual R22 Code Conversion      No Changes
 *17-10-2023      VIGNESHWARI         Manual R22 Code Conversion      VM TO @VM
-*17/10/2023	    VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
+*17/10/2023	    VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      ATM changes by Mario
 *----------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE

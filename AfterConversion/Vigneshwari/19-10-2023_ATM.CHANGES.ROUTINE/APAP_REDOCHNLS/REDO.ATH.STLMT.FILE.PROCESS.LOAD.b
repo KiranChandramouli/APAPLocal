@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTUwOTk4NTYxOkNwMTI1MjoxNjk3NjkyNTM5ODE5OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 19 Oct 2023 10:45:39
+* @ValidationCode : MjoxODU3MzAwMjM4OkNwMTI1MjoxNjk3NzE4NTI1ODEzOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:58:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -31,7 +31,7 @@ SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS.LOAD
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 04-APR-2023     Conversion tool            R22 Auto conversion    FM TO @FM, VM to @VM
 * 04-APR-2023      Harishvikram C            Manual R22 conversion     No changes
-* 17/10/2023	   VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES      LINES IS ADDED
+* 17/10/2023	   VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES     ATM changes by Mario
 
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON

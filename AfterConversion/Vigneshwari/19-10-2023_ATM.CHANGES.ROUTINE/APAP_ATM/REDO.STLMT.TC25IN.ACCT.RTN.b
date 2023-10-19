@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo1Mjc5MjQyODc6Q3AxMjUyOjE2OTc2OTkzNDg2MjE6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 Oct 2023 12:39:08
+* @ValidationCode : Mjo1MTAyODYwNjA6Q3AxMjUyOjE2OTc3MTc0OTg1Nzc6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:41:38
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -32,7 +32,7 @@ SUBROUTINE REDO.STLMT.TC25IN.ACCT.RTN
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *13/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION           INCLUDE TO INSERT
 *13/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
-*17/10/2023	VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES         LINES IS ADDED
+*17/10/2023	VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES         ATM changes by Mario
 *--------------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON ;*AUTO R22 CODE CONVERSION - START
