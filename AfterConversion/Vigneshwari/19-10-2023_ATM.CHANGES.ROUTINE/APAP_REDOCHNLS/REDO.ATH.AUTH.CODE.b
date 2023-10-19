@@ -32,7 +32,6 @@ SUBROUTINE  REDO.ATH.AUTH.CODE
 
 * 10-APR-2023     Conversion tool    R22 Auto conversion                 No changes
 * 10-APR-2023      Harishvikram C   Manual R22 conversion            CALL routine format modified
-
 *------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
