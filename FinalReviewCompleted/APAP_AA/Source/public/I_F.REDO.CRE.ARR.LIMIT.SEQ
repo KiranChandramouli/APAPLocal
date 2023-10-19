@@ -1,6 +1,0 @@
-* File Layout for FBNK.REDO.CRE.ARR.LIMIT.SEQ Created 07 JAN 11 at 03:49PM by t24r09
-*      PREFIX[REDO.FC.LS.]      SUFFIX[]
-EQU REDO.FC.LS.CUSTOMER.ID TO 0, FbnkRedoCreArrLimitSeq_CustomerId TO 1, 
-      REDO.FC.LS.LIMIT.REF TO 1, FbnkRedoCreArrLimitSeq_LimitRef TO 2, 
-        REDO.FC.LS.LAST.ID TO 2, FbnkRedoCreArrLimitSeq_LastId TO 3, 
-REDO.FC.LS.LAST.COL.RIG.ID TO 3, FbnkRedoCreArrLimitSeq_LastColRigId TO 4
