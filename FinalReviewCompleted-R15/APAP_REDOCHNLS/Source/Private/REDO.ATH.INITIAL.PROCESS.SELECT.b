@@ -1,16 +1,17 @@
-* @ValidationCode : Mjo1Mzc2MjkwMDg6Q3AxMjUyOjE2ODQ4NTQwNTE3Mzc6SVRTUzotMTotMTo3NjoxOmZhbHNlOk4vQTpSMjJfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
+* @ValidationCode : MjotMTg1NzY4NzA0MzpDcDEyNTI6MTY5NzcxNzg4MzkxMDpJVFNTOi0xOi0xOjYyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:48:03
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 76
+* @ValidationInfo : Rating            : 62
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE  REDO.ATH.INITIAL.PROCESS.SELECT
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -30,13 +31,13 @@ SUBROUTINE  REDO.ATH.INITIAL.PROCESS.SELECT
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 04-APR-2023     Conversion tool   R22 Auto conversion              VM to @VM
 * 10-APR-2023      Harishvikram C   Manual R22 conversion       CALL routine format modified
+* 17/10/2023	        VIGNESHWARI     ADDED COMMENT FOR ATM CHANGES     ATM changes by Mario
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.ATH.STLMT.FILE.DETAILS
     $INSERT I_F.REDO.ATH.PROCESS.INFO
     $INSERT I_REDO.ATH.INITIAL.PROCESS.COMMON
-
 
     GOSUB READING
     GOSUB PROCESS
@@ -47,6 +48,7 @@ RETURN
 READING:
 *------------------------------------------------------------------------------------
 *READING F.REDO.ATH.STLMT.FILE.DETAILS APPLICATION WITH ID AS 'SYSTEM' ;*R22 Auto conversion
+
     FILES.NAME=''
     REDO.ID='SYSTEM'
     CALL CACHE.READ(FN.REDO.ATH.STLMT.FILE.DETAILS,REDO.ID,R.REDO.ATH.STLMT.FILE.DETAILS,REDO.ERR)
@@ -61,8 +63,25 @@ PROCESS:
 
     CHANGE @VM TO '' IN Y.FILE.PATH
 
-    SEL.FILE="SELECT ":Y.FILE.PATH:" WITH @ID LIKE ":Y.FILE.NAME:"..."
+;*SEL.FILE = "SELECT ":Y.FILE.PATH: ' WITH @ID LIKE ':Y.FILE.NAME:'...' ;* ATM changes by Mario-START
+;*CALL EB.READLIST(SEL.FILE,FILE.LIST,'',FILE.SEL,FILE.ERR)
+	
+	SEL.FILE = "SELECT ":Y.FILE.PATH:   ;* ATM changes by Mario-END
     CALL EB.READLIST(SEL.FILE,FILE.LIST,'',FILE.SEL,FILE.ERR)
+	
+    LOOP   ;* ATM changes by Mario-START
+        REMOVE Y.SEL.ID FROM FILE.LIST SETTING Y.SEL.POSN
+    WHILE Y.SEL.ID:Y.SEL.POSN
+ 
+        FINDSTR Y.FILE.NAME IN Y.SEL.ID SETTING Y.PS,Y.V2,Y.S2 THEN
+            FILENAME.ARRAY<-1> = Y.SEL.ID
+	   
+        END
+
+    REPEAT
+	
+    FILE.LIST = FILENAME.ARRAY	;* ATM changes by Mario-END
+ 
     Y.FILENAME.LEN=LEN(Y.FILE.NAME)
     LOOP
         REMOVE FILE.NAME FROM FILE.LIST SETTING FILE.POS
@@ -86,8 +105,8 @@ PROCESS:
             FLAG.FAIL=1
         END
 
-        IF FILE.NAME[Y.FILENAME.LEN+2,8] LE TODAY AND FLAG.FAIL NE 1 THEN
-
+;*IF FILE.NAME[Y.FILENAME.LEN+2,8] LE TODAY AND FLAG.FAIL NE 1 THEN   ;* ATM changes by Mario
+        IF Y.FILENAME.LEN LE TODAY AND FLAG.FAIL NE 1 THEN	;* ATM changes by Mario
 
             FILES.NAME<-1>=FILE.NAME:"*":Y.FILE.PATH
         END
@@ -110,5 +129,6 @@ LOG.ERROR.C22:
     EX.USER = ''
     EX.PC = ''
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*Manual R22 conversion
+
 RETURN
 END

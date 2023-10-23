@@ -6979,12 +6979,14 @@ public method redoAutOnlineMsg (
     jBC: REDO.AUT.ONLINE.MSG
 }
 
-
-
-
 public method redoInpLetterIssue (
 )
 {
     jBC: REDO.INP.LETTER.ISSUE
 }
 
+public method redoAuthUpdNcf (
+)
+{
+   jBC: REDO.AUTH.UPD.NCF
+}

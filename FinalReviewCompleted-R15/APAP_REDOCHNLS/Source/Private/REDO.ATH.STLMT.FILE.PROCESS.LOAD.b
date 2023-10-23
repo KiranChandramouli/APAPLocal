@@ -1,16 +1,17 @@
-* @ValidationCode : MjozNTU5ODMzMzY6Q3AxMjUyOjE2ODQ4NTQwNTE5OTU6SVRTUzotMTotMTo5ODY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:30:51
+* @ValidationCode : Mjo1MjI4MjEyNjI6Q3AxMjUyOjE2OTc3MTc4ODQ1MDE6SVRTUzotMTotMTo5ODQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:48:04
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 986
+* @ValidationInfo : Rating            : 984
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS.LOAD
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -28,8 +29,10 @@ SUBROUTINE REDO.ATH.STLMT.FILE.PROCESS.LOAD
 * Date                   Name                   Reference               Version
 * -------                ----                   ----------              --------
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
-* 04-APR-2023     Conversion tool   R22 Auto conversion          FM TO @FM, VM to @VM
-* 04-APR-2023      Harishvikram C   Manual R22 conversion          No changes
+* 04-APR-2023     Conversion tool            R22 Auto conversion    FM TO @FM, VM to @VM
+* 04-APR-2023      Harishvikram C            Manual R22 conversion     No changes
+* 17/10/2023	   VIGNESHWARI       ADDED COMMENT FOR ATM CHANGES   ATM changes by Mario
+
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -68,9 +71,9 @@ OPEN.FILES:
     F.REDO.MERCHANT.CATEG=''
     CALL OPF(FN.REDO.MERCHANT.CATEG,F.REDO.MERCHANT.CATEG)
 
-    FN.ATM.REVERSAL='F.ATM.REVERSAL'
-    F.ATM.REVERSAL=''
-    CALL OPF(FN.ATM.REVERSAL,F.ATM.REVERSAL)
+    FN.ATM.TRANSACTION='F.ATM.TRANSACTION'  ;* ATM changes by Mario-START
+    F.ATM.TRANSACTION=''
+    CALL OPF(FN.ATM.TRANSACTION,F.ATM.TRANSACTION)   ;* ATM changes by Mario-END
 
     FN.AC.LOCKED.EVENTS='F.AC.LOCKED.EVENTS'
     F.AC.LOCKED.EVENTS=''

@@ -1,16 +1,19 @@
-* @ValidationCode : MjoxNTQ2ODI2Nzg0OkNwMTI1MjoxNjkwMjY0NDUzMjcwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:24:13
+* @ValidationCode : Mjo0Nzg0OTY4Nzc6Q3AxMjUyOjE2OTc3OTE0NTM0NjU6SVRTUzotMTotMTo1NTM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Oct 2023 14:14:13
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 553
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
+*-----------------------------------------------------------------------------
+* <Rating>-136</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.B.STATUS1.UPD(ID)
 *------------------------------------------------------------------
 * COMPANY NAME : APAP
@@ -38,13 +41,12 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
 *                                                             REDO.B.STATUS1.UPD.POST job will merge all the data from
 *                                                             REDO.CUST.PRD.LST to REDO.CUST.PRD.LIST
 * Aslam                 07-08-2015       PACS00472936     Fix for the issues
-* DATE  NAME   REFERENCE    DESCRIPTION
-* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
-* 25-05-2023     Conversion tool    R22 Auto conversion       SESSION.NO to AGENT.NUMBER,FM TO @FM, VM to @VM, SM to @SM
-* 25-05-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
+* DATE              NAME                     REFERENCE             DESCRIPTION
+* 31 JAN 2023     Edwin Charles D         ACCOUNTING-CR           TSR479892
+* 20 AUG 2023     Edwin Charles D         ACCOUNTING-CR           TSR637100
+* 19 OCT 2023     VICTORIA S             MANUAL CONVERSION          FM TO @FM,VM TO @VM, SM TO @SM,CALL ROUTINE MODIFIED
 *-------------------------------------------------------------------------
 
-    $INSERT I_TSA.COMMON
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
@@ -59,7 +61,6 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
     $INSERT JBC.h
     $INSERT I_F.EB.CONTRACT.BALANCES    ;*Tus S/E
     $USING APAP.REDOAPAP
-
     LAST.CR.DT =''
     LAST.DR.DT = ''
     Y.STATUS.1 = ''
@@ -80,7 +81,6 @@ SUBROUTINE REDO.B.STATUS1.UPD(ID)
     R.AZ.ACCOUNT=''
     Y.STATUS.CHG.UPD=''
     Y.AC.ST.POS=''
-
     GOSUB ACCOUNT.CHECK
 
     GOSUB CHECK.MONTHS
@@ -153,49 +153,11 @@ CHECK.MONTHS:
         Y.PREV.WAIVE.LEDGER  = Y.LOOKUP.ARRAY<3,POS2>
     END
 
-*-    Y.FREQUENCY.PERIOD = Y.LOOKUP.ARRAY<2>
-*-    CHANGE VM TO FM IN Y.FREQUENCY.PERIOD
-*-    Y.STATUS.CNT = DCOUNT(Y.FREQUENCY.PERIOD,FM)
-*-    POS2 =1
-*-    LOOP
-*-    WHILE POS2 LE Y.STATUS.CNT
-*-        Y.FUTURE.DATE = Y.PERIOD.DATES<POS2>
-*-        Y.FUTURE.DATE = Y.FREQUENCY.PERIOD<POS2>
-*-        CALL CALENDAR.DAY(Y.LAST.TRANSACTION.DATE,"+",Y.FUTURE.DATE)
-*-        Y.ALL.FUTURE.DATE<-1> = Y.FUTURE.DATE
-*-        IF Y.ALL.FUTURE.DATE<POS2> LT SYS.DATE THEN
-*-        IF Y.FUTURE.DATE THEN
-*-            IF Y.LAST.TRANSACTION.DATE GT Y.FUTURE.DATE THEN
-*-                IF Y.PREV.SELECT.STATUS THEN
-*-                    IF Y.PREV.SELECT.DATE GT Y.FUTURE.DATE THEN
-*-                        Y.PREV.SELECT.STATUS = Y.LOOKUP.ARRAY<1,POS2>
-*-                        Y.PREV.SELECT.DATE   = Y.ALL.FUTURE.DATE<POS2>
-*-                        Y.PREV.WAIVE.LEDGER  = Y.LOOKUP.ARRAY<3,POS2>
-*-                    END
-*-                END ELSE
-*-                    Y.PREV.SELECT.STATUS = Y.LOOKUP.ARRAY<1,POS2>
-*-                    Y.PREV.SELECT.DATE   = Y.ALL.FUTURE.DATE<POS2>
-*-                    Y.PREV.WAIVE.LEDGER  = Y.LOOKUP.ARRAY<3,POS2>
-*-                END
-*-            END
-*-        END
-*-        POS2++
-*-    REPEAT
-*-    IF Y.PREV.SELECT.STATUS THEN
-
     GOSUB OD.CATEG.CHECK
     Y.AZ.DEP.LIQ.ACCT = R.ACCOUNT<AC.LOCAL.REF,Y.AZ.ACC.REF.POS>
     IF NOT(R.AZ.ACCOUNT) AND NOT(Y.AZ.DEP.LIQ.ACCT) THEN
         GOSUB CHANGE.STATUS
     END
-*****There is no change for deposit account in L.AC.STATUS1***
-*    IF Y.DEPOSIT.ACCOUNT THEN
-*       IF R.ACCOUNT<AC.LOCAL.REF,REF.POS> NE Y.PREV.SELECT.STATUS THEN
-*            R.ACCOUNT<AC.LOCAL.REF,REF.POS>= Y.PREV.SELECT.STATUS
-*       END
-*      CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
-* END
-
 
 *-    END
 
@@ -212,6 +174,7 @@ CHECK.MONTHS:
     Y.STATUS.2 = R.ACCOUNT<AC.LOCAL.REF,STATUS2.POS>
 
     IF Y.STATUS.UPD EQ '1' OR Y.WAIVE.CHG.UPD EQ '1' OR Y.STATUS.1 OR Y.STATUS.2 THEN
+
 *        IF Y.CONT.FLAG THEN
 *       CALL F.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
 
@@ -220,7 +183,9 @@ CHECK.MONTHS:
             Y.AC.ST.POS<1>=REF.POS
             Y.AC.ST.POS<2>=STATUS2.POS
 
-            APAP.REDOBATCH.redoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT) ;*Manual R22 conversion
+*CALL REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT)
+*R22 MANUAL CONVERSION
+            APAP.REDOBATCH.redoBPrevelenceStatusUpd(ID,R.ACCOUNT,Y.AC.ST.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT)
         END ELSE
             V = AC.AUDIT.DATE.TIME
             CALL F.LIVE.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
@@ -228,11 +193,17 @@ CHECK.MONTHS:
         END
 
 *Shek... is this required?
-        Y.LAST.WRK.DAY.ID = Y.LAST.WRK.DAY:'-':AGENT.NUMBER
-        CALL F.READ(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)
+*Y.LAST.WRK.DAY.ID = Y.LAST.WRK.DAY:'-':SESSION.NO
+*CALL F.READ(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, *R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)
+  
+        Y.TODAY = R.DATES(EB.DAT.TODAY)  ;*TSR637100  start
+        Y.TODAY.ID = Y.TODAY:'-':SESSION.NO
+        CALL F.READ(FN.UPD.ACC.LIST, Y.TODAY.ID, R.UPD.ACC.LIST,F.UPD.ACC.LIST,UPD.ACC.LIST.ERR)  ;*TSR637100  end
 
         R.UPD.ACC.LIST<-1>=ID
-        CALL F.WRITE(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST)
+*CALL F.WRITE(FN.UPD.ACC.LIST, Y.LAST.WRK.DAY.ID, R.UPD.ACC.LIST)
+
+        CALL F.WRITE(FN.UPD.ACC.LIST, Y.TODAY.ID, R.UPD.ACC.LIST) ;*TSR637100
 *Shek -end
 *        CALL F.RELEASE(FN.UPD.ACC.LIST,Y.LAST.WRK.DAY, F.UPD.ACC.LIST)
 *        END
@@ -260,7 +231,7 @@ RETURN
 UPD.PRD.TABLE.CHECK:
 *-------------------
     Y.STATUS2.LIST = R.ACCOUNT<AC.LOCAL.REF,STATUS2.POS>
-    CHANGE @SM TO @FM IN Y.STATUS2.LIST
+    CHANGE @SM TO @FM IN Y.STATUS2.LIST ;*R22 MANUAL CONVERSION
     GUARANTEE.POS=''
     Y.GUARANTEE.FLAG = ''
     LOCATE 'GUARANTEE.STATUS' IN Y.STATUS2.LIST SETTING GUARANTEE.POS THEN
@@ -327,10 +298,10 @@ UPD.PRD.LIST:
 
     END
 
-    PrdListID = Y.CUSTOMER.ID :'-' : AGENT.NUMBER
+    PrdListID = Y.CUSTOMER.ID :'-' : SESSION.NO
 
     Y.PRD.LIST = RCustPrdList<PRD.PRODUCT.ID>
-    CHANGE @VM TO @FM IN Y.PRD.LIST
+    CHANGE @VM TO @FM IN Y.PRD.LIST ;*R22 MANUAL CONVERSION
     PRD.POS = ''
     LOCATE ID IN RCustPrdList SETTING PRD.POS THEN
         IF RCustPrdList<PRD.PRD.STATUS, PRD.POS> NE 'INACTIVE' THEN
@@ -364,12 +335,13 @@ CHANGE.STATUS:
         RETURN
     END
 * PACS00472936
-    IF R.ACCOUNT<AC.LOCAL.REF,REF.POS> NE Y.PREV.SELECT.STATUS THEN
+    IF R.ACCOUNT<AC.LOCAL.REF,REF.POS> NE Y.PREV.SELECT.STATUS OR Y.LAST.TRANSACTION.DATE GE Y.LAST.WRK.DAY THEN        ;* last working day is added for migrated contracts
         R.ACCOUNT<AC.LOCAL.REF,REF.POS>= Y.PREV.SELECT.STATUS
         Y.STATUS.UPD = 1
         Y.STATUS.CHG.UPD=1
-*       CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
-        APAP.REDOAPAP.redoUpdAccountStatusDate(ID,Y.PREV.SELECT.STATUS) ;*R22 Manual Code Conversion
+*CALL REDO.UPD.ACCOUNT.STATUS.DATE(ID,Y.PREV.SELECT.STATUS)
+*R22 MANUAL CONVERSION
+        APAP.REDOAPAP.redoUpdAccountStatusDate(ID,Y.PREV.SELECT.STATUS)
     END
 *PACS00308629-S
     VAR.ACCT.ID = ID
@@ -383,7 +355,7 @@ CHANGE.STATUS:
     END ELSE
 *If l.ac.status.2 contains 'DECEASED' then waive ledger fee is always to be 'Y' else it will update based on l.ac.status.1
         VAR.STATUS2.LIST = R.ACCOUNT<AC.LOCAL.REF,STATUS2.POS>
-        CHANGE @SM TO @FM IN VAR.STATUS2.LIST
+        CHANGE @SM TO @FM IN VAR.STATUS2.LIST ;*R22 MANUAL CONVERSION
         LOCATE 'DECEASED' IN VAR.STATUS2.LIST SETTING POS.DEC THEN
             IF R.ACCOUNT<AC.WAIVE.LEDGER.FEE> NE 'Y' THEN
                 R.ACCOUNT<AC.WAIVE.LEDGER.FEE> = 'Y'

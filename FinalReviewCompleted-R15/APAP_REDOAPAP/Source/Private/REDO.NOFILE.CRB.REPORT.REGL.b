@@ -1,10 +1,10 @@
-* @ValidationCode : MjotNzgzMzMzNTQwOkNwMTI1MjoxNjg1MDc5NzY2Njg4OklUU1M6LTE6LTE6ODA0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 11:12:46
+* @ValidationCode : MjotMTM3NjUwOTUxMzpDcDEyNTI6MTY5Nzc4NzMwMjc1NjpJVFNTOi0xOi0xOjgxNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Oct 2023 13:05:02
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 804
+* @ValidationInfo : Rating            : 814
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -62,7 +62,10 @@ PROCESS:
         REMOVE ACCT.ID FROM DAT.REC SETTING POS
     WHILE ACCT.ID:POS DO
         BAL.CR.AMT = '' ; BAL.DR.AMT = '' ; INT.CR.AMT = '' ;INT.DR.AMT = '' ; Y.BAL.ACC.NO = '' ; Y.INT.ACC.NO = '' ; Y.BAL.DET = '' ; Y.INT.DET = '' ; Y.BAL.NAME = '' ;Y.INT.NAME = ''
-        APAP.REDOAPAP.redoVCheckBalIntEntries(ACCT.ID,BAL.CR.AMT,BAL.DR.AMT,INT.CR.AMT,INT.DR.AMT,Y.BAL.DET,Y.INT.DET) ;*Manual R22 Code Conversion
+        Y.BALANCE=""
+        Y.ACC.INT=""
+*Manual R22 Code Conversion
+        APAP.REDOAPAP.redoVCheckBalIntEntries(ACCT.ID,Y.BALANCE,BAL.CR.AMT,BAL.DR.AMT,Y.ACC.INT,INT.CR.AMT,INT.DR.AMT,Y.BAL.DET,Y.INT.DET)
         IF BAL.CR.AMT THEN
             CUST.NAME = '' ; R.ACCOUNT = '' ; R.CUSTOMER = ''
             CALL F.READ(FN.ACCOUNT,ACCT.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)

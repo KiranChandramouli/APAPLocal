@@ -1,3 +1,15 @@
+* @ValidationCode : MjotNTU4MDMyMTExOkNwMTI1MjoxNjk4MDQyNDkxODg2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:11
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE L.APAP.COL.FF.EXTRACT.SELECT
 **-----------------------------------------------------------------------------
@@ -22,7 +34,7 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.SELECT
     $INSERT I_F.DATES
     $INSERT I_BATCH.FILES
 *-----------------------------------------------------------------------------
-
+    
     IF NOT(CONTROL.LIST) THEN
         GOSUB REMOVE.FILES
         GOSUB BUILD.CONTROL.LIST
@@ -40,12 +52,16 @@ SEL.AP.LOANS:
 *************
 
     LIST.PARAMETERS = '' ; ID.LIST = ''
-
+    
     GOSUB CRITERIA.VALUE
 
-    Y.SELECT.CMD='SELECT ':FN.AA.ARRANGEMENT :' WITH ':CRITERIA
+    Y.SELECT.CMD='SELECT ':FN.AA.ARRANGEMENT :'  ':CRITERIA ;*R22 interface Unit testing changes
 
     CALL EB.READLIST(Y.SELECT.CMD,Y.LIST,'',NO.OF.REC,ERR)
+
+
+*R22 interface Unit testing changes_Uncommented Below lines - START
+
     Y.LIST=SORT(Y.LIST)
     Y.REC.CNT=1
     LOOP
@@ -59,6 +75,9 @@ SEL.AP.LOANS:
     REPEAT
 
     Y.LIST.CNT=DCOUNT(Y.LIST,@FM)
+
+*R22 interface Unit testing changes_Uncommented Below lines - END
+
     CALL BATCH.BUILD.LIST(LIST.PARAMETERS,Y.LIST)
 
 RETURN
@@ -83,7 +102,9 @@ CRITERIA.VALUE:
     IF NUM.STATUS THEN
         CRITERIA := ')'
     END
-    CRITERIA   :=' CUSTOMER'
+*   CRITERIA   :='CUSTOMER' ;*SJ
+    CRITERIA   :=' BY CUSTOMER' ;*SJ ;*R22 interface Unit testing changes - START
+    
 RETURN
 
 *************

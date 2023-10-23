@@ -1,16 +1,19 @@
-* @ValidationCode : Mjo3MTk3NDMyMzE6Q3AxMjUyOjE2ODI0MTIzMzMzNzk6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:33
+* @ValidationCode : MjoxODMxNzI2Nzc2OkNwMTI1MjoxNjk3NzkxMjY4Mzc0OklUU1M6LTE6LTE6MTU3NDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Oct 2023 14:11:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1574
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
+*-----------------------------------------------------------------------------
+* <Rating>74</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.V.AUT.CHK.LCK.EVNTS
 *--------------------------------------------------------------------
 * COMPANY NAME : APAP
@@ -31,19 +34,19 @@ SUBROUTINE REDO.V.AUT.CHK.LCK.EVNTS
 * 15 JUN 2011    Prabhu N    PACS00071064          routine modified  to support reversal
 * 05 JAN 2011    Prabhu      PACS00172828          Routine modified  to support AZ account field
 * 05 MAR 2011    Prabhu      B88 PERFORMANCE ISSUE  SELECT REMOVED FROM ROUTINE AND  CONCAT FILE REDO.ACCT.ALE Used
+* 28 MAR 2023    Rajasoundarya S 		TSR-437696			Wrong relation in Consolidation key related to COLLATERAL
+* 30 MAY 2023    jayasurya   TSR-574122            Accounting CR
+* 30 MAY 2023    EDWIN CDB   TSR-637100           Accounting CR
+* 19 OCT 2023  VICTORIA S             MANUAL CONVERSION          FM TO @FM,VM TO @VM, SM TO @SM,CALL ROUTINE MODIFIED
 *----------------------------------------------------------------------------------------------------
-*Modification History
-*DATE                       WHO                         REFERENCE                DESCRIPTION
-*06-04-2023           Conversion Tool          R22 Auto Code conversion      FM TO @FM,VM TO @VM ,SM TO @SM, TNO TO C$T24.SESSION.NO
-*06-04-2023            Samaran T                Manual R22 Code Conversion    No Changes
-*-----------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.ACCOUNT
     $INSERT I_F.USER
     $INSERT I_F.AC.LOCKED.EVENTS
     $INSERT I_F.AZ.ACCOUNT
-
+    $INSERT I_F.EB.LOOKUP  ;*TSR637100
+    $USING APAP.REDOAPAP
     GOSUB INITIALISE
     GOSUB PROCESS
     GOSUB UPDATE
@@ -69,6 +72,11 @@ INITIALISE:
     FN.REDO.ACCT.ALE='F.REDO.ACCT.ALE'
     F.REDO.ACCT.ALE =''
     CALL OPF(FN.REDO.ACCT.ALE,F.REDO.ACCT.ALE)
+	
+*TSR-437696
+	FN.EB.LOOKUP = 'F.EB.LOOKUP'
+	F.EB.LOOKUP = ''
+    CALL OPF(FN.EB.LOOKUP,F.EB.LOOKUP)  ;*TSR637100
 
 RETURN
 *************
@@ -83,8 +91,8 @@ PROCESS:
     R.ACCOUNT = ''
     CALL F.READ(FN.ACCOUNT,Y.ACCT.NO,R.ACCOUNT,F.ACCOUNT,ERR.ACCOUNT)
 *HD1102515 - S
-    LOC.REF.APP = 'ACCOUNT':@FM:'AC.LOCKED.EVENTS':@FM:'AZ.ACCOUNT'
-    LOC.REF.FIELD = 'L.AC.STATUS2':@VM:'L.AC.STATUS1':@VM:'L.AC.AV.BAL':@VM:'L.AC.STATUS':@FM:'L.AC.STATUS2':@VM:'L.AC.STATUS1':@FM:'L.AC.STATUS2':@VM:'L.AC.STATUS'   ;* PACS00307565 - S/E
+    LOC.REF.APP = 'ACCOUNT':@FM:'AC.LOCKED.EVENTS':@FM:'AZ.ACCOUNT' ;*R22 MANUAL CONVERSION
+    LOC.REF.FIELD = 'L.AC.STATUS2':@VM:'L.AC.STATUS1':@VM:'L.AC.AV.BAL':@VM:'L.AC.STATUS':@FM:'L.AC.STATUS2':@VM:'L.AC.STATUS1':@FM:'L.AC.STATUS2':@VM:'L.AC.STATUS'   ;* PACS00307565 - S/E ;*R22 MANUAL CONVERSION
     LOC.REF.POS = ''
     CALL MULTI.GET.LOC.REF(LOC.REF.APP,LOC.REF.FIELD,LOC.REF.POS)
     ACC.POS = LOC.REF.POS<1,1>
@@ -101,8 +109,8 @@ PROCESS:
 * PACS00307565 - E
     R.NEW(AC.LCK.LOCAL.REF)<1,Y.ALE.STATUS1.POS>=R.ACCOUNT<AC.LOCAL.REF,Y.ACC.STATUS1.POS>
     Y.ACCOUNT.STATUS2=R.ACCOUNT<AC.LOCAL.REF,ACC.POS>
-    CHANGE @SM TO @FM IN Y.ACCOUNT.STATUS2
-    Y.ACCOUNT.STATUS2.CNT=DCOUNT(Y.ACCOUNT.STATUS2,@FM)
+    CHANGE @SM TO @FM IN Y.ACCOUNT.STATUS2 ;*R22 MANUAL CONVERSION
+    Y.ACCOUNT.STATUS2.CNT=DCOUNT(Y.ACCOUNT.STATUS2,@FM) ;*R22 MANUAL CONVERSION
     Y.ACC.LOCK.STATUS2 = R.NEW(AC.LCK.LOCAL.REF)<1,ACC.LOCK.POS>
     GOSUB UPDATE.STATUS
 RETURN
@@ -123,14 +131,19 @@ UPDATE.STATUS:
                 Y.ACCT.ALE.ID = Y.ACCT.NO :'*':Y.ACC.LOCK.STATUS2
 *
                 CALL F.READ(FN.REDO.ACCT.ALE,Y.ACCT.ALE.ID,R.ACCT.ALE,F.REDO.ACCT.ALE,ERR)
-                NO.OF.RECORDS=DCOUNT(R.ACCT.ALE,@FM)
+                NO.OF.RECORDS=DCOUNT(R.ACCT.ALE,@FM) ;*R22 MANUAL CONVERSION
 *
 
                 IF NO.OF.RECORDS EQ '1' THEN
                     Y.STATUS2=Y.ACCOUNT.STATUS2
                     DEL Y.STATUS2<POS>
-                    CHANGE @FM TO @SM IN Y.STATUS2
+                    CHANGE @FM TO @SM IN Y.STATUS2 ;*R22 MANUAL CONVERSION
                     R.ACCOUNT<AC.LOCAL.REF,ACC.POS>=Y.STATUS2
+****Local Date table and Account status sequence table update ***
+*CALL REDO.UPD.ACCOUNT.STATUS.DATE(Y.ACCT.NO,Y.STATUS2)
+*R22 MANUAL CONVERSION
+                    APAP.REDOAPAP.redoUpdAccountStatusDate(Y.ACCT.NO,Y.STATUS2)
+****END****
                     GOSUB UPDATE
                     CALL F.DELETE(FN.REDO.ACCT.ALE,Y.ACCT.ALE.ID)
                 END
@@ -163,6 +176,11 @@ UPDATE.INPUT.STATUS:
 * END
     END ELSE
         R.ACCOUNT<AC.LOCAL.REF,ACC.POS,Y.ACCOUNT.STATUS2.CNT+1> = Y.ACC.LOCK.STATUS2
+****Local Date table and Account status sequence table update ***
+*CALL REDO.UPD.ACCOUNT.STATUS.DATE(Y.ACCT.NO,Y.ACC.LOCK.STATUS2)
+*R22 MANUAL CONVERSION
+        APAP.REDOAPAP.redoUpdAccountStatusDate(Y.ACCT.NO,Y.ACC.LOCK.STATUS2)
+****END****
         GOSUB UPDATE
     END
     GOSUB UPDATE.ALE
@@ -218,22 +236,37 @@ AUDIT.DET.UPDATE:
     R.ACCOUNT<AC.RECORD.STATUS>=''
     R.ACCOUNT<AC.DATE.TIME>=OCONV(CHECK.DATE,"DY2"):FMT(OCONV(CHECK.DATE,"DM"),"R%2"):FMT(OCONV(CHECK.DATE,"DD"),"R%2"):TEMPTIME
 *    R.ACCOUNT<AC.CURR.NO>=R.ACCOUNT<AC.CURR.NO>+1
-    R.ACCOUNT<AC.INPUTTER>=C$T24.SESSION.NO:'_':OPERATOR  ;*R22 AUTO CODE CONVERSION
-    R.ACCOUNT<AC.AUTHORISER>=C$T24.SESSION.NO:'_':OPERATOR  ;*R22 AUTO CODE CONVERSION
+    R.ACCOUNT<AC.INPUTTER>=TNO:'_':OPERATOR
+    R.ACCOUNT<AC.AUTHORISER>=TNO:'_':OPERATOR
     GOSUB WRITE.ACCT
 RETURN
 
 *****************
 LIQ.ACCT.UPDATE:
 *****************
-
+*TSR-437696
+    ACC.CATG.ID = "COLLATERAL.DI*CATG"   ;*TSR637100  start
+    R.EB.LOOKUP = ""
+    EB.LOOKUP.ERR = ""
+    CALL F.READ(FN.EB.LOOKUP,ACC.CATG.ID,R.EB.LOOKUP,F.EB.LOOKUP,EB.LOOKUP.ERR)
     IF Y.INT.LIQ.ACCT THEN
         CALL F.READ(FN.ACCOUNT,Y.INT.LIQ.ACCT,R.LIQ.ACCOUNT,F.ACCOUNT,ER.ACCOUNT)
         IF R.LIQ.ACCOUNT THEN
             Y.LIQ.CUSTOMER = R.LIQ.ACCOUNT<AC.CUSTOMER>
-            IF Y.LIQ.CUSTOMER THEN
-                R.LIQ.ACCOUNT<AC.LOCAL.REF,ACC.POS> = R.ACCOUNT<AC.LOCAL.REF,ACC.POS>
-                CALL F.WRITE(FN.ACCOUNT,Y.INT.LIQ.ACCT,R.LIQ.ACCOUNT)
+            LIQ.ACC.CATG = R.LIQ.ACCOUNT<AC.CATEGORY>
+            IF Y.LIQ.CUSTOMER AND R.EB.LOOKUP THEN
+				ACC.CATG = R.EB.LOOKUP<EB.LU.DATA.VALUE>
+				CAT.CNT = DCOUNT(ACC.CATG,@VM) ;*R22 MANUAL CONVERSION
+				Y.CNT = "1"
+				LOOP
+				WHILE Y.CNT LE CAT.CNT
+					EB.ACC.CAT = R.EB.LOOKUP<EB.LU.DATA.VALUE,Y.CNT>
+					IF LIQ.ACC.CATG EQ EB.ACC.CAT THEN
+						R.LIQ.ACCOUNT<AC.LOCAL.REF,ACC.POS> = R.ACCOUNT<AC.LOCAL.REF,ACC.POS>
+						CALL F.WRITE(FN.ACCOUNT,Y.INT.LIQ.ACCT,R.LIQ.ACCOUNT)
+                    END
+                    Y.CNT++
+                REPEAT	  ;*TSR637100  end
             END
         END
     END

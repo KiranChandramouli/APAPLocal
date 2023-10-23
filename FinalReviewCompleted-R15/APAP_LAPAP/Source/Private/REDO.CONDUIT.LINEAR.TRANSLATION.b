@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjI0ODI4NjY5OkNwMTI1MjoxNjkzOTIyNDY4MjI3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 05 Sep 2023 19:31:08
+* @ValidationCode : MjoyODcyMTMxMjA6Q3AxMjUyOjE2OTgwNDI1NDQxMzY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:59:04
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -31,14 +31,19 @@ SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.
     $INSERT I_DFE.OUTWARD.FILE.EXTRACT.COMMON
     
     GOSUB OPEN.FILES
+*R22 interface Unit testing changes- START
+    IF ID.RCON.L EQ 'REDO.COL.MAP.STATIC' THEN
+        GOSUB PROCESS.STATIC
+    END ELSE
+*R22 interface Unit testing changes - END
+        BEGIN CASE
+            CASE MAP.FMT EQ 'O'
+                GOSUB PROCESS.OUTWARD
+            CASE MAP.FMT EQ 'I'
+                GOSUB PROCESS.INWARD
+        END CASE
+    END
     
-    BEGIN CASE
-        CASE MAP.FMT EQ 'O'
-            GOSUB PROCESS.OUTWARD
-        CASE MAP.FMT EQ 'I'
-            GOSUB PROCESS.INWARD
-    END CASE
-
 RETURN
 
 OPEN.FILES:
@@ -48,6 +53,29 @@ OPEN.FILES:
     CALL F.READ(FN.DFE.MAPPING,ID.RCON.L,R.DFE.MAPPING,F.DFE.MAPPING,DFE.ERR)
     C$R.MAPPING = R.DFE.MAPPING
 RETURN
+
+*R22 interface Unit testing changes- START
+*------------------------------------------------------------------------------------------------------------------------------------
+PROCESS.STATIC:
+*--------------
+*** <region name=PROCESS.STATIC>
+*** <desc> Process only for DFE.MAPPING=REDO.COL.MAP.STATIC </desc>
+    Y.CONT = 1
+    Y.TOT.VM = DCOUNT(R.DFE.MAPPING<DFE.MAP.APPL.FIELD.TEXT>,@VM)
+
+    LOOP
+    WHILE Y.CONT LE Y.TOT.VM
+        Y.F1 = R.DFE.MAPPING<DFE.MAP.APPL.FIELD.TEXT,Y.CONT>
+        Y.F2 = R.DFE.MAPPING<DFE.MAP.FIELD.CONV,Y.CONT>
+        CHANGE @SM TO @VM IN Y.F2
+        Y.F3<-1> = Y.F1:@VM:Y.F2
+        Y.CONT++
+    REPEAT
+    R.RETURN.MSG = Y.F3
+RETURN
+*** </region name=PROCESS.STATIC>
+
+*R22 interface Unit testing changes- END
 
 *------------------------------------------------------------------------------------------------------------------------------------
 PROCESS.INWARD:
@@ -416,7 +444,7 @@ PROCESS.FIELD.CONVERSION:
     CONV.COUNT = 1
 
 * Loop through the field conversions and retrieve the value
-
+    
     LOOP
     WHILE CONV.COUNT LE FIELD.CONV.COUNT
 
@@ -436,7 +464,7 @@ PROCESS.INDIVIDUAL.FIELD.CONV:
 *----------------------------
 *** <region name= Perform Extract Process>
 *** <desc>To perform the extract process based on the mapping record</desc>
-
+    
     FIELD.CONV.TYPE  = INDIVIDUAL.FIELD.CONV[1,2]
     FIELD.CONV.DETAILS  = INDIVIDUAL.FIELD.CONV[3,99]
 
@@ -480,6 +508,7 @@ PROCESS.INDIVIDUAL.FIELD.CONV:
         RETURN
     END
 
+
     IF APPL.FIELD.VALUE EQ '' THEN
         RETURN
     END
@@ -502,7 +531,7 @@ PROCESS.INDIVIDUAL.FIELD.CONV:
     END
 
     IF INDIVIDUAL.FIELD.CONV[1,6] EQ 'STATIC' THEN        ;* To extract value based on positions
-        APPL.FIELD.VALUE   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2)
+        APPL.FIELD.VALUE<-1>   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2) ;*R22 interface Unit testing changes
     END
     
 RETURN

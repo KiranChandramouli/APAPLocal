@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo0NDYwOTI0ODI6Q3AxMjUyOjE2OTI5NDY2NDQ5MTg6SVRTUzotMTotMToxNzA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Aug 2023 12:27:24
+* @ValidationCode : MjoxMTI4MzQwMTkyOkNwMTI1MjoxNjk4MDQyNTA3NjMwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:27
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 170
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -36,13 +36,13 @@ SUBROUTINE LAPAP.A.TXN.DIVI.TT
 *-----------------------------------------------------------------------------------------------
 *----------------------------------------------------------------------
 *
-    $INSERT  I_COMMON
-    $INSERT  I_EQUATE
-    $INSERT  I_GTS.COMMON
-    $INSERT  I_System
-    $INSERT  I_F.TELLER
-    $INSERT  I_F.ST.LAPAP.TRANS.DIVISA.SDT
-    $INSERT  I_F.CUSTOMER
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_GTS.COMMON
+    $INSERT I_System
+    $INSERT I_F.TELLER
+    $INSERT I_F.ST.LAPAP.TRANS.DIVISA.SDT
+    $INSERT I_F.CUSTOMER
 
 
     GOSUB INIT

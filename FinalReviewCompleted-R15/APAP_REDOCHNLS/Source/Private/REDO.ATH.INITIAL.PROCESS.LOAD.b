@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo5NzcyOTY0MDc6Q3AxMjUyOjE2ODEyMTUxNjQwNTM6SVRTUzotMTotMToyOTM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 Apr 2023 17:42:44
+* @ValidationCode : MjotMTg0MzIxMTgyNDpDcDEyNTI6MTY5NzcxNjg4Mjg4MTpJVFNTOi0xOi0xOjI5MzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:31:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE REDO.ATH.INITIAL.PROCESS.LOAD
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -28,12 +29,13 @@ SUBROUTINE REDO.ATH.INITIAL.PROCESS.LOAD
 * Date                   Name                   Reference               Version
 * -------                ----                   ----------              --------
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
-* 04-APR-2023     Conversion tool    R22 Auto conversion       No changes
-* 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 04-APR-2023     Conversion tool    R22 Auto conversion             No changes
+* 10-APR-2023      Harishvikram C   Manual R22 conversion             No changes
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.ATH.INITIAL.PROCESS.COMMON
+	
 
     GOSUB INITIALISE
 

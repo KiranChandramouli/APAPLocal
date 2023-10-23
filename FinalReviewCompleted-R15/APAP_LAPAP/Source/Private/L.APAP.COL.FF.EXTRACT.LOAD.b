@@ -33,7 +33,7 @@ RETURN
 *-----------
 INITIALISE:
 *-----------
-
+    
     FN.AA.ARRANGEMENT='F.AA.ARRANGEMENT'
     F.AA.ARRANGEMENT =''
     CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
@@ -240,7 +240,7 @@ PROCESS.SUB:
 
     GOSUB GET.TABLES.IDS
 
-    GOSUB LIST.OF.SEGUROS
+*    GOSUB LIST.OF.SEGUROS  SJ ;*R22 interface Unit testing changes
 
 RETURN
 *-----------------------------------------------------------------------------

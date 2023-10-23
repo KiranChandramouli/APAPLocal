@@ -1,16 +1,19 @@
-* @ValidationCode : MjoxNDYxMzEwMTU2OkNwMTI1MjoxNjg1MDkyNzU5MjAxOklUU1M6LTE6LTE6NjMyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 14:49:19
+* @ValidationCode : Mjo5MzUxNTIzMTQ6Q3AxMjUyOjE2OTc3OTE0NTI3MTE6SVRTUzotMTotMTo2MzM6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Oct 2023 14:14:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 632
+* @ValidationInfo : Rating            : 633
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
+*-----------------------------------------------------------------------------
+* <Rating>-74</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.STATUS.POS,Y.STATUS.CHG.UPD,R.AZ.ACCOUNT)
 *-------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -38,10 +41,10 @@ SUBROUTINE REDO.B.PREVELENCE.STATUS.UPD(ID,R.ACCOUNT,Y.AC.STATUS.POS,Y.STATUS.CH
 * 31-05-2011      RIYAS                PACS00060188                    Bug Fixing
 * 19-09-2011      RIYAS                PACS00099905                     Bug Fixing
 * 10-01-2012      Prabhu               PACS00172828                     AZ status field updated
-* DATE  NAME   REFERENCE    DESCRIPTION
-* 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
-* 25-05-2023     Conversion tool        R22 Auto conversion           FM TO @FM, VM to @VM, SM to @SM, ++ to +=, k to K.VAR
-* 25-05-2023      Harishvikram C       Manual R22 conversion           CALL routine format modified
+* 31 JAN 2023 Edwin Charles D       ACCOUNTING-CR                    TSR479892
+* 22 MAY 202  Edwin Charles D       ACCOUNTING-CR                    TSR571601
+* 20 AUG 2023 Edwin Charles D       ACCOUNTING-CR                    TSR637100
+* 19 OCT 2023  VICTORIA S             MANUAL CONVERSION          FM TO @FM,VM TO @VM, call routine modified
 *--------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -68,40 +71,42 @@ RETURN
 PROCESS:
 *--------------------------------------------------------------------------------
 *    CALL F.READU(FN.ACCOUNT,Y.PGM.ID,R.ACCOUNT,F.ACCOUNT,F.ERR,Y.ERR)
-    Y.STATUS.1 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS1.POS>,@VM,@FM)
-    Y.STATUS2 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS2.POS>,@SM,@FM)
+    Y.STATUS.1 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS1.POS>,@VM,@FM) ;*R22 MANUAL CONVERSION
+    Y.STATUS2 = CHANGE(R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS2.POS>,@SM,@FM) ;*R22 MANUAL CONVERSION
     IF Y.STATUS.1 THEN
         Y.STATUS = Y.STATUS.1
     END
     IF Y.STATUS2 THEN
-        K.VAR = 1
-        Y.NUL.CNT = DCOUNT(Y.STATUS2,@FM)
+        K = 1
+        Y.NUL.CNT = DCOUNT(Y.STATUS2,@FM) ;*R22 MANUAL CONVERSION
 
         LOOP
-        WHILE K.VAR LE Y.NUL.CNT
-            Y.TMP.STAT = Y.STATUS2<K.VAR>
+        WHILE K LE Y.NUL.CNT
+            Y.TMP.STAT = Y.STATUS2<K>
             IF Y.TMP.STAT THEN
                 Y.STATUS.2<-1> = Y.TMP.STAT
             END
-            K.VAR += 1
+            K++
         REPEAT
-
     END
+
     Y.STATUS = ''
-    Y.AC.TOTAL.STATUS = DCOUNT(Y.STATUS,@FM)
-    LOCATE ID IN Y.AC.ARRAY<1> SETTING AC.ID.POS THEN       ;* This is only applicable for L.AC.STATUS1
+    Y.AC.TOTAL.STATUS = DCOUNT(Y.STATUS,@FM) ;*R22 MANUAL CONVERSION
+    LOCATE ID IN Y.AC.ARRAY<1> SETTING AC.ID.POS THEN       ;* This is only applicable for L.AC.STATUS1 only
         Y.STATUS = Y.STATUS.SEQ.ARRAY<AC.ID.POS>
     END
 
-    APAP.REDOAPAP.redoConvMnemToStatus(ID,Y.STATUS)    ;* This is only applicable for L.AC.STATUS2 ;*Manual R22 conversion
-
+*CALL REDO.CONV.MNEM.TO.STATUS(ID,Y.STATUS)
+*R22 MANUAL CONVERSION
+    APAP.REDOAPAP.redoConvMnemToStatus(ID,Y.STATUS)
     IF Y.STATUS THEN          ;* This is to check the migrated contract.
-        Y.AZ.ACCOUNT = ''
+        Y.AZ.ACCOUNT = '' ; Y.AZ.DEP.LIQ.ACCT = ''
         Y.AC.CATEG = R.ACCOUNT<AC.CATEGORY>
         Y.AZ.ACCOUNT = R.ACCOUNT<AC.ALL.IN.ONE.PRODUCT>
+        Y.AZ.DEP.LIQ.ACCT = R.ACCOUNT<AC.LOCAL.REF,Y.AZ.ACC.REF.POS>
 
         BEGIN CASE
-            CASE Y.AZ.ACCOUNT
+            CASE Y.AZ.ACCOUNT OR Y.AZ.DEP.LIQ.ACCT    ;* Here 6015 category account is considered as deposit account
                 Y.CATEG = 'DEP'
 
             CASE Y.AC.CATEG GE '6000' AND Y.AC.CATEG LE '6999'
@@ -121,7 +126,7 @@ FM.COUNTER.CHECK:
 * 20170327 /S TUS
     Y.FINAL.STATUS = '' ; AC.FLAG = '' ; CNT.AC = 1 ; Y.AC.TYPE = ''
 
-    TOT.AC.CNT = DCOUNT(ACCT.TYPE.LIST,@FM)
+    TOT.AC.CNT = DCOUNT(ACCT.TYPE.LIST,@FM) ;*R22 MANUAL CONVERSION
     LOOP
     WHILE CNT.AC LE TOT.AC.CNT
         Y.AC.TYPE = ACCT.TYPE.LIST<CNT.AC>
@@ -132,7 +137,7 @@ FM.COUNTER.CHECK:
                 GOSUB STATUS.CHECK
         END CASE
 
-        CNT.AC += 1
+        CNT.AC= CNT.AC+1
     REPEAT
 
 *    IF NOT(Y.FINAL.STATUS) AND NOT(AC.FLAG) THEN  ;* will avoid deleting the existing status from account
@@ -152,36 +157,29 @@ STATUS.CHECK:
 
     END
 RETURN
-*LOCATE Y.STATUS IN PARAM.STATUS SETTING VL.POSN THEN
-*Y.FINAL.STATUS = PREVALANCE.STATUS<VL.POSN>
-*IF R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> NE Y.FINAL.STATUS OR Y.STATUS.CHG.UPD THEN
-*    GOSUB AC.REC.WRITE.RECORD
-*END
-*END ELSE
-*   GOSUB AC.NULL.WRITE
-*END
-*    RETURN
+
 * 20170327 /E TUS
 *----------------------------------------------------------------------------------------------
 AC.REC.WRITE.RECORD:
 *-----------------------------------------------------------------------------------------------
-
-    R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> = Y.FINAL.STATUS
+    IF Y.FINAL.STATUS THEN  ;*TSR637100
+        R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> = Y.FINAL.STATUS
 * CALL F.WRITE(FN.ACCOUNT,Y.PGM.ID,R.ACCOUNT)
-    V = AC.AUDIT.DATE.TIME
-    CALL F.LIVE.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
+        V = AC.AUDIT.DATE.TIME
+        CALL F.LIVE.WRITE(FN.ACCOUNT,ID,R.ACCOUNT)
 *-    IF R.ACCOUNT<AC.ALL.IN.ONE.PRODUCT> THEN
 *-        CALL F.READ(FN.AZ.ACCOUNT,ID,R.AZ.ACCOUNT,F.AZ.ACCOUNT,ERR)
-    IF R.AZ.ACCOUNT THEN
-        R.AZ.ACCOUNT<AZ.LOCAL.REF,Y.AZ.L.AC.STATUS.POS>=Y.FINAL.STATUS
-        V=AZ.AUDIT.DATE.TIME
-        CALL F.LIVE.WRITE(FN.AZ.ACCOUNT,ID,R.AZ.ACCOUNT)
-    END
+        IF R.AZ.ACCOUNT THEN
+            R.AZ.ACCOUNT<AZ.LOCAL.REF,Y.AZ.L.AC.STATUS.POS>=Y.FINAL.STATUS
+            V=AZ.AUDIT.DATE.TIME
+            CALL F.LIVE.WRITE(FN.AZ.ACCOUNT,ID,R.AZ.ACCOUNT)
+        END
 *-    END
-    Y.CURR.NO = R.ACCOUNT<AC.CURR.NO>
-    Y.ACT.ID = ID:';':Y.CURR.NO
-    R.ACCOUNT.ACT = TODAY
-    WRITE R.ACCOUNT.ACT ON F.ACCOUNT.ACT,Y.ACT.ID
+        Y.CURR.NO = R.ACCOUNT<AC.CURR.NO>
+        Y.ACT.ID = ID:';':Y.CURR.NO
+        R.ACCOUNT.ACT = TODAY
+        WRITE R.ACCOUNT.ACT ON F.ACCOUNT.ACT,Y.ACT.ID
+    END  ;*TSR637100
 RETURN
 *----------------------------------------------------------------------------------------------
 AC.NULL.WRITE:

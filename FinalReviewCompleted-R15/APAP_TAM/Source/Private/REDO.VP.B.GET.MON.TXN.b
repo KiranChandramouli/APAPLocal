@@ -172,12 +172,12 @@ PROCESS:
 * Select all transaction to be formatted
     SELECT.STATEMENT  = "SSELECT " : FN.REDO.VISION.PLUS.TXN
     SELECT.STATEMENT := " WITH STATUS EQ 'PEND'"
-*   SELECT.STATEMENT := " AND @ID LIKE '" : PROCESS.DATE : "...'"
 *R22 interface Unit testing changes START
-*    SELECT.STATEMENT := " WITHOUT CHANNEL LIKE 'CAV...'" SJ commented for test
-*    SELECT.STATEMENT := " BY @ID"                        SJ commented for test
+    SELECT.STATEMENT := " AND @ID LIKE '" : PROCESS.DATE : "...'"
+*    SELECT.STATEMENT := " WITHOUT CHANNEL LIKE 'CAV...'" ;*SJ commented for test
     SELECT.STATEMENT := " AND CHANNEL UNLIKE 'CAV...' "
-    *R22 interface Unit testing changes-END
+    SELECT.STATEMENT := " BY @ID"
+*R22 interface Unit testing changes-END
     CALL EB.READLIST(SELECT.STATEMENT, VP.TXN.LIST, VP.TXN.LIST.NAME, VP.TXN.SELECTED, VP.TXN.SYS.RET)
 
     IF VP.TXN.SELECTED GT 0 THEN

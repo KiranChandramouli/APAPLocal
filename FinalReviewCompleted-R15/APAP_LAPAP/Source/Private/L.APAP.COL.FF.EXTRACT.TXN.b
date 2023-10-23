@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTk5NzEyNzExNTpDcDEyNTI6MTY5NTEzMjgwMDA3NjpJVFNTMTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 Sep 2023 19:43:20
+* @ValidationCode : Mjo4MDM3MzE1NTU6Q3AxMjUyOjE2OTgwNDI0OTE5NjQ6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
 $PACKAGE APAP.LAPAP
@@ -158,7 +158,7 @@ PROCESS.ACTIVITY.1:
 
     GOSUB INSERT.STMT
 
-    Y.CREDIT.TXN<-1> = Y.INS.VALUES : @FM : Y.TYPE.TXN  ;*Interface Change by Santiago- @VM changed to @FM
+    Y.CREDIT.TXN<-1> = Y.INS.VALUES : @VM : Y.TYPE.TXN  
 RETURN
 
 * ---------
@@ -186,7 +186,7 @@ INITIALISE:
     Y.TMPMOVPRODUCTO  = Y.PRODUCT.ID
     Y.MAP.VALUE = Y.PRODUCT.ID
     Y.MAP.TYPE  = "PRODUCT.GROUP"
-;*GOSUB GET.STATIC.MAPPING   ;*AJUSTE -Interface Change by Santiago
+    GOSUB GET.STATIC.MAPPING   ;*R22 interface Unit testing changes_Uncommented GOSUB
     Y.TMPMOVPRODUCTO  = Y.MAP.VALUE
 
     GOSUB GET.TXN.CODE.LIST
@@ -264,7 +264,7 @@ GET.STATIC.MAPPING:
     E = ""
 *   CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE)
     APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, Y.MAP.TYPE, Y.MAP.VALUE) ;*R22 Manual Code Conversion
-	TEST.MAP = Y.MAP.VALUE ;*Interface Change by Santiago
+	
 RETURN
 
 *
@@ -390,7 +390,7 @@ GET.TXN.DETAILS:
 
     Y.MAP.VALUE = Y.CCY
     Y.MAP.TYPE  = "CURRENCY"
-;*GOSUB GET.STATIC.MAPPING  ;*AJUSTE - Interface Change by Santiago
+    GOSUB GET.STATIC.MAPPING  ;*R22 interface Unit testing changes_Uncommented GOSUB
 *    Y.TMPMOVMONTOMONEDAORIGEN = Y.MAP.VALUE
 
     Y.TMPMOVMONEDACODIGO = Y.MAP.VALUE

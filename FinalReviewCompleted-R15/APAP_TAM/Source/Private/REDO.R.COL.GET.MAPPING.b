@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTY0ODExMDAyNTpDcDEyNTI6MTY5MzkyMzg4Mzc1NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Sep 2023 19:54:43
+* @ValidationCode : MjoxNTc0Njg2OTk5OkNwMTI1MjoxNjk4MDQ0MDk0MjI3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 Oct 2023 12:24:54
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -96,7 +96,7 @@ SUBROUTINE REDO.R.COL.GET.MAPPING(P.IN.STATIC.MAPPING.ID, P.IN.R.STATIC.MAPPING,
 *Modification History
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *18-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM,I TO I.VAR
-*18-04-2023              Samaran T                R22 Manual Code conversion                     R22 interface Unit testing changes
+*18-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
 *-------------------------------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -119,7 +119,6 @@ RETURN
 * ======
 PROCESS:
 * ======
-*
 *
     IF P.IN.MAPPING.TYPE EQ "" THEN
         CALL OCOMO("JUST CALLED FOR INITIALIZATION")
@@ -148,7 +147,11 @@ PROCESS:
     Y.TOTAL = DCOUNT(R.MAP.TO.USE,@VM)
     Y.FOUND = 0
 * The first position is FIELD.ID
+    
     FOR I.VAR = 2 TO Y.TOTAL
+*R22 interface Unit testing changes-START
+        XX = R.MAP.TO.USE<1,I.VAR>[",",1,1]
+*R22 interface Unit testing changes-END
         IF R.MAP.TO.USE<1,I.VAR>[",",1,1] EQ Y.MAP.VALUE THEN
             Y.MAP.VALUE = R.MAP.TO.USE<1,I.VAR>[",",2,1]
             Y.FOUND = 1
@@ -191,7 +194,6 @@ RETURN
 CHECK.PRELIM.CONDITIONS:
 *-----------------------
 *
-
     IF P.IN.STATIC.MAPPING.ID EQ V$NULL AND P.OUT.R.STATIC.MAPPING EQ V$NULL THEN
         E = "ST-REDO.COL.PARAM.RTN.REQUIRED" : @VM : "PARAMETER & IS REQUIRED" : @FM : "P.IN.STATIC.MAPPING.ID"
         PROCESS.GOAHEAD = 0
@@ -207,8 +209,10 @@ CHECK.PRELIM.CONDITIONS:
 
     IF P.OUT.R.STATIC.MAPPING EQ "" THEN
 *        CALL RAD.CONDUIT.LINEAR.TRANSLATION("MAP", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) *SJ
-*CALL REDO.CONDUIT.LINEAR.TRANSLATION("O", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) ;*R22 interface Unit testing changes
-        APAP.LAPAP.redoConduitLinearTranslation("O", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) ;*R22 MANUAL CONVERSION
+*CALL REDO.CONDUIT.LINEAR.TRANSLATION("O", P.IN.STATIC.MAPPING.ID,  "", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR) ;*R22 MANUAL CONVERSION
+*R22 interface Unit testing changes-START
+        APAP.LAPAP.redoConduitLinearTranslation("O", P.IN.STATIC.MAPPING.ID,  "F.REDO.FI.CONTROL", "", P.IN.R.STATIC.MAPPING, P.OUT.R.STATIC.MAPPING, Y.ERR)
+*R22 interface Unit testing changes-END
         IF Y.ERR THEN
 
             E ="ERROR GETTING STATIC MAPPING FROM RAD " : Y.ERR

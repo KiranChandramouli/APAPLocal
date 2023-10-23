@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyMDYxMDAzODY5OkNwMTI1MjoxNjkwMTY3ODkxNTI0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Jul 2023 08:34:51
+* @ValidationCode : MjoyNjM5NzYyODk6Q3AxMjUyOjE2OTgwNDI0OTIwNTg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * This subroutine allows to extract fields from Customer in T24
@@ -31,7 +31,6 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT(CUSTOMER.ID)
     $INSERT I_F.REDO.COL.TRACE.PHONE
     $INSERT I_BATCH.FILES
     $INSERT I_F.AA.ARRANGEMENT
-
 
     BEGIN CASE
         CASE CONTROL.LIST<1,1> EQ 'Y.AP.LOANS' ;*R22 Auto Code conversion
@@ -154,7 +153,7 @@ REP.AP.CARDS:
         IF Y.PROCESS.FLAG.TABLE<1,3> EQ "tmpdireccionescliente" THEN
             GOSUB ADDRESS.STMT          ;*Ir al Parrafo de para extraer y crear los Inserts de Address
         END
-        GOSUB  FINAL.WRITE.RECORD
+*  GOSUB  FINAL.WRITE.RECORD ;*R22 interface Unit testing changes
     END
 RETURN
 
@@ -163,23 +162,27 @@ GET.CUSTOMER.REC:
     R.CUSTOMER = ''; YERR = ''
     CALL F.READ(FN.CUSTOMER, CUSTOMER.ID, R.CUSTOMER, F.CUSTOMER, YERR)
 
-    CUST.ID.HST = CUSTOMER.ID:';1'
-    ERR.CUSTOMER.HST = ''; R.CUSTOMER.HST = ''
-    CALL F.READ(FN.CUSTOMER.HST,CUST.ID.HST,R.CUSTOMER.HST,F.CUSTOMER.HST,ERR.CUSTOMER.HST)
-    IF NOT(R.CUSTOMER.HST) THEN
-        R.CUSTOMER.HST = R.CUSTOMER
+    IF NOT(R.CUSTOMER) THEN ;*R22 interface Unit testing changes
+        CUST.ID.HST = CUSTOMER.ID:';1'
+        ERR.CUSTOMER.HST = ''; R.CUSTOMER.HST = ''
+        CALL F.READ(FN.CUSTOMER.HST,CUST.ID.HST,R.CUSTOMER.HST,F.CUSTOMER.HST,ERR.CUSTOMER.HST)
+        R.CUSTOMER = R.CUSTOMER.HST ;*R22 interface Unit testing changes
     END
     IF R.CUSTOMER THEN
         Y.L.AUDIT.POS = DCOUNT(R.CUSTOMER<EB.CUS.INPUTTER>, @VM)
         Y.CLI.FECHA.MODIF.TP = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>
-        Y.CLI.FECHA.MODIF = ICONV(Y.CLI.FECHA.MODIF.TP,'DI')
-        Y.CLI.FECHA.MODIF = OCONV(Y.CLI.FECHA.MODIF,'D4')
-        Y.CLI.FECHA.MODIF = Y.CLI.FECHA.MODIF[7,4]:Y.CLI.FECHA.MODIF[4,2]:Y.CLI.FECHA.MODIF[1,2]
+*SJ start  ;*R22 interface Unit testing changes - START
+        Y.CLI.FECHA.MODIF = '20':Y.CLI.FECHA.MODIF.TP[1,6]
+*        Y.CLI.FECHA.MODIF = ICONV(Y.CLI.FECHA.MODIF.TP,'DI')
+*        Y.CLI.FECHA.MODIF = OCONV(Y.CLI.FECHA.MODIF,'D4')
+*        Y.CLI.FECHA.MODIF = Y.CLI.FECHA.MODIF[7,4]:Y.CLI.FECHA.MODIF[4,2]:Y.CLI.FECHA.MODIF[1,2]
+* SJ end   ;*R22 interface Unit testing changes - END
     END
 RETURN
 
+*Extrae el tipo de Documento del Customer ;*R22 interface Unit testing changes
 *-----------------------------------------------------------------------------------
-GET.CUS.ID.TYPE:    *Extrae el tipo de Documento del Customer
+GET.CUS.ID.TYPE:
 *-----------------------------------------------------------------------------------
     BEGIN CASE
         CASE R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TIPO.ID.CI.POS> NE ""      ;*CEDULA = 1
@@ -207,8 +210,9 @@ GET.CUS.ID.TYPE:    *Extrae el tipo de Documento del Customer
     END CASE
 
 RETURN
+*EXTRACT INFORMATION ABOUT CUSTOMER ;*R22 interface Unit testing changes
 *-----------------------
-CUSTOMER.STMT:      *EXTRACT INFORMATION ABOUT CUSTOMER
+CUSTOMER.STMT:
 *-----------------------
 
     GOSUB GET.CUS.ID.TYPE
@@ -364,7 +368,7 @@ CUSTOMER.STMT:      *EXTRACT INFORMATION ABOUT CUSTOMER
         R.COL.QUEUE<1> = Y.TMPCLIENTES
         R.COL.QUEUE<2> = Y.LINEA
 
-        GOSUB WRITE.RECORD
+        GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
     END
 RETURN
 *-------------------
@@ -434,7 +438,7 @@ PROC.PHONES:
     R.COL.QUEUE = ''
     R.COL.QUEUE<1> = Y.TMPTELEFONOSCLIENTE
     R.COL.QUEUE<2> = Y.INSERT.TEL
-    GOSUB WRITE.RECORD
+    GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
 RETURN
 
 *-------------------
@@ -449,36 +453,38 @@ GET.TIPO.PERSONA:
 
 RETURN
 
+*BUCLE PARA LA LECTURA DEL CAMPO LOCAL DEL CLIENTE CORRESPONDIENTE A TELEFONOS  ;*R22 interface Unit testing changes
 *-------------------
-GET.CUSTOMER.PHONES:*BUCLE PARA LA LECTURA DEL CAMPO LOCAL DEL CLIENTE CORRESPONDIENTE A TELEFONOS
+GET.CUSTOMER.PHONES:
 *-------------------
-IF Y.CLI.TELF.TYPE NE "" THEN
-RETURN
-END
+    IF Y.CLI.TELF.TYPE NE "" THEN
+        RETURN
+    END
 
-Y.CLI.TELF.TYPE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.TYPE.POS>
-NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,@SM)
-Y.CLI.CONTACTO=''
-I.VAR = NRO.REL.CODE.TEL
-LOOP WHILE I.VAR GE 1 ;*R22 Auto Code conversion
-BEGIN CASE
-    CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "05"
-        Y.CLI.TELF.AREA.10 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR> ;*R22 Auto Code conversion
-        Y.CLI.TELF.NO.10   = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
-        Y.CLI.TELF.EXT.10  = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.EXT.POS,I.VAR>
-        Y.CLI.CONTACTO     =  R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.TEL.P.CONT,I.VAR>
-    CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "01"
-        Y.CLI.TELF.AREA.11 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR> ;*R22 Auto Code conversion
-        Y.CLI.TELF.NO.11 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
-    CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "06"
-        Y.CLI.TELF.AREA.13 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR>
-        Y.CLI.TELF.NO.13 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
-END CASE
-I.VAR -= 1
-REPEAT
+    Y.CLI.TELF.TYPE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.TYPE.POS>
+    NRO.REL.CODE.TEL = DCOUNT(Y.CLI.TELF.TYPE,@SM)
+    Y.CLI.CONTACTO=''
+    I.VAR = NRO.REL.CODE.TEL
+    LOOP WHILE I.VAR GE 1 ;*R22 Auto Code conversion
+        BEGIN CASE
+            CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "05"
+                Y.CLI.TELF.AREA.10 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR> ;*R22 Auto Code conversion
+                Y.CLI.TELF.NO.10   = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
+                Y.CLI.TELF.EXT.10  = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.EXT.POS,I.VAR>
+                Y.CLI.CONTACTO     =  R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.TEL.P.CONT,I.VAR>
+            CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "01"
+                Y.CLI.TELF.AREA.11 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR> ;*R22 Auto Code conversion
+                Y.CLI.TELF.NO.11 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
+            CASE Y.CLI.TELF.TYPE<1,1,I.VAR> EQ "06"
+                Y.CLI.TELF.AREA.13 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.AREA.POS,I.VAR>
+                Y.CLI.TELF.NO.13 = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.CLI.TELF.NO.POS,I.VAR>
+        END CASE
+        I.VAR -= 1
+    REPEAT
 RETURN
+*OBTENER TMPCLIENTEDIRECCIONES   18-inicio;*R22 interface Unit testing changes
 *-------------
-ADDRESS.STMT:       *OBTENER TMPCLIENTEDIRECCIONES   18-inicio
+ADDRESS.STMT:
 *-------------
     Y.CLI.COD.EMPRESA = 000001
     Y.CLI.COD.CLIENTE = CUSTOMER.ID
@@ -552,50 +558,51 @@ ADDRESS.STMT:       *OBTENER TMPCLIENTEDIRECCIONES   18-inicio
 
     REPEAT
 RETURN
+** Call to process each AA ;*R22 interface Unit testing changes
 *-----------------------------------------------------------------------------------
-PROCESS.CUS.ADDRESS:* Call to process each AA
+PROCESS.CUS.ADDRESS:
 *-----------------------------------------------------------------------------------
-GOSUB GET.ADDRESS.TYPE.COL
-IF Y.MSG THEN
-RETURN
-END
+    GOSUB GET.ADDRESS.TYPE.COL
+    IF Y.MSG THEN
+        RETURN
+    END
 
-IF Y.CLI.NO.DIRECCION EQ "" THEN    ;*ADDRESS CODE VALIDATION
-Y.CLI.NO.DIRECCION = 1          ;* BY Default set 1, PACS00169639
-END
+    IF Y.CLI.NO.DIRECCION EQ "" THEN    ;*ADDRESS CODE VALIDATION
+        Y.CLI.NO.DIRECCION = 1          ;* BY Default set 1, PACS00169639
+    END
 
-Y.CLI.STREET.ADDR.DESC = Y.CLI.NO.DIRECCION:" ":R.DE.ADDRESS<DE.ADD.STREET.ADDRESS,1>:" ":Y.CLI.CAMPO3.09.POS:" ":Y.CLI.CAMPO4.09.POS:" ":Y.CLI.COUNTRY:" ":Y.CLI.COUNTRY.TOWN
+    Y.CLI.STREET.ADDR.DESC = Y.CLI.NO.DIRECCION:" ":R.DE.ADDRESS<DE.ADD.STREET.ADDRESS,1>:" ":Y.CLI.CAMPO3.09.POS:" ":Y.CLI.CAMPO4.09.POS:" ":Y.CLI.COUNTRY:" ":Y.CLI.COUNTRY.TOWN
 
-Y.LINEA.DIR.CLI = ""
-Y.CLI.NO.DIRECCION = Y.SEQ
+    Y.LINEA.DIR.CLI = ""
+    Y.CLI.NO.DIRECCION = Y.SEQ
 
-Y.LINEA.DIR.CLI = ""
-Y.DELIM='~'
-Y.CLI.NO.DIRECCION = Y.SEQ
-Y.TMPDIRCLIENTEBARRIO ='999'
+    Y.LINEA.DIR.CLI = ""
+    Y.DELIM='~'
+    Y.CLI.NO.DIRECCION = Y.SEQ
+    Y.TMPDIRCLIENTEBARRIO ='999'
 
-Y.TMPDIRCLIENTEESTADO='999'
-Y.TMPDIRCLIENTEMUNICIPIO='999'
-Y.TMPDIRCLIENTEPAIS='1'
-Y.TMPDIRCLIENTESECTOR='999'
+    Y.TMPDIRCLIENTEESTADO='999'
+    Y.TMPDIRCLIENTEMUNICIPIO='999'
+    Y.TMPDIRCLIENTEPAIS='1'
+    Y.TMPDIRCLIENTESECTOR='999'
 
-Y.LINEA.DIR.CLI   = TRIM(Y.CLI.COD.EMPRESA,"","B"):Y.DELIM:TRIM(Y.CLI.COD.CLIENTE,"","B"):Y.DELIM:Y.TMPDIRCLIENTEBARRIO:Y.DELIM:"1":Y.DELIM:"T24"
-Y.LINEA.DIR.CLI   := Y.DELIM:TRIM(Y.CLI.STREET.ADDR.DESC[1,200],"","B"):Y.DELIM:TRIM(Y.CLI.APR.POSTAL[1,100],"","B"):Y.DELIM:"":Y.DELIM:TRIM(Y.CLI.INPUTTER.ADD[1,20],"","B")
-Y.LINEA.DIR.CLI   := Y.DELIM:TRIM(Y.CLI.DATE.TIME.ADD,"","B"):Y.DELIM:TRIM(Y.CLI.INPUTTER.LAST[1,20],"","B"):Y.DELIM:TRIM(Y.CLI.DATE.TIME.LAST,"","B")
-Y.LINEA.DIR.CLI   := Y.DELIM:Y.TMPDIRCLIENTEPAIS:Y.DELIM:Y.TMPDIRCLIENTEESTADO:Y.DELIM:Y.TMPDIRCLIENTEMUNICIPIO:Y.DELIM:Y.TMPDIRCLIENTESECTOR
-Y.LINEA.DIR.CLI   := Y.DELIM:Y.TMPDIRCLIENTEBARRIO:Y.DELIM:Y.TMPDIRCLIENTEBASEPRINCIPAL:Y.DELIM:"":Y.DELIM
+    Y.LINEA.DIR.CLI   = TRIM(Y.CLI.COD.EMPRESA,"","B"):Y.DELIM:TRIM(Y.CLI.COD.CLIENTE,"","B"):Y.DELIM:Y.TMPDIRCLIENTEBARRIO:Y.DELIM:"1":Y.DELIM:"T24"
+    Y.LINEA.DIR.CLI   := Y.DELIM:TRIM(Y.CLI.STREET.ADDR.DESC[1,200],"","B"):Y.DELIM:TRIM(Y.CLI.APR.POSTAL[1,100],"","B"):Y.DELIM:"":Y.DELIM:TRIM(Y.CLI.INPUTTER.ADD[1,20],"","B")
+    Y.LINEA.DIR.CLI   := Y.DELIM:TRIM(Y.CLI.DATE.TIME.ADD,"","B"):Y.DELIM:TRIM(Y.CLI.INPUTTER.LAST[1,20],"","B"):Y.DELIM:TRIM(Y.CLI.DATE.TIME.LAST,"","B")
+    Y.LINEA.DIR.CLI   := Y.DELIM:Y.TMPDIRCLIENTEPAIS:Y.DELIM:Y.TMPDIRCLIENTEESTADO:Y.DELIM:Y.TMPDIRCLIENTEMUNICIPIO:Y.DELIM:Y.TMPDIRCLIENTESECTOR
+    Y.LINEA.DIR.CLI   := Y.DELIM:Y.TMPDIRCLIENTEBARRIO:Y.DELIM:Y.TMPDIRCLIENTEBASEPRINCIPAL:Y.DELIM:"":Y.DELIM
 
-R.COL.QUEUE = ''
-R.COL.QUEUE<1> = Y.TMPDIRECCIONESCLIENTE
-R.COL.QUEUE<2> = Y.LINEA.DIR.CLI
-GOSUB WRITE.RECORD
+    R.COL.QUEUE = ''
+    R.COL.QUEUE<1> = Y.TMPDIRECCIONESCLIENTE
+    R.COL.QUEUE<2> = Y.LINEA.DIR.CLI
+    GOSUB WRITE.RECORD.NEW  ;*R22 interface Unit testing changes
 RETURN
 *-----------------------------------------------------------------------------------
 PROCESS.AA:         * Call to process each AA
 *-----------------------------------------------------------------------------------
     Y.CREDIT = ""; PR.GESTIPOGARANTIAS = ''; Y.CREDIT.TXN = ""; PR.GESGARANTIAS = ''; PR.GESCREDITOSGARANTIAS = '';P.GESCREDITOINTEGRACION = ''
 * CALL L.APAP.COL.FF.EXTRACT.CREDIT(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
-    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
+    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION);* R22 Manual conversion - CAll method format changed
 *   IF E THEN
 *       RETURN
 *   END
@@ -607,7 +614,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "tmpcredito"
             R.COL.QUEUE<2> = Y.CREDIT<Y.I,1>
             R.COL.QUEUE<4> = Y.CREDIT<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -632,7 +639,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gestipogarantias"
             R.COL.QUEUE<2> = PR.GESTIPOGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESTIPOGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -644,7 +651,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gescreditointegracion"
             R.COL.QUEUE<2> = P.GESCREDITOINTEGRACION<Y.I,1>
             R.COL.QUEUE<4> = P.GESCREDITOINTEGRACION<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -656,7 +663,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gesgarantias"
             R.COL.QUEUE<2> = PR.GESGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -668,11 +675,31 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gescreditogarantias"
             R.COL.QUEUE<2> = PR.GESCREDITOSGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESCREDITOSGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
 RETURN
+*-----------------------------------------------------------------------------------
+WRITE.RECORD.NEW: ;*R22 interface Unit testing changes - START
+*-----------------------------------------------------------------------------------
+*   Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>
+    
+    Y.FILE.ID='SESSION':R.COL.QUEUE<1>:AGENT.NUMBER
+    
+    OPENSEQ Y.EXTRACT.OUT.PATH, Y.FILE.ID TO Y.FILE.PATH ELSE
+        CREATE Y.FILE.PATH ELSE
+            CALL OCOMO("CANNOT OPEN SESSION FILE PATH")
+        END
+    END
+
+    WRITESEQ R.COL.QUEUE<2> APPEND TO Y.FILE.PATH ELSE
+        CALL OCOMO("CANNOT WRITE TO SESSION FILE OF ID ":Y.FILE.ID)
+    END
+
+    CLOSESEQ Y.FILE.PATH
+RETURN ;*R22 interface Unit testing changes- END
+
 *-----------------------------------------------------------------------------------
 WRITE.RECORD:
 *-----------------------------------------------------------------------------------
@@ -682,17 +709,20 @@ RETURN
 *-----------------------------------------------------------------------------------
 FINAL.WRITE.RECORD:
 *-----------------------------------------------------------------------------------
+    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>  ;*R22 interface Unit testing changes
     I.VAR = 1
     LOOP WHILE I.VAR LE Y.TOTAL.INSERT
-
-        Y.QUEUE.ID = ''
-        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
-        Y.QUEUE.ID = DATE():Y.QUEUE.ID
+*R22 interface Unit testing changes-START
+*        Y.QUEUE.ID = ''
+*        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
+*        Y.QUEUE.ID = DATE():Y.QUEUE.ID
+        Y.QUEUE.ID = I.VAR  ;*R22 interface Unit testing changes
+*R22 interface Unit testing changes-END
 
         R.REDO.COL.QUEUE = LIST.INSERTS.STMT(I.VAR)
-        Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>
+        
 
-        Y.FILE.ID='SESSION':R.REDO.COL.QUEUE<1>:AGENT.NUMBER
+        Y.FILE.ID='SESSION':R.REDO.COL.QUEUE<1>:Y.QUEUE.ID:AGENT.NUMBER ;*R22 interface Unit testing changes
 
         OPENSEQ Y.EXTRACT.OUT.PATH, Y.FILE.ID TO Y.FILE.PATH ELSE
             CREATE Y.FILE.PATH ELSE
@@ -702,9 +732,12 @@ FINAL.WRITE.RECORD:
         WRITESEQ R.REDO.COL.QUEUE<2> APPEND TO Y.FILE.PATH ELSE
             CALL OCOMO("CANNOT WRITE TO SESSION FILE OF ID ":Y.FILE.ID)
         END
+        
+        
 
         I.VAR += 1
     REPEAT
+    CLOSESEQ Y.FILE.PATH ;*R22 interface Unit testing changes
 RETURN
 *-----------------------------------------------------------------------------------
 GET.TEL.SEQUENCE:

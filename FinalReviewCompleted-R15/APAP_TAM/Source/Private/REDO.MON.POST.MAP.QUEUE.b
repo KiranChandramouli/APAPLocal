@@ -1,7 +1,7 @@
-* @ValidationCode : MjotNTc0NDg4NjU1OkNwMTI1MjoxNjgzMDgxNzAxNjk3OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 03 May 2023 08:11:41
+* @ValidationCode : MjoxMjE1NjgzODczOkNwMTI1MjoxNjk4MDQ0MDc0NTMzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 23 Oct 2023 12:24:34
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -12,7 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 
-SUBROUTINE REDO.MON.POST.MAP.QUEUE(P.REC.ID,P.MAP.ID,P.FUNCT,P.OPERATOR,P.COMPANY,P.APP,P.OBJ,P.REC.OLD,P.REC.NEW,P.ACC.OLD,P.ACC.NEW,O.ERR)
+SUBROUTINE REDO.MON.POST.MAP.QUEUE(P.REC.ID, P.MAP.ID, P.FUNCT, P.OPERATOR, P.COMPANY, P.APP, P.OBJ, P.REC.OLD, P.REC.NEW, P.ACC.OLD,P.ACC.NEW,O.ERR)
 *
 *    SUBROUTINE REDO.MON.POST.MAP.QUEUE(MAP.REC, MAP.MAPPING.ID)
 *
@@ -27,6 +27,7 @@ SUBROUTINE REDO.MON.POST.MAP.QUEUE(P.REC.ID,P.MAP.ID,P.FUNCT,P.OPERATOR,P.COMPAN
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *12/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             FM TO @FM, CONVERT TO CHANGE
 *12/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*13/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES     Nochanges
 *-----------------------------------------------------------------------------------
 
 *-----------------------------------------------------------------------------------------------

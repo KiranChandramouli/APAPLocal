@@ -1,16 +1,19 @@
-* @ValidationCode : Mjo2NjU5OTYzMjA6Q3AxMjUyOjE2ODI0MTIzMzk1ODA6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:39
+* @ValidationCode : Mjo2NDEzNjQ1OTY6Q3AxMjUyOjE2OTc3OTEyNjg2NjU6SVRTUzotMTotMToxOTA5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Oct 2023 14:11:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Rating            : 1909
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
+*-----------------------------------------------------------------------------
+* <Rating>196</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE REDO.V.AUTH.GARNISH.DEL
 *-----------------------------------------------------------------------------------
 *Description
@@ -24,18 +27,14 @@ SUBROUTINE REDO.V.AUTH.GARNISH.DEL
 *Input param = none
 *output param =none
 *-------------------------------------------------------------------------
-*01 JUN 2011     Prabhu N         PACS00071064   Routine Logic completely Modified to Support deletion
-*18 AUG 2011     Prabhu           PACS00103352   EB.LOOKUP modification added
-*18 SEP 2011     Prabhu           PACS00133294   Code added to launch FT version
-*05 JAN 2011     Prabhu           PACS00172828   Code added for AZ status updation
-*04 MAR 2013     Pradeep S        PACS00253723   Code changed for MULTI.GET.LOC.REF
+*01 JUN 2011     Prabhu N         PACS00071064         Routine Logic completely Modified to Support deletion
+*18 AUG 2011     Prabhu           PACS00103352         EB.LOOKUP modification added
+*18 SEP 2011     Prabhu           PACS00133294         Code added to launch FT version
+*05 JAN 2011     Prabhu           PACS00172828         Code added for AZ status updation
+*04 MAR 2013     Pradeep S        PACS00253723         Code changed for MULTI.GET.LOC.REF
+*20 AUG 2023    EDWIN CDB         TSR-637100           Accounting CR
+* 19 OCT 2023  VICTORIA S         MANUAL CONVERSION    FM TO @FM,VM TO @VM, SM TO @SM,call routine modified
 *-----------------------------------------------------------------------------------------
-*Modification History
-*DATE                       WHO                         REFERENCE                                   DESCRIPTION
-*10-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM,IF CONDITION ADDED,++ TO +=1
-*10-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
-*----------------------------------------------------------------------------------------------------------------------------------------------
-
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.AC.LOCKED.EVENTS
@@ -46,7 +45,9 @@ SUBROUTINE REDO.V.AUTH.GARNISH.DEL
     $INSERT I_F.REDO.GAR.SUSP.ACCT
     $INSERT I_F.REDO.GAR.CREDIT.PROCESS
     $INSERT I_F.REDO.GAR.LOCK.ALE
-
+    $INSERT I_F.APAP.H.GARNISHMENT.REVERSE
+    $INSERT I_F.REDO.T.ACCTSTAT.BY.DATE ;*TSR637100
+    $USING APAP.REDOAPAP
     GOSUB INIT
     GOSUB OPENFILE
 
@@ -67,6 +68,13 @@ RETURN
 OPENFILE:
 *---------------------
 
+    FN.APAP.H.GARNISHMENT.REVERSE = 'F.APAP.H.GARNISHMENT.REVERSE'
+    F.APAP.H.GARNISHMENT.REVERSE = ''
+    CALL OPF(FN.APAP.H.GARNISHMENT.REVERSE,F.APAP.H.GARNISHMENT.REVERSE)
+
+    FN.REDO.T.ACCTSTAT.BY.DATE = 'F.REDO.T.ACCTSTAT.BY.DATE'          ;*TSR637100
+    F.REDO.T.ACCTSTAT.BY.DATE = ''
+    CALL OPF(FN.REDO.T.ACCTSTAT.BY.DATE,F.REDO.T.ACCTSTAT.BY.DATE)
 
     FN.AC.LOCKED.EVENTS='F.AC.LOCKED.EVENTS'
     F.AC.LOCKED.EVENTS=''
@@ -94,8 +102,8 @@ OPENFILE:
     F.REDO.GAR.LOCK.ALE=''
     CALL OPF(FN.REDO.GAR.LOCK.ALE,F.REDO.GAR.LOCK.ALE)
 
-    Y.APPLICATION='ACCOUNT':@FM:'FUNDS.TRANSFER':@FM:'AZ.ACCOUNT'
-    Y.FIELDS     ='L.AC.STATUS2':@FM:'BENEFIC.NAME':@FM:'L.AC.STATUS2'
+    Y.APPLICATION='ACCOUNT':@FM:'FUNDS.TRANSFER':@FM:'AZ.ACCOUNT' ;*R22 MANUAL CONVERSION
+    Y.FIELDS     ='L.AC.STATUS2':@FM:'BENEFIC.NAME':@FM:'L.AC.STATUS2' ;*R22 MANUAL CONVERSION
     Y.REF.POS    = ''
     CALL MULTI.GET.LOC.REF(Y.APPLICATION,Y.FIELDS,Y.REF.POS)
     REF.POS=Y.REF.POS<1>
@@ -109,7 +117,7 @@ PROCESS:
 *-------------------------
     CALL F.READ(FN.REDO.GAR.LOCK.ALE,Y.CUSTOMER,R.REDO.GAR.LOCK.ALE,F.REDO.GAR.LOCK.ALE,ERR)
     Y.ALE.GAR.LOCKS=R.REDO.GAR.LOCK.ALE<TT.ALE.ALE>
-    CHANGE @VM TO @FM IN Y.ALE.GAR.LOCKS
+    CHANGE @VM TO @FM IN Y.ALE.GAR.LOCKS ;*R22 MANUAL CONVERSION
     CALL CACHE.READ(FN.REDO.GAR.SUSP.ACCT,'SYSTEM',R.REDO.GAR.SUSP.ACCT,PARA.ERR)
     Y.CREDIT.ACCT.NO=R.REDO.GAR.SUSP.ACCT<RE.GA.ACCOUNT>
     LOCK.DEL.TYPE = R.NEW(APAP.GAR.LOCKED.DEL.TYPE)<1,1>
@@ -144,36 +152,36 @@ PROCESS:
     END
     R.NEW(APAP.GAR.AMOUNT.LOCKED)=R.NEW(APAP.GAR.AMOUNT.LOCKED) - R.NEW(APAP.GAR.GARNISH.AMT.DEL)<1,1>
 
-    CHANGE @FM TO @VM IN Y.ALE.GAR.LOCKS
+    CHANGE @FM TO @VM IN Y.ALE.GAR.LOCKS ;*R22 MANUAL CONVERSION
 
     R.REDO.GAR.LOCK.ALE<TT.ALE.ALE>=Y.ALE.GAR.LOCKS
     CALL F.WRITE(FN.REDO.GAR.LOCK.ALE,Y.CUSTOMER,R.REDO.GAR.LOCK.ALE)
 RETURN
 *---------------------
 GARNISHMENT.DEL:
-
+    Y.AMT.TO.RELEASE = ''
 *    SEL.CMD = "SELECT ":FN.AC.LOCKED.EVENTS:" WITH L.AC.GAR.REF.NO EQ ":ID.NEW
-
+    R.REDO.T.ACCTSTAT.BY.DATE = ''      ;*TSR637100
     SEL.LIST     =R.NEW(APAP.GAR.ALE.REF)
-    CHANGE @VM TO @FM IN SEL.LIST
+    CHANGE @VM TO @FM IN SEL.LIST ;*R22 MANUAL CONVERSION
     LOOP
         REMOVE Y.ALE.ID FROM SEL.LIST SETTING POS
     WHILE Y.ALE.ID:POS
         GOSUB READ.ALE.ACC
         IF NOT(ERR.AC.LOCKED.EVENTS) THEN
-            GOSUB UPDATE.ALE.ACC
+            GOSUB UPDATE.ALE.ACC.FULL
         END
     REPEAT
 RETURN
 *------------------------
 PARTIAL.GARNISHMENT.DEL:
 *------------------------
-
-    Y.RELEASE.AMT=R.NEW(APAP.GAR.GARNISH.AMT.DEL)<1,1>
+    Y.AMT.TO.RELEASE = ''
+    Y.RELEASE.AMT=R.NEW(APAP.GAR.GARNISH.AMT.DEL)<1,1>      ;* getting partial release amount
     Y.LOCK.AMT   =R.NEW(APAP.GAR.AMOUNT.LOCKED)
 *    SEL.LIST     =R.NEW(APAP.GAR.ACCOUNT.NO)
     SEL.LIST     =R.NEW(APAP.GAR.ALE.REF)
-    CHANGE @VM TO @FM IN SEL.LIST
+    CHANGE @VM TO @FM IN SEL.LIST ;*R22 MANUAL CONVERSION
     GOSUB PARTIAL.RELEASE.FIT
     IF Y.TOT.RELEASE.AMT EQ Y.RELEASE.AMT THEN
         RETURN
@@ -182,18 +190,19 @@ PARTIAL.GARNISHMENT.DEL:
     LOOP
         REMOVE Y.GAR.REF.ID FROM SEL.LIST SETTING POS
     WHILE Y.GAR.REF.ID:POS
-        Y.LOOP.CNT += 1
+        Y.LOOP.CNT++
 *        SEL.CMD  = "SELECT ":FN.AC.LOCKED.EVENTS:" WITH L.AC.GAR.REF.NO EQ ":ID.NEW : " AND ACCOUNT.NUMBER EQ  " : SEL.LIST<Y.LOOP.CNT>
 
         Y.ALE.ID=Y.GAR.REF.ID
         GOSUB READ.ALE.ACC
-        IF ERR.AC.LOCKED.EVENTS THEN
-            CONTINUE  ;*R22 AUTO CODE CONVERSION
-        END  ;*R22 AUTO CODE CONVERSION
+        IF ERR.AC.LOCKED.EVENTS THEN CONTINUE
         IF Y.TOT.RELEASE.AMT LE Y.RELEASE.AMT THEN
+            Y.AMT.TO.RELEASE = Y.RELEASE.AMT
             GOSUB UPDATE.ALE.ACC
         END
         ELSE
+            Y.AMT.TO.RELEASE = Y.RELEASE.AMT
+            GOSUB UPDATE.GARNISHMENT.REV ;* to update garnishment reverse table
             OFS.SOURCE.ID    = 'REDO.GARNISH.DEL'
             APPLICATION.NAME = 'AC.LOCKED.EVENTS'
             TRANS.FUNC.VAL   = 'I'
@@ -235,7 +244,7 @@ READ.ALE.ACC:
     IF NOT(ERR.AC.LOCKED.EVENTS) THEN
         Y.LCK.ACT        = R.AC.LOCKED.EVENTS<AC.LCK.ACCOUNT.NUMBER>
         Y.ALE.LOCK.AMT   =R.AC.LOCKED.EVENTS<AC.LCK.LOCKED.AMOUNT>
-        Y.TOT.RELEASE.AMT += Y.ALE.LOCK.AMT  ;*R22 AUTO CODE CONVERSION
+        Y.TOT.RELEASE.AMT=Y.TOT.RELEASE.AMT+Y.ALE.LOCK.AMT
     END
 RETURN
 *------------------
@@ -259,6 +268,8 @@ UPDATE.ALE.ACC:
 *  CALL F.WRITE(FN.ACCOUNT,Y.LCK.ACT,R.ACCOUNT)
 
 *  GOSUB AZ.ACCT.UPDATE
+
+    GOSUB UPDATE.GARNISHMENT.REV        ;* to update garnishment reverse table
 
     OFS.SOURCE.ID = 'REDO.GARNISH.DEL'
     APPLICATION.NAME = 'AC.LOCKED.EVENTS'
@@ -289,11 +300,82 @@ UPDATE.ALE.ACC:
         CALL OFS.POST.MESSAGE(OFS.REQ.MSG,OFS.MSG.ID,OFS.SOURCE.ID,OFS.ERR)
     END
 RETURN
+*------------------
+UPDATE.ALE.ACC.FULL:
+*-------------------
+    CALL F.READ(FN.ACCOUNT,Y.LCK.ACT,R.ACCOUNT,F.ACCOUNT,ERR.ACCOUNT)
+    Y.STATUS2 = R.ACCOUNT<AC.LOCAL.REF><1,REF.POS>
+    CHANGE @SM TO @FM IN Y.STATUS2 ;*R22 MANUAL CONVERSION
+    LOCATE 'GARNISHMENT' IN Y.STATUS2 SETTING POS THEN
+        Y.TOT.AMT.LOCKED=R.ACCOUNT<AC.LOCKED.AMOUNT>
+        Y.TOT.AMT.LOCKED=Y.TOT.AMT.LOCKED<1,1>
+        IF Y.ALE.LOCK.AMT EQ Y.TOT.AMT.LOCKED THEN
+            DEL Y.STATUS2<POS>
+            CHANGE @FM TO @SM IN Y.STATUS2 ;*R22 MANUAL CONVERSION
+            R.ACCOUNT<AC.LOCAL.REF,REF.POS>=Y.STATUS2
+            Y.AMT.TO.RELEASE = Y.TOT.AMT.LOCKED
+            GOSUB UPDATE.GARNISHMENT.REV
+        END
+    END
 
+    CALL F.WRITE(FN.ACCOUNT,Y.LCK.ACT,R.ACCOUNT)
+    OFS.SOURCE.ID = 'REDO.GARNISH.DEL'
+    APPLICATION.NAME = 'AC.LOCKED.EVENTS'
+    TRANS.FUNC.VAL = 'R'
+    TRANS.OPER.VAL = 'PROCESS'
+    APPLICATION.NAME.VERSION = 'AC.LOCKED.EVENTS,REDO.LOCK.REMOVE'
+    NO.AUT = '0'
+    OFS.MSG.ID = ''
+    APPLICATION.ID =Y.ALE.ID
+    OFS.POST.MSG = ''
+    CALL OFS.BUILD.RECORD(APPLICATION.NAME,TRANS.FUNC.VAL,TRANS.OPER.VAL,APPLICATION.NAME.VERSION,"",NO.AUT,APPLICATION.ID,R.ALE.RECORD,OFS.REQ.MSG)
+    CALL OFS.POST.MESSAGE(OFS.REQ.MSG,OFS.MSG.ID,OFS.SOURCE.ID,OFS.ERR)
+
+    IF LOCK.DEL.TYPE EQ "PAYMENT.TO.CREDITOR" THEN
+        OFS.SOURCE.ID = 'REDO.GARNISH.DEL'
+        APPLICATION.NAME = 'FUNDS.TRANSFER'
+        TRANS.FUNC.VAL = 'I'
+        TRANS.OPER.VAL = 'PROCESS'
+        APPLICATION.NAME.VERSION = 'FUNDS.TRANSFER,REDO.GAR.CRED.SUS'
+        NO.AUT = '0'
+        OFS.MSG.ID = ''
+        APPLICATION.ID =''
+        OFS.POST.MSG = ''
+        R.FT.RECORD<FT.DEBIT.ACCT.NO>  =Y.LCK.ACT
+        R.FT.RECORD<FT.CREDIT.ACCT.NO> =Y.CREDIT.ACCT.NO
+        R.FT.RECORD<FT.DEBIT.AMOUNT>   =Y.ALE.LOCK.AMT
+        CALL OFS.BUILD.RECORD(APPLICATION.NAME,TRANS.FUNC.VAL,TRANS.OPER.VAL,APPLICATION.NAME.VERSION,"",NO.AUT,APPLICATION.ID,R.FT.RECORD,OFS.REQ.MSG)
+        CALL OFS.POST.MESSAGE(OFS.REQ.MSG,OFS.MSG.ID,OFS.SOURCE.ID,OFS.ERR)
+    END
+RETURN
 *-------------------
 PARTIAL.RELEASE.FIT:
 *-------------------
     Y.TOT.RELEASE.AMT=R.OLD(APAP.GAR.FIT.AMOUNT.REQ)-R.NEW(APAP.GAR.FIT.AMOUNT.REQ)
 RETURN
 *------------------------------------
+
+UPDATE.GARNISHMENT.REV:
+*----------------------
+***UPDATE LOCAL GARNISHMENT.REVERSE TABLE***********************
+    Y.GAR.REV.ID = Y.LCK.ACT:'-':TODAY
+    R.GAR.REV = '' ; REV.ERR = ''       ;*TSR637100 start
+    CALL F.READ(FN.APAP.H.GARNISHMENT.REVERSE,Y.GAR.REV.ID,R.GAR.REV,F.APAP.H.GARNISHMENT.REVERSE,REV.ERR)
+    R.GAR.REV<AHGR.GARNISHMENT.ID,-1> = Y.ALE.ID
+    R.GAR.REV<AHGR.LOCK.AMT,-1>= Y.AMT.TO.RELEASE
+    CALL F.WRITE(FN.APAP.H.GARNISHMENT.REVERSE,Y.GAR.REV.ID,R.GAR.REV)
+*CALL REDO.UPD.ACCOUNT.STATUS.DATE(Y.LCK.ACT,'GARNISHMENT.REV')
+*R22 MANUAL CONVERSION
+    APAP.REDOAPAP.redoUpdAccountStatusDate(Y.LCK.ACT,'GARNISHMENT.REV')
+    CURR.DATE = TODAY
+    CALL F.READ(FN.REDO.T.ACCTSTAT.BY.DATE,CURR.DATE,R.REDO.T.ACCTSTAT.BY.DATE,F.REDO.T.ACCTSTAT.BY.DATE,DATE.ERR)
+    DATE.ARRAY = R.REDO.T.ACCTSTAT.BY.DATE<REDAT.ACCOUNT>
+    CHANGE @VM TO @FM IN DATE.ARRAY ;*R22 MANUAL CONVERSION
+    LOCATE Y.LCK.ACT IN DATE.ARRAY<1> SETTING DAT.POS THEN
+    END ELSE
+        R.REDO.T.ACCTSTAT.BY.DATE<REDAT.ACCOUNT,-1> = Y.LCK.ACT
+        WRITE R.REDO.T.ACCTSTAT.BY.DATE ON F.REDO.T.ACCTSTAT.BY.DATE,CURR.DATE
+    END   ;*TSR637100 end
+**********END****************************************************
+RETURN
 END

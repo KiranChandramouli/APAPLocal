@@ -3988,21 +3988,6 @@ public method redoVAuthNewAcctStatus (
 
 
 
-public method redoVCheckBalIntEntries (
-    INOUT acctId string,
-    INOUT balCrAmt string,
-    INOUT balDrAmt string,
-    INOUT intCrAmt string,
-    INOUT intDrAmt string,
-    INOUT yBalAccNo string,
-    INOUT yIntAccNo string
-)
-{
-    jBC: REDO.V.CHECK.BAL.INT.ENTRIES
-}
-
-
-
 public method redoValAdjbillchargeCobros (
 )
 {
@@ -4385,4 +4370,56 @@ public method redoBCrfNwglSelect (
     jBC: REDO.B.CRF.NWGL.SELECT
 }
 
+public method redoBLAcStatus1Upd (
+    INOUT acId string
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD
+}
+
+public method redoBLAcStatus1UpdLoad (
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD.LOAD
+}
+
+public method redoBLAcStatus1UpdSelect (
+)
+{
+    jBC: REDO.B.L.AC.STATUS1.UPD.SELECT
+}
+
+public method redoReCrfNwgl (
+)
+{
+    jBC: REDO.RE.CRF.NWGL
+}
+
+public method apapHGarnishmentReverse (
+)
+{
+    jBC: APAP.H.GARNISHMENT.REVERSE
+}
+
+public method apapHGarnishmentReverseFields (
+)
+{
+    jBC: APAP.H.GARNISHMENT.REVERSE.FIELDS
+}
+
+
+public method redoVCheckBalIntEntries (
+    INOUT acctId string,
+    INOUT balance string,
+    INOUT balCrAmt string,
+    INOUT balDrAmt string,
+    INOUT yAccInt string,
+    INOUT intCrAmt string,
+    INOUT intDrAmt string,
+    INOUT yBalDet string,
+    INOUT yIntDet string
+)
+{
+    jBC: REDO.V.CHECK.BAL.INT.ENTRIES
+}
 

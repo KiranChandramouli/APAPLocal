@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMTI1MDM4MzAzOkNwMTI1MjoxNjgxNzMzNjg2Njk3OklUU1M6LTE6LTE6LTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 17 Apr 2023 17:44:46
+* @ValidationCode : MjoxMTI1MDM4MzAzOkNwMTI1MjoxNjk3NzE2ODgzODIwOklUU1M6LTE6LTE6LTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Oct 2023 17:31:23
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE  REDO.ATH.STLMT.FILE.PROCESS.SELECT
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -30,6 +31,7 @@ SUBROUTINE  REDO.ATH.STLMT.FILE.PROCESS.SELECT
 *06/12/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 * 12-APR-2023     Conversion tool    R22 Auto conversion       No changes
 * 12-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+
 *------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -38,11 +40,9 @@ SUBROUTINE  REDO.ATH.STLMT.FILE.PROCESS.SELECT
     GOSUB PROCESS
 
 RETURN
-
 *------------------------------------------------------------------------------------
 PROCESS:
 *------------------------------------------------------------------------------------
-
 
     SEL.CMD="SELECT ":FN.REDO.ATH.STLMT.CNCT.FILE
 

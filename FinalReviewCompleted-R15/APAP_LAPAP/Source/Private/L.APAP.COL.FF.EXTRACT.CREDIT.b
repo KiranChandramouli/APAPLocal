@@ -1,14 +1,14 @@
-* @ValidationCode : MjoyMTE1Njc2Nzk6Q3AxMjUyOjE2OTUxMzI3NzY3NjY6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 Sep 2023 19:42:56
+* @ValidationCode : MjotMTc5MDgzODExMTpDcDEyNTI6MTY5ODA0MjQ5MTc3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 
 $PACKAGE APAP.LAPAP
@@ -65,9 +65,7 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT.CREDIT(Y.CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR
 	
 	
 	
-	INFO.1 = PR.GESCREDITOSGARANTIAS  ;*START-Interface Change by Santiago
-	INFO.2 = PR.GESTIPOGARANTIAS
-	INFO.3 = P.GESCREDITOINTEGRACION  ;*END-Interface Change by Santiago
+	
 	
     Y.ELAPSED.TIME = TIME()- Y.START.TIME         ;* How long the select took
     MSG = 'tracking execution time L.APAP.COL.EXTRACT.CREDIT( ' : Y.CUSTOMER.ID : ') time=' :  Y.ELAPSED.TIME : 'secs'
@@ -128,7 +126,7 @@ READ.MAIN.FILES:
 	
 * CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "PRODUCT.GROUP", Y.TMPCREDITOCODIGOPRODUCTO)
 
-;*APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "PRODUCT.GROUP", ;*Y.TMPCREDITOCODIGOPRODUCTO) ;*Interface Change by Santiago
+    APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "PRODUCT.GROUP", Y.TMPCREDITOCODIGOPRODUCTO) ;*R22 interface Unit testing changes
 	
 
     IF E NE "" THEN
@@ -139,7 +137,7 @@ READ.MAIN.FILES:
 	
 * CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "TIPO.INV", Y.TMPCREDITOCODIGOTIPOINVERSION)
 
-;*APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "TIPO.INV", ;*Y.TMPCREDITOCODIGOTIPOINVERSION) ;*Interface Change by Santiago
+    APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "TIPO.INV", Y.TMPCREDITOCODIGOTIPOINVERSION) ;*R22 interface Unit testing changes
 	
     IF E NE "" THEN
         RETURN
@@ -209,7 +207,7 @@ PROCESS.AA:
     Y.TMPCREDITOCODIGOMONEDA = R.AA<AA.ARR.CURRENCY>
 	
 *CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "CURRENCY", Y.TMPCREDITOCODIGOMONEDA)
-;*APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "TIPO.INV", ;*Y.TMPCREDITOCODIGOTIPOINVERSION) ;*Interface Change by Santiago
+    APAP.TAM.redoRColGetMapping(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING, "CURRENCY", Y.TMPCREDITOCODIGOMONEDA) ;*R22 interface Unit testing changes
 	
     IF E NE "" THEN
         RETURN
@@ -314,7 +312,7 @@ PROCESS.AA:
     END
 
     Y.TMPCREDITOMONTOACTUAL = Y.TMPCREDITOMONTOCAPITALVIGENTE
-
+*
 *CALL L.APAP.COL.FF.EXTRACT.CREDIT.2("GET.AA.CUSTOMER", Y.ACCOUNT.ID, AA.ID, "", P.GET.AA.CUSTOMER, "")
     APAP.LAPAP.lApapColFfExtractCredit2("GET.AA.CUSTOMER", Y.ACCOUNT.ID, AA.ID, "", P.GET.AA.CUSTOMER, "")
     IF E THEN
@@ -369,7 +367,7 @@ PROCESS.AA:
     GOSUB GESTIPOGARANT.SUB
 	
  
-    TEST.F = P.GESCREDITOINTEGRACION ;*Interface Change by Santiago
+    
     GOSUB PROCESS.ITEMS.DETAIL
     GOSUB INSERT.STMT
 
@@ -377,11 +375,10 @@ PROCESS.AA:
 * CALL L.APAP.COL.FF.EXTRACT.TXN(Y.LWD, AA.ID, R.STATIC.MAPPING, Y.ACCOUNT.ID, Y.PRODUCT.GROUP, Y.AGENCY.CODE, Y.CREDIT.TXN)
     APAP.LAPAP.lApapColFfExtractTxn(Y.LWD, AA.ID, R.STATIC.MAPPING, Y.ACCOUNT.ID, Y.PRODUCT.GROUP, Y.AGENCY.CODE, Y.CREDIT.TXN)
 	
-	TES.T = Y.CREDIT.TXN  ;*Interface Change by Santiago
+	
  
 RETURN
 
-******************
 GESTIPOGARANT.SUB:
 ******************
     YTMPCREDITOCODIGOPRODUCTO = FMT(Y.ACCOUNT.ID,"R%18")
@@ -431,7 +428,7 @@ INITIALISE:
     R.ACCOUNT.DETAILS = ""    ;* AA.ACCOUNT.DETAILS
     R.ACCT = ""     ;* ACCOUNT
 
-;*R.STATIC.MAPPING    =  C.STATIC.MAPPING       ;* Static Mapping  ;*Interface Change by Santiago
+    R.STATIC.MAPPING    =  C.STATIC.MAPPING       ;* Static Mapping  ;*R22 interface Unit testing changes
 	
 	
 *CALL REDO.R.COL.GET.MAPPING(C.ID.STATIC.MAPPING, R.STATIC.MAPPING, 1, R.STATIC.MAPPING.OUT, "", "")
@@ -442,7 +439,7 @@ INITIALISE:
     IF E THEN
         RETURN
     END
-;*R.STATIC.MAPPING = R.STATIC.MAPPING.OUT  ;*Interface Change by Santiago
+    R.STATIC.MAPPING = R.STATIC.MAPPING.OUT  ;*R22 interface Unit testing changes_Uncommented lines
 *    Y.INS.STMT = C.INS.CREDIT.STMT
 
 RETURN

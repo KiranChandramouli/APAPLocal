@@ -9163,3 +9163,15 @@ public method redoConduitLinearTranslation (
     jBC: REDO.CONDUIT.LINEAR.TRANSLATION
 }
 
+public method lApapCuentaRegFuscarEq (
+)
+{
+    jBC: L.APAP.CUENTA.REG.FUSCAR.EQ
+}
+
+public method lApapMaskAccount (
+    INOUT amtLcy string
+)
+{
+    jBC: L.APAP.MASK.ACCOUNT
+}
