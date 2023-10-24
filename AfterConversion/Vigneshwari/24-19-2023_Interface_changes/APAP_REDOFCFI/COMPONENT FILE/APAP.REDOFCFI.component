@@ -1,0 +1,27 @@
+component APAP.REDOFCFI
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method redoFiLbCollect (
+    INOUT paramAnsId string
+)
+{
+    jBC: REDO.FI.LB.COLLECT
+}
+
+
+
+public method redoFiExtPayrollFile (
+    INOUT inTxtMsg string,
+    INOUT outErrMsg string
+)
+{
+    jBC: REDO.FI.EXT.PAYROLL.FILE
+}
+
+
+
