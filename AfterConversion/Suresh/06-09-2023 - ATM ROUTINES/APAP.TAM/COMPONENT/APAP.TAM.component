@@ -1,0 +1,144 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoInitCardVal (
+)
+{
+    jBC: REDO.INIT.CARD.VAL
+}
+
+
+
+public method redoBTaxpayerServicesLoad (
+)
+{
+    jBC: REDO.B.TAXPAYER.SERVICES.LOAD
+}
+
+
+
+public method redoCallDepTfsReArr (
+)
+{
+    jBC: REDO.CALL.DEP.TFS.RE.ARR
+}
+
+
+
+public method redoChkDebitCardNumber (
+)
+{
+    jBC: REDO.CHK.DEBIT.CARD.NUMBER
+}
+
+
+
+public method redoFtChargeAmt (
+)
+{
+    jBC: REDO.FT.CHARGE.AMT
+}
+
+
+
+public method redoGitCusgrpFormat (
+    INOUT gitMapData string,
+    INOUT errMsg string
+)
+{
+    jBC: REDO.GIT.CUSGRP.FORMAT
+}
+
+
+
+public method redoGlBExtractRtn (
+)
+{
+    jBC: REDO.GL.B.EXTRACT.RTN
+}
+
+
+
+
+
+
+
+public method redoGlWExtractOnlineRun (
+)
+{
+    jBC: REDO.GL.W.EXTRACT.ONLINE.RUN
+}
+
+
+
+public method redoInpCalcTxnDates (
+    INOUT yReturnDate string
+)
+{
+    jBC: REDO.INP.CALC.TXN.DATES
+}
+
+
+
+public method redoNofAdjustClearReport (
+    INOUT yFinArr string
+)
+{
+    jBC: REDO.NOF.ADJUST.CLEAR.REPORT
+}
+
+
+
+public method redoNofChqNtPresent (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.NOF.CHQ.NT.PRESENT
+}
+
+
+
+public method redoNofGenChqAgency (
+    INOUT yFinArr string
+)
+{
+    jBC: REDO.NOF.GEN.CHQ.AGENCY
+}
+
+
+
+public method redoOutAcrqRefNum (
+    INOUT yCardNumIn string,
+    INOUT retVal string
+)
+{
+    jBC: REDO.OUT.ACRQ.REF.NUM
+}
+
+
+
+public method redoPopulateFtDetails (
+)
+{
+    jBC: REDO.POPULATE.FT.DETAILS
+}
+
+
+
+public method redoSapTest (
+)
+{
+    jBC: REDO.SAP.TEST
+}
+
+
+
+public method redoStlmtAcctInRtn (
+)
+{
+    jBC: REDO.STLMT.ACCT.IN.RTN
+}
+
