@@ -1,0 +1,23 @@
+* I_F.REDO.CIUU.LOAN.DESTINATION Created 10 OCT 11 at 07:47PM by apap/INPUTTER
+*      PREFIX[CIU.LN]
+          EQU CIU.LN.DEST.DESC TO 1,   RedoCiuuLoanDestination_DestDesc TO 1,
+             CIU.LN.CATEG.CIUU TO 2,   RedoCiuuLoanDestination_CategCiuu TO 2,
+             CIU.LN.RESERVED.9 TO 3,   RedoCiuuLoanDestination_Reserved9 TO 3,
+             CIU.LN.RESERVED.8 TO 4,   RedoCiuuLoanDestination_Reserved8 TO 4,
+             CIU.LN.RESERVED.7 TO 5,   RedoCiuuLoanDestination_Reserved7 TO 5,
+             CIU.LN.RESERVED.6 TO 6,   RedoCiuuLoanDestination_Reserved6 TO 6,
+             CIU.LN.RESERVED.5 TO 7,   RedoCiuuLoanDestination_Reserved5 TO 7,
+             CIU.LN.RESERVED.4 TO 8,   RedoCiuuLoanDestination_Reserved4 TO 8,
+             CIU.LN.RESERVED.3 TO 9,   RedoCiuuLoanDestination_Reserved3 TO 9,
+             CIU.LN.RESERVED.2 TO 10,  RedoCiuuLoanDestination_Reserved2 TO 10,
+             CIU.LN.RESERVED.1 TO 11,  RedoCiuuLoanDestination_Reserved1 TO 11,
+               CIU.LN.OVERRIDE TO 12,  RedoCiuuLoanDestination_Override TO 12,
+          CIU.LN.RECORD.STATUS TO 13,  RedoCiuuLoanDestination_RecordStatus TO 13,
+                CIU.LN.CURR.NO TO 14,  RedoCiuuLoanDestination_CurrNo TO 14,
+               CIU.LN.INPUTTER TO 15,  RedoCiuuLoanDestination_Inputter TO 15,
+              CIU.LN.DATE.TIME TO 16,  RedoCiuuLoanDestination_DateTime TO 16,
+             CIU.LN.AUTHORISER TO 17,  RedoCiuuLoanDestination_Authoriser TO 17,
+                CIU.LN.CO.CODE TO 18,  RedoCiuuLoanDestination_CoCode TO 18,
+              CIU.LN.DEPT.CODE TO 19,  RedoCiuuLoanDestination_DeptCode TO 19,
+           CIU.LN.AUDITOR.CODE TO 20,  RedoCiuuLoanDestination_AuditorCode TO 20,
+        CIU.LN.AUDIT.DATE.TIME TO 21,  RedoCiuuLoanDestination_AuditDateTime TO 21

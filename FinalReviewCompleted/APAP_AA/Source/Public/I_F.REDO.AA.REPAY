@@ -1,0 +1,16 @@
+* I_F.REDO.AA.REPAY Created 24 MAY 10 at 11:51AM by R09/AUTHORISER
+*      PREFIX[AA.RP]
+             EQU AA.RP.AMOUNT TO 1,   RedoAaRepay_Amount TO 1,
+           AA.RP.DATE.PAYMENT TO 2,   RedoAaRepay_DatePayment TO 2,
+                AA.RP.ACCOUNT TO 3,   RedoAaRepay_Account TO 3,
+                 AA.RP.TXN.ID TO 4,   RedoAaRepay_TxnId TO 4,
+               AA.RP.CUSTOMER TO 5,   RedoAaRepay_Customer TO 5,
+          AA.RP.RECORD.STATUS TO 6,   RedoAaRepay_RecordStatus TO 6,
+                AA.RP.CURR.NO TO 7,   RedoAaRepay_CurrNo TO 7,
+               AA.RP.INPUTTER TO 8,   RedoAaRepay_Inputter TO 8,
+              AA.RP.DATE.TIME TO 9,   RedoAaRepay_DateTime TO 9,
+             AA.RP.AUTHORISER TO 10,  RedoAaRepay_Authoriser TO 10,
+                AA.RP.CO.CODE TO 11,  RedoAaRepay_CoCode TO 11,
+              AA.RP.DEPT.CODE TO 12,  RedoAaRepay_DeptCode TO 12,
+           AA.RP.AUDITOR.CODE TO 13,  RedoAaRepay_AuditorCode TO 13,
+        AA.RP.AUDIT.DATE.TIME TO 14,  RedoAaRepay_AuditDateTime TO 14

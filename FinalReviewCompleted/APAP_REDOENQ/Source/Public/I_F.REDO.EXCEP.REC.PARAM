@@ -1,0 +1,17 @@
+* I_F.REDO.EXCEP.REC.PARAM Created 19 JUL 13 at 11:37AM by t24uat1/INPUTTER
+*      PREFIX[EXCEP]
+        EQU EXCEP.DESCRIPTION TO 1,   RedoExcepRecParam_Description TO 1,
+       EXCEP.APPLICATION.NAME TO 2,   RedoExcepRecParam_ApplicationName TO 2,
+              EXCEP.RBHP.APPS TO 3,   RedoExcepRecParam_RbhpApps TO 3,
+             EXCEP.DEPT.CODES TO 4,   RedoExcepRecParam_DeptCodes TO 4,
+           EXCEP.GENERIC.USER TO 5,   RedoExcepRecParam_GenericUser TO 5,
+             EXCEP.RESERVED.1 TO 6,   RedoExcepRecParam_Reserved1 TO 6,
+          EXCEP.RECORD.STATUS TO 7,   RedoExcepRecParam_RecordStatus TO 7,
+                EXCEP.CURR.NO TO 8,   RedoExcepRecParam_CurrNo TO 8,
+               EXCEP.INPUTTER TO 9,   RedoExcepRecParam_Inputter TO 9,
+              EXCEP.DATE.TIME TO 10,  RedoExcepRecParam_DateTime TO 10,
+             EXCEP.AUTHORISER TO 11,  RedoExcepRecParam_Authoriser TO 11,
+                EXCEP.CO.CODE TO 12,  RedoExcepRecParam_CoCode TO 12,
+              EXCEP.DEPT.CODE TO 13,  RedoExcepRecParam_DeptCode TO 13,
+           EXCEP.AUDITOR.CODE TO 14,  RedoExcepRecParam_AuditorCode TO 14,
+        EXCEP.AUDIT.DATE.TIME TO 15,  RedoExcepRecParam_AuditDateTime TO 15

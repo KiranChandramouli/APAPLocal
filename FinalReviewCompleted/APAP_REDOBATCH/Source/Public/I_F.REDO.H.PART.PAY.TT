@@ -1,0 +1,18 @@
+* I_F.REDO.H.PART.PAY.TT Created 29 JUN 10 at 12:36PM by R9/ACHUTH.1
+*      PREFIX[PART.PAY]
+     EQU PART.PAY.ARRANGEMENT.ID TO 1,   RedoHPartPayTt_ArrangementId TO 1,
+            PART.PAY.BILL.NUMBER TO 2,   RedoHPartPayTt_BillNumber TO 2,
+        PART.PAY.PARTL.PYMT.PCNT TO 3,   RedoHPartPayTt_PartlPymtPcnt TO 3,
+        PART.PAY.NUMBER.OF.PYMTS TO 4,   RedoHPartPayTt_NumberOfPymts TO 4,
+                 PART.PAY.AMOUNT TO 5,   RedoHPartPayTt_Amount TO 5,
+               PART.PAY.CURRENCY TO 6,   RedoHPartPayTt_Currency TO 6,
+             PART.PAY.VALUE.DATE TO 7,   RedoHPartPayTt_ValueDate TO 7,
+          PART.PAY.RECORD.STATUS TO 8,   RedoHPartPayTt_RecordStatus TO 8,
+                PART.PAY.CURR.NO TO 9,   RedoHPartPayTt_CurrNo TO 9,
+               PART.PAY.INPUTTER TO 10,  RedoHPartPayTt_Inputter TO 10,
+              PART.PAY.DATE.TIME TO 11,  RedoHPartPayTt_DateTime TO 11,
+             PART.PAY.AUTHORISER TO 12,  RedoHPartPayTt_Authoriser TO 12,
+                PART.PAY.CO.CODE TO 13,  RedoHPartPayTt_CoCode TO 13,
+              PART.PAY.DEPT.CODE TO 14,  RedoHPartPayTt_DeptCode TO 14,
+           PART.PAY.AUDITOR.CODE TO 15,  RedoHPartPayTt_AuditorCode TO 15,
+        PART.PAY.AUDIT.DATE.TIME TO 16,  RedoHPartPayTt_AuditDateTime TO 16

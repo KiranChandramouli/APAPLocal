@@ -1,0 +1,3 @@
+* I_F.REDO.PREEMBOSS.STOCK Created 15 JUL 11 at 11:43AM by apapr8/KAVI1
+*      PREFIX[PREEMB.STK]
+         EQU PREEMB.STK.SERIES.BAL TO 1,   RedoPreembossStock_SeriesBal TO 1

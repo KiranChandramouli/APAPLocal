@@ -1,0 +1,12 @@
+* I_F.REDO.LY.AVAIL Created 22 APR 10 at 02:44PM by apapr8/GANESH
+*      PREFIX[REDO.AVAIL]
+         EQU REDO.AVAIL.AVAIL.NAME TO 1,   RedoLyAvail_AvailName TO 1,
+          REDO.AVAIL.RECORD.STATUS TO 2,   RedoLyAvail_RecordStatus TO 2,
+                REDO.AVAIL.CURR.NO TO 3,   RedoLyAvail_CurrNo TO 3,
+               REDO.AVAIL.INPUTTER TO 4,   RedoLyAvail_Inputter TO 4,
+              REDO.AVAIL.DATE.TIME TO 5,   RedoLyAvail_DateTime TO 5,
+             REDO.AVAIL.AUTHORISER TO 6,   RedoLyAvail_Authoriser TO 6,
+                REDO.AVAIL.CO.CODE TO 7,   RedoLyAvail_CoCode TO 7,
+              REDO.AVAIL.DEPT.CODE TO 8,   RedoLyAvail_DeptCode TO 8,
+           REDO.AVAIL.AUDITOR.CODE TO 9,   RedoLyAvail_AuditorCode TO 9,
+        REDO.AVAIL.AUDIT.DATE.TIME TO 10,  RedoLyAvail_AuditDateTime TO 10

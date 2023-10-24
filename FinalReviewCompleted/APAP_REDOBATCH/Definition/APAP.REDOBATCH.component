@@ -1,0 +1,4584 @@
+component APAP.REDOBATCH
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method apapBCreateLnService (
+    INOUT RedoCreateArr string
+)
+{
+    jBC:APAP.B.CREATE.LN.SERVICE
+}
+
+
+public method redoBAchTransferRou (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.ACH.TRANSFER.ROU
+}
+
+
+public method redoBAciUpdLoad (
+)
+{
+    jBC:REDO.B.ACI.UPD.LOAD
+}
+
+
+
+public method redoBAciUpdSelect (
+)
+{
+    jBC:REDO.B.ACI.UPD.SELECT
+}
+
+
+
+public method redoBAdminCheque (
+    INOUT YIdList string
+)
+{
+    jBC:REDO.B.ADMIN.CHEQUE
+}
+
+
+
+public method redoBAdminChequeLoad (
+)
+{
+    jBC:REDO.B.ADMIN.CHEQUE.LOAD
+}
+
+
+
+public method redoBAdminChequeSelect (
+)
+{
+    jBC:REDO.B.ADMIN.CHEQUE.SELECT
+}
+
+
+
+public method redoBAleUpdCheques (
+    INOUT YApgId string
+)
+{
+    jBC:REDO.B.ALE.UPD.CHEQUES
+}
+
+
+
+public method redoBAleUpdChequesLoad (
+)
+{
+    jBC:REDO.B.ALE.UPD.CHEQUES.LOAD
+}
+
+
+
+public method redoBApplyChgSelect (
+)
+{
+    jBC:REDO.B.APPLY.CHG.SELECT
+}
+
+
+
+public method redoBArcOfsProcess (
+)
+{
+    jBC:REDO.B.ARC.OFS.PROCESS
+}
+
+
+
+public method redoBArchieveTrace (
+    INOUT TraceArcId string
+)
+{
+    jBC:REDO.B.ARCHIEVE.TRACE
+}
+
+
+
+public method redoBArchieveTraceLoad (
+)
+{
+    jBC:REDO.B.ARCHIEVE.TRACE.LOAD
+}
+
+
+
+public method redoBArchieveTraceSelect (
+)
+{
+    jBC:REDO.B.ARCHIEVE.TRACE.SELECT
+}
+
+
+
+public method redoBAtChangePass (
+)
+{
+    jBC:REDO.B.AT.CHANGE.PASS
+}
+
+
+
+public method redoBAuditLogBulk (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.AUDIT.LOG.BULK
+}
+
+
+
+public method redoBAutoItemReq (
+    INOUT YSel string
+)
+{
+    jBC:REDO.B.AUTO.ITEM.REQ
+}
+
+
+
+public method redoBAutoItemReqLoad (
+)
+{
+    jBC:REDO.B.AUTO.ITEM.REQ.LOAD
+}
+
+
+
+public method redoBAutoItemReqSelect (
+)
+{
+    jBC:REDO.B.AUTO.ITEM.REQ.SELECT
+}
+
+
+
+public method redoBAutoPayment (
+    INOUT YDdAccount string
+)
+{
+    jBC:REDO.B.AUTO.PAYMENT
+}
+
+
+
+public method redoBAutoPaymentLoad (
+)
+{
+    jBC:REDO.B.AUTO.PAYMENT.LOAD
+}
+
+
+
+public method redoBAutoPaymentSelect (
+)
+{
+    jBC:REDO.B.AUTO.PAYMENT.SELECT
+}
+
+
+
+public method redoBAutomaticOrder (
+    INOUT YSrSelList string
+)
+{
+    jBC:REDO.B.AUTOMATIC.ORDER
+}
+
+
+
+public method redoBAzAccBal (
+    INOUT AccountId string
+)
+{
+    jBC:REDO.B.AZ.ACC.BAL
+}
+
+
+
+public method redoBAzAccBalLoad (
+)
+{
+    jBC:REDO.B.AZ.ACC.BAL.LOAD
+}
+
+
+
+public method redoBAzAccBalSelect (
+)
+{
+    jBC:REDO.B.AZ.ACC.BAL.SELECT
+}
+
+
+
+public method redoBAzMigPeriodEnd (
+    INOUT YAzAccountId string
+)
+{
+    jBC:REDO.B.AZ.MIG.PERIOD.END
+}
+
+
+
+public method redoBAzMigPeriodEndLoad (
+)
+{
+    jBC:REDO.B.AZ.MIG.PERIOD.END.LOAD
+}
+
+
+
+public method redoBAzMigPeriodEndSelect (
+)
+{
+    jBC:REDO.B.AZ.MIG.PERIOD.END.SELECT
+}
+
+
+
+public method redoBBatCheques (
+    INOUT YClrOutwardId1 string
+)
+{
+    jBC:REDO.B.BAT.CHEQUES
+}
+
+
+
+public method redoBBatChequesLoad (
+)
+{
+    jBC:REDO.B.BAT.CHEQUES.LOAD
+}
+
+
+
+public method redoBBcrProcessLog (
+)
+{
+    jBC:REDO.B.BCR.PROCESS.LOG
+}
+
+
+
+public method redoBBcrReportBuild (
+)
+{
+    jBC:REDO.B.BCR.REPORT.BUILD
+}
+
+
+
+public method redoBBcrReportDelivery (
+)
+{
+    jBC:REDO.B.BCR.REPORT.DELIVERY
+}
+
+
+
+public method redoBBcrReportParamUpd (
+)
+{
+    jBC:REDO.B.BCR.REPORT.PARAM.UPD
+}
+
+
+
+public method redoBBuildSelFc (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.B.BUILD.SEL.FC
+}
+
+
+
+public method redoBCapitaliseInt (
+    INOUT IncomePar string
+)
+{
+    jBC:REDO.B.CAPITALISE.INT
+}
+
+
+
+public method redoBCapitaliseIntLoad (
+)
+{
+    jBC:REDO.B.CAPITALISE.INT.LOAD
+}
+
+
+
+public method redoBCapitaliseIntSelect (
+)
+{
+    jBC:REDO.B.CAPITALISE.INT.SELECT
+}
+
+
+
+public method redoBChangeWorkLoadEnd (
+)
+{
+    jBC:REDO.B.CHANGE.WORK.LOAD.END
+}
+
+
+
+public method redoBCheckIntRate (
+    INOUT YAzAccountId string
+)
+{
+    jBC:REDO.B.CHECK.INT.RATE
+}
+
+
+
+public method redoBCheckIntRateLoad (
+)
+{
+    jBC:REDO.B.CHECK.INT.RATE.LOAD
+}
+
+
+
+public method redoBCheckIntRateSelect (
+)
+{
+    jBC:REDO.B.CHECK.INT.RATE.SELECT
+}
+
+
+
+public method redoBChgInactiveAcct (
+    INOUT YAcctId string
+)
+{
+    jBC:REDO.B.CHG.INACTIVE.ACCT
+}
+
+
+
+public method redoBChgInactiveAcctLoad (
+)
+{
+    jBC:REDO.B.CHG.INACTIVE.ACCT.LOAD
+}
+
+
+
+public method redoBChgInactiveAcctSelect (
+)
+{
+    jBC:REDO.B.CHG.INACTIVE.ACCT.SELECT
+}
+
+
+
+public method redoBChqUpdStatus (
+    INOUT YLoanNo string
+)
+{
+    jBC:REDO.B.CHQ.UPD.STATUS
+}
+
+
+
+public method redoBClearChqSelect (
+)
+{
+    jBC:REDO.B.CLEAR.CHQ.SELECT
+}
+
+
+
+
+public method redoBClearOutLoad (
+)
+{
+    jBC:REDO.B.CLEAR.OUT.LOAD
+}
+
+
+
+public method redoBClearOutPost (
+)
+{
+    jBC:REDO.B.CLEAR.OUT.POST
+}
+
+
+
+public method redoBClearOutSelect (
+)
+{
+    jBC:REDO.B.CLEAR.OUT.SELECT
+}
+
+
+
+
+public method redoBClearReturnSelect (
+)
+{
+    jBC:REDO.B.CLEAR.RETURN.SELECT
+}
+
+
+
+public method redoBComRiskGroup (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.COM.RISK.GROUP
+}
+
+
+
+public method redoBComRiskGroupLoad (
+)
+{
+    jBC:REDO.B.COM.RISK.GROUP.LOAD
+}
+
+
+
+public method redoBComRiskGroupPost (
+)
+{
+    jBC:REDO.B.COM.RISK.GROUP.POST
+}
+
+
+
+public method redoBComRiskGroupSelect (
+)
+{
+    jBC:REDO.B.COM.RISK.GROUP.SELECT
+}
+
+
+
+public method redoBCommerDebtrCl (
+    INOUT YAaCusId string
+)
+{
+    jBC:REDO.B.COMMER.DEBTR.CL
+}
+
+
+
+public method redoBCommerDebtrClLoad (
+)
+{
+    jBC:REDO.B.COMMER.DEBTR.CL.LOAD
+}
+
+
+
+public method redoBCompOwnRiskGroup (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.COMP.OWN.RISK.GROUP
+}
+
+
+
+public method redoBCompOwnRiskGroupLoad (
+)
+{
+    jBC:REDO.B.COMP.OWN.RISK.GROUP.LOAD
+}
+
+
+
+public method redoBCompOwnRiskGroupPost (
+)
+{
+    jBC:REDO.B.COMP.OWN.RISK.GROUP.POST
+}
+
+
+
+public method redoBCompOwnRiskGroupSelect (
+)
+{
+    jBC:REDO.B.COMP.OWN.RISK.GROUP.SELECT
+}
+
+
+
+public method redoBCompShareGroup (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.COMP.SHARE.GROUP
+}
+
+
+
+public method redoBCompShareGroupLoad (
+)
+{
+    jBC:REDO.B.COMP.SHARE.GROUP.LOAD
+}
+
+
+
+public method redoBCompShareGroupPost (
+)
+{
+    jBC:REDO.B.COMP.SHARE.GROUP.POST
+}
+
+
+
+public method redoBCompShareGroupSelect (
+)
+{
+    jBC:REDO.B.COMP.SHARE.GROUP.SELECT
+}
+
+
+
+public method redoBConvFileSelect (
+)
+{
+    jBC:REDO.B.CONV.FILE.SELECT
+}
+
+
+
+public method redoBCreateRenewal (
+    INOUT YCrSelList string
+)
+{
+    jBC:REDO.B.CREATE.RENEWAL
+}
+
+
+
+public method redoBCreateRenewalLoad (
+)
+{
+    jBC:REDO.B.CREATE.RENEWAL.LOAD
+}
+
+
+
+public method redoBCreateRenewalSelect (
+)
+{
+    jBC:REDO.B.CREATE.RENEWAL.SELECT
+}
+
+
+
+public method redoBCreditNostroAcct (
+    INOUT ChqDetailsId string
+)
+{
+    jBC:REDO.B.CREDIT.NOSTRO.ACCT
+}
+
+
+
+public method redoBCreditNostroAcctLoad (
+)
+{
+    jBC:REDO.B.CREDIT.NOSTRO.ACCT.LOAD
+}
+
+
+
+public method redoBCreditNostroAcctSelect (
+)
+{
+    jBC:REDO.B.CREDIT.NOSTRO.ACCT.SELECT
+}
+
+
+
+public method redoBCustPrdAciPurge (
+    INOUT YAcctNo string
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.PURGE
+}
+
+
+
+public method redoBCustPrdAciUpd (
+    INOUT YAcctNo string
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD
+}
+
+
+
+public method redoBCustPrdAciUpdLoad (
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD.LOAD
+}
+
+
+
+public method redoBCustPrdAciUpdPre (
+    INOUT YAcctNo string
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD.PRE
+}
+
+
+
+public method redoBCustPrdAciUpdPreLoad (
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD.PRE.LOAD
+}
+
+
+
+public method redoBCustPrdAciUpdPreSelect (
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD.PRE.SELECT
+}
+
+
+
+public method redoBCustPrdAciUpdSelect (
+)
+{
+    jBC:REDO.B.CUST.PRD.ACI.UPD.SELECT
+}
+
+
+
+public method redoBCustomerProvision (
+    INOUT YCusId string
+)
+{
+    jBC:REDO.B.CUSTOMER.PROVISION
+}
+
+
+
+public method redoBCustomerProvisionLoad (
+)
+{
+    jBC:REDO.B.CUSTOMER.PROVISION.LOAD
+}
+
+
+
+public method redoBCycleCusAgeLoad (
+)
+{
+    jBC:REDO.B.CYCLE.CUS.AGE.LOAD
+}
+
+
+
+public method redoBCycleCusAgeSelect (
+)
+{
+    jBC:REDO.B.CYCLE.CUS.AGE.SELECT
+}
+
+
+
+public method redoBDdDailyProcess (
+    INOUT Id string
+)
+{
+    jBC:REDO.B.DD.DAILY.PROCESS
+}
+
+
+
+public method redoBDdDailyProcessLoad (
+)
+{
+    jBC:REDO.B.DD.DAILY.PROCESS.LOAD
+}
+
+
+
+public method redoBDdDailyProcessSelect (
+)
+{
+    jBC:REDO.B.DD.DAILY.PROCESS.SELECT
+}
+
+
+
+public method redoBDealSlipQueuePurge (
+    INOUT YPurgeId string
+)
+{
+    jBC:REDO.B.DEAL.SLIP.QUEUE.PURGE
+}
+
+
+
+public method redoBDealSlipQueuePurgeLoad (
+)
+{
+    jBC:REDO.B.DEAL.SLIP.QUEUE.PURGE.LOAD
+}
+
+
+
+public method redoBDealSlipQueuePurgeSelect (
+)
+{
+    jBC:REDO.B.DEAL.SLIP.QUEUE.PURGE.SELECT
+}
+
+
+
+public method redoBDestroyCards (
+    INOUT YDhSelList string
+)
+{
+    jBC:REDO.B.DESTROY.CARDS
+}
+
+
+
+public method redoBDestroyCardsLoad (
+)
+{
+    jBC:REDO.B.DESTROY.CARDS.LOAD
+}
+
+
+
+public method redoBDestroyCardsSelect (
+)
+{
+    jBC:REDO.B.DESTROY.CARDS.SELECT
+}
+
+
+
+public method redoBDirectDebit (
+    INOUT Id string
+)
+{
+    jBC:REDO.B.DIRECT.DEBIT
+}
+
+
+
+public method redoBDirectDebitLoad (
+)
+{
+    jBC:REDO.B.DIRECT.DEBIT.LOAD
+}
+
+
+
+public method redoBDirectDebitSelect (
+)
+{
+    jBC:REDO.B.DIRECT.DEBIT.SELECT
+}
+
+
+
+public method redoBEir (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.EIR
+}
+
+
+
+public method redoBEirLoad (
+)
+{
+    jBC:REDO.B.EIR.LOAD
+}
+
+
+
+public method redoBEirMthdSelect (
+)
+{
+    jBC:REDO.B.EIR.MTHD.SELECT
+}
+
+
+
+public method redoBEirSelect (
+)
+{
+    jBC:REDO.B.EIR.SELECT
+}
+
+
+
+public method redoBEmailExpLimit (
+    INOUT IdLimits string
+)
+{
+    jBC:REDO.B.EMAIL.EXP.LIMIT
+}
+
+
+
+public method redoBEmailExpLimitLoad (
+)
+{
+    jBC:REDO.B.EMAIL.EXP.LIMIT.LOAD
+}
+
+
+
+public method redoBEmailExpLimitSelect (
+)
+{
+    jBC:REDO.B.EMAIL.EXP.LIMIT.SELECT
+}
+
+
+
+public method redoBEsmStatusUpd (
+    INOUT YRedoTMsgId string
+)
+{
+    jBC:REDO.B.ESM.STATUS.UPD
+}
+
+
+
+public method redoBEsmStatusUpdLoad (
+)
+{
+    jBC:REDO.B.ESM.STATUS.UPD.LOAD
+}
+
+
+
+public method redoBEsmStatusUpdSelect (
+)
+{
+    jBC:REDO.B.ESM.STATUS.UPD.SELECT
+}
+
+
+
+public method redoBExpireGvtNgvtSelect (
+)
+{
+    jBC:REDO.B.EXPIRE.GVT.NGVT.SELECT
+}
+
+
+
+public method redoBExtSunnCusStatus (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.EXT.SUNN.CUS.STATUS
+}
+
+
+
+public method redoBExtSunnCusStatusLoad (
+)
+{
+    jBC:REDO.B.EXT.SUNN.CUS.STATUS.LOAD
+}
+
+
+
+public method redoBExtSunnCusStatusSelect (
+)
+{
+    jBC:REDO.B.EXT.SUNN.CUS.STATUS.SELECT
+}
+
+
+
+public method redoBFtRetry (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.FT.RETRY
+}
+
+
+
+public method redoBFtRetryLoad (
+)
+{
+    jBC:REDO.B.FT.RETRY.LOAD
+}
+
+
+
+public method redoBFtRetrySelect (
+)
+{
+    jBC:REDO.B.FT.RETRY.SELECT
+}
+
+
+
+public method redoBFxProvDly (
+    INOUT YCusId string
+)
+{
+    jBC:REDO.B.FX.PROV.DLY
+}
+
+
+
+public method redoBGenAchOutFile (
+    INOUT YAchSelList string
+)
+{
+    jBC:REDO.B.GEN.ACH.OUT.FILE
+}
+
+
+
+public method redoBGenAchOutFileLoad (
+)
+{
+    jBC:REDO.B.GEN.ACH.OUT.FILE.LOAD
+}
+
+
+
+public method redoBGenAchOutFilePost (
+)
+{
+    jBC:REDO.B.GEN.ACH.OUT.FILE.POST
+}
+
+
+
+public method redoBGenAchOutFileSelect (
+)
+{
+    jBC:REDO.B.GEN.ACH.OUT.FILE.SELECT
+}
+
+
+
+public method redoBGenAchRejinwFile (
+    INOUT ProcessId string
+)
+{
+    jBC:REDO.B.GEN.ACH.REJINW.FILE
+}
+
+
+
+public method redoBGenAchRejinwFileLoad (
+)
+{
+    jBC:REDO.B.GEN.ACH.REJINW.FILE.LOAD
+}
+
+
+
+public method redoBGenAchRejinwFilePost (
+)
+{
+    jBC:REDO.B.GEN.ACH.REJINW.FILE.POST
+}
+
+
+
+public method redoBGenAchRejinwFileSelect (
+)
+{
+    jBC:REDO.B.GEN.ACH.REJINW.FILE.SELECT
+}
+
+
+
+public method redoBGenNcfUnmapSelect (
+)
+{
+    jBC:REDO.B.GEN.NCF.UNMAP.SELECT
+}
+
+
+
+public method redoBIncreaseAgent (
+)
+{
+    jBC:REDO.B.INCREASE.AGENT
+}
+
+
+
+public method redoBInsChgExp (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.INS.CHG.EXP
+}
+
+
+
+public method redoBInsChgExpLoad (
+)
+{
+    jBC:REDO.B.INS.CHG.EXP.LOAD
+}
+
+
+
+public method redoBInsChgExpSelect (
+)
+{
+    jBC:REDO.B.INS.CHG.EXP.SELECT
+}
+
+
+
+public method redoBIntAcctPmtProcess (
+)
+{
+    jBC:REDO.B.INT.ACCT.PMT.PROCESS
+}
+
+
+
+public method redoBIntCalc (
+    INOUT SelList string
+)
+{
+    jBC:REDO.B.INT.CALC
+}
+
+
+
+public method redoBIntCalcLoad (
+)
+{
+    jBC:REDO.B.INT.CALC.LOAD
+}
+
+
+
+public method redoBInwPreprocess (
+    INOUT RAperta string
+)
+{
+    jBC:REDO.B.INW.PREPROCESS
+}
+
+
+
+public method redoBInwPreprocessLoad (
+)
+{
+    jBC:REDO.B.INW.PREPROCESS.LOAD
+}
+
+
+
+public method redoBInwPreprocessPost (
+)
+{
+    jBC:REDO.B.INW.PREPROCESS.POST
+}
+
+
+
+public method redoBInwPreprocessSelect (
+)
+{
+    jBC:REDO.B.INW.PREPROCESS.SELECT
+}
+
+
+
+public method redoBInwProcess (
+    INOUT SelList string
+)
+{
+    jBC:REDO.B.INW.PROCESS
+}
+
+
+
+public method redoBInwProcessLoad (
+)
+{
+    jBC:REDO.B.INW.PROCESS.LOAD
+}
+
+
+
+public method redoBInwProcessSelect (
+)
+{
+    jBC:REDO.B.INW.PROCESS.SELECT
+}
+
+
+
+public method redoBLetterHldDel (
+    INOUT SelIntList string
+)
+{
+    jBC:REDO.B.LETTER.HLD.DEL
+}
+
+
+
+public method redoBLinksConsanguinity (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.LINKS.CONSANGUINITY
+}
+
+
+
+public method redoBLinksConsanguinityLoad (
+)
+{
+    jBC:REDO.B.LINKS.CONSANGUINITY.LOAD
+}
+
+
+
+public method redoBLinksConsanguinityPost (
+)
+{
+    jBC:REDO.B.LINKS.CONSANGUINITY.POST
+}
+
+
+
+public method redoBLinksConsanguinitySelect (
+)
+{
+    jBC:REDO.B.LINKS.CONSANGUINITY.SELECT
+}
+
+
+
+public method redoBLiqAcct (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.B.LIQ.ACCT
+}
+
+
+
+public method redoBListOfCompanies (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.LIST.OF.COMPANIES
+}
+
+
+
+public method redoBListOfCompaniesLoad (
+)
+{
+    jBC:REDO.B.LIST.OF.COMPANIES.LOAD
+}
+
+
+
+public method redoBListOfCompaniesPost (
+)
+{
+    jBC:REDO.B.LIST.OF.COMPANIES.POST
+}
+
+
+
+public method redoBListOfShareholderLoad (
+)
+{
+    jBC:REDO.B.LIST.OF.SHAREHOLDER.LOAD
+}
+
+
+
+public method redoBListOfShareholderPost (
+)
+{
+    jBC:REDO.B.LIST.OF.SHAREHOLDER.POST
+}
+
+
+
+public method redoBListOfShareholderSelect (
+)
+{
+    jBC:REDO.B.LIST.OF.SHAREHOLDER.SELECT
+}
+
+
+
+public method redoBLoanClosure (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.LOAN.CLOSURE
+}
+
+
+
+public method redoBLoanClosureLoad (
+)
+{
+    jBC:REDO.B.LOAN.CLOSURE.LOAD
+}
+
+
+
+public method redoBLoanClosureSelect (
+)
+{
+    jBC:REDO.B.LOAN.CLOSURE.SELECT
+}
+
+
+
+public method redoBLoanPrdUpd (
+    INOUT YCustomerId string
+)
+{
+    jBC:REDO.B.LOAN.PRD.UPD
+}
+
+
+
+public method redoBLoanPrdUpdLoad (
+)
+{
+    jBC:REDO.B.LOAN.PRD.UPD.LOAD
+}
+
+
+
+public method redoBLoanStatusEliminationLoad (
+)
+{
+    jBC:REDO.B.LOAN.STATUS.ELIMINATION.LOAD
+}
+
+
+
+public method redoBLoanStatusEliminationSelect (
+)
+{
+    jBC:REDO.B.LOAN.STATUS.ELIMINATION.SELECT
+}
+
+
+
+public method redoBLocUpdBalMain (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.LOC.UPD.BAL.MAIN
+}
+
+
+
+public method redoBLyFileGenLoad (
+)
+{
+    jBC:REDO.B.LY.FILE.GEN.LOAD
+}
+
+
+
+public method redoBLyFileGenSelect (
+)
+{
+    jBC:REDO.B.LY.FILE.GEN.SELECT
+}
+
+
+
+public method redoBLyGenAccmov (
+    INOUT YMovId string
+)
+{
+    jBC:REDO.B.LY.GEN.ACCMOV
+}
+
+
+
+public method redoBLyGenAccmovLoad (
+)
+{
+    jBC:REDO.B.LY.GEN.ACCMOV.LOAD
+}
+
+
+
+public method redoBLyGenAccmovSelect (
+)
+{
+    jBC:REDO.B.LY.GEN.ACCMOV.SELECT
+}
+
+
+
+public method redoBLyGetExpSelect (
+)
+{
+    jBC:REDO.B.LY.GET.EXP.SELECT
+}
+
+
+
+public method redoBLyGetTxnM (
+    INOUT AcctEntTodayId string
+)
+{
+    jBC:REDO.B.LY.GET.TXN.M
+}
+
+
+
+public method redoBLyGetTxnMLoad (
+)
+{
+    jBC:REDO.B.LY.GET.TXN.M.LOAD
+}
+
+
+
+public method redoBLyGetTxnMPre (
+)
+{
+    jBC:REDO.B.LY.GET.TXN.M.PRE
+}
+
+
+
+public method redoBLyGetTxnMSelect (
+)
+{
+    jBC:REDO.B.LY.GET.TXN.M.SELECT
+}
+
+
+
+public method redoBLyPgenAccop (
+    INOUT AcctId string
+)
+{
+    jBC:REDO.B.LY.PGEN.ACCOP
+}
+
+
+
+public method redoBLyPgenAccopLoad (
+)
+{
+    jBC:REDO.B.LY.PGEN.ACCOP.LOAD
+}
+
+
+
+public method redoBLyPgenAccopPre (
+)
+{
+    jBC:REDO.B.LY.PGEN.ACCOP.PRE
+}
+
+
+
+public method redoBLyPgenBirthLoad (
+)
+{
+    jBC:REDO.B.LY.PGEN.BIRTH.LOAD
+}
+
+
+
+public method redoBLyPgenBirthPre (
+)
+{
+    jBC:REDO.B.LY.PGEN.BIRTH.PRE
+}
+
+
+
+public method redoBLyPgenBirthSelect (
+)
+{
+    jBC:REDO.B.LY.PGEN.BIRTH.SELECT
+}
+
+
+
+public method redoBLyPgenBirthTot (
+)
+{
+    jBC:REDO.B.LY.PGEN.BIRTH.TOT
+}
+
+
+
+public method redoBLyPgenExprod (
+    INOUT CusId string
+)
+{
+    jBC:REDO.B.LY.PGEN.EXPROD
+}
+
+
+
+public method redoBLyPgenExprodLoad (
+)
+{
+    jBC:REDO.B.LY.PGEN.EXPROD.LOAD
+}
+
+
+
+public method redoBLyPgenExprodPre (
+)
+{
+    jBC:REDO.B.LY.PGEN.EXPROD.PRE
+}
+
+
+
+public method redoBLyPgenExprodSelect (
+)
+{
+    jBC:REDO.B.LY.PGEN.EXPROD.SELECT
+}
+
+
+
+public method redoBLyPgenTbmPre (
+)
+{
+    jBC:REDO.B.LY.PGEN.TBM.PRE
+}
+
+
+
+public method redoBLyPgenTbmSelect (
+)
+{
+    jBC:REDO.B.LY.PGEN.TBM.SELECT
+}
+
+
+
+public method redoBLyPointGen (
+    INOUT AcctId string
+)
+{
+    jBC:REDO.B.LY.POINT.GEN
+}
+
+
+
+public method redoBLyPointGenLoad (
+)
+{
+    jBC:REDO.B.LY.POINT.GEN.LOAD
+}
+
+
+
+public method redoBLyPointGenPre (
+)
+{
+    jBC:REDO.B.LY.POINT.GEN.PRE
+}
+
+
+
+public method redoBLyPointGenSelect (
+)
+{
+    jBC:REDO.B.LY.POINT.GEN.SELECT
+}
+
+
+
+public method redoBLyTxnGen (
+    INOUT YPrgmId string
+)
+{
+    jBC:REDO.B.LY.TXN.GEN
+}
+
+
+
+public method redoBLyTxnGenLoad (
+)
+{
+    jBC:REDO.B.LY.TXN.GEN.LOAD
+}
+
+
+
+public method redoBMmEffRateAccrLoad (
+)
+{
+    jBC:REDO.B.MM.EFF.RATE.ACCR.LOAD
+}
+
+
+
+public method redoBMmEffRateAccrSelect (
+)
+{
+    jBC:REDO.B.MM.EFF.RATE.ACCR.SELECT
+}
+
+
+
+public method redoBMonitorMap (
+    INOUT MsgId string
+)
+{
+    jBC:REDO.B.MONITOR.MAP
+}
+
+
+
+public method redoBMonitorMapLoad (
+)
+{
+    jBC:REDO.B.MONITOR.MAP.LOAD
+}
+
+
+
+public method redoBMonitorMapSelect (
+)
+{
+    jBC:REDO.B.MONITOR.MAP.SELECT
+}
+
+
+
+public method redoBMonitorShip (
+    INOUT MsgId string
+)
+{
+    jBC:REDO.B.MONITOR.SHIP
+}
+
+
+
+public method redoBMonitorShipLoad (
+)
+{
+    jBC:REDO.B.MONITOR.SHIP.LOAD
+}
+
+
+
+public method redoBMonitorShipSelect (
+)
+{
+    jBC:REDO.B.MONITOR.SHIP.SELECT
+}
+
+
+
+public method redoBMovePartPayHistSelect (
+)
+{
+    jBC:REDO.B.MOVE.PART.PAY.HIST.SELECT
+}
+
+
+
+public method redoBMoveUnused (
+    INOUT YCardLockId string
+)
+{
+    jBC:REDO.B.MOVE.UNUSED
+}
+
+
+
+public method redoBMoveUnusedLoad (
+)
+{
+    jBC:REDO.B.MOVE.UNUSED.LOAD
+}
+
+
+
+public method redoBMoveUnusedSelect (
+)
+{
+    jBC:REDO.B.MOVE.UNUSED.SELECT
+}
+
+
+
+public method redoBNabAcctBkDtLoans (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.NAB.ACCT.BK.DT.LOANS
+}
+
+
+
+public method redoBNabAcctBkDtLoansLoad (
+)
+{
+    jBC:REDO.B.NAB.ACCT.BK.DT.LOANS.LOAD
+}
+
+
+
+public method redoBNabAcctBkDtLoansSelect (
+)
+{
+    jBC:REDO.B.NAB.ACCT.BK.DT.LOANS.SELECT
+}
+
+
+
+public method redoBNabAcctHol (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.NAB.ACCT.HOL
+}
+
+
+
+public method redoBNcfAssignAdv (
+    INOUT VarArrangeId string
+)
+{
+    jBC:REDO.B.NCF.ASSIGN.ADV
+}
+
+
+
+public method redoBNcfAssignAdvLoad (
+)
+{
+    jBC:REDO.B.NCF.ASSIGN.ADV.LOAD
+}
+
+
+
+public method redoBNcfAssignAdvSelect (
+)
+{
+    jBC:REDO.B.NCF.ASSIGN.ADV.SELECT
+}
+
+
+
+public method redoBNcfIssue (
+    INOUT YTxnUnmapList string
+)
+{
+    jBC:REDO.B.NCF.ISSUE
+}
+
+
+
+public method redoBNcfIssueLoad (
+)
+{
+    jBC:REDO.B.NCF.ISSUE.LOAD
+}
+
+
+
+public method redoBNcfIssueSelect (
+)
+{
+    jBC:REDO.B.NCF.ISSUE.SELECT
+}
+
+
+
+public method redoBNewNabAccounting (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.NEW.NAB.ACCOUNTING
+}
+
+
+
+public method redoBNewNabAccountingLoad (
+)
+{
+    jBC:REDO.B.NEW.NAB.ACCOUNTING.LOAD
+}
+
+
+
+public method redoBNewUpdateCapintAmtLoad (
+)
+{
+    jBC:REDO.B.NEW.UPDATE.CAPINT.AMT.LOAD
+}
+
+
+
+public method redoBNewUpdateCapintAmtSelect (
+)
+{
+    jBC:REDO.B.NEW.UPDATE.CAPINT.AMT.SELECT
+}
+
+
+
+public method redoBNewWofOsAcc (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.NEW.WOF.OS.ACC
+}
+
+
+
+public method redoBNewWofOsAccLoad (
+)
+{
+    jBC:REDO.B.NEW.WOF.OS.ACC.LOAD
+}
+
+
+
+public method redoBNewWofOsAccSelect (
+)
+{
+    jBC:REDO.B.NEW.WOF.OS.ACC.SELECT
+}
+
+
+
+public method redoBNonConfirmPay (
+    INOUT ChqDetailsId string
+)
+{
+    jBC:REDO.B.NON.CONFIRM.PAY
+}
+
+
+
+public method redoBNonConfirmPayLoad (
+)
+{
+    jBC:REDO.B.NON.CONFIRM.PAY.LOAD
+}
+
+
+
+public method redoBNonConfirmPaySelect (
+)
+{
+    jBC:REDO.B.NON.CONFIRM.PAY.SELECT
+}
+
+
+
+public method redoBOfficerOfCompanyPost (
+)
+{
+    jBC:REDO.B.OFFICER.OF.COMPANY.POST
+}
+
+
+
+public method redoBOfficerOfCompanySelect (
+)
+{
+    jBC:REDO.B.OFFICER.OF.COMPANY.SELECT
+}
+
+
+
+public method redoBPenaltyCharge (
+    INOUT ArrangementId string
+)
+{
+    jBC:REDO.B.PENALTY.CHARGE
+}
+
+public method redoBPendingSchProjector (
+    INOUT YProcessId string
+)
+{
+    jBC:REDO.B.PENDING.SCH.PROJECTOR
+}
+
+public method redoBPendingSchProjectorLoad (
+)
+{
+    jBC:REDO.B.PENDING.SCH.PROJECTOR.LOAD
+}
+
+public method redoBPolicyAutoCancel (
+    INOUT InsId string
+)
+{
+    jBC:REDO.B.POLICY.AUTO.CANCEL
+}
+
+public method redoBPolicyAutoCancelLoad (
+)
+{
+    jBC:REDO.B.POLICY.AUTO.CANCEL.LOAD
+}
+
+public method redoBPolicyAutoCancelSelect (
+)
+{
+    jBC:REDO.B.POLICY.AUTO.CANCEL.SELECT
+}
+
+public method redoBPreDelProcess (
+)
+{
+    jBC:REDO.B.PRE.DEL.PROCESS
+}
+
+public method redoBPrevalanceStatus (
+    INOUT YPgmId string
+)
+{
+    jBC:REDO.B.PREVALANCE.STATUS
+}
+
+public method redoBPrevalanceStatusLoad (
+)
+{
+    jBC:REDO.B.PREVALANCE.STATUS.LOAD
+}
+
+public method redoBPrevalanceStatusSelect (
+)
+{
+    jBC:REDO.B.PREVALANCE.STATUS.SELECT
+}
+
+public method redoBPrevelenceStatusUpd (
+    INOUT Id string,
+    INOUT rAccount string,
+    INOUT yAcStatusPos string,
+    INOUT yStatusChgUpd string,
+    INOUT rAzAccount string
+)
+{
+    jBC:REDO.B.PREVELENCE.STATUS.UPD
+}
+
+
+public method redoBPrinIntUpdate (
+    INOUT MsgId string
+)
+{
+    jBC:REDO.B.PRIN.INT.UPDATE
+}
+
+public method redoBPurdgeInvFile (
+)
+{
+    jBC:REDO.B.PURDGE.INV.FILE
+}
+
+
+
+public method redoBPurgeCards (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.PURGE.CARDS
+}
+
+
+
+public method redoBPurgeUpdAllIds (
+)
+{
+    jBC:REDO.B.PURGE.UPD.ALL.IDS
+}
+
+
+
+public method redoBRaiseIncomeEntry (
+    INOUT GrId string
+)
+{
+    jBC:REDO.B.RAISE.INCOME.ENTRY
+}
+
+
+
+public method redoBRaiseIncomeEntryLoad (
+)
+{
+    jBC:REDO.B.RAISE.INCOME.ENTRY.LOAD
+}
+
+
+
+public method redoBRaiseIncomeEntrySelect (
+)
+{
+    jBC:REDO.B.RAISE.INCOME.ENTRY.SELECT
+}
+
+
+
+public method redoBRaiseNabActHoli (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.RAISE.NAB.ACT.HOLI
+}
+
+
+
+public method redoBRaiseNabActHoliLoad (
+)
+{
+    jBC:REDO.B.RAISE.NAB.ACT.HOLI.LOAD
+}
+
+
+
+public method redoBRaiseNabActHoliSelect (
+)
+{
+    jBC:REDO.B.RAISE.NAB.ACT.HOLI.SELECT
+}
+
+
+
+public method redoBReduceAgent (
+)
+{
+    jBC:REDO.B.REDUCE.AGENT
+}
+
+
+
+public method redoBRegenNabAccountingSelect (
+)
+{
+    jBC:REDO.B.REGEN.NAB.ACCOUNTING.SELECT
+}
+
+
+
+public method redoBReinvBalUpdate (
+    INOUT YAzId string
+)
+{
+    jBC:REDO.B.REINV.BAL.UPDATE
+}
+
+
+
+public method redoBReinvBalUpdateLoad (
+)
+{
+    jBC:REDO.B.REINV.BAL.UPDATE.LOAD
+}
+
+
+
+public method redoBReinvBalUpdateSelect (
+)
+{
+    jBC:REDO.B.REINV.BAL.UPDATE.SELECT
+}
+
+
+
+public method redoBReinvSync (
+    INOUT YAzAccountId string
+)
+{
+    jBC:REDO.B.REINV.SYNC
+}
+
+
+
+public method redoBReinvSyncLoad (
+)
+{
+    jBC:REDO.B.REINV.SYNC.LOAD
+}
+
+
+
+public method redoBReinvSyncSelect (
+)
+{
+    jBC:REDO.B.REINV.SYNC.SELECT
+}
+
+
+
+public method redoBRenewProcess (
+    INOUT YLatamCardList string
+)
+{
+    jBC:REDO.B.RENEW.PROCESS
+}
+
+
+
+public method redoBRepRatesAndFees (
+    INOUT YTxnId string
+)
+{
+    jBC:REDO.B.REP.RATES.AND.FEES
+}
+
+
+
+public method redoBRepRatesAndFeesLoad (
+)
+{
+    jBC:REDO.B.REP.RATES.AND.FEES.LOAD
+}
+
+
+
+public method redoBRepRatesAndFeesPost (
+)
+{
+    jBC:REDO.B.REP.RATES.AND.FEES.POST
+}
+
+
+
+public method redoBRepRatesAndFeesSelect (
+)
+{
+    jBC:REDO.B.REP.RATES.AND.FEES.SELECT
+}
+
+
+
+public method redoBReporteActividad (
+    INOUT AaArrId string
+)
+{
+    jBC:REDO.B.REPORTE.ACTIVIDAD
+}
+
+
+
+public method redoBReporteActividadLoad (
+)
+{
+    jBC:REDO.B.REPORTE.ACTIVIDAD.LOAD
+}
+
+
+
+public method redoBReporteActividadPost (
+)
+{
+    jBC:REDO.B.REPORTE.ACTIVIDAD.POST
+}
+
+
+
+public method redoBReporteActividadSelect (
+)
+{
+    jBC:REDO.B.REPORTE.ACTIVIDAD.SELECT
+}
+
+
+
+public method redoBRevNabAcctReachWofSelect (
+)
+{
+    jBC:REDO.B.REV.NAB.ACCT.REACH.WOF.SELECT
+}
+
+
+
+public method redoBRevalFcyProdPos (
+)
+{
+    jBC:REDO.B.REVAL.FCY.PROD.POS
+}
+
+
+
+public method redoBRevalReverse (
+    INOUT FinalArray string
+)
+{
+    jBC:REDO.B.REVAL.REVERSE
+}
+
+
+
+public method redoBRevalReverseLoad (
+)
+{
+    jBC:REDO.B.REVAL.REVERSE.LOAD
+}
+
+
+
+public method redoBRevalReverseSelect (
+)
+{
+    jBC:REDO.B.REVAL.REVERSE.SELECT
+}
+
+
+
+public method redoBRiskGroupMembers (
+    INOUT CustomerId string
+)
+{
+    jBC:REDO.B.RISK.GROUP.MEMBERS
+}
+
+
+
+public method redoBRiskGroupMembersLoad (
+)
+{
+    jBC:REDO.B.RISK.GROUP.MEMBERS.LOAD
+}
+
+
+
+public method redoBRiskGroupMembersPost (
+)
+{
+    jBC:REDO.B.RISK.GROUP.MEMBERS.POST
+}
+
+
+
+public method redoBScRevDiscEntryLoad (
+)
+{
+    jBC:REDO.B.SC.REV.DISC.ENTRY.LOAD
+}
+
+
+
+public method redoBScRevDiscEntrySelect (
+)
+{
+    jBC:REDO.B.SC.REV.DISC.ENTRY.SELECT
+}
+
+
+
+public method redoBScRevSpecEntry (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.SC.REV.SPEC.ENTRY
+}
+
+
+
+public method redoBScRevSpecEntryLoad (
+)
+{
+    jBC:REDO.B.SC.REV.SPEC.ENTRY.LOAD
+}
+
+
+
+public method redoBScRevSpecEntrySelect (
+)
+{
+    jBC:REDO.B.SC.REV.SPEC.ENTRY.SELECT
+}
+
+
+
+public method redoBScSodRevStmtEntry (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.SC.SOD.REV.STMT.ENTRY
+}
+
+
+
+public method redoBScSodRevStmtEntryLoad (
+)
+{
+    jBC:REDO.B.SC.SOD.REV.STMT.ENTRY.LOAD
+}
+
+
+
+public method redoBScSodRevStmtEntrySelect (
+)
+{
+    jBC:REDO.B.SC.SOD.REV.STMT.ENTRY.SELECT
+}
+
+
+
+public method redoBScheduleProjectorSelect (
+)
+{
+    jBC:REDO.B.SCHEDULE.PROJECTOR.SELECT
+}
+
+
+
+public method redoBSecAsset (
+    INOUT YInvDet string
+)
+{
+    jBC:REDO.B.SEC.ASSET
+}
+
+
+
+public method redoBSecPosAsset (
+    INOUT YFinalArr string
+)
+{
+    jBC:REDO.B.SEC.POS.ASSET
+}
+
+
+
+public method redoBSecPosAssetLoad (
+)
+{
+    jBC:REDO.B.SEC.POS.ASSET.LOAD
+}
+
+
+
+public method redoBSecPosAssetPost (
+)
+{
+    jBC:REDO.B.SEC.POS.ASSET.POST
+}
+
+
+
+public method redoBSecPosAssetSelect (
+)
+{
+    jBC:REDO.B.SEC.POS.ASSET.SELECT
+}
+
+
+
+public method redoBSecTrade (
+    INOUT YEnqId string
+)
+{
+    jBC:REDO.B.SEC.TRADE
+}
+
+
+
+public method redoBSodMmRevStmtEntry (
+    INOUT MmMoneyMarketId string
+)
+{
+    jBC:REDO.B.SOD.MM.REV.STMT.ENTRY
+}
+
+
+
+public method redoBStaffCustTrack (
+    INOUT CustId string
+)
+{
+    jBC:REDO.B.STAFF.CUST.TRACK
+}
+
+
+
+public method redoBStaffCustTrackLoad (
+)
+{
+    jBC:REDO.B.STAFF.CUST.TRACK.LOAD
+}
+
+
+
+public method redoBStaffCustTrackSelect (
+)
+{
+    jBC:REDO.B.STAFF.CUST.TRACK.SELECT
+}
+
+
+
+public method redoBStatusUpdate (
+    INOUT YCustomerId string
+)
+{
+    jBC:REDO.B.STATUS.UPDATE
+}
+
+
+
+public method redoBStatusUpdateLoad (
+)
+{
+    jBC:REDO.B.STATUS.UPDATE.LOAD
+}
+
+
+
+public method redoBStatusUpdateSelect (
+)
+{
+    jBC:REDO.B.STATUS.UPDATE.SELECT
+}
+
+
+
+public method redoBStatus1Upd (
+    INOUT Id string
+)
+{
+    jBC:REDO.B.STATUS1.UPD
+}
+
+
+
+public method redoBStatus1UpdLoad (
+)
+{
+    jBC:REDO.B.STATUS1.UPD.LOAD
+}
+
+
+
+public method redoBStatus1Update (
+)
+{
+    jBC:REDO.B.STATUS1.UPDATE
+}
+
+
+
+public method redoBStoOverride (
+    INOUT FtId string
+)
+{
+    jBC:REDO.B.STO.OVERRIDE
+}
+
+
+
+public method redoBStoOverrideLoad (
+)
+{
+    jBC:REDO.B.STO.OVERRIDE.LOAD
+}
+
+
+
+public method redoBStoOverrideSelect (
+)
+{
+    jBC:REDO.B.STO.OVERRIDE.SELECT
+}
+
+
+
+public method redoBStockQtyCntHis (
+    INOUT YSrSelList string
+)
+{
+    jBC:REDO.B.STOCK.QTY.CNT.HIS
+}
+
+
+
+public method redoBStockQtyCntHisLoad (
+)
+{
+    jBC:REDO.B.STOCK.QTY.CNT.HIS.LOAD
+}
+
+
+
+public method redoBStockQtyCntHisSelect (
+)
+{
+    jBC:REDO.B.STOCK.QTY.CNT.HIS.SELECT
+}
+
+
+
+public method redoBStockQtyCount (
+    INOUT YSrSelList string
+)
+{
+    jBC:REDO.B.STOCK.QTY.COUNT
+}
+
+
+
+public method redoBTransProcess (
+    INOUT BuildList string
+)
+{
+    jBC:REDO.B.TRANS.PROCESS
+}
+
+
+
+public method redoBTransProcessLoad (
+)
+{
+    jBC:REDO.B.TRANS.PROCESS.LOAD
+}
+
+
+
+public method redoBTransProcessPost (
+)
+{
+    jBC:REDO.B.TRANS.PROCESS.POST
+}
+
+
+
+public method redoBTransProcessSelect (
+)
+{
+    jBC:REDO.B.TRANS.PROCESS.SELECT
+}
+
+
+
+public method redoBTransitCap (
+    INOUT IncomePar string
+)
+{
+    jBC:REDO.B.TRANSIT.CAP
+}
+
+
+
+public method redoBTransitCapLoad (
+)
+{
+    jBC:REDO.B.TRANSIT.CAP.LOAD
+}
+
+
+
+public method redoBTransitCapSelect (
+)
+{
+    jBC:REDO.B.TRANSIT.CAP.SELECT
+}
+
+
+
+public method redoBUpTransProcess (
+    INOUT BuildList string
+)
+{
+    jBC:REDO.B.UP.TRANS.PROCESS
+}
+
+
+
+public method redoBUpdApapAccountAct (
+)
+{
+    jBC:REDO.B.UPD.APAP.ACCOUNT.ACT
+}
+
+
+
+public method redoBUpdBranchLimit (
+    INOUT YBranchId string
+)
+{
+    jBC:REDO.B.UPD.BRANCH.LIMIT
+}
+
+
+
+public method redoBUpdBranchLimitLoad (
+)
+{
+    jBC:REDO.B.UPD.BRANCH.LIMIT.LOAD
+}
+
+
+
+public method redoBUpdBranchLimitSelect (
+)
+{
+    jBC:REDO.B.UPD.BRANCH.LIMIT.SELECT
+}
+
+
+
+public method redoBUpdCusSeg (
+    INOUT CusDet string
+)
+{
+    jBC:REDO.B.UPD.CUS.SEG
+}
+
+
+
+public method redoBUpdCusSegLoad (
+)
+{
+    jBC:REDO.B.UPD.CUS.SEG.LOAD
+}
+
+
+
+public method redoBUpdCusSegSelect (
+)
+{
+    jBC:REDO.B.UPD.CUS.SEG.SELECT
+}
+
+
+
+public method redoBUpdFtRetryTable (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.UPD.FT.RETRY.TABLE
+}
+
+
+
+public method redoBUpdLastPrice (
+    INOUT YSmId string
+)
+{
+    jBC:REDO.B.UPD.LAST.PRICE
+}
+
+
+
+public method redoBUpdLastPriceLoad (
+)
+{
+    jBC:REDO.B.UPD.LAST.PRICE.LOAD
+}
+
+
+
+public method redoBUpdLastPriceSelect (
+)
+{
+    jBC:REDO.B.UPD.LAST.PRICE.SELECT
+}
+
+
+
+public method redoBUpdLtUserLimits (
+    INOUT YId string
+)
+{
+    jBC:REDO.B.UPD.LT.USER.LIMITS
+}
+
+
+
+public method redoBUpdLtUserLimitsLoad (
+)
+{
+    jBC:REDO.B.UPD.LT.USER.LIMITS.LOAD
+}
+
+
+
+public method redoBUpdLtUserLimitsSelect (
+)
+{
+    jBC:REDO.B.UPD.LT.USER.LIMITS.SELECT
+}
+
+
+
+public method redoBUpdNcfUrStk (
+)
+{
+    jBC:REDO.B.UPD.NCF.UR.STK
+}
+
+
+
+public method redoBUpdSettRisk (
+    INOUT YFxLimitId string
+)
+{
+    jBC:REDO.B.UPD.SETT.RISK
+}
+
+
+
+public method redoBUpdStoCurAmt (
+    INOUT StoId string
+)
+{
+    jBC:REDO.B.UPD.STO.CUR.AMT
+}
+
+
+
+public method redoBUpdStoCurAmtLoad (
+)
+{
+    jBC:REDO.B.UPD.STO.CUR.AMT.LOAD
+}
+
+
+
+public method redoBUpdStoCurAmtSelect (
+)
+{
+    jBC:REDO.B.UPD.STO.CUR.AMT.SELECT
+}
+
+
+
+public method redoBUpdUserLog (
+    INOUT YProtocolId string
+)
+{
+    jBC:REDO.B.UPD.USER.LOG
+}
+
+
+
+public method redoBUpdUserLogLoad (
+)
+{
+    jBC:REDO.B.UPD.USER.LOG.LOAD
+}
+
+
+
+public method redoBUpdUserLogSelect (
+)
+{
+    jBC:REDO.B.UPD.USER.LOG.SELECT
+}
+
+
+
+public method redoBUpdWorkFile (
+)
+{
+    jBC:REDO.B.UPD.WORK.FILE
+}
+
+
+
+public method redoBUpdateCapintAmt (
+)
+{
+    jBC:REDO.B.UPDATE.CAPINT.AMT
+}
+
+
+
+public method redoBUpdateCheqStockLoad (
+)
+{
+    jBC:REDO.B.UPDATE.CHEQ.STOCK.LOAD
+}
+
+
+
+public method redoBUpdateCheqStockSelect (
+)
+{
+    jBC:REDO.B.UPDATE.CHEQ.STOCK.SELECT
+}
+
+
+
+public method redoBUpdateDestruction (
+    INOUT YSeSelList string
+)
+{
+    jBC:REDO.B.UPDATE.DESTRUCTION
+}
+
+
+
+public method redoBUpdateDestructionLoad (
+)
+{
+    jBC:REDO.B.UPDATE.DESTRUCTION.LOAD
+}
+
+
+
+public method redoBUpdateDestructionSelect (
+)
+{
+    jBC:REDO.B.UPDATE.DESTRUCTION.SELECT
+}
+
+
+
+public method redoBUpdateDetailsAch (
+    INOUT YIdList string
+)
+{
+    jBC:REDO.B.UPDATE.DETAILS.ACH
+}
+
+
+
+public method redoBUpdateDetailsAchLoad (
+)
+{
+    jBC:REDO.B.UPDATE.DETAILS.ACH.LOAD
+}
+
+
+
+public method redoBUpdateDetailsAchSelect (
+)
+{
+    jBC:REDO.B.UPDATE.DETAILS.ACH.SELECT
+}
+
+
+
+public method redoBUpdatePoolRatePost (
+)
+{
+    jBC:REDO.B.UPDATE.POOL.RATE.POST
+}
+
+
+
+public method redoBUpdatePoolRateSelect (
+)
+{
+    jBC:REDO.B.UPDATE.POOL.RATE.SELECT
+}
+
+
+
+public method redoBUpdateTransitBalance (
+    INOUT YTransId string
+)
+{
+    jBC:REDO.B.UPDATE.TRANSIT.BALANCE
+}
+
+
+
+public method redoBUpdateTransitBalanceLoad (
+)
+{
+    jBC:REDO.B.UPDATE.TRANSIT.BALANCE.LOAD
+}
+
+
+
+public method redoBUpdateTransitBalanceSelect (
+)
+{
+    jBC:REDO.B.UPDATE.TRANSIT.BALANCE.SELECT
+}
+
+
+
+public method redoBValidAccounts (
+    INOUT SelAcctList string
+)
+{
+    jBC:REDO.B.VALID.ACCOUNTS
+}
+
+
+
+public method redoBValidAccountsLoad (
+)
+{
+    jBC:REDO.B.VALID.ACCOUNTS.LOAD
+}
+
+
+
+public method redoBValidAccountsPost (
+)
+{
+    jBC:REDO.B.VALID.ACCOUNTS.POST
+}
+
+
+
+public method redoBWofGroupAccount (
+    INOUT GrId string
+)
+{
+    jBC:REDO.B.WOF.GROUP.ACCOUNT
+}
+
+
+
+public method redoBWofGroupAccountLoad (
+)
+{
+    jBC:REDO.B.WOF.GROUP.ACCOUNT.LOAD
+}
+
+
+
+public method redoBWofGroupAccountSelect (
+)
+{
+    jBC:REDO.B.WOF.GROUP.ACCOUNT.SELECT
+}
+
+
+
+public method redoBWofLoanHistUpdate (
+    INOUT ArrId string
+)
+{
+    jBC:REDO.B.WOF.LOAN.HIST.UPDATE
+}
+
+
+
+public method redoBWofLoanHistUpdateLoad (
+)
+{
+    jBC:REDO.B.WOF.LOAN.HIST.UPDATE.LOAD
+}
+
+
+
+public method redoBWofLoanHistUpdateSelect (
+)
+{
+    jBC:REDO.B.WOF.LOAN.HIST.UPDATE.SELECT
+}
+
+
+
+public method redoBYerEndFxSalePre (
+    INOUT YFxId string
+)
+{
+    jBC:REDO.B.YER.END.FX.SALE.PRE
+}
+
+
+
+public method redoBYerEndFxSalePreLoad (
+)
+{
+    jBC:REDO.B.YER.END.FX.SALE.PRE.LOAD
+}
+
+
+
+public method redoB2FtData (
+)
+{
+    jBC:REDO.B2.FT.DATA
+}
+
+
+
+public method redoB2FtDataFields (
+)
+{
+    jBC:REDO.B2.FT.DATA.FIELDS
+}
+
+
+
+public method redoB2FtDataRtn (
+)
+{
+    jBC:REDO.B2.FT.DATA.RTN
+}
+
+
+
+public method redoB2FtParameters (
+)
+{
+    jBC:REDO.B2.FT.PARAMETERS
+}
+
+
+
+public method redoB2FtParametersFields (
+)
+{
+    jBC:REDO.B2.FT.PARAMETERS.FIELDS
+}
+
+
+
+public method redoB2FtRtn (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.B2.FT.RTN
+}
+
+
+
+public method redoB2RecordInsPay (
+)
+{
+    jBC:REDO.B2.RECORD.INS.PAY
+}
+
+
+
+public method redoB2RecordInsPayFields (
+)
+{
+    jBC:REDO.B2.RECORD.INS.PAY.FIELDS
+}
+
+
+
+public method redoBalanceCertfPdfGen (
+    INOUT YArray string
+)
+{
+    jBC:REDO.BALANCE.CERTF.PDF.GEN
+}
+
+
+
+public method redoBalanceMainPrevalChg (
+)
+{
+    jBC:REDO.BALANCE.MAIN.PREVAL.CHG
+}
+
+
+
+public method redoBankNameCorrection (
+)
+{
+    jBC:REDO.BANK.NAME.CORRECTION
+}
+
+
+public method redoBatchRelease (
+)
+{
+    jBC:REDO.BATCH.RELEASE
+}
+
+
+
+public method redoBatchReleaseFields (
+)
+{
+    jBC:REDO.BATCH.RELEASE.FIELDS
+}
+
+
+
+public method redoBatchReleaseRun (
+)
+{
+    jBC:REDO.BATCH.RELEASE.RUN
+}
+
+
+
+public method redoBcrReportData (
+)
+{
+    jBC:REDO.BCR.REPORT.DATA
+}
+
+
+
+public method redoBcrReportExecFields (
+)
+{
+    jBC:REDO.BCR.REPORT.EXEC.FIELDS
+}
+
+
+
+public method redoBcrReportExecId (
+)
+{
+    jBC:REDO.BCR.REPORT.EXEC.ID
+}
+
+
+
+public method redoBcrReportExecProcess (
+)
+{
+    jBC:REDO.BCR.REPORT.EXEC.PROCESS
+}
+
+
+
+public method redoBcrReportExecRecord (
+)
+{
+    jBC:REDO.BCR.REPORT.EXEC.RECORD
+}
+
+
+
+public method redoBcrReportExecValidate (
+)
+{
+    jBC:REDO.BCR.REPORT.EXEC.VALIDATE
+}
+
+
+
+public method redoBcrReportFtpMonitor (
+    INOUT RegistersList string
+)
+{
+    jBC:REDO.BCR.REPORT.FTP.MONITOR
+}
+
+
+
+public method redoBlGetArrangement (
+    INOUT YFinalIds string
+)
+{
+    jBC:REDO.BL.GET.ARRANGEMENT
+}
+
+
+
+public method redoBldAccFundsIntransit (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.ACC.FUNDS.INTRANSIT
+}
+
+
+
+public method redoBldContCus (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.CONT.CUS
+}
+
+
+
+public method redoBldContactCus (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.CONTACT.CUS
+}
+
+
+
+public method redoBldDisbEAuthor (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.DISB.E.AUTHOR
+}
+
+
+
+public method redoBldEReprintTxn (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.E.REPRINT.TXN
+}
+
+
+
+public method redoBldPrintReprintSlip (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.PRINT.REPRINT.SLIP
+}
+
+
+
+public method redoBldPrntChkIss (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.PRNT.CHK.ISS
+}
+
+
+
+public method redoBldReinvAcc (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.REINV.ACC
+}
+
+
+
+public method redoBldSelectUser (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BLD.SELECT.USER
+}
+
+
+
+public method redoBranEduDets (
+)
+{
+    jBC:REDO.BRAN.EDU.DETS
+}
+
+
+
+public method redoBranEduDetsFields (
+)
+{
+    jBC:REDO.BRAN.EDU.DETS.FIELDS
+}
+
+
+
+public method redoBranchCardReturnAuthorise (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN.AUTHORISE
+}
+
+
+
+public method redoBranchCardReturn (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN
+}
+
+
+
+public method redoBranchCardReturnFields (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN.FIELDS
+}
+
+
+
+public method redoBranchCardReturnId (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN.ID
+}
+
+
+
+public method redoBranchCardReturnProcess (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN.PROCESS
+}
+
+
+
+public method redoBranchCardReturnValidate (
+)
+{
+    jBC:REDO.BRANCH.CARD.RETURN.VALIDATE
+}
+
+
+
+public method redoBranchIntAcctParamValidate (
+)
+{
+    jBC:REDO.BRANCH.INT.ACCT.PARAM.VALIDATE
+}
+
+
+
+public method redoBranchReqStock (
+)
+{
+    jBC:REDO.BRANCH.REQ.STOCK
+}
+
+
+
+public method redoBranchReqStockFields (
+)
+{
+    jBC:REDO.BRANCH.REQ.STOCK.FIELDS
+}
+
+
+
+public method redoBranchStatus (
+)
+{
+    jBC:REDO.BRANCH.STATUS
+}
+
+
+
+public method redoBranchStatusChk (
+)
+{
+    jBC:REDO.BRANCH.STATUS.CHK
+}
+
+
+
+public method redoBranchStatusFields (
+)
+{
+    jBC:REDO.BRANCH.STATUS.FIELDS
+}
+
+
+
+public method redoBrowserRestSignOn (
+)
+{
+    jBC:REDO.BROWSER.REST.SIGN.ON
+}
+
+
+
+public method redoBrrInwreturnProcess (
+    INOUT BuildList string
+)
+{
+    jBC:REDO.BRR.INWRETURN.PROCESS
+}
+
+
+
+public method redoBrrInwreturnProcessSelect (
+)
+{
+    jBC:REDO.BRR.INWRETURN.PROCESS.SELECT
+}
+
+
+
+public method redoBuildAcctLastFivePayment (
+    INOUT YFinalArray string
+)
+{
+    jBC:REDO.BUILD.ACCT.LAST.FIVE.PAYMENT
+}
+
+
+
+public method redoBuildAcctLastFiveTransfer (
+    INOUT YFinalArray string
+)
+{
+    jBC:REDO.BUILD.ACCT.LAST.FIVE.TRANSFER
+}
+
+
+
+public method redoBuildAcctPaymentStmtIds (
+    INOUT YFinalArray string
+)
+{
+    jBC:REDO.BUILD.ACCT.PAYMENT.STMT.IDS
+}
+
+
+
+public method redoBuildAcctTransferStmtIds (
+    INOUT YFinalArray string
+)
+{
+    jBC:REDO.BUILD.ACCT.TRANSFER.STMT.IDS
+}
+
+
+
+public method redoBuildFormValues (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BUILD.FORM.VALUES
+}
+
+
+
+public method redoBuildLetterRtn (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BUILD.LETTER.RTN
+}
+
+
+
+public method redoBuildNewActivities (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BUILD.NEW.ACTIVITIES
+}
+
+
+
+public method redoBuildTypeCustomer (
+    INOUT EnqData string
+)
+{
+    jBC:REDO.BUILD.TYPE.CUSTOMER
+}
+
+
+
+public method redoBuildVersRou (
+)
+{
+    jBC:REDO.BUILD.VERS.ROU
+}
+
+
+
+public method redoBulkSupPayAcCheckId (
+)
+{
+    jBC:REDO.BULK.SUP.PAY.AC.CHECK.ID
+}
+
+
+
+public method redoBuySellSource (
+)
+{
+    jBC:REDO.BUY.SELL.SOURCE
+}
+
+
+
+public method redoBuySellSourceFields (
+)
+{
+    jBC:REDO.BUY.SELL.SOURCE.FIELDS
+}
+
+
+
+public method redoCaplBBuildLineCont (
+    INOUT ReStatLineContId string
+)
+{
+    jBC:REDO.CAPL.B.BUILD.LINE.CONT
+}
+
+
+
+public method redoCaplBBuildLineContLoad (
+)
+{
+    jBC:REDO.CAPL.B.BUILD.LINE.CONT.LOAD
+}
+
+
+
+public method redoCaplBBuildLineContSelect (
+)
+{
+    jBC:REDO.CAPL.B.BUILD.LINE.CONT.SELECT
+}
+
+
+
+public method redoCaplBClearLineContSelect (
+)
+{
+    jBC:REDO.CAPL.B.CLEAR.LINE.CONT.SELECT
+}
+
+
+
+public method redoCcrgBEva (
+    INOUT PInProId string
+)
+{
+    jBC:REDO.CCRG.B.EVA
+}
+
+
+
+public method redoCcrgBEvaLoad (
+)
+{
+    jBC:REDO.CCRG.B.EVA.LOAD
+}
+
+
+
+public method redoCcrgBEvaSelect (
+)
+{
+    jBC:REDO.CCRG.B.EVA.SELECT
+}
+
+
+
+public method redoCcrgBExt (
+    INOUT YCcrgCusId string
+)
+{
+    jBC:REDO.CCRG.B.EXT
+}
+
+
+
+public method redoCcrgBExtLoad (
+)
+{
+    jBC:REDO.CCRG.B.EXT.LOAD
+}
+
+
+
+public method redoCcrgBExtSelect (
+)
+{
+    jBC:REDO.CCRG.B.EXT.SELECT
+}
+
+
+
+public method redoCcrgBPop (
+    INOUT PInCusId string
+)
+{
+    jBC:REDO.CCRG.B.POP
+}
+
+
+
+public method redoCcrgBPopSelect (
+)
+{
+    jBC:REDO.CCRG.B.POP.SELECT
+}
+
+
+
+public method redoCcrgBRlDelLog (
+    INOUT PInCusId string
+)
+{
+    jBC:REDO.CCRG.B.RL.DEL.LOG
+}
+
+
+
+public method redoCcrgBRlSaveLog (
+    INOUT PInCusId string,
+    INOUT PInErrMsg string
+)
+{
+    jBC:REDO.CCRG.B.RL.SAVE.LOG
+}
+
+
+
+public method redoCcrgBTraceError (
+    INOUT PSourceInfo string,
+    INOUT PMsg string,
+    INOUT PNonFatal string,
+    INOUT PCusId string,
+    INOUT PLog string
+)
+{
+    jBC:REDO.CCRG.B.TRACE.ERROR
+}
+
+
+
+public method redoChangeCheqStatus (
+    INOUT SolCkId string
+)
+{
+    jBC:REDO.CHANGE.CHEQ.STATUS
+}
+
+
+
+public method redoChangeCheqStatusLoad (
+)
+{
+    jBC:REDO.CHANGE.CHEQ.STATUS.LOAD
+}
+
+
+
+public method redoChangeCheqStatusSelect (
+)
+{
+    jBC:REDO.CHANGE.CHEQ.STATUS.SELECT
+}
+
+
+public method apapBCreateLnServiceLoad (
+)
+{
+    jBC: APAP.B.CREATE.LN.SERVICE.LOAD
+}
+
+
+
+public method apapBCreateLnServiceSelect (
+)
+{
+    jBC: APAP.B.CREATE.LN.SERVICE.SELECT
+}
+
+
+
+public method redoBAchTransferRouLoad (
+)
+{
+    jBC: REDO.B.ACH.TRANSFER.ROU.LOAD
+}
+
+
+
+public method redoBAchTransferRouSelect (
+)
+{
+    jBC: REDO.B.ACH.TRANSFER.ROU.SELECT
+}
+
+
+
+public method redoBAciUpd (
+    INOUT yAcctNo string
+)
+{
+    jBC: REDO.B.ACI.UPD
+}
+
+
+
+public method redoBAleUpdChequesSelect (
+)
+{
+    jBC: REDO.B.ALE.UPD.CHEQUES.SELECT
+}
+
+
+
+public method redoBApplyChg (
+    INOUT yLcoSelList string
+)
+{
+    jBC: REDO.B.APPLY.CHG
+}
+
+
+
+public method redoBApplyChgLoad (
+)
+{
+    jBC: REDO.B.APPLY.CHG.LOAD
+}
+
+
+
+public method redoBAuditLogBulkLoad (
+)
+{
+    jBC: REDO.B.AUDIT.LOG.BULK.LOAD
+}
+
+
+
+public method redoBAuditLogBulkPost (
+)
+{
+    jBC: REDO.B.AUDIT.LOG.BULK.POST
+}
+
+
+
+public method redoBAuditLogBulkSelect (
+)
+{
+    jBC: REDO.B.AUDIT.LOG.BULK.SELECT
+}
+
+
+
+public method redoBAutomaticOrderLoad (
+)
+{
+    jBC: REDO.B.AUTOMATIC.ORDER.LOAD
+}
+
+
+
+public method redoBAutomaticOrderSelect (
+)
+{
+    jBC: REDO.B.AUTOMATIC.ORDER.SELECT
+}
+
+
+
+public method redoBBatChequesSelect (
+)
+{
+    jBC: REDO.B.BAT.CHEQUES.SELECT
+}
+
+
+
+public method redoBBcrGenerateFile (
+)
+{
+    jBC: REDO.B.BCR.GENERATE.FILE
+}
+
+
+
+public method redoBCcyPosnUpdNew (
+)
+{
+    jBC: REDO.B.CCY.POSN.UPD.NEW
+}
+
+
+
+public method redoBChangeWorkLoad (
+)
+{
+    jBC: REDO.B.CHANGE.WORK.LOAD
+}
+
+
+
+public method redoBChqUpdStatusLoad (
+)
+{
+    jBC: REDO.B.CHQ.UPD.STATUS.LOAD
+}
+
+
+
+public method redoBChqUpdStatusSelect (
+)
+{
+    jBC: REDO.B.CHQ.UPD.STATUS.SELECT
+}
+
+
+
+public method redoBClearReturnLoad (
+)
+{
+    jBC: REDO.B.CLEAR.RETURN.LOAD
+}
+
+
+
+public method redoBClearReturnPost (
+)
+{
+    jBC: REDO.B.CLEAR.RETURN.POST
+}
+
+
+
+public method redoBColFfExtLastPay (
+    INOUT yAaId string,
+    INOUT yTotalCuotas string,
+    INOUT yLastpayAmt string,
+    INOUT yLastpayDat string,
+    INOUT yNextPayAmt string,
+    INOUT yNextPayDate string,
+    INOUT yAlPaidBillsCnt string
+)
+{
+    jBC: REDO.B.COL.FF.EXT.LAST.PAY
+}
+
+
+
+public method redoBCommerDebtrClPost (
+)
+{
+    jBC: REDO.B.COMMER.DEBTR.CL.POST
+}
+
+
+
+public method redoBCommerDebtrClSelect (
+)
+{
+    jBC: REDO.B.COMMER.DEBTR.CL.SELECT
+}
+
+
+
+public method redoBConvFile (
+    INOUT buildList string
+)
+{
+    jBC: REDO.B.CONV.FILE
+}
+
+
+
+public method redoBConvFileLoad (
+)
+{
+    jBC: REDO.B.CONV.FILE.LOAD
+}
+
+
+
+public method redoBCustPrdAciPurgeLoad (
+)
+{
+    jBC: REDO.B.CUST.PRD.ACI.PURGE.LOAD
+}
+
+
+
+public method redoBCustPrdAciPurgeSelect (
+)
+{
+    jBC: REDO.B.CUST.PRD.ACI.PURGE.SELECT
+}
+
+
+
+public method redoBCustomerProvisionSelect (
+)
+{
+    jBC: REDO.B.CUSTOMER.PROVISION.SELECT
+}
+
+
+
+public method redoBCycleCusAge (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.CYCLE.CUS.AGE
+}
+
+
+
+public method redoBDeptCode (
+    INOUT enqData string
+)
+{
+    jBC: REDO.B.DEPT.CODE
+}
+
+
+
+public method redoBDeptCodeTo (
+    INOUT enqData string
+)
+{
+    jBC: REDO.B.DEPT.CODE.TO
+}
+
+
+
+public method redoBEirMthd (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.EIR.MTHD
+}
+
+
+
+public method redoBEirMthdLoad (
+)
+{
+    jBC: REDO.B.EIR.MTHD.LOAD
+}
+
+
+
+public method redoBExpireGvtNgvt (
+    INOUT chqDetailsId string
+)
+{
+    jBC: REDO.B.EXPIRE.GVT.NGVT
+}
+
+
+
+public method redoBExpireGvtNgvtLoad (
+)
+{
+    jBC: REDO.B.EXPIRE.GVT.NGVT.LOAD
+}
+
+
+
+public method redoBFxProvDlyLoad (
+)
+{
+    jBC: REDO.B.FX.PROV.DLY.LOAD
+}
+
+
+
+public method redoBFxProvDlySelect (
+)
+{
+    jBC: REDO.B.FX.PROV.DLY.SELECT
+}
+
+
+
+public method redoBGenNcfUnmap (
+    INOUT txnCodeStmtRef string
+)
+{
+    jBC: REDO.B.GEN.NCF.UNMAP
+}
+
+
+
+public method redoBGenNcfUnmapLoad (
+)
+{
+    jBC: REDO.B.GEN.NCF.UNMAP.LOAD
+}
+
+
+
+public method redoBIntCalcSelect (
+)
+{
+    jBC: REDO.B.INT.CALC.SELECT
+}
+
+
+
+public method redoBLetterHldDelLoad (
+)
+{
+    jBC: REDO.B.LETTER.HLD.DEL.LOAD
+}
+
+
+
+public method redoBLetterHldDelSelect (
+)
+{
+    jBC: REDO.B.LETTER.HLD.DEL.SELECT
+}
+
+
+
+public method redoBListOfCompaniesSelect (
+)
+{
+    jBC: REDO.B.LIST.OF.COMPANIES.SELECT
+}
+
+
+
+public method redoBListOfShareholder (
+    INOUT customerId string
+)
+{
+    jBC: REDO.B.LIST.OF.SHAREHOLDER
+}
+
+
+
+public method redoBLoanPrdUpdSelect (
+)
+{
+    jBC: REDO.B.LOAN.PRD.UPD.SELECT
+}
+
+
+
+public method redoBLoanStatusElimination (
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.LOAN.STATUS.ELIMINATION
+}
+
+
+
+public method redoBLyGetExp (
+    INOUT idList string
+)
+{
+    jBC: REDO.B.LY.GET.EXP
+}
+
+
+
+public method redoBLyGetExpLoad (
+)
+{
+    jBC: REDO.B.LY.GET.EXP.LOAD
+}
+
+
+
+public method redoBLyPgenAccopSelect (
+)
+{
+    jBC: REDO.B.LY.PGEN.ACCOP.SELECT
+}
+
+
+
+public method redoBLyPgenBirth (
+    INOUT cusId string
+)
+{
+    jBC: REDO.B.LY.PGEN.BIRTH
+}
+
+
+
+public method redoBLyPgenTbm (
+    INOUT tbmId string
+)
+{
+    jBC: REDO.B.LY.PGEN.TBM
+}
+
+
+
+public method redoBLyPgenTbmLoad (
+)
+{
+    jBC: REDO.B.LY.PGEN.TBM.LOAD
+}
+
+
+
+public method redoBLyTxnGenSelect (
+)
+{
+    jBC: REDO.B.LY.TXN.GEN.SELECT
+}
+
+
+
+public method redoBMmEffRateAccr (
+    INOUT mmMoneyMarketId string
+)
+{
+    jBC: REDO.B.MM.EFF.RATE.ACCR
+}
+
+
+
+public method redoBNabAcctHolLoad (
+)
+{
+    jBC: REDO.B.NAB.ACCT.HOL.LOAD
+}
+
+
+
+public method redoBMovePartPayHist (
+    INOUT recordId string
+)
+{
+    jBC: REDO.B.MOVE.PART.PAY.HIST
+}
+
+
+
+public method redoBMovePartPayHistLoad (
+)
+{
+    jBC: REDO.B.MOVE.PART.PAY.HIST.LOAD
+}
+
+
+
+public method redoBNabAcctHolSelect (
+)
+{
+    jBC: REDO.B.NAB.ACCT.HOL.SELECT
+}
+
+
+
+public method redoBNewNabAccountingSelect (
+)
+{
+    jBC: REDO.B.NEW.NAB.ACCOUNTING.SELECT
+}
+
+
+
+public method redoBNewUpdateCapintAmt (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.NEW.UPDATE.CAPINT.AMT
+}
+
+
+
+public method redoBOfficerOfCompany (
+    INOUT customerId string
+)
+{
+    jBC: REDO.B.OFFICER.OF.COMPANY
+}
+
+
+
+public method redoBOfficerOfCompanyLoad (
+)
+{
+    jBC: REDO.B.OFFICER.OF.COMPANY.LOAD
+}
+
+
+
+public method redoBPostDdProcess (
+)
+{
+    jBC: REDO.B.POST.DD.PROCESS
+}
+
+
+
+public method redoBPreDdProcess (
+)
+{
+    jBC: REDO.B.PRE.DD.PROCESS
+}
+
+
+
+public method redoBPurgeCardsLoad (
+)
+{
+    jBC: REDO.B.PURGE.CARDS.LOAD
+}
+
+
+
+public method redoBPurgeCardsSelect (
+)
+{
+    jBC: REDO.B.PURGE.CARDS.SELECT
+}
+
+
+
+public method redoBRegenNabAccounting (
+    INOUT arrId string
+)
+{
+    jBC: REDO.B.REGEN.NAB.ACCOUNTING
+}
+
+
+
+public method redoBRegenNabAccountingLoad (
+)
+{
+    jBC: REDO.B.REGEN.NAB.ACCOUNTING.LOAD
+}
+
+
+
+public method redoBRenewProcessSelect (
+)
+{
+    jBC: REDO.B.RENEW.PROCESS.SELECT
+}
+
+
+
+public method redoBRenewProcessLoad (
+)
+{
+    jBC: REDO.B.RENEW.PROCESS.LOAD
+}
+
+
+
+public method redoBRevNabAcctReachWofLoad (
+)
+{
+    jBC: REDO.B.REV.NAB.ACCT.REACH.WOF.LOAD
+}
+
+
+
+public method redoBRiskGroupMembersSelect (
+)
+{
+    jBC: REDO.B.RISK.GROUP.MEMBERS.SELECT
+}
+
+
+
+public method redoBScRevDiscEntry (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.SC.REV.DISC.ENTRY
+}
+
+
+
+public method redoBScheduleProjector (
+    INOUT yAaId string
+)
+{
+    jBC: REDO.B.SCHEDULE.PROJECTOR
+}
+
+
+
+public method redoBScheduleProjectorLoad (
+)
+{
+    jBC: REDO.B.SCHEDULE.PROJECTOR.LOAD
+}
+
+
+
+public method redoBSodMmRevStmtEntryLoad (
+)
+{
+    jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.LOAD
+}
+
+
+
+public method redoBSodMmRevStmtEntrySelect (
+)
+{
+    jBC: REDO.B.SOD.MM.REV.STMT.ENTRY.SELECT
+}
+
+
+
+public method redoBStatus1UpdPost (
+)
+{
+    jBC: REDO.B.STATUS1.UPD.POST
+}
+
+
+
+public method redoBStatus1UpdSelect (
+)
+{
+    jBC: REDO.B.STATUS1.UPD.SELECT
+}
+
+
+
+public method redoBStockQtyCountLoad (
+)
+{
+    jBC: REDO.B.STOCK.QTY.COUNT.LOAD
+}
+
+
+
+public method redoBStockQtyCountSelect (
+)
+{
+    jBC: REDO.B.STOCK.QTY.COUNT.SELECT
+}
+
+
+
+public method redoBUpTransProcessLoad (
+)
+{
+    jBC: REDO.B.UP.TRANS.PROCESS.LOAD
+}
+
+
+
+public method redoBUpTransProcessSelect (
+)
+{
+    jBC: REDO.B.UP.TRANS.PROCESS.SELECT
+}
+
+
+
+public method redoBUpdFtRetryTableLoad (
+)
+{
+    jBC: REDO.B.UPD.FT.RETRY.TABLE.LOAD
+}
+
+
+
+public method redoBUpdFtRetryTableSelect (
+)
+{
+    jBC: REDO.B.UPD.FT.RETRY.TABLE.SELECT
+}
+
+
+
+public method redoBUpdSettRiskLoad (
+)
+{
+    jBC: REDO.B.UPD.SETT.RISK.LOAD
+}
+
+
+
+public method redoBUpdSettRiskSelect (
+)
+{
+    jBC: REDO.B.UPD.SETT.RISK.SELECT
+}
+
+
+
+public method redoBUpdateCapintAmtRp (
+)
+{
+    jBC: REDO.B.UPDATE.CAPINT.AMT.RP
+}
+
+
+
+public method redoBUpdateCheqStock (
+    INOUT chequeId string
+)
+{
+    jBC: REDO.B.UPDATE.CHEQ.STOCK
+}
+
+
+
+public method redoBUpdatePoolRate (
+    INOUT accId string
+)
+{
+    jBC: REDO.B.UPDATE.POOL.RATE
+}
+
+
+
+public method redoBUpdatePoolRateLoad (
+)
+{
+    jBC: REDO.B.UPDATE.POOL.RATE.LOAD
+}
+
+
+
+public method redoBValidAccountsPost1 (
+)
+{
+    jBC: REDO.B.VALID.ACCOUNTS.POST1
+}
+
+
+
+public method redoBValidAccountsSelect (
+)
+{
+    jBC: REDO.B.VALID.ACCOUNTS.SELECT
+}
+
+
+
+public method redoBYerEndFxSalePreSelect (
+)
+{
+    jBC: REDO.B.YER.END.FX.SALE.PRE.SELECT
+}
+
+
+
+public method redoB2FtDataAuthorise (
+)
+{
+    jBC: REDO.B2.FT.DATA.AUTHORISE
+}
+
+
+
+public method redoB2StoreLastTxn (
+)
+{
+    jBC: REDO.B2.STORE.LAST.TXN
+}
+
+
+
+public method redoBalanceBuildLetterRtn (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BALANCE.BUILD.LETTER.RTN
+}
+
+
+
+public method redoBcrReportDataFields (
+)
+{
+    jBC: REDO.BCR.REPORT.DATA.FIELDS
+}
+
+
+
+public method redoBcrReportExec (
+)
+{
+    jBC: REDO.BCR.REPORT.EXEC
+}
+
+
+
+public method redoBldArcCusPos (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BLD.ARC.CUS.POS
+}
+
+
+
+public method redoBldAzStmtEntries (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BLD.AZ.STMT.ENTRIES
+}
+
+
+
+public method redoBldSelectUserLive (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BLD.SELECT.USER.LIVE
+}
+
+
+
+public method redoBldUserAcctSign (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BLD.USER.ACCT.SIGN
+}
+
+
+
+public method redoBranchIntAcctParam (
+)
+{
+    jBC: REDO.BRANCH.INT.ACCT.PARAM
+}
+
+
+
+public method redoBranchIntAcctParamFields (
+)
+{
+    jBC: REDO.BRANCH.INT.ACCT.PARAM.FIELDS
+}
+
+
+
+public method redoBrrInwreturnProcessLoad (
+)
+{
+    jBC: REDO.BRR.INWRETURN.PROCESS.LOAD
+}
+
+
+
+public method redoBrrInwreturnProcessPost (
+)
+{
+    jBC: REDO.BRR.INWRETURN.PROCESS.POST
+}
+
+
+
+public method redoBuildSignature (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BUILD.SIGNATURE
+}
+
+
+
+public method redoBuildTipoCl (
+    INOUT enqData string
+)
+{
+    jBC: REDO.BUILD.TIPO.CL
+}
+
+
+
+public method redoCaplBClearLineCont (
+    INOUT redoCaplLReStatLineContId string
+)
+{
+    jBC: REDO.CAPL.B.CLEAR.LINE.CONT
+}
+
+
+
+public method redoCaplBClearLineContLoad (
+)
+{
+    jBC: REDO.CAPL.B.CLEAR.LINE.CONT.LOAD
+}
+
+
+
+public method redoCcrgBPopDel (
+    INOUT pInCusId string
+)
+{
+    jBC: REDO.CCRG.B.POP.DEL
+}
+
+
+
+public method redoCcrgBPopLoad (
+)
+{
+    jBC: REDO.CCRG.B.POP.LOAD
+}
+
+public method redoBPrinIntUpdateLoad (
+)
+{
+    jBC: REDO.B.PRIN.INT.UPDATE.LOAD
+}
+
+public method redoBPrinIntUpdateSelect (
+)
+{
+    jBC: REDO.B.PRIN.INT.UPDATE.SELECT
+}
+
+public method redoBClearChq (
+    INOUT yClearOutwardId string
+)
+{
+    jBC: REDO.B.CLEAR.CHQ
+}
+
+public method redoBClearChqLoad (
+)
+{
+    jBC: REDO.B.CLEAR.CHQ.LOAD
+}
+
+public method redoBClearOut (
+    INOUT incomePar string
+)
+{
+    jBC: REDO.B.CLEAR.OUT
+}
+
+public method redoBClearReturn (
+    INOUT rAperta string
+)
+{
+    jBC: REDO.B.CLEAR.RETURN
+}
+
+
+
+public method redoBRevNabAcctReachWof (
+    INOUT yId string
+)
+{
+    jBC: REDO.B.REV.NAB.ACCT.REACH.WOF
+}
+

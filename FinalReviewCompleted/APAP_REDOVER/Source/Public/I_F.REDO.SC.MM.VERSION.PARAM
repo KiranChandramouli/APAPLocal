@@ -1,0 +1,21 @@
+* I_F.REDO.SC.MM.VERSION.PARAM Created 08 JAN 13 at 11:51AM by apap/MARI.3
+*      PREFIX[REDO.SMV]
+           EQU REDO.SMV.CATEGORY TO 1,   RedoScMmVersionParam_Category TO 1,
+               REDO.SMV.CURRENCY TO 2,   RedoScMmVersionParam_Currency TO 2,
+                REDO.SMV.ACCOUNT TO 3,   RedoScMmVersionParam_Account TO 3,
+             REDO.SMV.RESERVED.6 TO 4,   RedoScMmVersionParam_Reserved6 TO 4,
+             REDO.SMV.RESERVED.5 TO 5,   RedoScMmVersionParam_Reserved5 TO 5,
+             REDO.SMV.RESERVED.4 TO 6,   RedoScMmVersionParam_Reserved4 TO 6,
+             REDO.SMV.RESERVED.3 TO 7,   RedoScMmVersionParam_Reserved3 TO 7,
+             REDO.SMV.RESERVED.2 TO 8,   RedoScMmVersionParam_Reserved2 TO 8,
+             REDO.SMV.RESERVED.1 TO 9,   RedoScMmVersionParam_Reserved1 TO 9,
+               REDO.SMV.OVERRIDE TO 10,  RedoScMmVersionParam_Override TO 10,
+          REDO.SMV.RECORD.STATUS TO 11,  RedoScMmVersionParam_RecordStatus TO 11,
+                REDO.SMV.CURR.NO TO 12,  RedoScMmVersionParam_CurrNo TO 12,
+               REDO.SMV.INPUTTER TO 13,  RedoScMmVersionParam_Inputter TO 13,
+              REDO.SMV.DATE.TIME TO 14,  RedoScMmVersionParam_DateTime TO 14,
+             REDO.SMV.AUTHORISER TO 15,  RedoScMmVersionParam_Authoriser TO 15,
+                REDO.SMV.CO.CODE TO 16,  RedoScMmVersionParam_CoCode TO 16,
+              REDO.SMV.DEPT.CODE TO 17,  RedoScMmVersionParam_DeptCode TO 17,
+           REDO.SMV.AUDITOR.CODE TO 18,  RedoScMmVersionParam_AuditorCode TO 18,
+        REDO.SMV.AUDIT.DATE.TIME TO 19,  RedoScMmVersionParam_AuditDateTime TO 19

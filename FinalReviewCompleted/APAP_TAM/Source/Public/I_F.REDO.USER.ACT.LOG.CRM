@@ -1,0 +1,6 @@
+* I_F.REDO.USER.ACT.LOG.CRM Created 08 SEP 11 at 01:20PM by t24tqa02/TEM.SUDHAR.2
+*      PREFIX[USER.ACT]
+            EQU USER.ACT.CASE.ID TO 1,   RedoUserActLogCrm_CaseId TO 1,
+              USER.ACT.CASE.TYPE TO 2,   RedoUserActLogCrm_CaseType TO 2,
+            USER.ACT.CUSTOMER.ID TO 3,   RedoUserActLogCrm_CustomerId TO 3,
+                   USER.ACT.DATE TO 4,   RedoUserActLogCrm_Date TO 4

@@ -1,0 +1,9 @@
+* I_F.REDO.FT.HIS Created 19 APR 11 at 09:03PM by apapr8/DHAMUINP1
+*      PREFIX[REDO.FT.HIS]
+   EQU REDO.FT.HIS.TRANSACTION.TYPE TO 1,   RedoFtHis_TransactionType TO 1,
+              REDO.FT.HIS.DATE.TIME TO 2,   RedoFtHis_DateTime TO 2,
+            REDO.FT.HIS.DATE.OF.TXN TO 3,   RedoFtHis_DateOfTxn TO 3,
+                REDO.FT.HIS.CO.CODE TO 4,   RedoFtHis_CoCode TO 4,
+               REDO.FT.HIS.INPUTTER TO 5,   RedoFtHis_Inputter TO 5,
+        REDO.FT.HIS.L.FT.CMPNY.NAME TO 6,   RedoFtHis_LFtCmpnyName TO 6,
+         REDO.FT.HIS.DEBIT.CURRENCY TO 7,   RedoFtHis_DebitCurrency TO 7
