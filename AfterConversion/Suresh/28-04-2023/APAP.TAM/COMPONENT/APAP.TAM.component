@@ -1,0 +1,207 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoCallTfsDealSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: REDO.CALL.TFS.DEAL.SLIP
+}
+
+
+
+public method redoCheckAcctCcy (
+)
+{
+    jBC: REDO.CHECK.ACCT.CCY
+}
+
+
+
+public method redoCnvFtTtContId (
+)
+{
+    jBC: REDO.CNV.FT.TT.CONT.ID
+}
+
+
+
+public method redoCnvFtTtVersion (
+)
+{
+    jBC: REDO.CNV.FT.TT.VERSION
+}
+
+
+
+
+
+public method redoGenTfsDealSlip (
+)
+{
+    jBC: REDO.GEN.TFS.DEAL.SLIP
+}
+
+
+
+
+
+
+public method redoGetInterestProperty (
+    INOUT arrId string,
+    INOUT propName string,
+    INOUT outProp string,
+    INOUT err string
+)
+{
+    jBC: REDO.GET.INTEREST.PROPERTY
+}
+
+
+
+public method redoGetReportLoanPayamt (
+    INOUT yAaId string,
+    INOUT yRepayAmt string,
+    INOUT yDummyVar1 string,
+    INOUT yDummyVar2 string
+)
+{
+    jBC: REDO.GET.REPORT.LOAN.PAYAMT
+}
+
+
+
+
+
+public method redoIdTfsContextEnq (
+)
+{
+    jBC: REDO.ID.TFS.CONTEXT.ENQ
+}
+
+
+
+public method redoInpIntransitCheck (
+)
+{
+    jBC: REDO.INP.INTRANSIT.CHECK
+}
+
+
+
+
+public method redoPartTfsAutortn (
+)
+{
+    jBC: REDO.PART.TFS.AUTORTN
+}
+
+
+
+
+public method redoTfsWaiveChargeNo (
+)
+{
+    jBC: REDO.TFS.WAIVE.CHARGE.NO
+}
+
+
+
+public method redoTftGetAmount (
+    INOUT yFieldName string
+)
+{
+    jBC: REDO.TFT.GET.AMOUNT
+}
+
+
+
+public method redoUpdFundDep (
+)
+{
+    jBC: REDO.UPD.FUND.DEP
+}
+
+
+
+public method redoVAutPurgeTtprocess (
+)
+{
+    jBC: REDO.V.AUT.PURGE.TTPROCESS
+}
+
+
+
+public method redoVAuthFtDsQueueProcess (
+)
+{
+    jBC: REDO.V.AUTH.FT.DS.QUEUE.PROCESS
+}
+
+
+
+public method redoVAuthMandateOvr (
+)
+{
+    jBC: REDO.V.AUTH.MANDATE.OVR
+}
+
+
+
+public method redoVInpAmount (
+)
+{
+    jBC: REDO.V.INP.AMOUNT
+}
+
+
+
+public method redoVInpAmt (
+)
+{
+    jBC: REDO.V.INP.AMT
+}
+
+
+
+public method redoVInpVerifyStaff (
+)
+{
+    jBC: REDO.V.INP.VERIFY.STAFF
+}
+
+
+
+public method redoVValAccountSearch (
+)
+{
+    jBC: REDO.V.VAL.ACCOUNT.SEARCH
+}
+
+
+
+
+
+
+
+public method redoVcrChequeNumber (
+)
+{
+    jBC: REDO.VCR.CHEQUE.NUMBER
+}
+
+
+
+public method redoVinMtsChknum (
+)
+{
+    jBC: REDO.VIN.MTS.CHKNUM
+}
+
+
+
+
+
+

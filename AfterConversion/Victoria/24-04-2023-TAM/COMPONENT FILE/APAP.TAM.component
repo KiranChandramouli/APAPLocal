@@ -1,0 +1,346 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoSSysTime (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.SYS.TIME
+}
+
+
+
+public method redoSUpdAzGraceDays (
+)
+{
+    jBC: REDO.S.UPD.AZ.GRACE.DAYS
+}
+
+
+
+public method redoSVpSelChannel (
+    INOUT application string,
+    INOUT pgmVersion string,
+    INOUT transCode string,
+    INOUT yChannel string,
+    INOUT yMonChannel string
+)
+{
+    jBC: REDO.S.VP.SEL.CHANNEL
+}
+
+
+
+public method redoSapClearFile (
+)
+{
+    jBC: REDO.SAP.CLEAR.FILE
+}
+
+
+
+public method redoSolicitudCanal (
+)
+{
+    jBC: REDO.SOLICITUD.CANAL
+}
+
+
+
+public method redoStlmtAuthCode (
+)
+{
+    jBC: REDO.STLMT.AUTH.CODE
+}
+
+
+
+public method redoSysDateFormat (
+    INOUT yOut string
+)
+{
+    jBC: REDO.SYS.DATE.FORMAT
+}
+
+
+
+public method redoTAuthArrangement (
+)
+{
+    jBC: REDO.T.AUTH.ARRANGEMENT
+}
+
+
+
+public method redoTAuthArrangementFields (
+)
+{
+    jBC: REDO.T.AUTH.ARRANGEMENT.FIELDS
+}
+
+
+
+public method redoTempPartDisbUpdate (
+)
+{
+    jBC: REDO.TEMP.PART.DISB.UPDATE
+}
+
+
+
+public method redoTempTransType (
+)
+{
+    jBC: REDO.TEMP.TRANS.TYPE
+}
+
+
+
+public method redoTriggerPartDisBills (
+)
+{
+    jBC: REDO.TRIGGER.PART.DIS.BILLS
+}
+
+
+
+public method redoTtAcAzzRef (
+    INOUT yFieldName string
+)
+{
+    jBC: REDO.TT.AC.AZZ.REF
+}
+
+
+
+public method redoUpdAuthAle (
+)
+{
+    jBC: REDO.UPD.AUTH.ALE
+}
+
+
+
+public method redoUpdFtResub (
+    INOUT ftId string,
+    INOUT ftStatus string
+)
+{
+    jBC: REDO.UPD.FT.RESUB
+}
+
+
+
+public method redoUpdFulChqRev (
+    INOUT ckId string
+)
+{
+    jBC: REDO.UPD.FUL.CHQ.REV
+}
+
+
+
+public method redoUpdOrdCust (
+)
+{
+    jBC: REDO.UPD.ORD.CUST
+}
+
+
+
+public method redoUpdValItemValue (
+)
+{
+    jBC: REDO.UPD.VAL.ITEM.VALUE
+}
+
+
+
+public method redoUpdateBranchUnauthList (
+)
+{
+    jBC: REDO.UPDATE.BRANCH.UNAUTH.LIST
+}
+
+
+
+public method redoUpdateChequeAmounts (
+)
+{
+    jBC: REDO.UPDATE.CHEQUE.AMOUNTS
+}
+
+
+
+public method redoUpdateLimitAvlBalance (
+)
+{
+    jBC: REDO.UPDATE.LIMIT.AVL.BALANCE
+}
+
+
+
+public method redoUpdateInsuranceDetails (
+    INOUT insuranceId string
+)
+{
+    jBC: REDO.UPDATE.INSURANCE.DETAILS
+}
+
+
+
+public method redoUpdateMandateDetails (
+)
+{
+    jBC: REDO.UPDATE.MANDATE.DETAILS
+}
+
+
+
+public method redoUpdateServiceTime (
+)
+{
+    jBC: REDO.UPDATE.SERVICE.TIME
+}
+
+
+
+public method redoUpdtFxsnRun (
+)
+{
+    jBC: REDO.UPDT.FXSN.RUN
+}
+
+
+
+public method redoUploadCreditAccountCheck (
+    INOUT yAcctId string,
+    INOUT yFileType string,
+    INOUT yFileDetId string,
+    INOUT yAcctStatus string,
+    INOUT yBenId string
+)
+{
+    jBC: REDO.UPLOAD.CREDIT.ACCOUNT.CHECK
+}
+
+
+
+public method redoVAutAaDisburse (
+)
+{
+    jBC: REDO.V.AUT.AA.DISBURSE
+}
+
+
+
+public method redoVAutCreateStkent (
+)
+{
+    jBC: REDO.V.AUT.CREATE.STKENT
+}
+
+
+
+public method redoVAutDdNcfGen (
+)
+{
+    jBC: REDO.V.AUT.DD.NCF.GEN
+}
+
+
+
+public method redoVAuthChqReturn (
+)
+{
+    jBC: REDO.V.AUTH.CHQ.RETURN
+}
+
+
+
+public method redoVAuthCommAmt (
+)
+{
+    jBC: REDO.V.AUTH.COMM.AMT
+}
+
+
+
+public method redoVIdStatusCheck (
+)
+{
+    jBC: REDO.V.ID.STATUS.CHECK
+}
+
+
+
+public method redoVInpGarnishmentMaint (
+)
+{
+    jBC: REDO.V.INP.GARNISHMENT.MAINT
+}
+
+
+
+public method redoVInpInsPayType (
+)
+{
+    jBC: REDO.V.INP.INS.PAY.TYPE
+}
+
+
+
+public method redoVInpLimitCheck (
+)
+{
+    jBC: REDO.V.INP.LIMIT.CHECK
+}
+
+
+
+public method redoVInpMailOvr (
+)
+{
+    jBC: REDO.V.INP.MAIL.OVR
+}
+
+
+
+public method redoVInpUpdLastPrice (
+)
+{
+    jBC: REDO.V.INP.UPD.LAST.PRICE
+}
+
+
+
+public method redoVInpWaiveCharge (
+)
+{
+    jBC: REDO.V.INP.WAIVE.CHARGE
+}
+
+
+
+
+
+
+public method redoVLiveHisAccdef (
+)
+{
+    jBC: REDO.V.LIVE.HIS.ACCDEF
+}
+
+
+
+public method redoUpdateOutwardReturnChq (
+    INOUT accNo string,
+    INOUT yChqId string
+)
+{
+    jBC: REDO.UPDATE.OUTWARD.RETURN.CHQ
+}
+

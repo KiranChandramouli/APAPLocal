@@ -1,0 +1,96 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method redoCreArrAuthSplit (
+    INOUT yOfsSourceId string
+)
+{
+    jBC: REDO.CRE.ARR.AUTH.SPLIT
+}
+
+
+
+public method redoCreateArrangementAColl (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.COLL
+}
+
+
+
+public method redoCreateArrangementAIns (
+    INOUT result string
+)
+{
+    jBC: REDO.CREATE.ARRANGEMENT.A.INS
+}
+
+
+
+public method redoFiDebitProces (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES
+}
+
+
+
+public method redoFiDebitProcesBacen (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES.BACEN
+}
+
+
+
+public method redoFiDebitProcesOrange (
+    INOUT rParams string,
+    INOUT outResp string,
+    INOUT outErr string
+)
+{
+    jBC: REDO.FI.DEBIT.PROCES.ORANGE
+}
+
+
+
+public method redoFiLbApplyPymt (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT
+}
+
+
+
+public method redoFiLbApplyPymtDb (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DB
+}
+
+
+
+public method redoFiLbApplyPymtDr (
+    INOUT dataIn string,
+    INOUT dataOut string
+)
+{
+    jBC: REDO.FI.LB.APPLY.PYMT.DR
+}
+

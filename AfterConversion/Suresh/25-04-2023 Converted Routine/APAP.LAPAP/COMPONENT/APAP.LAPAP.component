@@ -1,0 +1,36 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+public method redoSRegCustomerExtract (
+    INOUT yCustomerId string,
+    INOUT yProductGroup string,
+    INOUT yRelCode string,
+    INOUT outArr string
+)
+{
+    jBC: REDO.S.REG.CUSTOMER.EXTRACT
+}
+
+
+
+public method redoSRteDocNumber (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.DOC.NUMBER
+}
+
+
+
+public method redoSRteDocType (
+    INOUT yOut string
+)
+{
+    jBC: REDO.S.RTE.DOC.TYPE
+}
+
