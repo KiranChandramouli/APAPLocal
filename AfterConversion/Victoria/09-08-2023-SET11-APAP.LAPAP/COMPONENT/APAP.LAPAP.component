@@ -1,0 +1,57 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lapapOfsBuilder (
+    INOUT pApp string,
+    INOUT pVer string,
+    INOUT pFunc string,
+    INOUT pNoOfAuth string,
+    INOUT pProVal string,
+    INOUT pGtsControl string,
+    INOUT pUser string,
+    INOUT pPass string,
+    INOUT pCompany string,
+    INOUT pTxnId string,
+    INOUT rData string,
+    INOUT oOfs string
+)
+{
+    jBC: LAPAP.OFS.BUILDER
+}
+
+
+public method lapapProcCobrosCj (
+    INOUT yRegistros string
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ
+}
+
+
+
+public method lapapProcCobrosCjLoad (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.LOAD
+}
+
+
+
+public method lapapProcCobrosCjPost (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.POST
+}
+
+
+
+public method lapapProcCobrosCjSelect (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.SELECT
+}
+
+
