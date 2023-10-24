@@ -1,0 +1,542 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+public method redoGetBillActualAmt (
+    INOUT yBillIds string,
+    INOUT rArray string,
+    INOUT yFutureUse string
+)
+{
+    jBC: REDO.GET.BILL.ACTUAL.AMT
+}
+
+
+
+public method redoGetClass119 (
+)
+{
+    jBC: REDO.GET.CLASS.119
+}
+
+
+
+public method redoGetColDesc (
+)
+{
+    jBC: REDO.GET.COL.DESC
+}
+
+
+
+public method redoGetCollateralId (
+    INOUT enqData string
+)
+{
+    jBC: REDO.GET.COLLATERAL.ID
+}
+
+
+
+public method redoGetDealName (
+    INOUT yFinalName string
+)
+{
+    jBC: REDO.GET.DEAL.NAME
+}
+
+
+
+public method redoGetDisbDate (
+)
+{
+    jBC: REDO.GET.DISB.DATE
+}
+
+
+
+public method redoGetDisbPaymDetails (
+)
+{
+    jBC: REDO.GET.DISB.PAYM.DETAILS
+}
+
+
+
+public method redoGetHighAci (
+    INOUT aciId string,
+    INOUT yCur string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.HIGH.ACI
+}
+
+
+
+public method redoGetHighGci (
+    INOUT gciId string,
+    INOUT yCur string,
+    INOUT yRate string
+)
+{
+    jBC: REDO.GET.HIGH.GCI
+}
+
+
+
+public method redoGetInterestProperty (
+    INOUT arrId string,
+    INOUT propName string,
+    INOUT outProp string,
+    INOUT err string
+)
+{
+    jBC: REDO.GET.INTEREST.PROPERTY
+}
+
+
+
+public method redoGetMarginId (
+    INOUT yCampType string,
+    INOUT yAffCamp string,
+    INOUT rRedoRateChange string,
+    INOUT yMarginId string
+)
+{
+    jBC: REDO.GET.MARGIN.ID
+}
+
+
+
+public method redoGetMessage (
+    INOUT varAcId string
+)
+{
+    jBC: REDO.GET.MESSAGE
+}
+
+
+
+public method redoGetMthDetails (
+    INOUT date1 string,
+    INOUT date2 string,
+    INOUT outMonth string,
+    INOUT outDate string,
+    INOUT outCount string,
+    INOUT outMthDate string
+)
+{
+    jBC: REDO.GET.MTH.DETAILS
+}
+
+
+
+public method redoGetNotifyList (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.NOTIFY.LIST
+}
+
+
+
+public method redoGetNvVersionTypes (
+    INOUT yTransId string,
+    INOUT yVersionNames string,
+    INOUT yVersionTypes string,
+    INOUT yProcType string,
+    INOUT yRecepMethod string
+)
+{
+    jBC: REDO.GET.NV.VERSION.TYPES
+}
+
+
+
+public method redoGetOsAmt (
+)
+{
+    jBC: REDO.GET.OS.AMT
+}
+
+
+
+
+public method redoGetReportLoanPayamt (
+    INOUT yAaId string,
+    INOUT yRepayAmt string,
+    INOUT yDummyVar1 string,
+    INOUT yDummyVar2 string
+)
+{
+    jBC: REDO.GET.REPORT.LOAN.PAYAMT
+}
+
+
+
+public method redoGetRequestType (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.REQUEST.TYPE
+}
+
+
+
+public method redoGetRestructDetails (
+    INOUT yArrangeId string,
+    INOUT loanNum string,
+    INOUT portfolioType string,
+    INOUT product string,
+    INOUT loanOriginAgency string,
+    INOUT prevLoanNum string,
+    INOUT primeName string,
+    INOUT restructureDate string,
+    INOUT currDueDate string,
+    INOUT transactionUser string,
+    INOUT authorisingUser string
+)
+{
+    jBC: REDO.GET.RESTRUCT.DETAILS
+}
+
+
+
+public method redoGetTxnRevChainAu (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.TXN.REV.CHAIN.AU
+}
+
+
+
+public method redoGetTxnRevChain (
+    INOUT yFinalArray string
+)
+{
+    jBC: REDO.GET.TXN.REV.CHAIN
+}
+
+
+
+
+
+
+public method redoGetUploadType (
+)
+{
+    jBC: REDO.GET.UPLOAD.TYPE
+}
+
+
+
+public method redoGlHExtractParameterFields (
+)
+{
+    jBC: REDO.GL.H.EXTRACT.PARAMETER.FIELDS
+}
+
+
+
+public method redoGlHExtractParameterValidate (
+)
+{
+    jBC: REDO.GL.H.EXTRACT.PARAMETER.VALIDATE
+}
+
+
+
+public method redoGlLRerunExtn (
+)
+{
+    jBC: REDO.GL.L.RERUN.EXTN
+}
+
+
+
+public method redoGuarantorTypeFields (
+)
+{
+    jBC: REDO.GUARANTOR.TYPE.FIELDS
+}
+
+
+
+public method redoHAdminChequesAuthorise (
+)
+{
+    jBC: REDO.H.ADMIN.CHEQUES.AUTHORISE
+}
+
+
+
+public method redoHAdminCheques (
+)
+{
+    jBC: REDO.H.ADMIN.CHEQUES
+}
+
+
+
+public method redoHAzReinvDeposit (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT
+}
+
+
+
+public method redoHAzReinvDepositFields (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT.FIELDS
+}
+
+
+
+public method redoHAzReinvDepositValidate (
+)
+{
+    jBC: REDO.H.AZ.REINV.DEPOSIT.VALIDATE
+}
+
+
+
+public method redoHCashierPrint (
+)
+{
+    jBC: REDO.H.CASHIER.PRINT
+}
+
+
+
+public method redoHCashierPrintFields (
+)
+{
+    jBC: REDO.H.CASHIER.PRINT.FIELDS
+}
+
+
+
+public method redoHCcyRules (
+)
+{
+    jBC: REDO.H.CCY.RULES
+}
+
+
+
+public method redoHCheqChangeParamFields (
+)
+{
+    jBC: REDO.H.CHEQ.CHANGE.PARAM.FIELDS
+}
+
+
+
+public method redoHChequeRegister (
+)
+{
+    jBC: REDO.H.CHEQUE.REGISTER
+}
+
+
+
+public method redoHChequeRegisterFields (
+)
+{
+    jBC: REDO.H.CHEQUE.REGISTER.FIELDS
+}
+
+
+
+public method redoHCustWriteProvFields (
+)
+{
+    jBC: REDO.H.CUST.WRITE.PROV.FIELDS
+}
+
+
+
+public method redoHCustomerProvision ( 
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISION
+}
+
+
+
+public method redoHCustomerProvisionFields (
+)
+{
+    jBC: REDO.H.CUSTOMER.PROVISION.FIELDS
+}
+
+
+
+public method redoHDepositReceipts (
+)
+{
+    jBC: REDO.H.DEPOSIT.RECEIPTS
+}
+
+
+
+public method redoHDepositReceiptsFields (
+)
+{
+    jBC: REDO.H.DEPOSIT.RECEIPTS.FIELDS
+}
+
+
+
+public method redoHForexAml (
+)
+{ 
+    jBC: REDO.H.FOREX.AML
+} 
+
+
+
+public method redoHInventoryParameterFields (
+)
+{
+    jBC: REDO.H.INVENTORY.PARAMETER.FIELDS
+}
+
+
+
+public method redoHItemDetails (
+)
+{
+    jBC: REDO.H.ITEM.DETAILS
+}
+
+
+
+public method redoHItemDetailsFields (
+)
+{
+    jBC: REDO.H.ITEM.DETAILS.FIELDS
+}
+
+
+
+public method redoHMotExcepFields (
+)
+{
+    jBC: REDO.H.MOT.EXCEP.FIELDS
+}
+
+
+
+
+
+
+public method redoHOrderDetails (
+)
+{
+    jBC: REDO.H.ORDER.DETAILS
+}
+
+
+
+public method redoHOrderDetailsFields (
+)
+{
+    jBC: REDO.H.ORDER.DETAILS.FIELDS
+}
+
+
+
+public method redoHPassbookInventory (
+)
+{
+    jBC: REDO.H.PASSBOOK.INVENTORY
+}
+
+
+
+public method redoHPassbookInventoryFields (
+)
+{
+    jBC: REDO.H.PASSBOOK.INVENTORY.FIELDS
+}
+
+
+
+public method redoHPayModeParam (
+)
+{
+    jBC: REDO.H.PAY.MODE.PARAM
+}
+
+
+
+public method redoHPolicyNumber (
+) 
+{ 
+    jBC: REDO.H.POLICY.NUMBER
+}
+
+ 
+
+public method redoHPolicyNumberFields (
+)
+{
+    jBC: REDO.H.POLICY.NUMBER.FIELDS
+}
+
+
+
+public method redoHProvisionParameterAuthorise (
+)
+{
+    jBC: REDO.H.PROVISION.PARAMETER.AUTHORISE
+}
+
+
+
+public method redoHReciptDate (
+)
+{
+    jBC: REDO.H.RECIPT.DATE
+}
+
+
+
+public method redoHReorderDetails (
+)
+{
+    jBC: REDO.H.REORDER.DETAILS
+}
+
+
+
+public method redoHReorderDetailsFields (
+)
+{
+    jBC: REDO.H.REORDER.DETAILS.FIELDS
+}
+
+
+
+public method redoHRevaluationParam (
+)
+{
+    jBC: REDO.H.REVALUATION.PARAM
+}
+
+
+
+public method redoHRevaluationParamFields (
+)
+{
+    jBC: REDO.H.REVALUATION.PARAM.FIELDS
+}
+
