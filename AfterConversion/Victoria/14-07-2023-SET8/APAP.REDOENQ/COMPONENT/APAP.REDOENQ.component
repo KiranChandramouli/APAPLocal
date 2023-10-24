@@ -1,0 +1,151 @@
+component APAP.REDOENQ
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method nofileApapDetailLoansPayments (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.APAP.DETAIL.LOANS.PAYMENTS
+}
+
+
+
+public method nofileRedoEnqAthAcquirer (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.REDO.ENQ.ATH.ACQUIRER
+}
+
+
+
+public method redoECashTransNau (
+   INOUT yFinalData string
+)
+{
+   jBC: REDO.E.CASH.TRANS.NAU
+}
+
+
+
+public method redoECheckUser (
+   INOUT enqData string
+)
+{
+   jBC: REDO.E.CHECK.USER
+}
+
+
+
+public method redoEChkUser (
+   INOUT enqData string
+)
+{
+   jBC: REDO.E.CHK.USER
+}
+
+
+
+public method redoEFtTtList (
+   INOUT enqData string
+)
+{
+   jBC: REDO.E.FT.TT.LIST
+}
+
+
+
+public method redoEFtTtNau (
+   INOUT enqData string
+)
+{
+   jBC: REDO.E.FT.TT.NAU
+}
+
+
+
+public method redoEMbTxnGetEntries (
+   INOUT entList string
+)
+{
+   jBC: REDO.E.MB.TXN.GET.ENTRIES
+}
+
+
+
+public method redoENofClicuent (
+   INOUT cuDetArr string
+)
+{
+   jBC: REDO.E.NOF.CLICUENT
+}
+
+
+
+public method redoENofRteCobRtn (
+   INOUT txnArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.COB.RTN
+}
+
+
+
+public method redoENofRteRevCobRtn (
+   INOUT txnRevArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.REV.COB.RTN
+}
+
+
+
+public method redoENofRteRevRtn (
+   INOUT txnRevArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.REV.RTN
+}
+
+
+
+public method redoENofRteRtn (
+   INOUT txnArray string
+)
+{
+   jBC: REDO.E.NOF.RTE.RTN
+}
+
+
+
+public method redoNofGetRetChqTrans (
+   INOUT yFinalArray string
+)
+{
+   jBC: REDO.NOF.GET.RET.CHQ.TRANS
+}
+
+
+
+public method redoNofilePrintDealslip (
+   INOUT yData string
+)
+{
+   jBC: REDO.NOFILE.PRINT.DEALSLIP
+}
+
+
+
+public method redoNofileReprintDealslip (
+   INOUT yData string
+)
+{
+   jBC: REDO.NOFILE.REPRINT.DEALSLIP
+}
+
+
+
+

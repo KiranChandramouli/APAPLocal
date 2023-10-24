@@ -1,0 +1,38 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapEnqNofAccContact (
+   INOUT yFinal string
+)
+{
+   jBC: L.APAP.ENQ.NOF.ACC.CONTACT
+}
+
+
+
+public method lapapInpTaxChrgRt (
+)
+{
+   jBC: LAPAP.INP.TAX.CHRG.RT
+}
+
+
+
+
+public method lapapVInpFxsnOvr (
+)
+{
+   jBC: LAPAP.V.INP.FXSN.OVR
+}
+
+
+
+public method redoAmlNoclientFcyCheck (
+)
+{
+   jBC: REDO.AML.NOCLIENT.FCY.CHECK
+}
+

@@ -1,0 +1,200 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+private method boxNumFmtRtn (
+    INOUT yData string
+)
+{
+    jBC: BOX.NUM.FMT.RTN
+}
+
+
+
+private method captureSpf (
+)
+{
+    jBC: CAPTURE.SPF
+}
+
+
+
+private method centralBank (
+)
+{
+    jBC: CENTRAL.BANK
+}
+
+
+
+private method centralBankFields (
+)
+{
+    jBC: CENTRAL.BANK.FIELDS
+}
+
+
+
+private method fxDealIdLog (
+)
+{
+    jBC: FX.DEAL.ID.LOG
+}
+
+
+
+private method fxDealIdLogFields (
+)
+{
+    jBC: FX.DEAL.ID.LOG.FIELDS
+}
+
+
+
+private method interfaceConfInput (
+)
+{
+    jBC: INTERFACE.CONF.INPUT
+}
+
+
+
+private method interfaceConfigPrt (
+)
+{
+    jBC: INTERFACE.CONFIG.PRT
+}
+
+
+
+private method latamJournalLineFields (
+)
+{
+    jBC: LATAM.JOURNAL.LINE.FIELDS
+}
+
+
+
+private method latamVAuthUpdFiles (
+)
+{
+    jBC: LATAM.V.AUTH.UPD.FILES
+}
+
+
+
+private method multiBranchInternalAccount (
+)
+{
+    jBC: MULTI.BRANCH.INTERNAL.ACCOUNT
+}
+
+
+
+private method multiBranchInternalAccountFields (
+)
+{
+    jBC: MULTI.BRANCH.INTERNAL.ACCOUNT.FIELDS
+}
+
+
+
+private method multiTransactionService (
+)
+{
+    jBC: MULTI.TRANSACTION.SERVICE
+}
+
+
+
+private method multiTransactionServiceFields (
+)
+{
+    jBC: MULTI.TRANSACTION.SERVICE.FIELDS
+}
+
+
+
+private method multiTransactionServiceId (
+)
+{
+    jBC: MULTI.TRANSACTION.SERVICE.ID
+}
+
+
+
+private method multiTransactionServiceRecord (
+)
+{
+    jBC: MULTI.TRANSACTION.SERVICE.RECORD
+}
+
+
+
+private method multiTxnService1 (
+)
+{
+    jBC: MULTI.TXN.SERVICE1
+}
+
+
+
+private method multiTxnService1Fields (
+)
+{
+    jBC: MULTI.TXN.SERVICE1.FIELDS
+}
+
+
+
+private method nauRecords (
+)
+{
+    jBC: NAU.RECORDS
+}
+
+
+
+private method overdraftAcctRtn (
+    INOUT yOutArray string
+)
+{
+    jBC: OVERDRAFT.ACCT.RTN
+}
+
+
+
+private method redoCallListCateg (
+)
+{
+    jBC: REDO.CALL.LIST.CATEG
+}
+
+
+
+private method redoCallListCategFields (
+)
+{
+    jBC: REDO.CALL.LIST.CATEG.FIELDS
+}
+
+
+
+private method redoCallNvDealSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: REDO.CALL.NV.DEAL.SLIP
+}
+
+
+
+private method redoCallTfsDealSlip (
+    INOUT yInpDeal string
+)
+{
+    jBC: REDO.CALL.TFS.DEAL.SLIP
+}
+

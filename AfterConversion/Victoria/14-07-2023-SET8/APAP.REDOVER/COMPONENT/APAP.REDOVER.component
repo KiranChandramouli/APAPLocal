@@ -1,0 +1,116 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoAutOnlineMsg (
+)
+{
+    jBC: REDO.AUT.ONLINE.MSG
+}
+
+
+
+public method redoAutTfsLock (
+)
+{
+    jBC: REDO.AUT.TFS.LOCK
+}
+
+
+
+public method redoInpChqRepWrite (
+)
+{
+    jBC: REDO.INP.CHQ.REP.WRITE
+}
+
+
+
+public method redoInpLetterIssue (
+)
+{
+    jBC: REDO.INP.LETTER.ISSUE
+}
+
+
+
+public method redoInpPrRemainAmtRepay (
+)
+{
+    jBC: REDO.INP.PR.REMAIN.AMT.REPAY
+}
+
+
+
+public method redoInpUpdLoanLocTab (
+)
+{
+    jBC: REDO.INP.UPD.LOAN.LOC.TAB
+}
+
+
+
+public method redoVAutReverseChg (
+)
+{
+    jBC: REDO.V.AUT.REVERSE.CHG
+}
+
+
+
+public method redoVAutUpdateBranchLost (
+)
+{
+    jBC: REDO.V.AUT.UPDATE.BRANCH.LOST
+}
+
+
+
+public method redoVAutUpdateBranchStk (
+)
+{
+    jBC: REDO.V.AUT.UPDATE.BRANCH.STK
+}
+
+
+
+public method redoVAuthCancellation (
+)
+{
+    jBC: REDO.V.AUTH.CANCELLATION
+}
+
+
+
+public method redoVAuthDepReceipts (
+)
+{
+    jBC: REDO.V.AUTH.DEP.RECEIPTS
+}
+
+
+
+public method redoVAuthDestruction (
+)
+{
+    jBC: REDO.V.AUTH.DESTRUCTION
+}
+
+
+
+public method redoVTelGroup (
+)
+{
+    jBC: REDO.V.TEL.GROUP
+}
+
+
+
+public method redoVValDisbLoan (
+)
+{
+    jBC: REDO.V.VAL.DISB.LOAN
+}
+

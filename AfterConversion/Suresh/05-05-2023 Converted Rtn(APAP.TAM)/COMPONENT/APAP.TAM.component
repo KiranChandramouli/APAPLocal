@@ -1,0 +1,387 @@
+public method redoCaptureCreditVoucher (
+)
+{
+    jBC: REDO.CAPTURE.CREDIT.VOUCHER
+}
+
+
+
+public method redoCaptureCreditVoucherFields (
+)
+{
+    jBC: REDO.CAPTURE.CREDIT.VOUCHER.FIELDS
+}
+
+
+
+public method redoCashier (
+)
+{
+    jBC: REDO.CASHIER
+}
+
+
+
+public method redoCashierRoles (
+)
+{
+    jBC: REDO.CASHIER.ROLES
+}
+
+
+
+public method redoCcrgBalanceTypeParamFields (
+)
+{
+    jBC: REDO.CCRG.BALANCE.TYPE.PARAM.FIELDS
+}
+
+
+
+public method redoCcrgBalanceTypeParamValidate (
+)
+{
+    jBC: REDO.CCRG.BALANCE.TYPE.PARAM.VALIDATE
+}
+
+
+
+
+public method redoCcrgCalMaxAmount (
+    INOUT pInRtn string
+)
+{
+    jBC: REDO.CCRG.CAL.MAX.AMOUNT
+}
+
+
+
+public method redoCcrgParameters (
+)
+{
+    jBC: REDO.CCRG.PARAMETERS
+}
+
+
+
+public method redoCcrgParametersFields (
+)
+{
+    jBC: REDO.CCRG.PARAMETERS.FIELDS
+}
+
+
+
+public method redoCcrgRiskLimitParam (
+)
+{
+    jBC: REDO.CCRG.RISK.LIMIT.PARAM
+}
+
+
+
+public method redoCcrgRiskLimitParamFields (
+)
+{
+    jBC: REDO.CCRG.RISK.LIMIT.PARAM.FIELDS
+}
+
+
+
+public method redoCcrgRlBalDetFields (
+)
+{
+    jBC: REDO.CCRG.RL.BAL.DET.FIELDS
+}
+
+
+
+public method redoCcrgRlBalMain (
+)
+{
+    jBC: REDO.CCRG.RL.BAL.MAIN
+}
+
+
+
+public method redoCcrgRlBalMainFields (
+)
+{
+    jBC: REDO.CCRG.RL.BAL.MAIN.FIELDS
+}
+
+
+
+public method redoCcrgRlEffeBuild (
+    INOUT outData string
+)
+{
+    jBC: REDO.CCRG.RL.EFFE.BUILD
+}
+
+
+
+public method redoCcrgTechnicalReserves (
+)
+{
+    jBC: REDO.CCRG.TECHNICAL.RESERVES
+}
+
+
+
+public method redoCcrgTechnicalReservesFields (
+)
+{
+    jBC: REDO.CCRG.TECHNICAL.RESERVES.FIELDS
+}
+
+
+
+public method redoCcrgTechnicalReservesRecord (
+)
+{
+    jBC: REDO.CCRG.TECHNICAL.RESERVES.RECORD
+}
+
+
+
+public method redoCcrgUpdRlpMaxAmount (
+)
+{
+    jBC: REDO.CCRG.UPD.RLP.MAX.AMOUNT
+}
+
+
+
+public method redoChangeNabStatus (
+)
+{
+    jBC: REDO.CHANGE.NAB.STATUS
+}
+
+
+
+public method redoChargeParam (
+)
+{
+    jBC: REDO.CHARGE.PARAM
+}
+
+
+
+public method redoChargeParamFields (
+)
+{
+    jBC: REDO.CHARGE.PARAM.FIELDS
+}
+
+
+
+public method redoChargeParamValidate (
+)
+{
+    jBC: REDO.CHARGE.PARAM.VALIDATE
+}
+
+
+
+public method redoCheckNextVrns (
+)
+{
+    jBC: REDO.CHECK.NEXT.VRNS
+}
+
+
+
+public method redoCheckNostroAcct (
+)
+{
+    jBC: REDO.CHECK.NOSTRO.ACCT
+}
+
+
+
+public method redoCheckPayoffBill (
+)
+{
+    jBC: REDO.CHECK.PAYOFF.BILL
+}
+
+
+
+public method redoCheckReqExtract (
+)
+{
+    jBC: REDO.CHECK.REQ.EXTRACT
+}
+
+
+
+public method redoChequeFtAutortn (
+)
+{
+    jBC: REDO.CHEQUE.FT.AUTORTN
+}
+
+
+
+public method redoChequeProcess (
+)
+{
+    jBC: REDO.CHEQUE.PROCESS
+}
+
+
+
+public method redoChequeProcessFields (
+)
+{
+    jBC: REDO.CHEQUE.PROCESS.FIELDS
+}
+
+
+
+
+
+
+public method redoChequeProcessId (
+)
+{
+    jBC: REDO.CHEQUE.PROCESS.ID
+}
+
+
+
+public method redoChkAzDepositPrint (
+)
+{
+    jBC: REDO.CHK.AZ.DEPOSIT.PRINT
+}
+
+
+
+public method redoChkCardDamage (
+)
+{
+    jBC: REDO.CHK.CARD.DAMAGE
+}
+
+
+
+public method redoChkCustomerAccount (
+)
+{
+    jBC: REDO.CHK.CUSTOMER.ACCOUNT
+}
+
+
+
+public method redoChkCustomerType (
+)
+{
+    jBC: REDO.CHK.CUSTOMER.TYPE
+}
+
+
+
+public method redoChkRequestQtyLimit (
+)
+{
+    jBC: REDO.CHK.REQUEST.QTY.LIMIT
+}
+
+
+
+public method redoChkSaveCustId (
+)
+{
+    jBC: REDO.CHK.SAVE.CUST.ID
+}
+
+
+    
+
+
+public method redoChkStoStatusCond (
+    INOUT stoId string,
+    INOUT rSto string,
+    INOUT rAcc string,
+    INOUT curAmt string
+)
+{
+    jBC: REDO.CHK.STO.STATUS.COND
+}
+
+
+
+public method redoChkUserActLogCrm (
+)
+{
+    jBC: REDO.CHK.USER.ACT.LOG.CRM
+}
+
+
+
+public method redoChqValidPeriodFields (
+)
+{
+    jBC: REDO.CHQ.VALID.PERIOD.FIELDS
+}	
+
+
+
+public method redoCiuuLoanDestination (
+)
+{
+    jBC: REDO.CIUU.LOAN.DESTINATION
+}
+
+
+
+
+public method redoCiuuLoanDestinationFields (
+)
+{
+    jBC: REDO.CIUU.LOAN.DESTINATION.FIELDS
+}
+
+
+
+public method redoCkPoNormalRep (
+)
+{
+    jBC: REDO.CK.PO.NORMAL.REP
+}
+
+
+
+public method redoCkPoNormalRepVl (
+)
+{
+    jBC: REDO.CK.PO.NORMAL.REP.VL
+}
+
+
+
+public method redoCkPrevPayofRepay (
+)
+{
+    jBC: REDO.CK.PREV.PAYOF.REPAY
+}
+
+
+
+public method redoClaimStatusMap (
+)
+{
+    jBC: REDO.CLAIM.STATUS.MAP
+}
+
+
+
+public method redoCloseAcct (
+)
+{
+    jBC: REDO.CLOSE.ACCT
+}
+
