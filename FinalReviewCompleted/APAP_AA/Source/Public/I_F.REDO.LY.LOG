@@ -1,6 +1,0 @@
-* I_F.REDO.LY.LOG Created 23 JUN 10 at 08:03PM by apapr8/SUDHARSAN
-*      PREFIX[REDO.LOG]
-          EQU REDO.LOG.PROC.DATE TO 1,   RedoLyLog_ProcDate TO 1,
-              REDO.LOG.PROC.TIME TO 2,   RedoLyLog_ProcTime TO 2,
-                   REDO.LOG.FILE TO 3,   RedoLyLog_File TO 3,
-                 REDO.LOG.STATUS TO 4,   RedoLyLog_Status TO 4

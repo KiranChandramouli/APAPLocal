@@ -1,3 +1,0 @@
-* I_F.REDO.AT.USER.PASS Created 02 DEC 10 at 01:25AM by R09/ROBERTO.01
-*      PREFIX[AT.US]
-          EQU AT.US.USER.PASS TO 1,   RedoAtUserPass_UserPass TO 1

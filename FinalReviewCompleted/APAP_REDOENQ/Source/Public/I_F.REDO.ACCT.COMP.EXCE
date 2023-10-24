@@ -1,3 +1,0 @@
-* I_F.REDO.ACCT.COMP.EXCE Created 20 OCT 11 at 02:36PM by apap/BROWSER.1
-*      PREFIX[ACCT.COMP.EX]
-            EQU ACCT.COMP.EX.ACCOUNT TO 1,   RedoAcctCompExce_Account TO 1

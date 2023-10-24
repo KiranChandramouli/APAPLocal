@@ -1,8 +1,0 @@
-* I_F.REDO.APAP.CUS.FIELD.CHANGE Created 14 SEP 10 at 06:22PM by apapr8/SHIVA.1
-*      PREFIX[CUS.FLD]
-           EQU CUS.FLD.FLD.NAME TO 1,   RedoApapCusFieldChange_FldName TO 1,
-           CUS.FLD.ACCT.OFFICER TO 2,   RedoApapCusFieldChange_AcctOfficer TO 2,
-           CUS.FLD.OTHR.OFFICER TO 3,   RedoApapCusFieldChange_OthrOfficer TO 3,
-            CUS.FLD.PERSON.TYPE TO 4,   RedoApapCusFieldChange_PersonType TO 4,
-                   CUS.FLD.DATE TO 5,   RedoApapCusFieldChange_Date TO 5,
-                CUS.FLD.INPUTER TO 6,   RedoApapCusFieldChange_Inputer TO 6

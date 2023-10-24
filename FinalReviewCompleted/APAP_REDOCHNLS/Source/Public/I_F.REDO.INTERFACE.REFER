@@ -1,4 +1,0 @@
-* I_F.REDO.INTERFACE.REFER Created 23 OCT 10 at 02:11PM by apapr8/SHAKTI1
-*      PREFIX[REDO.INT.REF]
-     EQU REDO.INT.REF.INTERFACE.NAME TO 1,   RedoInterfaceRefer_InterfaceName TO 1,
-           REDO.INT.REF.REFERENCE.NO TO 2,   RedoInterfaceRefer_ReferenceNo TO 2
