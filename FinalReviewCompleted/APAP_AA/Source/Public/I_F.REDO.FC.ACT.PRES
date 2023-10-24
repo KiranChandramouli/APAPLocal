@@ -1,0 +1,22 @@
+* I_F.REDO.FC.ACT.PRES Created 29 AUG 11 at 11:05AM by t24bqa02/BTO
+*      PREFIX[REDO.FC.ACT]
+       EQU REDO.FC.ACT.DESC.PRODUCT TO 1,   RedoFcActPres_DescProduct TO 1,
+            REDO.FC.ACT.RESERVED.10 TO 2,   RedoFcActPres_Reserved10 TO 2,
+             REDO.FC.ACT.RESERVED.9 TO 3,   RedoFcActPres_Reserved9 TO 3,
+             REDO.FC.ACT.RESERVED.8 TO 4,   RedoFcActPres_Reserved8 TO 4,
+             REDO.FC.ACT.RESERVED.7 TO 5,   RedoFcActPres_Reserved7 TO 5,
+             REDO.FC.ACT.RESERVED.6 TO 6,   RedoFcActPres_Reserved6 TO 6,
+             REDO.FC.ACT.RESERVED.5 TO 7,   RedoFcActPres_Reserved5 TO 7,
+             REDO.FC.ACT.RESERVED.4 TO 8,   RedoFcActPres_Reserved4 TO 8,
+             REDO.FC.ACT.RESERVED.3 TO 9,   RedoFcActPres_Reserved3 TO 9,
+             REDO.FC.ACT.RESERVED.2 TO 10,  RedoFcActPres_Reserved2 TO 10,
+             REDO.FC.ACT.RESERVED.1 TO 11,  RedoFcActPres_Reserved1 TO 11,
+          REDO.FC.ACT.RECORD.STATUS TO 12,  RedoFcActPres_RecordStatus TO 12,
+                REDO.FC.ACT.CURR.NO TO 13,  RedoFcActPres_CurrNo TO 13,
+               REDO.FC.ACT.INPUTTER TO 14,  RedoFcActPres_Inputter TO 14,
+              REDO.FC.ACT.DATE.TIME TO 15,  RedoFcActPres_DateTime TO 15,
+             REDO.FC.ACT.AUTHORISER TO 16,  RedoFcActPres_Authoriser TO 16,
+                REDO.FC.ACT.CO.CODE TO 17,  RedoFcActPres_CoCode TO 17,
+              REDO.FC.ACT.DEPT.CODE TO 18,  RedoFcActPres_DeptCode TO 18,
+           REDO.FC.ACT.AUDITOR.CODE TO 19,  RedoFcActPres_AuditorCode TO 19,
+        REDO.FC.ACT.AUDIT.DATE.TIME TO 20,  RedoFcActPres_AuditDateTime TO 20

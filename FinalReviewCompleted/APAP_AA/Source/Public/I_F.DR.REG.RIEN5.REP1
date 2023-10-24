@@ -1,0 +1,15 @@
+* I_F.DR.REG.RIEN5.REP1 Created 10 JUL 14 at 12:24PM by t24uatd/AKUMAR01
+*      PREFIX[DR.RIEN5.REP1]
+               EQU DR.RIEN5.REP1.RATE TO 1,   DrRegRien5Rep1_Rate TO 1,
+             DR.RIEN5.REP1.RANGE.0.15 TO 2,   DrRegRien5Rep1_Range015 TO 2,
+            DR.RIEN5.REP1.RANGE.16.30 TO 3,   DrRegRien5Rep1_Range1630 TO 3,
+            DR.RIEN5.REP1.RANGE.31.60 TO 4,   DrRegRien5Rep1_Range3160 TO 4,
+            DR.RIEN5.REP1.RANGE.61.90 TO 5,   DrRegRien5Rep1_Range6190 TO 5,
+           DR.RIEN5.REP1.RANGE.91.180 TO 6,   DrRegRien5Rep1_Range91180 TO 6,
+          DR.RIEN5.REP1.RANGE.181.360 TO 7,   DrRegRien5Rep1_Range181360 TO 7,
+          DR.RIEN5.REP1.RANGE.361.720 TO 8,   DrRegRien5Rep1_Range361720 TO 8,
+         DR.RIEN5.REP1.RANGE.721.1080 TO 9,   DrRegRien5Rep1_Range7211080 TO 9,
+        DR.RIEN5.REP1.RANGE.1081.1440 TO 10,  DrRegRien5Rep1_Range10811440 TO 10,
+        DR.RIEN5.REP1.RANGE.1441.1800 TO 11,  DrRegRien5Rep1_Range14411800 TO 11,
+             DR.RIEN5.REP1.RANGE.1881 TO 12,  DrRegRien5Rep1_Range1881 TO 12,
+          DR.RIEN5.REP1.INDETERMINATE TO 13,  DrRegRien5Rep1_Indeterminate TO 13
