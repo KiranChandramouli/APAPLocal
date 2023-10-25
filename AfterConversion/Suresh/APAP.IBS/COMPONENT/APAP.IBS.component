@@ -1,0 +1,297 @@
+component APAP.IBS
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+ 
+
+ 
+
+public method apapGetCeritosOptfmt (
+    INOUT mobRequest string,
+    INOUT mobResponse string
+)
+{
+    jBC: APAP.GET.CERITOS.OPTFMT
+}
+
+
+
+public method apapGetCeritosTotFiltre (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.CERITOS.TOT.FILTRE
+}
+
+
+
+public method apapGetDepAcctFilter (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.DEP.ACCT.FILTER
+}
+
+
+
+public method apapGetLoanAcctFilter (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.LOAN.ACCT.FILTER
+}
+
+
+
+public method apapGetLoanAcctOptfmt (
+    INOUT mobRequest string,
+    INOUT mobResponse string
+)
+{
+    jBC: APAP.GET.LOAN.ACCT.OPTFMT
+}
+
+
+
+public method apapGetLoanStmtFilter (
+    INOUT request string
+)
+{
+    jBC: APAP.GET.LOAN.STMT.FILTER
+}
+
+
+
+public method apapGetLoanStmtOptfmt (
+    INOUT mobRequest string,
+    INOUT mobResponse string
+)
+{
+    jBC: APAP.GET.LOAN.STMT.OPTFMT
+}
+
+
+
+public method apapGetRedoAchPartFilter (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.REDO.ACH.PART.FILTER
+}
+
+
+
+public method apapGetSavAcctFilter (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.SAV.ACCT.FILTER
+}
+
+
+
+
+
+
+public method dispControlLbtr (
+    INOUT headerRec string,
+    INOUT operand string,
+    INOUT condition string,
+    INOUT returnFlag string
+)
+{
+    jBC: DISP.CONTROL.LBTR
+}
+
+
+
+public method dispCtrlSwift (
+    INOUT headerRec string,
+    INOUT operand string,
+    INOUT condition string,
+    INOUT returnFlag string
+)
+{
+    jBC: DISP.CTRL.SWIFT
+}
+
+
+
+public method ebMobFrmwrk (
+)
+{
+    jBC: EB.MOB.FRMWRK
+}
+ 
+
+
+public method ebMobFrmwrkFields (
+)
+{
+    jBC: EB.MOB.FRMWRK.FIELDS
+}
+
+
+ 
+public method ebMobFrmwrkValidate (
+)
+{
+    jBC: EB.MOB.FRMWRK.VALIDATE
+}
+
+
+
+public method gibsOfsRequest (
+    INOUT theRequests string,
+    INOUT theResponses string,
+    INOUT requestCommitted string
+)
+{
+    jBC: GIBS.OFS.REQUEST
+}
+
+
+
+public method itssAaPayoff (
+)
+{
+    jBC: ITSS.AA.PAYOFF
+}
+
+
+
+public method itssGetPassword (
+    INOUT yData string,
+    INOUT responseParam string
+)
+{
+    jBC: ITSS.GET.PASSWORD
+}
+
+
+
+public method itssGetProptectionLimit (
+    INOUT yAa string,
+    INOUT yLimit string
+)
+{
+    jBC: ITSS.GET.PROPTECTION.LIMIT
+}
+
+
+
+public method itssIbsolutionArcibFin (
+)
+{
+    jBC: ITSS.IBSOLUTION.ARCIB.FIN
+}
+
+
+
+public method itssIbsolutionArcibMig (
+    INOUT yIdUser string
+)
+{
+    jBC: ITSS.IBSOLUTION.ARCIB.MIG
+}
+
+
+
+public method itssIbsolutionArcibMigLoad (
+)
+{
+    jBC: ITSS.IBSOLUTION.ARCIB.MIG.LOAD
+}
+
+
+
+public method itssIbsolutionArcibMigPwd (
+)
+{
+    jBC: ITSS.IBSOLUTION.ARCIB.MIG.PWD
+}
+
+ 
+
+public method itssIbsolutionArcibMigSelect (
+)
+{
+    jBC: ITSS.IBSOLUTION.ARCIB.MIG.SELECT
+}
+
+
+
+public method itssIbsolutionUserAuthorise (
+)
+{
+    jBC: ITSS.IBSOLUTION.USER.AUTHORISE
+}
+
+
+
+public method itssIbsolutionUser (
+)
+{
+    jBC: ITSS.IBSOLUTION.USER
+}
+
+
+
+public method itssIbsolutionUserCustomer (
+)
+{
+    jBC: ITSS.IBSOLUTION.USER.CUSTOMER
+}
+
+
+
+public method itssIbsolutionUserCustomerFields (
+)
+{
+    jBC: ITSS.IBSOLUTION.USER.CUSTOMER.FIELDS
+}
+
+
+
+public method itssIbsolutionUserFields (
+)
+{
+    jBC: ITSS.IBSOLUTION.USER.FIELDS
+}
+
+
+
+
+
+
+public method itssMfChangeExtUserp (
+    INOUT actionInfo string,
+    INOUT request string,
+    INOUT mobResponse string,
+    INOUT mobError string
+)
+{
+    jBC: ITSS.MF.CHANGE.EXT.USERP
+}
+
+
+
+public method apapGetBenOtherLoanFilter (
+    INOUT idList string
+)
+{
+    jBC: APAP.GET.BEN.OTHER.LOAN.FILTER
+}
+
+
+
+public method apapGetSavAcctOptfmt (
+    INOUT mobRequest string,
+    INOUT mobResponse string
+)
+{
+    jBC: APAP.GET.SAV.ACCT.OPTFMT
+}
+
