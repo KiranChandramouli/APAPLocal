@@ -1,0 +1,55 @@
+component APAP.REDOAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoApapSapGlDetail (
+   INOUT reStatLineBalId string
+)
+{
+   jBC: REDO.APAP.SAP.GL.DETAIL
+}
+
+
+
+public method redoApapSapGlDetailLoad (
+)
+{
+   jBC: REDO.APAP.SAP.GL.DETAIL.LOAD
+}
+
+
+
+public method redoApapSapGlDetailSelect (
+)
+{
+   jBC: REDO.APAP.SAP.GL.DETAIL.SELECT
+}
+
+
+public method redoApapSapGlDetailRptSplit1 (
+   INOUT yEntryId string,
+   INOUT yEntryIndicator string,
+   INOUT yParamDetailsList string,
+   INOUT yFtOutList string
+)
+{
+   jBC: REDO.APAP.SAP.GL.DETAIL.RPT.SPLIT.1
+}
+
+
+
+public method redoVCheckBalIntEntries (
+   INOUT acctId string,
+   INOUT balCrAmt string,
+   INOUT balDrAmt string,
+   INOUT intCrAmt string,
+   INOUT intDrAmt string,
+   INOUT yBalAccNo string,
+   INOUT yIntAccNo string
+)
+{
+   jBC: REDO.V.CHECK.BAL.INT.ENTRIES
+}
+
