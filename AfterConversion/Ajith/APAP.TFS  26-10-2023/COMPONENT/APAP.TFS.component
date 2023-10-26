@@ -1,0 +1,188 @@
+component APAP.TFS
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method tfsAnalyseOfsMsg (
+    INOUT ofsMsg string,
+    INOUT retMsg string,
+    INOUT ofsOverrides string,
+    INOUT ulCoCode string
+)
+{
+    jBC: TFS.ANALYSE.OFS.MSG
+}
+
+
+
+public method tfsBuildDenom (
+)
+{
+    jBC: TFS.BUILD.DENOM
+}
+
+
+
+public method tfsChkOverride (
+)
+{
+    jBC: TFS.CHK.OVERRIDE
+}
+
+
+
+public method tfsExpSchFieldDefinitions (
+)
+{
+    jBC: TFS.EXP.SCH.FIELD.DEFINITIONS
+}
+
+
+
+public method tfsExposureSchedule (
+)
+{
+    jBC: TFS.EXPOSURE.SCHEDULE
+}
+
+
+
+public method tfsFacilitateMixWd (
+)
+{
+    jBC: TFS.FACILITATE.MIX.WD
+}
+
+
+
+public method tfsGetOpenTill (
+    INOUT tillId string
+)
+{
+    jBC: TFS.GET.OPEN.TILL
+}
+
+
+
+public method tfsImportUnderlying (
+    INOUT defaultedField string,
+    INOUT defaultedEnri string
+)
+{
+    jBC: TFS.IMPORT.UNDERLYING
+}
+
+
+
+public method tfsLoadTransaction (
+    INOUT tfsTxn string,
+    INOUT rTfsTxn string,
+    INOUT futArg1 string,
+    INOUT futArg2 string,
+    INOUT futArg3 string
+)
+{
+    jBC: TFS.LOAD.TRANSACTION
+}
+
+
+
+public method tfsModifyDenom (
+)
+{
+    jBC: TFS.MODIFY.DENOM
+}
+
+
+
+public method tfsParCheckFields (
+)
+{
+    jBC: TFS.PAR.CHECK.FIELDS
+}
+
+
+
+public method tfsParCrossval (
+)
+{
+    jBC: TFS.PAR.CROSSVAL
+}
+
+
+
+public method tfsParFieldDefinitions (
+)
+{
+    jBC: TFS.PAR.FIELD.DEFINITIONS
+}
+
+
+
+public method tfsParameter (
+)
+{
+    jBC: TFS.PARAMETER
+}
+
+
+
+public method tfsParseStmtNos (
+    INOUT ulStmtNos string,
+    INOUT resvArg1 string,
+    INOUT resvArg2 string,
+    INOUT resvArg3 string
+)
+{
+    jBC: TFS.PARSE.STMT.NOS
+}
+
+
+
+public method tfsTransaction (
+)
+{
+    jBC: TFS.TRANSACTION
+}
+
+
+
+public method tfsTxnCheckFields (
+)
+{
+    jBC: TFS.TXN.CHECK.FIELDS
+}
+
+
+
+public method tfsTxnCrossval (
+)
+{
+    jBC: TFS.TXN.CROSSVAL
+}
+
+
+
+public method tfsTxnFieldDefinitions (
+)
+{
+    jBC: TFS.TXN.FIELD.DEFINITIONS
+}
+
+
+
+public method tfsUlImportConcat (
+)
+{
+    jBC: TFS.UL.IMPORT.CONCAT
+}
+
+
+
+public method vDefaultRate (
+)
+{
+    jBC: V.DEFAULT.RATE
+}
+
