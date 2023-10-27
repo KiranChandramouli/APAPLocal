@@ -1,17 +1,18 @@
-* @ValidationCode : MjotNjI5MzI0NzAxOkNwMTI1MjoxNjg0ODM2MDUyODQ3OklUU1M6LTE6LTE6MTEzOToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:52
+* @ValidationCode : MjotODE0MzIyMTA2OkNwMTI1MjoxNjk4MTUzMDg0NjgyOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Oct 2023 18:41:24
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1139
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.SAP.GL.NR.HDR.EXP.LOG(GIT.OUT.MSG,Y.REVAL)
+    
 *********************************************************************************************************
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 *Developed By      : Temenos Application Management
@@ -38,6 +39,7 @@ SUBROUTINE REDO.APAP.SAP.GL.NR.HDR.EXP.LOG(GIT.OUT.MSG,Y.REVAL)
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *18-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  FM tO @FM , ++ to +=
 *18-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*24/10/2023	 VIGNESHWARI         ADDED COMMENT FOR INTERFACE CHANGES Interface Change by Santiago
 *----------------------------------------------------------------------------------------
 *********************************************************************************************************
     $INSERT I_COMMON
@@ -149,15 +151,25 @@ RETURN
 *************************
 OPEN.FILES.ENCRYPT:
 *************************
+
     yLine=''
+;*CAMBIO	;*Interface Change by Santiago-start
+	FN.REDO.INTERFACE.PARAM = 'F.REDO.INTERFACE.PARAM'
+	F.REDO.INTERFACE.PARAM = ''
+;*CAMBIO	;*Interface Change by Santiago-end
     CALL OPF(FN.REDO.INTERFACE.PARAM, F.REDO.INTERFACE.PARAM)
     CALL F.READ(FN.REDO.INTERFACE.PARAM, Y.PARAM.ID, R.REDO.INTERFACE.PARAM, F.REDO.INTERFACE.PARAM, Y.ERR)
     IF NOT(R.REDO.INTERFACE.PARAM) THEN
         RETURN
     END
-    GOAHEAD = 'TRUE'
+    GOAHEAD = 'TRUE'	
+
     yEncripKey = R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.ENCRIP.KEY>
-    yEncripKey= DECRYPT(yEncripKey,Y.PARAM.ID,JBASE_CRYPT_3DES_BASE64)
+	Y.PARAM.ID = Y.PARAM.ID:'33'	;*Interface Change by Santiago-start	
+;*CAMBIO	
+    ;*yEncripKey= DECRYPT(yEncripKey,Y.PARAM.ID,JBASE_CRYPT_3DES_BASE64)	
+	yEncripKey= DECRYPT(yEncripKey,Y.PARAM.ID,JBASE_CRYPT_DES_BASE64)
+;*CAMBIO		;*Interface Change by Santiago-end
     yLine = R.RETURN.MESSAGE
 
 RETURN
@@ -167,7 +179,11 @@ PROCESS.ENCRYPT:
 
     IF R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.ENCRIPTATION> EQ 'SI' THEN
         yLine=''
-        yLine = ENCRYPT(R.RETURN.MESSAGE,yEncripKey,JBASE_CRYPT_3DES_BASE64)
+;*CAMBIO			;*Interface Change by Santiago-start
+        ;*yLine = ENCRYPT(R.RETURN.MESSAGE,yEncripKey,JBASE_CRYPT_3DES_BASE64)
+		yEncripKey= DECRYPT(yEncripKey,Y.PARAM.ID,JBASE_CRYPT_DES_BASE64)
+;*CAMBIO	;*Interface Change by Santiago-end
+		 
     END ELSE
         yLine = R.RETURN.MESSAGE
     END

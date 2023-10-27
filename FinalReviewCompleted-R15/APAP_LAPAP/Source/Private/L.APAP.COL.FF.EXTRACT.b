@@ -1,23 +1,25 @@
-* @ValidationCode : MjoyNjM5NzYyODk6Q3AxMjUyOjE2OTgwNDI0OTIwNTg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 Oct 2023 11:58:12
+* @ValidationCode : MjotMTIwMjEwODYyODpDcDEyNTI6MTY5ODE1MzAwNjUyOTp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Oct 2023 18:40:06
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 * This subroutine allows to extract fields from Customer in T24
 * Arguments: CUSTOMER.ID
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
-*DATE          WHO                 REFERENCE               DESCRIPTION
-*13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     TAM.BP is Removed,= TO EQ, I to I.VAR,VM ,FM,SM to @VM,@SM,@FM
-*13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION  CALL RTN FORMAT CAN BE CHANGED
+*DATE          WHO                 REFERENCE               			DESCRIPTION
+*13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     		TAM.BP is Removed,= TO EQ, I to I.VAR,VM ,FM,SM to @VM,@SM,@FM
+*13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION   		CALL RTN FORMAT CAN BE CHANGED
+*24-10-2023	VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES     Interface Change by Santiago
 *---------------------------------------------------------------------------------------	-
 
 SUBROUTINE L.APAP.COL.FF.EXTRACT(CUSTOMER.ID)
@@ -31,12 +33,13 @@ SUBROUTINE L.APAP.COL.FF.EXTRACT(CUSTOMER.ID)
     $INSERT I_F.REDO.COL.TRACE.PHONE
     $INSERT I_BATCH.FILES
     $INSERT I_F.AA.ARRANGEMENT
-
+    
     BEGIN CASE
         CASE CONTROL.LIST<1,1> EQ 'Y.AP.LOANS' ;*R22 Auto Code conversion
             GOSUB PROCESS.AP.LOANS
         CASE CONTROL.LIST<1,1> EQ 'Y.AP.CARDS'
-            GOSUB PROCESS.AP.CARDS
+*            GOSUB PROCESS.AP.CARDS     *********************************** ;*Interface Change by Santiago
+            RETURN	;*Interface Change by Santiago
     END CASE
 RETURN
 
@@ -59,8 +62,9 @@ PROCESS.AP.CARDS:
     GOSUB REP.AP.CARDS
 RETURN
 
+*Initialise Variables, Files, etc
 *----------------------------
-INITIALISE:         * Initialise Variables, Files, etc
+INITIALISE:
 *----------------------------
     Y.MSG = ''
     Y.TOTAL.INSERT = 0
@@ -100,10 +104,14 @@ INITIALISE:         * Initialise Variables, Files, etc
     Y.TMPCLIENTES = 'tmpclientes'
     Y.TMPTELEFONOSCLIENTE = 'tmptelefonoscliente'
     Y.TMPDIRECCIONESCLIENTE = 'tmpdireccionesclientebase'
+    
+    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>	;*Interface Change by Santiago
 
 RETURN
+
+* Process Each entry for the current customer
 *------------------------------
-PROCESS:  * Process Each entry for the current customer
+PROCESS:
 *------------------------------
     GOSUB GET.CUSTOMER.REC
     Y.CU.SCO.COB = R.CUSTOMER<EB.CUS.LOCAL.REF,C.L.CUS.SCO.COB.POS>   ;* Get SCO.COB from Customer Table
@@ -119,7 +127,11 @@ PROCESS:  * Process Each entry for the current customer
         GOSUB ADDRESS.STMT    ;*Ir al Parrafo de para extraer y crear los Inserts de Address
     END
 
-    IF Y.PROCESS.FLAG.TABLE<1,4> EQ "tmpmovimientos" OR Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" OR Y.PROCESS.FLAG.TABLE<1,6> EQ "gescreditointegracion" OR Y.PROCESS.FLAG.TABLE<1,7> EQ "gestipogarantias" OR Y.PROCESS.FLAG.TABLE<1,8> EQ "gesgarantias" OR Y.PROCESS.FLAG.TABLE<1,9> EQ "gescreditogarantias" THEN
+*    IF Y.PROCESS.FLAG.TABLE<1,4> EQ "tmpmovimientos" OR Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" OR Y.PROCESS.FLAG.TABLE<1,6> EQ "gescreditointegracion" OR Y.PROCESS.FLAG.TABLE<1,7> EQ "gestipogarantias" OR Y.PROCESS.FLAG.TABLE<1,8> EQ "gesgarantias" OR Y.PROCESS.FLAG.TABLE<1,9> EQ "gescreditogarantias" THEN	;*Interface Change by Santiago-Start
+*        GOSUB PROCESS.AA      ;*Ir al Parrafo de para extraer y crear los Inserts de AA
+*    END
+
+    IF Y.PROCESS.FLAG.TABLE<1,4> EQ "tmpmovimientos" THEN	;*Interface Change by Santiago-end
         GOSUB PROCESS.AA      ;*Ir al Parrafo de para extraer y crear los Inserts de AA
     END
 
@@ -128,7 +140,7 @@ PROCESS:  * Process Each entry for the current customer
             R.REDO.CL.LOAN.CUST=CUSTOMER.ID
             CALL F.WRITE(FN.REDO.CL.LOAN.CUST,CUSTOMER.ID,R.REDO.CL.LOAN.CUST)
         END
-        GOSUB  FINAL.WRITE.RECORD
+*        GOSUB  FINAL.WRITE.RECORD ;*Interface Change by Santiago-COMMENTED
     END
 
 RETURN
@@ -153,34 +165,37 @@ REP.AP.CARDS:
         IF Y.PROCESS.FLAG.TABLE<1,3> EQ "tmpdireccionescliente" THEN
             GOSUB ADDRESS.STMT          ;*Ir al Parrafo de para extraer y crear los Inserts de Address
         END
-*  GOSUB  FINAL.WRITE.RECORD ;*R22 interface Unit testing changes
+*        GOSUB  FINAL.WRITE.RECORD	;*R22 interface Unit testing changes
     END
 RETURN
 
 GET.CUSTOMER.REC:
 *****************
+    
     R.CUSTOMER = ''; YERR = ''
     CALL F.READ(FN.CUSTOMER, CUSTOMER.ID, R.CUSTOMER, F.CUSTOMER, YERR)
 
-    IF NOT(R.CUSTOMER) THEN ;*R22 interface Unit testing changes
+    IF NOT(R.CUSTOMER) THEN	;*R22 interface Unit testing changes
         CUST.ID.HST = CUSTOMER.ID:';1'
         ERR.CUSTOMER.HST = ''; R.CUSTOMER.HST = ''
         CALL F.READ(FN.CUSTOMER.HST,CUST.ID.HST,R.CUSTOMER.HST,F.CUSTOMER.HST,ERR.CUSTOMER.HST)
-        R.CUSTOMER = R.CUSTOMER.HST ;*R22 interface Unit testing changes
+        R.CUSTOMER = R.CUSTOMER.HST	;*R22 interface Unit testing changes
     END
     IF R.CUSTOMER THEN
         Y.L.AUDIT.POS = DCOUNT(R.CUSTOMER<EB.CUS.INPUTTER>, @VM)
-        Y.CLI.FECHA.MODIF.TP = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>
-*SJ start  ;*R22 interface Unit testing changes - START
-        Y.CLI.FECHA.MODIF = '20':Y.CLI.FECHA.MODIF.TP[1,6]
+     *JG   Y.CLI.FECHA.MODIF.TP = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>	;*Interface Change by Santiago-start
+     Y.CLI.FECHA.MODIF = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>
+     *JG end "se perdia la variable de fecha debido a que se manda con el nombre de "Y.CLI.FECHA.MODIF""
+*SJ start	
+*JG        Y.CLI.FECHA.MODIF = '20':Y.CLI.FECHA.MODIF.TP[1,6]
 *        Y.CLI.FECHA.MODIF = ICONV(Y.CLI.FECHA.MODIF.TP,'DI')
 *        Y.CLI.FECHA.MODIF = OCONV(Y.CLI.FECHA.MODIF,'D4')
 *        Y.CLI.FECHA.MODIF = Y.CLI.FECHA.MODIF[7,4]:Y.CLI.FECHA.MODIF[4,2]:Y.CLI.FECHA.MODIF[1,2]
-* SJ end   ;*R22 interface Unit testing changes - END
+* SJ end	;*R22 interface Unit testing changes ;*Interface Change by Santiago-END
     END
 RETURN
 
-*Extrae el tipo de Documento del Customer ;*R22 interface Unit testing changes
+*Extrae el tipo de Documento del Customer	;*R22 interface Unit testing changes
 *-----------------------------------------------------------------------------------
 GET.CUS.ID.TYPE:
 *-----------------------------------------------------------------------------------
@@ -210,7 +225,8 @@ GET.CUS.ID.TYPE:
     END CASE
 
 RETURN
-*EXTRACT INFORMATION ABOUT CUSTOMER ;*R22 interface Unit testing changes
+
+*EXTRACT INFORMATION ABOUT CUSTOMER	;*R22 interface Unit testing changes
 *-----------------------
 CUSTOMER.STMT:
 *-----------------------
@@ -353,7 +369,7 @@ CUSTOMER.STMT:
 *    Y.LINEA := Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM:"":Y.DELIM
 
     IF Y.CLI.TIPO.ID THEN
-        Y.LINEA := "1":Y.DELIM:"BPR":Y.DELIM:TRIM(CUSTOMER.ID,"","B"):Y.DELIM:TRIM(Y.CLI.TIPO.ID,"","B"):Y.DELIM:TRIM(Y.CLI.NUM.ID[1,20],"","B"):Y.DELIM:TRIM(Y.CLI.PRIMER.NOMBRE[1,60],"","B"):Y.DELIM:"":Y.DELIM
+        Y.LINEA := "1":Y.DELIM:"BPR":Y.DELIM:TRIM(CUSTOMER.ID,"","B"):Y.DELIM:TRIM(Y.CLI.TIPO.ID,"","B"):Y.DELIM:TRIM(Y.CLI.NUM.ID[1,20],"","B"):Y.DELIM:TRIM(Y.CLI.PRIMER.NOMBRE[1,60],"","B"):Y.DELIM:"":Y.DELIM  ;*7
         Y.LINEA := TRIM(Y.CLI.PRIMER.APELLIDO[1,60],"","B"):Y.DELIM:"":Y.DELIM:"":Y.DELIM:TRIM(Y.CLI.NOM.CONYUGE[1,40],"","B"):Y.DELIM:"":Y.DELIM:"":Y.DELIM:TRIM(Y.CLI.TIPO.PERSONA[1,1],"","B"):Y.DELIM:TRIM(Y.RAZON.SOCIAL[1,200],"","B"):Y.DELIM
         Y.LINEA := TRIM(Y.CLI.FECHA.NACIMIENTO,"","B"):Y.DELIM:TRIM(Y.CLI.LUGAR.TRABAJO[1,250],"","B"):Y.DELIM:TRIM(Y.CLI.EMAIL[1,30],"","B"):Y.DELIM
         Y.LINEA := TRIM(Y.CLI.FECHA.INGRESO,"","B"):Y.DELIM:TRIM(Y.CLI.SEXO[1,1],"","B"):Y.DELIM:TRIM(Y.CLI.ESTADO.CIVIL[1,30],"","B"):Y.DELIM
@@ -368,7 +384,7 @@ CUSTOMER.STMT:
         R.COL.QUEUE<1> = Y.TMPCLIENTES
         R.COL.QUEUE<2> = Y.LINEA
 
-        GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+        GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
     END
 RETURN
 *-------------------
@@ -438,7 +454,7 @@ PROC.PHONES:
     R.COL.QUEUE = ''
     R.COL.QUEUE<1> = Y.TMPTELEFONOSCLIENTE
     R.COL.QUEUE<2> = Y.INSERT.TEL
-    GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+    GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
 RETURN
 
 *-------------------
@@ -453,7 +469,7 @@ GET.TIPO.PERSONA:
 
 RETURN
 
-*BUCLE PARA LA LECTURA DEL CAMPO LOCAL DEL CLIENTE CORRESPONDIENTE A TELEFONOS  ;*R22 interface Unit testing changes
+*BUCLE PARA LA LECTURA DEL CAMPO LOCAL DEL CLIENTE CORRESPONDIENTE A TELEFONOS ;*R22 interface Unit testing changes
 *-------------------
 GET.CUSTOMER.PHONES:
 *-------------------
@@ -482,7 +498,8 @@ GET.CUSTOMER.PHONES:
         I.VAR -= 1
     REPEAT
 RETURN
-*OBTENER TMPCLIENTEDIRECCIONES   18-inicio;*R22 interface Unit testing changes
+
+*OBTENER TMPCLIENTEDIRECCIONES   18-inicio	;*R22 interface Unit testing changes
 *-------------
 ADDRESS.STMT:
 *-------------
@@ -522,15 +539,15 @@ ADDRESS.STMT:
         Y.L.AUD.POSITION = DCOUNT(R.DE.ADDRESS<DE.ADD.INPUTTER>, @VM)
         Y.CLI.INPUTTER.LAST = FIELD(R.DE.ADDRESS<DE.ADD.INPUTTER, Y.L.AUD.POSITION>,'_',2)
         Y.CLI.DATE.TIME.LAST = R.DE.ADDRESS<DE.ADD.DATE.TIME, Y.L.AUD.POSITION>
-        Y.CLI.DATE.TIME.LAST = ICONV(Y.CLI.DATE.TIME.LAST,'DI')
-        Y.CLI.DATE.TIME.LAST = OCONV(Y.CLI.DATE.TIME.LAST,'D4')
-        Y.CLI.DATE.TIME.LAST = Y.CLI.DATE.TIME.LAST[7,4]:Y.CLI.DATE.TIME.LAST[4,2]:Y.CLI.DATE.TIME.LAST[1,2]
+       *JG Y.CLI.DATE.TIME.LAST = ICONV(Y.CLI.DATE.TIME.LAST,'DI')	;*Interface Change by Santiago-start
+       * Y.CLI.DATE.TIME.LAST = OCONV(Y.CLI.DATE.TIME.LAST,'D4')
+       * Y.CLI.DATE.TIME.LAST = Y.CLI.DATE.TIME.LAST[7,4]:Y.CLI.DATE.TIME.LAST[4,2]:Y.CLI.DATE.TIME.LAST[1,2]	;*Interface Change by Santiago-end
 
         Y.CLI.INPUTTER.ADD = FIELD(R.DE.ADDRESS.OLD<DE.ADD.INPUTTER,1>,'_',2)
         Y.CLI.DATE.TIME.ADD = R.DE.ADDRESS.OLD<DE.ADD.DATE.TIME, 1>
-        Y.CLI.DATE.TIME.ADD = ICONV(Y.CLI.DATE.TIME.ADD,'DI')
-        Y.CLI.DATE.TIME.ADD = OCONV(Y.CLI.DATE.TIME.ADD,'D4')
-        Y.CLI.DATE.TIME.ADD = Y.CLI.DATE.TIME.ADD[7,4]:Y.CLI.DATE.TIME.ADD[4,2]:Y.CLI.DATE.TIME.ADD[1,2]
+        *JG Y.CLI.DATE.TIME.ADD = ICONV(Y.CLI.DATE.TIME.ADD,'DI')	;*Interface Change by Santiago-start
+        *Y.CLI.DATE.TIME.ADD = OCONV(Y.CLI.DATE.TIME.ADD,'D4')
+        *Y.CLI.DATE.TIME.ADD = Y.CLI.DATE.TIME.ADD[7,4]:Y.CLI.DATE.TIME.ADD[4,2]:Y.CLI.DATE.TIME.ADD[1,2]	;*Interface Change by Santiago-end
 
         Y.CLI.TIPO.DIRECCION = R.DE.ADDRESS<DE.ADD.LOCAL.REF,Y.CLI.TIPO.DIRECCION.POS>
         Y.CLI.APR.POSTAL = R.DE.ADDRESS<DE.ADD.LOCAL.REF,Y.CLI.APR.POSTAL.POS>
@@ -558,7 +575,8 @@ ADDRESS.STMT:
 
     REPEAT
 RETURN
-** Call to process each AA ;*R22 interface Unit testing changes
+
+** Call to process each AA	;*R22 interface Unit testing changes
 *-----------------------------------------------------------------------------------
 PROCESS.CUS.ADDRESS:
 *-----------------------------------------------------------------------------------
@@ -595,17 +613,20 @@ PROCESS.CUS.ADDRESS:
     R.COL.QUEUE = ''
     R.COL.QUEUE<1> = Y.TMPDIRECCIONESCLIENTE
     R.COL.QUEUE<2> = Y.LINEA.DIR.CLI
-    GOSUB WRITE.RECORD.NEW  ;*R22 interface Unit testing changes
+    GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
 RETURN
+
+* Call to process each AA
 *-----------------------------------------------------------------------------------
-PROCESS.AA:         * Call to process each AA
+PROCESS.AA:
 *-----------------------------------------------------------------------------------
-    Y.CREDIT = ""; PR.GESTIPOGARANTIAS = ''; Y.CREDIT.TXN = ""; PR.GESGARANTIAS = ''; PR.GESCREDITOSGARANTIAS = '';P.GESCREDITOINTEGRACION = ''
+       Y.CREDIT = ""; PR.GESTIPOGARANTIAS = ''; Y.CREDIT.TXN = ""; PR.GESGARANTIAS = ''; PR.GESCREDITOSGARANTIAS = '';P.GESCREDITOINTEGRACION = ''
 * CALL L.APAP.COL.FF.EXTRACT.CREDIT(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
-    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION);* R22 Manual conversion - CAll method format changed
+    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)	;* R22 Manual conversion - CAll method format changed
 *   IF E THEN
 *       RETURN
 *   END
+    
     IF Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" THEN
         Y.TOTAL.E = DCOUNT(Y.CREDIT,@FM)
         Y.I = 1
@@ -626,7 +647,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "tmpmovimientos"
             R.COL.QUEUE<2> = Y.CREDIT.TXN<Y.I,1>
             R.COL.QUEUE<4> = Y.CREDIT.TXN<Y.I,2>
-            GOSUB WRITE.RECORD
+            GOSUB WRITE.RECORD.NEW	;*Interface Change by Santiago
             Y.I += 1
         REPEAT
     END
@@ -639,7 +660,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gestipogarantias"
             R.COL.QUEUE<2> = PR.GESTIPOGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESTIPOGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+            GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -651,7 +672,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gescreditointegracion"
             R.COL.QUEUE<2> = P.GESCREDITOINTEGRACION<Y.I,1>
             R.COL.QUEUE<4> = P.GESCREDITOINTEGRACION<Y.I,2>
-            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+            GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -663,7 +684,7 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gesgarantias"
             R.COL.QUEUE<2> = PR.GESGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+            GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -675,13 +696,14 @@ PROCESS.AA:         * Call to process each AA
             R.COL.QUEUE<1> = "gescreditogarantias"
             R.COL.QUEUE<2> = PR.GESCREDITOSGARANTIAS<Y.I,1>
             R.COL.QUEUE<4> = PR.GESCREDITOSGARANTIAS<Y.I,2>
-            GOSUB WRITE.RECORD.NEW ;*R22 interface Unit testing changes
+            GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
 RETURN
+
 *-----------------------------------------------------------------------------------
-WRITE.RECORD.NEW: ;*R22 interface Unit testing changes - START
+WRITE.RECORD.NEW:	;*R22 interface Unit testing changes-START
 *-----------------------------------------------------------------------------------
 *   Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>
     
@@ -698,7 +720,7 @@ WRITE.RECORD.NEW: ;*R22 interface Unit testing changes - START
     END
 
     CLOSESEQ Y.FILE.PATH
-RETURN ;*R22 interface Unit testing changes- END
+RETURN	;*R22 interface Unit testing changes-END
 
 *-----------------------------------------------------------------------------------
 WRITE.RECORD:
@@ -706,39 +728,40 @@ WRITE.RECORD:
     Y.TOTAL.INSERT += 1
     LIST.INSERTS.STMT(Y.TOTAL.INSERT) = R.COL.QUEUE
 RETURN
+
 *-----------------------------------------------------------------------------------
 FINAL.WRITE.RECORD:
 *-----------------------------------------------------------------------------------
-    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>  ;*R22 interface Unit testing changes
+    
+    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>	;*R22 interface Unit testing changes
+
     I.VAR = 1
     LOOP WHILE I.VAR LE Y.TOTAL.INSERT
-*R22 interface Unit testing changes-START
+*R22 interface Unit testing changes-START 
 *        Y.QUEUE.ID = ''
 *        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
 *        Y.QUEUE.ID = DATE():Y.QUEUE.ID
-        Y.QUEUE.ID = I.VAR  ;*R22 interface Unit testing changes
-*R22 interface Unit testing changes-END
+        Y.QUEUE.ID = I.VAR ;*R22 interface Unit testing changes-END
 
         R.REDO.COL.QUEUE = LIST.INSERTS.STMT(I.VAR)
+        Y.FILE.ID='SESSION':R.REDO.COL.QUEUE<1>:Y.QUEUE.ID:AGENT.NUMBER	;*R22 interface Unit testing changes
         
-
-        Y.FILE.ID='SESSION':R.REDO.COL.QUEUE<1>:Y.QUEUE.ID:AGENT.NUMBER ;*R22 interface Unit testing changes
-
         OPENSEQ Y.EXTRACT.OUT.PATH, Y.FILE.ID TO Y.FILE.PATH ELSE
             CREATE Y.FILE.PATH ELSE
                 CALL OCOMO("CANNOT OPEN SESSION FILE PATH")
             END
         END
+
         WRITESEQ R.REDO.COL.QUEUE<2> APPEND TO Y.FILE.PATH ELSE
             CALL OCOMO("CANNOT WRITE TO SESSION FILE OF ID ":Y.FILE.ID)
         END
-        
-        
 
         I.VAR += 1
     REPEAT
-    CLOSESEQ Y.FILE.PATH ;*R22 interface Unit testing changes
+    CLOSESEQ Y.FILE.PATH	;*R22 interface Unit testing changes
 RETURN
+
+
 *-----------------------------------------------------------------------------------
 GET.TEL.SEQUENCE:
 *-----------------------------------------------------------------------------------
@@ -751,6 +774,7 @@ GET.TEL.SEQUENCE:
         Y.TEL.TYPE.LIST<Y.POS> = Y.CLI.TELF.TYPE
     END
 RETURN
+
 *-----------------------------------------------------------------------------------
 GET.REPRES.ID.TYPE:
 *-----------------------------------------------------------------------------------
@@ -772,6 +796,7 @@ GET.REPRES.ID.TYPE:
             Y.CLI.ID.REPRES = 15
     END CASE
 RETURN
+
 *-----------------------------------------------------------------------------------
 GET.TEL.AUDIT.INFO:
 *-----------------------------------------------------------------------------------
@@ -787,6 +812,7 @@ GET.TEL.AUDIT.INFO:
     Y.TEL.USER = Y.TEL.USER[1,20]
 
 RETURN
+
 *-----------------------------------------------------------------------------------
 GET.ADDRESS.TYPE.COL:
 *-----------------------------------------------------------------------------------
@@ -803,6 +829,7 @@ GET.ADDRESS.TYPE.COL:
         RETURN
     END
 RETURN
+
 *-----------------------------------------------------------------------------------
 TRACE.ERROR:
 *-----------------------------------------------------------------------------------

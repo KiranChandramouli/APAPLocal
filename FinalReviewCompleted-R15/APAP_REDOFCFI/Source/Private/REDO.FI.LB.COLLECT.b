@@ -1,17 +1,18 @@
-* @ValidationCode : MjotMTE1MzQzODIwOTpVVEYtODoxNjg1MTA2MDg0ODQwOklUU1M6LTE6LTE6MzMwNDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 18:31:24
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjotMTMzNTgyNTI4NTpDcDEyNTI6MTY5ODE1MzE0OTYyNDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Oct 2023 18:42:29
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 3304
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
 SUBROUTINE REDO.FI.LB.COLLECT(PARAM.ANS.ID)
+    
 * ====================================================================================
 *    - Gets the information related to the AA specified in input parameter
 *
@@ -44,6 +45,7 @@ SUBROUTINE REDO.FI.LB.COLLECT(PARAM.ANS.ID)
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
 *04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*24/10/2023	        VIGNESHWARI            ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *=======================================================================
 
     $INSERT I_COMMON
@@ -118,6 +120,7 @@ PROCESS:
 
     COMM.TOT.AMOUNT = ABS(WTOTAL.DEBITS)
     PARAM.ID = FIELD(PARAM.TXN.ID,'.',1)
+	
     GOSUB B140.READ.PLANILLA.PARAM
     IN.ACCT.TYPE = 'DEBIT'
     IN.ACCT.ID   =  COMM.DEBIT.ACCT
@@ -126,6 +129,7 @@ PROCESS:
 
 
     IF NOT(WERROR.MSG) AND NOT(OUT.ACCT.STATUS) THEN
+	
         GOSUB FT.DR.PROCESS.DET
 
         APAP.TAM.redoFiLbApplyPymt(DATA.IN,DATA.OUT) ;*MANUAL R22 CODE CONVERSION
@@ -137,6 +141,7 @@ PROCESS:
             R.REDO.FI.LB.BATCH.PROCESS<REDO.FI.LB.BPROC.ERROR.MSG> = ''
             CALL F.WRITE(FN.REDO.FI.LB.BATCH.PROCESS,PARAM.TXN.ID,R.REDO.FI.LB.BATCH.PROCESS)
         END ELSE
+		
             R.REDO.FI.LB.BATCH.PROCESS<REDO.FI.LB.BPROC.ESTADO> = 'DESESTIMADO'
             R.REDO.FI.LB.BATCH.PROCESS<REDO.FI.LB.BPROC.ERROR.MSG> = DATA.OUT<2>
             R.REDO.FI.LB.BATCH.PROCESS<REDO.FI.LB.BPROC.FECHA.APLICADO> = TODAY
@@ -177,7 +182,13 @@ FT.DR.PROCESS.DET:
     DATA.IN<3> = COMM.SUSP.ACCT
     DATA.IN<4> = COMM.CURRENCY
     DATA.IN<5> = COMM.TOT.AMOUNT
-    DATA.IN<6> = COMM.VERSION.SAP
+	Y.APLICACION1=FIELD(COMM.VERSION.SAP,",",1)  ;*Interface Change by Santiago-START
+	Y.DATA1=FIELD(Y.TEST,",",1)
+	FINDSTR "FUNDS" IN Y.APLICACION1 SETTING Ap, Vp THEN	;*Interface Change by Santiago-END
+	DATA.IN<6> = COMM.VERSION.SAP
+	END ELSE	;*Interface Change by Santiago-START
+	DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.SAP
+    END		;*Interface Change by Santiago-END
 
 RETURN
 * ================
@@ -186,7 +197,13 @@ FT.CR.PROCESS.DET:
     DATA.IN<1> = RIP.CR.TXN.CODE
     DATA.IN<2> = COMM.SUSP.ACCT
     DATA.IN<4> = COMM.CURRENCY
-    DATA.IN<6> = COMM.VERSION.PMT
+	Y.APLICACION2=FIELD(COMM.VERSION.PMT,",",1)  ;*Interface Change by Santiago
+	FINDSTR "FUNDS" IN Y.APLICACION2 SETTING Ap, Vp THEN ;*Interface Change by Santiago
+	DATA.IN<6> = COMM.VERSION.PMT
+	END ELSE	;*Interface Change by Santiago-START
+	DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.PMT
+    END		;*Interface Change by Santiago-end
+    
 
 RETURN
 * ================
@@ -212,7 +229,12 @@ FT.RET.TAX.PROCESS.DET:
     DATA.IN<3> = COMM.DEBIT.ACCT
     DATA.IN<4> = COMM.CURRENCY
     DATA.IN<5> = Y.PARENT.TAX.AMT
-    DATA.IN<6> = COMM.VERSION.RET
+	Y.APLICACION3=FIELD(COMM.VERSION.RET,",",1)	;*Interface Change by Santiago-start
+	FINDSTR "FUNDS" IN Y.APLICACION3 SETTING Ap, Vp THEN
+	DATA.IN<6> = COMM.VERSION.RET
+	END ELSE
+	DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.RET
+	END	;*Interface Change by Santiago-end
     DATA.IN<7> = 'REVERSADO-':Y.PARENT.REF
 RETURN
 * ====================
@@ -224,7 +246,12 @@ FT.RET.AMT.PROCESS.DET:
     DATA.IN<3> = COMM.DEBIT.ACCT
     DATA.IN<4> = COMM.CURRENCY
     DATA.IN<5> = TOT.AMT.FAILURE
-    DATA.IN<6> = COMM.VERSION.RET
+	Y.APLICACION4=FIELD(COMM.VERSION.RET,",",1)	;*Interface Change by Santiago-start
+	FINDSTR "FUNDS" IN Y.APLICACION4 SETTING Ap, Vp THEN
+	DATA.IN<6> = COMM.VERSION.RET
+	END ELSE
+    DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.RET
+	END	;*Interface Change by Santiago-end
     DATA.IN<7> = 'REVERSADO-':Y.PARENT.REF
 RETURN
 * =================

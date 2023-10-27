@@ -1,22 +1,24 @@
-* @ValidationCode : MjoxNzAyNTk1NDEzOlVURi04OjE2ODM2MTYwOTQ2NDQ6SVRTUzotMTotMToxMjA0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:14
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjoxNjU4MDIzMjM3OkNwMTI1MjoxNjk4MTUzMTMwMTM0OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Oct 2023 18:42:10
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1204
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
+
 SUBROUTINE REDO.FI.EXT.PAYROLL.FILE(IN.TXT.MSG,OUT.ERR.MSG)
 *=====================================================================================================
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1 I TO I.VAR
 *04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*24-10-2023		VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES         Interface Change by Santiago
 *-----------------------------------------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -31,7 +33,6 @@ SUBROUTINE REDO.FI.EXT.PAYROLL.FILE(IN.TXT.MSG,OUT.ERR.MSG)
 *
 *******************************************************************************************************
 *
-
     GOSUB INITIALISE
     GOSUB CHECK.PRELIM.CONDITIONS
     IF PROCESS.GOAHEAD THEN
@@ -50,11 +51,11 @@ PROCESS:
 
 
     APAP.REDOFCFI.redoFiExtPayrollValidate(IN.TXT.MSG,Y.VAR.WORK,Y.NEW.TXT.MSG,UPD.IN.TXT.MSG,Y.ERR.MSG) ;*MANUAL R22 CODE CONVERSION
-
+ 
     IN.TXT.MSG = UPD.IN.TXT.MSG
 
     GOSUB CONTROL.MSG.ERROR
-
+ 
     FI.CTA.DESTINO  = Y.VAR.WORK<2>
     Y.TO.MAIL.VALUE = Y.VAR.WORK<3>
     R.REDO.NOMINA.DET<RE.NM.DET.CTA.DESTINO>    =FI.CTA.DESTINO
@@ -175,8 +176,11 @@ SAVE.FILE.IN.DIR:
     Y.STT.REC        = ""
     Y.IN.MSG         = FI.CTA.DESTINO:",":FI.DATO.MONTO.TOTAL:",DOP,-"
     Y.NEW.TXT.MSG<CONTADO.EXTRA> = Y.IN.MSG:",":W.ADDITIONAL.INFO
-    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;* MANUAL R22 CODE CONVERSION
-
+	;*CAMBIO	;*Interface Change by Santiago-start
+    ;*APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<CONTADO.EXTRA>,DATO.OUT) ;* MANUAL R22 CODE CONVERSION
+	;*CAMBIO
+	DATO.OUT = Y.NEW.TXT.MSG<CONTADO.EXTRA>	;*Interface Change by Santiago-end
+	
     IF W.TOL.FILE.AMT GT 0 THEN
 
 *APAP.TAM.REDO.FI.EXT.DEBIT.PROCES(R.PARAM, OUT.RESP, OUT.ERR)
@@ -247,21 +251,30 @@ MESSAGE.FORMAT:
     Y.STT.REC        = ""
     Y.IN.MSG         = Y.NEW.TXT.MSG<I.VAR>
     Y.NEW.TXT.MSG<I.VAR> = Y.NEW.TXT.MSG<I.VAR>:",":W.ADDITIONAL.INFO
-
-    APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;* MANUAL R22 CODE CONVERSION
+	
+	;*CAMBIO ;*Interface Change by Santiago-start
+    ;*APAP.REDOFCFI.redoFiMsgFormat(FI.INTERFACE,Y.NEW.TXT.MSG<I.VAR>,DATO.OUT) ;* MANUAL R22 CODE CONVERSION
+	
+	
+	DATO.OUT = Y.NEW.TXT.MSG<I.VAR>	;*Interface Change by Santiago-end
     R.PARAM<1>  = "NULL"
     R.PARAM<2>  = "N"
-    R.PARAM<3>  = FIELD(DATO.OUT,"|",3)
+	DATO3 = FIELD(DATO.OUT,",",2) ;*Interface Change by Santiago
+    R.PARAM<3>  = FIELD(DATO.OUT,",",2) ;*Interface Change by Santiago
     R.PARAM<4>  = FI.FILE.ID
     R.PARAM<5>  = FI.INTERFACE
     R.PARAM<6>  = FI.CTA.INTERMEDIA
-    R.PARAM<7>  = FIELD(DATO.OUT,"|",3)
-    R.PARAM<8>  = FIELD(DATO.OUT,"|",4)
+	DATO7 = FIELD(DATO.OUT,",",2) 	;*Interface Change by Santiago-start
+    R.PARAM<7>  = FIELD(DATO.OUT,",",2)
+	DATO8 = FIELD(DATO.OUT,",",3)
+    R.PARAM<8>  = FIELD(DATO.OUT,",",3)	;*Interface Change by Santiago-end
     R.PARAM<9>  = FI.W.REDO.FI.CONTROL.ID
     R.PARAM<10> = "N"
-    R.PARAM<11> = FIELD(DATO.OUT,"|",2)
+	DATO11 = FIELD(DATO.OUT,",",1)	;*Interface Change by Santiago
+    R.PARAM<11> = FIELD(DATO.OUT,",",1)	;*Interface Change by Santiago
     R.PARAM<12> = "NOMINA"
     R.PARAM<13> = CR.TXN.CODE
+;*CAMBIO	;*Interface Change by Santiago
 
     Y.TEMP.ID=FI.W.REDO.FI.CONTROL.ID:STR("0",(5-LEN(Y.PRESENT.CNT))):Y.PRESENT.CNT
     R.REDO.NOMINA.TEMP<-1>=Y.TEMP.ID
@@ -300,10 +313,18 @@ REPORT.FORMAT:
     Y.ID.RCL  = FI.INTERFACE:".R"         ;*The id is NOMINA.R
     Y.TOT.REC = Y.COUNT - 1
     Y.IN.MSG  = WRECORD.NUMBER:",":Y.IN.MSG:",":W.STATUS:",":Y.ERR.MSG
+
+ 
 *
 *  Call RCL to set data to send report
-    APAP.REDOFCFI.redoFiMsgFormat(Y.ID.RCL,Y.IN.MSG,Y.OUT.MSG) ;* MANUAL R22 CODE CONVERSION
+    ;*CAMBIO	;*Interface Change by Santiago-start
+    ;*APAP.REDOFCFI.redoFiMsgFormat(Y.ID.RCL,Y.IN.MSG,Y.OUT.MSG) ;* MANUAL R22 CODE CONVERSION
+	;*CAMBIO	;*Interface Change by Santiago-end
 *  Save record in log tabla REDO.INTERFACE.REC.ACT
+
+
+	Y.OUT.MSG = Y.IN.MSG	;*Interface Change by Santiago
+
     FI.INTERFACES = FI.INTERFACE:".INT"
     FI.INT.ACT.ID = "ENM001"
 
