@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo1Mjc0ODgwNzE6Q3AxMjUyOjE2OTgzMTA4OTk5NjQ6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Oct 2023 14:31:39
+* @ValidationCode : MjoxNjAzMzI5MTE6Q3AxMjUyOjE2OTg2Mzc3MzkwOTY6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 30 Oct 2023 09:18:59
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,14 +11,15 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
-*-----------------------------------------------------------------------------------------------------------------------
 *  DATE            NAME                  REFERENCE                     DESCRIPTION
 * 24 NOV  2022    Edwin Charles D       ACCOUNTING-CR                 Changes applied for Accounting reclassification CR
+* <Rating>-93</Rating>
+* 19 OCT 2023  VICTORIA S             MANUAL CONVERSION          FM TO @FM,VM TO @VM, SM TO @SM,call routine modified
 * 25-05-2023     Conversion tool    R22 Auto conversion       FM TO @FM, VM to @VM, SM to @SM,SESSION.NO to AGENT.NUMBER
 * 25-05-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
-* 26/10/2023	 VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
-
+*30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *-----------------------------------------------------------------------------
+
 SUBROUTINE REDO.APAP.SAP.GL.DETAIL.LOAD
     $INSERT I_TSA.COMMON ;*R22 Auto conversion	;*Interface Change by Santiago
     $INSERT I_COMMON
@@ -57,7 +58,7 @@ GET.MULTI.LOCAL.REF:
 *********************
 
     LF.APP = 'COMPANY':@FM:'CUSTOMER':@FM:'RE.STAT.REP.LINE'	;*R22 MANUAL CONVERSION
-    LF.FLD = 'L.CO.EXT.GL.CC':@FM:'L.CU.TIPO.CL':@VM:'L.CU.CIDENT':@VM:'L.CU.RNC':@VM:'L.CU.ACTANAC':@VM:'L.CU.NOUNICO':@FM:'L.BALEM':@VM:'L.BALPG':@VM:'L.BALFA':@VM:'L.ACCEM':@VM:'L.ACCPG':@VM:'L.ACCFA'	;*R22 MANUAL CONVERSION
+    LF.FLD = 'L.CO.EXT.GL.CC':@FM:'L.CU.TIPO.CL':@VM:'L.CU.CIDENT':@VM:'L.CU.RNC':@VM:'L.CU.ACTANAC':@VM:'L.CU.NOUNICO':@FM:'L.BALEM':@VM:'L.BALPG':@VM:'L.BALFA':@VM:'L.ACCEM':@VM:'L.ACCPG':@VM:'L.ACCFA'		;*R22 MANUAL CONVERSION
     LF.POS = ''
     CALL MULTI.GET.LOC.REF(LF.APP,LF.FLD,LF.POS)
     LOC.EXT.GL.CC.POS = LF.POS<1,1>
@@ -343,7 +344,7 @@ GET.PREVALANCE.PARAM:
     CALL CACHE.READ(FN.REDO.PREVALANCE.STATUS,'SYSTEM',R.REDO.PREVALANCE.STATUS,F.ERR)
 
     PARAM.STATUS.VAL = R.REDO.PREVALANCE.STATUS<REDO.PRE.STATUS>
-    PREVALANCE.STATUS.VAL = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.PREVALANT.STATUS>,@VM,@FM)	;*R22 MANUAL CONVERSION START
+    PREVALANCE.STATUS.VAL = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.PREVALANT.STATUS>,@VM,@FM)	 ;*R22 MANUAL CONVERSION START
     ACCT.TYPE.VAL = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.ACCT.TYPE>,@VM,@FM)
     Y.BAL.RECLASSIFY.LIST = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.BAL.RECLASS>,@VM,@FM)
     Y.INT.RECLASSIFY.LIST = CHANGE(R.REDO.PREVALANCE.STATUS<REDO.PRE.INT.RECLASS>,@VM,@FM)	;*R22 MANUAL CONVERSION END

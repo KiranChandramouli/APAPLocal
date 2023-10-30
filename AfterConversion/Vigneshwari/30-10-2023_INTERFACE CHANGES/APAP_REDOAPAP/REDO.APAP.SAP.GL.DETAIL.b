@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNTYyMDMxNjk5OkNwMTI1MjoxNjk4MzEyMDA4MjkzOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Oct 2023 14:50:08
+* @ValidationCode : MjotOTk1NDYzNTEwOkNwMTI1MjoxNjk4NjM3NzA1MTYwOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 30 Oct 2023 09:18:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
+
 *-----------------------------------------------------------------------------
 * <Rating>-343</Rating>
 *-----------------------------------------------------------------------------
@@ -32,12 +33,14 @@ SUBROUTINE REDO.APAP.SAP.GL.DETAIL(RE.STAT.LINE.BAL.ID)
 *   ------         ------               -------------                -------------
 * 19 OCT  2010    Mohammed Anies K      ODR-2009-12-0294 C.12         Initial Creation
 * 24 MAY  2017    Edwin Charles D       PACS00575005                  SAPRPT mismatched during upgrade
-*
+
 * 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
+* 30 MAY 2023 Edwin Charles D         ACCOUNTING-CR             TSR571606
+* 20 AUG 2023 Edwin Charles D         ACCOUNTING-CR             TSR637100
+* 19 OCT 2023  VICTORIA S             MANUAL CONVERSION          FM TO @FM, CALL ROUTINE MODIFIED
 *25/05/2023      CONVERSION TOOL         AUTO R22 CODE CONVERSION             NOCHANGE
 *25/05/2023      HARISH VIKRAM              MANUAL R22 CODE CONVERSION        FM to @FM,CALL routine format modified
-*26/10/2023	        VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
-
+*30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -70,9 +73,9 @@ MAIN.PARA:
     Y.SP.COMPANY.LIST=''
     GOSUB INIT.PARA
     GOSUB GET.SAP.ACCOUNT.NUMBER
-    IF NOT(LOCK.STATUS) THEN	;*Interface Change by Santiago
+    IF NOT(LOCK.STATUS) THEN	;*ADDED COMMENT FOR INTERFACE CHANGES-LINE IS ADDED
         GOSUB PROCESS.PARA
-    END	;*Interface Change by Santiago
+    END 	;*ADDED COMMENT FOR INTERFACE CHANGES
     GOSUB NORMAL.PROCESS
     IF NOT(LOCK.STATUS) THEN
         GOSUB REVAL.PROCESS
@@ -200,7 +203,7 @@ RETURN
 *------------------
 PROCESS.PRFT.TYPE:
 *------------------
-    Y.PRFT.ENT.ID.TOT = DCOUNT(R.RE.STAT.LINE.MVMT.LIST,@FM)	;*R22 MANUAL CONVERSION
+    Y.PRFT.ENT.ID.TOT = DCOUNT(R.RE.STAT.LINE.MVMT.LIST,@FM) 	;*R22 MANUAL CONVERSION
     Y.PRFT.ENT.ID.CNT= 1
 
     Y.ENT.ID = ''
@@ -275,10 +278,10 @@ GET.STMT.DETAILS:
     Y.ENTRY.INDICATOR = 'STMT.ENTRY'
     Y.PARAM.DETAILS.LIST = Y.IGN.STMT.TXN.CODES :@FM: Y.PARAM.DEBIT.FORMAT :@FM: Y.PARAM.CREDIT.FORMAT :@FM: Y.SAP.ACC.NO :@FM: Y.SIB.ACC.NO :@FM: Y.CLOSE.DATE :@FM: Y.FLD.DELIM	;*R22 MANUAL CONVERSION
     Y.FT.OUT.LIST=''
-    APAP.REDOAPAP.redoApapSapGlDetailRptSplit1(Y.STMT.ENTRY.ID,Y.ENTRY.INDICATOR,Y.PARAM.DETAILS.LIST,Y.FT.OUT.LIST) ;* MANUAL R22 CODE CONVERSION
+    APAP.REDOAPAP.redoApapSapGlDetailRptSplit1(Y.STMT.ENTRY.ID,Y.ENTRY.INDICATOR,Y.PARAM.DETAILS.LIST,Y.FT.OUT.LIST) ;* MANUAL R22 CODE CONVERSION	
     GOSUB WRITE.DATA.TO.SESSION.FILES
 
-RETURN 
+RETURN
 *--------------------------------------------------------------------------------------------------------
 ********************
 PROCESS.SPEC.ENT.KEY:
@@ -326,7 +329,7 @@ GET.SPEC.DETAILS:
     Y.ENTRY.INDICATOR = 'SPEC.ENTRY'
     Y.PARAM.DETAILS.LIST = Y.IGN.SPEC.TXN.CODES :@FM: Y.PARAM.DEBIT.FORMAT :@FM: Y.PARAM.CREDIT.FORMAT :@FM: Y.SAP.ACC.NO :@FM: Y.SIB.ACC.NO :@FM: Y.CLOSE.DATE :@FM: Y.FLD.DELIM	;*R22 MANUAL CONVERSION
     Y.FT.OUT.LIST=''
-    APAP.REDOAPAP.redoApapSapGlDetailRptSplit1(Y.RE.CONSOL.SPEC.ENTRY.ID,Y.ENTRY.INDICATOR,Y.PARAM.DETAILS.LIST,Y.FT.OUT.LIST) ;* MANUAL R22 CODE CONVERSION
+    APAP.REDOAPAP.redoApapSapGlDetailRptSplit1(Y.RE.CONSOL.SPEC.ENTRY.ID,Y.ENTRY.INDICATOR,Y.PARAM.DETAILS.LIST,Y.FT.OUT.LIST) ;* MANUAL R22 CODE CONVERSION	
     GOSUB WRITE.DATA.TO.SESSION.FILES
 
 RETURN
@@ -415,7 +418,7 @@ CHECK.ACCOUNT.STATUS:
         LOCK.STATUS = '1'
         LOCATE Y.SAP.TXN.COMP IN Y.COMPANY.LIST SETTING Y.COMPANY.LINE.POS THEN
             Y.SAP.COST.CENTER=Y.SAP.COST.CENTER.LIST<Y.COMPANY.LINE.POS>
-        END 
+        END
     END
     RE.STAT.REP.ID = RE.STAT.REP.ID[1,9]
 
@@ -570,11 +573,11 @@ GET.LOCK.AMT.DETAILS:
         Y.INT.ACC.NO = Y.SAP.ACC.NO
     END
 
-    IF BAL.CR.AMT AND Y.BAL.ACC.NO THEN	 ;*Interface Change by Santiago-start
+    IF BAL.CR.AMT AND Y.BAL.ACC.NO THEN	;*Interface Change by Santiago-START
         Y.CR.TYPE.OF.TXN = '50'
         Y.CR.MOVEMENT = 0
         Y.CR.MVT.LCY  = BAL.CR.AMT
-        Y.FT.OUT.LIST := Y.CR.TYPE.OF.TXN:'*':Y.BAL.ACC.NO:'*':Y.SAP.TXN.COMP:'*':Y.RE.STAT.LINE.BAL.CUR:'*':Y.CR.MVT.LCY:'*':Y.CR.MOVEMENT:'*':Y.IS.CONTINGENT:'*':Y.SAP.COST.CENTER ;*Interface Change by Santiago-end
+        Y.FT.OUT.LIST := Y.CR.TYPE.OF.TXN:'*':Y.BAL.ACC.NO:'*':Y.SAP.TXN.COMP:'*':Y.RE.STAT.LINE.BAL.CUR:'*':Y.CR.MVT.LCY:'*':Y.CR.MOVEMENT:'*':Y.IS.CONTINGENT:'*':Y.SAP.COST.CENTER	;*Interface Change by Santiago-END
         GOSUB WRITE.NORMAL.PROCESS
     END
 
@@ -586,9 +589,9 @@ GET.LOCK.AMT.DETAILS:
         GOSUB WRITE.NORMAL.PROCESS
     END
 
-    IF INT.CR.AMT AND Y.INT.ACC.NO THEN		;*Interface Change by Santiago-start
+    IF INT.CR.AMT AND Y.INT.ACC.NO THEN	;*Interface Change by Santiago-START
         INT.CR.AMT = TRIM(INT.CR.AMT, "", "D")
-        Y.CR.TYPE.OF.TXN = '50'	;*Interface Change by Santiago-end
+        Y.CR.TYPE.OF.TXN = '50'		;*Interface Change by Santiago-END
         Y.CR.MOVEMENT = 0
         Y.CR.MVT.LCY = INT.CR.AMT	;*Interface Change by Santiago
         Y.FT.OUT.LIST := Y.CR.TYPE.OF.TXN:'*':Y.INT.ACC.NO:'*':Y.SAP.TXN.COMP:'*':Y.RE.STAT.LINE.BAL.CUR:'*':Y.CR.MVT.LCY:'*':Y.CR.MOVEMENT:'*':Y.IS.CONTINGENT:'*':Y.SAP.COST.CENTER	;*Interface Change by Santiago

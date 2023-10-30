@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNTE4NTE5ODUzOkNwMTI1MjoxNjk4MzEwOTkyODM0OnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Oct 2023 14:33:12
+* @ValidationCode : MjotNzcxMDI0NTgwOkNwMTI1MjoxNjk4NjM3NzcyNTIzOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 30 Oct 2023 09:19:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,13 +12,15 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.SAP.GL.DETAIL.SELECT
-*---------------------------------------------------------------------------------------------------
-* DATE               NAME               REFERENCE                       DESCRIPTION
+
+* DATE  NAME   REFERENCE    DESCRIPTION
 * 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
 * 25-05-2023     Conversion tool           R22 Auto conversion                FM TO @FM, VM to @VM, SM to @SM
 * 25-05-2023      Harishvikram C           Manual R22 conversion               No changes
-*26/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          No Changes
+*30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      	NO CHANGES
 *----------------------------------------------------------------------------
+
+
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
