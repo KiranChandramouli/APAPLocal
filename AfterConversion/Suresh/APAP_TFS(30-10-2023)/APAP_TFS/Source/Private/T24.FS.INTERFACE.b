@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNDEzNDI4NTY4OkNwMTI1MjoxNjk4MzA5MDkwNDg5OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 26 Oct 2023 14:01:30
+* @ValidationCode : MjoxOTMzNzM3NzE0OkNwMTI1MjoxNjk4NjU2OTk2MTkyOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 30 Oct 2023 14:39:56
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -69,7 +69,7 @@ SUBROUTINE T24.FS.INTERFACE(OFS.ACTION)
 *
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
-*26/10/2023         Suresh             R22 Manual Conversion          GLOBUS.BP File Removed, USPLATFORM.BP File Removed
+*26/10/2023         Suresh             R22 Manual Conversion          GLOBUS.BP File Removed, USPLATFORM.BP File Removed, CALL routine format modified
 *-------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -466,7 +466,8 @@ CALL.OFS:
             END
         END
 * 20100624 umar - start
-        CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,RET.MSG,'','')
+*        CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,RET.MSG,'','')
+        APAP.TFS.tfsAnalyseOfsMsg(OFS.MSG,RET.MSG,'','') ;*R22 Manual Conversion
         IF DC.OFS.SAME.AUTH AND (TFS.FUNCTION MATCHES 'I':@VM:'R')  THEN DC.OFS.SAME.AUTH.INP = 1    ;* 20 Mar 06 GP s/e
         GOSUB HANDLE.OFS.RET.MSG        ;* 05 JAN 06 - Sathish PS s/e - moved code into separate GOSUB.
         DC.OFS.SAME.AUTH.INP =''        ;* 20 Mar 06 GP s/e
@@ -496,7 +497,8 @@ CALL.OFS:
                     OFS.MSG = AUTH.OFS.HEADER :',': TFS.TXN.ID :','
                     OFSS.ID<4> = 1      ;* Umar - Flag set to maintain the cache
                     CALL OFS.GLOBUS.MANAGER(OFSS.ID,OFS.MSG)
-                    CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,RET.MSG,'','')
+*                    CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,RET.MSG,'','')
+                    APAP.TFS.tfsAnalyseOfsMsg(OFS.MSG,RET.MSG,'','') ;*R22 Manual Conversion
                     GOSUB HANDLE.OFS.RET.MSG
                 END
             END
@@ -525,7 +527,8 @@ PROCESS.AC.LOCKED.EVENTS:
                 ALE.OFS.MSG = ALE.OFS.MSGS<ALE.OFS.CNT>
                 OFSS.ID<4> = 1    ;* Umar - Flag set to maintain the cache
                 CALL OFS.GLOBUS.MANAGER(OFSS.ID,ALE.OFS.MSG)
-                CALL TFS.ANALYSE.OFS.MSG(ALE.OFS.MSG,RET.MSG,'','')
+*                CALL TFS.ANALYSE.OFS.MSG(ALE.OFS.MSG,RET.MSG,'','')
+                APAP.TFS.tfsAnalyseOfsMsg(ALE.OFS.MSG,RET.MSG,'','') ;*R22 Manual Conversion
                 IF RET.MSG THEN RET.MSG = 'AC.LOCKED.EVENTS' :'-': RET.MSG ELSE LOCK.REF = ALE.OFS.MSG['/',1,1]
                 OFS.MSG = ALE.OFS.MSG ; GOSUB HANDLE.OFS.RET.MSG
 
@@ -544,7 +547,8 @@ PROCESS.AC.LOCKED.EVENTS:
                     ALE.OFS.MSG = ALE.OFS.HEADER :',': LOCKED.REF :','
                     OFSS.ID<4> = 1          ;* Umar - Flag set to maintain the cache
                     CALL OFS.GLOBUS.MANAGER(OFSS.ID,ALE.OFS.MSG)
-                    CALL TFS.ANALYSE.OFS.MSG(ALE.OFS.MSG,RET.MSG,'','')
+*                    CALL TFS.ANALYSE.OFS.MSG(ALE.OFS.MSG,RET.MSG,'','')
+                    APAP.TFS.tfsAnalyseOfsMsg(ALE.OFS.MSG,RET.MSG,'','') ;*R22 Manual Conversion
                     IF RET.MSG THEN RET.MSG = 'AC.LOCKED.EVENTS' :'-': RET.MSG
                     OFS.MSG = ALE.OFS.MSG ; GOSUB HANDLE.OFS.RET.MSG
 
@@ -571,13 +575,15 @@ HANDLE.OFS.RET.MSG:
         IF WE.ARE.VALIDATING THEN
             IF TFS$MESSAGE EQ 'BEFORE.UNAUTH' AND TFS.FUNCTION MATCHES 'I' :@VM: 'R' THEN
                 TXN.OVERRIDES = 1       ;* Meaning, we need the Overrides
-                CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,'',TXN.OVERRIDES,'')
+*                CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,'',TXN.OVERRIDES,'')
+                APAP.TFS.tfsAnalyseOfsMsg(OFS.MSG,'',TXN.OVERRIDES,'');*R22 Manual Conversion
                 IF TXN.OVERRIDES THEN
                     IF UL.OVERRIDES<MV.NO> THEN UL.OVERRIDES<MV.NO> := @VM: TXN.OVERRIDES ELSE UL.OVERRIDES = TXN.OVERRIDES
                 END
             END
         END ELSE
-            CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,'','',UL.COMPANY.ID)
+*            CALL TFS.ANALYSE.OFS.MSG(OFS.MSG,'','',UL.COMPANY.ID)
+            APAP.TFS.tfsAnalyseOfsMsg(OFS.MSG,'','',UL.COMPANY.ID) ;*R22 Manual Conversion
             GOSUB UPDATE.UL.DETAILS
 
         END
@@ -779,14 +785,16 @@ PARSE.STMT.NOS:
             CALL F.READ(FN.UL.FILE,OFS.TXN.RET.ID,R.UL.FILE,F.UL.FILE,ERR.UL.FILE)
             IF R.UL.FILE THEN
                 TEMP.UL.STMT.NOS = R.UL.FILE<STMT.NOS.FLD>
-                CALL TFS.PARSE.STMT.NOS(TEMP.UL.STMT.NOS,'','','')
+*                CALL TFS.PARSE.STMT.NOS(TEMP.UL.STMT.NOS,'','','')
+                APAP.TFS.tfsParseStmtNos(TEMP.UL.STMT.NOS,'','','') ;*R22 Manual Conversion
                 IF UL.STMT.NOS THEN UL.STMT.NOS := @VM: TEMP.UL.STMT.NOS ELSE UL.STMT.NOS = TEMP.UL.STMT.NOS
             END
         NEXT DC.LOOP.CNT
         OFS.TXN.RET.ID = TEMP.OFS.TXN.RET.ID
     END ELSE
         UL.STMT.NOS = R.UL.FILE<STMT.NOS.FLD>
-        CALL TFS.PARSE.STMT.NOS(UL.STMT.NOS,'','','')
+*        CALL TFS.PARSE.STMT.NOS(UL.STMT.NOS,'','','')
+        APAP.TFS.tfsParseStmtNos(UL.STMT.NOS,'','','') ;*R22 Manual Conversion
     END
 
     R.UL.FILE = SAVE.R.UL.FILE

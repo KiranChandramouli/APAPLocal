@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyMDUwMTcwODU4OkNwMTI1MjoxNjk4MzIzNDkzNDk4OjMzM3N1Oi0xOi0xOjA6MDp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 Oct 2023 18:01:33
+* @ValidationCode : MjoxNTk5NDA0MTUwOkNwMTI1MjoxNjk4NjU2NDczNzg2OjMzM3N1Oi0xOi0xOjA6MDp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 30 Oct 2023 14:31:13
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
@@ -401,7 +401,8 @@ CHECK.PRELIM.CONDS:
                             TFS.TXN = ALL.TFS.TXNS<1,XX>
                             TFS$R.TFS.TXN(XX) = ''
                             IF TFS.TXN THEN
-                                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
+*                                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
+                                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
                                 TFS$R.TFS.TXN(XX) = R.TFS.TXN
                                 SAVE.AV = AV ; AV = XX
                                 GOSUB LOAD.STO.RECORD
@@ -600,7 +601,8 @@ CHECK.FIELDS:
         CASE AF EQ TFS.TRANSACTION
             IF COMI THEN
                 TFS.TXN = COMI
-                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
+*                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
+                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
                 IF NOT(E) THEN
                     LOCATE R.TFS.TXN<TFS.TXN.INTERFACE.TO> IN TFS$R.TFS.PAR<TFS.PAR.APPLICATION,1> SETTING INTERFACE.OK THEN
                         TFS$R.TFS.TXN(AV) = R.TFS.TXN
@@ -3406,7 +3408,8 @@ IMPORT.UNDERLYING:
 * just plain reversal of the transaction.
 *
         IF COMI[1,2] MATCHES 'FT' :@VM: 'TT' THEN
-            CALL TFS.IMPORT.UNDERLYING(DEFAULTED.FIELD,DEFAULTED.ENRI)
+*            CALL TFS.IMPORT.UNDERLYING(DEFAULTED.FIELD,DEFAULTED.ENRI)
+            APAP.TFS.tfsImportUnderlying(DEFAULTED.FIELD,DEFAULTED.ENRI) ;*R22 Manual Conversion
         END ELSE
             E = 'EB-TFS.INVALID.UNDERLYING'
         END
