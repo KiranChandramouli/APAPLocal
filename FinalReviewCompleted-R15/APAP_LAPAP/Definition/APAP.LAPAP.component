@@ -627,16 +627,6 @@ public method enqLApapSwiftInfo (
 
 
 
-public method itssGetProptectionLimit (
-    INOUT yAa string,
-    INOUT yLimit string
-)
-{
-    jBC: ITSS.GET.PROPTECTION.LIMIT
-}
-
-
-
 public method itssIbsCheckCustDoc (
     INOUT yData string,
     INOUT responseParam string
