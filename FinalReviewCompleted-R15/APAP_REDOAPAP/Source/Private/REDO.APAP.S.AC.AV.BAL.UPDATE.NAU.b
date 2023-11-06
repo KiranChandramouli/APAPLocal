@@ -1,16 +1,17 @@
-* @ValidationCode : MjoxNTAwOTQ3Mjk6Q3AxMjUyOjE2ODQ4MzYwNTIwODc6SVRTUzotMTotMToyMTU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:52
+* @ValidationCode : Mjo5MDIzNzI0MzA6Q3AxMjUyOjE2OTg5MTMwMTY2NTM6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 02 Nov 2023 13:46:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 215
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
+
 SUBROUTINE REDO.APAP.S.AC.AV.BAL.UPDATE.NAU(FN.ENTRY.FILE,ENTRY.TYPE,FORWARD,ENTRY.REC,YACCT.OVERRIDES)
 *********************************************************************************************************
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -33,6 +34,7 @@ SUBROUTINE REDO.APAP.S.AC.AV.BAL.UPDATE.NAU(FN.ENTRY.FILE,ENTRY.TYPE,FORWARD,ENT
 * 10 FEB 2011       Shankar                   HD1100610                     HD fix
 * 13 Apr 2011       H Ganesh                PACS00054323 - CR012        Changed made for locked amount calculation
 * 05 JUN 2011       Prabhu N              PACS00071064                  Changed made for locked amount calculation
+* 01/11/2023	  VIGNESHWARI    ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *---------------------------------------------------------------------------------------
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *18-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   VM to @VM
@@ -72,9 +74,9 @@ PROCESS.PARA:
 * This is the main processing para
 *IF APPLICATION EQ 'ACCOUNT' THEN
 
-    IF ENTRY.REC<3> GT 0 THEN
-        RETURN
-    END
+*    IF ENTRY.REC<3> GT 0 THEN 	;*Interface Change by Santiago-COMMENTED-START
+*        RETURN
+*    END	;*Interface Change by Santiago-END
     Y.FLAG = ''
 
     GOSUB CHECK.ACCOUNT
@@ -125,8 +127,9 @@ CALC.AV.BAL:
 * Y.AMT = R.ACCOUNT<AC.WORKING.BALANCE> ;* Tus start
     Y.AMT = R.ECB<ECB.WORKING.BALANCE>  ;* Tus end
     GOSUB GET.LOCKED.AMOUNT
-
-    Y.AC.AV.BAL = Y.AMT - Y.LOCK.AMT
+    Y.N.AMT=ENTRY.REC<3>		;*Interface Change by Santiago-NEWLINE IS ADDED
+    Y.TOTAL=Y.AMT+Y.N.AMT		;*Interface Change by Santiago-NEW LINE IS ADDED
+    Y.AC.AV.BAL = Y.TOTAL - Y.LOCK.AMT		;*Interface Change by Santiago - "Y.AMT" changed to "Y.TOTAL"
 
     IF R.ACCOUNT<AC.LOCAL.REF,LOC.L.AC.AV.BAL.POS> EQ Y.AC.AV.BAL THEN
         RETURN

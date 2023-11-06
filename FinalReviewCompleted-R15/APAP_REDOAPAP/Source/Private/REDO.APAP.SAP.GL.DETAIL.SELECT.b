@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTMyMDM5MjU5MDpDcDEyNTI6MTY4NTA3OTc2NDM3MzpJVFNTOi0xOi0xOjYwMToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 26 May 2023 11:12:44
+* @ValidationCode : MjotNzcxMDI0NTgwOkNwMTI1MjoxNjk4NjYyNTAzMDA0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 30 Oct 2023 16:11:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 601
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -17,7 +17,10 @@ SUBROUTINE REDO.APAP.SAP.GL.DETAIL.SELECT
 * 31 JAN 2023 Edwin Charles D         ACCOUNTING-CR             TSR479892
 * 25-05-2023     Conversion tool           R22 Auto conversion                FM TO @FM, VM to @VM, SM to @SM
 * 25-05-2023      Harishvikram C           Manual R22 conversion               No changes
+* 30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      	NO CHANGES
 *----------------------------------------------------------------------------
+
+
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
@@ -156,7 +159,7 @@ SELECT.RE.STAT.LINE.BAL:
             SEL.LINE.BAL.CMD = "SELECT ":FN.RE.STAT.LINE.BAL
             SEL.LINE.BAL.CMD := " WITH ((@ID LIKE ":Y.FNAME.STR:"...":Y.START.DATE:"*... OR @ID LIKE ":Y.FNAME.STR:"...":Y.END.DATE:"*...) OR (@ID LIKE ":Y.LNAME.STR:"...":Y.START.DATE:"*... OR @ID LIKE ":Y.LNAME.STR:"...":Y.END.DATE:"*...)) AND @ID UNLIKE ...PROFIT... AND @ID UNLIKE ...LOCAL..."
         END
-    END
+*    END ;*Interface Change by Santiago
 * 20170926 /S
 *SEL.LINE.BAL.CMD = "SELECT ":FN.RE.STAT.LINE.BAL:" WITH (@ID LIKE MB...":Y.START.DATE:"*... OR @ID LIKE MB...":Y.END.DATE:"*...) AND @ID UNLIKE ...PROFIT... AND @ID UNLIKE ...LOCAL..."
 * 20170926 /E

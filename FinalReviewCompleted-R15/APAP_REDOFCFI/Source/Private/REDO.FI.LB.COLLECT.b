@@ -1,12 +1,12 @@
-* @ValidationCode : MjotMTMzNTgyNTI4NTpDcDEyNTI6MTY5ODE1MzE0OTYyNDp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 24 Oct 2023 18:42:29
+* @ValidationCode : MjotMTAzMzkzMzQ1MTpDcDEyNTI6MTY5ODY2MzY4Nzk0NzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 30 Oct 2023 16:31:27
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : vigneshwari
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -44,8 +44,9 @@ SUBROUTINE REDO.FI.LB.COLLECT(PARAM.ANS.ID)
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
-*04-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
-*24/10/2023	        VIGNESHWARI            ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*04-04-2023            jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*24/10/2023	       VIGNESHWARI            ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*30/10/2023	       VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *=======================================================================
 
     $INSERT I_COMMON
@@ -182,11 +183,11 @@ FT.DR.PROCESS.DET:
     DATA.IN<3> = COMM.SUSP.ACCT
     DATA.IN<4> = COMM.CURRENCY
     DATA.IN<5> = COMM.TOT.AMOUNT
-	Y.APLICACION1=FIELD(COMM.VERSION.SAP,",",1)  ;*Interface Change by Santiago-START
+	Y.APLICACION1=FIELD(COMM.VERSION.SAP,",",1)	;*Interface Change by Santiago-START
 	Y.DATA1=FIELD(Y.TEST,",",1)
 	FINDSTR "FUNDS" IN Y.APLICACION1 SETTING Ap, Vp THEN	;*Interface Change by Santiago-END
 	DATA.IN<6> = COMM.VERSION.SAP
-	END ELSE	;*Interface Change by Santiago-START
+	END ELSE		;*Interface Change by Santiago-START
 	DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.SAP
     END		;*Interface Change by Santiago-END
 
@@ -197,8 +198,8 @@ FT.CR.PROCESS.DET:
     DATA.IN<1> = RIP.CR.TXN.CODE
     DATA.IN<2> = COMM.SUSP.ACCT
     DATA.IN<4> = COMM.CURRENCY
-	Y.APLICACION2=FIELD(COMM.VERSION.PMT,",",1)  ;*Interface Change by Santiago
-	FINDSTR "FUNDS" IN Y.APLICACION2 SETTING Ap, Vp THEN ;*Interface Change by Santiago
+	Y.APLICACION2=FIELD(COMM.VERSION.PMT,",",1)	;*Interface Change by Santiago
+	FINDSTR "FUNDS" IN Y.APLICACION2 SETTING Ap, Vp THEN	;*Interface Change by Santiago
 	DATA.IN<6> = COMM.VERSION.PMT
 	END ELSE	;*Interface Change by Santiago-START
 	DATA.IN<6> ="FUNDS.TRANSFER,":COMM.VERSION.PMT
@@ -216,7 +217,7 @@ FT.NEW.TAX.PROCESS.DET:
     DATA.IN<3> = Y.PAY.CATEG.ACCOUNT
     DATA.IN<4> = COMM.CURRENCY
     DATA.IN<5> = Y.SUCCESS.TAX.AMT
-    DATA.IN<6> = "REDO.FILE.TAX.GENERATION"
+    DATA.IN<6> = "FUNDS.TRANSFER,REDO.FILE.TAX.GENERATION"	;*Interface Change by Santiago-line is modified
     DATA.IN<7> = 'REVERSADO-':Y.PARENT.REF
 
 RETURN

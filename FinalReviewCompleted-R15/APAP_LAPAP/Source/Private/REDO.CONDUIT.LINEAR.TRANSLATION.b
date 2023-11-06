@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyODcyMTMxMjA6Q3AxMjUyOjE2OTgwNDI1NDQxMzY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 Oct 2023 11:59:04
+* @ValidationCode : Mjo4NTg3MTU3OTg6Q3AxMjUyOjE2OTg2NjMxMTA5NjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 30 Oct 2023 16:21:50
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,6 +10,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
 $PACKAGE APAP.LAPAP
 SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
 *-----------------------------------------------------------------------------
@@ -22,6 +23,7 @@ SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *05-09-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,SM TO @SM
+*30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -31,7 +33,7 @@ SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.
     $INSERT I_DFE.OUTWARD.FILE.EXTRACT.COMMON
     
     GOSUB OPEN.FILES
-*R22 interface Unit testing changes- START
+ *R22 interface Unit testing changes- START   
     IF ID.RCON.L EQ 'REDO.COL.MAP.STATIC' THEN
         GOSUB PROCESS.STATIC
     END ELSE
@@ -74,7 +76,6 @@ PROCESS.STATIC:
     R.RETURN.MSG = Y.F3
 RETURN
 *** </region name=PROCESS.STATIC>
-
 *R22 interface Unit testing changes- END
 
 *------------------------------------------------------------------------------------------------------------------------------------
@@ -265,6 +266,7 @@ PROCESS.OUTWARD:
 *---------------
 *** <region name=PROCESS>
 *** <desc> Main outward proccess </desc>
+    
     Y.APP.NAME = FIELD(APP,"F.",2)
     FN.APPLICATION = APP
     F.APPLICATION  = ''
@@ -531,7 +533,7 @@ PROCESS.INDIVIDUAL.FIELD.CONV:
     END
 
     IF INDIVIDUAL.FIELD.CONV[1,6] EQ 'STATIC' THEN        ;* To extract value based on positions
-        APPL.FIELD.VALUE<-1>   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2) ;*R22 interface Unit testing changes
+        APPL.FIELD.VALUE   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2)	;*Interface Change by Santiago- Revert APPL.FIELD.VALUE<-1> 
     END
     
 RETURN
