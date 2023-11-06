@@ -23,7 +23,7 @@ SUBROUTINE LAPAP.AUT.EP.TTPROCESS.RT
 *------------------
 *   Date               who           Reference            Description
 * 27-Jan-2023      J.Q.- APAP                             Initial Creation
-*  06-11-2023      HARISHVIKRAM C   R22 Manual Conversion  BP name removed in INSERT file
+*  06-11-2023      HARISHVIKRAM C   R22 Manual Conversion  BP name removed in INSERT file, FM to@FM, VM tO @VM
 *------------------------------------------------------------------------------------------
     $INSERT  I_EQUATE      ;*R22 Manual Conversion-start
     $INSERT  I_COMMON
@@ -50,9 +50,9 @@ RETURN
 INIT:
 *MSG<-1> = 'Ingreso en LAPAP.AUT.EP.TTPROCESS.RT'
 *CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
-    LREF.FIELDS='L.TT.PROCESS':FM:'L.TT.PROCESS':FM:'L.TT.PROCESS':FM:'L.US.IDC.BR':VM:'L.US.IDC.CODE'
+    LREF.FIELDS='L.TT.PROCESS':@FM:'L.TT.PROCESS':@FM:'L.TT.PROCESS':@FM:'L.US.IDC.BR':@VM:'L.US.IDC.CODE'
     LREF.POS=''
-    LREF.APPLICATION='TELLER':FM:'T24.FUND.SERVICES':FM:'FUNDS.TRANSFER':FM:'USER'
+    LREF.APPLICATION='TELLER':@FM:'T24.FUND.SERVICES':@FM:'FUNDS.TRANSFER':@FM:'USER'
     CALL MULTI.GET.LOC.REF(LREF.APPLICATION,LREF.FIELDS,LREF.POS)
     VAR.TELLER.PROCESS.ID.POS=LREF.POS<1,1>
     VAR.TFS.PROCESS.ID.POS=LREF.POS<2,1>
@@ -252,7 +252,7 @@ UPD.ITEM.STOCK.RPT:
 *CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
 
         END ELSE
-            Y.DATE.COUNT1 = DCOUNT(R.REDO.ITEM.STOCK.BY.DATE<ITEM.RPT.DATE>,VM)
+            Y.DATE.COUNT1 = DCOUNT(R.REDO.ITEM.STOCK.BY.DATE<ITEM.RPT.DATE>,@VM)
             Y.DATE.COUNT = Y.DATE.COUNT1 + 1
             R.REDO.ITEM.STOCK.BY.DATE<ITEM.RPT.DATE,Y.DATE.COUNT>                =   Y.DATE.RPT
             R.REDO.ITEM.STOCK.BY.DATE<ITEM.RPT.ITEM.CODE,Y.DATE.COUNT>           =   Y.ITEM.CODE
