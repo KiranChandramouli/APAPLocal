@@ -1,0 +1,29 @@
+component APAP.REDOENQ
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoNofile360Padrone (
+    INOUT Ret string
+)
+{
+    jBC: REDO.NOFILE.360.PADRONE
+}
+
+
+public method redoNofileRbhpName (
+    INOUT yOut string
+)
+{
+    jBC: REDO.NOFILE.RBHP.NAME
+}
+
+
+
+public method redoNofileRbhpPadrone (
+    INOUT Ret string
+)
+{
+    jBC: REDO.NOFILE.RBHP.PADRONE
+}
+

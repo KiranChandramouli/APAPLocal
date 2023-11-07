@@ -1,0 +1,51 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoValCidentCust (
+   INOUT yAppVersion string
+)
+{
+   jBC: REDO.VAL.CIDENT.CUST
+}
+
+
+
+public method redoVInpCustRtn (
+)
+{
+   jBC: REDO.V.INP.CUST.RTN
+}
+
+
+
+public method redoVInpMenorCustRtn (
+)
+{
+   jBC: REDO.V.INP.MENOR.CUST.RTN
+}
+
+
+
+public method redoVInpPfCustRtn (
+)
+{
+   jBC: REDO.V.INP.PF.CUST.RTN
+}
+
+
+
+public method redoVInpPjCustRtn (
+)
+{
+   jBC: REDO.V.INP.PJ.CUST.RTN
+}
+
+public method redoVInpProsPfCustRtn (
+)
+{
+   jBC: REDO.V.INP.PROS.PF.CUST.RTN
+}
+
