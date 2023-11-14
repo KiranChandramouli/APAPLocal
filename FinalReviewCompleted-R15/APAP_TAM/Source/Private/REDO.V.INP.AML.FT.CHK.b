@@ -34,8 +34,8 @@ SUBROUTINE REDO.V.INP.AML.FT.CHK
 * 16-12-14    Vignesh Kumaar R   PACS00392651     AA OVERPAYMENT THROUGH CASH/CHEQUE
 * 28.04.2023       Conversion Tool       R22            Auto Conversion     - No changes
 * 28.04.2023       Shanmugapriya M       R22            Manual Conversion   - FM TO @FM, VM TO @VM
-* 03-07-2023       Narmadha V                       Manual R22 Conversion     Commented insert file, commented variable regarding I_F.T24.FUND.SERVICES file
-*                                                                             IMPACT- Field validation on TFS and TOT.TODAY.TXN.AMT amount calculation will empact
+* 03-07-2023       Narmadha V                       Manual R22 Conversion   - TFS
+*                                                                             
 *----------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -55,7 +55,7 @@ SUBROUTINE REDO.V.INP.AML.FT.CHK
     $INSERT I_F.OVERRIDE
     $INSERT I_RC.COMMON
     $INSERT I_F.VERSION
-* $INSERT I_F.T24.FUND.SERVICES ;* Manual R22 Conversion- Commnted insert file
+  $INSERT I_F.T24.FUND.SERVICES 
     $INSERT I_F.REDO.AA.OVERPAYMENT ;*
 
     GOSUB INIT
@@ -349,7 +349,7 @@ GET.TFS.TOTAL:
             RETURN
         END
         Y.TFS.LIST <-1> = GET.TFS.ID
-*        Y.TFS.TXN.CODES = R.T24.FUND.SERVICES<TFS.TRANSACTION> ;* Manual R22 conversion - insert file commented
+        Y.TFS.TXN.CODES = R.T24.FUND.SERVICES<TFS.TRANSACTION> 
         Y.TFS.TXN.COUNT = DCOUNT(Y.TFS.TXN.CODES,@VM)
         Y.TFS.COUNT = 1
 
@@ -359,7 +359,7 @@ GET.TFS.TOTAL:
 
             IF TFS.TRANSACTION.ID EQ 'CASHDEPD' THEN
 
-*                TOT.TODAY.TXN.AMT += R.T24.FUND.SERVICES<TFS.AMOUNT,Y.TFS.COUNT> ;* Manual R22 conversion - insert file commented
+                TOT.TODAY.TXN.AMT += R.T24.FUND.SERVICES<TFS.AMOUNT,Y.TFS.COUNT>
 
             END
             Y.TFS.COUNT++

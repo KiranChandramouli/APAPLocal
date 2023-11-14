@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNDYxODg0OTg4OkNwMTI1MjoxNjg5NzQ0NTcwMDczOklUU1M6LTE6LTE6NzQwMDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 19 Jul 2023 10:59:30
+* @ValidationCode : MjoxODM4MjY4NTA1OkNwMTI1MjoxNjk5MjcxNTQxODc1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 06 Nov 2023 17:22:21
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 7400
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 
@@ -42,6 +42,7 @@ SUBROUTINE REDO.RAISE.RTE.OVERRIDE
     $INSERT I_System
     $INSERT I_F.REDO.RTE.CUST.CASHTXN
     $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 Auto Conversion - End
+    $INSERT I_F.T24.FUND.SERVICES ;* R22 Manual Conversion
 
 
     IF OFS$OPERATION NE 'PROCESS' THEN

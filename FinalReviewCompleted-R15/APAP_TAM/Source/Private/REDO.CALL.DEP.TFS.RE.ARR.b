@@ -28,7 +28,7 @@ SUBROUTINE REDO.CALL.DEP.TFS.RE.ARR
 *Modification History
 *DATE                WHO                         REFERENCE                DESCRIPTION
 *26-06-2023       Conversion Tool           R22 Auto Code conversion          No Changes
-*26-06-2023       S.AJITHKUMAR               R22 Manual Code Conversion       Command this Insert file I_F.T24.FUND.SERVICES And I_T24.FS.COMMON
+*26-06-2023       S.AJITHKUMAR               R22 Manual Code Conversion       Package added
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.COMPANY
@@ -36,8 +36,8 @@ SUBROUTINE REDO.CALL.DEP.TFS.RE.ARR
     $INSERT I_F.CUSTOMER
     $INSERT I_F.CURRENCY
     $INSERT I_TT.COMMON
-*$INSERT I_T24.FS.COMMON ;*R22 manual code conversion
-*$INSERT I_F.T24.FUND.SERVICES ;*R22 manual code conversion
+$INSERT I_T24.FS.COMMON 
+$INSERT I_F.T24.FUND.SERVICES 
     $INSERT I_F.TFS.TRANSACTION
     $INSERT I_REDO.TFS.DEAL.SLIP.COMMON
     
