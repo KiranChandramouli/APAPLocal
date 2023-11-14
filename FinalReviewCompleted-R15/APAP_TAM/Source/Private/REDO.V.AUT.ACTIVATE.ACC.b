@@ -39,7 +39,7 @@ SUBROUTINE REDO.V.AUT.ACTIVATE.ACC
 * Date             Who                   Reference      Description
 * 28.04.2023       Conversion Tool       R22            Auto Conversion     - No changes
 * 28.04.2023       Shanmugapriya M       R22            Manual Conversion   - FM TO @FM, VM TO @VM
-* 03-07-2023       Narmadha V                           Manual R22 Conversion - Commented insert file
+* 03-07-2023       Narmadha V                           Manual R22 Conversion - TFS
 *-----------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -48,7 +48,7 @@ SUBROUTINE REDO.V.AUT.ACTIVATE.ACC
     $INSERT I_F.TELLER
     $INSERT I_F.INTEREST.BASIS
     $INSERT I_F.CUSTOMER
-* $INSERT I_F.T24.FUND.SERVICES ;* Manual R22 Conversion
+    $INSERT I_F.T24.FUND.SERVICES 
     $INSERT I_F.REDO.CUST.PRD.LIST
     $INSERT I_REDO.TELLER.COMMON
     $INSERT I_F.REDO.TRANUTIL.INTAMT

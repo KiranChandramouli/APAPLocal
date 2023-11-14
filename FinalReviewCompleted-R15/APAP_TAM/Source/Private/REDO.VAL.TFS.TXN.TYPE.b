@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTU5NjgxMDg3OkNwMTI1MjoxNjg5OTMzNDk1NjkxOklUU1M6LTE6LTE6NTc1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 21 Jul 2023 15:28:15
+* @ValidationCode : MjoxNzY5OTAwODc6Q3AxMjUyOjE2OTkyNzE2ODc3MjY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 06 Nov 2023 17:24:47
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 575
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VAL.TFS.TXN.TYPE
@@ -92,8 +92,8 @@ PROCESS.PARA:
     Y.SUB.CODE = R.COMPANY(EB.COM.SUB.DIVISION.CODE)
     Y.TFS.PARAM.ID = R.COMPANY(EB.COM.FINANCIAL.COM)
     CALL CACHE.READ(FN.TFS.PARAM,Y.TFS.PARAM.ID,R.TFS.PARAM,TFS.ERR)
-*Y.GET.WASH.CATEG = R.TFS.PARAM<TFS.PAR.NET.ENTRY.WASHTHRU>
-    Y.GET.WASH.CATEG = R.TFS.PARAM<TFS.PAR.CONSOL.WASHTHRU> ;*MANUAL R22 CODE CONVERSION- "TFS.PAR.NET.ENTRY.WASHTHRU" TO "TFS.PAR.CONSOL.WASHTHRU"
+    Y.GET.WASH.CATEG = R.TFS.PARAM<TFS.PAR.NET.ENTRY.WASHTHRU>
+*    Y.GET.WASH.CATEG = R.TFS.PARAM<TFS.PAR.CONSOL.WASHTHRU> ;*MANUAL R22 CODE CONVERSION- "TFS.PAR.NET.ENTRY.WASHTHRU" TO "TFS.PAR.CONSOL.WASHTHRU"
     CALL F.READ(FN.TELLER.USER,OPERATOR,R.TELLER.USER,F.TELLER.USER,TELL.ERR)
     TILL.LIST = R.TELLER.USER
     TILL.COUNT = DCOUNT(TILL.LIST,@VM)

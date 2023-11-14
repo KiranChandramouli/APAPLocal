@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTAyODYxODAzOTpDcDEyNTI6MTY4OTkyNTI0NzI2MzpJVFNTOi0xOi0xOjE1NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 21 Jul 2023 13:10:47
+* @ValidationCode : MjotMjAxMzY4MTI0NTpDcDEyNTI6MTY5OTI3MTY3ODkyNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 06 Nov 2023 17:24:38
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 157
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.V.INP.CHQ.MAND
@@ -97,11 +97,11 @@ PROCESS.CASHBACK:
 * we are not using the TFS application fields TFS.CASH.BACK.DIR & TFS.CASH.BACK.TXN cos it is not updating properly if we alter the amount.
 
     Y.CASHBACK.DIRECTION = 'OUT':@FM:'IN':@FM:'OUT'   ;* Even in core routine T24.FS.CHECK.FIELDS, this is the order!!!
-  *  Y.CASH.BACK.TXN      = TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.1>:@FM:TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.2>:@FM:TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.3>    ;* MANUAL R22 CODE CONVERSION- The variable 'TFS.PAR.CASH.BACK.TXN.3','TFS.PAR.CASH.BACK.TXN.2','TFS.PAR.CASH.BACK.TXN.1' & 'TFS.PAR.NET.ENTRY.WASHTHRU' is not found in insert file, Hence variable is intialised.
+*  Y.CASH.BACK.TXN      = TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.1>:@FM:TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.2>:@FM:TFS$R.TFS.PAR<TFS.PAR.CASH.BACK.TXN.3>    ;* MANUAL R22 CODE CONVERSION- The variable 'TFS.PAR.CASH.BACK.TXN.3','TFS.PAR.CASH.BACK.TXN.2','TFS.PAR.CASH.BACK.TXN.1' & 'TFS.PAR.NET.ENTRY.WASHTHRU' is not found in insert file, Hence variable is intialised.
 
     Y.FINAL.AMT = 0
 
-Y.CASH.BACK.TXN=""
+    Y.CASH.BACK.TXN=""
 
     Y.CNT = 1
     LOOP
@@ -135,8 +135,8 @@ PROCESS.NET.ENTRY:
 *---------------------------------------------------------------
 * Here we will check whether all the amount entered matches with the net-entry amount.
 
-*    NET.ENTRY.WTHRU.CATEG = TFS$R.TFS.PAR<TFS.PAR.NET.ENTRY.WASHTHRU>
-    NET.ENTRY.WTHRU.CATEG = TFS$R.TFS.PAR<TFS.PAR.CONSOL.WASHTHRU> ;*;* MANUAL R22 CODE CONVERSION- 'TFS.PAR.NET.ENTRY.WASHTHRU' to "TFS.PAR.CONSOL.WASHTHRU"
+    NET.ENTRY.WTHRU.CATEG = TFS$R.TFS.PAR<TFS.PAR.NET.ENTRY.WASHTHRU>
+*   NET.ENTRY.WTHRU.CATEG = TFS$R.TFS.PAR<TFS.PAR.CONSOL.WASHTHRU> ;*;* MANUAL R22 CODE CONVERSION- 'TFS.PAR.NET.ENTRY.WASHTHRU' to "TFS.PAR.CONSOL.WASHTHRU"
     ENTRY.AMT = 0
     Y.CNT = 1
     LOOP

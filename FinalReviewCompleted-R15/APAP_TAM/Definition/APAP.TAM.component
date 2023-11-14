@@ -15349,3 +15349,29 @@ public method redoUpdateVersionName (
 {
     jBC: REDO.UPDATE.VERSION.NAME
 }
+
+public method redoNofAdjustClearReport (
+   INOUT yFinArr string
+)
+{
+   jBC: REDO.NOF.ADJUST.CLEAR.REPORT
+}
+
+
+
+public method redoNofChqNtPresent (
+   INOUT yFinalArray string
+)
+{
+   jBC: REDO.NOF.CHQ.NT.PRESENT
+}
+
+
+
+public method redoNofGenChqAgency (
+   INOUT yFinArr string
+)
+{
+   jBC: REDO.NOF.GEN.CHQ.AGENCY
+}
+

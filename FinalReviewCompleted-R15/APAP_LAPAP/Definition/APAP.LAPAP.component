@@ -9165,3 +9165,44 @@ public method lApapMaskAccount (
 {
     jBC: L.APAP.MASK.ACCOUNT
 }
+
+
+public method drReg213if01RteExtract (
+   INOUT recId string
+)
+{
+   jBC: DR.REG.213IF01.RTE.EXTRACT
+}
+
+
+
+public method drReg213if01RteExtractLoad (
+)
+{
+   jBC: DR.REG.213IF01.RTE.EXTRACT.LOAD
+}
+
+
+
+public method drReg213if01RteExtractPost (
+)
+{
+   jBC: DR.REG.213IF01.RTE.EXTRACT.POST
+}
+
+
+
+public method drReg213if01RteExtractSelect (
+)
+{
+   jBC: DR.REG.213IF01.RTE.EXTRACT.SELECT
+}
+
+
+
+public method lapapAutEpTtprocessRt (
+)
+{
+   jBC: LAPAP.AUT.EP.TTPROCESS.RT
+}
+

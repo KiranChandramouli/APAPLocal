@@ -16,7 +16,7 @@ $PACKAGE APAP.LAPAP
 *Modification History
 *DATE                WHO                         REFERENCE                DESCRIPTION
 
-*26-06-2023       S.AJITHKUMAR              R22 Manual Code Conversion       T24.BP IS REMOVED.Command this Insert file I_F.T24.FUND.SERVICES
+*26-06-2023       S.AJITHKUMAR              R22 Manual Code Conversion       T24.BP IS REMOVED
 *04-07-2023       Narmadha V                Manual R22 Conversion            Call Routine format modified
 *-----------------------------------------------------------------------------
 SUBROUTINE LAPAP.ACC.CANAL.APERTURA
@@ -41,7 +41,7 @@ SUBROUTINE LAPAP.ACC.CANAL.APERTURA
     $INSERT JBC.h
     $INSERT  I_F.CUSTOMER
     $INSERT  I_F.VERSION
-*$INSERT  I_F.T24.FUND.SERVICES ;*R22 manual code conversion
+    $INSERT  I_F.T24.FUND.SERVICES 
 
 
     IF APPLICATION EQ 'TELLER' THEN
@@ -114,12 +114,12 @@ FUNDS.PROCCESS:
     Y.PRESENCIAL             = R.ACCOUNT<AC.LOCAL.REF,Y.PRESENCIAL.POS>
 
     IF Y.PRESENCIAL EQ Y.VAR THEN
-*R.NEW(TFS.LOCAL.REF)<1,POS.L.PRESENCIAL>        =  Y.PRESENCIAL ;*R22 manual code conversion
+ R.NEW(TFS.LOCAL.REF)<1,POS.L.PRESENCIAL>        =  Y.PRESENCIAL 
         T.LOCREF<POS.L.PRESENCIAL,7>                    = 'NOINPUT'
     END
     IF Y.PRESENCIAL NE Y.VAR THEN
         Y.PRESENCIAL                                    = 'Fisico Sucursal'
-* R.NEW(TFS.LOCAL.REF)<1,POS.L.PRESENCIAL>        =  Y.PRESENCIAL ;*R22 manual code conversion
+ R.NEW(TFS.LOCAL.REF)<1,POS.L.PRESENCIAL>        =  Y.PRESENCIAL 
         T.LOCREF<POS.L.PRESENCIAL,7>                    = 'NOINPUT'
     END
 RETURN
