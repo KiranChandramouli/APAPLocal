@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxOTY1NTQxMDA6Q3AxMjUyOjE3MDAxMzE5NTQ3NDM6dmlnbmVzaHdhcmk6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 16 Nov 2023 16:22:34
+* @ValidationCode : MjotMTcyMjQ1NjExMTpDcDEyNTI6MTcwMDE5Njc1NzQxNzp2aWduZXNod2FyaTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 17 Nov 2023 10:22:37
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
@@ -14,7 +14,7 @@ $PACKAGE APAP.TAM
 *-----------------------------------------------------------------------------------------------------
 *Modification history
 *Date                Who               Reference                  Description
-*16-11-2023 VIGNESHWARI  ADDED COMMENT FOR INTERFACE CHANGES  Fix SQA-11679 Padrones -By Santiago
+*16-11-2023 VIGNESHWARI  ADDED COMMENT FOR INTERFACE CHANGES   No Changes
 *-----------------------------------------------------------------------------------------------------
 SUBROUTINE REDO.PADRON.GET.XML(LINEAEXTRAIDA)
 *-----------------------------------------------------------------------------
