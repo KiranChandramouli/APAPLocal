@@ -1,0 +1,40 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoPadronGetXml (
+   INOUT lineaextraida string
+)
+{
+   jBC: REDO.PADRON.GET.XML
+}
+
+
+
+public method redoPadronJuridicoGetXml (
+   INOUT lineaextraida string
+)
+{
+   jBC: REDO.PADRON.JURIDICO.GET.XML
+}
+
+
+
+public method redoRncCheckDigit (
+   INOUT yCheckDigit string
+)
+{
+   jBC: REDO.RNC.CHECK.DIGIT
+}
+
+
+
+public method redoValPassportCust (
+   INOUT yAppVersion string
+)
+{
+   jBC: REDO.VAL.PASSPORT.CUST
+}
+
