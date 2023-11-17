@@ -1,0 +1,5 @@
+* I_F.REDO.B2.RECORD.INS.PAY Created 30 JUN 13 at 02:42PM by t24uatd/MARI.2
+*      PREFIX[REC.INS]
+              EQU REC.INS.DATES TO 1,   RedoB2RecordInsPay_Dates TO 1,
+                 REC.INS.FT.IDS TO 2,   RedoB2RecordInsPay_FtIds TO 2,
+             REC.INS.RESERVED.1 TO 3,   RedoB2RecordInsPay_Reserved1 TO 3

@@ -1,0 +1,5 @@
+* I_F.REDO.CUST.REQUESTS Created 04 AUG 10 at 07:01PM by apapr8/SUDHARSAN
+*      PREFIX[CUST.REQ]
+            EQU CUST.REQ.CUST.ID TO 1,   RedoCustRequests_CustId TO 1,
+            CUST.REQ.CUST.SEQ.NO TO 2,   RedoCustRequests_CustSeqNo TO 2,
+            CUST.REQ.APAP.SEQ.NO TO 3,   RedoCustRequests_ApapSeqNo TO 3

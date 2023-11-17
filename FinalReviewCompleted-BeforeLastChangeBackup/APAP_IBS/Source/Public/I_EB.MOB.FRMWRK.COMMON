@@ -1,0 +1,14 @@
+*---------------------------------------------------------------------------------------------------
+* I_EB.MOB.FRMWRK.COMMON
+*---------------------------------------------------------------------------------------------------
+
+    COM/EB.MOB.FRMWRK/FN.EB.MOB.FRMWRK,
+    F.EB.MOB.FRMWRK,
+    FN.EB.EXTERNAL.USER,
+    F.EB.EXTERNAL.USER,
+    R.EB.EXTERNAL.USER,
+    EXT.USER.ID,
+    TOKEN.ID,
+    ACTION.ID,
+    ACTION.REC,
+    MOB.USER.VARIABLES

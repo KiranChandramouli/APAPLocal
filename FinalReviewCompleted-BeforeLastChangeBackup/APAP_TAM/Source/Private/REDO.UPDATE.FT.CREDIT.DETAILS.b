@@ -1,0 +1,183 @@
+* @ValidationCode : MjoxOTk2MjA4OTk0OkNwMTI1MjoxNjkwMTc2OTI2MTU2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Jul 2023 11:05:26
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.TAM
+SUBROUTINE REDO.UPDATE.FT.CREDIT.DETAILS
+*----------------------------------------------------------------------------------------------------------------------
+* COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* DEVELOPED BY: Ganesh R
+* PROGRAM NAME: REDO.UPDATE.FT.CREDIT.DETAILS
+* ODR NO      : ODR-2011-03-0150
+*----------------------------------------------------------------------------------------------------------------------
+*DESCRIPTION: This routine is to get the FT details from a Work File REDO.AUTH.CODE.DETAILS and populate in Teller Version
+*----------------------------------------------------------------------------------------------------------------------
+* linked with :
+* In parameter:
+* Out parameter:
+*----------------------------------------------------------------------------------------------------------------------
+* Modification History :
+*----------------------------------------------------------------------------------------------------------------------
+* DATE          WHO                  REFERENCE       DESCRIPTION
+* 04-08-2013    Vignesh Kumaar M R   PACS00254281    NUMERO DE AUTORIZACION INCORRECTO
+* 28-08-2013    Vignesh Kumaar M R   PACS00314450    DEFAULT ACCOUNT.2 WITH THE DEBIT CARD INTERNAL ACCOUNT
+*13/07/2023	    CONVERSION TOOL                       AUTO R22 CODE CONVERSION-VM TO @VM
+*13/07/2023	    VIGNESHWARI          	    	      MANUAL R22 CODE CONVERSION- NOCHANGE
+*----------------------------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.TELLER
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.CUSTOMER
+    $INSERT I_System
+    $INSERT I_GTS.COMMON
+    $INSERT I_REDO.DEBIT.CARD.COMMON
+    $INSERT I_F.ATM.REVERSAL
+    $INSERT I_F.AT.POS.MERCHANT.ACCT ;*
+
+    IF OFS$HOT.FIELD EQ 'L.TT.POS.AUTHNM' THEN
+        GOSUB OPEN.FILES
+        GOSUB PROCESS
+    END
+    GOSUB PGM.END
+RETURN
+************
+OPEN.FILES:
+************
+    FN.ATM.REVERSAL = 'F.ATM.REVERSAL'
+    F.ATM.REVERSAL  = ''
+    CALL OPF(FN.ATM.REVERSAL,F.ATM.REVERSAL)
+
+    FN.FUNDS.TRANSFER = 'F.FUNDS.TRANSFER'
+    F.FUNDS.TRANSFER = ''
+    CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
+
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT  = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.CUSTOMER = 'F.CUSTOMER'
+    F.CUSTOMER = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    L.APP = 'TELLER'
+    L.FIELD = 'L.TT.CLIENT.COD':@VM:'L.TT.CLIENT.NME'
+    L.POS = ''
+    CALL MULTI.GET.LOC.REF(L.APP,L.FIELD,L.POS)
+    POS.CLIENT.COD = L.POS<1,1>
+    POS.CLIENT.NME = L.POS<1,2>
+
+RETURN
+**********
+PROCESS:
+**********
+*Get the Value of Auth Code.
+
+* Fix for PACS00254281 [NUMERO DE AUTORIZACION INCORRECTO]
+
+*    Y.CCARD.NO = TEMP.VAR
+    Y.CCARD.NO = System.getVariable("CURRENT.CARD.NUM")
+
+    FN.REDO.CASHIER.DEALSLIP.INFO = 'F.REDO.CASHIER.DEALSLIP.INFO'
+    F.REDO.CASHIER.DEALSLIP.INFO = ''
+    CALL OPF(FN.REDO.CASHIER.DEALSLIP.INFO,F.REDO.CASHIER.DEALSLIP.INFO)
+
+    R.REDO.CASHIER.DEALSLIP.INFO = Y.CCARD.NO
+*  WRITE R.REDO.CASHIER.DEALSLIP.INFO ON F.REDO.CASHIER.DEALSLIP.INFO, COMI ;*Tus Start
+    CALL F.WRITE(FN.REDO.CASHIER.DEALSLIP.INFO,COMI,R.REDO.CASHIER.DEALSLIP.INFO) ; * Tus End
+
+* End of Fix
+
+    Y.AUTH.ID = COMI
+    Y.AUTH.ID = Y.CCARD.NO:'.':Y.AUTH.ID
+
+    Y.DR.CR.MARKER = R.NEW(TT.TE.DR.CR.MARKER)
+    CALL F.READ(FN.ATM.REVERSAL,Y.AUTH.ID,R.ATM.REVERSAL,F.ATM.REVERSAL,ATM.ERR)
+    IF R.ATM.REVERSAL THEN
+        GOSUB CHECK.PROCESS
+    END ELSE
+        ETEXT = "EB-REDO.WRONG.AUTH.NUM"
+        CALL STORE.END.ERROR
+        GOSUB PGM.END
+    END
+
+*Read the FT id and get the details
+    CALL F.READ(FN.FUNDS.TRANSFER,Y.FT.ID,R.FUNDS.TRANSFER,F.FUNDS.TRANSFER,FUNDS.ERR)
+
+    IF R.FUNDS.TRANSFER THEN
+
+        Y.DEBIT.ACCOUNT = R.FUNDS.TRANSFER<FT.CREDIT.ACCT.NO>
+        Y.ACC.ID        = R.FUNDS.TRANSFER<FT.DEBIT.ACCT.NO>
+        Y.DEBIT.AMOUNT  = R.FUNDS.TRANSFER<FT.DEBIT.AMOUNT>
+        IF NOT(Y.DEBIT.AMOUNT) THEN
+            Y.DEBIT.AMOUNT = R.FUNDS.TRANSFER<FT.CREDIT.AMOUNT>
+            Y.DEBIT.CCY    = R.FUNDS.TRANSFER<FT.CREDIT.CURRENCY>
+        END
+        Y.DEBIT.CCY     = R.FUNDS.TRANSFER<FT.DEBIT.CURRENCY>
+
+        IF Y.DR.CR.MARKER EQ 'DEBIT' THEN
+            R.NEW(TT.TE.ACCOUNT.1)  = Y.DEBIT.ACCOUNT
+            R.NEW(TT.TE.CURRENCY.1) = Y.DEBIT.CCY
+        END ELSE
+            R.NEW(TT.TE.ACCOUNT.2)  = Y.DEBIT.ACCOUNT
+            R.NEW(TT.TE.CURRENCY.2) = Y.DEBIT.CCY
+        END
+
+        CALL F.READ(FN.ACCOUNT,Y.ACC.ID,R.ACCOUNT,F.ACCOUNT,ACCT.ERR)
+        VAR.CUS.ID = R.ACCOUNT<AC.CUSTOMER>
+        R.NEW(TT.TE.LOCAL.REF)<1,POS.CLIENT.COD> = VAR.CUS.ID
+        CALL F.READ(FN.CUSTOMER,VAR.CUS.ID,R.CUSTOMER,F.CUSTOMER,CUS.ERR)
+        R.NEW(TT.TE.LOCAL.REF)<1,POS.CLIENT.NME> = R.CUSTOMER<EB.CUS.SHORT.NAME>
+
+    END ELSE
+
+        ETEXT = "EB-REDO.WRONG.AUTH.NUM"
+        CALL STORE.END.ERROR
+        GOSUB PGM.END
+
+    END
+
+RETURN
+*****************
+CHECK.PROCESS:
+*****************
+
+    Y.WITHDRAW.STATUS = R.ATM.REVERSAL<AT.REV.WITHDRAW.STATUS>
+    IF NOT(Y.WITHDRAW.STATUS) THEN
+        Y.FT.ID = R.ATM.REVERSAL<AT.REV.TRANSACTION.ID>
+
+* Fix for PACS00314450 [DEFAULT ACCOUNT.2 WITH THE DEBIT CARD INTERNAL ACCOUNT]
+
+        IF PGM.VERSION EQ ',REDO.CHEQUE.GOVERN.TAX.TRF.CHQ' THEN
+            Y.TERM.ID = R.ATM.REVERSAL<AT.REV.TERM.ID>
+            FN.AT.POS.MERCHANT.ACCT = 'F.AT.POS.MERCHANT.ACCT'
+            F.AT.POS.MERCHANT.ACCT = ''
+            CALL OPF(FN.AT.POS.MERCHANT.ACCT,F.AT.POS.MERCHANT.ACCT)
+            CALL F.READ(FN.AT.POS.MERCHANT.ACCT,Y.TERM.ID,R.AT.POS.MERCHANT.ACCT,F.AT.POS.MERCHANT.ACCT,ERR.AT.POS.MERCHANT.ACCT)
+            GET.ACCOUNT.NUMB = R.AT.POS.MERCHANT.ACCT<AT.PMA.MERCHANT.ACCT.NO>
+            R.NEW(TT.TE.ACCOUNT.2) = GET.ACCOUNT.NUMB
+        END
+
+* End of Fix
+
+    END ELSE
+        ETEXT = "EB-NUM.ALREADY.USED"
+        CALL STORE.END.ERROR
+        GOSUB PGM.END
+    END
+
+RETURN
+
+*************
+PGM.END:
+************
+END

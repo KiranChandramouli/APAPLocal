@@ -1,0 +1,20 @@
+* I_F.REDO.TFS.ALE Created 21 DEC 11 at 01:32PM by apap/RIYASA4
+*      PREFIX[TFS.ALE]
+                EQU TFS.ALE.ALE TO 1,   RedoTfsAle_Ale TO 1,
+             TFS.ALE.ALE.AMOUNT TO 2,   RedoTfsAle_AleAmount TO 2,
+         TFS.ALE.REDO.CLEAR.OUT TO 3,   RedoTfsAle_RedoClearOut TO 3,
+            TFS.ALE.RESERVED.15 TO 4,   RedoTfsAle_Reserved15 TO 4,
+            TFS.ALE.RESERVED.14 TO 5,   RedoTfsAle_Reserved14 TO 5,
+            TFS.ALE.RESERVED.13 TO 6,   RedoTfsAle_Reserved13 TO 6,
+            TFS.ALE.RESERVED.12 TO 7,   RedoTfsAle_Reserved12 TO 7,
+            TFS.ALE.RESERVED.11 TO 8,   RedoTfsAle_Reserved11 TO 8,
+            TFS.ALE.RESERVED.10 TO 9,   RedoTfsAle_Reserved10 TO 9,
+             TFS.ALE.RESERVED.9 TO 10,  RedoTfsAle_Reserved9 TO 10,
+             TFS.ALE.RESERVED.8 TO 11,  RedoTfsAle_Reserved8 TO 11,
+             TFS.ALE.RESERVED.7 TO 12,  RedoTfsAle_Reserved7 TO 12,
+             TFS.ALE.RESERVED.6 TO 13,  RedoTfsAle_Reserved6 TO 13,
+             TFS.ALE.RESERVED.5 TO 14,  RedoTfsAle_Reserved5 TO 14,
+             TFS.ALE.RESERVED.4 TO 15,  RedoTfsAle_Reserved4 TO 15,
+             TFS.ALE.RESERVED.3 TO 16,  RedoTfsAle_Reserved3 TO 16,
+             TFS.ALE.RESERVED.2 TO 17,  RedoTfsAle_Reserved2 TO 17,
+             TFS.ALE.RESERVED.1 TO 18,  RedoTfsAle_Reserved1 TO 18

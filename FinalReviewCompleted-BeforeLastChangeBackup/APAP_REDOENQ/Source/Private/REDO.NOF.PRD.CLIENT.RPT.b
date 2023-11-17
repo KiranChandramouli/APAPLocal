@@ -1,0 +1,238 @@
+* @ValidationCode : MjotMTEwNTQ1MTIzMzpDcDEyNTI6MTY4NTk1MDIwMjE5MDpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Jun 2023 13:00:02
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOENQ
+SUBROUTINE REDO.NOF.PRD.CLIENT.RPT(Y.RESULT.ARRAY)
+*********************************************************************************
+*-------------------------------------------------------------------------------
+* Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By : DHAMU S
+* Program Name : REDO.NOF.PRD.CLIENT.RPT
+*--------------------------------------------------------------------------------
+*Description :This subroutine is attached to the ENQUIRY REDO.PRD.CLIENT.ENQ
+*             which displays the client details
+*--------------------------------------------------------------------------------
+* Linked With : ENQUIRY REDO.PRD.CLIENT.ENQ
+* In Parameter : None
+* Out Parameter : None
+*---------------------------------------------------------------------------------
+*Modification History:
+*------------------------
+*     Date            Who                  Reference               Description
+*    ------          ------               -----------             --------------
+*   19-10-2010       DHAMU S          ODR-2010-08-0182 113       Initial Creation
+*DATE              WHO                REFERENCE                        DESCRIPTION
+*23-05-2023       HARSHA        AUTO R22 CODE CONVERSION                VM to @VM and SM TO @SM
+*23-05-2023       HARSHA        MANUAL R22 CODE CONVERSION              Changed from CUS.POSD to CUS.POS
+*--------------------------------------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.CUSTOMER
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.CUSTOMER.ACCOUNT
+    $USING APAP.AA
+
+    GOSUB INIT
+    GOSUB PROCESS
+RETURN
+*****
+INIT:
+*****
+
+    CUST.LIST = '' ; CLIENT.DATE.VAL = '' ; DATE.RECENT.VAL = '' ; AGENCY.VAL = '' ; ACCOUNT.OFF.VAL = '' ; CATEGORY1.VAL = ''
+    CATEGORY2.VAL = ''  ;  PERSON.VAL = '' ; FINANCE.VAL = '' ; ARR.STATUS.VAL = '' ;   INVESTMENT.VAL = '' ;  SAVING.ACCOUNT.VAL = ''
+    CARD.STAGE.VAL  = '';  ACCT.LIST = '' ; Y.ARR.ID ='' ;STATUS.ARRANGE.VAL = ''; Y.L.AC.STATUS  = '';Y.L.AC.STATUS2 = ''; Y.ERR.FLAG =''
+    Y.CLIENT.FROM.DATE = ''; Y.CLIENT.TO.DATE = ''; Y.RECENT.FROM.DATE = '' ; Y.RECENT.TO.DATE = ''
+    FN.CUSTOMER = 'F.CUSTOMER'
+    F.CUSTOMER  = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT  = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.AA.ARRANGEMENT = 'F.AA.ARRANGEMENT'
+    F.AA.ARRANGEMENT  = ''
+    CALL OPF(FN.AA.ARRANGEMENT,F.AA.ARRANGEMENT)
+
+    FN.CUSTOMER.ACCOUNT = 'F.CUSTOMER.ACCOUNT'
+    F.CUSTOMER.ACCOUNT = ''
+    CALL OPF(FN.CUSTOMER.ACCOUNT,F.CUSTOMER.ACCOUNT)
+
+RETURN
+PROCESS:
+**********
+    APL.ARRAY = 'ACCOUNT'
+    FLD.ARRAY = "L.AC.STATUS":@VM:"L.AC.STATUS2"
+    FLD.POS =''
+
+    CALL MULTI.GET.LOC.REF(APL.ARRAY,FLD.ARRAY,FLD.POS)
+
+    LOC.L.AC.STATUS.POS = FLD.POS<1,1>
+    LOC.L.AC.STATUS2.POS = FLD.POS<1,2>
+
+    SEL.CMD=" SELECT ":FN.CUSTOMER:" WITH CUSTOMER.TYPE NE PROSPECT "
+    LOCATE "CUSTOMER.SINCE" IN D.FIELDS<1> SETTING Y.CLIENT.DATE.POS THEN
+        CLIENT.DATE.VAL = D.RANGE.AND.VALUE<Y.CLIENT.DATE.POS>
+        GOSUB DATE.CHECK
+        SEL.CMD:= " AND CUSTOMER.SINCE GE ":Y.CLIENT.FROM.DATE:" AND CUSTOMER.SINCE LE ":Y.CLIENT.TO.DATE
+    END
+    LOCATE "DATE.TIME" IN D.FIELDS<1> SETTING Y.DATE.RECENT.POS THEN
+        DATE.RECENT.VAL = D.RANGE.AND.VALUE<Y.DATE.RECENT.POS>
+        GOSUB CHECK.RECENT.DATE
+        Y.RECENT.FROM.DATE = Y.RECENT.FROM.DATE[3,6]:"0000"
+        Y.RECENT.TO.DATE   = Y.RECENT.TO.DATE[3,6]:"2359"
+        SEL.CMD:= " AND DATE.TIME GE ":Y.RECENT.FROM.DATE:" AND DATE.TIME LE ":Y.RECENT.TO.DATE
+    END
+    LOCATE "OTHER.OFFICER" IN D.FIELDS<1> SETTING Y.AGENCY.POS THEN
+        AGENCY.VAL = D.RANGE.AND.VALUE<Y.AGENCY.POS>
+        SEL.CMD:= " AND OTHER.OFFICER EQ ":AGENCY.VAL
+    END
+    LOCATE "ACCOUNT.OFFICER" IN D.FIELDS<1> SETTING Y.ACC.POS THEN
+        ACCOUNT.OFF.VAL = D.RANGE.AND.VALUE<Y.ACC.POS>
+        SEL.CMD:=" AND ACCOUNT.OFFICER EQ ":ACCOUNT.OFF.VAL
+    END
+    LOCATE "CR.PROFILE" IN D.FIELDS<1> SETTING Y.CATEG.POS THEN
+        CR.PROFILE.VAL = D.RANGE.AND.VALUE<Y.CATEG.POS>
+        SEL.CMD:=" AND CR.PROFILE EQ ":CR.PROFILE.VAL
+    END
+    LOCATE "L.CU.SEGMENTO" IN D.FIELDS<1> SETTING Y.CATEGORY.POS THEN
+        CATEGORY2.VAL = D.RANGE.AND.VALUE<Y.CATEGORY.POS>
+        SEL.CMD:=" AND L.CU.SEGMENTO EQ ":CATEGORY2.VAL
+    END
+    LOCATE "L.CU.TIPO.CL" IN D.FIELDS<1> SETTING Y.TYPE.POS THEN
+        PERSON.VAL = D.RANGE.AND.VALUE<Y.TYPE.POS>
+        CHANGE @SM TO " " IN PERSON.VAL
+        SEL.CMD:=" AND L.CU.TIPO.CL EQ '":PERSON.VAL:"'"
+    END
+    LOCATE "SITE.NAME" IN D.FIELDS<1> SETTING Y.FINANCE.POS THEN
+        FINANCE.VAL = D.RANGE.AND.VALUE<Y.FINANCE.POS>
+    END
+    Y.ARR.STATUS.SEL.FLAG = ''
+    LOCATE "ARR.STATUS" IN D.FIELDS<1> SETTING Y.STATUS.POS THEN
+        ARR.STATUS.VAL = D.RANGE.AND.VALUE<Y.STATUS.POS>
+    END
+    Y.INVESTMENT.SEL.FLAG = ''
+    LOCATE "L.AC.STATUS2" IN D.FIELDS<1> SETTING Y.INVESTMENT.POS THEN
+        INVESTMENT.VAL = D.RANGE.AND.VALUE<Y.INVESTMENT.POS>
+    END
+    Y.SAVING.AC.SEL.FLAG = ''
+    LOCATE "L.AC.STATUS" IN D.FIELDS<1> SETTING Y.SAVING.POS THEN
+        SAVING.ACCOUNT.VAL = D.RANGE.AND.VALUE<Y.SAVING.POS>
+    END
+    CALL EB.READLIST(SEL.CMD,SEL.LIST,"",NO.OF.RECS,REC.ERR)
+    MAIN.CARD.FLAG=''
+    LOOP
+        REMOVE Y.CUST.ID FROM SEL.LIST SETTING CUS.POS
+    WHILE Y.CUST.ID:CUS.POS     ;*R22 Manual Conversion - Changed from CUS.POSD to CUS.POS
+        CALL F.READ(FN.CUSTOMER.ACCOUNT,Y.CUST.ID,R.CUSTOMER.ACCOUNT,F.CUSTOMER.ACCOUNT,CUST.ACCT.ERR)
+        ACCT.LIST = R.CUSTOMER.ACCOUNT
+        IF NOT(ACCT.LIST) THEN
+            CONTINUE
+        END
+        Y.PROCESSED.ACCOUNTS = ACCT.LIST
+        IF ARR.STATUS.VAL OR INVESTMENT.VAL OR SAVING.ACCOUNT.VAL THEN
+            GOSUB CHECK.ACCT.ARRANGEMENT
+        END
+        IF Y.PROCESSED.ACCOUNTS THEN
+                  
+            APAP.AA.redoNofClientDetails(Y.CUST.ID,Y.PROCESSED.ACCOUNTS,Y.RETURN.ARRAY,MAIN.CARD.FLAG) ;*R22 Manual Conversion - Added the APAP.AA package - Actual Argumens is 4 hence changead as per arguments.
+        END
+        IF Y.RETURN.ARRAY  AND MAIN.CARD.FLAG EQ 'Y' THEN
+            Y.RESULT.ARRAY<-1> = Y.RETURN.ARRAY
+        END
+        MAIN.CARD.FLAG = ''
+        Y.RETURN.ARRAY = ''
+    REPEAT
+RETURN
+***********
+DATE.CHECK:
+***********
+    IF CLIENT.DATE.VAL THEN
+        Y.CLIENT.FROM.DATE = FIELD(CLIENT.DATE.VAL,@SM,1,1)
+        Y.CLIENT.TO.DATE   = FIELD(CLIENT.DATE.VAL,@SM,2,1)
+        IF NOT(NUM(Y.CLIENT.FROM.DATE)) OR LEN(Y.CLIENT.FROM.DATE) NE '8' OR NOT(NUM(Y.CLIENT.TO.DATE)) OR LEN(Y.CLIENT.TO.DATE) NE '8' THEN
+            ENQ.ERROR      = 'EB-REDO.DATE.RANGE'
+        END ELSE
+            IF Y.CLIENT.FROM.DATE[5,2] GT '12' OR Y.CLIENT.TO.DATE[5,2] GT '12' OR Y.CLIENT.FROM.DATE[7,2] GT '31' OR Y.CLIENT.TO.DATE[7,2] GT '31' OR Y.CLIENT.FROM.DATE GT Y.CLIENT.TO.DATE THEN
+                ENQ.ERROR  = 'EB-REDO.DATE.RANGE'
+            END
+        END
+    END
+RETURN
+******************
+CHECK.RECENT.DATE:
+******************
+    IF DATE.RECENT.VAL THEN
+        Y.RECENT.FROM.DATE = FIELD(DATE.RECENT.VAL,@SM,1,1)
+        Y.RECENT.TO.DATE   = FIELD(DATE.RECENT.VAL,@SM,2,1)
+        IF NOT(NUM(Y.RECENT.FROM.DATE)) OR LEN(Y.RECENT.FROM.DATE) NE '8' OR NOT(NUM(Y.RECENT.TO.DATE)) OR LEN(Y.RECENT.TO.DATE) NE '8' THEN
+            ENQ.ERROR      = 'EB.REDO.DATE.RANGE'
+        END ELSE
+            IF Y.RECENT.FROM.DATE[5,2] GT '12' OR Y.RECENT.TO.DATE[5,2] GT '12' OR Y.RECENT.FROM.DATE[7,2] GT '31' OR Y.RECENT.TO.DATE[7,2] GT '31' OR Y.RECENT.FROM.DATE GT Y.RECENT.TO.DATE THEN
+                ENQ.ERROR  = 'EB.REDO.DATE.RANGE'
+            END
+        END
+    END
+RETURN
+***********************
+CHECK.ACCT.ARRANGEMENT:
+***********************
+    Y.PROCESSED.ACCOUNTS = ''
+    LOOP
+        REMOVE Y.ACCT.ID FROM ACCT.LIST SETTING ACCT.POS
+    WHILE Y.ACCT.ID:ACCT.POS
+        CALL F.READ(FN.ACCOUNT,Y.ACCT.ID,R.ACCOUNT,F.ACCOUNT,ACCT.ERR)
+        Y.ERR.FLAG=''
+        IF ARR.STATUS.VAL THEN
+            GOSUB CHECK.ARRANGEMENT
+        END
+        IF INVESTMENT.VAL OR SAVING.ACCOUNT.VAL THEN
+            GOSUB CHECK.ACCOUNT
+        END
+        IF Y.ERR.FLAG NE '1' THEN
+            Y.PROCESSED.ACCOUNTS<-1> = Y.ACCT.ID
+        END
+    REPEAT
+RETURN
+******************
+CHECK.ARRANGEMENT:
+******************
+    Y.ARR.ID = R.ACCOUNT<AC.ARRANGEMENT.ID>
+    ARRANGEMENT.ERR = ''
+    CALL F.READ(FN.AA.ARRANGEMENT,Y.ARR.ID,R.AA.ARRANGEMENT,F.AA.ARRANGEMENT,ARRANGEMENT.ERR)
+    STATUS.ARRANGE.VAL = R.AA.ARRANGEMENT<AA.ARR.ARR.STATUS>
+    IF R.AA.ARRANGEMENT AND ARR.STATUS.VAL EQ STATUS.ARRANGE.VAL ELSE
+        Y.ERR.FLAG = 1
+    END
+RETURN
+**************
+CHECK.ACCOUNT:
+**************
+    Y.L.AC.STATUS = R.ACCOUNT<AC.LOCAL.REF,LOC.L.AC.STATUS.POS>
+    Y.L.AC.STATUS2 = R.ACCOUNT<AC.LOCAL.REF,LOC.L.AC.STATUS2.POS>
+    IF INVESTMENT.VAL THEN
+        IF INVESTMENT.VAL EQ Y.L.AC.STATUS2 ELSE
+            Y.ERR.FLAG = 1
+        END
+    END
+    IF SAVING.ACCOUNT.VAL THEN
+        IF SAVING.ACCOUNT.VAL EQ Y.L.AC.STATUS ELSE
+            Y.ERR.FLAG = 1
+        END
+    END
+RETURN
+*------------------------------------------------------------------------------------
+END
