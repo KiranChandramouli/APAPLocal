@@ -1,0 +1,104 @@
+component LAPAP.BP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapMonAccBenRegMask (
+)
+{
+    jBC: L.APAP.MON.ACC.BEN.REG.MASK
+}
+
+
+
+public method lapapAzAcPrecRecRoRt (
+)
+{
+    jBC: LAPAP.AZ.AC.PREC.REC.RO.RT
+}
+
+
+
+public method lapapAzAcPrecValPenalPcnt (
+)
+{
+    jBC: LAPAP.AZ.AC.PREC.VAL.PENAL.PCNT
+}
+
+
+
+public method lapapMatrixFileSelector (
+)
+{
+    jBC: LAPAP.MATRIX.FILE.SELECTOR
+}
+ 
+
+
+public method lapapPrecRoSelectRt (
+)
+{
+    jBC: LAPAP.PREC.RO.SELECT.RT
+}
+
+
+
+public method enqLApapCustInfo (
+    INOUT yFinal string
+)
+{
+    jBC: ENQ.L.APAP.CUST.INFO
+}
+
+
+
+public method lApapGetCusProducts (
+    INOUT yFinal string
+)
+{
+    jBC: L.APAP.GET.CUS.PRODUCTS
+}
+
+
+
+public method lapapProcCobrosCj (
+    INOUT yRegistros string
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ
+}
+
+
+
+public method redoChNofilePinvalcus (
+    INOUT rData string
+)
+{
+    jBC: REDO.CH.NOFILE.PINVALCUS
+}
+
+
+
+public method lapapProcCobrosCjLoad (
+)
+{
+    jBC: LAPAP.PROC.COBROS.CJ.LOAD
+}
+
+
+
+public method lApapCuentaRegMask (
+)
+{
+    jBC: L.APAP.CUENTA.REG.MASK
+}
+
+
+
+public method redoVInpTtAcVal (
+)
+{
+    jBC: REDO.V.INP.TT.AC.VAL
+}
+

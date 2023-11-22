@@ -1,11 +1,17 @@
-$PACKAGE APAP.LAPAP
+$PACKAGE LAPAP.BP
+
 SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
 *-------------------------------------------------------------------------------------
 *Modification
-* Date                  who                   Reference              
-* 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT 
+* Date                  who                   Reference
+* 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT
 * 21-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------------
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*21/11/2023         Suresh             R22 Manual Conversion           Latest Routine Changes Merged
+*----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_ENQUIRY.COMMON
@@ -63,9 +69,9 @@ SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
     FLD.NAME.ARR<1,2> = 'L.CU.CIDENT' ;
     FLD.NAME.ARR<1,3> = 'L.CU.RNC' ;
     FLD.NAME.ARR<1,4> = 'L.CU.PASS.NAT' ;
-    FLD.NAME.ARR<1,5> = 'L.TIP.CLI' ; ;*R22 NEW LINE
-    FLD.NAME.ARR<1,6> = 'L.CU.TEL.AREA' ; ;*R22 NEW LINE
-    FLD.NAME.ARR<1,7> = 'L.CU.TEL.NO' ; ;*R22 NEW LINE
+    FLD.NAME.ARR<1,5> = 'L.TIP.CLI' ; ;*R22 NEW LINE - START
+    FLD.NAME.ARR<1,6> = 'L.CU.TEL.AREA' ;
+    FLD.NAME.ARR<1,7> = 'L.CU.TEL.NO' ; ;*R22 NEW LINE - END
 
     CALL MULTI.GET.LOC.REF(APPL.NAME.ARR,FLD.NAME.ARR,FLD.POS.ARR)
     L.CUS.SEG.POS = FLD.POS.ARR<1,1>
@@ -98,11 +104,11 @@ SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
             CUSTOMER.NO = FIELD(R.CUS.LEGAL,"*",2)
             GOSUB CONSULTAR
             GOSUB RESULTADO
-    CASE F.TYPE.DOCUMENT EQ "CUSTID" ;*R22 NEW LINE - START
-        CUSTOMER.NO = CUSTOMER.IDE
-        GOSUB CONSULTAR
-        GOSUB RESULTADO ;*R22 NEW LINE- END
-    END CASE 
+        CASE F.TYPE.DOCUMENT EQ "CUSTID" ;*R22 NEW LINE - START
+            CUSTOMER.NO = CUSTOMER.IDE
+            GOSUB CONSULTAR
+            GOSUB RESULTADO ;*R22 NEW LINE- END
+    END CASE
 
 CONSULTAR:
 **------------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +140,7 @@ CONSULTAR:
     IF (Y.L.CU.CIDENT NE '') THEN
         Y.IDENTIFICACION = Y.L.CU.CIDENT
     END
-   ELSE IF (Y.L.CU.RNC NE '') THEN ;*R22 NEW LINE
+    ELSE IF (Y.L.CU.RNC NE '') THEN ;*R22 NEW LINE
         Y.IDENTIFICACION = Y.L.CU.RNC
     END
     ELSE IF (L.CU.PASS.NAT NE '') THEN ;*R22 NEW LINE
@@ -155,20 +161,20 @@ CONSULTAR:
             Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
 *DEBUG
         CASE  F.TYPE.DOCUMENT EQ "RNC"
- *           Y.CUS.NOMBRE = R.CUS<EB.CUS.SHORT.NAME>
-             Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1> ;*R22 NEW LINE
+*           Y.CUS.NOMBRE = R.CUS<EB.CUS.SHORT.NAME>
+            Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1> ;*R22 NEW LINE
             Y.CUS.APELLIDO = '' ;*R22 NEW LINE - START
         CASE  F.TYPE.DOCUMENT EQ "PASAPORTE"
-             Y.CUS.NOMBRE = R.CUS<EB.CUS.GIVEN.NAMES>
-        Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
-    CASE  F.TYPE.DOCUMENT EQ "CUSTID"
-        IF (R.CUS<EB.CUS.GIVEN.NAMES> EQ '') THEN
-            Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1>
-        END
-        ELSE ;*R22 NEW LINE - END
             Y.CUS.NOMBRE = R.CUS<EB.CUS.GIVEN.NAMES>
             Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
-        END ;*R22 NEW LINE 
+        CASE  F.TYPE.DOCUMENT EQ "CUSTID"
+            IF (R.CUS<EB.CUS.GIVEN.NAMES> EQ '') THEN
+                Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1>
+            END
+            ELSE ;*R22 NEW LINE - END
+                Y.CUS.NOMBRE = R.CUS<EB.CUS.GIVEN.NAMES>
+                Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
+            END ;*R22 NEW LINE
     END CASE
 
     CHANGE ',' TO ' ' IN Y.CUS.NOMBRE
@@ -227,8 +233,8 @@ CONSULTAR:
 RETURN
 RESULTADO:
     IF CUSTOMER.NO NE '' THEN
- *       Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION
-         Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION : "*" : Y.L.TIP.CLI : "*" : Y.MARITAL.STATUS : "*" : Y.L.CU.TEL.NO ;*R22 NEW LINE
+*       Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION
+        Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION : "*" : Y.L.TIP.CLI : "*" : Y.MARITAL.STATUS : "*" : Y.L.CU.TEL.NO ;*R22 NEW LINE
     END ELSE
         Y.FINAL<-1> = "-1" : "*" : "NO ENCONTRADO" : "*" : "NO ENCONTRADO" : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : "NO ENCONTRADO" : "*" : "N/A"
     END

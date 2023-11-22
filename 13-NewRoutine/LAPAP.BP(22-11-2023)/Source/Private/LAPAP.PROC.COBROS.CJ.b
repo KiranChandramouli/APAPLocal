@@ -1,0 +1,178 @@
+$PACKAGE LAPAP.BP
+*-----------------------------------------------------------------------------
+* <Rating>-60</Rating>
+*-----------------------------------------------------------------------------
+SUBROUTINE LAPAP.PROC.COBROS.CJ (Y.REGISTROS)
+
+*-----------------------------------------------------------------------------
+* Developed By            : APAP
+*
+* Developed On            : 23-03-2023
+*
+* Development Reference   : MDR-2479
+*
+* Development Description : Recibe los TT de autorizaciones de pago via cobros y los procesa de forma masiva haciendo el pago
+*                          que corresponde para el producto castigado , legal ect.
+* Attached To             : BATCH>BNK/LAPAP.PROC.COBROS.CJ
+*
+* Attached As             : Multithreaded Routine
+*---------------------------------------------------------------------------------
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*21/11/2023         Suresh             R22 Manual Conversion            LAPAP.BP, T24.BP, TAM.BP File Removed, INCLUDE to INSERT
+*----------------------------------------------------------------------------------------
+
+
+*    $INCLUDE I_COMMON
+*    $INCLUDE I_EQUATE
+*    $INCLUDE I_GTS.COMMON
+*    $INCLUDE I_BATCH.FILES
+*    $INCLUDE I_F.FUNDS.TRANSFER
+*    $INCLUDE I_F.OFS.SOURCE
+*    $INCLUDE I_F.REDO.PART.TT.PROCESS
+*    $INCLUDE I_F.ACCOUNT
+*    $INCLUDE I_LAPAP.PROC.COBROS.CJ.COMMON
+    
+    $INSERT I_COMMON ;*R22 Manual Conversion - Start
+    $INSERT I_EQUATE
+    $INSERT I_GTS.COMMON
+    $INSERT I_BATCH.FILES
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.OFS.SOURCE
+    $INSERT I_F.REDO.PART.TT.PROCESS
+    $INSERT I_F.ACCOUNT
+    $INSERT I_LAPAP.PROC.COBROS.CJ.COMMON ;*R22 Manual Conversion - End
+    GOSUB MAIN.PROCESS
+RETURN
+MAIN.PROCESS:
+    Y.TT.AUT.COBRO.ID  = FIELD(Y.REGISTROS,"|",1)
+    Y.CUENTA.DEBITO  = FIELD(Y.REGISTROS,"|",2)
+    GOSUB PROCESO
+RETURN
+PROCESO:
+    R.REDO.PART.TT.PROCESS = ''; ERROR.REDO.PART.TT.PROCESS = '';
+    CALL F.READ (FN.REDO.PART.TT.PROCESS , Y.TT.AUT.COBRO.ID ,R.REDO.PART.TT.PROCESS, FV.REDO.PART.TT.PROCESS , ERROR.REDO.PART.TT.PROCESS)
+
+    IF (R.REDO.PART.TT.PROCESS) THEN
+        Y.NUMERO.PRESTAMO =  R.REDO.PART.TT.PROCESS<PAY.PART.TT.ARRANGEMENT.ID>
+        Y.TRAN.TYPE = R.REDO.PART.TT.PROCESS<PAY.PART.TT.TRAN.TYPE>
+        LOCATE Y.TRAN.TYPE IN Y.TIPO.PAGOS.VAL<1,1> SETTING PAGOS.POS THEN
+            Y.TRANSACTIO.TYPE = Y.TIPO.PAGOS.TEXT<1,PAGOS.POS>
+        END
+
+        Y.MONTO.CREDITO = R.REDO.PART.TT.PROCESS<PAY.PART.TT.AMOUNT>
+        Y.MONEDAD = 'DOP';
+        Y.COMPANY = 'DO0010001';
+        GOSUB LEER.TABLA.ACCOUNT
+        GOSUB  GENERAR.MENSAJE.OFS
+        GOSUB ESCRIBIR.REGISTROS.PROCESADO
+        GOSUB ELIMINAR.REFENCIA.COBRO
+    END
+
+RETURN
+
+
+GENERAR.MENSAJE.OFS:
+    IF Y.CUENTA.DEBITO[1,3] NE 'DOP'  AND  Y.ACCOUNT.BALANCE LT Y.MONTO.CREDITO THEN
+        Y.ESTADO.TRANSACION = 'FALLIDO';
+        Y.DETALLE.ERROR = 'EL MONTO NO SUFICIENTE BALANCE DISPONIBLE ':Y.ACCOUNT.BALANCE :" MONTO A PAGAR ": Y.MONTO.CREDITO
+        RETURN
+    END
+
+    Y.ESTADO.TRANSACION = '';
+    APP.FT = 'FUNDS.TRANSFER'
+    Y.L.FT.DUE.PRS = 'L.FT.DUE.PRS'
+    CALL GET.LOC.REF(APP.FT,Y.L.FT.DUE.PRS,L.FT.DUE.PRS.POS)
+    Y.L.ACTUAL.VERSIO = 'L.ACTUAL.VERSIO'
+    CALL GET.LOC.REF(APP.FT,Y.L.ACTUAL.VERSIO ,L.ACTUAL.VERSIO.POS)
+    R.FT<FT.DEBIT.ACCT.NO> = Y.CUENTA.DEBITO;
+    R.FT<FT.TRANSACTION.TYPE> = Y.TRANSACTIO.TYPE;
+    R.FT<FT.CREDIT.ACCT.NO> = Y.NUMERO.PRESTAMO;
+    R.FT<FT.CREDIT.AMOUNT> = Y.MONTO.CREDITO ;
+    R.FT<FT.LOCAL.REF,L.FT.DUE.PRS.POS> = Y.TT.AUT.COBRO.ID;
+    R.FT<FT.CREDIT.CURRENCY> = Y.MONEDAD;
+    R.FT<FT.LOCAL.REF,L.ACTUAL.VERSIO.POS> = Y.VERSION.OFS;
+    R.FT<FT.ORDERING.CUST> = Y.CODIGO.CLIENTE;
+
+    OFS.SRC.ID = 'AA.APAP';
+    OFS.MSG.ID = '';
+    ERR.OFS = '';
+    APP.NAME = 'FUNDS.TRANSFER'
+    OFSFUNCTION = 'I';
+    GTS.MODE = '' ;
+    NO.OF.AUTH = '0'
+    OFS.VERSION = Y.VERSION.OFS;
+    OFSRECORD = ''
+    TRANSACTION.ID = ''
+    PROCESS = 'PROCESS'
+    CALL OFS.BUILD.RECORD(APP.NAME,OFSFUNCTION,PROCESS,OFS.VERSION,GTS.MODE,NO.OF.AUTH,TRANSACTION.ID,R.FT,OFSRECORD)
+    IF OFSRECORD EQ '' THEN
+        DESC = 'Error creando OFS para la transaccion del prestamo ':Y.NUMERO.PRESTAMO
+        CALL OCOMO(DESC)
+        Y.ESTADO.TRANSACION = 'FALLIDO'
+        Y.DETALLE.ERROR = DESC
+        RETURN
+    END
+    Y.OFS.SOURCE.ID =  OFS.SRC.ID ;
+    CALL OFS.CALL.BULK.MANAGER(Y.OFS.SOURCE.ID,OFSRECORD,Y.OUT.MESSAGE, Y.txnCommitted)
+    Y.PART.1 = FIELD(Y.OUT.MESSAGE,',',1)
+    Y.FT.ID = FIELD(Y.PART.1,'/',1)
+    Y.FT.ID = EREPLACE(Y.FT.ID,"<requests><request>","")
+    Y.MSG.ID = FIELD(Y.PART.1,'/',2)
+    Y.RESULT = FIELD(Y.PART.1,'/',3)
+    IF Y.RESULT EQ 1 THEN
+        Y.ESTADO.TRANSACION = 'PROCESADO'
+    END  ELSE
+        Y.ESTADO.TRANSACION = 'FALLIDO'
+        Y.FT.ID = '';
+        RESP = Y.OUT.MESSAGE
+        Y.RESP.ARRAY1 = '' ; Y.OUT.MSG = '' ; Y.RESP.ARRANGEMENT = '' ; Y.NEW.ARRANGEMENT = ''
+        IF INDEX(RESP,'//-1/',1) THEN
+            Y.RESP.ARRAY1 = FIELD(RESP,'//-1/',2)
+            Y.OUT.MSG = FIELD(Y.RESP.ARRAY1,'</request><request>',1)
+            Y.DETALLE.ERROR = Y.OUT.MSG<1>
+        END
+
+        DESC = 'Transaccion no pudo ser procesada en T24 para el PRESTAMO ' : Y.NUMERO.PRESTAMO
+        CALL OCOMO(DESC)
+        CALL OCOMO(Y.OUT.MESSAGE)
+
+
+    END
+
+RETURN
+
+
+ESCRIBIR.REGISTROS.PROCESADO:
+    R.LAPAP.COBRO.AUT.WRITE = Y.CUENTA.DEBITO:"|":Y.TRANSACTIO.TYPE:"|":Y.NUMERO.PRESTAMO:"|":Y.MONTO.CREDITO
+    R.LAPAP.COBRO.AUT.WRITE := "|":Y.TT.AUT.COBRO.ID:"|":Y.FT.ID:"|":Y.ESTADO.TRANSACION:"|":Y.DETALLE.ERROR
+    CALL F.WRITE(FN.LAPAP.COBRO.AUT.WRITE, Y.TT.AUT.COBRO.ID, R.LAPAP.COBRO.AUT.WRITE)
+RETURN
+
+ELIMINAR.REFENCIA.COBRO:
+    IF Y.ESTADO.TRANSACION EQ 'PROCESADO' THEN
+        CALL F.DELETE (FN.REDO.PART.TT.PROCESS,Y.TT.AUT.COBRO.ID)
+    END
+
+RETURN
+
+LEER.TABLA.ACCOUNT:
+    Y.ACCOUNT.BALANCE = '';
+*Y.L.AC.AV.BAL = 'L.AC.AV.BAL'
+*CALL GET.LOC.REF("ACCOUNT",Y.L.AC.AV.BAL,POS.AVL.BAL)
+    CALL F.READ(FN.ACCOUNT,Y.CUENTA.DEBITO,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
+    Y.ACCOUNT.BALANCE    = R.ACCOUNT<AC.LOCAL.REF,POS.AVL.BAL>
+
+    CALL F.READ(FN.ACCOUNT,Y.NUMERO.PRESTAMO,R.ACCOUNT.2,F.ACCOUNT,ACC.ERR.2)
+    Y.CODIGO.CLIENTE = R.ACCOUNT.2<AC.CUSTOMER>
+    IF NOT(Y.CODIGO.CLIENTE) THEN
+        Y.CODIGO.CLIENTE =  'PAGO CASTIGADO'
+    END
+
+
+RETURN
+
+
+
+END

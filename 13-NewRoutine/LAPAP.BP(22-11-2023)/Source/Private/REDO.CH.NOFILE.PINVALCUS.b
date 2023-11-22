@@ -1,3 +1,4 @@
+$PACKAGE LAPAP.BP
 * @ValidationCode : MjoyMDExMDk4NDg2OkNwMTI1MjoxNjgxMjE1MTY2MTkxOklUU1M6LTE6LTE6NDY1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
 * @ValidationInfo : Timestamp         : 11 Apr 2023 17:42:46
 * @ValidationInfo : Encoding          : Cp1252
@@ -10,7 +11,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.REDOCHNLS
+
 SUBROUTINE REDO.CH.NOFILE.PINVALCUS(R.DATA)
 **
 * Subroutine Type : ENQUIRY
@@ -27,7 +28,8 @@ SUBROUTINE REDO.CH.NOFILE.PINVALCUS(R.DATA)
 *           rmondragon@temenos.com
 *
 * 04-APR-2023     Conversion tool    R22 Auto conversion       F.READ to CACHE.READ
-* 10-APR-2023      Harishvikram C   Manual R22 conversion      Decrypt Keyword is modified 
+* 10-APR-2023      Harishvikram C   Manual R22 conversion      Decrypt Keyword is modified
+* 21/11/2023        Suresh          R22 Manual Conversion      Latest Routine Changes Merged
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -104,8 +106,8 @@ CHECK.EXT.USER:
     IF CNT.REC EQ 1 THEN
         EXT.USR = NO.OF.REC<CNT.REC>
         R.USR = ''; USR.ERR = ''
-  *      CALL CACHE.READ(FN.EB.EXTERNAL.USER, EXT.USR, R.USR, USR.ERR) ;*R22 Auto conversion
-         CALL F.READ(FN.EB.EXTERNAL.USER,EXT.USR,R.USR,F.EB.EXTERNAL.USER,USR.ERR) ;*R22 NEW LINE
+*      CALL CACHE.READ(FN.EB.EXTERNAL.USER, EXT.USR, R.USR, USR.ERR) ;*R22 Auto conversion
+        CALL F.READ(FN.EB.EXTERNAL.USER,EXT.USR,R.USR,F.EB.EXTERNAL.USER,USR.ERR) ;*R22 NEW LINE
         IF R.USR THEN
             ESTADOUSR = R.USR<EB.XU.STATUS>
         END ELSE
@@ -140,9 +142,9 @@ CHECK.PIN:
         RETURN
     END
 
-    *KY = "7"
+*KY = "7"
 *PN = DECRYPT(PN,KY,2)
-    *New start-
+*New start-
     KY = "12345678"  ;*R22 MANUAL CODE CONVERSION
     PN = DECRYPT(PN,KY,JBASE_CRYPT_DES_BASE64) ;*R22 MANUAL CODE CONVERSION
 *New end-
