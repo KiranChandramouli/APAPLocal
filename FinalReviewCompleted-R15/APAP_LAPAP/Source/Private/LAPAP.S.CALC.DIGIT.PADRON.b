@@ -1,22 +1,15 @@
-* @ValidationCode : MjotMzk4NzEyNDk3OkNwMTI1MjoxNjg0MjIyODE1Mjc3OklUU1M6LTE6LTE6MzYzOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:15
+* @ValidationCode : MjoyMDQ0ODMwMDcyOkNwMTI1MjoxNjk5NTIyNzQ1MDc0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 09 Nov 2023 15:09:05
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 363
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.LAPAP
-SUBROUTINE LAPAP.S.CALC.DIGIT.PADRON(Y.CHECK.DIGIT)
-    $INSERT I_COMMON    ;*R22 AUTO CODE CONVERSION.START
-    $INSERT I_EQUATE
-    $INSERT I_GTS.COMMON
-    $INSERT I_System    ;*R22 AUTO CODE CONVERSION.END
-    $INSERT JBC.h
 *******************************************************************************************************************
 *Company   Name    : Asociaciopular de Ahorros y Pramos Bank
 *Developed By      : APAP
@@ -27,6 +20,7 @@ SUBROUTINE LAPAP.S.CALC.DIGIT.PADRON(Y.CHECK.DIGIT)
 *DATE                WHO                         REFERENCE                DESCRIPTION
 *21-04-2023       Conversion Tool        R22 Auto Code conversion          INSERT FILE MODIFIED,FM TO @FM
 *21-04-2023       Samaran T               R22 Manual Code Conversion       No Changes
+*06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *----------------------------------------------------------------------------------------------------------
 *Description       : Basada en logica de la rutina de TEMENOS: "REDO.S.CALC.CHECK.DIGIT" , Para calucular el digito verificador
 *                    Se agrega logica adicional de que si el registro existe en el PADRON que retorte verdadero
@@ -34,6 +28,20 @@ SUBROUTINE LAPAP.S.CALC.DIGIT.PADRON(Y.CHECK.DIGIT)
 *Linked With       : REDO.V.VAL.CED.IDENT,REDO.V.VAL.NO.UNICO,REDO.V.VAL.RNC
 *In  Parameter     : Y.CHECK.DIGIT
 *Out Parameter     : Y.CHECK.DIGIT
+
+$PACKAGE APAP.LAPAP
+SUBROUTINE LAPAP.S.CALC.DIGIT.PADRON(Y.CHECK.DIGIT)
+    $INSERT I_COMMON    ;*R22 AUTO CODE CONVERSION.START
+    $INSERT I_EQUATE
+    $INSERT I_GTS.COMMON
+    $INSERT I_System    ;*R22 AUTO CODE CONVERSION.END
+    $INSERT JBC.h
+;*Interface Change by Santiago-START
+*SJ start
+    $INSERT I_F.DFE.TRANSFORM
+    $INSERT I_F.REDO.PADRON.WS
+*SJ end
+;*Interface Change by Santiago-END   
     GOSUB INIT
     GOSUB PROCESS
 RETURN
@@ -46,6 +54,13 @@ INIT:
 
     FN.CUS.CIDENT = 'F.CUSTOMER.L.CU.CIDENT'; F.CUS.CIDENT = ''
     CALL OPF(FN.CUS.CIDENT,F.CUS.CIDENT)
+;*Interface Change by Santiago-START
+*SJ start
+    FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
+    F.DFE.TRANSFORM = ''
+    CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
+*SJ end
+;*Interface Change by Santiago-END
 
 RETURN
 *------------------------------------------------------------------------------------------------------------------
@@ -155,7 +170,7 @@ METHOD_GET_CEDULA:
 
 RETURN
 
-METHOD_GET_NO_CLIENTE:
+METHOD_GET_NO_CLIENTE.OLD: ;*Interface Change by Santiago- CHANGED "METHOD_GET_NO_CLIENTE" TO "METHOD_GET_NO_CLIENTE.OLD"
 ******************************
     ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
     INPUT_PARAM = Cedule
@@ -179,3 +194,36 @@ METHOD_GET_NO_CLIENTE:
         RETURN
 
     END
+RETURN	;*Interface Change by Santiago-START-NEW LINES ADDED
+
+METHOD_GET_NO_CLIENTE:
+******************************
+    Y.INTRF.ID = 'REDO.PADRON.FISICO'
+    R.PAD.WS<PAD.WS.CEDULA> = Cedule
+    Y.RESPONSE = ''
+    Y.ID.TEMP = ID.NEW
+    ID.NEW = 'REDO.PADRON.FISICO'
+    CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
+    ID.NEW = Y.ID.TEMP
+    
+* values obtained from the web service
+*   IDENTI           = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>
+
+    IF Y.RESPONSE EQ 'ERROR' THEN
+        RETURN
+    END ELSE
+        IF Y.RESPONSE<7> EQ "SUCCESS" THEN
+            Y.CHECK.DIGIT = 'PASS'
+        END
+        RETURN
+
+    END
+RETURN
+
+END	;*Interface Change by Santiago-END
