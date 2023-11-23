@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMDE2NTI0NzAxOkNwMTI1MjoxNjkzMjg3MjQ3OTMzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
+* @ValidationCode : Mjo4MjczMjYwNzQ6Q3AxMjUyOjE2OTk1MDc4NDgxMDI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 09 Nov 2023 11:00:48
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,10 +8,11 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.FI.LB.APPLY.PYMT(DATA.IN,DATA.OUT)
+    
 * ====================================================================================
 *    - Gets the information related to the AA specified in input parameter
 *
@@ -43,6 +44,7 @@ SUBROUTINE REDO.FI.LB.APPLY.PYMT(DATA.IN,DATA.OUT)
 * Date            : Nov. 26, 2010
 *28-08-2023    CONVERSION TOOL     R22 AUTO CONVERSION	  INSERT FILE MODIFIED
 *28-08-2023    VICTORIA S          R22 MANUAL CONVERSION  DYN.TO.OFS to OFS.BUILD.RECORD
+*03/10/2023    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Interface Change by Santiago
 *=======================================================================
 
     $INSERT I_COMMON
@@ -101,6 +103,7 @@ PROCESS:
     APP.NAME='FUNDS.TRANSFER' ;*R22 MANUAL CONVERSION START-DYN.TO.OFS to OFS.BUILD.RECORD
     OFS.FUNCTION='I'
     OFS.PROCESS='PROCESS'
+
     OFS.VERSION=DATA.IN<6>
     Y.GTSMODE=''
     NO.OF.AUTH=''
@@ -131,7 +134,19 @@ PROCESS:
 
     IF YERROR.POS GT 0 THEN
         DATA.OUT<1> = "FAILURE"
-        DATA.OUT<2> = FIELD(M.VALIDA,"//",1)
+		Y.MS.COMPLETO=OFS.RESP		;*Interface Change by Santiago-NEW LINES ADDED-START
+		CHANGE "<requests><request>" TO "" IN Y.MS.COMPLETO
+		CHANGE "</request><request>" TO @FM IN Y.MS.COMPLETO
+		CHANGE "</request></requests>" TO "" IN Y.MS.COMPLETO
+		
+		Y.NUM.CADENA=DCOUNT(Y.MS.COMPLETO,@FM)
+		IF Y.NUM.CADENA GT 1 THEN
+		 Y.MS2=Y.MS.COMPLETO<2>
+		 Y.MOS.ERR=FIELD(Y.MS2,",",2)
+         DATA.OUT<2> =Y.MOS.ERR
+		END ELSE
+		DATA.OUT<2> =FIELD(OFS.RESP,",",2)	;*Interface Change by Santiago- CHANGED "FIELD(M.VALIDA,"//",1)" TO "FIELD(OFS.RESP,",",2)"
+		END	;*Interface Change by Santiago-END
         CHANGE "<requests><request>" TO "" IN DATA.OUT
     END ELSE
         DATA.OUT<1> = "SUCCESS"

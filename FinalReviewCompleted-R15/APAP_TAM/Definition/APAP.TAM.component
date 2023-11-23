@@ -15375,3 +15375,62 @@ public method redoNofGenChqAgency (
    jBC: REDO.NOF.GEN.CHQ.AGENCY
 }
 
+
+
+public method redoPadronWs (
+)
+{
+   jBC: REDO.PADRON.WS
+}
+
+
+
+public method redoPadronWsFields (
+)
+{
+   jBC: REDO.PADRON.WS.FIELDS
+}
+
+
+
+public method redoPadronJuridicoGetXml (
+   INOUT lineaextraida string
+)
+{
+   jBC: REDO.PADRON.JURIDICO.GET.XML
+}
+
+
+
+public method redoPadronGetXml (
+   INOUT lineaextraida string
+)
+{
+   jBC: REDO.PADRON.GET.XML
+}
+
+
+
+public method redoVisionPlusGetXml (
+   INOUT lineaextraida string
+)
+{
+   jBC: REDO.VISION.PLUS.GET.XML
+}
+
+
+
+public method redoVisionPlusWs (
+)
+{
+   jBC: REDO.VISION.PLUS.WS
+}
+
+
+
+public method redoVisionPlusWsFields (
+)
+{
+   jBC: REDO.VISION.PLUS.WS.FIELDS
+}
+

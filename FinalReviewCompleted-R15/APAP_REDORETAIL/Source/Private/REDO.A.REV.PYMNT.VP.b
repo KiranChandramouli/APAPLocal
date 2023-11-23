@@ -31,7 +31,7 @@ SUBROUTINE REDO.A.REV.PYMNT.VP
 * Date                 Who                              Reference                            DESCRIPTION
 *10-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                 VM TO @VM
 *10-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
-
+*20-11-2023          Santosh			     Intrface Change comment added           Vision Plus-Interface Changes done by Santiago
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS"> -  VP.TXN.STATUS
@@ -146,29 +146,33 @@ RETURN
 * Invoke VP Web Service 'OnlinePayment'
 INVOKE.VP.WS.OP:
 ****************************************
+    
     ACTIVATION = 'VP_ONLINE_TXN_SERVICE'
-
+*Interface Changes done by Santiago- Start
     WS.DATA = ''
     WS.DATA<1>  = 'ONLINE_PAYMENT'
-    WS.DATA<2>  = R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.USER>
-    WS.DATA<3>  = 'R'
-    WS.DATA<4>  = FMT(RVPT.CREDIT.CARD, 'R%19')
-    WS.DATA<7>  = '0000'
-    WS.DATA<8>  = RVPT.PAYMENT.AMT
-    WS.DATA<9>  = '0000'
-    WS.DATA<10> = '                             '
-    WS.DATA<11> = '000'
-
+    WS.DATA<2>  = R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.USER>        ;*POSUserData
+    WS.DATA<3>  = '0000'                                            ;*MCCType
+    WS.DATA<4>  = 'R'                                               ;*RequestType
+    WS.DATA<5>  = FMT(RVPT.CREDIT.CARD, 'R%19')                     ;*CardNumber
+*    WS.DATA<6>  = ORG.ID
+*    WS.DATA<7>  = MERCHANT.NUMBER
+    WS.DATA<8>  = '0000'                                            ;*CardExpirationDate
+    WS.DATA<9>  = RVPT.PAYMENT.AMT                                  ;*TotalSalesAmount
+    WS.DATA<10>  = '0000'                                           ;*Track2Length
+    WS.DATA<11> = '                             '                   ;*Track2Data
+    WS.DATA<12> = '000'                                             ;*CardValidationValue
+*Interface Changes done by Santiago-End
     CREDIT.CARD.BIN = RVPT.CREDIT.CARD[1,6]
     CALL CACHE.READ(FN.REDO.CARD.BIN, CREDIT.CARD.BIN, R.REDO.CARD.BIN, Y.ERR)
 
     LOCATE RVPT.TXN.CURRENCY IN R.REDO.CARD.BIN<REDO.CARD.BIN.T24.CURRENCY,1> SETTING TXN.CURRENCY.POS THEN
 * OrgId
         ORG.ID = FIELD(R.REDO.CARD.BIN<REDO.CARD.BIN.ORG.ID>,@VM,TXN.CURRENCY.POS)
-        WS.DATA<5> = ORG.ID
+        WS.DATA<6> = ORG.ID ;*Interface Changes done by Santiago
 * Mercant Number
         MERCHANT.NUMBER = R.REDO.CARD.BIN<REDO.CARD.BIN.MERCHANT.NUMBER>
-        WS.DATA<6> = MERCHANT.NUMBER
+        WS.DATA<7> = MERCHANT.NUMBER ;*Interface Changes done by Santiago
 * APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
         APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA);* MANUAL R22 CODE CONVERSION
     END ELSE

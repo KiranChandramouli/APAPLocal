@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMTgyMjA0NjM2OTpVVEYtODoxNjgzNjE2MDk1NzM4OklUU1M6LTE6LTE6NjE4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 May 2023 12:38:15
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : MjotNzY1MjQ2MTQ0OkNwMTI1MjoxNjk5NTA2NjgyMjcxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 09 Nov 2023 10:41:22
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 618
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOFCFI
+
 SUBROUTINE REDO.FI.LB.COLL.TXN.PROCESS(DATA.IN,PMT.REF.ID)
 * ====================================================================================
 *    - Gets the information related to the AA specified in input parameter
@@ -44,6 +45,7 @@ SUBROUTINE REDO.FI.LB.COLL.TXN.PROCESS(DATA.IN,PMT.REF.ID)
 * Date                 Who                              Reference                            DESCRIPTION
 *04-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                 NO CHANGES
 *04-04-2023          jayasurya H                     MANUAL R22 CODE CONVERSION            call routine format modified
+*03/10/2023	     VIGNESHWARI                     ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *=======================================================================
 
     $INSERT I_COMMON
@@ -105,6 +107,7 @@ B140.APLICA.COBRO:
         GOSUB B150.UPDATE.BPROC.DET
         GOSUB B160.ACUMULA.SOBRANTE
     END ELSE
+	
         GOSUB UPDATE.FAILURE.MSG
     END
 
@@ -116,8 +119,9 @@ UPDATE.FAILURE.MSG:
 *
     YRET = "R 01 60"
     CALL F.READU(FN.REDO.FI.LB.BATCH.PROCESS.DET, PMT.REF.ID, R.REDO.FI.LB.BATCH.PROCESS.DET, F.REDO.FI.LB.BATCH.PROCESS.DET, Y.ERR2,YRET)
-    R.REDO.FI.LB.BATCH.PROCESS.DET<REDO.FI.LB.BPROC.ERROR.MSG> = DATA.OUT<2>
-    CALL F.WRITE(FN.REDO.FI.LB.BATCH.PROCESS.DET,PMT.REF.ID,R.REDO.FI.LB.BATCH.PROCESS.DET)
+*    R.REDO.FI.LB.BATCH.PROCESS.DET<REDO.FI.LB.BPROC.ERROR.MSG> = DATA.OUT<2> 	;*Interface Change by Santiago-COMMENTED
+     R.REDO.FI.LB.BATCH.PROCESS.DET<REDO.FI.LB.BPROC.DET.ERROR.MSG>=DATA.OUT<2>	;*Interface Change by Santiago-NEWLINE ADDED
+     CALL F.WRITE(FN.REDO.FI.LB.BATCH.PROCESS.DET,PMT.REF.ID,R.REDO.FI.LB.BATCH.PROCESS.DET)
 
 RETURN
 

@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODIxMDY3ODA6Q3AxMjUyOjE2ODQ4NTQwNTU3MTI6SVRTUzotMTotMTo1MTUyOjE6ZmFsc2U6Ti9BOlIyMl9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:30:55
+* @ValidationCode : MjotMTk0MTcxMTAyNzpDcDEyNTI6MTY5OTUwNjQ3OTM2NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 09 Nov 2023 10:37:59
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 5152
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_AMR.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.IVR.PROCESS(R.DATA)
@@ -19,6 +19,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
 * operation requested in T24 and get the respond
 *
 * Input/Output:
+
 *--------------
 * IN : -NA-
 * OUT : -NA-
@@ -37,6 +38,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
 *
 * 11-APR-2023     Conversion tool   R22 Auto conversion     FM TO @FM, VM to @VM, ++ to +=, CHAR to CHARX,TNO to C$T24.SESSION.NO, I to I.VAR
 * 12-APR-2023      Harishvikram C   Manual R22 conversion     CALL routine format modified
+* 07/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *-----------------------------------------------------------------------------
 * <region name= Inserts>
     $INSERT I_COMMON
@@ -48,6 +50,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
     $INSERT I_TwsCommon
     $INSERT I_F.USER
     $INSERT JBC.h
+    $INSERT I_F.REDO.IVR.ENQ.REQ.RESP	;*Interface Change by Santiago-INSERT IS ADDED
 * </region>
 *-----------------------------------------------------------------------------
 
@@ -59,7 +62,15 @@ RETURN
 INIT:
 *********
 *Open files REDO.IVR.RECEPTOR and REDO.IVR.PARAMS
+;*Interface Change by Santiago-NEW LINES IS ADDED-START
+    FN.OFS.REQUEST.DETAIL = 'F.OFS.REQUEST.DETAIL'   ;*CHANGE DONE BY SANTIAGO - START
+    F.OFS.REQUEST.DETAIL = ''
+    CALL OPF(FN.OFS.REQUEST.DETAIL,F.OFS.REQUEST.DETAIL)
 
+    FN.OFS.SOURCE = 'F.OFS.SOURCE'
+    F.OFS.SOURCE = ''
+    CALL OPF(FN.OFS.SOURCE,F.OFS.SOURCE)           ;*CHANGE DONE BY SANTIAGO - END
+;*Interface Change by Santiago-END
     FN.REDO.IVR.RECEPTOR = 'F.REDO.IVR.RECEPTOR'
     F.REDO.IVR.RECEPTOR = ''
     CALL OPF(FN.REDO.IVR.RECEPTOR,F.REDO.IVR.RECEPTOR)
@@ -67,8 +78,14 @@ INIT:
     FN.REDO.IVR.PARAMS = 'F.REDO.IVR.PARAMS'
     F.REDO.IVR.PARAMS = ''
     CALL OPF(FN.REDO.IVR.PARAMS,F.REDO.IVR.PARAMS)
-
-    Y.DATA.IN = '' ; TEMP1 = '' ; TEMP2 = ''
+;*Interface Change by Santiago-NEW LINES IS ADDED-START
+*
+    FN.IVR ='F.REDO.IVR.ENQ.REQ.RESP' ;*added for IVRInterfaceTWS Fix
+    F.IVR = ''
+    CALL OPF(FN.IVR, F.IVR)
+*
+;*Interface Change by Santiago-END
+        Y.DATA.IN = '' ; TEMP1 = '' ; TEMP2 = ''
 
     Y.INT.CODE = 'IVR001'
     Y.INT.TYPE = 'ONLINE'
@@ -92,6 +109,7 @@ PROCESS:
 
     LOCATE "DATA.IN" IN D.FIELDS<1> SETTING DATA.POS THEN
         Y.DATAOPER = D.RANGE.AND.VALUE<DATA.POS>
+        CHANGE "?" TO "," IN Y.DATAOPER ;*SJ (Y.DATAOPER has "?" it is sent in the request for web service and should to change to "," for Y.MAPVALUE variable)  ;*CHANGE DONE BY SANTIAGO	;*Interface Change by Santiago
     END
 
     LOCATE "OP.NO" IN D.FIELDS<1> SETTING OP.POS THEN
@@ -100,7 +118,7 @@ PROCESS:
 *
     CALL F.READ(FN.REDO.IVR.PARAMS,Y.INTERNO,R.REDO.IVR.PARAMS,F.REDO.IVR.PARAMS,Y.ERR.REDO.IVR.PARAMS)
     IF R.REDO.IVR.PARAMS EQ '' THEN
-        R.DATA<-1> = 'RET.CODE*3'
+        R.DATA<-1> = 'RET_CODE*3'	;*Interface Change by Santiago- CHANGED "RET.CODE*3" TO "RET_CODE*3"
     END ELSE
         GOSUB GET.US.PWD
         GOSUB TRANSACTION
@@ -111,7 +129,8 @@ RETURN
 GET.US.PWD:
 ***********
 
-    KEY1 = '456123'
+*   KEY1 = '456123' ;*SJ	;*Interface Change by Santiago
+    KEY1 = '45612378'     ;*CHANGE DONE BY SANTIAGO	;*Interface Change by Santiago
     R.REDO.IVR.PARAMS2 = ''; Y.ERR.REDO.IVR.PARAMS2 = ''
     CALL CACHE.READ(FN.REDO.IVR.PARAMS,'SYSTEM',R.REDO.IVR.PARAMS2,Y.ERR.REDO.IVR.PARAMS2)
     Y.USER.OFS = DECRYPT(R.REDO.IVR.PARAMS2<REDO.IVR.PAR.USER>,KEY1,JBASE_CRYPT_DES_BASE64)
@@ -211,6 +230,7 @@ REPORT.LOG:
     Y.STR = FIELD(Y.RETURN.DATA,',',2)
     IF Y.STR EQ '' THEN
         Y.ID.PROC  = 'IVR Operation No. ':Y.INTERNO
+        
 *APAP.REDOCHNLS.REDO.INTERFACE.REC.ACT(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
         APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
     END
@@ -368,14 +388,27 @@ TRANSACTION.VERSION:
 *
     Y.OFSRECORD = Y.OFSVERSION:"/I/PROCESS,":Y.USER.OFS:"/":Y.PWD.OFS:",,"
     CHANGE @FM TO "," IN Y.DATA.IN
-    Y.MSG = Y.OFSRECORD:Y.DATA.IN
+    Y.MSG.BULK= Y.OFSRECORD:Y.DATA.IN	;*Interface Change by Santiago- CHANGED "Y.MSG" TO "Y.MSG.BULK"
     Y.OFS.SOURCE.ID = "IVRPROC"
- 
+
     OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
 *CALL OFS.GLOBUS.MANAGER(Y.OFS.SOURCE.ID,Y.MSG)
-    CALL OFS.CALL.BULK.MANAGER(Y.OFS.SOURCE.ID,Y.MSG, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
-    GOSUB PROC.RESP.VERSION
 
+
+*    CALL OFS.CALL.BULK.MANAGER(Y.OFS.SOURCE.ID,Y.MSG, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
+*
+;*Interface Change by Santiago-START
+        Y.ID = TODAY:'-IVR.REQUEST'
+    R.IVR<IRV.ENQ.OFS.REQUEST> = Y.MSG.BULK
+        CALL F.WRITE(FN.IVR,Y.ID,R.IVR)
+        CALL JOURNAL.UPDATE("")
+        SLEEP 20
+        CALL F.READ(FN.IVR,Y.ID,R.IVR, F.IVR, ER.IVR)
+        Y.MSG = R.IVR<IRV.ENQ.OFS.RESPONSE>
+
+;*Interface Change by Santiago-END
+    GOSUB PROC.RESP.VERSION
+   CALL EB.CLEAR.FILE(FN.IVR,F.IVR)	;*Interface Change by Santiago
 *    GOSUB PROCESS.RESPONSE
 
 RETURN
@@ -540,7 +573,8 @@ IF.TXN.W.OVER:
         END
     END
 
-RETURN
+    Y.FIN.DATA = R.DATA    ;*CHANGE DONE BY SANTIAGO	;*Interface Change by Santiago
+    RETURN
 
 *-----------------------------------------------------------------------------
 SAVE.STATUS:

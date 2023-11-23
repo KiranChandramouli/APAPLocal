@@ -1,4 +1,17 @@
+* @ValidationCode : MjotMTc0NzMxNTY5MTpDcDEyNTI6MTcwMDQ4MDE2MTU3MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:06:01
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
+
 SUBROUTINE REDO.NOFILE.RBHP.NAME(Y.OUT)
 *-----------------------------------------------------------------------------
 * Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -15,7 +28,9 @@ SUBROUTINE REDO.NOFILE.RBHP.NAME(Y.OUT)
 *------------------------------------------------------------------------
 *  DATE             WHO                   REFERENCE                  
 * 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - FM to @FM
-* 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes                             
+* 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+* 06/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Interface Change by Santiago  
+* 10-11-2023	     VIGNESHWARI           ADDED COMMENT FOR INTERFACE CHANGES-No changes                         
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE

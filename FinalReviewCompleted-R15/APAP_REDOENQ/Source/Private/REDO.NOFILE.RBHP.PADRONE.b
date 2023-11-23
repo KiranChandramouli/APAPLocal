@@ -1,5 +1,18 @@
+* @ValidationCode : MjoxNjg4OTkxODYwOkNwMTI1MjoxNjk5NTA2NjIxMjk1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 09 Nov 2023 10:40:21
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.NOFILE.RBHP.PADRONE(Ret)
+    
 *-----------------------------------------------------------------------------
 * Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 * Developed By : john chrisptopher
@@ -15,8 +28,8 @@ SUBROUTINE REDO.NOFILE.RBHP.PADRONE(Ret)
 * 27-02-2012    HD ISSUE PACS00182520   PRABHU N              REDO.NOFILE.RBHP.PADRONE
 * 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - VM to @VM , FM to @FM
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+*06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Interface Change by Santiago
 *-----------------------------------------------------------------------------
-
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -26,7 +39,12 @@ SUBROUTINE REDO.NOFILE.RBHP.PADRONE(Ret)
     $INSERT I_F.ACCOUNT
     $INSERT I_F.IM.IMAGE.TYPE
     $INSERT I_ENQUIRY.COMMON
-
+;*Interface Change by Santiago-START-NEW LINES ADDED
+*SJ start
+    $INSERT I_F.DFE.TRANSFORM
+    $INSERT I_F.REDO.PADRON.WS
+*SJ end
+;*Interface Change by Santiago-END
     GOSUB MAIN
     GOSUB PROCESS
 RETURN
@@ -53,8 +71,13 @@ MAIN:
     FN.IMG.TYPE = 'F.IM.IMAGE.TYPE'
     F.IMG.TYPE = ''
     CALL OPF(FN.IMG.TYPE,F.IMG.TYPE)
-
-
+;*Interface Change by Santiago-START-NEW LINES ADDED  
+*SJ start
+    FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
+    F.DFE.TRANSFORM = ''
+    CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
+*SJ end
+;*Interface Change by Santiago
     IM.ID = 'PHOTOS'
 
     R.IMG.REC = ''
@@ -70,7 +93,7 @@ MAIN:
 RETURN
 
 ********
-PROCESS:
+PROCESS.OLD:	;*Interface Change by Santiago-CHANGE "PROCESS" TO "PROCESS.OLD"
 ********
 
     IF ENQ.SELECTION<1,1> EQ 'REDO.ENQ.RBHP.PADRONE' THEN
@@ -154,4 +177,93 @@ PROCESS:
     END
 
 RETURN
+;*Interface Change by Santiago-NEW LINES ADDED-START
+********
+PROCESS:
+********
+
+    IF ENQ.SELECTION<1,1> EQ 'REDO.ENQ.RBHP.PADRONE' THEN
+
+        LOCATE 'ACCOUNT.NO' IN D.FIELDS SETTING Y.ACCT.POS THEN
+            Y.ACCT.ID=D.RANGE.AND.VALUE<1,Y.ACCT.POS>
+            R.ACCOUNT=''
+            ERR.ACCT=''
+            CALL F.READ(FN.ACCOUNT,Y.ACCT.ID,R.ACCOUNT,F.ACCOUNT,ERR.ACCT)
+            IF NOT(R.ACCOUNT) THEN
+                Y.ACCT.ID.HIS = Y.ACCT.ID
+                CALL EB.READ.HISTORY.REC(F.ACCOUNT.HIS,Y.ACCT.ID.HIS,R.ACCOUNT,ERR.ACCT.HIS)
+            END
+
+            IF R.ACCOUNT NE '' THEN
+                Y.CUS.ID=R.ACCOUNT<AC.CUSTOMER>
+            END
+        END
+
+    END
+
+    IF ENQ.SELECTION<1,1> EQ 'REDO.ENQ.PADRONE' THEN
+        LOCATE 'ACCOUNT.NO' IN D.FIELDS SETTING Y.CUS.POS THEN
+            Y.CUS.ID=D.RANGE.AND.VALUE<1,Y.CUS.POS>
+        END
+    END
+
+    IF ENQ.SELECTION<1,1> EQ 'REDO.ENQ.CEDULA.PADRONE' THEN
+        LOCATE 'ACCOUNT.NO' IN D.FIELDS SETTING Y.CED.POS THEN
+            VAR.CIDENT=D.RANGE.AND.VALUE<1,Y.CED.POS>
+        END
+    END
+
+    IF Y.CUS.ID THEN
+        CALL F.READ(FN.CUS,Y.CUS.ID,R.CUS,F.CUS,CUS.ERR)
+        IF NOT(CUS.ERR) THEN
+            VAR.CIDENT = R.CUS<EB.CUS.LOCAL.REF><1,CIDENT.POS>
+        END
+    END
+
+    CALL F.READ(FN.IMG.TYPE,IM.ID,R.IMG.REC,F.IMG.TYPE,IMG.ERR)
+    IF NOT(IMG.ERR) THEN
+        IMG.PATH = R.IMG.REC<IM.TYP.PATH>
+    END
+    
+*    Cedule = "padrone$":VAR.CIDENT
+    Cedule = VAR.CIDENT
+    Y.INTRF.ID = 'REDO.PADRON.FISICO'
+    R.PAD.WS<PAD.WS.CEDULA> = Cedule
+    Y.RESPONSE = ''
+    Y.ID.TEMP = ID.NEW
+    ID.NEW = 'REDO.PADRON.FISICO'
+    CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
+    ID.NEW = Y.ID.TEMP
+    
+* values obtained from the web service
+*   IDENTI           = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>
+
+    IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
+        Ret = "FAIL@FM"
+        ERROR.CODE = 'REDO.NOFILE.RBHP.PADRONE'
+        ETEXT= 'EB-FAIL.JAVA.ERROR':@FM:ERROR.CODE
+        CALL STORE.END.ERROR
+    END
+
+    APELLIDOS = Y.RESPONSE<6>
+    FECHANACIMIENTO = Y.RESPONSE<5>
+    NOMBRE = Y.RESPONSE<2>
+    CALL System.setVariable("CURRENT.NOMBRE",NOMBRE)
+    IMAGEPATH = ''  ;* SJ VAR.NAME<5> pending validate with APAP because this WS dont return IMAGEPATH
+    SLASHC=DCOUNT(IMAGEPATH,'/')
+    IMAGENAME=FIELD(IMAGEPATH,'/',SLASHC)
+    C$SPARE(500) = "SUCCESS"
+    FLAG = '1'
+    IF IMAGENAME THEN
+        Ret<-1> = IMG.PATH:"@":IMAGENAME
+    END
+
+RETURN
+;*Interface Change by Santiago-END
 END

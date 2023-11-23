@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMTA0OTYyODk2OkNwMTI1MjoxNjg0ODQyMDk1NjIzOklUU1M6LTE6LTE6NzU3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 17:11:35
+* @ValidationCode : Mjo2NDgwNzk5MzQ6Q3AxMjUyOjE3MDA0ODA1ODgzNDk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:13:08
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 757
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -47,7 +47,10 @@ SUBROUTINE REDO.DEF.CUSTOMER.TYPE
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *06/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION            FM TO @FM, VM TO @VM
 *06/04/2023         SURESH           MANUAL R22 CODE CONVERSION          CALL Rtn format modified
+*07/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *-----------------------------------------------------------------------------------------------------
+
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -57,6 +60,10 @@ SUBROUTINE REDO.DEF.CUSTOMER.TYPE
     $INSERT I_F.CUSTOMER
     $INSERT I_F.VERSION
 *
+*SJ start	;*Interface Change by Santiago-start
+    $INSERT I_F.DFE.TRANSFORM
+    $INSERT I_F.REDO.PADRON.WS
+*SJ end	;*Interface Change by Santiago-end
     $INSERT I_F.REDO.ID.CARD.CHECK
     $INSERT I_F.REDO.FXSN.TXN.VERSION
     $INSERT I_REDO.ID.CARD.CHECK.COMMON
@@ -96,6 +103,12 @@ OPEN.FILES:
     FN.CUS.LEGAL.ID = 'F.REDO.CUSTOMER.LEGAL.ID'
     F.CUS.LEGAL.ID = ''
     CALL OPF(FN.CUS.LEGAL.ID,F.CUS.LEGAL.ID)
+    
+*SJ start	;*Interface Change by Santiago-start
+    FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
+    F.DFE.TRANSFORM = ''
+    CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
+*SJ end	;*Interface Change by Santiago-end
 
     CIDENT.PROVIDED    = ""
     RNC.PROVIDED       = ""
@@ -225,7 +238,7 @@ CHECK.RNC:
 RETURN
 *
 *-------------------------------------------------------------------------------------------------------------------------------------------------
-CHECK.RNC.NON.APAP:
+CHECK.RNC.NON.APAP.OLD:		;*Interface Change by Santiago-change "CHECK.RNC.NON.APAP" to "CHECK.RNC.NON.APAP.OLD"
 *---------------------------------------------------------------------------------------------------------------
 * APAP Customer RNC check to get customer name
 *
@@ -282,6 +295,60 @@ CHECK.RNC.NON.APAP:
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
     END
 RETURN
+;*Interface Change by Santiago-new lines added-start
+*-------------------------------------------------------------------------------------------------------------------------------------------------
+CHECK.RNC.NON.APAP:
+*---------------------------------------------------------------------------------------------------------------
+* APAP Customer RNC check to get customer name
+*
+    Cedule      = RNC.NUMBER
+    Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
+    R.PAD.WS<PAD.WS.CEDULA> = Cedule
+    Y.RESPONSE = ''
+    Y.ID.TEMP = ID.NEW
+    ID.NEW = Y.INTRF.ID
+    CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
+    ID.NEW = Y.ID.TEMP
+    
+* values obtained from the web service
+*   PADRON.FISICO                           PADRON JURIDICO
+*   IDENTI           = Y.RESPONSE<1>        IDENTI     = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>        NOMBRE     = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>        RESERVED.1 = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>        RESERVED.2 = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>        RESERVED.3 = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>        RESERVED.4 = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>        STATUS.CODE= Y.RESPONSE<7>
+*   STATUS.DESC      = Y.RESPONSE<8>        STATUS.DESC= Y.RESPONSE<8>
+
+    IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
+        MON.TP = '08'
+        DESC = 'El webservices no esta disponible'
+        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
+        
+        ERROR.CODE = 'REDO.DEF.CUSTOMER.TYPE'
+        ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
+        CALL STORE.END.ERROR
+    END
+    
+    IF Y.RESPONSE NE "" THEN
+        IF Y.RESPONSE<7> EQ "SUCCESS" THEN
+            CUSTOMER.FULL.NAME = Y.RESPONSE<2>
+            CLIENTE.APAP = "NO CLIENTE APAP"
+
+            R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
+            R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
+            R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
+            RNC.CUST.ID = ""
+            GOSUB GET.RNC.CUST.ID
+            VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
+            R.NEW(REDO.CUS.PRF.VAR.NV.INFO) = VAR.DETAILS
+            RETURN
+        END
+        GOSUB CHECK.NON.RNC
+    END
+RETURN
+;*Interface Change by Santiago-end
 *------------------------------------------------------------------------------------------------------------------------------------------------
 CHECK.NON.RNC:
 *-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,13 +364,12 @@ CHECK.NON.RNC:
     REC.CON = ''
     EX.USER = ''
     EX.PC = ''
-    IF RNC.RESULT.ERR<1> EQ "FAILURE" THEN
+    IF Y.RESPONSE<7> EQ "FAILURE" THEN	;*Interface Change by Santiago-change "RNC.RESULT.ERR<1>" to "Y.RESPONSE<7>"
         RNC.RESULT = Ret
-        CHANGE '::' TO @FM IN RNC.RESULT
         R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
         MON.TP = '04'
-        REC.CON = RNC.RESULT<2>
-        DESC = RNC.RESULT<3>
+        REC.CON = Y.INTRF.ID	;*Interface Change by Santiago-changes "RNC.RESULT<2>" to "Y.INTRF.ID"
+        DESC = Y.INTRF.ID	;*Interface Change by Santiago-changes "RNC.RESULT<3>" to "Y.INTRF.ID"
 * APAP.REDOCHNLS.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*MANUAL R22 CODE CONVERSION
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)
         AF = REDO.CUS.PRF.IDENTITY.NUMBER

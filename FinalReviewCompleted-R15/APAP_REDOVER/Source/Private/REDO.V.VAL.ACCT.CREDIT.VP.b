@@ -13,8 +13,8 @@
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.ACCT.CREDIT.VP
 *-----------------------------------------------------------------------------
-* Developer    : Luis Fernando Pazmino (lpazminodiaz@temenos.com)
-*                TAM Latin America
+* Developer    : TAM Latin America
+*
 * Client       : Asociacion Popular de Ahorro & Prestamo (APAP)
 * Date         : 05.04.2013
 * Description  : Routine for obtaining Credit Card Information
@@ -33,6 +33,7 @@ SUBROUTINE REDO.V.VAL.ACCT.CREDIT.VP
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *13-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM
 *13-04-2023              Samaran T                R22 Manual Code conversion                        CALL RTN FORMAT MODIFIED
+*20-11-2023          Santosh			   Intrface Change comment added           Vision Plus-Interface Changes done by Santiago
 *----------------------------------------------------------------------------------------------------------------------------
 * <region name="INSERTS">
 
@@ -202,18 +203,25 @@ INVOKE.VP.WS.CB:
 *CALL REDO.S.VP.SEL.CHANNEL(APPLICATION,PGM.VERSION,Y.MAP.ID,Y.CHANNEL,Y.MON.CHANNEL)
     APAP.TAM.redoSVpSelChannel(APPLICATION,PGM.VERSION,Y.MAP.ID,Y.CHANNEL,Y.MON.CHANNEL)   ;*R22 MANAUAL CODE CONVERSION
     WS.DATA<3> = Y.CHANNEL
-
-* Invoke VisionPlus Web Service
+*Interface Changes done by Santiago-Start
+* Values returned from visionplus
+* 1.Pv_NumeroTarjeta, 2.Pv_NumeroCuenta, 3.Pn_balanceCorteRD, 4.Pn_balanceCorteUS, 5.Pn_pago_minimoRD, 6.Pn_pago_minimoUS, 7.Pd_Fecha_de_pago,
+* 8.Estado_tarjeta, 9.Estado_cuenta, 10.Pv_Titular, 11.Pi_Codigo_Cliente, 12.Pv_NumeroDocumento, 13.Pv_DescripcionDocumento, 14.Pv_Tipo_Tarjeta,
+* 15.Pn_limite_de_creditoRD, 16.Pn_limite_de_creditoUS, 17.Pn_Saldo_AnteriorRD, 18.Pn_Saldo_AnteriorUS, 19.Pn_monto_ultimo_pagoRD,
+* 20.Pn_monto_ultimo_pagoUS, 21.Pd_Fecha_ultimo_pagoRD, 22.Pd_Fecha_ultimo_pagoUS, 23.Pn_Cuotas_VencidasRD, 24.Pn_Cuotas_VencidasUS,
+* 25.Pn_Importe_VencidoRD, 26.Pn_Importe_VencidoUS, 27.Pn_Saldo_ActualRD, 28.Pn_Saldo_ActualUS, 29.Pn_credito_disponibleRD, 30.Pn_credito_disponibleUS,
+* 31.Pn_SobregiroRD, 32.Pn_SobregiroUS, 33.Pd_fecha_ult_estcta, 34.ID_Comportamiento, 35.Pi_CodigoMensaje, 36.Pv_DescripcionMensaje,
 *APAP.TAM.REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
     APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)   ;*R22 MANAUAL CODE CONVERSION
 
 * Credit Card exits - Info obtained OK
 
-    IF WS.DATA<1> EQ 'OK' THEN
+    IF WS.DATA<35> EQ 0 THEN
 * Credit Card Number
-        CREDIT.CARD.ID = WS.DATA<2>[4,16]
+        CREDIT.CARD.ID = RIGHT(WS.DATA<1>,16)
 *PACS00654727-FIX-START
-        COMI=WS.DATA<3>[4,16]
+        COMI=RIGHT(WS.DATA<2>,16)
+*Interface Changes done by Santiago- End
         CREDIT.CARD.BIN = CREDIT.CARD.ID[1,6]   ;*FIX-T
         CALL CACHE.READ(FN.REDO.CARD.BIN, CREDIT.CARD.BIN, R.REDO.CARD.BIN, Y.ERR)
 
@@ -240,101 +248,99 @@ INVOKE.VP.WS.CB:
         R.NEW(Y.LOCAL.REF)<1,VPL.SEQ.NO.POS> = CREDIT.CARD.ID
 * Enmask
         R.NEW(Y.LOCAL.REF)<1,CR.CARD.NO.POS> = CREDIT.CARD.ID[1,6] : '******' : CREDIT.CARD.ID[13,4]  ;*FIX-T
+*Interface Changes done by Santiago- Start
 * Bal In Local Curncy
-        R.NEW(Y.LOCAL.REF)<1,BAL.IN.LCY.POS> = WS.DATA<28>
+        R.NEW(Y.LOCAL.REF)<1,BAL.IN.LCY.POS> = WS.DATA<3>
 * Bal In Usd
-        R.NEW(Y.LOCAL.REF)<1,BAL.IN.USD.POS> = WS.DATA<29>
+        R.NEW(Y.LOCAL.REF)<1,BAL.IN.USD.POS> = WS.DATA<4>
 * Min Pay Local Curncy
-        R.NEW(Y.LOCAL.REF)<1,MINPAY.LCY.POS> = WS.DATA<6> + WS.DATA<26>
+        R.NEW(Y.LOCAL.REF)<1,MINPAY.LCY.POS> = WS.DATA<5>
 * Minimum Pay Usd
-        R.NEW(Y.LOCAL.REF)<1,MINPAY.USD.POS> = WS.DATA<7> + WS.DATA<27>
+        R.NEW(Y.LOCAL.REF)<1,MINPAY.USD.POS> = WS.DATA<6>
 * Payment Due Date
-        R.NEW(Y.LOCAL.REF)<1,PAY.DUE.DT.POS> = WS.DATA<8>
+        Y.PAY.DATE =''
+        Y.PAY.DATE = FIELD(WS.DATA<7>,'T',1)
+        CHANGE '-' TO '' IN Y.PAY.DATE
+        R.NEW(Y.LOCAL.REF)<1,PAY.DUE.DT.POS> = TRIM(Y.PAY.DATE)
 
         GOSUB CHECK.STATUS
 
 * Card Holder Name
-        R.NEW(Y.LOCAL.REF)<1,CLIENT.NME.POS> = WS.DATA<11>
+        R.NEW(Y.LOCAL.REF)<1,CLIENT.NME.POS> = WS.DATA<10>
 * Client Code
-        Y.GET.CC.CODE = FIELD(WS.DATA<12>,'/',1)  ;*FIX-T
-        Y.GET.CC.CODE = TRIM(Y.GET.CC.CODE,'0','L') ;*FIX-T
-        R.NEW(Y.LOCAL.REF)<1,CLIENT.COD.POS> = Y.GET.CC.CODE ;*FIX-T
-
-*   R.NEW(Y.LOCAL.REF)<1,CLIENT.COD.POS> = WS.DATA<12> ;*FIX-T
+        Y.GET.CC.CODE = FIELD(WS.DATA<11>,'/',1)
+        Y.GET.CC.CODE = Y.GET.CC.CODE * 1
+        R.NEW(Y.LOCAL.REF)<1,CLIENT.COD.POS> = Y.GET.CC.CODE
+        
 * Numero Identificacion
-        R.NEW(Y.LOCAL.REF)<1,DOC.NUM.POS> = WS.DATA<13>
+        R.NEW(Y.LOCAL.REF)<1,DOC.NUM.POS> = WS.DATA<12>
 * Tipo de Identificacion
-        Y.TIPO.DOC = WS.DATA<14>
+        Y.TIPO.DOC = TRIM(WS.DATA<13>)
+        CHANGE '-' TO '' IN Y.TIPO.DOC
         IF Y.TIPO.DOC THEN
-            R.NEW(Y.LOCAL.REF)<1,DOC.DESC.POS> = WS.DATA<14>
+            R.NEW(Y.LOCAL.REF)<1,DOC.DESC.POS> = TRIM(Y.TIPO.DOC)
         END ELSE
 * TODO Confirmar - Default temporal
             R.NEW(Y.LOCAL.REF)<1,DOC.DESC.POS> = "CEDULA"
         END
 
 * Msg Det
-        R.NEW(Y.LOCAL.REF)<1,MSG.DESC.POS> = 'TRANSACCION PROCESADA CORRECTAMENTE' ;*FIX-T
+        R.NEW(Y.LOCAL.REF)<1,MSG.DESC.POS> = 'TRANSACCION PROCESADA CORRECTAMENTE'
         R.NEW(Y.LOCAL.REF)<1,MSG.CODE.POS> = ''
 
-        ID.COMPORTAMIENTO = WS.DATA<35>
+        ID.COMPORTAMIENTO = WS.DATA<34>
         BEGIN CASE
             CASE ID.COMPORTAMIENTO EQ 1         ;* No Acepta Pago
                 ETEXT = 'ST-VP-NO.CARD.PAY'
                 CALL STORE.END.ERROR
                 RETURN
             CASE ID.COMPORTAMIENTO EQ 2         ;* Acepta Pago con Autorizacion
-*FIX-T -START
-*    TEXT = 'ST-VP-NO.ONLINE.PYMNT' : FM : 'Y'
-*    IF R.NEW(Y.OVERRIDE) THEN
-*      Y.OV.POS = DCOUNT(R.NEW(Y.OVERRIDE), VM) + 1
-*    END ELSE
-*      Y.OV.POS = 1
-*    END
-*     CALL STORE.OVERRIDE(Y.OV.POS)
                 TEXT    = 'REDO.LEGAL.STATUS'
                 CURR.NO = DCOUNT(R.NEW(Y.OVERRIDE),@VM)+ 1
                 CALL STORE.OVERRIDE(CURR.NO)
                 RETURN
-*FIX-T - END
         END CASE
 
         GOSUB CHECK.CC.CCY
 
 *   GOSUB INVOKE.VP.WS.OI   ;*FIX-T
     END ELSE
-        COMI = ''
-
+        IF WS.DATA EQ 'ERROR' THEN
+            RETURN
+        END ELSE
+            COMI = ''
+*Interface Changes done by Santiago- End
 * Credit Card Number
-        R.NEW(Y.LOCAL.REF)<1,CR.CARD.NO.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,CR.CARD.NO.POS> = ''
 * Bal In Local Curncy
-        R.NEW(Y.LOCAL.REF)<1,BAL.IN.LCY.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,BAL.IN.LCY.POS> = ''
 * Bal In Usd
-        R.NEW(Y.LOCAL.REF)<1,BAL.IN.USD.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,BAL.IN.USD.POS> = ''
 * Min Pay Local Curncy
-        R.NEW(Y.LOCAL.REF)<1,MINPAY.LCY.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,MINPAY.LCY.POS> = ''
 * Minimum Pay Usd
-        R.NEW(Y.LOCAL.REF)<1,MINPAY.USD.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,MINPAY.USD.POS> = ''
 * Payment Due Date
-        R.NEW(Y.LOCAL.REF)<1,PAY.DUE.DT.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,PAY.DUE.DT.POS> = ''
 * Ccard Status
-        R.NEW(Y.LOCAL.REF)<1,CR.CRD.STS.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,CR.CRD.STS.POS> = ''
 * Account Status
-        R.NEW(Y.LOCAL.REF)<1,AC.STATUS.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,AC.STATUS.POS> = ''
 * Card Holder Name
-        R.NEW(Y.LOCAL.REF)<1,CLIENT.NME.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,CLIENT.NME.POS> = ''
 * Client Code
-        R.NEW(Y.LOCAL.REF)<1,CLIENT.COD.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,CLIENT.COD.POS> = ''
 * Numero Identificacion
-        R.NEW(Y.LOCAL.REF)<1,DOC.NUM.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,DOC.NUM.POS> = ''
 * Tipo de Identificacion
-        R.NEW(Y.LOCAL.REF)<1,DOC.DESC.POS> = ''
+            R.NEW(Y.LOCAL.REF)<1,DOC.DESC.POS> = ''
 * Msg Det
-        R.NEW(Y.LOCAL.REF)<1,MSG.DESC.POS> = FIELD(WS.DATA<2>,' - ',2)
-        R.NEW(Y.LOCAL.REF)<1,MSG.CODE.POS> = FIELD(WS.DATA<2>,' - ',1)
+            R.NEW(Y.LOCAL.REF)<1,MSG.DESC.POS> = WS.DATA<35> ;*Interface Changes done by Santiago
+            R.NEW(Y.LOCAL.REF)<1,MSG.CODE.POS> = WS.DATA<36> ;*Interface Changes done by Santiago
 * Vplus Internal Credit Card Number
-        R.NEW(Y.LOCAL.REF)<1,VPL.SEQ.NO.POS> = ''
-    END
-
+            R.NEW(Y.LOCAL.REF)<1,VPL.SEQ.NO.POS> = ''
+        END
+    END ;*Interface Changes done by Santiago
 RETURN
 
 **************************************************
@@ -414,7 +420,7 @@ RETURN
 CHECK.STATUS:
 ***********************************
 * Ccard Status
-    CC.STATUS = WS.DATA<9>
+    CC.STATUS = WS.DATA<8> ;*Interface Changes done by Santiago
     CC.STATUS.DESC = ''
     CALL CACHE.READ(FN.REDO.VPLUS.MAPPING, REDO.VPLUS.MAPPING.ID, R.REDO.VPLUS.MAPPING, Y.ERR)
 
@@ -427,7 +433,7 @@ CHECK.STATUS:
     R.NEW(Y.LOCAL.REF)<1,CR.CRD.STS.POS> = CC.STATUS.DESC
 
 * Account Status
-    ACCT.STATUS = WS.DATA<10>
+    ACCT.STATUS = WS.DATA<9> ;*Interface Changes done by Santiago
     ACCT.STATUS.DESC = ''
 
     LOCATE ACCT.STATUS IN R.REDO.VPLUS.MAPPING<VP.MAP.VP.STATUS.CODE,1> SETTING ACCT.STATUS.POS THEN

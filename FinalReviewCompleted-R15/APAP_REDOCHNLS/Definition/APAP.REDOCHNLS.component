@@ -1657,3 +1657,43 @@ public method redoChNewpwd (
 {
     jBC: REDO.CH.NEWPWD
 }
+
+public method redoIvrEnqReqResp (
+)
+{
+   jBC: REDO.IVR.ENQ.REQ.RESP
+}
+
+
+
+public method redoIvrEnqReqRespFields (
+)
+{
+   jBC: REDO.IVR.ENQ.REQ.RESP.FIELDS
+}
+
+
+
+public method redoBIvrEnqRequestSelect (
+)
+{
+   jBC: REDO.B.IVR.ENQ.REQUEST.SELECT
+}
+
+
+
+public method redoBIvrEnqRequestLoad (
+)
+{
+   jBC: REDO.B.IVR.ENQ.REQUEST.LOAD
+}
+
+
+
+public method redoBIvrEnqRequest (
+   INOUT yId string
+)
+{
+   jBC: REDO.B.IVR.ENQ.REQUEST
+}
+

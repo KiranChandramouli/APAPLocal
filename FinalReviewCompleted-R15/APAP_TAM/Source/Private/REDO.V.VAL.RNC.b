@@ -1,21 +1,24 @@
-* @ValidationCode : MjoxNzY5MjY4NTkzOkNwMTI1MjoxNjg0NDkxMDQ3NjM3OklUU1M6LTE6LTE6MTMwOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:47
+* @ValidationCode : MjoxNTA2OTE5NDMzOkNwMTI1MjoxNzAwNDgwNjUyODM4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:14:12
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 130
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
+
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE           WHO                 REFERENCE               DESCRIPTION
 *25-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     FM TO @FM
 *25-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL ROUTINE ADDED
+*07/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.V.VAL.RNC
 ******************************************************************************************************************
@@ -45,6 +48,10 @@ SUBROUTINE REDO.V.VAL.RNC
     $INSERT I_GTS.COMMON
     $INSERT I_REDO.V.VAL.CED.IDENT.COMMON
     $INSERT JBC.h
+*SJ start	;*Interface Change by Santiago-start
+    $INSERT I_F.DFE.TRANSFORM
+    $INSERT I_F.REDO.PADRON.WS
+*SJ end	;*Interface Change by Santiago-end
     $USING APAP.REDOCHNLS
     GOSUB OPEN.FILES
     GOSUB CHECK.RNC.FORMAT
@@ -66,6 +73,11 @@ OPEN.FILES:
     FN.CUSTOMER='F.CUSTOMER'
     F.CUSTOMER=''
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+*SJ start	;*Interface Change by Santiago-start
+    FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
+    F.DFE.TRANSFORM = ''
+    CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
+*SJ end	;*Interface Change by Santiago-end
 RETURN
 *----------------
 CHECK.RNC.FORMAT:
@@ -95,7 +107,7 @@ CHECK.RNC.FORMAT:
     END
 RETURN
 ************
-PROCESS:
+PROCESS.OLD:	;*Interface Change by Santiago- changes "PROCESS" to "PROCESS.OLD"
 *************
 *------------------------------------------------------------------------------------
 * Check the padrone interface for the given rnc values
@@ -142,7 +154,7 @@ PROCESS:
     END
 RETURN
 ******************
-PADRONE.CHECK:
+PADRONE.CHECK.OLD:	;*Interface Change by Santiago- changes "PADRONE.CHECK" to "PADRONE.CHECK.OLD"
 ******************
 *Checks for Success case and Failure Case
     CHANGE '$' TO '' IN VAR.NAME
@@ -161,6 +173,82 @@ PADRONE.CHECK:
         GOSUB FAIL.PADRONE
     END
 RETURN
+;*Interface Change by Santiago-new lines added-start
+************
+PROCESS:
+*************
+*------------------------------------------------------------------------------------
+* Check the padrone interface for the given rnc values
+*------------------------------------------------
+    IF Y.VAR.RNC EQ 'PASS' THEN
+*        Cedule = "rnc$":VAR.RNC
+        Cedule = VAR.RNC
+        Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
+        R.PAD.WS<PAD.WS.CEDULA> = Cedule
+        Y.RESPONSE = ''
+        Y.ID.TEMP = ID.NEW
+        ID.NEW = Y.INTRF.ID
+        CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
+        ID.NEW = Y.ID.TEMP
+    
+* values obtained from the web service
+*   PADRON.FISICO                           PADRON JURIDICO
+*   IDENTI           = Y.RESPONSE<1>        IDENTI     = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>        NOMBRE     = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>        RESERVED.1 = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>        RESERVED.2 = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>        RESERVED.3 = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>        RESERVED.4 = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>        STATUS.CODE= Y.RESPONSE<7>
+*   STATUS.DESC      = Y.RESPONSE<8>        STATUS.DESC= Y.RESPONSE<8>
+
+        IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
+            ERROR.CODE = 'REDO.V.VAL.CED.IDENT'
+            ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
+            CALL STORE.END.ERROR
+        END
+    END
+
+    INT.CODE = 'RNC'
+    INT.TYPE = 'ONLINE'
+    BAT.NO = ''
+    BAT.TOT = ''
+    INFO.OR = ''
+    INFO.DE = ''
+    ID.PROC = ''
+    MON.TP = ''
+    DESC = ''
+    REC.CON = ''
+    EX.USER = ''
+    EX.PC = ''
+    REC.CON = Y.RESPONSE<7>
+    DESC = Y.RESPONSE<8>
+    GOSUB PADRONE.CHECK
+    IF APELLIDOS.1 THEN
+        R.NEW(EB.CUS.NAME.1) = APELLIDOS.1
+    END
+    IF APELLIDOS.2 THEN
+        R.NEW(EB.CUS.NAME.2) = APELLIDOS.2
+    END
+RETURN
+******************
+PADRONE.CHECK:
+******************
+*Checks for Success case and Failure Case
+
+    IF Y.RESPONSE<7> EQ 'SUCCESS' THEN
+        APELLIDOS = Y.RESPONSE<2>
+        APELLIDOS.1=APELLIDOS[1,35]
+        IF LEN(APELLIDOS) GT 35 THEN
+            DIFF = LEN(APELLIDOS) - 35
+            APELLIDOS.2 = APELLIDOS[36,DIFF]
+        END
+    END
+    IF VAL.NAME<1> EQ 'FAILURE' THEN
+        GOSUB FAIL.PADRONE
+    END
+RETURN
+;*Interface Change by Santiago-end
 ***************
 FAIL.PADRONE:
 ***************

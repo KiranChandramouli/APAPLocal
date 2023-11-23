@@ -28,6 +28,7 @@ SUBROUTINE REDO.VP.B.REG.DD.TXN
 * Version   Date           Who            Reference         Description
 * 1.0       04.30.2013     lpazmino       -                 Initial Version
 * 13/06/2023      Santosh      R22 MANUAL CODE CONVERSION       Changed FUNCTION CALL into SUBROUTINE CALL
+*20-11-2023       Santosh   Intrface Change comment added         Vision Plus-Interface Changes done by Santiago
 *-----------------------------------------------------------------------------
 
 * <region name="INSERTS">
@@ -185,13 +186,24 @@ GET.CUST.DATA:
     WS.DATA<3> = 'DDD'
 
 * Invoke VisionPlus Web Service
+
 *   CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
     APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA) ;*R22 Manual Code Conersion
+*Interface Changes done by Santiago- Start
+
+* Values returned from visionplus
+* 1.Pv_NumeroTarjeta, 2.Pv_NumeroCuenta, 3.Pn_balanceCorteRD, 4.Pn_balanceCorteUS, 5.Pn_pago_minimoRD, 6.Pn_pago_minimoUS, 7.Pd_Fecha_de_pago,
+* 8.Estado_tarjeta, 9.Estado_cuenta, 10.Pv_Titular, 11.Pi_Codigo_Cliente, 12.Pv_NumeroDocumento, 13.Pv_DescripcionDocumento, 14.Pv_Tipo_Tarjeta,
+* 15.Pn_limite_de_creditoRD, 16.Pn_limite_de_creditoUS, 17.Pn_Saldo_AnteriorRD, 18.Pn_Saldo_AnteriorUS, 19.Pn_monto_ultimo_pagoRD,
+* 20.Pn_monto_ultimo_pagoUS, 21.Pd_Fecha_ultimo_pagoRD, 22.Pd_Fecha_ultimo_pagoUS, 23.Pn_Cuotas_VencidasRD, 24.Pn_Cuotas_VencidasUS,
+* 25.Pn_Importe_VencidoRD, 26.Pn_Importe_VencidoUS, 27.Pn_Saldo_ActualRD, 28.Pn_Saldo_ActualUS, 29.Pn_credito_disponibleRD, 30.Pn_credito_disponibleUS,
+* 31.Pn_SobregiroRD, 32.Pn_SobregiroUS, 33.Pd_fecha_ult_estcta, 34.ID_Comportamiento, 35.Pi_CodigoMensaje, 36.Pv_DescripcionMensaje,
 
 * Credit Card exits - Info obtained OK
-    IF WS.DATA<1> EQ 'OK' THEN
+    IF WS.DATA<35> EQ '0' THEN
         Y.FLAG.WS = 1
-        ID.COMPORTAMIENTO = WS.DATA<35>
+        ID.COMPORTAMIENTO = WS.DATA<34>
+*Interface Changes done by Santiago- End	
         BEGIN CASE
             CASE ID.COMPORTAMIENTO EQ 1         ;* No Acepta Pago
                 R.REDO.VISION.PLUS.DD<VP.DD.PROCESADO> = 'ERR'
@@ -216,7 +228,7 @@ GET.CUST.DATA:
         END CASE
     END ELSE
         R.REDO.VISION.PLUS.DD<VP.DD.PROCESADO> = 'ERR'
-        R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = WS.DATA<1> : ' - COULD NOT OBTAIN CREDIT CARD - CUSTOMER DATA FROM VISION PLUS ' : WS.DATA<2>
+        R.REDO.VISION.PLUS.DD<VP.DD.OBSERVACIONES> = WS.DATA<35> : ' - COULD NOT OBTAIN CREDIT CARD - CUSTOMER DATA FROM VISION PLUS ' : WS.DATA<1>  ;*Interface Changes done by Santiago
     END
 
 RETURN
