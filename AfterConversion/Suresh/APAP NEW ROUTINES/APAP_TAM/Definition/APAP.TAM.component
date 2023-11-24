@@ -1,0 +1,37 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method drRegFd01ExtractNew (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW
+}
+
+
+
+public method drRegFd01ExtractNewLoad (
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.LOAD
+}
+
+
+
+public method drRegFd01ExtractNewPost (
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.POST
+}
+
+
+
+public method drRegFd01ExtractNewSelect ( 
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.SELECT
+}
+
