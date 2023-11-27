@@ -106,7 +106,6 @@ CHECK.EXT.USER:
         EXT.USR = NO.OF.REC<CNT.REC>
         R.USR = ''; USR.ERR = ''
         CALL CACHE.READ(FN.EB.EXTERNAL.USER, EXT.USR, R.USR, USR.ERR) ;*R22 Auto conversion
-        CALL F.READ(FN.EB.EXTERNAL.USER,EXT.USR,R.USR,F.EB.EXTERNAL.USER,USR.ERR) ;* Latest Routine- Changes
         IF R.USR THEN
             ESTADOUSR = R.USR<EB.XU.STATUS>
         END ELSE
@@ -140,8 +139,6 @@ CHECK.PIN:
         ESTADO = "I"
         RETURN
     END
-    KY = "7" ;* Latest Routine- Changes
-    PN = DECRYPT(PN,KY,2) ;* Latest Routine- Changes
 *KY = "7"
 *PN = DECRYPT(PN,KY,2)
 *New start-

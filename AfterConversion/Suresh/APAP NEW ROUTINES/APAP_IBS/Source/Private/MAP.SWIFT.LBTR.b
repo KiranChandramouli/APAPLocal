@@ -23,8 +23,7 @@ SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
 *Modification HISTORY:
 *DATE                          AUTHOR                   Modification                            DESCRIPTION
 *25/10/2023                VIGNESHWARI        MANUAL R23 CODE CONVERSION                  Nochanges
-*DATE                 WHO                    REFERENCE                     DESCRIPTION
-*24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
+*24/11/2023                 Suresh             R22 Manual Conversion             Latest Routine - Changes
 *-----------------------------------------------------------------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 *
@@ -38,8 +37,8 @@ SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
     $INSERT I_DEOCOM
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.DE.INTERFACE
-    $INSERT I_F.BENEFICIARY
-    $INSERT I_F.REDO.ACH.PARTICIPANTS
+    $INSERT I_F.BENEFICIARY ;*R22 Manual Conversion
+    $INSERT I_F.REDO.ACH.PARTICIPANTS ;*R22 Manual Conversion
     $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 Manual Conversion
     $INSERT I_F.ACCOUNT ;*R22 Manual Conversion
 
@@ -60,12 +59,14 @@ SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
 
     IF R.HEAD(DE.HDR.MESSAGE.TYPE) = 103 AND R.HEAD(DE.HDR.APPLICATION) = "FTOT" THEN
         GOSUB CHECK.FT
-        GOSUB CHECK.ACC ;*R22 NEW LINE - START
+* Latest Routine- Changes START	
+        GOSUB CHECK.ACC 
 
 *--Esta validaci�n es para que no aplique la cuenta regional a Prestamos ni a TC
         IF Y.APLICAR.FORMATO EQ 0 THEN
             GOSUB CHECK.BENEF
-        END ;*R22 NEW LINE - END
+        END 
+* Latest Routine- Changes END
         IF  LBTR = @TRUE THEN
             CRLF = CHAR(13):CHAR(10)
             MY.REC = R.MSG
@@ -175,19 +176,20 @@ SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
             IF POS THEN
                 CHANGE ":59B:" TO ":59:" IN MY.REC<POS>
             END
-
-            FINDSTR Y.ACC.ID IN MY.REC SETTING POS ELSE POS = 0 ;* Latest Routine- Changes - Start
+* Latest Routine- Changes START
+            FINDSTR Y.ACC.ID IN MY.REC SETTING POS ELSE POS = 0 
             IF POS THEN
                 CHANGE Y.ACC.ID TO Y.ACC.CTA.REG IN MY.REC<POS>
-            END ;* Latest Routine- Changes - End
+            END 
 
-            IF Y.APLICAR.FORMATO EQ 0 THEN ;* Latest Routine- Changes - Start
+            IF Y.APLICAR.FORMATO EQ 0 THEN 
 *--Sustituimos la Cta Del Beneficiario por su Cta Regional
                 FINDSTR Y.CTA.BEN IN MY.REC SETTING POS ELSE POS = 0
                 IF POS THEN
                     CHANGE Y.CTA.BEN TO Y.CTA.REG.BEN IN MY.REC<POS>
                 END
-            END ;* Latest Routine- Changes - End
+            END 
+* Latest Routine- Changes - End
             CHANGE @FM TO CRLF IN MY.REC
             R.MSG = MY.REC
             ID.MSG = "MSG":MISN:".fin"
@@ -240,7 +242,8 @@ CHECK.FT:
             TRANS.TYPE = R.FT<FT.TRANSACTION.TYPE>
             BIC.BANK   = R.FT<FT.ACCT.WITH.BANK>
             ACCT.BANK  = R.FT<FT.BEN.ACCT.NO>
-            GOSUB CHECK.TRANSACTION.TYPE ;* Latest Routine- Changes - Start
+* Latest Routine- Changes START
+            GOSUB CHECK.TRANSACTION.TYPE 
             Y.ACC.ID = R.FT<FT.DEBIT.ACCT.NO>
 
 *--Validar que si viene una cuenta interna para el cambiarla
@@ -251,7 +254,8 @@ CHECK.FT:
 
             Y.BENEF.ID = R.FT<FT.CREDIT.THEIR.REF>
             Y.BANCO = R.FT<FT.LOCAL.REF,L.FTST.ACH.PART.POS,1>
-            Y.CTA.BEN = ACCT.BANK ;* Latest Routine- Changes - End
+            Y.CTA.BEN = ACCT.BANK 
+* Latest Routine- Changes - End
             IS.PAYROLL = 0
             IF R.FT<FT.ORD.CUST.ACCT> NE "" THEN
                 IS.PAYROLL=1
@@ -263,8 +267,9 @@ CHECK.FT:
     END
 
 RETURN
+* Latest Routine- Changes START
 ***********************
-CHECK.TRANSACTION.TYPE: ;* Latest Routine- Changes - Start
+CHECK.TRANSACTION.TYPE: 
 ***********************
     FN.REDO.H.REPORTS.PARAM = 'F.REDO.H.REPORTS.PARAM';
     FV.REDO.H.REPORTS.PARAM = '';

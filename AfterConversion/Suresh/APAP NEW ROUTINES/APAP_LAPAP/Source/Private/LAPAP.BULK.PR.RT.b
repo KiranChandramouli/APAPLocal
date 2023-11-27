@@ -19,7 +19,6 @@ SUBROUTINE LAPAP.BULK.PR.RT(Y.PAYROLL)
 *------------------------------------------------------------------------
 *  DATE             WHO                   REFERENCE
 * 09-AUG-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
-*DATE                 WHO                    REFERENCE                     DESCRIPTION
 *24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
     $INSERT I_EQUATE
     $INSERT I_COMMON

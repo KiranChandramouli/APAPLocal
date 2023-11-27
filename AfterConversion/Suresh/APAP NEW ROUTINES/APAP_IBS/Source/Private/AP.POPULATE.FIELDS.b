@@ -18,8 +18,7 @@ $PACKAGE APAP.IBS
 *Modification HISTORY:
 *DATE                          AUTHOR                   Modification                            DESCRIPTION
 *25/10/2023                VIGNESHWARI         MANUAL R23 CODE CONVERSION                Remove BP from insert file
-*DATE                 WHO                    REFERENCE                     DESCRIPTION
-*24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
+*24/11/2023                 Suresh             R22 Manual Conversion                     Latest Routine - Changes
 *-----------------------------------------------------------------------------------------------------------------------------------
 
 SUBROUTINE  AP.POPULATE.FIELDS
@@ -86,7 +85,7 @@ POPULATE.ORD.CUST:
     DB.ACC = R.NEW(FT.DEBIT.ACCT.NO)
 
     DB.ACC = R.NEW(FT.ORD.CUST.ACCT) ;* Latest Routine- Changes
-*END ;* Latest Routine- Changes
+*END ;* R22 Manual Code Conversion
     ER = ''
     R.ACC.DB = ''
     CALL F.READ(FN.ACCOUNT,DB.ACC,R.ACC.DB,F.ACCOUNT,ER)
@@ -107,13 +106,15 @@ POPULATE.ORD.CUST:
                 ORD.CUST = "" ;* Latest Routine- Changes
                 IF NAME.1 THEN
                     ORD.CUST = ORD.CUST:@VM:NAME.1
+* Latest Routine- Changes- START
 *--ORD.CUST = ORD.CUST:@VM:NAME.1
                     ORD.CUST = NAME.1
-*--ORD.CUST := @VM:"/":Y.IDENTIFICACION ;* Latest Routine- Changes- START
+*--ORD.CUST := @VM:"/":Y.IDENTIFICACION 
                     ORD.CUST := @VM:Y.IDENTIFICACION
                 END ELSE
 *--ORD.CUST = "/":Y.IDENTIFICACION
-                    ORD.CUST = Y.IDENTIFICACION ;* Latest Routine- Changes - END
+                    ORD.CUST = Y.IDENTIFICACION 
+* Latest Routine- Changes - END
                 END
                 IF STR.ADD THEN
                     ORD.CUST = ORD.CUST:@VM:STR.ADD
@@ -130,7 +131,9 @@ POPULATE.ORD.CUST:
 * R.NEW(FT.BEN.NAME) = "TEST"
 * R.NEW(FT.BK.TO.BK.INFO) = "/REC/CH"
     END
-    VALOR = ORD.CUST ;* Latest Routine- Changes - START
+
+* Latest Routine- Changes - START
+    VALOR = ORD.CUST 
 *--CRT ORD.CUST
 RETURN
 
@@ -162,7 +165,8 @@ GET.IDENTIFICACION:
         END ELSE
             Y.IDENTIFICACION = Y.L.CU.RNC
         END
-    END ;* Latest Routine- Changes - END
+    END
+* Latest Routine- Changes - END
 RETURN
 ******************
 POPULATE.BEN.BANK:
