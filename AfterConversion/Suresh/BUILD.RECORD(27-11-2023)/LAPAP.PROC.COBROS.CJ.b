@@ -101,11 +101,11 @@ GENERAR.MENSAJE.OFS:
     OFS.SRC.ID = 'AA.APAP';
     OFS.MSG.ID = '';
     ERR.OFS = '';
-    APP.NAME = AA.APAP:',':'FUNDS.TRANSFER' ;*R22 Manual Conversion
+    APP.NAME = 'FUNDS.TRANSFER' 
     OFSFUNCTION = 'I';
     GTS.MODE = '' ;
     NO.OF.AUTH = '0'
-    OFS.VERSION = Y.VERSION.OFS;
+    OFS.VERSION = FUNDS.TRANSFER:',':Y.VERSION.OFS; ;*R22 Manual Conversion
     OFSRECORD = ''
     TRANSACTION.ID = ''
     PROCESS = 'PROCESS'
