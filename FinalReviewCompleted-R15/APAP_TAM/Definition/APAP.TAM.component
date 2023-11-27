@@ -15324,7 +15324,7 @@ public method redoValMerName (
 public method redoBTaxpayerServicesPost (
 )
 {
-   jBC: REDO.B.TAXPAYER.SERVICES.POST
+    jBC: REDO.B.TAXPAYER.SERVICES.POST
 }
 
 
@@ -15332,7 +15332,7 @@ public method redoBTaxpayerServicesPost (
 public method redoVInpAmlFtChk (
 )
 {
-   jBC: REDO.V.INP.AML.FT.CHK
+    jBC: REDO.V.INP.AML.FT.CHK
 }
 
 
@@ -15340,7 +15340,7 @@ public method redoVInpAmlFtChk (
 public method redoVAutActivateAcc (
 )
 {
-   jBC: REDO.V.AUT.ACTIVATE.ACC
+    jBC: REDO.V.AUT.ACTIVATE.ACC
 }
 
 
@@ -15351,28 +15351,28 @@ public method redoUpdateVersionName (
 }
 
 public method redoNofAdjustClearReport (
-   INOUT yFinArr string
+    INOUT yFinArr string
 )
 {
-   jBC: REDO.NOF.ADJUST.CLEAR.REPORT
+    jBC: REDO.NOF.ADJUST.CLEAR.REPORT
 }
 
 
 
 public method redoNofChqNtPresent (
-   INOUT yFinalArray string
+    INOUT yFinalArray string
 )
 {
-   jBC: REDO.NOF.CHQ.NT.PRESENT
+    jBC: REDO.NOF.CHQ.NT.PRESENT
 }
 
 
 
 public method redoNofGenChqAgency (
-   INOUT yFinArr string
+    INOUT yFinArr string
 )
 {
-   jBC: REDO.NOF.GEN.CHQ.AGENCY
+    jBC: REDO.NOF.GEN.CHQ.AGENCY
 }
 
 
@@ -15380,7 +15380,7 @@ public method redoNofGenChqAgency (
 public method redoPadronWs (
 )
 {
-   jBC: REDO.PADRON.WS
+    jBC: REDO.PADRON.WS
 }
 
 
@@ -15388,34 +15388,34 @@ public method redoPadronWs (
 public method redoPadronWsFields (
 )
 {
-   jBC: REDO.PADRON.WS.FIELDS
+    jBC: REDO.PADRON.WS.FIELDS
 }
 
 
 
 public method redoPadronJuridicoGetXml (
-   INOUT lineaextraida string
+    INOUT lineaextraida string
 )
 {
-   jBC: REDO.PADRON.JURIDICO.GET.XML
+    jBC: REDO.PADRON.JURIDICO.GET.XML
 }
 
 
 
 public method redoPadronGetXml (
-   INOUT lineaextraida string
+    INOUT lineaextraida string
 )
 {
-   jBC: REDO.PADRON.GET.XML
+    jBC: REDO.PADRON.GET.XML
 }
 
 
 
 public method redoVisionPlusGetXml (
-   INOUT lineaextraida string
+    INOUT lineaextraida string
 )
 {
-   jBC: REDO.VISION.PLUS.GET.XML
+    jBC: REDO.VISION.PLUS.GET.XML
 }
 
 
@@ -15423,7 +15423,7 @@ public method redoVisionPlusGetXml (
 public method redoVisionPlusWs (
 )
 {
-   jBC: REDO.VISION.PLUS.WS
+    jBC: REDO.VISION.PLUS.WS
 }
 
 
@@ -15431,6 +15431,39 @@ public method redoVisionPlusWs (
 public method redoVisionPlusWsFields (
 )
 {
-   jBC: REDO.VISION.PLUS.WS.FIELDS
+    jBC: REDO.VISION.PLUS.WS.FIELDS
+}
+
+
+
+public method drRegFd01ExtractNew (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW
+}
+
+
+
+public method drRegFd01ExtractNewLoad (
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.LOAD
+}
+
+
+
+public method drRegFd01ExtractNewPost (
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.POST
+}
+
+
+
+public method drRegFd01ExtractNewSelect (
+)
+{
+    jBC: DR.REG.FD01.EXTRACT.NEW.SELECT
 }
 

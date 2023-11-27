@@ -1,3 +1,4 @@
+$PACKAGE APAP.LAPAP
 * @ValidationCode : MjoxMzE0MTQyODk4OkNwMTI1MjoxNjkxNjQ4ODA0ODM0OklUU1M6LTE6LTE6NjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
 * @ValidationInfo : Timestamp         : 10 Aug 2023 11:56:44
 * @ValidationInfo : Encoding          : Cp1252
@@ -10,7 +11,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.LAPAP
+
 
 SUBROUTINE LAPAP.BULK.PR.RT(Y.PAYROLL)
 *------------------------------------------------------------------------
@@ -18,7 +19,8 @@ SUBROUTINE LAPAP.BULK.PR.RT(Y.PAYROLL)
 *------------------------------------------------------------------------
 *  DATE             WHO                   REFERENCE
 * 09-AUG-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
-
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
     $INSERT I_EQUATE
     $INSERT I_COMMON
     $INSERT I_GTS.COMMON
@@ -28,11 +30,11 @@ SUBROUTINE LAPAP.BULK.PR.RT(Y.PAYROLL)
     $INSERT I_F.ST.LAPAP.BULK.PAYROLL.DET
     $INSERT I_LAPAP.BULK.PR.RT.COMMON
     $INSERT I_F.FUNDS.TRANSFER
-
+ 
     GOSUB DO.PROCESS
 
 RETURN
-
+  
 DO.PROCESS:
 
 
@@ -51,10 +53,17 @@ DO.READ:
             GOSUB DO.FORM.ARRAY
 
         END ELSE
+            Y.THIS.PR.ID = R.BPRD<ST.LAP4.PAYROLL.ID> ;* Latest Routine- Changes
+            GOSUB DO.READ.PR ;* Latest Routine- Changes
             GOSUB DO.FORM.ARRAY.LBTR
         END
     END
 
+RETURN ;* Latest Routine- Changes -START
+
+DO.READ.PR:
+    CALL F.READ(FN.BPR,Y.THIS.PR.ID,R.BPRM,F.BPR,ERR.BPR)
+    Y.MASTER.DEBIT.ACC = R.BPRM<ST.LAP39.DEBIT.ACCOUNT> ;* Latest Routine- Changes - END
 RETURN
 
 DO.FORM.ARRAY:
@@ -102,6 +111,7 @@ DO.FORM.ARRAY.LBTR:
     R.FT<FT.LOCAL.REF,Y.L.COMMENTS.POS> = R.BPRD<ST.LAP4.COMMENTS>
     R.FT<FT.LOCAL.REF,Y.L.PAYROLL.ID.POS> = Y.PAYROLL
     R.FT<FT.BK.TO.BK.OUT,1> = '/REC/CC'
+    R.FT<FT.ORD.CUST.ACCT> = Y.MASTER.DEBIT.ACC ;* Latest Routine- Changes
 
     GOSUB DO.FORM.OFS.LBTR
 RETURN

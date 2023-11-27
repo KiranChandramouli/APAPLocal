@@ -1,11 +1,29 @@
+* @ValidationCode : Mjo4MDMxNzI4NTU6Q3AxMjUyOjE3MDA4NDI2Mzg4NDc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:18
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
 *-------------------------------------------------------------------------------------
 *Modification
-* Date                  who                   Reference              
-* 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT 
+* Date                  who                   Reference
+* 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT
 * 21-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-------------------------------------------------------------------------------------
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*21/11/2023         Suresh             R22 Manual Conversion           Latest Routine Changes Merged
+*----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_ENQUIRY.COMMON
@@ -63,12 +81,18 @@ SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
     FLD.NAME.ARR<1,2> = 'L.CU.CIDENT' ;
     FLD.NAME.ARR<1,3> = 'L.CU.RNC' ;
     FLD.NAME.ARR<1,4> = 'L.CU.PASS.NAT' ;
+    FLD.NAME.ARR<1,5> = 'L.TIP.CLI' ; ;* Latest Routine - Changes START
+    FLD.NAME.ARR<1,6> = 'L.CU.TEL.AREA' ;
+    FLD.NAME.ARR<1,7> = 'L.CU.TEL.NO' ; ;* Latest Routine - Changes END
 
     CALL MULTI.GET.LOC.REF(APPL.NAME.ARR,FLD.NAME.ARR,FLD.POS.ARR)
     L.CUS.SEG.POS = FLD.POS.ARR<1,1>
     L.CU.CIDENT.POS = FLD.POS.ARR<1,2>
     L.CU.RNC.POS = FLD.POS.ARR<1,3>
     L.CU.PASS.NAT.POS = FLD.POS.ARR<1,4>
+    L.TIP.CLI.POS = FLD.POS.ARR<1,5> ;* Latest Routine - Changes
+    L.CU.TEL.AREA.POS = FLD.POS.ARR<1,6> ;* Latest Routine  - Changes
+    L.CU.TEL.NO.POS = FLD.POS.ARR<1,7> ;* Latest Routine  - Changes
 **-----------------------------------------------------
 
     CUSTOMER.NO = ''
@@ -92,6 +116,10 @@ SUBROUTINE ENQ.L.APAP.CUST.INFO(Y.FINAL)
             CUSTOMER.NO = FIELD(R.CUS.LEGAL,"*",2)
             GOSUB CONSULTAR
             GOSUB RESULTADO
+        CASE F.TYPE.DOCUMENT EQ "CUSTID" ;* Latest Routine- Changes START
+            CUSTOMER.NO = CUSTOMER.IDE
+            GOSUB CONSULTAR
+            GOSUB RESULTADO ;* Latest Routine- Changes END
     END CASE
 
 CONSULTAR:
@@ -110,20 +138,28 @@ CONSULTAR:
 
     Y.L.CU.CIDENT = R.CUS<EB.CUS.LOCAL.REF, L.CU.CIDENT.POS>
     Y.L.CU.RNC = R.CUS<EB.CUS.LOCAL.REF, L.CU.RNC.POS>
+    Y.L.TIP.CLI = R.CUS<EB.CUS.LOCAL.REF, L.TIP.CLI.POS,1> ;* Latest Routine- Changes START
+    Y.MARITAL.STATUS = R.CUS<EB.CUS.MARITAL.STATUS>
+    Y.CUSTOMER.NO = CUSTOMER.IDE ;* Latest Routine- Changes END
     L.CU.PASS.NAT = R.CUS<EB.CUS.LOCAL.REF, L.CU.PASS.NAT.POS>
 
     CALL GET.LOC.REF("CUSTOMER", "L.CU.TIPO.CL", L.CU.TIPO.CL.POS)
     Y.CUSTOMER.TYPE = R.CUS<EB.CUS.LOCAL.REF, L.CU.TIPO.CL.POS>
-
+    Y.L.CU.TEL.NO = R.CUS<EB.CUS.LOCAL.REF, L.CU.TEL.NO.POS> ;* Latest Routine- Changes START
+    Y.TEL.1 = R.CUS<EB.CUS.LOCAL.REF, L.CU.TEL.AREA.POS,1> : '-':R.CUS<EB.CUS.LOCAL.REF, L.CU.TEL.NO.POS,1>
+    Y.TEL.2 = R.CUS<EB.CUS.LOCAL.REF, L.CU.TEL.AREA.POS,2> : '-':R.CUS<EB.CUS.LOCAL.REF, L.CU.TEL.NO.POS,2> ;* Latest Routine- Changes END
     Y.IDENTIFICACION = ''
     IF (Y.L.CU.CIDENT NE '') THEN
         Y.IDENTIFICACION = Y.L.CU.CIDENT
     END
-    IF (Y.L.CU.RNC NE '') THEN
+    ELSE IF (Y.L.CU.RNC NE '') THEN  ;* Latest Routine- Changes START
         Y.IDENTIFICACION = Y.L.CU.RNC
     END
-    IF (L.CU.PASS.NAT NE '') THEN
+    ELSE IF (L.CU.PASS.NAT NE '') THEN
         Y.IDENTIFICACION = L.CU.PASS.NAT
+    END
+    ELSE
+        Y.IDENTIFICACION = Y.CUSTOMER.NO  ;* Latest Routine- Changes END
     END
 *DEBUG
 **------------------------------------------------------------------------------------------------------------------------------------
@@ -137,11 +173,22 @@ CONSULTAR:
             Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
 *DEBUG
         CASE  F.TYPE.DOCUMENT EQ "RNC"
-            Y.CUS.NOMBRE = R.CUS<EB.CUS.SHORT.NAME>
+*          Y.CUS.NOMBRE = R.CUS<EB.CUS.SHORT.NAME> ;* Latest Routine Received - Changes
+            Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1>
             Y.CUS.APELLIDO = ''
         CASE  F.TYPE.DOCUMENT EQ "PASAPORTE"
             Y.CUS.NOMBRE = R.CUS<EB.CUS.GIVEN.NAMES>
             Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
+*Latest Routine- Changes START
+        CASE  F.TYPE.DOCUMENT EQ "CUSTID"
+            IF (R.CUS<EB.CUS.GIVEN.NAMES> EQ '') THEN
+                Y.CUS.NOMBRE = R.CUS<EB.CUS.NAME.1,1>:" ":R.CUS<EB.CUS.NAME.2,1>
+            END
+            ELSE
+                Y.CUS.NOMBRE = R.CUS<EB.CUS.GIVEN.NAMES>
+                Y.CUS.APELLIDO = R.CUS<EB.CUS.FAMILY.NAME>
+            END
+*Latest Routine- Changes END
     END CASE
 
     CHANGE ',' TO ' ' IN Y.CUS.NOMBRE
@@ -188,19 +235,20 @@ CONSULTAR:
     IF  Y.CUS.EMPLEADO NE "" THEN
         Y.CUS.SEGMENTO = "EMPLEADO"
     END
+    
+    ELSE IF  Y.CUSTOMER.TYPE EQ "PERSONA JURIDICA" THEN  ;* Latest Routine- Changes
+        Y.CUS.SEGMENTO = "CORPORATIVO"
+    END
     ELSE
-        IF  Y.CUSTOMER.TYPE EQ "PERSONA JURIDICA" THEN
-            Y.CUS.SEGMENTO = "CORPORATIVO"
-        END
-        ELSE
-            Y.CUS.SEGMENTO = "EFECTIVO"
-        END
+        Y.CUS.SEGMENTO = "EFECTIVO"
+        
     END
 
 RETURN
 RESULTADO:
     IF CUSTOMER.NO NE '' THEN
-        Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION
+*       Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION
+        Y.FINAL<-1> = CUSTOMER.NO : "*" : Y.CUS.NOMBRE : "*" : Y.CUS.APELLIDO : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : Y.STATUS.CLIENTE : "*" : Y.CUS.SEGMENTO : "*" : Y.IDENTIFICACION : "*" : Y.L.TIP.CLI : "*" : Y.MARITAL.STATUS : "*" : Y.L.CU.TEL.NO ;* Latest Routine - Changes
     END ELSE
         Y.FINAL<-1> = "-1" : "*" : "NO ENCONTRADO" : "*" : "NO ENCONTRADO" : "*" :  Y.CUS.DIRECCION : "*" : Y.CUS.EMAIL : "*" : "NO ENCONTRADO" : "*" : "N/A"
     END

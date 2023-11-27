@@ -1,7 +1,7 @@
-* @ValidationCode : MjotMTMwMDEyOTY4NjpDcDEyNTI6MTY4NjY3NDI1MTUyNTpJVFNTOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:07:31
+* @ValidationCode : MjotMTAzNzgxOTI4OTpDcDEyNTI6MTcwMDg0MjY0ODgzOTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:28
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -10,7 +10,7 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-*-----------------------------------------------------------------------------
+
 *-----------------------------------------------------------------------------
 * <Rating>958</Rating>
 *-----------------------------------------------------------------------------
@@ -34,7 +34,8 @@ SUBROUTINE L.APAP.GET.CUS.PRODUCTS (Y.FINAL)
 * MPD-920                Oliver Fermin                  13/02/2020            Correción para los contratos que no devuelve el LOAN.STATUS.1 de la tabla OVERDUE
 * MDR-1668               Jose Hilario                   22/03/2022            Agregar el status de las tarjeta debito
 
-* 08-JUNE-2023     Santosh        R22 Manual Conversion - Changed VM,FM to @VM,@FM and NEXT statement modified, Changed CALL method
+* 08-JUNE-2023     Santosh             R22 Manual Conversion - Changed VM,FM to @VM,@FM and NEXT statement modified, Changed CALL method
+* 21/11/2023         Suresh             R22 Manual Conversion                 Latest Routine Changes Merged
 *--------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -53,6 +54,14 @@ SUBROUTINE L.APAP.GET.CUS.PRODUCTS (Y.FINAL)
     $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
     $INSERT I_F.CARD.STATUS
     $INSERT I_F.LATAM.CARD.ORDER
+    
+    $USING APAP.LAPAP
+    
+    GOSUB CARGAR.TABLAS ;* Latest Routine- Changes GOSUB Added
+    GOSUB PROCESO.PRINCIPAL
+RETURN
+
+CARGAR.TABLAS: ;* Latest Routine- Changes
 
 **----------------------------------------
 **ABRIR LA TABLA FBNK.REDO.CUST.PRD.LIST
@@ -181,6 +190,8 @@ SUBROUTINE L.APAP.GET.CUS.PRODUCTS (Y.FINAL)
     FV.LATAM.CARD.ORDER = ''
     CALL OPF (FN.LATAM.CARD.ORDER,FV.LATAM.CARD.ORDER)
 
+RETURN ;* Latest Routine- Changes
+PROCESO.PRINCIPAL: ;* Latest Routine- Changes
 **--------------------------------------------------------
 
 
@@ -357,7 +368,14 @@ SUBROUTINE L.APAP.GET.CUS.PRODUCTS (Y.FINAL)
 
         Y.ARRANGEMENT.ID = R.ACC<AC.ARRANGEMENT.ID>
         Y.ALT.ACCT.ID  = R.ACC<AC.ALT.ACCT.ID>
-
+* Latest Routine- Changes START
+***------------------------------------------------------------------
+        Y.ALT.ACCT.TYPE = ''
+        Y.ALT.ACCT.TYPE = R.ACC<AC.ALT.ACCT.TYPE>
+        Y.ALT.ACCT.TYPE = CHANGE(Y.ALT.ACCT.TYPE,@VM,@FM)
+        Y.ALT.ACCT.TYPE = CHANGE(Y.ALT.ACCT.TYPE,@SM,@FM)
+***------------------------------------------------------------------------------
+* Latest Routine- END
         GOSUB GET_DISBURSEMENT_DATE
 
         CALL GET.LOC.REF("ACCOUNT", "L.AC.REINVESTED",ACC.POS)
@@ -371,6 +389,7 @@ SUBROUTINE L.APAP.GET.CUS.PRODUCTS (Y.FINAL)
         GOSUB SET_FINAL
         GOSUB ADD_ALL_ACCT
     NEXT P
+RETURN  ;* Latest Routine- Changes
 
 GET_HIST:
     T.CONTINUE.FLAG  = "NO"
@@ -405,6 +424,14 @@ GET_HIST:
     Y.ARRANGEMENT.ID = HIST.REC<AC.ARRANGEMENT.ID>
     Y.ALT.ACCT.ID  = HIST.REC<AC.ALT.ACCT.ID>
 
+* Latest Routine- Changes START
+***------------------------------------------------------------------
+    Y.ALT.ACCT.TYPE = '';
+    Y.ALT.ACCT.TYPE = HIST.REC<AC.ALT.ACCT.TYPE>
+    Y.ALT.ACCT.TYPE = CHANGE(Y.ALT.ACCT.TYPE,@VM,@FM)
+    Y.ALT.ACCT.TYPE = CHANGE(Y.ALT.ACCT.TYPE,@SM,@FM)
+***------------------------------------------------------------------------------
+* Latest Routine- Changes END
     GOSUB GET_DISBURSEMENT_DATE
 
 *    CALL L.APAP.RETURN.BANLACE.CANCELACION(Y.ARRANGEMENT.ID, Y.OUT.ARR)
@@ -415,7 +442,7 @@ GET_HIST:
     Y.L.AC.REINVESTED  = HIST.REC<AC.LOCAL.REF,ACC.POS>
 
 RETURN
-
+ 
 GET_CATEGORY_D:
     Y.CATEGORY.DESC = ""
     CALL F.READ(FN.CAT,Y.CATEGORY,R.CAT, FV.CAT, CAT.ERR)
@@ -606,6 +633,9 @@ GET.CARD.STATUS:
     FOR I = 1 TO Y.CNT
         IF Y.ALT.MULTI.AC.ID<I> EQ '' THEN
             CONTINUE
+        END
+        IF Y.ALT.ACCT.TYPE<I> NE 'T.DEBITO.1' AND Y.ALT.ACCT.TYPE<I> NE 'T.DEBITO.2'  THEN ;* Latest Routine- Changes
+            CONTINUE;
         END
 *** ESTATUS DE LA TARJETA------------------------------------------------------------------------------------
         SEL.CMD.IN = "SELECT ":FN.LATAM.CARD.ORDER : " WITH @ID LIKE ..." : Y.ALT.MULTI.AC.ID<I>

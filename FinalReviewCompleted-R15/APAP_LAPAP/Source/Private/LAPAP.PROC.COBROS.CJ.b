@@ -1,22 +1,23 @@
-* @ValidationCode : MjotMTgyNzA4NTcxMjpDcDEyNTI6MTY5MTY2MTM4ODU3MzpJVFNTOi0xOi0xOjQ3MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 10 Aug 2023 15:26:28
+* @ValidationCode : MjoxNjEwMjA0NTEwOkNwMTI1MjoxNzAwODQyNjc1MDY3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:55
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 470
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------
 * <Rating>-60</Rating>
 *-----------------------------------------------------------------------------
 *MODIFICATION HISTORY:
-*DATE          WHO                 REFERENCE               DESCRIPTION
-*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED,INCLUDE TO INSERT
+*DATE          WHO                 REFERENCE                 DESCRIPTION
+*09-08-2023    VICTORIA S          R22 MANUAL CONVERSION    INSERT FILE MODIFIED,INCLUDE TO INSERT
+*21/11/2023    Suresh              R22 Manual Conversion    Latest Routine- Changes
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.PROC.COBROS.CJ (Y.REGISTROS)
 
@@ -36,7 +37,17 @@ SUBROUTINE LAPAP.PROC.COBROS.CJ (Y.REGISTROS)
 
 
 
-    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
+*    $INCLUDE I_COMMON
+*    $INCLUDE I_EQUATE
+*    $INCLUDE I_GTS.COMMON
+*    $INCLUDE I_BATCH.FILES
+*    $INCLUDE I_F.FUNDS.TRANSFER
+*    $INCLUDE I_F.OFS.SOURCE
+*    $INCLUDE I_F.REDO.PART.TT.PROCESS
+*    $INCLUDE I_F.ACCOUNT
+*    $INCLUDE I_LAPAP.PROC.COBROS.CJ.COMMON
+    
+    $INSERT I_COMMON ;*R22 Manual Conversion - Start
     $INSERT I_EQUATE
     $INSERT I_GTS.COMMON
     $INSERT I_BATCH.FILES
@@ -44,7 +55,7 @@ SUBROUTINE LAPAP.PROC.COBROS.CJ (Y.REGISTROS)
     $INSERT I_F.OFS.SOURCE
     $INSERT I_F.REDO.PART.TT.PROCESS
     $INSERT I_F.ACCOUNT
-    $INSERT I_LAPAP.PROC.COBROS.CJ.COMMON ;*R22 MANUAL CONVERSION END
+    $INSERT I_LAPAP.PROC.COBROS.CJ.COMMON ;*R22 Manual Conversion - End
     GOSUB MAIN.PROCESS
 RETURN
 MAIN.PROCESS:
@@ -161,8 +172,11 @@ RETURN
 
 LEER.TABLA.ACCOUNT:
     Y.ACCOUNT.BALANCE = '';
-    Y.L.AC.AV.BAL = 'L.AC.AV.BAL'
-    CALL GET.LOC.REF("ACCOUNT",Y.L.AC.AV.BAL,POS.AVL.BAL)
+*Y.L.AC.AV.BAL = 'L.AC.AV.BAL' ;* Latest Routine- Line Commented
+*CALL GET.LOC.REF("ACCOUNT",Y.L.AC.AV.BAL,POS.AVL.BAL) ;* Latest Routine- Line Commented
+
+    Y.L.AC.AV.BAL = 'L.AC.AV.BAL' ;* R22 Manual Code Conversion - Added
+    CALL GET.LOC.REF("ACCOUNT",Y.L.AC.AV.BAL,POS.AVL.BAL) ;* R22 Manual Code Conversion - Added
     CALL F.READ(FN.ACCOUNT,Y.CUENTA.DEBITO,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
     Y.ACCOUNT.BALANCE    = R.ACCOUNT<AC.LOCAL.REF,POS.AVL.BAL>
 
