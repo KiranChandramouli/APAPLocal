@@ -1,16 +1,17 @@
-* @ValidationCode : MjoxNzczMDg2NTU6Q3AxMjUyOjE2ODQ4NTQzODcwNTY6SVRTUzotMTotMToyMjU1OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:27
+* @ValidationCode : MjotMTMyMjIwMTg0MDpDcDEyNTI6MTcwMTEwOTYzMTc4MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:57:11
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 2255
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
+
 SUBROUTINE REDO.B.GEN.ACH.OUT.FILE.POST
 ****************************************************************
 *-------------------------------------------------------------------------
@@ -27,9 +28,10 @@ SUBROUTINE REDO.B.GEN.ACH.OUT.FILE.POST
 *   DATE              ODR                             DESCRIPTION
 * 08-10-10          ODR-2009-12-0290                  Initial Creation
 *14-04-15                                             performance fix -Prabhu
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 11-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND ++ TO += 1 AND TNO TO C$T24.SESSION.NO
 * 11-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+*27-11-2023	     VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES - SQA-11796  � By Santiago
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_F.USER
@@ -113,7 +115,6 @@ RETURN
 *-----------------------------------------------------------------------------
 PROCESS:
 *-----------------------------------------------------------------------------
-
     Y.INTERF.ID = 'ACH001'
 
     CALL CACHE.READ(FN.REDO.INTERFACE.PARAM,Y.INTERF.ID,R.REDO.INTERFACE.PARAM,Y.ERR)
@@ -123,8 +124,18 @@ PROCESS:
     Y.OUT.PATH.HIS  = R.REDO.ACH.PARAM<REDO.ACH.PARAM.OUTW.HIST.PATH>
     Y.TODAY = TODAY
     CALL F.READ(FN.REDO.ACH.DET.IDS,Y.TODAY,R.REDO.ACH.DET.IDS,F.REDO.ACH.DET.IDS,ID.ERR)
-    SEL.CMD = "SELECT ":CCY.OUT.PATH:" LIKE APAP.ACHOUT":"..."
+;*Fix SQA-11796 � By Santiago-new lines added-start
+* start SJ   SQA-11796
+*    SEL.CMD = "SELECT ":CCY.OUT.PATH:" LIKE APAP.ACHOUT":"..."
+    OPEN CCY.OUT.PATH TO FILE.POINTER ELSE
+        CALL OCOMO("CANNOT OPEN SESSION FILE PATH: ":CCY.OUT.PATH)
+        CALL FATAL.ERROR("CANNOT OPEN SESSION FILE PATH")
+        RETURN
+    END
+    
+    SEL.CMD = "SELECT " : CCY.OUT.PATH	;*Fix SQA-11796 � By Santiago-end
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',CNT.REC,RET.CD)
+* end SJ	;*Fix SQA-11796 � By Santiago-new line added
 
     NOW.TIME = TIMEDATE()
     NOW.HR = NOW.TIME[1,2]
@@ -211,7 +222,6 @@ TXN.LIVE.PROCESS:
 RETURN
 *---------------------------------------------------------------------------------------------------------------------------------
 UPD.LOC.TABLE:
-
     Y.ID.TEMP = TODAY:".":Y.FT.ID:".TEMP"
     Y.ID.MASTER = TODAY:".":Y.FT.ID:".":TIME()
     CALL F.READ(FN.REDO.ACH.PROCESS,Y.ID.TEMP,R.REDO.ACH.PROCESS,F.REDO.ACH.PROCESS,ACH.ERR)
@@ -238,7 +248,6 @@ UPD.LOC.TABLE:
 RETURN
 *-----------------
 UPD.ACH.DET:
-
 
     FETCH.ID = R.REDO.ACH.DET.IDS<LOOP.CNTR>
     CALL F.READ(FN.REDO.ACH.PROCESS.DET,FETCH.ID,R.REDO.ACH.PROCESS.DET,F.REDO.ACH.PROCESS.DET,Y.ERR.ACH.PROCESS)

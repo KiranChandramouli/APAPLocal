@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjIxODU1MTAzOkNwMTI1MjoxNjk5NTA3MzgxNjY0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 Nov 2023 10:53:01
+* @ValidationCode : MjotMTQyNDQ5NzE3OTpDcDEyNTI6MTcwMDQ4MDUxNTY2NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:11:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,8 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
-SUBROUTINE REDO.V.INP.PJ.CUST.RTN    
+
+SUBROUTINE REDO.V.INP.PJ.CUST.RTN
 *******************************************************************************************************************
 *Company   Name    : Asociaciopular de Ahorros y Pramos Bank
 *Developed By      : P.ANAND(anandp@temenos.com)
@@ -41,6 +42,7 @@ SUBROUTINE REDO.V.INP.PJ.CUST.RTN
 *12-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM
 *12-04-2023              Samaran T                R22 Manual Code conversion                         Added AV,Call Routine Format Modified
 *07/10/2023		VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      		Interface Change by Santiago
+*10-11-2023		VIGNESHWARI	       ADDED COMMENT FOR INTERFACE CHANGES      	Interface Change by Santiago
 *---------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -48,10 +50,10 @@ SUBROUTINE REDO.V.INP.PJ.CUST.RTN
     $INSERT I_GTS.COMMON
     $INSERT I_REDO.V.VAL.CED.IDENT.COMMON
     $INSERT JBC.h
-*SJ start	;*Interface Change by Santiago-START
+*SJ start		;*Interface Change by Santiago-START
     $INSERT I_F.DFE.TRANSFORM
     $INSERT I_F.REDO.PADRON.WS
-*SJ end	;*Interface Change by Santiago-END
+*SJ end		;*Interface Change by Santiago-END
     $USING APAP.REDOCHNLS
 *------------------------------------------------------------------------------------------------------------------
     GOSUB INIT
@@ -91,7 +93,7 @@ OPEN.FILES:
     FN.CUSTOMER = 'F.CUSTOMER'
     F.CUSTOMER = ''
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
-*SJ start	;*Interface Change by Santiago-NEW LINES ADDED -START
+*SJ start	;*Interface Change by Santiago-NEW LINES ADDED-START
     FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
     F.DFE.TRANSFORM = ''
     CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
@@ -155,8 +157,9 @@ CHECK.OVERRIDE:
     IF FLAG EQ 1 AND NOT(OFS.VAL.ONLY) AND OFS$OPERATION EQ 'PROCESS' THEN
         IF Y.L.CU.CIDENT THEN
 *            Cedule = "padrone$":Y.L.CU.CIDENT      ;*SJ	;*Interface Change by Santiago-COMMENTED
-            Cedule = Y.L.CU.CIDENT	;*Interface Change by Santiago
+            Cedule = Y.L.CU.CIDENT	;*Interface Change by Santiago-NEW LINE ADDED
             INT.CODE = 'CIDENT'
+            Y.INTRF.ID = 'REDO.PADRON.FISICO'	;*Interface Change by Santiago-NEW LINE ADDED
             GOSUB CHK.PADRONE
             IF FLAG.OVERRIDE EQ 1 AND VAR.TIPO.CL NE 'PERSONA JURIDICA' THEN
                 TEXT = "REPO.PADR.PF"
@@ -166,8 +169,9 @@ CHECK.OVERRIDE:
         END
         IF Y.L.CU.RNC THEN
 *            Cedule = "rnc$":Y.L.CU.RNC          ;*SJ	;*Interface Change by Santiago-COMMENTED
-            Cedule = Y.L.CU.RNC		;*Interface Change by Santiago
+            Cedule = Y.L.CU.RNC	;*Interface Change by Santiago
             INT.CODE = 'RNC'
+            Y.INTRF.ID = 'REDO.PADRON.JURIDICO'		;*Interface Change by Santiago-NEW LINE ADDED
             GOSUB CHK.PADRONE
             IF FLAG.OVERRIDE EQ 1 AND VAR.TIPO.CL EQ 'PERSONA JURIDICA' THEN
                 TEXT = "REPO.PADR.PJ"
@@ -215,7 +219,7 @@ CHK.PADRONE.OLD:	;*Interface Change by Santiago-CHANGED "CHK.PADRONE" TO "CHK.PA
     REC.CON = VAR.NAME<2>
     DESC = VAR.NAME<3>
     IF Ret THEN
-        GOSUB PADRONE.CHECK.OLD	;*Interface Change by Santiago-CHANGED "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
+        GOSUB PADRONE.CHECK.OLD		;*Interface Change by Santiago-CHANGED "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
     END
 RETURN
 *--------------------------------------------------------------------------------------------------------------------
@@ -256,16 +260,16 @@ FAIL.PADRONE.OLD:	;*Interface Change by Santiago-CHANGED "FAIL.PADRONE" TO "FAIL
     END
 RETURN
 *-------------------------------------------END OF RECORD---------------------------------------------------------
-;*Interface Change by Santiago-NEW LINES ADDED-START
+;*Interface Change by Santiago-START
 *-------------------------------------------------------------------------------------------------------------------
 CHK.PADRONE:
 *--------------------------------------------------------------------------------------------------------------------
 *Raising override if the given value is not availble in padrone interface
-    Y.INTRF.ID = 'REDO.PADRON.FISICO'
+
     R.PAD.WS<PAD.WS.CEDULA> = Cedule
     Y.RESPONSE = ''
     Y.ID.TEMP = ID.NEW
-    ID.NEW = 'REDO.PADRON.FISICO'
+    ID.NEW = Y.INTRF.ID
     CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
     ID.NEW = Y.ID.TEMP
     
@@ -325,5 +329,4 @@ FAIL.PADRONE:
     END
 RETURN
 ;*Interface Change by Santiago-END
-
 END

@@ -1,0 +1,23 @@
+* I_F.MULTI.TXN.PARA Created 12 DEC 10 at 07:00PM by apap/SJEY
+*      PREFIX[REDO.TXN.PARAM]
+        EQU REDO.TXN.PARAM.DESCRIPTION TO 1,   MultiTxnPara_Description TO 1,
+        REDO.TXN.PARAM.SETTLEMENT.TYPE TO 2,   MultiTxnPara_SettlementType TO 2,
+                REDO.TXN.PARAM.VERSION TO 3,   MultiTxnPara_Version TO 3,
+             REDO.TXN.PARAM.SHORT.DESC TO 4,   MultiTxnPara_ShortDesc TO 4,
+             REDO.TXN.PARAM.RESERVED.5 TO 5,   MultiTxnPara_Reserved5 TO 5,
+             REDO.TXN.PARAM.RESERVED.4 TO 6,   MultiTxnPara_Reserved4 TO 6,
+             REDO.TXN.PARAM.RESERVED.3 TO 7,   MultiTxnPara_Reserved3 TO 7,
+             REDO.TXN.PARAM.RESERVED.2 TO 8,   MultiTxnPara_Reserved2 TO 8,
+             REDO.TXN.PARAM.RESERVED.1 TO 9,   MultiTxnPara_Reserved1 TO 9,
+             REDO.TXN.PARAM.RESERVED.8 TO 10,  MultiTxnPara_Reserved8 TO 10,
+             REDO.TXN.PARAM.RESERVED.7 TO 11,  MultiTxnPara_Reserved7 TO 11,
+             REDO.TXN.PARAM.RESERVED.6 TO 12,  MultiTxnPara_Reserved6 TO 12,
+          REDO.TXN.PARAM.RECORD.STATUS TO 13,  MultiTxnPara_RecordStatus TO 13,
+                REDO.TXN.PARAM.CURR.NO TO 14,  MultiTxnPara_CurrNo TO 14,
+               REDO.TXN.PARAM.INPUTTER TO 15,  MultiTxnPara_Inputter TO 15,
+              REDO.TXN.PARAM.DATE.TIME TO 16,  MultiTxnPara_DateTime TO 16,
+             REDO.TXN.PARAM.AUTHORISER TO 17,  MultiTxnPara_Authoriser TO 17,
+                REDO.TXN.PARAM.CO.CODE TO 18,  MultiTxnPara_CoCode TO 18,
+              REDO.TXN.PARAM.DEPT.CODE TO 19,  MultiTxnPara_DeptCode TO 19,
+           REDO.TXN.PARAM.AUDITOR.CODE TO 20,  MultiTxnPara_AuditorCode TO 20,
+        REDO.TXN.PARAM.AUDIT.DATE.TIME TO 21,  MultiTxnPara_AuditDateTime TO 21

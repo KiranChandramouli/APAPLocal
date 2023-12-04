@@ -43,6 +43,7 @@ SUBROUTINE REDO.FC.S.REV.AA
 *DATE			AUTHOR					Modification                 DESCRIPTION
 *28/08/2023  CONVERSION TOOL    AUTO R22 CODE CONVERSION              RAD.BP is removed in insertfile , VM TO @VM
 *28/08/2023	 VIGNESHWARI	    MANUAL R22 CODE CONVERSION		      DYN.TO.OFS Change to OFS.BUILD.RECORD, CALL RTN MODIFIED
+*27/11/2023         Suresh          R22 Manual Conversion             OFS.BUILD.RECORED changed
 *-----------------------------------------------------------------------------------------------------------------------
 *=======================================================================
 
@@ -135,7 +136,7 @@ REV.COLLATERAL:
         APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
         OFS.FUNCTION = 'I'
         OFS.PROCESS  = 'PROCESS'
-        OFS.VERSION  = Y.VER.COLLATERAL
+        OFS.VERSION  = Y.APPLICATION:',':Y.VER.COLLATERAL ;*R22 Manual Conversion
         Y.GTSMODE    = ''
         NO.OF.AUTH   = ''
         TRANSACTION.ID = Y.COLL.ID<1,Y.C.ID>
@@ -204,7 +205,7 @@ REV.COLL.RIGHT:
         APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
         OFS.FUNCTION = 'I'
         OFS.PROCESS  = 'PROCESS'
-        OFS.VERSION  = Y.VER.COLL.RIGHT
+        OFS.VERSION  = Y.APPLICATION:',':Y.VER.COLL.RIGHT ;*R22 Manual Conversion
         Y.GTSMODE    = ''
         NO.OF.AUTH   = ''
         TRANSACTION.ID = Y.COLL.R<1,Y.COUNT.CR>
@@ -262,7 +263,7 @@ REV.LIMIT:
     APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
     OFS.FUNCTION = 'I'
     OFS.PROCESS  = 'PROCESS'
-    OFS.VERSION  = Y.VER.LIMIT
+    OFS.VERSION  = Y.APPLICATION:',':Y.VER.LIMIT ;*R22 Manual Conversion
     Y.GTSMODE    = ''
     NO.OF.AUTH   = ''
     TRANSACTION.ID = Y.AA.LIMIT
@@ -322,7 +323,7 @@ REV.INSURANCE:
         APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
         OFS.FUNCTION = 'I'
         OFS.PROCESS  = 'PROCESS'
-        OFS.VERSION  = Y.VER.INSURANCE
+        OFS.VERSION  = Y.APPLICATION:',':Y.VER.INSURANCE ;*R22 Manual Conversion
         Y.GTSMODE    = ''
         NO.OF.AUTH   = ''
         TRANSACTION.ID = Y.POLICY.NUMBER<1,Y.C.I>

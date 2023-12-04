@@ -10,11 +10,11 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.REDOBATCH
+    $PACKAGE APAP.REDOBATCH
 *-----------------------------------------------------------------------------
 * <Rating>-23</Rating>
 *-----------------------------------------------------------------------------
-SUBROUTINE REDO.B.STATUS1.UPDATE
+    SUBROUTINE REDO.B.STATUS1.UPDATE
 *------------------------------------------------------------------
 * COMPANY NAME : APAP
 * DEVELOPED BY : JEEVA T
@@ -30,6 +30,7 @@ SUBROUTINE REDO.B.STATUS1.UPDATE
 * JEEVA T              05-07-2011       PACS00084781       Selecting only saving,current,sweep account
 * Jayasurya            30-05-2023       TSR-571603
 * Edwin                20 AUG 2023      TSR-637100
+* Edwin                26 NOV 2023      R22 Conversion COB issue
 *-------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -40,7 +41,7 @@ SUBROUTINE REDO.B.STATUS1.UPDATE
 
     GOSUB SEL.PROCESS
     GOSUB PROCESS.ALL
-RETURN
+    RETURN
 *-------------------------------------------------------------------------
 SEL.PROCESS:
 *-------------------------------------------------------------------------
@@ -54,9 +55,15 @@ SEL.PROCESS:
     FN.DATES = 'F.DATES'
     F.DATES = ''
     CALL OPF(FN.DATES,F.DATES)
+
     FN.SL = '&SAVEDLISTS&/TEMP.ACCOUNTS'
-    F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE
+        Y.MK.CMD = "mkdir ../bnk.run/&SAVEDLISTS&/TEMP.ACCOUNTS"
+        EXECUTE Y.MK.CMD
+        OPEN FN.SL TO F.SL ELSE
+        END
+    END
+
     Y.LAST.WRKN.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY)
     Y.TODAY = R.DATES(EB.DAT.TODAY)
 
@@ -64,7 +71,7 @@ SEL.PROCESS:
     SEL.CMD = 'SELECT ':FN.REDO.UPD.ACC.LIST:' WITH @ID LIKE ':Y.TODAY:'-...'
 
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,Y.ERR)
-RETURN
+    RETURN
 *-------------------------------------------------------------------------
 PROCESS.ALL:
 *-------------------------------------------------------------------------
@@ -76,7 +83,7 @@ PROCESS.ALL:
         Y.ACCOUNT.NUMBER<-1> = R.REDO.UPD.ACC.LIST
         CALL F.DELETE(FN.REDO.UPD.ACC.LIST,Y.ID)
     REPEAT
-    CHANGE @VM TO @FM IN Y.ACCOUNT.NUMBER ;*R22 MANUAL CONVERSION
+    CHANGE @VM TO @FM IN Y.ACCOUNT.NUMBER         ;*R22 MANUAL CONVERSION
     R.REDO.UPD.ACC.LIST.BK<AL.ACCOUNT> = Y.ACCOUNT.NUMBER
     IF Y.ACCOUNT.NUMBER THEN
 *CALL F.WRITE(FN.REDO.UPD.ACC.LIST,Y.LAST.WRKN.DATE,R.REDO.UPD.ACC.LIST.BK)
@@ -93,7 +100,7 @@ PROCESS.ALL:
         FINAL.ARRAY.LIST<-1> = R.SL
         DELETE F.SL,Y.TEMP.ID
     REPEAT
-    CHANGE @FM TO @VM IN FINAL.ARRAY.LIST ;*R22 MANUAL CONVERSION
+    CHANGE @FM TO @VM IN FINAL.ARRAY.LIST         ;*R22 MANUAL CONVERSION
     IF FINAL.ARRAY.LIST THEN
         R.DATE = ''
         CALL F.READ(FN.DATES,'DO0010001',R.DATE,F.DATES,DAT.ERR)
@@ -107,5 +114,5 @@ PROCESS.ALL:
         R.REDO.T.ACCTSTAT.BY.DATE<REDAT.ACCOUNT,-1>= FINAL.ARRAY.LIST
         WRITE R.REDO.T.ACCTSTAT.BY.DATE ON F.REDO.T.ACCTSTAT.BY.DATE,CURR.DATE
     END
-RETURN
+    RETURN
 END

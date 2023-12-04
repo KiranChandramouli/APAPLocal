@@ -9253,3 +9253,11 @@ public method lapapCustCheckRelation (
    jBC: LAPAP.CUST.CHECK.RELATION
 }
 
+
+
+public method lApapGetAbsVal (
+)
+{
+   jBC: L.APAP.GET.ABS.VAL
+}
+

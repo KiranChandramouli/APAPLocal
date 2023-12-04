@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTA1MDM0MzA4MTpDcDEyNTI6MTY5OTUyMjczNjcyNDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 Nov 2023 15:08:56
+* @ValidationCode : MjotMjAwODU3NjQ4MzpDcDEyNTI6MTcwMDQ3OTgzOTc4MzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:00:39
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -16,10 +16,12 @@ SUBROUTINE LAPAP.GET.NOMBRE.CUS.CAJA.RT
 *-----------------------------------------------------------------------------
 * Modification History
 * <Rating>29</Rating>
-* DATE               AUTHOR              REFERENCE               DESCRIPTION
-* 13-07-2023    Conversion Tool        R22 Auto Conversion     Remove BP in insert file,VM to @VM,FM to @FM
-* 13-07-2023    Narmadha V             R22 Manual conversion   Call Routine format modified
-*06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+* DATE               AUTHOR              REFERENCE               		DESCRIPTION
+* 13-07-2023    Conversion Tool        R22 Auto Conversion     		Remove BP in insert file,VM to @VM,FM to @FM
+* 13-07-2023    Narmadha V             R22 Manual conversion   		Call Routine format modified
+* 06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+* 10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+* 16-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Fix SQA-11679 Padrones - By Santiago
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON ;* R22 Auto Conversion - START
@@ -31,12 +33,13 @@ SUBROUTINE LAPAP.GET.NOMBRE.CUS.CAJA.RT
     $INSERT I_F.TELLER
     $INSERT I_F.VERSION
     $INSERT I_F.T24.FUND.SERVICES ;* R22 Auto Conversion - END
-;*Interface Change by Santiago-START-NEW LINES ADDED   
-*SJ start
+    
+;*Interface Change by Santiago -new lines added-start  
+*SJ start	
     $INSERT I_F.DFE.TRANSFORM
     $INSERT I_F.REDO.PADRON.WS
-*SJ end
-;*Interface Change by Santiago   
+*SJ end		
+;*Interface Change by Santiago -end  
     $USING APAP.REDOSRTN
     $USING APAP.TAM
 
@@ -74,13 +77,17 @@ METHOD_INIT:
 
     FN.CUS.LEGAL.ID = 'F.REDO.CUSTOMER.LEGAL.ID'; F.CUS.LEGAL.ID  = ''
     CALL OPF(FN.CUS.LEGAL.ID,F.CUS.LEGAL.ID)
-;*Interface Change by Santiago-START-NEW LINES ADDED
+    
+
+ 	
+;*Interface Change by Santiago   -new lines added-start
 *SJ start
-    FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
+   FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
     F.DFE.TRANSFORM = ''
     CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
-*SJ end
-;*Interface Change by Santiago-END
+*SJ end		
+ ;*Interface Change by Santiago -end
+
     LREF.POS   = ''
     LREF.FIELD = 'L.IDENT.TYPE':@VM:'L.TT.CLIENT.NME'
 
@@ -114,15 +121,16 @@ RETURN
 *******************
 METHOD_PROCESS:
 *******************
-
     BEGIN CASE
         CASE Y.TIPO.ID EQ "CED"
-            Cedule = "padrone$":Y.IDENT.NUMBER
+*            Cedule = "padrone$":Y.IDENT.NUMBER		;*Fix SQA-11679 Padrones- By Santiago- commented
+            Cedule = Y.IDENT.NUMBER			;*Fix SQA-11679 Padrones- By Santiago-new lines added
             GOSUB METHOD_GET_CEDULA
         CASE Y.TIPO.ID EQ "PAS"
             GOSUB METHOD_GET_PASAPORTE
         CASE Y.TIPO.ID EQ "RNC"
-            Cedule = "rnc$":Y.IDENT.NUMBER
+*            Cedule = "rnc$":Y.IDENT.NUMBER		;*Fix SQA-11679 Padrones- By Santiago-commented
+            Cedule = Y.IDENT.NUMBER			;*Fix SQA-11679 Padrones- By Santiago-new lines added
             GOSUB METHOD_GET_RNC
     END CASE
 
@@ -155,7 +163,8 @@ METHOD_GET_CEDULA:
         RETURN
     END ELSE
         CIDENT.CHK.RESULT = Y.IDENT.NUMBER
-        APAP.REDOSRTN.redoSCalcCheckDigit(CIDENT.CHK.RESULT);* R22 Manual conversion 
+        APAP.REDOSRTN.redoSCalcCheckDigit(CIDENT.CHK.RESULT);* R22 Manual conversion
+
         IF CIDENT.CHK.RESULT NE "PASS" THEN
             Y.PROCESS.GO.AHEAD = 0
             ETEXT = "EB-INCORRECT.CIDENT.NUMBER"
@@ -173,10 +182,12 @@ METHOD_GET_CEDULA:
         IF R.CUSTOMER THEN
             Y.NOMBRE.COMPLETO = R.CUSTOMER<EB.CUS.NAME.1>
         END ELSE
+            Y.INTRF.ID = 'REDO.PADRON.FISICO'	;*Interface Change by Santiago  -new lines added
             GOSUB METHOD_GET_NO_CLIENTE
         END
 
     END ELSE
+        Y.INTRF.ID = 'REDO.PADRON.FISICO'		;*Interface Change by Santiago  -new lines added
         GOSUB METHOD_GET_NO_CLIENTE
     END
 
@@ -201,7 +212,6 @@ RETURN
 *******************
 METHOD_GET_RNC:
 *******************
-
     IF LEN(Y.IDENT.NUMBER) NE 9 THEN
         Y.PROCESS.GO.AHEAD = 0
         ETEXT = "EB-INCORRECT.CHECK.DIGIT"
@@ -229,17 +239,19 @@ METHOD_GET_RNC:
         IF R.CUSTOMER THEN
             Y.NOMBRE.COMPLETO = R.CUSTOMER<EB.CUS.NAME.1>
         END ELSE
+            Y.INTRF.ID = 'REDO.PADRON.JURIDICO'	;*Interface Change by Santiago  -new lines added
             GOSUB METHOD_GET_NO_CLIENTE
         END
 
     END ELSE
+        Y.INTRF.ID = 'REDO.PADRON.JURIDICO'	;*Interface Change by Santiago  -new lines added
         GOSUB METHOD_GET_NO_CLIENTE
     END
 
 RETURN
 
 ******************************
-METHOD_GET_NO_CLIENTE.OLD:	;*Interface Change by Santiago-CHANGE METHOD_GET_NO_CLIENTE TO METHOD_GET_NO_CLIENTE.OLD
+METHOD_GET_NO_CLIENTE.OLD:	;*Interface Change by Santiago -changed "METHOD_GET_NO_CLIENTE" to "METHOD_GET_NO_CLIENTE.OLD"
 ******************************
     ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
     INPUT_PARAM = Cedule
@@ -272,28 +284,29 @@ METHOD_GET_NO_CLIENTE.OLD:	;*Interface Change by Santiago-CHANGE METHOD_GET_NO_C
     END
 
 RETURN
-;*Interface Change by Santiago-START
+;*Interface Change by Santiago-new lines added-start
 ******************************
 METHOD_GET_NO_CLIENTE:
 ******************************
-    Y.INTRF.ID = 'REDO.PADRON.FISICO'
-    R.PAD.WS<PAD.WS.CEDULA> = Cedule
+    
+    R.PAD.WS<PAD.WS.CEDULA> = TRIM(Cedule)  ;*Fix SQA-11679 Padrones- By Santiago - Changed "Cedule" to "TRIM(Cedule)"
     Y.RESPONSE = ''
     Y.ID.TEMP = ID.NEW
-    ID.NEW = 'REDO.PADRON.FISICO'
+    ID.NEW = Y.INTRF.ID
     CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
     ID.NEW = Y.ID.TEMP
     
 * values obtained from the web service
-*   IDENTI           = Y.RESPONSE<1>
-*   NOMBRE           = Y.RESPONSE<2>
-*   NOMBRE_COMPLETO  = Y.RESPONSE<3>
-*   SEXO             = Y.RESPONSE<4>
-*   FECHA_NACIMIENTO = Y.RESPONSE<5>
-*   APELLIDOS        = Y.RESPONSE<6>
-*   STATUS.CODE      = Y.RESPONSE<7>
-
-
+*   PADRON.FISICO                           PADRON JURIDICO
+*   IDENTI           = Y.RESPONSE<1>        IDENTI     = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>        NOMBRE     = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>        RESERVED.1 = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>        RESERVED.2 = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>        RESERVED.3 = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>        RESERVED.4 = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>        STATUS.CODE= Y.RESPONSE<7>
+*   STATUS.DESC      = Y.RESPONSE<8>        STATUS.DESC= Y.RESPONSE<8>
+    
     IF Y.RESPONSE<7> EQ 'ERROR' THEN
         Y.EXISTE = 'NO'
     END ELSE
@@ -305,12 +318,11 @@ METHOD_GET_NO_CLIENTE:
                 Y.NOMBRE.COMPLETO = Y.NOMBRE : ' ': Y.APELLIDO
             END ELSE
 *RNC
-                Y.NOMBRE.COMPLETO = Y.RESPONSE<3>
+                Y.NOMBRE.COMPLETO = Y.RESPONSE<2>
             END
         END
     END
 
 RETURN
-;*Interface Change by Santiago-END
-
+;*Interface Change by Santiago-end
 END

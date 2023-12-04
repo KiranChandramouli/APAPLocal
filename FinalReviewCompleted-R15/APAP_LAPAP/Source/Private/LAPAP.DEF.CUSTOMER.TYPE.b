@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNjQ4MDgwODE4OkNwMTI1MjoxNzAwNDc5ODM2MDg5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:00:36
+* @ValidationCode : MjotNjA2ODIwMDk5OkNwMTI1MjoxNzAxMTA5NDk1NDI2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:54:55
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 
 SUBROUTINE LAPAP.DEF.CUSTOMER.TYPE
 *--------------------------------------------------------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ SUBROUTINE LAPAP.DEF.CUSTOMER.TYPE
 *06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *16-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES       Fix SQA-11679 Padrones - By Santiago
+*27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES     SQA-11864 & SQA-11869 � By Santiago
 *-----------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -131,14 +133,20 @@ GET.PROOF.AND.PROCESS:
     RNC.NUMBER       = ""  ; RNC.LIST      = ''
     PASSPORT.NUMBER  = ""  ; PASSPORT.LIST = ''
 *
+    
     BEGIN CASE
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "CEDULA"
             APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*R22 Manual code conversion
+            CUSTOMER.FULL.NAME = System.getVariable("CURRENT.FULL.NAME")	;*Fix SQA-11864 & SQA-11869 � By Santiago-new lines added
+            CALL System.setVariable("CURRENT.FULL.NAME",CUSTOMER.FULL.NAME)	;*Fix SQA-11864 & SQA-11869 � By Santiago-new lines added
+
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "RNC"
             RNC.NUMBER = COMI
             GOSUB RNC.PROOF.CHECK
+
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "PASAPORTE"
             APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*R22 Manual Code Conversion-Call Method Format Modified
+
     END CASE
 *
 
@@ -171,6 +179,7 @@ RNC.PROOF.CHECK:
     GOSUB CHECK.RNC
 *PACS00054288 -S
     CALL F.READ(FN.CUS.RNC,RNC.NUMBER,R.CUS.RNC,F.CUS.RNC,CUS.RNC.ERR)
+    
     IF R.CUS.RNC THEN
         CUS.ID = FIELD(R.CUS.RNC,"*",2)
         CALL F.READ(FN.CUSTOMER,CUS.ID,R.CUSTOMER,F.CUSTOMER,CUSTOMER.ERR)
@@ -227,63 +236,64 @@ CHECK.RNC.NON.APAP.OLD:		;*Interface Change by Santiago-changed "CHECK.RNC.NON.A
 *---------------------------------------------------------------------------------------------------------------
 * APAP Customer RNC check to get customer name
 *
-    Cedule      = "rnc$":RNC.NUMBER
-    Param1      = "com.padrone.ws.util.MainClass"
-    Param2      = "callPadrone"
-    Param3      = Cedule
-    Ret         = ""
-    ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM = Cedule
-    ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
-    IF ERROR.CODE THEN
-        ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
-        CALL STORE.END.ERROR
-    END ELSE
-        Ret=INPUT_PARAM
-    END
+Cedule      = "rnc$":RNC.NUMBER
+Param1      = "com.padrone.ws.util.MainClass"
+Param2      = "callPadrone"
+Param3      = Cedule
+Ret         = ""
+ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM = Cedule
+ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
+IF ERROR.CODE THEN
+    ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
+    CALL STORE.END.ERROR
+END ELSE
+    Ret=INPUT_PARAM
+END
 * Processing if the customer provides RNC for identity
-    IF Ret NE "" THEN
-        RNC.RESULT = Ret
-        CHANGE '$' TO '' IN RNC.RESULT
-        CHANGE '#' TO @FM IN RNC.RESULT
-        RNC.RESULT.ERR = RNC.RESULT<1>
-        CHANGE '::' TO @FM IN RNC.RESULT.ERR
-        IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
-            CUSTOMER.FULL.NAME = RNC.RESULT<2>
-            CLIENTE.APAP = "NO CLIENTE APAP"
+IF Ret NE "" THEN
+    RNC.RESULT = Ret
+    CHANGE '$' TO '' IN RNC.RESULT
+    CHANGE '#' TO @FM IN RNC.RESULT
+    RNC.RESULT.ERR = RNC.RESULT<1>
+    CHANGE '::' TO @FM IN RNC.RESULT.ERR
+    IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
+        CUSTOMER.FULL.NAME = RNC.RESULT<2>
+        CLIENTE.APAP = "NO CLIENTE APAP"
 
 * Fix for PACS00306447 [CURRENT VARIABLE ISSUE #2]
 
-            R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
+        R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
 
 *            CALL System.setVariable("CURRENT.CLIENTE.APAP",CLIENTE.APAP)
 
-            R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
-            R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
-            RNC.CUST.ID = ""
-            GOSUB GET.RNC.CUST.ID       ;* PACS00153528 - S/E
-            VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
+        R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
+        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
+        RNC.CUST.ID = ""
+        GOSUB GET.RNC.CUST.ID       ;* PACS00153528 - S/E
+        VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
 
-            R.NEW(REDO.CUS.PRF.VAR.NV.INFO) = VAR.DETAILS
+        R.NEW(REDO.CUS.PRF.VAR.NV.INFO) = VAR.DETAILS
 
 *            CALL System.setVariable("CURRENT.VAR.DETAILS",VAR.DETAILS)
 
 * End of Fix
 
-            RETURN
-        END
-        GOSUB CHECK.NON.RNC
-    END ELSE
-        MON.TP = '08'
-        DESC = 'El webservices no esta disponible'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
+        RETURN
     END
+    GOSUB CHECK.NON.RNC
+END ELSE
+    MON.TP = '08'
+    DESC = 'El webservices no esta disponible'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
+END
 RETURN
 
 ;*Interface Change by Santiago-new lines added-start
 *-------------------------------------------------------------------------------------------------------------------------------------------------
 CHECK.RNC.NON.APAP:
 *-------------------------------------------------------------------------------------------------------------------------------------------------
+    
     Cedule = TRIM(RNC.NUMBER)		;*Fix SQA-11679 Padrones- By Santiago-New line added
     Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
     R.PAD.WS<PAD.WS.CEDULA> = Cedule
@@ -313,13 +323,13 @@ CHECK.RNC.NON.APAP:
         CALL STORE.END.ERROR
     END
     
-    IF TRIM(Y.RESPONSE<7>) EQ "SUCCESS" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "RNC.RESULT.ERR" to "TRIM(Y.RESPONSE<7>)"
+    IF Y.RESPONSE<7> EQ "SUCCESS" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "RNC.RESULT.ERR" to "TRIM(Y.RESPONSE<7>)"	;*Fix SQA-11864 & SQA-11869 � By Santiago- changed "TRIM(Y.RESPONSE<7>)" to "Y.RESPONSE<7>"
         CUSTOMER.FULL.NAME = Y.RESPONSE<2>
         CLIENTE.APAP = "NO CLIENTE APAP"
 
         R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
         R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
-        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
+        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = Y.RESPONSE ;*CUSTOMER.FULL.NAME 	;*Fix SQA-11864 & SQA-11869 � By Santiago-changed "CUSTOMER.FULL.NAME" to "Y.RESPONSE"
         RNC.CUST.ID = ""
         GOSUB GET.RNC.CUST.ID       ;* PACS00153528 - S/E
         VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
@@ -349,10 +359,10 @@ CHECK.NON.RNC:
     REC.CON = ''
     EX.USER = ''
     EX.PC = ''
-    IF TRIM(Y.RESPONSE<7>) EQ "FAILURE" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"
+    IF Y.RESPONSE<7> EQ "FAILURE" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"	;*Fix SQA-11864 & SQA-11869 � By Santiago- changed "TRIM(Y.RESPONSE<7>)" to "Y.RESPONSE<7>"
         R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
         MON.TP = '04'
-        REC.CON = TRIM(Y.RESPONSE<7>)	;*Fix SQA-11679 Padrones- By Santiago - changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"
+        REC.CON = Y.RESPONSE<7>	;*Fix SQA-11679 Padrones- By Santiago - changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"	;*Fix SQA-11864 & SQA-11869 � By Santiago- changed "TRIM(Y.RESPONSE<7>)" to "Y.RESPONSE<7>"
         DESC = Y.RESPONSE<8>
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
@@ -365,31 +375,31 @@ RETURN
 *------------------------------------------------------------------------------------------------------------------------------------------------
 CHECK.NON.RNC.OLD:	;*Interface Change by Santiago-end
 *-------------------------------------------------------------------------------------------------------------------------------------------------
-    INT.CODE = 'RNC002'
-    INT.TYPE = 'ONLINE'
-    BAT.NO = ''
-    BAT.TOT = ''
-    INFO.OR = ''
-    INFO.DE = ''
-    ID.PROC = ''
-    MON.TP = ''
-    DESC = ''
-    REC.CON = ''
-    EX.USER = ''
-    EX.PC = ''
-    IF RNC.RESULT.ERR<1> EQ "FAILURE" THEN
-        RNC.RESULT = Ret
-        CHANGE '::' TO @FM IN RNC.RESULT
-        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
-        MON.TP = '04'
-        REC.CON = RNC.RESULT<2>
-        DESC = RNC.RESULT<3>
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
-        AF = REDO.CUS.PRF.IDENTITY.NUMBER
-        ETEXT = "EB-INCORRECT.RNC.NUMBER"
-        CALL STORE.END.ERROR
-        GOSUB PGM.END
-    END
+INT.CODE = 'RNC002'
+INT.TYPE = 'ONLINE'
+BAT.NO = ''
+BAT.TOT = ''
+INFO.OR = ''
+INFO.DE = ''
+ID.PROC = ''
+MON.TP = ''
+DESC = ''
+REC.CON = ''
+EX.USER = ''
+EX.PC = ''
+IF RNC.RESULT.ERR<1> EQ "FAILURE" THEN
+    RNC.RESULT = Ret
+    CHANGE '::' TO @FM IN RNC.RESULT
+    R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
+    MON.TP = '04'
+    REC.CON = RNC.RESULT<2>
+    DESC = RNC.RESULT<3>
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
+    AF = REDO.CUS.PRF.IDENTITY.NUMBER
+    ETEXT = "EB-INCORRECT.RNC.NUMBER"
+    CALL STORE.END.ERROR
+    GOSUB PGM.END
+END
 RETURN
 
 *------------------------------------------------------------------------------------------------------------------------------------------------

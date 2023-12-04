@@ -38,6 +38,7 @@ SUBROUTINE REDO.S.FC.LIMITE.GFUNCEMP(CUST.ID, CUST.OUT)
 *DATE		  AUTHOR		              Modification                 DESCRIPTION
 *28/08/2023  CONVERSION TOOL     AUTO R22 CODE CONVERSION         RAD.BP is removed in insertfile , FM TO @FM
 *28/08/2023	 VIGNESHWARI         MANUAL R22 CODE CONVERSION	      DYN.TO.OFS Change to OFS.BUILD.RECORD, CALL RNT MODIFIED
+*27/11/2023         Suresh           R22 Manual Conversion            OFS.BUILD.RECORED changed
 *-----------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -94,7 +95,7 @@ PROCESS:
         APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
         OFS.FUNCTION = 'I'
         OFS.PROCESS  = 'PROCESS'
-        OFS.VERSION  = Y.VER.INSURANCE
+        OFS.VERSION  = Y.APPLICATION:',':Y.VER.INSURANCE ;*R22 Manual Conversion
         Y.GTSMODE    = ''
         NO.OF.AUTH   = ''
         TRANSACTION.ID = Y.INS.ID

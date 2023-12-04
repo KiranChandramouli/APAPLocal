@@ -14,7 +14,8 @@ $PACKAGE APAP.LAPAP
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *21-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                BP REMOVED , F.READ TO CACHE.READ
-*21-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
+*21-04-2023          jayasurya H                     MANUAL R22 CODE CONVERSION            NO CHANGES
+*20-11-2023          Santosh			            Intrface Change comment added           Vision Plus-Interface Changes done by Santiago
 *----------------------------------------------------------------------------------------------------------------------------------
 SUBROUTINE L.APAP.VALIDATE.USER.RELATION
     $INSERT I_COMMON ;* AUTO R22 CODE CONVERSION START
@@ -23,24 +24,41 @@ SUBROUTINE L.APAP.VALIDATE.USER.RELATION
     $INSERT I_F.CUSTOMER
     $INSERT I_F.RELATION.CUSTOMER
     $INSERT I_F.DEPT.ACCT.OFFICER
+    $INSERT I_F.FUNDS.TRANSFER ;*Interface Changes done by Santiago
+    $INSERT I_F.TELLER ;*Interface Changes done by Santiago
     $INSERT I_System ;* AUTO R22 CODE CONVERSION END
+    
+    GOSUB INIT ;*Interface Changes done by Santiago
+    GOSUB PROCESS ;*Interface Changes done by Santiago
+    
+RETURN
 
+INIT:
     CUS.EMPLOYEE = ""
     CTE.CUSTOMER = ""
+RETURN
 
+PROCESS:
 *-- VALIDAMOS EN QUE VERSION SE ESTA REALIZANDO LA TRANSACCION
     IF APPLICATION EQ "TELLER" THEN
-        CTE.CUSTOMER = R.NEW(TT.TE.CUSTOMER.2) ;*SJ R.NEW(19)
+        CTE.CUSTOMER = R.NEW(TT.TE.CUSTOMER.2)     ;*SJ R.NEW(19)
     END
 
     IF APPLICATION EQ "FUNDS.TRANSFER" THEN
-        CTE.CUSTOMER = R.NEW(FT.CREDIT.CUSTOMER) ;*SJ R.NEW(96)
+        CTE.CUSTOMER = R.NEW(FT.CREDIT.CUSTOMER)   ;*SJ  R.NEW(96)
     END
 
     IF APPLICATION EQ "T24.FUND.SERVICES" THEN
         CTE.CUSTOMER = R.NEW(3)
     END
-
+*Interface Changes done by Santiago- Start    
+    IF CTE.CUSTOMER EQ '' THEN
+*        ETEXT = 'Codigo de Cliente esta vacio'
+*        CALL STORE.END.ERROR
+        RETURN
+    END
+    
+*Interface Chages done by Santiago- End
 *-- PARA ABRIR EL ACHIVO USER
     FN.USER = "F.USER"
     FV.USER = ""
@@ -113,5 +131,6 @@ SUBROUTINE L.APAP.VALIDATE.USER.RELATION
         REPEAT
 
     REPEAT
+RETURN ;*Interface Changes done by Santiago
 
 END

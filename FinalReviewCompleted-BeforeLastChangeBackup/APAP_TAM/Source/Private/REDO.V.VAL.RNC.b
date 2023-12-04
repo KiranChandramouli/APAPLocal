@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNzQ1OTE1OTQ0OkNwMTI1MjoxNjk5NTA3OTAxNTMwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 Nov 2023 11:01:41
+* @ValidationCode : MjoxNTA2OTE5NDMzOkNwMTI1MjoxNzAwNDgwNjUyODM4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:14:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,15 +10,15 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-
 $PACKAGE APAP.TAM
+
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE           WHO                 REFERENCE               DESCRIPTION
 *25-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     FM TO @FM
 *25-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL ROUTINE ADDED
 *07/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
-
+*10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.V.VAL.RNC
 ******************************************************************************************************************
@@ -48,10 +48,10 @@ SUBROUTINE REDO.V.VAL.RNC
     $INSERT I_GTS.COMMON
     $INSERT I_REDO.V.VAL.CED.IDENT.COMMON
     $INSERT JBC.h
-*SJ start	;*Interface Change by Santiago-NEW LINES ADDED-START
+*SJ start	;*Interface Change by Santiago-start
     $INSERT I_F.DFE.TRANSFORM
     $INSERT I_F.REDO.PADRON.WS
-*SJ end	;*Interface Change by Santiago-END
+*SJ end	;*Interface Change by Santiago-end
     $USING APAP.REDOCHNLS
     GOSUB OPEN.FILES
     GOSUB CHECK.RNC.FORMAT
@@ -73,11 +73,11 @@ OPEN.FILES:
     FN.CUSTOMER='F.CUSTOMER'
     F.CUSTOMER=''
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
-*SJ start	;*Interface Change by Santiago-NEW LINES ADDED-START
+*SJ start	;*Interface Change by Santiago-start
     FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
     F.DFE.TRANSFORM = ''
     CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
-*SJ end	;*Interface Change by Santiago
+*SJ end	;*Interface Change by Santiago-end
 RETURN
 *----------------
 CHECK.RNC.FORMAT:
@@ -107,7 +107,7 @@ CHECK.RNC.FORMAT:
     END
 RETURN
 ************
-PROCESS.OLD: 	;*Interface Change by Santiago-CHANGED "PROCESS"  TO "PROCESS.OLD"
+PROCESS.OLD:	;*Interface Change by Santiago- changes "PROCESS" to "PROCESS.OLD"
 *************
 *------------------------------------------------------------------------------------
 * Check the padrone interface for the given rnc values
@@ -154,7 +154,7 @@ PROCESS.OLD: 	;*Interface Change by Santiago-CHANGED "PROCESS"  TO "PROCESS.OLD"
     END
 RETURN
 ******************
-PADRONE.CHECK.OLD:	;*Interface Change by Santiago-CHANGED "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
+PADRONE.CHECK.OLD:	;*Interface Change by Santiago- changes "PADRONE.CHECK" to "PADRONE.CHECK.OLD"
 ******************
 *Checks for Success case and Failure Case
     CHANGE '$' TO '' IN VAR.NAME
@@ -173,7 +173,7 @@ PADRONE.CHECK.OLD:	;*Interface Change by Santiago-CHANGED "PADRONE.CHECK" TO "PA
         GOSUB FAIL.PADRONE
     END
 RETURN
-;*Interface Change by Santiago-NEW LINES ADDED-START
+;*Interface Change by Santiago-new lines added-start
 ************
 PROCESS:
 *************
@@ -183,23 +183,24 @@ PROCESS:
     IF Y.VAR.RNC EQ 'PASS' THEN
 *        Cedule = "rnc$":VAR.RNC
         Cedule = VAR.RNC
-        Y.INTRF.ID = 'REDO.PADRON.FISICO'
+        Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
         R.PAD.WS<PAD.WS.CEDULA> = Cedule
         Y.RESPONSE = ''
         Y.ID.TEMP = ID.NEW
-        ID.NEW = 'REDO.PADRON.FISICO'
+        ID.NEW = Y.INTRF.ID
         CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
         ID.NEW = Y.ID.TEMP
     
 * values obtained from the web service
-*   IDENTI           = Y.RESPONSE<1>
-*   NOMBRE           = Y.RESPONSE<2>
-*   NOMBRE_COMPLETO  = Y.RESPONSE<3>
-*   SEXO             = Y.RESPONSE<4>
-*   FECHA_NACIMIENTO = Y.RESPONSE<5>
-*   APELLIDOS        = Y.RESPONSE<6>
-*   STATUS.CODE      = Y.RESPONSE<7>
-*   STATUS.DESC      = Y.RESPONSE<8>
+*   PADRON.FISICO                           PADRON JURIDICO
+*   IDENTI           = Y.RESPONSE<1>        IDENTI     = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>        NOMBRE     = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>        RESERVED.1 = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>        RESERVED.2 = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>        RESERVED.3 = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>        RESERVED.4 = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>        STATUS.CODE= Y.RESPONSE<7>
+*   STATUS.DESC      = Y.RESPONSE<8>        STATUS.DESC= Y.RESPONSE<8>
 
         IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
             ERROR.CODE = 'REDO.V.VAL.CED.IDENT'
@@ -236,7 +237,7 @@ PADRONE.CHECK:
 *Checks for Success case and Failure Case
 
     IF Y.RESPONSE<7> EQ 'SUCCESS' THEN
-        APELLIDOS = Y.RESPONSE<6>
+        APELLIDOS = Y.RESPONSE<2>
         APELLIDOS.1=APELLIDOS[1,35]
         IF LEN(APELLIDOS) GT 35 THEN
             DIFF = LEN(APELLIDOS) - 35
@@ -247,7 +248,7 @@ PADRONE.CHECK:
         GOSUB FAIL.PADRONE
     END
 RETURN
-;*Interface Change by Santiago-END
+;*Interface Change by Santiago-end
 ***************
 FAIL.PADRONE:
 ***************

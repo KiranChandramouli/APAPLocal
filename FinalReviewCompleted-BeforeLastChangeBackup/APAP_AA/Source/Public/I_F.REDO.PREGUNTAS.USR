@@ -1,0 +1,20 @@
+* I_F.REDO.PREGUNTAS.USR Created 07 DEC 10 at 10:44AM by R09/ROBERTO.01
+*      PREFIX[RD.PU]
+         EQU RD.PU.TIPO.CANAL TO 1,   RedoPreguntasUsr_TipoCanal TO 1,
+             RD.PU.ID.USUARIO TO 2,   RedoPreguntasUsr_IdUsuario TO 2,
+               RD.PU.PREGUNTA TO 3,   RedoPreguntasUsr_Pregunta TO 3,
+              RD.PU.RESPUESTA TO 4,   RedoPreguntasUsr_Respuesta TO 4,
+             RD.PU.RESERVED.5 TO 5,   RedoPreguntasUsr_Reserved5 TO 5,
+             RD.PU.RESERVED.4 TO 6,   RedoPreguntasUsr_Reserved4 TO 6,
+             RD.PU.RESERVED.3 TO 7,   RedoPreguntasUsr_Reserved3 TO 7,
+             RD.PU.RESERVED.2 TO 8,   RedoPreguntasUsr_Reserved2 TO 8,
+             RD.PU.RESERVED.1 TO 9,   RedoPreguntasUsr_Reserved1 TO 9,
+          RD.PU.RECORD.STATUS TO 10,  RedoPreguntasUsr_RecordStatus TO 10,
+                RD.PU.CURR.NO TO 11,  RedoPreguntasUsr_CurrNo TO 11,
+               RD.PU.INPUTTER TO 12,  RedoPreguntasUsr_Inputter TO 12,
+              RD.PU.DATE.TIME TO 13,  RedoPreguntasUsr_DateTime TO 13,
+             RD.PU.AUTHORISER TO 14,  RedoPreguntasUsr_Authoriser TO 14,
+                RD.PU.CO.CODE TO 15,  RedoPreguntasUsr_CoCode TO 15,
+              RD.PU.DEPT.CODE TO 16,  RedoPreguntasUsr_DeptCode TO 16,
+           RD.PU.AUDITOR.CODE TO 17,  RedoPreguntasUsr_AuditorCode TO 17,
+        RD.PU.AUDIT.DATE.TIME TO 18,  RedoPreguntasUsr_AuditDateTime TO 18

@@ -1,0 +1,21 @@
+* I_F.REDO.PAYMENT.DISBURSE.DESC Created 10 JUL 12 at 04:14PM by apapr8/MARI.1
+*      PREFIX[REDO.PAY.DESC]
+      EQU REDO.PAY.DESC.DISBURSE.TYPE TO 1,   RedoPaymentDisburseDesc_DisburseType TO 1,
+            REDO.PAY.DESC.DESCRIPTION TO 2,   RedoPaymentDisburseDesc_Description TO 2,
+             REDO.PAY.DESC.RESERVED.8 TO 3,   RedoPaymentDisburseDesc_Reserved8 TO 3,
+             REDO.PAY.DESC.RESERVED.7 TO 4,   RedoPaymentDisburseDesc_Reserved7 TO 4,
+             REDO.PAY.DESC.RESERVED.6 TO 5,   RedoPaymentDisburseDesc_Reserved6 TO 5,
+             REDO.PAY.DESC.RESERVED.5 TO 6,   RedoPaymentDisburseDesc_Reserved5 TO 6,
+             REDO.PAY.DESC.RESERVED.4 TO 7,   RedoPaymentDisburseDesc_Reserved4 TO 7,
+             REDO.PAY.DESC.RESERVED.3 TO 8,   RedoPaymentDisburseDesc_Reserved3 TO 8,
+             REDO.PAY.DESC.RESERVED.2 TO 9,   RedoPaymentDisburseDesc_Reserved2 TO 9,
+             REDO.PAY.DESC.RESERVED.1 TO 10,  RedoPaymentDisburseDesc_Reserved1 TO 10,
+          REDO.PAY.DESC.RECORD.STATUS TO 11,  RedoPaymentDisburseDesc_RecordStatus TO 11,
+                REDO.PAY.DESC.CURR.NO TO 12,  RedoPaymentDisburseDesc_CurrNo TO 12,
+               REDO.PAY.DESC.INPUTTER TO 13,  RedoPaymentDisburseDesc_Inputter TO 13,
+              REDO.PAY.DESC.DATE.TIME TO 14,  RedoPaymentDisburseDesc_DateTime TO 14,
+             REDO.PAY.DESC.AUTHORISER TO 15,  RedoPaymentDisburseDesc_Authoriser TO 15,
+                REDO.PAY.DESC.CO.CODE TO 16,  RedoPaymentDisburseDesc_CoCode TO 16,
+              REDO.PAY.DESC.DEPT.CODE TO 17,  RedoPaymentDisburseDesc_DeptCode TO 17,
+           REDO.PAY.DESC.AUDITOR.CODE TO 18,  RedoPaymentDisburseDesc_AuditorCode TO 18,
+        REDO.PAY.DESC.AUDIT.DATE.TIME TO 19,  RedoPaymentDisburseDesc_AuditDateTime TO 19
