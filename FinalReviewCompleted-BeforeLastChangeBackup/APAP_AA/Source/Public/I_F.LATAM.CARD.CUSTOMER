@@ -1,0 +1,6 @@
+* I_F.LATAM.CARD.CUSTOMER Created 24 JAN 11 at 04:27PM by apapr8/SRSWAM
+*      PREFIX[APAP.DC]
+            EQU APAP.DC.CARD.NO TO 1,   LatamCardCustomer_CardNo TO 1,
+             APAP.DC.ACCOUNT.NO TO 2,   LatamCardCustomer_AccountNo TO 2,
+           APAP.DC.ACCOUNT.TYPE TO 3,   LatamCardCustomer_AccountType TO 3,
+            APAP.DC.EXPIRY.DATE TO 4,   LatamCardCustomer_ExpiryDate TO 4

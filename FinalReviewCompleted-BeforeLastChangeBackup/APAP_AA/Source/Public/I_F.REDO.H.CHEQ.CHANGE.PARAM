@@ -1,0 +1,13 @@
+* I_F.REDO.H.CHEQ.CHANGE.PARAM Created 04 MAR 10 at 04:01PM by apapr8/HARISH.1
+*      PREFIX[REDO.CHEQ.PARAM]
+        EQU REDO.CHEQ.PARAM.CHEQ.STATUS TO 1,   RedoHCheqChangeParam_CheqStatus TO 1,
+             REDO.CHEQ.PARAM.NO.OF.DAYS TO 2,   RedoHCheqChangeParam_NoOfDays TO 2,
+          REDO.CHEQ.PARAM.RECORD.STATUS TO 3,   RedoHCheqChangeParam_RecordStatus TO 3,
+                REDO.CHEQ.PARAM.CURR.NO TO 4,   RedoHCheqChangeParam_CurrNo TO 4,
+               REDO.CHEQ.PARAM.INPUTTER TO 5,   RedoHCheqChangeParam_Inputter TO 5,
+              REDO.CHEQ.PARAM.DATE.TIME TO 6,   RedoHCheqChangeParam_DateTime TO 6,
+             REDO.CHEQ.PARAM.AUTHORISER TO 7,   RedoHCheqChangeParam_Authoriser TO 7,
+                REDO.CHEQ.PARAM.CO.CODE TO 8,   RedoHCheqChangeParam_CoCode TO 8,
+              REDO.CHEQ.PARAM.DEPT.CODE TO 9,   RedoHCheqChangeParam_DeptCode TO 9,
+           REDO.CHEQ.PARAM.AUDITOR.CODE TO 10,  RedoHCheqChangeParam_AuditorCode TO 10,
+        REDO.CHEQ.PARAM.AUDIT.DATE.TIME TO 11,  RedoHCheqChangeParam_AuditDateTime TO 11

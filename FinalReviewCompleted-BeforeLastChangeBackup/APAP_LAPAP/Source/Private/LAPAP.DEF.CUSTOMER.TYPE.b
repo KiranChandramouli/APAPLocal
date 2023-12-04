@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNDQ0MTU3NDUyOkNwMTI1MjoxNjk5NTIyNzMzMzU3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 Nov 2023 15:08:53
+* @ValidationCode : MjoxNjQ4MDgwODE4OkNwMTI1MjoxNzAwNDc5ODM2MDg5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:00:36
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -30,25 +30,25 @@ SUBROUTINE LAPAP.DEF.CUSTOMER.TYPE
 * Modification History :
 *-----------------------------------------------------------------------------------------------------
 *Modification history
-*Date                Who               Reference                  		Description
-*21-04-2023      conversion tool     R22 Auto code conversion     	   VM TO @VM,FM TO @FM
-*21-04-2023      Mohanraj R          R22 Manual code conversion   	   Call Method Format Modified
+*Date                Who               Reference                  Description
+*21-04-2023      conversion tool     R22 Auto code conversion     VM TO @VM,FM TO @FM
+*21-04-2023      Mohanraj R          R22 Manual code conversion   Call Method Format Modified
 *06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*16-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES       Fix SQA-11679 Padrones - By Santiago
 *-----------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_GTS.COMMON
     $INSERT I_System
-
+*
     $INSERT I_F.CUSTOMER
     $INSERT I_F.VERSION
-;*Interface Change by Santiago-START
-*SJ start
+*SJ start	;*Interface Change by Santiago-new lines added-start
     $INSERT I_F.DFE.TRANSFORM
     $INSERT I_F.REDO.PADRON.WS
-*SJ end
-;*Interface Change by Santiago-END
+*SJ end	;*Interface Change by Santiago-end
     $INSERT I_F.REDO.ID.CARD.CHECK
     $INSERT I_F.REDO.FXSN.TXN.VERSION
     $INSERT I_REDO.ID.CARD.CHECK.COMMON
@@ -89,13 +89,13 @@ OPEN.FILES:
     FN.CUS.LEGAL.ID = 'F.REDO.CUSTOMER.LEGAL.ID'
     F.CUS.LEGAL.ID = ''
     CALL OPF(FN.CUS.LEGAL.ID,F.CUS.LEGAL.ID)
-;*Interface Change by Santiago-START
-*SJ start
+
+*SJ start	;*Interface Change by Santiago-new lines added -start
     FN.DFE.TRANSFORM = 'F.DFE.TRANSFORM'
     F.DFE.TRANSFORM = ''
     CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
-*SJ end
-;*Interface Change by Santiago-END
+*SJ end	;*Interface Change by Santiago-end
+
     CIDENT.PROVIDED    = ""
     RNC.PROVIDED       = ""
     CUSTOMER.FULL.NAME = ""
@@ -138,7 +138,7 @@ GET.PROOF.AND.PROCESS:
             RNC.NUMBER = COMI
             GOSUB RNC.PROOF.CHECK
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "PASAPORTE"
-            APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*R22 Manual Code Conversion-Call Method Format Modified  
+            APAP.TAM.redoValPassportCust(Y.APP.VERSION) ;*R22 Manual Code Conversion-Call Method Format Modified
     END CASE
 *
 
@@ -206,7 +206,7 @@ CHECK.RNC:
     RNC.CHK.RESULT = ''
     IF LEN(RNC.NUMBER) EQ 9 THEN
         RNC.CHK.RESULT = RNC.NUMBER
-        APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*R22 Manual Code Conversion-Call Method Format Modified 
+        APAP.TAM.redoRncCheckDigit(RNC.CHK.RESULT) ;*R22 Manual Code Conversion-Call Method Format Modified
     END ELSE
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
         ETEXT = "EB-INCORRECT.CHECK.DIGIT"
@@ -223,7 +223,7 @@ CHECK.RNC:
 RETURN
 *
 *-------------------------------------------------------------------------------------------------------------------------------------------------
-CHECK.RNC.NON.APAP.OLD: ;*Interface Change by Santiago-line is modified- CHECK.RNC.NON.APAP to CHECK.RNC.NON.APAP.OLD
+CHECK.RNC.NON.APAP.OLD:		;*Interface Change by Santiago-changed "CHECK.RNC.NON.APAP" to "CHECK.RNC.NON.APAP.OLD"
 *---------------------------------------------------------------------------------------------------------------
 * APAP Customer RNC check to get customer name
 *
@@ -280,28 +280,29 @@ CHECK.RNC.NON.APAP.OLD: ;*Interface Change by Santiago-line is modified- CHECK.R
     END
 RETURN
 
-;*Interface Change by Santiago-START-NEW LINES ADDED
+;*Interface Change by Santiago-new lines added-start
 *-------------------------------------------------------------------------------------------------------------------------------------------------
 CHECK.RNC.NON.APAP:
 *-------------------------------------------------------------------------------------------------------------------------------------------------
-
-    Y.INTRF.ID = 'REDO.PADRON.FISICO'
+    Cedule = TRIM(RNC.NUMBER)		;*Fix SQA-11679 Padrones- By Santiago-New line added
+    Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
     R.PAD.WS<PAD.WS.CEDULA> = Cedule
     Y.RESPONSE = ''
     Y.ID.TEMP = ID.NEW
-    ID.NEW = 'REDO.PADRON.FISICO'
+    ID.NEW = Y.INTRF.ID
     CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
     ID.NEW = Y.ID.TEMP
     
 * values obtained from the web service
-*   IDENTI           = Y.RESPONSE<1>
-*   NOMBRE           = Y.RESPONSE<2>
-*   NOMBRE_COMPLETO  = Y.RESPONSE<3>
-*   SEXO             = Y.RESPONSE<4>
-*   FECHA_NACIMIENTO = Y.RESPONSE<5>
-*   APELLIDOS        = Y.RESPONSE<6>
-*   STATUS.CODE      = Y.RESPONSE<7>
-*   STATUS.DESC      = Y.RESPONSE<8>
+*   PADRON.FISICO                           PADRON JURIDICO
+*   IDENTI           = Y.RESPONSE<1>        IDENTI     = Y.RESPONSE<1>
+*   NOMBRE           = Y.RESPONSE<2>        NOMBRE     = Y.RESPONSE<2>
+*   NOMBRE_COMPLETO  = Y.RESPONSE<3>        RESERVED.1 = Y.RESPONSE<3>
+*   SEXO             = Y.RESPONSE<4>        RESERVED.2 = Y.RESPONSE<4>
+*   FECHA_NACIMIENTO = Y.RESPONSE<5>        RESERVED.3 = Y.RESPONSE<5>
+*   APELLIDOS        = Y.RESPONSE<6>        RESERVED.4 = Y.RESPONSE<6>
+*   STATUS.CODE      = Y.RESPONSE<7>        STATUS.CODE= Y.RESPONSE<7>
+*   STATUS.DESC      = Y.RESPONSE<8>        STATUS.DESC= Y.RESPONSE<8>
    
     IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ ''  THEN
         MON.TP = '08'
@@ -312,8 +313,8 @@ CHECK.RNC.NON.APAP:
         CALL STORE.END.ERROR
     END
     
-    IF RNC.RESULT.ERR EQ "SUCCESS" THEN
-        CUSTOMER.FULL.NAME = Y.RESPONSE<3>
+    IF TRIM(Y.RESPONSE<7>) EQ "SUCCESS" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "RNC.RESULT.ERR" to "TRIM(Y.RESPONSE<7>)"
+        CUSTOMER.FULL.NAME = Y.RESPONSE<2>
         CLIENTE.APAP = "NO CLIENTE APAP"
 
         R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
@@ -331,9 +332,10 @@ CHECK.RNC.NON.APAP:
     GOSUB CHECK.NON.RNC
     
 RETURN
-
+;*Interface Change by Santiago-end
 *------------------------------------------------------------------------------------------------------------------------------------------------
 CHECK.NON.RNC:
+;*Interface Change by Santiago-new lines added-start
 *-------------------------------------------------------------------------------------------------------------------------------------------------
     INT.CODE = 'RNC002'
     INT.TYPE = 'ONLINE'
@@ -347,10 +349,10 @@ CHECK.NON.RNC:
     REC.CON = ''
     EX.USER = ''
     EX.PC = ''
-    IF Y.RESPONSE<7> EQ "FAILURE" THEN
+    IF TRIM(Y.RESPONSE<7>) EQ "FAILURE" THEN	;*Fix SQA-11679 Padrones- By Santiago- changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"
         R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
         MON.TP = '04'
-        REC.CON = Y.RESPONSE<7>
+        REC.CON = TRIM(Y.RESPONSE<7>)	;*Fix SQA-11679 Padrones- By Santiago - changed "Y.RESPONSE<7>" to "TRIM(Y.RESPONSE<7>)"
         DESC = Y.RESPONSE<8>
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
         AF = REDO.CUS.PRF.IDENTITY.NUMBER
@@ -361,8 +363,7 @@ CHECK.NON.RNC:
 RETURN
 
 *------------------------------------------------------------------------------------------------------------------------------------------------
-CHECK.NON.RNC.OLD:
-;*Interface Change by Santiago-END
+CHECK.NON.RNC.OLD:	;*Interface Change by Santiago-end
 *-------------------------------------------------------------------------------------------------------------------------------------------------
     INT.CODE = 'RNC002'
     INT.TYPE = 'ONLINE'

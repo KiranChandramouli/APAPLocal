@@ -1,0 +1,13 @@
+* I_F.REDO.APAP.SIGNATORY.LIST Created 05 AUG 10 at 03:33PM by apapr8/RAJ1
+*      PREFIX[SIG.LIST]
+        EQU SIG.LIST.DESCRIPTION TO 1,   RedoApapSignatoryList_Description TO 1,
+             SIG.LIST.DEPARTMENT TO 2,   RedoApapSignatoryList_Department TO 2,
+          SIG.LIST.RECORD.STATUS TO 3,   RedoApapSignatoryList_RecordStatus TO 3,
+                SIG.LIST.CURR.NO TO 4,   RedoApapSignatoryList_CurrNo TO 4,
+               SIG.LIST.INPUTTER TO 5,   RedoApapSignatoryList_Inputter TO 5,
+              SIG.LIST.DATE.TIME TO 6,   RedoApapSignatoryList_DateTime TO 6,
+             SIG.LIST.AUTHORISER TO 7,   RedoApapSignatoryList_Authoriser TO 7,
+                SIG.LIST.CO.CODE TO 8,   RedoApapSignatoryList_CoCode TO 8,
+              SIG.LIST.DEPT.CODE TO 9,   RedoApapSignatoryList_DeptCode TO 9,
+           SIG.LIST.AUDITOR.CODE TO 10,  RedoApapSignatoryList_AuditorCode TO 10,
+        SIG.LIST.AUDIT.DATE.TIME TO 11,  RedoApapSignatoryList_AuditDateTime TO 11

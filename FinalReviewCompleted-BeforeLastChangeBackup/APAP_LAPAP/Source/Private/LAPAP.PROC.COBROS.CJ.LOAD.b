@@ -1,15 +1,16 @@
-* @ValidationCode : MjotODY0NzYxMjQwOkNwMTI1MjoxNjkxNjYxMzg4MjY5OklUU1M6LTE6LTE6NDgxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 10 Aug 2023 15:26:28
+* @ValidationCode : MjozNTIzODY4Mzk6Q3AxMjUyOjE3MDA4NDI2NzQ3Njk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:54
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 481
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
 $PACKAGE APAP.LAPAP
 *-----------------------------------------------------------------------------
 * <Rating>-23</Rating>
@@ -17,6 +18,7 @@ $PACKAGE APAP.LAPAP
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *09-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED, $INCLUDE TO $INSERT,VM TO @VM, SM TO @SM
+*21/11/2023     Suresh             R22 Manual Conversion   Latest Routine Changes Merged
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.PROC.COBROS.CJ.LOAD
 *-----------------------------------------------------------------------------
@@ -70,7 +72,7 @@ CARGAR.TABLAS:
 
     CALL OPF (FN.ACCOUNT,F.ACCOUNT)
 
-
+    CALL GET.LOC.REF("ACCOUNT","L.AC.AV.BAL",POS.AVL.BAL) ;* Latest Routine- Changes
 
 RETURN
 

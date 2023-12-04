@@ -1,0 +1,13 @@
+* I_F.REDO.H.REORDER.DETAILS Created 05 APR 10 at 04:00PM by apapr8/AUTHORISER
+*      PREFIX[RE.ORD]
+       EQU RE.ORD.REORDER.ITEM TO 1,   RedoHReorderDetails_ReorderItem TO 1,
+             RE.ORD.QTY.TO.ORD TO 2,   RedoHReorderDetails_QtyToOrd TO 2,
+          RE.ORD.RECORD.STATUS TO 3,   RedoHReorderDetails_RecordStatus TO 3,
+                RE.ORD.CURR.NO TO 4,   RedoHReorderDetails_CurrNo TO 4,
+               RE.ORD.INPUTTER TO 5,   RedoHReorderDetails_Inputter TO 5,
+              RE.ORD.DATE.TIME TO 6,   RedoHReorderDetails_DateTime TO 6,
+             RE.ORD.AUTHORISER TO 7,   RedoHReorderDetails_Authoriser TO 7,
+                RE.ORD.CO.CODE TO 8,   RedoHReorderDetails_CoCode TO 8,
+              RE.ORD.DEPT.CODE TO 9,   RedoHReorderDetails_DeptCode TO 9,
+           RE.ORD.AUDITOR.CODE TO 10,  RedoHReorderDetails_AuditorCode TO 10,
+        RE.ORD.AUDIT.DATE.TIME TO 11,  RedoHReorderDetails_AuditDateTime TO 11

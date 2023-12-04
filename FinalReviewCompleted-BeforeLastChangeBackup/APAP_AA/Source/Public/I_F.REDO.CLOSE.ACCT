@@ -1,0 +1,5 @@
+* I_F.REDO.CLOSE.ACCT Created 04 AUG 11 at 12:52PM by apap/TEMENOS.02
+*      PREFIX[REDO.ACCT]
+        EQU REDO.ACCT.LIQ.ACCOUNT TO 1,   RedoCloseAcct_LiqAccount TO 1,
+                   REDO.ACCT.CUST TO 2,   RedoCloseAcct_Cust TO 2,
+                REDO.ACCT.PRODUCT TO 3,   RedoCloseAcct_Product TO 3

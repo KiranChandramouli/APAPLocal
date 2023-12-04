@@ -28,6 +28,7 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.FIELDS.SEC.DIS
 *DATE                 WHO                  REFERENCE                     DESCRIPTION
 *06/04/2023      CONVERSION TOOL     AUTO R22 CODE CONVERSION             NOCHANGE
 *06/04/2023         SURESH           MANUAL R22 CODE CONVERSION           NOCHANGE
+*20-11-2023       Santosh	    Intrface Change comment added	SS rebuild issue REDO.CREATE.ARRANGEMENT- Fixed by Santiago
 *-----------------------------------------------------------------------------
 *** <region name= Header>
 *** <desc>Inserts and control logic</desc>
@@ -50,7 +51,7 @@ RETURN
 *----------------------
 DEFINE.SECURE:
 *----------------------
-    neighbour = ''
+*    neighbour = '' ;*SS issue fixed by Santiago
     fieldName = 'XX<POLICY.NUMBER'
     fieldLength = '35'
     fieldType = 'A'
@@ -502,8 +503,9 @@ SETAUDIT:
     CALL Table.addReservedField('RESERVED.2')
     CALL Table.addReservedField('RESERVED.1')
 
-    CALL Table.addLocalReferenceField('XX.LOCAL.REF')
-
+*    CALL Table.addLocalReferenceField('XX.LOCAL.REF') SJ fixing issue "Application cannot use neighbor field feature" in rebuild SS
+    CALL Table.addLocalReferenceField('')
+    
     CALL Table.addOverrideField
 *
 *----------------------------------------------------------------------------

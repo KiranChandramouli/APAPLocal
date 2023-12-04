@@ -1,0 +1,6 @@
+* I_F.REDO.INT.REVERSE.HIS Created 13 JAN 11 at 03:54PM by apapr8/GANESH.4
+*      PREFIX[HIS.INT.REV]
+            EQU HIS.INT.REV.ACCOUNT TO 1,   RedoIntReverseHis_Account TO 1,
+                 HIS.INT.REV.DAY.NO TO 2,   RedoIntReverseHis_DayNo TO 2,
+        HIS.INT.REV.AMOUNT.UTILISED TO 3,   RedoIntReverseHis_AmountUtilised TO 3,
+            HIS.INT.REV.INT.ACCRUED TO 4,   RedoIntReverseHis_IntAccrued TO 4

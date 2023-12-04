@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMjEwNjM3MzIzOkNwMTI1MjoxNjk5NTIyNzA3NTg1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 09 Nov 2023 15:08:27
+* @ValidationCode : MjoxNTkxNDk4MzY6Q3AxMjUyOjE3MDA0Nzk4MTQ3MTE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:00:14
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,6 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 
+
 * This subroutine allows to extract fields from Customer in T24
 * Arguments: CUSTOMER.ID
 *---------------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ $PACKAGE APAP.LAPAP
 *24-10-2023	VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES     Interface Change by Santiago
 *31-10-2023	VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES     Interface Change by Santiago
 *08-11-2023	VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES     Interface Change by Santiago
-
+*10-11-2023	VIGNESHWARI     ADDED COMMENT FOR INTERFACE CHANGES   Interface Change by Santiago
 *----------------------------------------------------------------------------------------
 
 SUBROUTINE L.APAP.COL.FF.EXTRACT(CUSTOMER.ID)
@@ -85,8 +86,10 @@ INITIALISE:
     Y.CLI.NUM.REPRES = ""
     Y.CLI.ADD.POR = ""
     Y.CLI.FECHA.ADICION = ""
+    Y.CLI.FECHA.ADICION.TELEFONOS.CLIENT = ""
     Y.CLI.MODIF.POR = ""
     Y.CLI.FECHA.MODIF = ""
+    Y.CLI.FECHA.MODIF.TELEFONOS.CLIENT = ""
     Y.CLI.CODIGO.ORIGEN = ""
     Y.CLI.TELF.TYPE = ""
     Y.CLI.CAMPO1.09 =  ""
@@ -130,7 +133,7 @@ PROCESS:
         GOSUB ADDRESS.STMT    ;*Ir al Parrafo de para extraer y crear los Inserts de Address
     END
 
-*    IF Y.PROCESS.FLAG.TABLE<1,4> EQ "tmpmovimientos" OR Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" OR Y.PROCESS.FLAG.TABLE<1,6> EQ "gescreditointegracion" OR Y.PROCESS.FLAG.TABLE<1,7> EQ "gestipogarantias" OR Y.PROCESS.FLAG.TABLE<1,8> EQ "gesgarantias" OR Y.PROCESS.FLAG.TABLE<1,9> EQ "gescreditogarantias" THEN		;*Interface Change by Santiago-START
+*    IF Y.PROCESS.FLAG.TABLE<1,4> EQ "tmpmovimientos" OR Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" OR Y.PROCESS.FLAG.TABLE<1,6> EQ "gescreditointegracion" OR Y.PROCESS.FLAG.TABLE<1,7> EQ "gestipogarantias" OR Y.PROCESS.FLAG.TABLE<1,8> EQ "gesgarantias" OR Y.PROCESS.FLAG.TABLE<1,9> EQ "gescreditogarantias" THEN	;*Interface Change by Santiago-START
 *        GOSUB PROCESS.AA      ;*Ir al Parrafo de para extraer y crear los Inserts de AA
 *    END
 
@@ -187,8 +190,9 @@ GET.CUSTOMER.REC:
     IF R.CUSTOMER THEN
         Y.L.AUDIT.POS = DCOUNT(R.CUSTOMER<EB.CUS.INPUTTER>, @VM)
      *JG   Y.CLI.FECHA.MODIF.TP = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>	;*Interface Change by Santiago-START
-     Y.CLI.FECHA.MODIF = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>   
-     ANNO = Y.CLI.FECHA.MODIF[1,2]	;*Interface Change by Santiago-new lines added-start
+     Y.CLI.FECHA.MODIF = R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>
+     Y.CLI.FECHA.MODIF.TELEFONOS.CLIENT =  R.CUSTOMER<EB.CUS.DATE.TIME,Y.L.AUDIT.POS>	;*Interface Change by Santiago-START-NEW LINES ADDED
+     ANNO = Y.CLI.FECHA.MODIF[1,2]
     MES =Y.CLI.FECHA.MODIF[3,2]
     DIA =Y.CLI.FECHA.MODIF[5,2] 
 	IF ANNO EQ 99 THEN 
@@ -196,7 +200,7 @@ GET.CUSTOMER.REC:
 	END ELSE
 	Y.ANNO = "20":ANNO	
 	END 
-	Y.CLI.FECHA.MODIF = Y.ANNO:MES:DIA	;*Interface Change by Santiago
+	Y.CLI.FECHA.MODIF = Y.ANNO:MES:DIA	;*Interface Change by Santiago-END
      *JG end "se perdia la variable de fecha debido a que se manda con el nombre de "Y.CLI.FECHA.MODIF""
 *SJ start
 *JG        Y.CLI.FECHA.MODIF = '20':Y.CLI.FECHA.MODIF.TP[1,6]
@@ -340,7 +344,8 @@ CUSTOMER.STMT:
 *Y.CLI.FECHA.ADICION.TP = R.CUSTOMER.HST<EB.CUS.DATE.TIME, 1>      ;* When the row was created
 *JG start
     Y.CLI.FECHA.ADICION = R.CUSTOMER<EB.CUS.DATE.TIME, 1>
-    ANNO = Y.CLI.FECHA.ADICION[1,2]	;*Interface Change by Santiago-new lines added-start
+    Y.CLI.FECHA.ADICION.TELEFONOS.CLIENT= R.CUSTOMER<EB.CUS.DATE.TIME, 1>	;*Interface Change by Santiago-NEW LINES ADDED-START	
+    ANNO = Y.CLI.FECHA.ADICION[1,2]
     MES =Y.CLI.FECHA.ADICION[3,2]
     DIA =Y.CLI.FECHA.ADICION[5,2] 
 	IF ANNO EQ 99 THEN 
@@ -348,7 +353,7 @@ CUSTOMER.STMT:
 	END ELSE
 	Y.ANNO = "20":ANNO	
 	END 
-	Y.CLI.FECHA.ADICION = Y.ANNO:MES:DIA	;*Interface Change by Santiago-end
+	Y.CLI.FECHA.ADICION = Y.ANNO:MES:DIA	;*Interface Change by Santiago-END
     *Y.CLI.FECHA.ADICION = ICONV(Y.CLI.FECHA.ADICION.TP,'DI')
     *Y.CLI.FECHA.ADICION = OCONV(Y.CLI.FECHA.ADICION,'D4')
     *Y.CLI.FECHA.ADICION = Y.CLI.FECHA.ADICION[7,4]:Y.CLI.FECHA.ADICION[4,2]:Y.CLI.FECHA.ADICION[1,2]
@@ -411,7 +416,7 @@ CUSTOMER.STMT:
         R.COL.QUEUE<1> = Y.TMPCLIENTES
         R.COL.QUEUE<2> = Y.LINEA
 
-        GOSUB WRITE.RECORD.NEW 	;*R22 interface Unit testing changes
+        GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
     END
 RETURN
 *-------------------
@@ -568,11 +573,11 @@ ADDRESS.STMT:
         Y.CLI.DATE.TIME.LAST = R.DE.ADDRESS<DE.ADD.DATE.TIME, Y.L.AUD.POSITION>
        *JG Y.CLI.DATE.TIME.LAST = ICONV(Y.CLI.DATE.TIME.LAST,'DI')	;*Interface Change by Santiago-start
        * Y.CLI.DATE.TIME.LAST = OCONV(Y.CLI.DATE.TIME.LAST,'D4')
-       * Y.CLI.DATE.TIME.LAST = Y.CLI.DATE.TIME.LAST[7,4]:Y.CLI.DATE.TIME.LAST[4,2]:Y.CLI.DATE.TIME.LAST[1,2]	;*Interface Change by Santiago-end
+       * Y.CLI.DATE.TIME.LAST = Y.CLI.DATE.TIME.LAST[7,4]:Y.CLI.DATE.TIME.LAST[4,2]:Y.CLI.DATE.TIME.LAST[1,2]	;*Interface Change by Santiago-END
 
         Y.CLI.INPUTTER.ADD = FIELD(R.DE.ADDRESS.OLD<DE.ADD.INPUTTER,1>,'_',2)
         Y.CLI.DATE.TIME.ADD = R.DE.ADDRESS.OLD<DE.ADD.DATE.TIME, 1>
-        ANNO = Y.CLI.DATE.TIME.ADD[1,2]		;*Interface Change by Santiago-new lines added-start
+        ANNO = Y.CLI.DATE.TIME.ADD[1,2]		;*Interface Change by Santiago-New lines added-start
         MES =Y.CLI.DATE.TIME.ADD[3,2]
         DIA =Y.CLI.DATE.TIME.ADD[5,2] 
 	    IF ANNO EQ 99 THEN 
@@ -580,10 +585,10 @@ ADDRESS.STMT:
 	    END ELSE
 	    Y.ANNO = "20":ANNO	
 	    END 
-	    Y.CLI.DATE.TIME.ADD = Y.ANNO:MES:DIA	;*Interface Change by Santiago-end
-        *JG Y.CLI.DATE.TIME.ADD = ICONV(Y.CLI.DATE.TIME.ADD,'DI')	;*Interface Change by Santiago-start
+	    Y.CLI.DATE.TIME.ADD = Y.ANNO:MES:DIA	;*Interface Change by Santiago-END
+        *JG Y.CLI.DATE.TIME.ADD = ICONV(Y.CLI.DATE.TIME.ADD,'DI')	;*Interface Change by Santiago-START
         *Y.CLI.DATE.TIME.ADD = OCONV(Y.CLI.DATE.TIME.ADD,'D4')
-        *Y.CLI.DATE.TIME.ADD = Y.CLI.DATE.TIME.ADD[7,4]:Y.CLI.DATE.TIME.ADD[4,2]:Y.CLI.DATE.TIME.ADD[1,2]	;*Interface Change by Santiago-END
+        *Y.CLI.DATE.TIME.ADD = Y.CLI.DATE.TIME.ADD[7,4]:Y.CLI.DATE.TIME.ADD[4,2]:Y.CLI.DATE.TIME.ADD[1,2]	;*Interface Change by Santiago-end
 
         Y.CLI.TIPO.DIRECCION = R.DE.ADDRESS<DE.ADD.LOCAL.REF,Y.CLI.TIPO.DIRECCION.POS>
         Y.CLI.APR.POSTAL = R.DE.ADDRESS<DE.ADD.LOCAL.REF,Y.CLI.APR.POSTAL.POS>
@@ -655,14 +660,15 @@ RETURN
 * Call to process each AA
 *-----------------------------------------------------------------------------------
 PROCESS.AA:
-*-----------------------------------------------------------------------------------    
+*-----------------------------------------------------------------------------------
+    
     Y.CREDIT = ""; PR.GESTIPOGARANTIAS = ''; Y.CREDIT.TXN = ""; PR.GESGARANTIAS = ''; PR.GESCREDITOSGARANTIAS = '';P.GESCREDITOINTEGRACION = ''
 * CALL L.APAP.COL.FF.EXTRACT.CREDIT(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)
-    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION)	;* R22 Manual conversion - CAll method format changed
+    APAP.LAPAP.lApapColFfExtractCredit(CUSTOMER.ID, Y.CREDIT, Y.CREDIT.TXN,PR.GESGARANTIAS,PR.GESCREDITOSGARANTIAS,PR.GESTIPOGARANTIAS,P.GESCREDITOINTEGRACION);* R22 Manual conversion - CAll method format changed
 *   IF E THEN
 *       RETURN
 *   END
-    
+   
     IF Y.PROCESS.FLAG.TABLE<1,5> EQ "tmpcredito" THEN
         Y.TOTAL.E = DCOUNT(Y.CREDIT,@FM)
         Y.I = 1
@@ -671,7 +677,7 @@ PROCESS.AA:
             R.COL.QUEUE<1> = "tmpcredito"
             R.COL.QUEUE<2> = Y.CREDIT<Y.I,1>
             R.COL.QUEUE<4> = Y.CREDIT<Y.I,2>
-            GOSUB WRITE.RECORD.NEW		;*R22 interface Unit testing changes
+            GOSUB WRITE.RECORD.NEW	;*R22 interface Unit testing changes
             Y.I += 1
         REPEAT
     END
@@ -756,7 +762,7 @@ WRITE.RECORD.NEW:	;*R22 interface Unit testing changes-start
     END
 
     CLOSESEQ Y.FILE.PATH
-RETURN		;*R22 interface Unit testing changes-end
+RETURN	;*R22 interface Unit testing changes-end
 
 *-----------------------------------------------------------------------------------
 WRITE.RECORD:
@@ -769,11 +775,11 @@ RETURN
 FINAL.WRITE.RECORD:
 *-----------------------------------------------------------------------------------
     
-    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>		;*R22 interface Unit testing changes
+    Y.EXTRACT.OUT.PATH=R.REDO.INTERFACE.PARAM<REDO.INT.PARAM.FI.AUTO.PATH>	;*R22 interface Unit testing changes
 
     I.VAR = 1
     LOOP WHILE I.VAR LE Y.TOTAL.INSERT
- 	*R22 interface Unit testing changes-START
+ *R22 interface Unit testing changes-start
 *        Y.QUEUE.ID = ''
 *        CALL ALLOCATE.UNIQUE.TIME(Y.QUEUE.ID)
 *        Y.QUEUE.ID = DATE():Y.QUEUE.ID
@@ -841,9 +847,9 @@ GET.TEL.AUDIT.INFO:
         Y.TEL.USER          = R.COL.TRACE.PHONE<REDO.COL.TP.LAST.IMPUTTER,Y.VM.POS>
         Y.TEL.DATE.TIME.UPD = R.COL.TRACE.PHONE<REDO.COL.TP.LAST.UPD.DATE,Y.VM.POS>
     END ELSE
-        Y.TEL.DATE.TIME.ADD = Y.CLI.FECHA.ADICION
+        Y.TEL.DATE.TIME.ADD = Y.CLI.FECHA.ADICION.TELEFONOS.CLIENT	;*Interface Change by Santiago- Changed "Y.CLI.FECHA.ADICION" to "Y.CLI.FECHA.ADICION.TELEFONOS.CLIENT"
         Y.TEL.USER          = Y.CLI.MODIF.POR
-        Y.TEL.DATE.TIME.UPD = Y.CLI.FECHA.MODIF
+        Y.TEL.DATE.TIME.UPD = Y.CLI.FECHA.MODIF.TELEFONOS.CLIENT	;*Interface Change by Santiago- changed "Y.CLI.FECHA.MODIF" to "Y.CLI.FECHA.MODIF.TELEFONOS.CLIENT"
     END
     Y.TEL.USER = Y.TEL.USER[1,20]
 

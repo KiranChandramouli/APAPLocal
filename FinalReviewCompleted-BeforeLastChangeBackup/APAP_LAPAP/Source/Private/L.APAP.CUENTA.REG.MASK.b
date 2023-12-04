@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNDgxODAxNjY4OkNwMTI1MjoxNjkxNzUxMzI2MzE2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 Aug 2023 16:25:26
+* @ValidationCode : MjotNDE0MDkxOTM2OkNwMTI1MjoxNzAwODQyNjQ1NDA1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,26 +8,38 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+*-----------------------------------------------------------------------------
+* <Rating>-21</Rating>
+*-----------------------------------------------------------------------------
 SUBROUTINE L.APAP.CUENTA.REG.MASK
 *-----------------------------------------------------------------------------
+
 * Proposito: Identifica si la cuenta corresponde a una cuenta de cliente o interna.
 * Parametro de entrada: TT o FT de la transaccion
 * Parametro de salida: Cuenta regional debito o credito con el formato 1234********************5678
-*-----------------------------------------------------------------------------------------------
-*MODIFICATION HISTORY:
-*
-* DATE              WHO                REFERENCE                 DESCRIPTION
-* 09-08-2023      Harishvikram C   Manual R22 conversion      BP Removed, $INCLUDE to $INSERT
-*-----------------------------------------------------------------------------------------------
+*---------------------------------------------------------------------------------------
+*Modification History:
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+* 09-08-2023      Harishvikram C       Manual R22 conversion      BP Removed, $INCLUDE to $INSERT
+* 21/11/2023         Suresh             R22 Manual Conversion      Latest Routine- Changes
+*----------------------------------------------------------------------------------------
 
-    $INSERT I_COMMON
+*    $INCLUDE I_COMMON
+*    $INCLUDE I_EQUATE
+*    $INCLUDE I_F.FUNDS.TRANSFER
+*    $INCLUDE I_F.TELLER
+*    $INCLUDE I_F.ACCOUNT
+    
+    
+    $INSERT I_COMMON ;*R22 Manual Conversion - Start
     $INSERT I_EQUATE
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.TELLER
-    $INSERT I_F.ACCOUNT
+    $INSERT I_F.ACCOUNT ;*R22 Manual Conversion - End
+    
 
     Y.CUENTA = '' ; Y.CUENTA = COMI;
     GOSUB OPEN.FILE

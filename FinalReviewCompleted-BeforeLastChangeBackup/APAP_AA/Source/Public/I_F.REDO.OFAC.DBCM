@@ -1,0 +1,23 @@
+* I_F.REDO.OFAC.DBCM Created 12 NOV 09 at 03:08PM by apapr8/PRABU
+*      PREFIX[REDO.DBCM]
+             EQU REDO.DBCM.IP.ADD TO 1,   RedoOfacDbcm_IpAdd TO 1,
+                   REDO.DBCM.PORT TO 2,   RedoOfacDbcm_Port TO 2,
+                REDO.DBCM.DB.NAME TO 3,   RedoOfacDbcm_DbName TO 3,
+                REDO.DBCM.TB.NAME TO 4,   RedoOfacDbcm_TbName TO 4,
+                REDO.DBCM.DB.USER TO 5,   RedoOfacDbcm_DbUser TO 5,
+                 REDO.DBCM.DB.PWD TO 6,   RedoOfacDbcm_DbPwd TO 6,
+           REDO.DBCM.MSG.IF.EX.CU TO 7,   RedoOfacDbcm_MsgIfExCu TO 7,
+           REDO.DBCM.MSG.IF.DB.ER TO 8,   RedoOfacDbcm_MsgIfDbEr TO 8,
+           REDO.DBCM.EMAIL.TO.ADD TO 9,   RedoOfacDbcm_EmailToAdd TO 9,
+          REDO.DBCM.EMAIL.REQ.DIR TO 10,  RedoOfacDbcm_EmailReqDir TO 10,
+         REDO.DBCM.EMAIL.FROM.ADD TO 11,  RedoOfacDbcm_EmailFromAdd TO 11,
+        REDO.DBCM.STORE.PROC.NAME TO 12,  RedoOfacDbcm_StoreProcName TO 12,
+          REDO.DBCM.RECORD.STATUS TO 13,  RedoOfacDbcm_RecordStatus TO 13,
+                REDO.DBCM.CURR.NO TO 14,  RedoOfacDbcm_CurrNo TO 14,
+               REDO.DBCM.INPUTTER TO 15,  RedoOfacDbcm_Inputter TO 15,
+              REDO.DBCM.DATE.TIME TO 16,  RedoOfacDbcm_DateTime TO 16,
+             REDO.DBCM.AUTHORISER TO 17,  RedoOfacDbcm_Authoriser TO 17,
+                REDO.DBCM.CO.CODE TO 18,  RedoOfacDbcm_CoCode TO 18,
+              REDO.DBCM.DEPT.CODE TO 19,  RedoOfacDbcm_DeptCode TO 19,
+           REDO.DBCM.AUDITOR.CODE TO 20,  RedoOfacDbcm_AuditorCode TO 20,
+        REDO.DBCM.AUDIT.DATE.TIME TO 21,  RedoOfacDbcm_AuditDateTime TO 21

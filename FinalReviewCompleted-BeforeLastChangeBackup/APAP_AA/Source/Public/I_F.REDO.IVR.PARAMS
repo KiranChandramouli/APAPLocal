@@ -1,0 +1,17 @@
+* I_F.REDO.IVR.PARAMS Created 11 MAY 12 at 12:27PM by t24bbcr9/TEM.RMONDR.01
+*      PREFIX[REDO.IVR.PAR]
+               EQU REDO.IVR.PAR.USER TO 1,   RedoIvrParams_User TO 1,
+                    REDO.IVR.PAR.PWD TO 2,   RedoIvrParams_Pwd TO 2,
+                REDO.IVR.PAR.APP.ENQ TO 3,   RedoIvrParams_AppEnq TO 3,
+                REDO.IVR.PAR.APP.MAP TO 4,   RedoIvrParams_AppMap TO 4,
+              REDO.IVR.PAR.LOCAL.REF TO 5,   RedoIvrParams_LocalRef TO 5,
+               REDO.IVR.PAR.OVERRIDE TO 6,   RedoIvrParams_Override TO 6,
+          REDO.IVR.PAR.RECORD.STATUS TO 7,   RedoIvrParams_RecordStatus TO 7,
+                REDO.IVR.PAR.CURR.NO TO 8,   RedoIvrParams_CurrNo TO 8,
+               REDO.IVR.PAR.INPUTTER TO 9,   RedoIvrParams_Inputter TO 9,
+              REDO.IVR.PAR.DATE.TIME TO 10,  RedoIvrParams_DateTime TO 10,
+             REDO.IVR.PAR.AUTHORISER TO 11,  RedoIvrParams_Authoriser TO 11,
+                REDO.IVR.PAR.CO.CODE TO 12,  RedoIvrParams_CoCode TO 12,
+              REDO.IVR.PAR.DEPT.CODE TO 13,  RedoIvrParams_DeptCode TO 13,
+           REDO.IVR.PAR.AUDITOR.CODE TO 14,  RedoIvrParams_AuditorCode TO 14,
+        REDO.IVR.PAR.AUDIT.DATE.TIME TO 15,  RedoIvrParams_AuditDateTime TO 15

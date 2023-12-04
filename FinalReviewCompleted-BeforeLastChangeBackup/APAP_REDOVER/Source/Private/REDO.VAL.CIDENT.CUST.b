@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo0NjE1NzEwMjI6Q3AxMjUyOjE2OTk1MDc0MzMxMTc6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 Nov 2023 10:53:53
+* @ValidationCode : MjotNzA1NjgwNzg3OkNwMTI1MjoxNzAwNDgwNTQyMjY3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:12:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
+
 SUBROUTINE REDO.VAL.CIDENT.CUST(Y.APP.VERSION)
 *--------------------------------------------------------------------------------------------------------------------------------
 *   DESCRIPTION :
@@ -34,7 +35,7 @@ SUBROUTINE REDO.VAL.CIDENT.CUST(Y.APP.VERSION)
 *17-04-2023       Conversion Tool        R22 Auto Code conversion          FM TO @FM
 *17-04-2023       Samaran T               R22 Manual Code Conversion       CALL ROUTINE FORMAT MODIFIED
 *07/10/2023	VIGNESHWARI      ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
-
+*10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -61,7 +62,7 @@ SUBROUTINE REDO.VAL.CIDENT.CUST(Y.APP.VERSION)
     END
 *
 RETURN
-* ;*Interface Change by Santiago-START-NEW LINES ADDED
+;*Interface Change by Santiago-START
 INITIALISE:
     PROCESS.GOAHEAD = 1
     CIDENT.CHK.RESULT = ""
@@ -73,7 +74,7 @@ INITIALISE:
     FN.CUS.CIDENT = 'F.CUSTOMER.L.CU.CIDENT'
     F.CUS.CIDENT = ''
 RETURN
-* ======
+
 OPEN.FILES:
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)
     CALL OPF(FN.CUS.CIDENT,F.CUS.CIDENT)
@@ -83,7 +84,7 @@ OPEN.FILES:
     CALL OPF(FN.DFE.TRANSFORM,F.DFE.TRANSFORM)
 *SJ end
 RETURN
-* 	;*Interface Change by Santiago-END
+;*Interface Change by Santiago-END
 PROCESS:
 * ======
 *
@@ -96,8 +97,11 @@ PROCESS:
     CALL System.setVariable("CURRENT.CLIENTE.APAP",CLIENTE.APAP)
 *
 RETURN
-
-CHECK.CID.NON.APAP.OLD:	;*Interface Change by Santiago- Changed "CHECK.CID.NON.APAP" to "CHECK.CID.NON.APAP.OLD"
+*
+* =================
+CHECK.CID.NON.APAP.OLD:		;*Interface Change by Santiago-Changed "CHECK.CID.NON.APAP" to "CHECK.CID.NON.APAP.OLD"
+* =================
+*
 *   Non APAP Customer
 *
     Cedule = "padrone$":CIDENT.NUMBER
@@ -121,8 +125,11 @@ CHECK.CID.NON.APAP.OLD:	;*Interface Change by Santiago- Changed "CHECK.CID.NON.A
     END
 *
 RETURN
-
-ANALIZE.RESULT.OLD:	;*Interface Change by Santiago- Changed "ANALIZE.RESULT" to "ANALIZE.RESULT.OLD"
+*
+* =============
+ANALIZE.RESULT.OLD:	;*Interface Change by Santiago-Changed "ANALIZE.RESULT" to "ANALIZE.RESULT.OLD"
+* =============
+*
     IF Ret NE "" THEN
         CIDENT.RESULT = Ret
         CHANGE '$' TO '' IN CIDENT.RESULT
@@ -148,7 +155,7 @@ ANALIZE.RESULT.OLD:	;*Interface Change by Santiago- Changed "ANALIZE.RESULT" to 
 RETURN
 
 
-CHECK.NON.CIDENT.OLD:	;*Interface Change by Santiago- Changed "CHECK.NON.CIDENT" to "CHECK.NON.CIDENT.OLD"
+CHECK.NON.CIDENT.OLD:	;*Interface Change by Santiago-Changed "CHECK.NON.CIDENT" to "CHECK.NON.CIDENT.OLD"
 
     INT.CODE = 'CID002'
     INT.TYPE = 'ONLINE'
@@ -179,7 +186,7 @@ CHECK.NON.CIDENT.OLD:	;*Interface Change by Santiago- Changed "CHECK.NON.CIDENT"
 *
 RETURN
 *
-CHECK.CID.NON.APAP:		;*Interface Change by Santiago- new lines added-start
+CHECK.CID.NON.APAP:	;*Interface Change by Santiago-new line added-start
 *   Non APAP Customer
 
 *    Cedule = "padrone$":CIDENT.NUMBER
@@ -247,22 +254,20 @@ CHECK.NON.CIDENT:
     EX.USER  = ''
     EX.PC    = ''
 
-    IF Y.RESPONSE<7> EQ "FAILURE" THEN
-        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
+    R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
 *        CIDENT.RESULT                     = Ret
 *        CHANGE '::' TO @FM IN CIDENT.RESULT
-        MON.TP   = '04'
-        REC.CON  = Y.RESPONSE<7>
-        DESC     = Y.RESPONSE<8>
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*R22 MANUAL CODE CONVERSION
-        AF              = REDO.CUS.PRF.IDENTITY.NUMBER
-        ETEXT           = "EB-INCORRECT.CIDENT.NUMBER"
-        PROCESS.GOAHEAD = ""
-        CALL STORE.END.ERROR
-    END
+    MON.TP   = '04'
+    REC.CON  = Y.RESPONSE<7>
+    DESC     = Y.RESPONSE<8>
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*R22 MANUAL CODE CONVERSION
+    AF              = REDO.CUS.PRF.IDENTITY.NUMBER
+    ETEXT           = "EB-INCORRECT.CIDENT.NUMBER"
+    PROCESS.GOAHEAD = ""
+    CALL STORE.END.ERROR
 
-RETURN
-;*Interface Change by Santiago- end
+RETURN	;*Interface Change by Santiago-end
+
 * ================
 GET.CUSTOMER.INFO:
 * ================
@@ -315,39 +320,11 @@ GET.CIDENT.CUST.ID:
         GOSUB NO.CLIENTE.APAP
     END
 *
-RETURN	;*Interface Change by Santiago-lines are removed-start
-*
-* =========
-*INITIALISE:
-* =========
-*
-*    PROCESS.GOAHEAD = 1
-*
-*    CIDENT.CHK.RESULT = ""
-*
- *   CLIENTE.APAP       = ""
-  *  CUSTOMER.FULL.NAME = ""
-
-    *CIDENT.NUMBER = COMI
-*
-   * FN.CUSTOMER = 'F.CUSTOMER'
-  *  F.CUSTOMER = ''
-*
- *   FN.CUS.CIDENT = 'F.CUSTOMER.L.CU.CIDENT'
- *   F.CUS.CIDENT = ''
-*
 RETURN
 *
-* =========
-*OPEN.FILES:
-* =========
+
 *
-  *  CALL OPF(FN.CUSTOMER,F.CUSTOMER)
-  *  CALL OPF(FN.CUS.CIDENT,F.CUS.CIDENT)
-*	
-*RETURN		;*Interface Change by Santiago-end
-*	
-*-----------------------  
+*-----------------------
 CHECK.PRELIM.CONDITIONS:
 *-----------------------
 *

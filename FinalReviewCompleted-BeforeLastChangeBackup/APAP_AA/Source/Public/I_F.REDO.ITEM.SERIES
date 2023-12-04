@@ -1,0 +1,5 @@
+* I_F.REDO.ITEM.SERIES Created 14 OCT 11 at 02:44PM by apap/TEMENOS.02
+*      PREFIX[REDO.SER]
+      EQU REDO.SER.SERIES.NUMBER TO 1,   RedoItemSeries_SeriesNumber TO 1,
+                 REDO.SER.STATUS TO 2,   RedoItemSeries_Status TO 2,
+           REDO.SER.BATCH.SERIES TO 3,   RedoItemSeries_BatchSeries TO 3
