@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo4NTg3MTU3OTg6Q3AxMjUyOjE2OTg2NjMxMTA5NjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 30 Oct 2023 16:21:50
+* @ValidationCode : MjotMzg2NzU5NzQxOkNwMTI1MjoxNzAxMTA5NTIyMTA0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:55:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -10,8 +10,8 @@
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-
 $PACKAGE APAP.LAPAP
+
 SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.RETURN.MSG,ERR.MSG)
 *-----------------------------------------------------------------------------
 *
@@ -24,6 +24,7 @@ SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *05-09-2023    VICTORIA S          R22 MANUAL CONVERSION   VM TO @VM,SM TO @SM
 *30/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*27-11-2023    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11542 | MONITOR   � By Santiago
 *----------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -33,7 +34,8 @@ SUBROUTINE REDO.CONDUIT.LINEAR.TRANSLATION(MAP.FMT,ID.RCON.L,APP,ID.APP,R.APP,R.
     $INSERT I_DFE.OUTWARD.FILE.EXTRACT.COMMON
     
     GOSUB OPEN.FILES
- *R22 interface Unit testing changes- START   
+    
+*R22 interface Unit testing changes- START
     IF ID.RCON.L EQ 'REDO.COL.MAP.STATIC' THEN
         GOSUB PROCESS.STATIC
     END ELSE
@@ -533,7 +535,7 @@ PROCESS.INDIVIDUAL.FIELD.CONV:
     END
 
     IF INDIVIDUAL.FIELD.CONV[1,6] EQ 'STATIC' THEN        ;* To extract value based on positions
-        APPL.FIELD.VALUE   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2)	;*Interface Change by Santiago- Revert APPL.FIELD.VALUE<-1> 
+        APPL.FIELD.VALUE   = FIELD(INDIVIDUAL.FIELD.CONV,'STATIC ',2)	;*Interface Change by Santiago- Revert APPL.FIELD.VALUE<-1>
     END
     
 RETURN
@@ -561,8 +563,8 @@ FIND.CONV.FIELD.VALUE:
         CASE FIELD.OPERATION EQ '@ID'       ;* If @ID is given in operation, then record id will be assigned
             APPL.FIELD.VALUE = RECORD.ID
 
-        CASE 1          ;* For other cases
-            GOSUB RETRIEVE.OPERATION.VALUE  ;* Process if application field or constant value is given in operation
+*        CASE 1          ;* For other cases (SJ there isnt other cases because FIND.CONV.FIELD.VALUE is called when field.name is empty and field.operation estart with ! or @S)	;*Fix SQA-11542 | MONITOR � By Santiago-commented
+*            GOSUB RETRIEVE.OPERATION.VALUE  ;* Process if application field or constant value is given in operation	;*Fix SQA-11542 | MONITOR � By Santiago-commented
 
     END CASE
 

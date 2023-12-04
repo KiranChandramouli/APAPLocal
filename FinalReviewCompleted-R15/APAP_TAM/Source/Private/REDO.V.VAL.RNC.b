@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNTA2OTE5NDMzOkNwMTI1MjoxNzAwNDgwNjUyODM4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:14:12
+* @ValidationCode : MjoxMjA5ODM0ODYxOkNwMTI1MjoxNzAxMTEwMjM1NTU1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:07:15
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -19,6 +19,7 @@ $PACKAGE APAP.TAM
 *25-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   CALL ROUTINE ADDED
 *07/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        Padron   � By Santiago
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.V.VAL.RNC
 ******************************************************************************************************************
@@ -97,6 +98,7 @@ CHECK.RNC.FORMAT:
             CHECK.NUMERIC = NUM(Y.VAR.RNC)
             IF CHECK.NUMERIC EQ 1 THEN
 *CALL REDO.RNC.CHECK.DIGIT(Y.VAR.RNC)
+
 *R22 MANUAL CONVERSION
 *APAP.TAM.REDO.RNC.CHECK.DIGIT(Y.VAR.RNC) ;*R22 MANUAL CODE CONVERSION
                 APAP.TAM.redoRncCheckDigit(Y.VAR.RNC) ;*R22 MANUAL CODE CONVERSION
@@ -112,66 +114,66 @@ PROCESS.OLD:	;*Interface Change by Santiago- changes "PROCESS" to "PROCESS.OLD"
 *------------------------------------------------------------------------------------
 * Check the padrone interface for the given rnc values
 *------------------------------------------------
-    IF Y.VAR.RNC EQ 'PASS' THEN
-        Cedule = "rnc$":VAR.RNC
-        Param1 = "com.padrone.ws.util.MainClass"
-        Param2 = "callPadrone"
-        Param3 = Cedule
-        Ret = ""
-        ACTIVATION = "APAP_PADRONES_WEBSERVICES"
-        INPUT_PARAM=Cedule
-        ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
+IF Y.VAR.RNC EQ 'PASS' THEN
+    Cedule = "rnc$":VAR.RNC
+    Param1 = "com.padrone.ws.util.MainClass"
+    Param2 = "callPadrone"
+    Param3 = Cedule
+    Ret = ""
+    ACTIVATION = "APAP_PADRONES_WEBSERVICES"
+    INPUT_PARAM=Cedule
+    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
 *PACS00157018 - S
-        IF NOT(ERROR.CODE) THEN
-            Ret=INPUT_PARAM
-        END
+    IF NOT(ERROR.CODE) THEN
+        Ret=INPUT_PARAM
+    END
 *PACS00157018 - E
+END
+VAR.NAME = Ret
+INT.CODE = 'RNC'
+INT.TYPE = 'ONLINE'
+BAT.NO = ''
+BAT.TOT = ''
+INFO.OR = ''
+INFO.DE = ''
+ID.PROC = ''
+MON.TP = ''
+DESC = ''
+REC.CON = ''
+EX.USER = ''
+EX.PC = ''
+CHANGE '::' TO @FM IN VAR.NAME ;*R22 AUTO CONVERSION
+REC.CON = VAR.NAME<2>
+DESC = VAR.NAME<3>
+IF Ret THEN
+    GOSUB PADRONE.CHECK
+    IF APELLIDOS.1 THEN
+        R.NEW(EB.CUS.NAME.1) = APELLIDOS.1
     END
-    VAR.NAME = Ret
-    INT.CODE = 'RNC'
-    INT.TYPE = 'ONLINE'
-    BAT.NO = ''
-    BAT.TOT = ''
-    INFO.OR = ''
-    INFO.DE = ''
-    ID.PROC = ''
-    MON.TP = ''
-    DESC = ''
-    REC.CON = ''
-    EX.USER = ''
-    EX.PC = ''
-    CHANGE '::' TO @FM IN VAR.NAME ;*R22 AUTO CONVERSION
-    REC.CON = VAR.NAME<2>
-    DESC = VAR.NAME<3>
-    IF Ret THEN
-        GOSUB PADRONE.CHECK
-        IF APELLIDOS.1 THEN
-            R.NEW(EB.CUS.NAME.1) = APELLIDOS.1
-        END
-        IF APELLIDOS.2 THEN
-            R.NEW(EB.CUS.NAME.2) = APELLIDOS.2
-        END
+    IF APELLIDOS.2 THEN
+        R.NEW(EB.CUS.NAME.2) = APELLIDOS.2
     END
+END
 RETURN
 ******************
 PADRONE.CHECK.OLD:	;*Interface Change by Santiago- changes "PADRONE.CHECK" to "PADRONE.CHECK.OLD"
 ******************
 *Checks for Success case and Failure Case
-    CHANGE '$' TO '' IN VAR.NAME
-    CHANGE '#' TO @FM IN VAR.NAME ;*R22 AUTO CONVERSION
-    VAL.NAME = VAR.NAME<1>
-    CHANGE ':' TO @FM IN VAL.NAME ;*R22 AUTO CONVERSION
-    IF VAL.NAME<1> EQ 'SUCCESS' THEN
-        APELLIDOS = VAR.NAME<3>
-        APELLIDOS.1=APELLIDOS[1,35]
-        IF LEN(APELLIDOS) GT 35 THEN
-            DIFF = LEN(APELLIDOS) - 35
-            APELLIDOS.2 = APELLIDOS[36,DIFF]
-        END
+CHANGE '$' TO '' IN VAR.NAME
+CHANGE '#' TO @FM IN VAR.NAME ;*R22 AUTO CONVERSION
+VAL.NAME = VAR.NAME<1>
+CHANGE ':' TO @FM IN VAL.NAME ;*R22 AUTO CONVERSION
+IF VAL.NAME<1> EQ 'SUCCESS' THEN
+    APELLIDOS = VAR.NAME<3>
+    APELLIDOS.1=APELLIDOS[1,35]
+    IF LEN(APELLIDOS) GT 35 THEN
+        DIFF = LEN(APELLIDOS) - 35
+        APELLIDOS.2 = APELLIDOS[36,DIFF]
     END
-    IF VAL.NAME<1> EQ 'FAILURE' THEN
-        GOSUB FAIL.PADRONE
-    END
+END
+IF VAL.NAME<1> EQ 'FAILURE' THEN
+    GOSUB FAIL.PADRONE
+END
 RETURN
 ;*Interface Change by Santiago-new lines added-start
 ************
@@ -182,7 +184,7 @@ PROCESS:
 *------------------------------------------------
     IF Y.VAR.RNC EQ 'PASS' THEN
 *        Cedule = "rnc$":VAR.RNC
-        Cedule = VAR.RNC
+        Cedule = TRIM(VAR.RNC)                      ;* adding TRIM for all padron ws	;*Fix Padron � By Santiago-CHANGED "VAR.RNC" TO "TRIM(VAR.RNC)"
         Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
         R.PAD.WS<PAD.WS.CEDULA> = Cedule
         Y.RESPONSE = ''
