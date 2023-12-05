@@ -1,0 +1,58 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method lApapRtnValRestList (
+)
+{
+    jBC: L.APAP.RTN.VAL.REST.LIST
+}
+
+
+public method lapapDefCustomerType (
+)
+{
+    jBC: LAPAP.DEF.CUSTOMER.TYPE
+}
+
+
+
+public method lapapPlafIntListTr (
+    INOUT yRec string
+)
+{
+    jBC: LAPAP.PLAF.INT.LIST.TR
+}
+
+
+
+public method lapapOcusSetRt (
+)
+{
+    jBC: LAPAP.OCUS.SET.RT
+}
+
+
+
+public method lapapChkOccCustomer (
+)
+{
+    jBC: LAPAP.CHK.OCC.CUSTOMER
+}
+
+
+
+public method redoConduitLinearTranslation (
+   INOUT mapFmt string,
+   INOUT idRconL string,
+   INOUT app string,
+   INOUT idApp string,
+   INOUT rApp string,
+   INOUT rReturnMsg string,
+   INOUT errMsg string
+)
+{
+   jBC: REDO.CONDUIT.LINEAR.TRANSLATION
+}
+
