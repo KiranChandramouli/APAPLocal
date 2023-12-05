@@ -135,7 +135,7 @@ GET.MAPPING.VALUES:
     R.APP = R.MSG
     R.RETURN.MSG = ''
     ERR.MAPPING = ''
-;*Fix SQA-11542 | MONITOR ? By Santiago-new lines added -start
+*Fix SQA-11542 | MONITOR ? By Santiago-new lines added -start
 *    MAP.FMT = 'MAP'  ;*SJ
     MAP.FMT  = 'O'
     ID.RCON.L = Y.MAPPING.ID
