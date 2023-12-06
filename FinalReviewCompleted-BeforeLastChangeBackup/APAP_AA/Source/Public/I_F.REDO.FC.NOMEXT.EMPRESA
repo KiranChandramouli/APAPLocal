@@ -1,0 +1,12 @@
+* I_F.REDO.FC.NOMEXT.EMPRESA Created 28 JUL 11 at 10:37AM by t24bqa02/BTO
+*      PREFIX[FC.NOMXT]
+         EQU FC.NOMXT.NOMBRE.EMP TO 1,   RedoFcNomextEmpresa_NombreEmp TO 1,
+          FC.NOMXT.RECORD.STATUS TO 2,   RedoFcNomextEmpresa_RecordStatus TO 2,
+                FC.NOMXT.CURR.NO TO 3,   RedoFcNomextEmpresa_CurrNo TO 3,
+               FC.NOMXT.INPUTTER TO 4,   RedoFcNomextEmpresa_Inputter TO 4,
+              FC.NOMXT.DATE.TIME TO 5,   RedoFcNomextEmpresa_DateTime TO 5,
+             FC.NOMXT.AUTHORISER TO 6,   RedoFcNomextEmpresa_Authoriser TO 6,
+                FC.NOMXT.CO.CODE TO 7,   RedoFcNomextEmpresa_CoCode TO 7,
+              FC.NOMXT.DEPT.CODE TO 8,   RedoFcNomextEmpresa_DeptCode TO 8,
+           FC.NOMXT.AUDITOR.CODE TO 9,   RedoFcNomextEmpresa_AuditorCode TO 9,
+        FC.NOMXT.AUDIT.DATE.TIME TO 10,  RedoFcNomextEmpresa_AuditDateTime TO 10

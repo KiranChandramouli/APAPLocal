@@ -1,16 +1,17 @@
-* @ValidationCode : Mjo4NjUxNDQ4NTM6Q3AxMjUyOjE2ODI1OTgwMTEwNTg6c2FtYXI6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:11
+* @ValidationCode : MjotMjg5Nzk0NTg2OkNwMTI1MjoxNzAxMTA5OTY1MDU2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:02:45
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
+
 SUBROUTINE LATAM.CARD.ORDER.VALIDATE
 *--------------------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -36,6 +37,7 @@ SUBROUTINE LATAM.CARD.ORDER.VALIDATE
 * Date                 Who                              Reference                            DESCRIPTION
 *10-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION                 = TO EQ
 *10-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*27-11-2023	     VIGNESHWARI                     ADDED COMMENT FOR INTERFACE CHANGES     Embozado  � By Santiago
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -67,92 +69,14 @@ SUBROUTINE LATAM.CARD.ORDER.VALIDATE
     $INSERT I_F.CUSTOMER
 
 *--------------------------------------------------------------------------------------------------------
-**********
-MAIN.PARA:
-**********
-
+    
     GOSUB INIT.PARA
     GOSUB PROCESS.PARA
-
-* CHANGES FOR HD1101263
-    IF R.NEW(CARD.IS.ACCOUNT) NE '' OR AF EQ CARD.IS.ACCOUNT THEN
-
-        GOSUB ACCOUNT.VAL
-
-    END
-* CHANGES END  HD1101263
-
-*APAP.REDORETAIL.LATAM.CARD.ORDER.SPLIT.VALIDATE.3
-    APAP.REDORETAIL.latamCardOrderSplitValidate3();*MANUAL R22 CODE CONVERSION
-
-
-    CARD.TYPE.SER = FIELD(ID.NEW,".",1)
-    CALL CACHE.READ('F.REDO.CARD.SERIES.PARAM','SYSTEM',R.REDO.CARD.SERIES.PARAM,PARAM.ERR)
-    Y.PARAM.CARD.TYPE = R.REDO.CARD.SERIES.PARAM<REDO.CARD.SERIES.PARAM.CARD.TYPE>
-    LOCATE CARD.TYPE.SER IN Y.PARAM.CARD.TYPE<1,1> SETTING Y.CARD.POS ELSE
-        AF = CARD.IS.STOCK.SERIERS.ID
-        ETEXT = "EB-SERIES.PARAM"
-        CALL STORE.END.ERROR
-    END
-
-*PACS00063138-S
-
-    IF R.NEW(CARD.IS.ISSUE.NUMBER) NE '' THEN
-
-        IF R.NEW(CARD.IS.CARD.STATUS) EQ 52 AND R.NEW(CARD.IS.ISSUE.NUMBER) NE "DIFFERENT" THEN
-
-            AF = CARD.IS.ISSUE.NUMBER
-            ETEXT = "EB-LOST.CHECK"
-            CALL STORE.END.ERROR
-
-        END
-    END
-
-*PACS00063138-E
-
-
-    FETCH.CRD.STAT = R.NEW(CARD.IS.CARD.STATUS)
-    IF R.NEW(CARD.IS.APPLY.PERIOD.CHG) NE R.OLD(CARD.IS.APPLY.PERIOD.CHG) THEN
-        IF (FETCH.CRD.STAT EQ 35) OR (FETCH.CRD.STAT EQ 51) OR (FETCH.CRD.STAT EQ 52) OR (FETCH.CRD.STAT EQ 60) OR (FETCH.CRD.STAT EQ 91) OR (FETCH.CRD.STAT EQ 92) OR (FETCH.CRD.STAT EQ 93) OR (FETCH.CRD.STAT EQ 95) OR (FETCH.CRD.STAT EQ 96) OR (FETCH.CRD.STAT EQ 97) THEN
-
-            AF = CARD.IS.APPLY.PERIOD.CHG
-            ETEXT = "EB-APPLY.CHG.CHECK"
-            CALL STORE.END.ERROR
-
-        END
-    END
-    Y.CHANGE.FLD.LIST=OFS$CHANGED.FIELDS
-    Y.CHANGE.FLD.LIST=FIELDS(Y.CHANGE.FLD.LIST,':',2,1)
-    LOCATE 'CARD.STATUS' IN Y.CHANGE.FLD.LIST SETTING Y.CARD.ST.CH.POS THEN
-        IF R.NEW(CARD.IS.CARD.STATUS) EQ 90 THEN
-            AF = CARD.IS.CARD.STATUS
-            ETEXT = "ST-RTN.NOT.VALID.STATUS"
-            CALL STORE.END.ERROR
-        END
-    END
+    GOSUB MORE.VALIDATIONS	;*Embozado  � By Santiago- Changed "ACCOUNT.VAL" to "MORE.VALIDATIONS"
 
 RETURN
-*--------------------------------------------------------------------------------------------------------
-GET.CUSTOMER.ID:
 
 
-    CALL F.READ(FN.L.CU.CIDENT,PROSPECT.ID,R.L.CU.CIDENT,F.L.CU.CIDENT,CIDENT.ERR)
-    IF R.L.CU.CIDENT THEN
-        R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.CIDENT,"*",2)
-    END ELSE
-        CALL F.READ(FN.L.CU.NOUNICO,PROSPECT.ID,R.L.CU.NOUNICO,F.L.CU.NOUNICO,NOUN.ERR)
-        IF R.L.CU.NOUNICO THEN
-            R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.NOUNICO,"*",2)
-        END ELSE
-            CALL F.READ(FN.L.CU.RNC,PROSPECT.ID,R.L.CU.RNC,F.L.CU.RNC,RNC.ERR)
-            IF R.L.CU.RNC THEN
-                R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.RNC,"*",2)
-            END
-        END
-    END
-
-RETURN
-*-------------------------------------------------------------------------
 **********
 INIT.PARA:
 **********
@@ -420,4 +344,90 @@ CHECK.REISSUE.CASE:
 
 RETURN
 *-------------
+;*Embozado  � By Santiago-New lines added-start
+MORE.VALIDATIONS:
+* CHANGES FOR HD1101263
+    IF R.NEW(CARD.IS.ACCOUNT) NE '' OR AF EQ CARD.IS.ACCOUNT THEN
+
+        GOSUB ACCOUNT.VAL
+
+    END
+* CHANGES END  HD1101263
+
+*APAP.REDORETAIL.LATAM.CARD.ORDER.SPLIT.VALIDATE.3
+
+    APAP.REDORETAIL.latamCardOrderSplitValidate3();*MANUAL R22 CODE CONVERSION
+
+
+    CARD.TYPE.SER = FIELD(ID.NEW,".",1)
+    CALL CACHE.READ('F.REDO.CARD.SERIES.PARAM','SYSTEM',R.REDO.CARD.SERIES.PARAM,PARAM.ERR)
+    Y.PARAM.CARD.TYPE = R.REDO.CARD.SERIES.PARAM<REDO.CARD.SERIES.PARAM.CARD.TYPE>
+    LOCATE CARD.TYPE.SER IN Y.PARAM.CARD.TYPE<1,1> SETTING Y.CARD.POS ELSE
+        AF = CARD.IS.STOCK.SERIERS.ID
+        ETEXT = "EB-SERIES.PARAM"
+        CALL STORE.END.ERROR
+    END
+
+*PACS00063138-S
+
+    IF R.NEW(CARD.IS.ISSUE.NUMBER) NE '' THEN
+
+        IF R.NEW(CARD.IS.CARD.STATUS) EQ 52 AND R.NEW(CARD.IS.ISSUE.NUMBER) NE "DIFFERENT" THEN
+
+            AF = CARD.IS.ISSUE.NUMBER
+            ETEXT = "EB-LOST.CHECK"
+            CALL STORE.END.ERROR
+
+        END
+    END
+
+*PACS00063138-E
+
+
+    FETCH.CRD.STAT = R.NEW(CARD.IS.CARD.STATUS)
+    IF R.NEW(CARD.IS.APPLY.PERIOD.CHG) NE R.OLD(CARD.IS.APPLY.PERIOD.CHG) THEN
+        IF (FETCH.CRD.STAT EQ 35) OR (FETCH.CRD.STAT EQ 51) OR (FETCH.CRD.STAT EQ 52) OR (FETCH.CRD.STAT EQ 60) OR (FETCH.CRD.STAT EQ 91) OR (FETCH.CRD.STAT EQ 92) OR (FETCH.CRD.STAT EQ 93) OR (FETCH.CRD.STAT EQ 95) OR (FETCH.CRD.STAT EQ 96) OR (FETCH.CRD.STAT EQ 97) THEN
+
+            AF = CARD.IS.APPLY.PERIOD.CHG
+            ETEXT = "EB-APPLY.CHG.CHECK"
+            CALL STORE.END.ERROR
+
+        END
+    END
+    Y.CHANGE.FLD.LIST=OFS$CHANGED.FIELDS
+    Y.CHANGE.FLD.LIST=FIELDS(Y.CHANGE.FLD.LIST,':',2,1)
+    LOCATE 'CARD.STATUS' IN Y.CHANGE.FLD.LIST SETTING Y.CARD.ST.CH.POS THEN
+        IF R.NEW(CARD.IS.CARD.STATUS) EQ 90 THEN
+            AF = CARD.IS.CARD.STATUS
+            ETEXT = "ST-RTN.NOT.VALID.STATUS"
+            CALL STORE.END.ERROR
+        END
+    END
+
+RETURN
+RETURN
+
+*--------------------------------------------------------------------------------------------------------
+GET.CUSTOMER.ID:
+
+
+    CALL F.READ(FN.L.CU.CIDENT,PROSPECT.ID,R.L.CU.CIDENT,F.L.CU.CIDENT,CIDENT.ERR)
+    IF R.L.CU.CIDENT THEN
+        R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.CIDENT,"*",2)
+    END ELSE
+        CALL F.READ(FN.L.CU.NOUNICO,PROSPECT.ID,R.L.CU.NOUNICO,F.L.CU.NOUNICO,NOUN.ERR)
+        IF R.L.CU.NOUNICO THEN
+            R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.NOUNICO,"*",2)
+        END ELSE
+            CALL F.READ(FN.L.CU.RNC,PROSPECT.ID,R.L.CU.RNC,F.L.CU.RNC,RNC.ERR)
+            IF R.L.CU.RNC THEN
+                R.NEW(CARD.IS.PROSPECT.ID) = FIELD(R.L.CU.RNC,"*",2)
+            END
+        END
+    END
+
+RETURN
+*-------------------------------------------------------------------------
+
+;*Embozado  � By Santiago-end
 END

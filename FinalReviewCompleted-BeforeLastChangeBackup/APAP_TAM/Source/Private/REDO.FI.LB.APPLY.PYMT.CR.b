@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo4OTQ4MDgxMjpDcDEyNTI6MTY5MzI4NzI0NzY0MzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 29 Aug 2023 11:04:07
+* @ValidationCode : Mjo4NzE3Nzk0ODg6Q3AxMjUyOjE3MDA0ODA1OTIyMDg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Nov 2023 17:13:12
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -47,6 +47,7 @@ SUBROUTINE REDO.FI.LB.APPLY.PYMT.CR(DATA.IN,AA.ARR.ID,DATA.OUT)
 *DATE			AUTHOR					Modification                        DESCRIPTION
 *28/08/2023	 CONVERSION TOOL        AUTO R22 CODE CONVERSION			  RAD.BP is removed in insertfile
 *28/08/2023  VIGNESHWARI            MANUAL R22 CODE CONVERSION            DYN.TO.OFS Change to OFS.BUILD.RECORD
+*17-11-2023    Santosh             R22 MANUAL CONVERSION   Change as part of For TC-309/314
 *-----------------------------------------------------------------------------------------------------------------------
 *=======================================================================
 
@@ -107,13 +108,13 @@ PROCESS:
     APP.NAME     = 'FUNDS.TRANSFER'     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
     OFS.FUNCTION = 'I'
     OFS.PROCESS  = 'PROCESS'
-    OFS.VERSION  =  DATA.IN<5>
+    OFS.VERSION  =  APP.NAME:',':DATA.IN<5> ;*R22 MANUAL CONVERSION- For TC-309/314
     Y.GTSMODE    = ''
     NO.OF.AUTH   = ''
     TRANSACTION.ID = ""
     R.RECORD     =R.FUNDS.TRANSFER
     Y.OFS.STR   = ''
-    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.MSG.REQ)   ;*MANUAL R22 CODE CONVERSION-END
+    CALL OFS.BUILD.RECORD(APP.NAME, OFS.FUNCTION, OFS.PROCESS, OFS.VERSION, Y.GTSMODE, NO.OF.AUTH, TRANSACTION.ID, R.RECORD, Y.OFS.STR)   ;*MANUAL R22 CODE CONVERSION-END
     
     YWORK.CH  = COMM.USER : "//"
     YWORK.NEW = COMM.USER : "/" : COMM.PW : "/"

@@ -1,16 +1,18 @@
-* @ValidationCode : MjoxNzk4NTAzODQ4OkNwMTI1MjoxNjgyNTk4MDEwMDUwOnNhbWFyOi0xOi0xOjA6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:10
+* @ValidationCode : MjoyMDUwMjA5MjQ2OkNwMTI1MjoxNzAxMTA5OTYzNzM5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:02:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
+
+
 SUBROUTINE LATAM.CARD.ORDER.RECORD
 *--------------------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -34,6 +36,7 @@ SUBROUTINE LATAM.CARD.ORDER.RECORD
 * Date                 Who                              Reference                            DESCRIPTION
 *06-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
 *06-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*27-11-2023	        VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES     Embozado  � By Santiago
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -49,7 +52,7 @@ SUBROUTINE LATAM.CARD.ORDER.RECORD
 
 *--------------------------------------------------------------------------------------------------------
 **********
-MAIN.PARA:
+*MAIN.PARA:	;*Fix Embozado � By Santiago-Commented
 **********
     CCY.ENRICHMENT = ''
 
@@ -84,7 +87,7 @@ PROCESS.PARA:
 
     IF NOT(Y.PROCESS) AND Y.NEW.CARD THEN
 *APAP.TAM.REDO.DEFAULT.CHANNEL.ACCESS    ;* added to default channel exclusion
-        APAP.TAM.redoDefaultChannelAccess() ;*MANUAL R22 CODE CONVERSION
+        APAP.TAM.redoDefaultChannelAccess() ;*MANUAL R22 CODE CONVERSION 
         Y.PROCESS=1
         Y.NEW.CARD=0
     END
@@ -109,7 +112,6 @@ PROCESS.PARA:
     END
 
     CARD.TYPE = ''
-
     CARD.TYPE = FIELD(ID.NEW,".",1)
 
     CALL CACHE.READ('F.REDO.CARD.SERIES.PARAM','SYSTEM',R.REDO.CARD.SERIES.PARAM,PARAM.ERR)

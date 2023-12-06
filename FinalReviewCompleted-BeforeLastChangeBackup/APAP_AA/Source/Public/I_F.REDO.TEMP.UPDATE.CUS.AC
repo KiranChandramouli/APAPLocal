@@ -1,0 +1,5 @@
+* I_F.REDO.TEMP.UPDATE.CUS.AC Created 04 AUG 15 at 07:02PM by t24uatd/INPUTTER
+*      PREFIX[REDO.RG]
+              EQU REDO.RG.AC.ID TO 1,   RedoTempUpdateCusAc_AcId TO 1,
+                REDO.RG.AC.DATE TO 2,   RedoTempUpdateCusAc_AcDate TO 2,
+              REDO.RG.SAME.CUST TO 3,   RedoTempUpdateCusAc_SameCust TO 3

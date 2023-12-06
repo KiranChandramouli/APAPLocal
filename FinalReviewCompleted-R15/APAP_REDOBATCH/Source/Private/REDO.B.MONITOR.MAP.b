@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTUzMjAzODU0MjpDcDEyNTI6MTY5MDI2NDQxNTg4ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:35
+* @ValidationCode : MjotOTQxMDcxMzg4OkNwMTI1MjoxNzAxMTA5NjM2MTQzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:57:16
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,9 +8,10 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
+
 SUBROUTINE REDO.B.MONITOR.MAP(MSG.ID)
 *
 *--------------------------------------------------------------------------------------
@@ -20,7 +21,7 @@ SUBROUTINE REDO.B.MONITOR.MAP(MSG.ID)
 * Date                   who                   Reference
 * 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - FM TO @FM AND VM TO @VM AND CONVERT TO CHANGE
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
-*
+*27-11-2023	      VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-11542 | MONITOR  � By Santiago
 *-------------------------------------------------------------------------------------
 *
     $INSERT I_COMMON
@@ -29,6 +30,7 @@ SUBROUTINE REDO.B.MONITOR.MAP(MSG.ID)
     $INSERT I_F.REDO.MONITOR.TABLE
     $INSERT I_TSS.COMMON
     $USING APAP.REDOCHNLS
+    $USING APAP.LAPAP	;*Fix SQA-11542 | MONITOR � By Santiago-new lines added
 *
 *----------------------------------------------------------------------------------------
 *
@@ -84,7 +86,7 @@ MAIN.PROCESSING:
             CHANGE Y.PIPE TO @FM IN R.RESPONSE  ;*R22 AUTO CONVERSTION CONVERT TO CHANGE AND = TO EQ
 
             GOSUB PREPARE.MSG
-
+            
             IF R.RESULT NE '' THEN
                 CHANGE @VM TO '@vm' IN  R.RESULT<1>
                 CHANGE @VM TO '@vm' IN  R.RESULT<2>
@@ -128,19 +130,32 @@ GET.MAPPING.VALUES:
     MAP.FMT = 'MAP'
     ID.RCON.L = Y.MAPPING.ID
     APP = ''
-    ID.APP = ''
+    ID.APP = R.MSG<1>	;*Fix SQA-11542 | MONITOR � By Santiago-changed "''" to "R.MSG<1>"
     R.APP = R.MSG
     R.RETURN.MSG = ''
     ERR.MAPPING = ''
+;*Fix SQA-11542 | MONITOR � By Santiago-new lines added -start
+*    MAP.FMT = 'MAP'  ;*SJ
+    MAP.FMT  = 'O'
+    ID.RCON.L = Y.MAPPING.ID
+    APP = 'F.':FIELD(Y.MAPPING.ID,'/',1)
+    ID.APP = Y.RECORD.ID
+    
+    R.RETURN.MSG = ''
+    ERR.MAPPING = ''
+    
+    Y.FN.APP = 'F.':FIELD(Y.MAPPING.ID,'/',1)
+    Y.F.APP  = ''
+    CALL OPF(Y.FN.APP,Y.F.APP)
+    CALL F.READ(Y.FN.APP,Y.RECORD.ID,R.APP,Y.F.APP,Y.ERR)
 
-    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, ID.RCON.L, APP, ID.APP, R.APP, R.RETURN.MSG, ERR.MAPPING)
-
-
-
+*    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, ID.RCON.L, APP, ID.APP, R.APP, R.RETURN.MSG, ERR.MAPPING) ;*SJ
+    APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT, ID.RCON.L, APP, ID.APP, R.APP, R.RETURN.MSG, ERR.MAPPING)
+;*Fix SQA-11542 | MONITOR � By Santiago-end
 RETURN
 *-----------------------------------------------------------------------------------
 PREPARE.MSG:
-
+    
 * Getting name of monitor table
     Y.MNEM.MON.TABLE = FIELD(Y.MAPPING.ID, '/', 2)
 
@@ -206,7 +221,7 @@ PREPARE.MSG:
                 Y.VALUES = Y.VALUES : ',' : Y.VALUE.SQL
             END
         NEXT Y.CNT
-
+        
         IF R.RESULT NE '' THEN
             R.RESULT<4> = Y.ID.TABLE
             R.RESULT<10> = 'insert into ' : Y.ID.TABLE : '(' : Y.FIELDS : ') values (' : Y.VALUES : ');'
@@ -238,7 +253,7 @@ LOG.ERROR:
         CASE ERR.TYPE EQ 'ERROR'
             MON.TP = '08'
             CALL F.WRITE(FN.REDO.MON.MAP.QUEUE.ERR, MSG.ID, R.MSG)
-            CALL F.DELETE(FN.REDO.MON.MAP.QUEUE, MSG.ID)
+*//////////////////////////////            CALL F.DELETE(FN.REDO.MON.MAP.QUEUE, MSG.ID)  ///////////////////	;*Fix SQA-11542 | MONITOR � By Santiago-commented
     END CASE
 
 

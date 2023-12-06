@@ -31,6 +31,7 @@ SUBROUTINE REDO.V.TEMP.CREDIT.VP
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *13-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM VM TO @VM,IF CONDITION ADDED
 *13-04-2023              Samaran T                R22 Manual Code conversion                         CALL ROUTINE FORMAT MODIFIED
+*20-11-2023          Santosh			  Intrface Change comment added           Vision Plus-Interface Changes done by Santiago
 *-----------------------------------------------------------------------------------------------------------------------------
 * <region name="INSERTS">
 
@@ -177,40 +178,53 @@ INVOKE.VP.WS.CB:
     WS.DATA<3> = Y.CHANNEL
 
 * Invoke VisionPlus Web Service
-
+*Interface Changes done by Santiago- Start
 *CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
     APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)   ;*R22 MANUAL CODE CONVERSION
+    
+* Values returned from visionplus
+* 1.Pv_NumeroTarjeta, 2.Pv_NumeroCuenta, 3.Pn_balanceCorteRD, 4.Pn_balanceCorteUS, 5.Pn_pago_minimoRD, 6.Pn_pago_minimoUS, 7.Pd_Fecha_de_pago,
+* 8.Estado_tarjeta, 9.Estado_cuenta, 10.Pv_Titular, 11.Pi_Codigo_Cliente, 12.Pv_NumeroDocumento, 13.Pv_DescripcionDocumento, 14.Pv_Tipo_Tarjeta,
+* 15.Pn_limite_de_creditoRD, 16.Pn_limite_de_creditoUS, 17.Pn_Saldo_AnteriorRD, 18.Pn_Saldo_AnteriorUS, 19.Pn_monto_ultimo_pagoRD,
+* 20.Pn_monto_ultimo_pagoUS, 21.Pd_Fecha_ultimo_pagoRD, 22.Pd_Fecha_ultimo_pagoUS, 23.Pn_Cuotas_VencidasRD, 24.Pn_Cuotas_VencidasUS,
+* 25.Pn_Importe_VencidoRD, 26.Pn_Importe_VencidoUS, 27.Pn_Saldo_ActualRD, 28.Pn_Saldo_ActualUS, 29.Pn_credito_disponibleRD, 30.Pn_credito_disponibleUS,
+* 31.Pn_SobregiroRD, 32.Pn_SobregiroUS, 33.Pd_fecha_ult_estcta, 34.ID_Comportamiento, 35.Pi_CodigoMensaje, 36.Pv_DescripcionMensaje,
 
 * Credit Card exits - Info obtained OK
-    IF WS.DATA<1> EQ 'OK' THEN
+    IF WS.DATA<35> EQ 0 THEN
 * Credit Card Account
-        R.NEW(FT.TN.L.FT.CR.ACCT.NO) = WS.DATA<3>[4,16]
+        R.NEW(FT.TN.L.FT.CR.ACCT.NO) = RIGHT(WS.DATA<2>,16)
 * Bal In Local Curncy
-        R.NEW(FT.TN.L.FT.BAL.IN.LCY) = WS.DATA<28>
+        R.NEW(FT.TN.L.FT.BAL.IN.LCY) = WS.DATA<3>
 * Bal In Usd
-        R.NEW(FT.TN.L.FT.BAL.IN.USD) = WS.DATA<29>
+        R.NEW(FT.TN.L.FT.BAL.IN.USD) = WS.DATA<4>
 * Min Pay Local Curncy
-        R.NEW(FT.TN.L.FT.MINPAY.LCY) = WS.DATA<6> + WS.DATA<26>
+        R.NEW(FT.TN.L.FT.MINPAY.LCY) = WS.DATA<5>
 * Minimum Pay Usd
-        R.NEW(FT.TN.L.FT.MINPAY.USD) = WS.DATA<7> + WS.DATA<27>
+        R.NEW(FT.TN.L.FT.MINPAY.USD) = WS.DATA<6>
 * Payment Due Date
-        R.NEW(FT.TN.L.FT.PAY.DUE.DT) = WS.DATA<8>
+        Y.PAY.DATE =''
+        Y.PAY.DATE = FIELD(WS.DATA<7>,'T',1)
+        CHANGE '-' TO '' IN Y.PAY.DATE
+        R.NEW(FT.TN.L.FT.PAY.DUE.DT) = TRIM(Y.PAY.DATE)
 
         GOSUB CHECK.STATUS
 
 * Card Holder Name
-        R.NEW(FT.TN.L.FT.CLIENT.NME) = WS.DATA<11>
+        R.NEW(FT.TN.L.FT.CLIENT.NME) = WS.DATA<10>
 * Client Code
-        Y.GET.CC.CODE = FIELD(WS.DATA<12>,'/',1)
-        Y.GET.CC.CODE = TRIM(Y.GET.CC.CODE,'0','L')
+        Y.GET.CC.CODE = FIELD(WS.DATA<11>,'/',1)
+        Y.GET.CC.CODE = Y.GET.CC.CODE * 1
         R.NEW(FT.TN.FT.CLIENT.COD) = Y.GET.CC.CODE
 * Numero Identificacion
-        R.NEW(FT.TN.L.FT.DOC.NUM) = WS.DATA<13>
+        R.NEW(FT.TN.L.FT.DOC.NUM) = WS.DATA<12>
 * Tipo de Identificacion
-        Y.TIPO.DOC = WS.DATA<14>
+        Y.TIPO.DOC = TRIM(WS.DATA<13>)
+        CHANGE '-' TO '' IN Y.TIPO.DOC
         IF Y.TIPO.DOC THEN
-            R.NEW(FT.TN.L.FT.DOC.DESC) = WS.DATA<14>
+            R.NEW(FT.TN.L.FT.DOC.DESC) = TRIM(Y.TIPO.DOC)
         END ELSE
+*Interface Changes done by Santiago- End	
 * TODO Confirmar - Default temporal
             R.NEW(FT.TN.L.FT.DOC.DESC) = "CEDULA"
         END
@@ -219,14 +233,16 @@ INVOKE.VP.WS.CB:
         R.NEW(FT.TN.L.FT.MSG.CODE) = ''
 
 * Vplus Internal Credit Card Number
-        R.NEW(FT.TN.L.SUN.SEQ.NO) = COMI
-        Y.CC.CARD.VAL = COMI:' - ':WS.DATA<12>:' - ':WS.DATA<11>
+        R.NEW(FT.TN.L.SUN.SEQ.NO) = RIGHT(WS.DATA<1>,16) ;*Interface Changes done by Santiago
+*        Y.CC.CARD.VAL = COMI:' - ':WS.DATA<12>:' - ':WS.DATA<11>        aqui me quede
+        Y.CC.CARD.VAL = WS.DATA<1>:' - ':WS.DATA<11>:' - ':WS.DATA<10> ;*Interface Changes done by Santiago
+        
 * Enmask CC Number
         COMI = COMI[1,6] : '******' : COMI[13,4]
 
         R.NEW(FT.TN.L.FT.CR.CARD.NO) = COMI
 
-        ID.COMPORTAMIENTO = WS.DATA<35>
+        ID.COMPORTAMIENTO = WS.DATA<34> ;*Interface Changes done by Santiago
 
 * Fix for PACS00424073 [ACH Vision Plus Payment]
 
@@ -320,8 +336,8 @@ WS.NOT.OK:
 * Tipo de Identificacion
     R.NEW(FT.TN.L.FT.DOC.DESC) = ''
 * Msg Det
-    R.NEW(FT.TN.L.FT.MSG.DESC) = FIELD(WS.DATA<2>,' - ',2)
-    R.NEW(FT.TN.L.FT.MSG.CODE) = FIELD(WS.DATA<2>,' - ',1)
+    R.NEW(FT.TN.L.FT.MSG.DESC) = WS.DATA<35> ;*Interface Changes done by Santiago
+    R.NEW(FT.TN.L.FT.MSG.CODE) = WS.DATA<36> ;*Interface Changes done by Santiago
     IF NOT(R.NEW(FT.TN.L.FT.MSG.CODE)) OR R.NEW(FT.TN.L.FT.MSG.CODE) EQ 'OFFLINE'  THEN
         R.NEW(FT.TN.L.FT.MSG.CODE) = "000000"
     END

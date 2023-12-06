@@ -1,16 +1,17 @@
-* @ValidationCode : MjoxNDAwMjIzMDA0OkNwMTI1MjoxNjg1NTQ5NTI4ODQ4OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 31 May 2023 21:42:08
+* @ValidationCode : MjotNTY5NTc2MzYwOkNwMTI1MjoxNzAxMTA5NDg0NjgzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:54:44
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 * @(#) L.APAP.RTN.VAL.REST.LIST Ported to jBASE 16:16:59  28 NOV 2017
 *-----------------------------------------------------------------------------
 SUBROUTINE L.APAP.RTN.VAL.REST.LIST
@@ -20,12 +21,15 @@ SUBROUTINE L.APAP.RTN.VAL.REST.LIST
 *  DATE             WHO                   REFERENCE
 * 21-APRIL-2023      Conversion Tool       R22 Auto Conversion  - REM to DISPLAY.MESSAGE
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - CALL routine format modified
+* 27-11-2023	     VIGNESHWARI           ADDED COMMENT FOR INTERFACE CHANGES-SQA-11864 & SQA-11869 � By Santiago
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
+    $INSERT I_System	;*Fix SQA-11864 & SQA-11869 - By Santiago-NEW insert added
     $INSERT I_ENQUIRY.COMMON
     $INSERT I_F.REDO.ID.CARD.CHECK
     $INSERT I_F.CUSTOMER
+    $INSERT I_SCREEN.VARIABLES	;*Fix SQA-11864 & SQA-11869 - By Santiago-New insert added
 
     Y.NUMERO.DOC = COMI
 
@@ -57,8 +61,7 @@ SUBROUTINE L.APAP.RTN.VAL.REST.LIST
 
     APP.NOTIFY      = "RESTRICTIVA"
     IF RL.SELECTED GT 0 THEN
-        APAP.LAPAP.lapapPlafIntListTr(Y.NUMERO.DOC);* R22 Manual conversion
-        
+        APAP.LAPAP.lapapPlafIntListTr(Y.NUMERO.DOC);* R22 Manual conversion        
         TEXT = "PERSONA EN LISTA RESTRICTIVA T24"
         ETEXT = TEXT
         E = TEXT
@@ -99,10 +102,13 @@ SUBROUTINE L.APAP.RTN.VAL.REST.LIST
 * Rutina previamente invocada por la version
 *CALL REDO.DEF.CUSTOMER.TYPE
         APAP.LAPAP.lapapDefCustomerType() ;*R22 Manual Conversion
+        
+        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = System.getVariable("CURRENT.FULL.NAME")	;*Fix SQA-11864 & SQA-11869 � By Santiago-new line added
+        
         IF R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) EQ 'NO CLIENTE APAP' THEN
             TEXT = 'NO ES CLIENTE APAP, LLENAR CAMPOS CLIENTE OCASIONAL'
-            CALL DISPLAY.MESSAGE(TEXT, '')  ;*R22 Auto Conversion  - REM to DISPLAY.MESSAGE
-
+            CALL REM	;*Fix SQA-11864 & SQA-11869 � By Santiago-new line added
+*            CALL DISPLAY.MESSAGE(TEXT, '')  ;*R22 Auto Conversion  - REM to DISPLAY.MESSAGE	;*Fix SQA-11864 & SQA-11869 � By Santiago-Commented
             APAP.LAPAP.lapapOcusSetRt();* R22 Manual conversion
         END ELSE
 *Call check record routine to set occasional cus. fields as no input.

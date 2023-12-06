@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTI1NTM3NTIwMzpDcDEyNTI6MTY5MDI2NDQxNTkwNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:35
+* @ValidationCode : Mjo2MTY4NDU0ODc6Q3AxMjUyOjE3MDExMDk2MzYxNzU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:57:16
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,9 +8,10 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
+
 SUBROUTINE REDO.B.MONITOR.SHIP.LOAD
 *
 *
@@ -23,6 +24,7 @@ SUBROUTINE REDO.B.MONITOR.SHIP.LOAD
 * Date                  who                   Reference
 * 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION = TO EQ
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+*27-11-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-11542 | MONITOR  – By Santiago-No changes
 *--------------------------------------------------------------------------
 *
     $INSERT I_COMMON
@@ -45,8 +47,6 @@ RETURN
 *
 *--------------------------------------------------------------------------
 DO.PROCESS:
-*DEBUG
-
 
     className = classNameConn
     methodName = methodNameConn
@@ -70,8 +70,6 @@ RETURN
 
 *--------------------------------------------------------------------------
 GET.DATA.CONNECTION:
-
-*DEBUG
 
 * Example string of connection
 *CONNECT_INFO = "jdbc:sqlserver://10.12.0.73:1433;databaseName=REDOMONITOR;integratedSecurity=false;"

@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo4Nzg1OTEzOTE6Q3AxMjUyOjE3MDA0Nzk4Njc1NzA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:01:07
+* @ValidationCode : MjoxMTg4NDc1MzczOkNwMTI1MjoxNzAxMTA5NTIzNDA1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:55:23
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 
 SUBROUTINE REDO.LAPAP.DEF.CUST.TYPE
 *--------------------------------------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ SUBROUTINE REDO.LAPAP.DEF.CUST.TYPE
 *21/04/2023         SURESH           MANUAL R22 CODE CONVERSION          CALL routine format modified
 *06/10/2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      NO CHANGES
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        Padron   � By Santiago
 *-----------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON 	;*AUTO R22 CODE CONVERSION - START
@@ -233,57 +235,57 @@ CHECK.RNC.NON.APAP.OLD:	;*Interface Change by Santiago-CHANGED "CHECK.RNC.NON.AP
 *---------------------------------------------------------------------------------------------------------------
 * APAP Customer RNC check to get customer name
 *
-    Cedule      = "rnc$":RNC.NUMBER
-    Param1      = "com.padrone.ws.util.MainClass"
-    Param2      = "callPadrone"
-    Param3      = Cedule
-    Ret         = ""
-    ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM = Cedule
-    ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
-    IF ERROR.CODE THEN
-        ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
-        CALL STORE.END.ERROR
-    END ELSE
-        Ret=INPUT_PARAM
-    END
+Cedule      = "rnc$":RNC.NUMBER
+Param1      = "com.padrone.ws.util.MainClass"
+Param2      = "callPadrone"
+Param3      = Cedule
+Ret         = ""
+ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM = Cedule
+ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
+IF ERROR.CODE THEN
+    ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
+    CALL STORE.END.ERROR
+END ELSE
+    Ret=INPUT_PARAM
+END
 * Processing if the customer provides RNC for identity
-    IF Ret NE "" THEN
-        RNC.RESULT = Ret
-        CHANGE '$' TO '' IN RNC.RESULT
-        CHANGE '#' TO @FM IN RNC.RESULT
-        RNC.RESULT.ERR = RNC.RESULT<1>
-        CHANGE '::' TO @FM IN RNC.RESULT.ERR
-        IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
-            CUSTOMER.FULL.NAME = RNC.RESULT<2>
-            CLIENTE.APAP = "NO CLIENTE APAP"
+IF Ret NE "" THEN
+    RNC.RESULT = Ret
+    CHANGE '$' TO '' IN RNC.RESULT
+    CHANGE '#' TO @FM IN RNC.RESULT
+    RNC.RESULT.ERR = RNC.RESULT<1>
+    CHANGE '::' TO @FM IN RNC.RESULT.ERR
+    IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
+        CUSTOMER.FULL.NAME = RNC.RESULT<2>
+        CLIENTE.APAP = "NO CLIENTE APAP"
 
 * Fix for PACS00306447 [CURRENT VARIABLE ISSUE #2]
 
-            R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
+        R.NEW(REDO.CUS.PRF.VAR.CLIENT) = CLIENTE.APAP
 
 *            CALL System.setVariable("CURRENT.CLIENTE.APAP",CLIENTE.APAP)
 
-            R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
-            R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
-            RNC.CUST.ID = ""
-            GOSUB GET.RNC.CUST.ID       ;* PACS00153528 - S/E
-            VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
+        R.NEW(REDO.CUS.PRF.CUSTOMER.TYPE) = "NO CLIENTE APAP"
+        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = CUSTOMER.FULL.NAME
+        RNC.CUST.ID = ""
+        GOSUB GET.RNC.CUST.ID       ;* PACS00153528 - S/E
+        VAR.DETAILS = "RNC*":RNC.NUMBER:"*":CUSTOMER.FULL.NAME:"*":RNC.CUST.ID
 
-            R.NEW(REDO.CUS.PRF.VAR.NV.INFO) = VAR.DETAILS
+        R.NEW(REDO.CUS.PRF.VAR.NV.INFO) = VAR.DETAILS
 
 *            CALL System.setVariable("CURRENT.VAR.DETAILS",VAR.DETAILS)
 
 * End of Fix
 
-            RETURN
-        END
-        GOSUB CHECK.NON.RNC
-    END ELSE
-        MON.TP = '08'
-        DESC = 'El webservices no esta disponible'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*MANUAL R22 CODE CONVERSION
+        RETURN
     END
+    GOSUB CHECK.NON.RNC
+END ELSE
+    MON.TP = '08'
+    DESC = 'El webservices no esta disponible'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*MANUAL R22 CODE CONVERSION
+END
 RETURN
 ;*Interface Change by Santiago-NEW LINES ADDED-START
 *-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -291,7 +293,7 @@ CHECK.RNC.NON.APAP:
 *---------------------------------------------------------------------------------------------------------------
 * APAP Customer RNC check to get customer name
 *
-    Cedule      = RNC.NUMBER
+    Cedule      = TRIM(RNC.NUMBER)          ;* adding TRIM for all padron ws ;*Fix Padron � By Santiago- changed "RNC.NUMBER" to "TRIM(RNC.NUMBER)"
     Y.INTRF.ID = 'REDO.PADRON.JURIDICO'
     R.PAD.WS<PAD.WS.CEDULA> = Cedule
     Y.RESPONSE = ''
@@ -368,7 +370,7 @@ CHECK.NON.RNC:
     ETEXT = "EB-INCORRECT.RNC.NUMBER"
     CALL STORE.END.ERROR
 *GOSUB PGM.END	;*Interface Change by Santiago-commented
- *   END	;*Interface Change by Santiago-commented
+*   END	;*Interface Change by Santiago-commented
 RETURN
 *------------------------------------------------------------------------------------------------------------------------------------------------
 GET.RNC.CUST.ID:

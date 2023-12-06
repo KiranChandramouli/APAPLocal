@@ -28,7 +28,8 @@ SUBROUTINE REDO.VP.CC.PAYMENT(ALLOW.OFFLINE, TXN.RESULT)
 * 1.0       05.17.2013     lpazmino       -                 Initial Version
 *           11.04.2023   Conversion Tool       R22          Auto Conversion     - VM TO @VM, New condition added
 *           11.04.2023   Shanmugapriya M       R22          Manual Conversion   - Add call routine prefix
-*
+*           20.11.2023   Santosh               R22          Interface Changes done by Santiago
+
 *-----------------------------------------------------------------------------
 * Input:
 *        TXN.CHANNEL   > Transaction Channel
@@ -118,7 +119,7 @@ PROCESS:
     END CASE
 
     VMSG.CODE = R.NEW(Y.LOCAL.REF)<1,MSG.CODE.POS>
-*DEBUG
+    
     IF NOT(R.NEW(Y.LOCAL.REF)<1,MSG.CODE.POS>) THEN
         GOSUB INVOKE.VP.WS.OP
     END
@@ -129,7 +130,6 @@ RETURN
 * Get Teller information
 GET.TT.FIELDS:
 *************************
-*DEBUG
     CALL MULTI.GET.LOC.REF(APPLICATION, Y.LOCAL.FIELDS, Y.LOCAL.FIELDS.POS)
 
     CR.CARD.NO.POS = Y.LOCAL.FIELDS.POS<1,1>
@@ -203,31 +203,48 @@ INVOKE.VP.WS.OP:
     FINDSTR 'EB-UNKNOWN.VARIABLE' IN E<1,1> SETTING POS.FM.OVER THEN
         DEL E<POS.FM.OVER>
     END
+*Interface Changes done by Santiago- Start
+
+*    WS.DATA = ''
+*    WS.DATA<1>  = 'ONLINE_PAYMENT'
+*    WS.DATA<2>  = R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.USER>
+*    WS.DATA<3>  = 'C'
+*    WS.DATA<4>  = FMT(CREDIT.CARD, 'R%19')
+*    WS.DATA<7>  = '0000'
+*    WS.DATA<8>  = TXN.PAYMENT.AMT
+*    WS.DATA<9>  = '0000'
+*    WS.DATA<10> = '                             '
+*    WS.DATA<11> = '000'
 
     WS.DATA = ''
     WS.DATA<1>  = 'ONLINE_PAYMENT'
-    WS.DATA<2>  = R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.USER>
-    WS.DATA<3>  = 'C'
-    WS.DATA<4>  = FMT(CREDIT.CARD, 'R%19')
-    WS.DATA<7>  = '0000'
-    WS.DATA<8>  = TXN.PAYMENT.AMT
-    WS.DATA<9>  = '0000'
-    WS.DATA<10> = '                             '
-    WS.DATA<11> = '000'
+    WS.DATA<2>  = R.REDO.VISION.PLUS.PARAM<VP.PARAM.VP.USER>        ;*POSUserData
+    WS.DATA<3>  = '0000'                                            ;*MCCType
+    WS.DATA<4>  = 'C'                                               ;*RequestType
+    WS.DATA<5>  = FMT(CREDIT.CARD, 'R%19')                          ;*CardNumber
+*    WS.DATA<6>  = ORG.ID
+*    WS.DATA<7>  = MERCHANT.NUMBER
+    WS.DATA<8>  = '0000'                                            ;*CardExpirationDate
+    WS.DATA<9>  = TXN.PAYMENT.AMT                                  ;*TotalSalesAmount
+    WS.DATA<10>  = '0000'                                           ;*Track2Length
+    WS.DATA<11> = '                             '                   ;*Track2Data
+    WS.DATA<12> = '000'                                             ;*CardValidationValue
 
+*Interface Changes done by Santiago- End
     CREDIT.CARD.BIN = CREDIT.CARD[1,6]
     CALL CACHE.READ(FN.REDO.CARD.BIN, CREDIT.CARD.BIN, R.REDO.CARD.BIN, Y.ERR)
-
+    
     LOCATE TXN.CURRENCY IN R.REDO.CARD.BIN<REDO.CARD.BIN.T24.CURRENCY,1> SETTING TXN.CURRENCY.POS THEN
 * OrgId
         ORG.ID = FIELD(R.REDO.CARD.BIN<REDO.CARD.BIN.ORG.ID>,@VM,TXN.CURRENCY.POS)
-        WS.DATA<5> = ORG.ID
+        WS.DATA<6> = ORG.ID ;*Interface Changes done by Santiago
 * Mercant Number
         MERCHANT.NUMBER = R.REDO.CARD.BIN<REDO.CARD.BIN.MERCHANT.NUMBER>
-        WS.DATA<6> = MERCHANT.NUMBER
+        WS.DATA<7> = MERCHANT.NUMBER ;*Interface Changes done by Santiago
 *CALL REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 ** R22 Manual conversion
         APAP.TAM.redoVpWsConsumer(ACTIVATION, WS.DATA)
+        
         CRT "WS.DATA: " WS.DATA
     END ELSE
         WS.DATA = ''

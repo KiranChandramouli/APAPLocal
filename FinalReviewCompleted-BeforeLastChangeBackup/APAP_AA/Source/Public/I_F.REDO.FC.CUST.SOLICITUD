@@ -1,0 +1,3 @@
+* I_F.REDO.FC.CUST.SOLICITUD Created 09 MAY 11 at 11:17PM by r10/AUTHORISER
+*      PREFIX[FC.CUS.SOL]
+           EQU FC.CUS.SOL.FCSOL.ID TO 1,   RedoFcCustSolicitud_FcsolId TO 1

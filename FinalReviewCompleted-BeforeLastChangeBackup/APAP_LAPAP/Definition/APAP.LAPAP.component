@@ -9168,10 +9168,10 @@ public method lApapMaskAccount (
 
 
 public method drReg213if01RteExtract (
-   INOUT recId string
+    INOUT recId string
 )
 {
-   jBC: DR.REG.213IF01.RTE.EXTRACT
+    jBC: DR.REG.213IF01.RTE.EXTRACT
 }
 
 
@@ -9179,7 +9179,7 @@ public method drReg213if01RteExtract (
 public method drReg213if01RteExtractLoad (
 )
 {
-   jBC: DR.REG.213IF01.RTE.EXTRACT.LOAD
+    jBC: DR.REG.213IF01.RTE.EXTRACT.LOAD
 }
 
 
@@ -9187,7 +9187,7 @@ public method drReg213if01RteExtractLoad (
 public method drReg213if01RteExtractPost (
 )
 {
-   jBC: DR.REG.213IF01.RTE.EXTRACT.POST
+    jBC: DR.REG.213IF01.RTE.EXTRACT.POST
 }
 
 
@@ -9195,7 +9195,7 @@ public method drReg213if01RteExtractPost (
 public method drReg213if01RteExtractSelect (
 )
 {
-   jBC: DR.REG.213IF01.RTE.EXTRACT.SELECT
+    jBC: DR.REG.213IF01.RTE.EXTRACT.SELECT
 }
 
 
@@ -9203,6 +9203,53 @@ public method drReg213if01RteExtractSelect (
 public method lapapAutEpTtprocessRt (
 )
 {
-   jBC: LAPAP.AUT.EP.TTPROCESS.RT
+    jBC: LAPAP.AUT.EP.TTPROCESS.RT
+}
+
+
+
+public method lApapMonAccBenRegMask (
+)
+{
+    jBC: L.APAP.MON.ACC.BEN.REG.MASK
+}
+
+
+
+public method lapapAzAcPrecRecRoRt (
+)
+{
+    jBC: LAPAP.AZ.AC.PREC.REC.RO.RT
+}
+
+
+
+public method lapapAzAcPrecValPenalPcnt (
+)
+{
+    jBC: LAPAP.AZ.AC.PREC.VAL.PENAL.PCNT
+}
+
+
+public method lapapMatrixFileSelector (
+)
+{
+    jBC: LAPAP.MATRIX.FILE.SELECTOR
+}
+
+
+
+public method lapapPrecRoSelectRt (
+)
+{
+    jBC: LAPAP.PREC.RO.SELECT.RT
+}
+
+
+
+public method lapapCustCheckRelation (
+)
+{
+   jBC: LAPAP.CUST.CHECK.RELATION
 }
 

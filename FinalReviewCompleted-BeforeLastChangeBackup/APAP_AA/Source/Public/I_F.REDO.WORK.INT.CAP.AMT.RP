@@ -1,0 +1,5 @@
+* I_F.REDO.WORK.INT.CAP.AMT.RP Created 07 FEB 12 at 03:43PM by apap/MARI.1
+*      PREFIX[REDO.RP.AMT]
+      EQU REDO.RP.AMT.INTEREST.TEXT TO 1,   RedoWorkIntCapAmtRp_InterestText TO 1,
+           REDO.RP.AMT.CAPITAL.TEXT TO 2,   RedoWorkIntCapAmtRp_CapitalText TO 2,
+                  REDO.RP.AMT.ENTRY TO 3,   RedoWorkIntCapAmtRp_Entry TO 3

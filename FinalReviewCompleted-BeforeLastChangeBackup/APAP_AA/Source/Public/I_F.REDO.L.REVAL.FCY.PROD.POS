@@ -1,0 +1,21 @@
+* I_F.REDO.L.REVAL.FCY.PROD.POS Created 24 JAN 12 at 06:11PM by t24preu2/TEM.VPANCHI.01
+*      PREFIX[REV.PROD.POS]
+       EQU REV.PROD.POS.PRODUCT.CODE TO 1,   RedoLRevalFcyProdPos_ProductCode TO 1,
+           REV.PROD.POS.CCY.POSITION TO 2,   RedoLRevalFcyProdPos_CcyPosition TO 2,
+             REV.PROD.POS.USD.AMOUNT TO 3,   RedoLRevalFcyProdPos_UsdAmount TO 3,
+           REV.PROD.POS.REV.PL.CATEG TO 4,   RedoLRevalFcyProdPos_RevPlCateg TO 4,
+        REV.PROD.POS.ACCOUNT.OFFICER TO 5,   RedoLRevalFcyProdPos_AccountOfficer TO 5,
+             REV.PROD.POS.RESERVED.5 TO 6,   RedoLRevalFcyProdPos_Reserved5 TO 6,
+             REV.PROD.POS.RESERVED.4 TO 7,   RedoLRevalFcyProdPos_Reserved4 TO 7,
+             REV.PROD.POS.RESERVED.3 TO 8,   RedoLRevalFcyProdPos_Reserved3 TO 8,
+             REV.PROD.POS.RESERVED.2 TO 9,   RedoLRevalFcyProdPos_Reserved2 TO 9,
+             REV.PROD.POS.RESERVED.1 TO 10,  RedoLRevalFcyProdPos_Reserved1 TO 10,
+          REV.PROD.POS.RECORD.STATUS TO 11,  RedoLRevalFcyProdPos_RecordStatus TO 11,
+                REV.PROD.POS.CURR.NO TO 12,  RedoLRevalFcyProdPos_CurrNo TO 12,
+               REV.PROD.POS.INPUTTER TO 13,  RedoLRevalFcyProdPos_Inputter TO 13,
+              REV.PROD.POS.DATE.TIME TO 14,  RedoLRevalFcyProdPos_DateTime TO 14,
+             REV.PROD.POS.AUTHORISER TO 15,  RedoLRevalFcyProdPos_Authoriser TO 15,
+                REV.PROD.POS.CO.CODE TO 16,  RedoLRevalFcyProdPos_CoCode TO 16,
+              REV.PROD.POS.DEPT.CODE TO 17,  RedoLRevalFcyProdPos_DeptCode TO 17,
+           REV.PROD.POS.AUDITOR.CODE TO 18,  RedoLRevalFcyProdPos_AuditorCode TO 18,
+        REV.PROD.POS.AUDIT.DATE.TIME TO 19,  RedoLRevalFcyProdPos_AuditDateTime TO 19

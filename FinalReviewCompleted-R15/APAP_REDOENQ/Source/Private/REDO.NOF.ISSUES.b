@@ -1,5 +1,5 @@
-$PACKAGE APAP.REDOENQ
-SUBROUTINE REDO.NOF.ISSUES(Y.FIN.ARR)
+    $PACKAGE APAP.REDOENQ
+    SUBROUTINE REDO.NOF.ISSUES(Y.FIN.ARR)
 *--------------------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 *Developed By      : Temenos Application Management
@@ -20,8 +20,9 @@ SUBROUTINE REDO.NOF.ISSUES(Y.FIN.ARR)
 * 21 MAR 2011     MARIMUTHU S          ODR-2010-12-0244          CHANGES MADE
 * 08-09-2011      MANJU.G              PACS00104863              Change ON TIME to ON.TIME
 * 10 May 2015    Ashokkumar.V.P        PACS00348153              Change to display in correct format
-* 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - VM to @VM , FM to @FM , ++ to += and SM to @SM 
+* 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - VM to @VM , FM to @FM , ++ to += and SM to @SM
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+* 24-NOV-2023        Edwin                 R22 Manual Conversion
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -66,7 +67,7 @@ SUBROUTINE REDO.NOF.ISSUES(Y.FIN.ARR)
     Y.LABEL := @FM:"____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
     Y.LABEL := "_________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
     Y.FIN.ARR = Y.LABEL:@FM:Y.FIN.ARR
-RETURN
+    RETURN
 *------------------------------------------------------------------------------
 ******
 INIT:
@@ -106,7 +107,7 @@ INIT:
     Y.EL.ID = "CM.STATUS"
     Y.SUP.GRP.ID = 'SUPPORT.GROUP'
     Y.OPN.CHL.ID = 'OPENING.CHANNEL'
-RETURN
+    RETURN
 *------------------------------------------------------------------------------
 *****************************
 GET.SELECTION:
@@ -118,29 +119,29 @@ GET.SELECTION:
         GOSUB SELECT.CASE
     END
     GOSUB LOCATE.FIELDS
-RETURN
+    RETURN
 
 ************
 SELECT.CASE:
 ************
     BEGIN CASE
-        CASE Y.TYPE EQ 'RECLAMACION'
-            SEL.CMD = "SELECT ":FN.REDO.ISSUE.CLAIMS:" WITH TYPE EQ ": Y.TYPE
-            Y.APPL = FN.REDO.ISSUE.CLAIMS
-            Y.RECLAMACION.FLAG = '1'
+    CASE Y.TYPE EQ 'RECLAMACION'
+        SEL.CMD = "SELECT ":FN.REDO.ISSUE.CLAIMS:" WITH TYPE EQ ": Y.TYPE
+        Y.APPL = FN.REDO.ISSUE.CLAIMS
+        Y.RECLAMACION.FLAG = '1'
 
-        CASE Y.TYPE EQ 'QUEJAS'
-            SEL.CMD = "SELECT ":FN.REDO.ISSUE.COMPLAINTS:" WITH TYPE EQ ":Y.TYPE
-            Y.APPL = FN.REDO.ISSUE.COMPLAINTS
-            Y.INTERACCION.FLAG = '1'
+    CASE Y.TYPE EQ 'QUEJAS'
+        SEL.CMD = "SELECT ":FN.REDO.ISSUE.COMPLAINTS:" WITH TYPE EQ ":Y.TYPE
+        Y.APPL = FN.REDO.ISSUE.COMPLAINTS
+        Y.INTERACCION.FLAG = '1'
 
-        CASE Y.TYPE EQ 'SOLICITUD'
-            SEL.CMD = "SELECT ":FN.REDO.ISSUE.REQUESTS:" WITH TYPE EQ ":Y.TYPE
-            Y.APPL = FN.REDO.ISSUE.REQUESTS
-            Y.SOLICITUD.FLAG = '1'
+    CASE Y.TYPE EQ 'SOLICITUD'
+        SEL.CMD = "SELECT ":FN.REDO.ISSUE.REQUESTS:" WITH TYPE EQ ":Y.TYPE
+        Y.APPL = FN.REDO.ISSUE.REQUESTS
+        Y.SOLICITUD.FLAG = '1'
 
     END CASE
-RETURN
+    RETURN
 
 **************
 LOCATE.FIELDS:
@@ -181,16 +182,16 @@ LOCATE.FIELDS:
     END
 
     BEGIN CASE
-        CASE Y.OPEN.MONTH.FROM NE ''
-            GOSUB GETTING.MONTH.VALUE
-        CASE Y.CLOSE.MONTH.FROM  NE ''
-            GOSUB GETTING.MONTH.VALUE.CLOSE
-        CASE Y.OPEN.DATE.FROM NE ''
-            SEL.CMD := " AND OPENING.DATE GE ":Y.OPEN.DATE.FROM:" AND OPENING.DATE LE ":Y.OPEN.DATE.TO
-            Y.CHK.MON.FROM = Y.OPEN.DATE.FROM
-        CASE Y.CLOSE.DATE.FROM NE ''
-            SEL.CMD := " AND CLOSING.DATE GE ":Y.CLOSE.DATE.FROM:" AND CLOSING.DATE LE ":Y.CLOSE.DATE.TO
-            Y.CHK.MON.FROM = Y.CLOSE.DATE.FROM
+    CASE Y.OPEN.MONTH.FROM NE ''
+        GOSUB GETTING.MONTH.VALUE
+    CASE Y.CLOSE.MONTH.FROM  NE ''
+        GOSUB GETTING.MONTH.VALUE.CLOSE
+    CASE Y.OPEN.DATE.FROM NE ''
+        SEL.CMD := " AND OPENING.DATE GE ":Y.OPEN.DATE.FROM:" AND OPENING.DATE LE ":Y.OPEN.DATE.TO
+        Y.CHK.MON.FROM = Y.OPEN.DATE.FROM
+    CASE Y.CLOSE.DATE.FROM NE ''
+        SEL.CMD := " AND CLOSING.DATE GE ":Y.CLOSE.DATE.FROM:" AND CLOSING.DATE LE ":Y.CLOSE.DATE.TO
+        Y.CHK.MON.FROM = Y.CLOSE.DATE.FROM
     END CASE
 
     LOCATE "CASE.USER" IN D.FIELDS<1> SETTING CASE.USER.POS THEN
@@ -208,7 +209,7 @@ LOCATE.FIELDS:
     END
 
     GOSUB CHECK.REDO.SLA.PARAM
-RETURN
+    RETURN
 *******************
 GETTING.MONTH.VALUE:
 *******************
@@ -216,7 +217,7 @@ GETTING.MONTH.VALUE:
     CALL CALENDAR.DAY(TODAY,'-',Y.DUP.OPEN.MONTH.FROM)
 
     SEL.CMD := " AND OPENING.DATE GE ":Y.DUP.OPEN.MONTH.FROM:" AND OPENING.DATE LE ":TODAY
-RETURN
+    RETURN
 *******************
 GETTING.MONTH.VALUE.CLOSE:
 *******************
@@ -224,7 +225,7 @@ GETTING.MONTH.VALUE.CLOSE:
     CALL CALENDAR.DAY(TODAY,'-',Y.DUP.CLOSE.DATE.TO)
 
     SEL.CMD := " AND CLOSING.DATE GE ":Y.DUP.CLOSE.DATE.TO:" AND CLOSING.DATE LE ":TODAY
-RETURN
+    RETURN
 
 **********************
 CHECK.REDO.SLA.PARAM:
@@ -263,14 +264,15 @@ CHECK.REDO.SLA.PARAM:
     SEL.DUP.CMD = SEL.CMD
     SEL.CMD := " BY PRODUCT.TYPE BY OPENING.DATE "
     SEL.DUP.CMD := " BY OPENING.DATE "
+    IF SEL.LIST.PARAM THEN    ;* R22 Code conversion changes
+        CALL EB.READLIST(SEL.CMD,SEL.LIST,"",SEL.CNT,SEL.ERR)
 
-    CALL EB.READLIST(SEL.CMD,SEL.LIST,"",SEL.CNT,SEL.ERR)
-
-    CALL EB.READLIST(SEL.DUP.CMD,SEL.DUP.LIST,'',NO.OF.RECS,SEL.DUP.ERR)
+        CALL EB.READLIST(SEL.DUP.CMD,SEL.DUP.LIST,'',NO.OF.RECS,SEL.DUP.ERR)
+    END
     IF SEL.LIST THEN
         GOSUB PROCESS
     END
-RETURN
+    RETURN
 *********
 PROCESS:
 *********
@@ -321,7 +323,7 @@ PROCESS:
     GOSUB FOR.AVERAGE
     Y.FIN.ARR<-1> = FMT('Promedio','L#40'):Y.SAMPLE.FM.FIN
     REGION = ''
-RETURN
+    RETURN
 
 ************
 FOR.AVERAGE:
@@ -348,14 +350,14 @@ FOR.AVERAGE:
         Y.SAMPLE.FM.FIN := FMT(Y.TT.SAMPLE,'L2#40')
         Y.CNT.CV -= 1
     REPEAT
-RETURN
+    RETURN
 
 READ.CRM.PRD.TYPE:
 ******************
     REC.REDO.U.CRM.PRODUCT.TYPE = ''; RUCP.ERR = ''; YRDCP.DESC = ''
     CALL F.READ(FN.REDO.U.CRM.PRODUCT.TYPE,SEL.ID,REC.REDO.U.CRM.PRODUCT.TYPE,F.REDO.U.CRM.PRODUCT.TYPE,RUCP.ERR)
     YRDCP.DESC = REC.REDO.U.CRM.PRODUCT.TYPE<PRD.TYPE.DESCRIPTION>
-RETURN
+    RETURN
 
 READ.EB.LOOKUP:
 ***************
@@ -365,7 +367,7 @@ READ.EB.LOOKUP:
     IF NOT(YSTAT.LOOKUP) THEN
         YSTAT.LOOKUP = R.EB.LOOKUP<EB.LU.DESCRIPTION,1>
     END
-RETURN
+    RETURN
 
 *****************
 CHECK.APPLICATION:
@@ -446,7 +448,7 @@ CHECK.APPLICATION:
     IF NOT(Y.HEAD.OPEN.CHNL) THEN
         Y.HEAD.OPEN.CHNL = Y.OPEN.CHNL
     END
-RETURN
+    RETURN
 
 *********
 FORM.STR:
@@ -533,7 +535,7 @@ FORM.STR:
     Y.FIN.ARR<-1> = FMT(Y.PRODUCT.TYPE,'L#40'):Y.FIN.ARR.1
     Y.AVG.TOT = CHANGE(Y.AVG.TOT,@FM,@VM)
     Y.AVG.TOT.FIN<-1> = Y.AVG.TOT
-RETURN
+    RETURN
 ************
 SUB.FLAG.SET:
 ************
@@ -563,7 +565,7 @@ SUB.FLAG.SET:
         Y.AVG.TOT.FIN<-1> = Y.AVG.TOT
         Y.DIF.DATE = 0; FLG.ON = 0; Y.FIN.ARR.1 = ''; SEG.DAYS = ''; Y.AVG.TOT = ''; Y.MY.PUR = ''
     END
-RETURN
+    RETURN
 
 ************
 FLAG.NOT.SET:
@@ -594,7 +596,7 @@ FLAG.NOT.SET:
         Y.AVG.TOT.FIN<-1> = Y.AVG.TOT
         Y.DIF.DATE = 0; FLG.ON = 0; FLG.1 = ''; Y.FIN.ARR.1 = ''; SEG.DAYS = ''; Y.AVG.TOT = ''; Y.MY.PUR = ''
     END
-RETURN
+    RETURN
 
 *--------------
 SLA.PARAM:
@@ -607,5 +609,5 @@ SLA.PARAM:
             SEG.DAYS = R.REDO.SLA.PARAM<SLA.SEG.DAYS,SUP.POS,SEG.POS>
         END
     END
-RETURN
+    RETURN
 END

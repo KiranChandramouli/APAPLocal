@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxODMyNjcyMjc6Q3AxMjUyOjE2OTg0MDU1NDAwMjA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Oct 2023 16:49:00
+* @ValidationCode : MjotNTYwNjE2NTc2OkNwMTI1MjoxNzAwODQyNTg1ODYyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:46:25
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,20 +8,23 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
-$PACKAGE APAP.IBS
+
 *--------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 * <Rating>2505</Rating>
 *-----------------------------------------------------------------------------
-    SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
+$PACKAGE APAP.IBS
+SUBROUTINE MAP.SWIFT.LBTR(MISN, R.MSG, GENERIC.DATA, ROUTINE.ERR.MSG)
         
 
 *-----------------------------------------------------------------------------------------------------------------------------------
 *Modification HISTORY:
 *DATE                          AUTHOR                   Modification                            DESCRIPTION
 *25/10/2023                VIGNESHWARI        MANUAL R23 CODE CONVERSION                  Nochanges
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
 *-----------------------------------------------------------------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 *
@@ -35,6 +38,10 @@ $PACKAGE APAP.IBS
     $INSERT I_DEOCOM
     $INSERT I_F.FUNDS.TRANSFER
     $INSERT I_F.DE.INTERFACE
+    $INSERT I_F.BENEFICIARY
+    $INSERT I_F.REDO.ACH.PARTICIPANTS
+    $INSERT I_F.REDO.H.REPORTS.PARAM ;*R22 Manual Conversion
+    $INSERT I_F.ACCOUNT ;*R22 Manual Conversion
 
     FN.DE.O.MSG.LBTR = "F.DE.O.MSG.LBTR"
     F.DE.O.MSG.LBTR = ""
@@ -53,6 +60,12 @@ $PACKAGE APAP.IBS
 
     IF R.HEAD(DE.HDR.MESSAGE.TYPE) = 103 AND R.HEAD(DE.HDR.APPLICATION) = "FTOT" THEN
         GOSUB CHECK.FT
+        GOSUB CHECK.ACC ;*R22 NEW LINE - START
+
+*--Esta validaci�n es para que no aplique la cuenta regional a Prestamos ni a TC
+        IF Y.APLICAR.FORMATO EQ 0 THEN
+            GOSUB CHECK.BENEF
+        END ;*R22 NEW LINE - END
         IF  LBTR = @TRUE THEN
             CRLF = CHAR(13):CHAR(10)
             MY.REC = R.MSG
@@ -97,6 +110,7 @@ $PACKAGE APAP.IBS
             IF POS THEN
                 IF  IS.PAYROLL EQ 1 THEN
                     NEW.TRANS.REF = "E000073.A":ID.FT[6,4]
+                    NEW.TRANS.REF = "E000073.A":ID.FT[6,5] ;* Latest Routine- Changes
                 END
                 ELSE
                     NEW.TRANS.REF = "E000073.":ID.FT[6,5]
@@ -162,7 +176,18 @@ $PACKAGE APAP.IBS
                 CHANGE ":59B:" TO ":59:" IN MY.REC<POS>
             END
 
+            FINDSTR Y.ACC.ID IN MY.REC SETTING POS ELSE POS = 0 ;* Latest Routine- Changes - Start
+            IF POS THEN
+                CHANGE Y.ACC.ID TO Y.ACC.CTA.REG IN MY.REC<POS>
+            END ;* Latest Routine- Changes - End
 
+            IF Y.APLICAR.FORMATO EQ 0 THEN ;* Latest Routine- Changes - Start
+*--Sustituimos la Cta Del Beneficiario por su Cta Regional
+                FINDSTR Y.CTA.BEN IN MY.REC SETTING POS ELSE POS = 0
+                IF POS THEN
+                    CHANGE Y.CTA.BEN TO Y.CTA.REG.BEN IN MY.REC<POS>
+                END
+            END ;* Latest Routine- Changes - End
             CHANGE @FM TO CRLF IN MY.REC
             R.MSG = MY.REC
             ID.MSG = "MSG":MISN:".fin"
@@ -183,7 +208,7 @@ $PACKAGE APAP.IBS
         END
     END
 
-    RETURN
+RETURN
 
 *********
 CHECK.FT:
@@ -192,6 +217,7 @@ CHECK.FT:
     FN.FUNDS.TRANSFER = 'F.FUNDS.TRANSFER'
     F.FUNDS.TRANSFER = ''
     CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
+    CALL GET.LOC.REF("FUNDS.TRANSFER","L.FTST.ACH.PART",L.FTST.ACH.PART.POS) ;* Latest Routine- Changes
 
     FN.FUNDS.TRANSFER$HIS = 'F.FUNDS.TRANSFER$HIS'
     F.FUNDS.TRANSFER$HIS = ''
@@ -214,6 +240,18 @@ CHECK.FT:
             TRANS.TYPE = R.FT<FT.TRANSACTION.TYPE>
             BIC.BANK   = R.FT<FT.ACCT.WITH.BANK>
             ACCT.BANK  = R.FT<FT.BEN.ACCT.NO>
+            GOSUB CHECK.TRANSACTION.TYPE ;* Latest Routine- Changes - Start
+            Y.ACC.ID = R.FT<FT.DEBIT.ACCT.NO>
+
+*--Validar que si viene una cuenta interna para el cambiarla
+*--por el ORD.CUST.ACCT Que es la cuenta de donde se debitan los fondos
+            IF NOT (NUM(SUBSTRINGS(Y.ACC.ID,0,1))) THEN
+                Y.ACC.ID = R.FT<FT.ORD.CUST.ACCT>
+            END
+
+            Y.BENEF.ID = R.FT<FT.CREDIT.THEIR.REF>
+            Y.BANCO = R.FT<FT.LOCAL.REF,L.FTST.ACH.PART.POS,1>
+            Y.CTA.BEN = ACCT.BANK ;* Latest Routine- Changes - End
             IS.PAYROLL = 0
             IF R.FT<FT.ORD.CUST.ACCT> NE "" THEN
                 IS.PAYROLL=1
@@ -224,4 +262,93 @@ CHECK.FT:
         END
     END
 
-    RETURN
+RETURN
+***********************
+CHECK.TRANSACTION.TYPE: ;* Latest Routine- Changes - Start
+***********************
+    FN.REDO.H.REPORTS.PARAM = 'F.REDO.H.REPORTS.PARAM';
+    FV.REDO.H.REPORTS.PARAM = '';
+    CALL OPF (FN.REDO.H.REPORTS.PARAM,FV.REDO.H.REPORTS.PARAM)
+   
+    Y.APAP.REP.PARAM.ID = "FTTC.LBTR"
+    CALL CACHE.READ(FN.REDO.H.REPORTS.PARAM,Y.APAP.REP.PARAM.ID,R.REDO.H.REPORTS.PARAM,REDO.H.REPORTS.PARAM.ERR)
+   
+    IF R.REDO.H.REPORTS.PARAM THEN
+        Y.FIELD.NME.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.NAME>
+        Y.FIELD.VAL.ARR = R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.FIELD.VALUE>
+    END
+   
+    LOCATE "LBTR.TCPR" IN Y.FIELD.NME.ARR<1,1> SETTING COD.POS THEN
+        Y.FIELD.VAL.ARR = Y.FIELD.VAL.ARR<1,COD.POS>
+    END
+   
+    Y.FIELD.VAL.ARR = CHANGE(Y.FIELD.VAL.ARR,@SM,@VM)
+      
+    LOCATE TRANS.TYPE IN Y.FIELD.VAL.ARR<1,1> SETTING C.VALA.POS THEN
+        Y.APLICAR.FORMATO = 1
+        Y.CTA.REG.BEN = Y.CTA.BEN
+    END ELSE
+        Y.APLICAR.FORMATO = 0
+    END
+
+RETURN
+
+***********
+CHECK.ACC:
+***********
+    FN.ACCOUNT = "F.ACCOUNT"
+    F.ACCOUNT = ""
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+    CALL GET.LOC.REF("ACCOUNT","L.AC.ALPH.AC.NO",L.AC.ALPH.AC.NO.POS)
+
+    ER = ''
+    R.ACC.DB = ''
+    CALL F.READ(FN.ACCOUNT,Y.ACC.ID,R.ACC.DB,F.ACCOUNT,ER)
+
+    Y.ACC.CTA.REG = R.ACC.DB<AC.LOCAL.REF,L.AC.ALPH.AC.NO.POS, 1>
+
+RETURN
+
+************
+CHECK.BENEF:
+************
+    IF Y.BENEF.ID NE '' THEN
+        GOSUB GET.BENEF
+
+        IF Y.CTA.REG.BEN NE '' THEN
+            RETURN
+        END
+    END
+
+    FN.REDO.ACH.PARTICIPANTS = 'F.REDO.ACH.PARTICIPANTS';
+    FV.REDO.ACH.PARTICIPANTS = ''
+    CALL OPF (FN.REDO.ACH.PARTICIPANTS,FV.REDO.ACH.PARTICIPANTS)
+    CALL GET.LOC.REF("REDO.ACH.PARTICIPANTS","L.LBTR.BIC",L.LBTR.BIC.POS)
+
+    CALL F.READ(FN.REDO.ACH.PARTICIPANTS,Y.BANCO,R.REDO.ACH.PARTICIPANTS,FV.REDO.ACH.PARTICIPANTS,ERROR.REDO.ACH.PARTICIPANTS)
+    Y.L.LBTR.BIC = R.REDO.ACH.PARTICIPANTS<REDO.ACH.PARTI.LOCAL.REF,L.LBTR.BIC.POS,1>
+
+    ID.CUENTA = Y.CTA.BEN;
+    CODIGO.ENTIDAD = Y.L.LBTR.BIC[1,4]
+    RESPONSE = '';
+
+    CALL LAPAP.V.INP.CALC.CHEK.DIGIT(ID.CUENTA,CODIGO.ENTIDAD,RESPONSE)
+    IF RESPONSE NE '' THEN
+        Y.CTA.REG.BEN = RESPONSE
+    END
+RETURN
+
+**********
+GET.BENEF:
+**********
+    FN.BENEFICIARY = 'F.BENEFICIARY'
+    FV.BENEFICIARY = '';
+    CALL OPF (FN.BENEFICIARY,FV.BENEFICIARY)
+    CALL GET.LOC.REF("BENEFICIARY","L.BEN.CTA.REG",L.BEN.CTA.REG.POS)
+ 
+    Y.ID = Y.BENEF.ID
+    R.BENEFICIARY = ''; ERROR.BENEFICIARY = '';
+    CALL F.READ (FN.BENEFICIARY,Y.ID, R.BENEFICIARY,FV.BENEFICIARY, ERROR.BENEFICIARY)
+    Y.CTA.REG.BEN = R.BENEFICIARY<ARC.BEN.LOCAL.REF,L.BEN.CTA.REG.POS,1>
+ 
+RETURN  ;* Latest Routine- Changes - End

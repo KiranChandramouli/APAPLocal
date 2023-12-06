@@ -47,6 +47,7 @@ SUBROUTINE REDO.FC.CL.REGISTER.AA
 *DATE		   AUTHOR			Modification                 DESCRIPTION
 *28/08/2023  CONVERSION TOOL    AUTO R22 CODE CONVERSION      RAD.BP is removed in insertfile, FM TO @FM, VM TO @VM, ">=" TO GE
 *28/08/2023	 VIGNESHWARI	    MANUAL R22 CODE CONVERSION	      DYN.TO.OFS Change to OFS.BUILD.RECORD
+*27/11/2023         Suresh          R22 Manual Conversion             OFS.BUILD.RECORED changed
 *------------------------------------------------------------------------------------------------------------------------------------------------
 ******************************************************************************
     $INSERT I_COMMON
@@ -292,7 +293,7 @@ UPDATE.COLLATERAL:
     APP.NAME     = Y.APPLICATION     ;*MANUAL R22 CODE CONVERSION-START-DYN.TO.OFS Change to OFS.BUILD.RECORD
     OFS.FUNCTION = 'I'
     OFS.PROCESS  = 'PROCESS'
-    OFS.VERSION  = Y.VER.COLLATERAL
+    OFS.VERSION  = Y.APPLICATION:',':Y.VER.COLLATERAL ;*R22 Manual Conversion
     Y.GTSMODE    = ''
     NO.OF.AUTH   = ''
     TRANSACTION.ID = ID.COLL

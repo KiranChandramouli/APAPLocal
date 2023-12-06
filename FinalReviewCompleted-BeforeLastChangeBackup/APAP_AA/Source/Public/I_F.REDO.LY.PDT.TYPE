@@ -1,0 +1,14 @@
+* I_F.REDO.LY.PDT.TYPE Created 22 OCT 10 at 10:16PM by apapr8/SUDHARSAN
+*      PREFIX[REDO.PDT]
+       EQU REDO.PDT.PRODUCT.NAME TO 1,   RedoLyPdtType_ProductName TO 1,
+           REDO.PDT.PRODUCT.TYPE TO 2,   RedoLyPdtType_ProductType TO 2,
+                REDO.PDT.PRODUCT TO 3,   RedoLyPdtType_Product TO 3,
+          REDO.PDT.RECORD.STATUS TO 4,   RedoLyPdtType_RecordStatus TO 4,
+                REDO.PDT.CURR.NO TO 5,   RedoLyPdtType_CurrNo TO 5,
+               REDO.PDT.INPUTTER TO 6,   RedoLyPdtType_Inputter TO 6,
+              REDO.PDT.DATE.TIME TO 7,   RedoLyPdtType_DateTime TO 7,
+             REDO.PDT.AUTHORISER TO 8,   RedoLyPdtType_Authoriser TO 8,
+                REDO.PDT.CO.CODE TO 9,   RedoLyPdtType_CoCode TO 9,
+              REDO.PDT.DEPT.CODE TO 10,  RedoLyPdtType_DeptCode TO 10,
+           REDO.PDT.AUDITOR.CODE TO 11,  RedoLyPdtType_AuditorCode TO 11,
+        REDO.PDT.AUDIT.DATE.TIME TO 12,  RedoLyPdtType_AuditDateTime TO 12

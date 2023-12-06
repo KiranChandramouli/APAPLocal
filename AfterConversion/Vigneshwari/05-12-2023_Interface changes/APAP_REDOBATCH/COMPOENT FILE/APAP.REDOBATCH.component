@@ -1,0 +1,38 @@
+component APAP.REDOBATCH
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoBMonitorMap (
+   INOUT msgId string
+)
+{
+   jBC: REDO.B.MONITOR.MAP
+}
+
+
+
+public method redoBMonitorMapSelect (
+)
+{
+   jBC: REDO.B.MONITOR.MAP.SELECT
+}
+
+
+
+public method redoBMonitorShip (
+   INOUT msgId string
+)
+{
+   jBC: REDO.B.MONITOR.SHIP
+}
+
+
+
+public method redoBMonitorShipSelect (
+)
+{
+   jBC: REDO.B.MONITOR.SHIP.SELECT
+}
+
