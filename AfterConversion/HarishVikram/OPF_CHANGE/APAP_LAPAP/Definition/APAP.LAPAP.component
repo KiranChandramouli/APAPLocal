@@ -1,0 +1,174 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+public method redoApapCustSwiftUpd (
+)
+{
+   jBC: REDO.APAP.CUST.SWIFT.UPD
+}
+
+public method lapapAaDeletePaymEmpty (
+)
+{
+    jBC: LAPAP.AA.DELETE.PAYM.EMPTY
+}
+
+
+
+public method lapapPacsRaiseEntry (
+    INOUT yListName string
+)
+{
+    jBC: LAPAP.PACS.RAISE.ENTRY
+}
+
+
+
+public method lapapRaiseEntry (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY
+}
+
+
+public method lapapMoveNoCustRpt (
+)
+{
+    jBC: LAPAP.MOVE.NO.CUST.RPT
+}
+
+
+
+
+
+public method lapapRaiseEntryInLoad (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.IN.LOAD
+}
+
+
+
+public method lapapRaiseEntryWof (
+)
+{
+    jBC: LAPAP.RAISE.ENTRY.WOF
+}
+
+
+public method lApapCorrCastigSeqprot (
+    INOUT aaArrId string
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT
+}
+
+
+
+public method lApapActualizarPrelacionLoad (
+)
+{
+    jBC: L.APAP.ACTUALIZAR.PRELACION.LOAD
+}
+
+
+
+public method lApapCorrCastigSeqprotPost (
+)
+{
+    jBC: L.APAP.CORR.CASTIG.SEQPROT.POST
+}
+
+
+
+public method lApapEnqAchRef (
+    INOUT yArreglo string
+)
+{
+    jBC: L.APAP.ENQ.ACH.REF
+}
+
+
+
+public method lApapTakeoverLoan (
+)
+{
+    jBC: L.APAP.TAKEOVER.LOAN
+}
+
+
+
+public method lapapCastigadosRuedaLoad (
+)
+{
+    jBC: LAPAP.CASTIGADOS.RUEDA.LOAD
+}
+
+
+
+public method lapapClearEcbBalancesPost (
+)
+{
+    jBC: LAPAP.CLEAR.ECB.BALANCES.POST
+}
+
+
+
+
+public method lapapDebitDirectCovid19Load (
+)
+{
+    jBC: LAPAP.DEBIT.DIRECT.COVID19.LOAD
+}
+
+
+
+public method lapapDelIdalternoCancelado (
+)
+{
+    jBC: LAPAP.DEL.IDALTERNO.CANCELADO
+}
+
+
+
+public method lapapDesmRuedaLoad (
+)
+{
+    jBC: LAPAP.DESM.RUEDA.LOAD
+}
+
+
+
+public method lapapDesmRuedaTwoLoad (
+)
+{
+    jBC: LAPAP.DESM.RUEDA.TWO.LOAD
+}
+
+
+
+public method lapapDesmRuedaTwoPost (
+)
+{
+    jBC: LAPAP.DESM.RUEDA.TWO.POST
+}
+
+
+
+public method lapapFaseiiCovidLoad (
+)
+{
+    jBC: LAPAP.FASEII.COVID.LOAD
+}
+
+
+
+public method lapapFormPostRestrActivity (
+    INOUT aaId string
+)
+{
+    jBC: LAPAP.FORM.POST.RESTR.ACTIVITY
+}
+
