@@ -1,0 +1,28 @@
+component APAP.REDOAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoBAddgestChargeLoad (
+)
+{
+    jBC: REDO.B.ADDGEST.CHARGE.LOAD
+}
+
+
+
+public method redoBAddgestCorrectLoad (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT.LOAD
+}
+
+
+
+public method redoBAddgestCorrect1 (
+)
+{
+    jBC: REDO.B.ADDGEST.CORRECT1
+}
+

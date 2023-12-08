@@ -1,0 +1,36 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method pacsCorrAaa (
+)
+{
+    jBC: PACS.CORR.AAA
+}
+
+
+
+public method pacsEbCorrEntryHold (
+)
+{
+    jBC: PACS.EB.CORR.ENTRY.HOLD
+}
+
+
+
+public method pacsFtDelete (
+)
+{
+    jBC: PACS.FT.DELETE
+}
+
+
+
+public method removeAcctStmt (
+)
+{
+    jBC: REMOVE.ACCT.STMT
+}
+
