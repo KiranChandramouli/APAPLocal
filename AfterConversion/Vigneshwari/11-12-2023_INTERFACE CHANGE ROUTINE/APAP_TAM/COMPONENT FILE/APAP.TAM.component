@@ -1,0 +1,41 @@
+component APAP.TAM
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoCreateArrangementAColl (
+   INOUT result string
+)
+{
+   jBC: REDO.CREATE.ARRANGEMENT.A.COLL
+}
+
+
+
+public method redoCreateArrangementALimit (
+   INOUT result string
+)
+{
+   jBC: REDO.CREATE.ARRANGEMENT.A.LIMIT
+}
+
+
+
+public method redoVpWsConsumer (
+   INOUT activation string,
+   INOUT wsData string
+)
+{
+   jBC: REDO.VP.WS.CONSUMER
+}
+
+
+public method redoUtilProcessOfs (
+   INOUT ofsMsgReq string,
+   INOUT ofsMsgRes string
+)
+{
+   jBC: REDO.UTIL.PROCESS.OFS
+}
+

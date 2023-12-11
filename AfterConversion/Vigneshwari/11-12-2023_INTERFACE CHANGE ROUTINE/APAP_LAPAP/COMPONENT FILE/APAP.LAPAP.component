@@ -1,0 +1,33 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapValidateUserRelation (
+)
+{
+   jBC: L.APAP.VALIDATE.USER.RELATION
+}
+
+
+
+public method lapapCustomerIdenti (
+)
+{
+   jBC: LAPAP.CUSTOMER.IDENTI
+}
+
+
+
+public method lApapOfsToDyn (
+   INOUT yOfsOutResponse string,
+   INOUT yObjectType string,
+   INOUT yDynResponseKey string,
+   INOUT yDynResponseValue string,
+   INOUT yError string
+)
+{
+   jBC: L.APAP.OFS.TO.DYN
+}
+

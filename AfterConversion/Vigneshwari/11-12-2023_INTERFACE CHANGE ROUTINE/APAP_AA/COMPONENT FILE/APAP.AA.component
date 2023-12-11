@@ -1,0 +1,23 @@
+component APAP.AA
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoFcSPaysch (
+)
+{
+    jBC: REDO.FC.S.PAYSCH
+}
+
+
+
+public method redoCreateAaRGetLimitProduct (
+   INOUT yApplication string,
+   INOUT yCategory string,
+   INOUT yProduct string
+)
+{
+   jBC: REDO.CREATE.AA.R.GET.LIMIT.PRODUCT
+}
+
