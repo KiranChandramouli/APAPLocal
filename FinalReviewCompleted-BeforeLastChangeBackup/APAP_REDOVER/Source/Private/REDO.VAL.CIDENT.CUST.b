@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNzA1NjgwNzg3OkNwMTI1MjoxNzAwNDgwNTQyMjY3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:12:22
+* @ValidationCode : MjotMzMxNzcxNTAwOkNwMTI1MjoxNzAxMTEwMTExMTA5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:05:11
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -36,6 +36,7 @@ SUBROUTINE REDO.VAL.CIDENT.CUST(Y.APP.VERSION)
 *17-04-2023       Samaran T               R22 Manual Code Conversion       CALL ROUTINE FORMAT MODIFIED
 *07/10/2023	VIGNESHWARI      ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11864 & SQA-11869,Padron   � By Santiago
 *------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -95,6 +96,7 @@ PROCESS:
 *
     CALL System.setVariable("CURRENT.VAR.DETAILS",VAR.DETAILS)
     CALL System.setVariable("CURRENT.CLIENTE.APAP",CLIENTE.APAP)
+    CALL System.setVariable("CURRENT.FULL.NAME",CUSTOMER.FULL.NAME)	;*Fix SQA-11864 & SQA-11869,Padron � By Santiago-NEW LINES added
 *
 RETURN
 *
@@ -104,25 +106,25 @@ CHECK.CID.NON.APAP.OLD:		;*Interface Change by Santiago-Changed "CHECK.CID.NON.A
 *
 *   Non APAP Customer
 *
-    Cedule = "padrone$":CIDENT.NUMBER
-    Param1 = "com.padrone.ws.util.MainClass"
-    Param2 = "callPadrone"
-    Param3 = Cedule
-    Ret    = ""
+Cedule = "padrone$":CIDENT.NUMBER
+Param1 = "com.padrone.ws.util.MainClass"
+Param2 = "callPadrone"
+Param3 = Cedule
+Ret    = ""
 *
-    ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM = Cedule
+ACTIVATION  = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM = Cedule
 *
-    ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
+ERROR.CODE  = CALLJEE(ACTIVATION,INPUT_PARAM)
 *
-    IF ERROR.CODE THEN
-        ETEXT           = "EB-JAVACOMP" : @FM : ERROR.CODE
-        PROCESS.GOAHEAD = ""
-        CALL STORE.END.ERROR
-    END ELSE
-        Ret = INPUT_PARAM
-        GOSUB ANALIZE.RESULT
-    END
+IF ERROR.CODE THEN
+    ETEXT           = "EB-JAVACOMP" : @FM : ERROR.CODE
+    PROCESS.GOAHEAD = ""
+    CALL STORE.END.ERROR
+END ELSE
+    Ret = INPUT_PARAM
+    GOSUB ANALIZE.RESULT
+END
 *
 RETURN
 *
@@ -130,59 +132,59 @@ RETURN
 ANALIZE.RESULT.OLD:	;*Interface Change by Santiago-Changed "ANALIZE.RESULT" to "ANALIZE.RESULT.OLD"
 * =============
 *
-    IF Ret NE "" THEN
-        CIDENT.RESULT = Ret
-        CHANGE '$' TO '' IN CIDENT.RESULT
-        CHANGE '#' TO @FM IN CIDENT.RESULT
-        CIDENT.RESULT.ERR = CIDENT.RESULT<1>
-        CHANGE '::' TO @FM IN CIDENT.RESULT.ERR
-        CHANGE '::' TO @FM IN CIDENT.RESULT
-        IF CIDENT.RESULT.ERR<1> EQ "SUCCESS" THEN     ;* On successfull CIDENT number
-            Y.APELLIDO = CIDENT.RESULT<2>
-            Y.NOMBRE = CIDENT.RESULT<4>
-            CUSTOMER.FULL.NAME = Y.NOMBRE:' ':Y.APELLIDO
-            CLIENTE.APAP       = "NO CLIENTE APAP"
-        END ELSE
-            GOSUB CHECK.NON.CIDENT
-        END
+IF Ret NE "" THEN
+    CIDENT.RESULT = Ret
+    CHANGE '$' TO '' IN CIDENT.RESULT
+    CHANGE '#' TO @FM IN CIDENT.RESULT
+    CIDENT.RESULT.ERR = CIDENT.RESULT<1>
+    CHANGE '::' TO @FM IN CIDENT.RESULT.ERR
+    CHANGE '::' TO @FM IN CIDENT.RESULT
+    IF CIDENT.RESULT.ERR<1> EQ "SUCCESS" THEN     ;* On successfull CIDENT number
+        Y.APELLIDO = CIDENT.RESULT<2>
+        Y.NOMBRE = CIDENT.RESULT<4>
+        CUSTOMER.FULL.NAME = Y.NOMBRE:' ':Y.APELLIDO
+        CLIENTE.APAP       = "NO CLIENTE APAP"
     END ELSE
-        MON.TP = '08'
-        DESC = 'El webservices no esta disponible'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CODE CONVERSION
-        PROCESS.GOAHEAD = ""
+        GOSUB CHECK.NON.CIDENT
     END
+END ELSE
+    MON.TP = '08'
+    DESC = 'El webservices no esta disponible'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CODE CONVERSION
+    PROCESS.GOAHEAD = ""
+END
 *
 RETURN
 
 
 CHECK.NON.CIDENT.OLD:	;*Interface Change by Santiago-Changed "CHECK.NON.CIDENT" to "CHECK.NON.CIDENT.OLD"
 
-    INT.CODE = 'CID002'
-    INT.TYPE = 'ONLINE'
-    BAT.NO   = ''
-    BAT.TOT  = ''
-    INFO.OR  = ''
-    INFO.DE  = ''
-    ID.PROC  = ''
-    MON.TP   = ''
-    DESC     = ''
-    REC.CON  = ''
-    EX.USER  = ''
-    EX.PC    = ''
+INT.CODE = 'CID002'
+INT.TYPE = 'ONLINE'
+BAT.NO   = ''
+BAT.TOT  = ''
+INFO.OR  = ''
+INFO.DE  = ''
+ID.PROC  = ''
+MON.TP   = ''
+DESC     = ''
+REC.CON  = ''
+EX.USER  = ''
+EX.PC    = ''
 *
-    IF CIDENT.RESULT.ERR<1> EQ "FAILURE" THEN
-        R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
-        CIDENT.RESULT                     = Ret
-        CHANGE '::' TO @FM IN CIDENT.RESULT
-        MON.TP   = '04'
-        REC.CON  = CIDENT.RESULT<2>
-        DESC     = CIDENT.RESULT<3>
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*R22 MANUAL CODE CONVERSION
-        AF              = REDO.CUS.PRF.IDENTITY.NUMBER
-        ETEXT           = "EB-INCORRECT.CIDENT.NUMBER"
-        PROCESS.GOAHEAD = ""
-        CALL STORE.END.ERROR
-    END
+IF CIDENT.RESULT.ERR<1> EQ "FAILURE" THEN
+    R.NEW(REDO.CUS.PRF.CUSTOMER.NAME) = ""
+    CIDENT.RESULT                     = Ret
+    CHANGE '::' TO @FM IN CIDENT.RESULT
+    MON.TP   = '04'
+    REC.CON  = CIDENT.RESULT<2>
+    DESC     = CIDENT.RESULT<3>
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC)  ;*R22 MANUAL CODE CONVERSION
+    AF              = REDO.CUS.PRF.IDENTITY.NUMBER
+    ETEXT           = "EB-INCORRECT.CIDENT.NUMBER"
+    PROCESS.GOAHEAD = ""
+    CALL STORE.END.ERROR
+END
 *
 RETURN
 *
@@ -190,14 +192,14 @@ CHECK.CID.NON.APAP:	;*Interface Change by Santiago-new line added-start
 *   Non APAP Customer
 
 *    Cedule = "padrone$":CIDENT.NUMBER
-    Cedule = CIDENT.NUMBER
-    Y.INTRF.ID = 'REDO.PADRON.FISICO'
-    R.PAD.WS<PAD.WS.CEDULA> = Cedule
-    Y.RESPONSE = ''
-    Y.ID.TEMP = ID.NEW
-    ID.NEW = 'REDO.PADRON.FISICO'
-    CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
-    ID.NEW = Y.ID.TEMP
+Cedule = TRIM(CIDENT.NUMBER)                ;* adding TRIM for all padron ws	;*Fix SQA-11864 & SQA-11869,Padron � By Santiago - changed "CIDENT.NUMBER" to "TRIM(CIDENT.NUMBER) "
+Y.INTRF.ID = 'REDO.PADRON.FISICO'
+R.PAD.WS<PAD.WS.CEDULA> = Cedule
+Y.RESPONSE = ''
+Y.ID.TEMP = ID.NEW
+ID.NEW = 'REDO.PADRON.FISICO'
+CALL DFE.ONLINE.TRANSACTION(Y.INTRF.ID, R.PAD.WS, Y.RESPONSE)
+ID.NEW = Y.ID.TEMP
     
 * values obtained from the web service
 *   IDENTI           = Y.RESPONSE<1>
@@ -209,18 +211,18 @@ CHECK.CID.NON.APAP:	;*Interface Change by Santiago-new line added-start
 *   STATUS.CODE      = Y.RESPONSE<7>
 *   STATUS.DESC      = Y.RESPONSE<8>
     
-    IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
-        MON.TP = '08'
-        DESC = 'El webservices no esta disponible'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CODE CONVERSION
-        PROCESS.GOAHEAD = ""
+IF Y.RESPONSE EQ 'ERROR' OR Y.RESPONSE EQ '' THEN
+    MON.TP = '08'
+    DESC = 'El webservices no esta disponible'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 MANUAL CODE CONVERSION
+    PROCESS.GOAHEAD = ""
                     
-        ERROR.CODE = 'REDO.VAL.CIDENT.CUST'
-        ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
-        CALL STORE.END.ERROR
-    END
+    ERROR.CODE = 'REDO.VAL.CIDENT.CUST'
+    ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE
+    CALL STORE.END.ERROR
+END
 
-    GOSUB ANALIZE.RESULT
+GOSUB ANALIZE.RESULT
 
 
 RETURN

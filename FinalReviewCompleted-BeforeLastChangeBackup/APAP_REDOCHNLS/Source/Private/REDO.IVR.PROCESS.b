@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTk0MTcxMTAyNzpDcDEyNTI6MTY5OTUwNjQ3OTM2NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 Nov 2023 10:37:59
+* @ValidationCode : MjotMTUxODc2MTYzMDpDcDEyNTI6MTcwMTc3MzY2MjMxNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Dec 2023 16:24:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,6 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.IVR.PROCESS(R.DATA)
+    
 *-----------------------------------------------------------------------------
 *DESCRIPTION:
 *------------
@@ -39,6 +40,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
 * 11-APR-2023     Conversion tool   R22 Auto conversion     FM TO @FM, VM to @VM, ++ to +=, CHAR to CHARX,TNO to C$T24.SESSION.NO, I to I.VAR
 * 12-APR-2023      Harishvikram C   Manual R22 conversion     CALL routine format modified
 * 07/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*04-12-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11242 IVR� By Santiago
 *-----------------------------------------------------------------------------
 * <region name= Inserts>
     $INSERT I_COMMON
@@ -51,6 +53,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
     $INSERT I_F.USER
     $INSERT JBC.h
     $INSERT I_F.REDO.IVR.ENQ.REQ.RESP	;*Interface Change by Santiago-INSERT IS ADDED
+    $INSERT I_F.ENQUIRY	;*Fix SQA-11242 IVR� By Santiago-new line added
 * </region>
 *-----------------------------------------------------------------------------
 
@@ -83,9 +86,13 @@ INIT:
     FN.IVR ='F.REDO.IVR.ENQ.REQ.RESP' ;*added for IVRInterfaceTWS Fix
     F.IVR = ''
     CALL OPF(FN.IVR, F.IVR)
+    
+    FN.ENQUIRY = 'F.ENQUIRY'	;*Fix SQA-11242 IVR� By Santiago-new lines added-start
+    F.ENQUIRY  = ''
+    CALL OPF(FN.ENQUIRY,F.ENQUIRY)	;*Fix SQA-11242 IVR� By Santiago-stop
 *
 ;*Interface Change by Santiago-END
-        Y.DATA.IN = '' ; TEMP1 = '' ; TEMP2 = ''
+    Y.DATA.IN = '' ; TEMP1 = '' ; TEMP2 = ''
 
     Y.INT.CODE = 'IVR001'
     Y.INT.TYPE = 'ONLINE'
@@ -123,6 +130,7 @@ PROCESS:
         GOSUB GET.US.PWD
         GOSUB TRANSACTION
     END
+    
 RETURN
 *
 ***********
@@ -204,23 +212,24 @@ TRANSACTION.ENQUIRY:
     GOSUB SAVE.STATUS
     GOSUB SAVE.TWS.VAR
     GOSUB RESET.TWS.VAR
-
+    
     CALL OFS.ENQUIRY.MANAGER(Y.ENQ.ID,Y.SEL.CRITERIA,Y.RETURN.DATA,Y.SYNTAX.TYPE)
-
+    
     GOSUB REPORT.LOG
 
     GOSUB RESTORE.STATUS
     GOSUB RESET.TWS.VAR
 
-    GOSUB PROC.FORMAT.1
-    GOSUB PROC.FORMAT.2
+    GOSUB PROC.FORMAT.0	;*Fix SQA-11242 IVR� By Santiago-new lines added
+*    GOSUB PROC.FORMAT.1	;*Fix SQA-11242 IVR� By Santiago-commented
+*    GOSUB PROC.FORMAT.2	;*Fix SQA-11242 IVR� By Santiago-commented
 
     GOSUB RESTORE.TWS.VAR
 
     GOSUB PREP.RESULT.SET
 
     GOSUB PROCESS.RESPONSE
-
+    
 RETURN
 *
 ***********
@@ -238,9 +247,72 @@ REPORT.LOG:
 RETURN
 
 **************
+PROC.FORMAT.0:		;*Fix SQA-11242 IVR� By Santiago-new lines added -start
+**************
+    ERR.ENQ = ''
+    CALL F.READ(FN.ENQUIRY,Y.ENQ.ID,R.ENQUIRY,F.ENQUIRY,ERR.ENQ)
+    IF ERR.ENQ NE '' THEN
+        R.DATA = 'RET_CODE*3'
+        RETURN
+    END
+        
+    Y.RESP.DATA = FIELD(Y.RETURN.DATA,',',3)
+    
+    Y.NOREC2 = 'No records'
+    IF INDEX(Y.RESP.DATA,Y.NOREC2,1) THEN
+        R.DATA = 'RET_CODE*2'
+        RETURN
+    END
+    
+*    Y.DELIM = '*'
+*    IF INDEX(R.ENQUIRY<ENQ.CONVERSION>,'|',1) THEN
+*        Y.DELIM = '|'
+*    END
+        
+    Y.POS = INDEX(Y.RETURN.DATA,",",2) + 1
+    Y.RESP.DATA = SUBSTRINGS(Y.RETURN.DATA,Y.POS,999999)
+
+    CHANGE '","' TO @FM IN Y.RESP.DATA
+    Y.TOT.ROWS = DCOUNT(Y.RESP.DATA,@FM)
+    Y.TOT.ENQ.FLD = DCOUNT(R.ENQUIRY<ENQ.FIELD.NAME>,@VM)
+    R.COLUM   = R.ENQUIRY<ENQ.COLUMN>
+    Y.CNT.ROWS = 1
+
+    
+*    CHANGE CHARX(9) TO @FM IN Y.RESP.DATA
+    CHANGE @VM TO @FM IN R.COLUM
+    
+    LOOP
+    WHILE Y.CNT.ROWS LE Y.TOT.ROWS
+        
+        Y.NEXT.VAL = 1
+        Y.CONT.RESP = 1
+        Y.COLUM = 0
+        Y.ROW = Y.RESP.DATA<Y.CNT.ROWS>
+    
+        LOOP
+        WHILE Y.NEXT.VAL LE Y.TOT.ENQ.FLD
+            Y.COLUM  = R.ENQUIRY<ENQ.COLUMN,Y.NEXT.VAL>
+        
+            IF Y.COLUM GT 0 THEN
+                Y.FIELD.NAME  = R.ENQUIRY<ENQ.FIELD.NAME,Y.NEXT.VAL>
+                Y.FIELD.VALUE = FIELD(Y.ROW,CHARX(9),Y.CONT.RESP)
+                Y.FIELD.VALUE = TRIM(CHANGE(Y.FIELD.VALUE,'"',""))
+                R.DATA<-1> = Y.FIELD.NAME:'*':Y.FIELD.VALUE
+                Y.CONT.RESP += 1
+            END
+            Y.NEXT.VAL += 1
+        REPEAT
+        Y.CNT.ROWS += 1
+        
+    REPEAT
+
+RETURN
+
+**************	;*Fix SQA-11242 IVR� By Santiago-end
 PROC.FORMAT.1:
 **************
-
+    
     Y.RETURN.DATA.NEXT = Y.RETURN.DATA
 
     Y.POS = INDEX(Y.RETURN.DATA,",",2) + 1
@@ -269,7 +341,7 @@ RETURN
 **************
 PROC.FORMAT.2:
 **************
-
+    
     Y.TOT.ROW.CNT = DCOUNT(Y.OUT,',')
     Y.ROW.CNT = 1
     Y.RES.SET.FLG = 'N'
@@ -284,12 +356,13 @@ PROC.FORMAT.2:
         Y.ROW.CNT += 1
     REPEAT
 
+
 RETURN
 
 **************
 PROC.FORMAT.3:
 **************
-
+    
     LOOP
     WHILE Y.CNT LE Y.TOT.CNT
         Y.FIELD.NAME = FIELD(Y.TO.CNT,'/',Y.CNT)
@@ -327,7 +400,7 @@ RETURN
 ***********
 FORMAT.VAL:
 ***********
-
+    
     Y.CNT.VAL = DCOUNT(Y.FIELD.VALUE,CHARX(10))
     IF Y.CNT.VAL EQ 0 THEN
         R.DATA<-1> = Y.FIELD.NAME:'*':Y.FIELD.VALUE
@@ -348,7 +421,7 @@ RETURN
 ****************
 PREP.RESULT.SET:
 ****************
-
+    
     CHANGE @FM TO '/' IN Y.DATA.IN
     Y.R.DATA = ''
     Y.R.DATA = R.DATA
@@ -398,17 +471,17 @@ TRANSACTION.VERSION:
 *    CALL OFS.CALL.BULK.MANAGER(Y.OFS.SOURCE.ID,Y.MSG, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
 *
 ;*Interface Change by Santiago-START
-        Y.ID = TODAY:'-IVR.REQUEST'
+    Y.ID = TODAY:'-IVR.REQUEST'
     R.IVR<IRV.ENQ.OFS.REQUEST> = Y.MSG.BULK
-        CALL F.WRITE(FN.IVR,Y.ID,R.IVR)
-        CALL JOURNAL.UPDATE("")
-        SLEEP 20
-        CALL F.READ(FN.IVR,Y.ID,R.IVR, F.IVR, ER.IVR)
-        Y.MSG = R.IVR<IRV.ENQ.OFS.RESPONSE>
+    CALL F.WRITE(FN.IVR,Y.ID,R.IVR)
+    CALL JOURNAL.UPDATE("")
+    SLEEP 20
+    CALL F.READ(FN.IVR,Y.ID,R.IVR, F.IVR, ER.IVR)
+    Y.MSG = R.IVR<IRV.ENQ.OFS.RESPONSE>
 
 ;*Interface Change by Santiago-END
     GOSUB PROC.RESP.VERSION
-   CALL EB.CLEAR.FILE(FN.IVR,F.IVR)	;*Interface Change by Santiago
+    CALL EB.CLEAR.FILE(FN.IVR,F.IVR)	;*Interface Change by Santiago
 *    GOSUB PROCESS.RESPONSE
 
 RETURN
@@ -546,7 +619,7 @@ RETURN
 **************
 IF.TXN.W.OVER:
 **************
-
+    
     Y.TEMP.RESP = FIELD(Y.MSG,"/",4)
     FINDSTR 'OVERRIDE=' IN Y.TEMP.RESP SETTING OV.POS THEN
         Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
@@ -557,24 +630,30 @@ IF.TXN.W.OVER:
         R.DATA<-1> = 'OVERRIDE*':Y.OV
         Y.RETURN.DATA.NEW := '/':Y.OV
     END ELSE
-        Y.TEMP.RESP = Y.MSG
-        FINDSTR 'OVERRIDE:1:1=' IN Y.TEMP.RESP SETTING OV.POS THEN
-            Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
-            Y.OV = FIELD(Y.TEMP.RESP,'OVERRIDE:1:1=',2)
-            Y.OV = FIELD(Y.OV,',',1)
-            R.DATA<-1> = 'RET_CODE*3'
-            R.DATA<-1> = 'TXN_REF*':Y.RETURN.DATA.NEW
-            R.DATA<-1> = 'OVERRIDE*':Y.OV
-            Y.RETURN.DATA.NEW := '/':Y.OV
-        END ELSE
-            Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
-            R.DATA<-1> = 'RET_CODE*1'
-            R.DATA<-1> = 'TXN_REF*':Y.RETURN.DATA.NEW
-        END
+        Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
+;*Fix SQA-11242 IVR� By Santiago-new lines added-start
+        R.DATA<-1> = 'RET_CODE*1'
+        R.DATA<-1> = 'TXN_REF*':Y.RETURN.DATA.NEW
+***part of routine that was not moved to production***
+*        Y.TEMP.RESP = Y.MSG
+*        FINDSTR 'OVERRIDE:1:1=' IN Y.TEMP.RESP SETTING OV.POS THEN
+*            Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
+*            Y.OV = FIELD(Y.TEMP.RESP,'OVERRIDE:1:1=',2)
+*            Y.OV = FIELD(Y.OV,',',1)
+*            R.DATA<-1> = 'RET_CODE*3'
+*            R.DATA<-1> = 'TXN_REF*':Y.RETURN.DATA.NEW
+*            R.DATA<-1> = 'OVERRIDE*':Y.OV
+*            Y.RETURN.DATA.NEW := '/':Y.OV
+*        END ELSE
+*            Y.RETURN.DATA.NEW = FIELD(Y.MSG,"/",1)
+*            R.DATA<-1> = 'RET_CODE*1'
+*            R.DATA<-1> = 'TXN_REF*':Y.RETURN.DATA.NEW
+*        END
+***part of routine that was not moved to production***		;*Fix SQA-11242 IVR� By Santiago-end
     END
 
     Y.FIN.DATA = R.DATA    ;*CHANGE DONE BY SANTIAGO	;*Interface Change by Santiago
-    RETURN
+RETURN
 
 *-----------------------------------------------------------------------------
 SAVE.STATUS:

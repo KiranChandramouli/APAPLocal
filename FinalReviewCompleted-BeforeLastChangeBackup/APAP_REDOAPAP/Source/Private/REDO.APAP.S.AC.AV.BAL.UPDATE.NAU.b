@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo5MDIzNzI0MzA6Q3AxMjUyOjE2OTkyNzE3NzYzNjk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Nov 2023 17:26:16
+* @ValidationCode : MjoxMzQ0NTA2OTkxOkNwMTI1MjoxNzAxMTA5NTc3NzQ2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 27 Nov 2023 23:56:17
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,9 +8,10 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
+
 
 SUBROUTINE REDO.APAP.S.AC.AV.BAL.UPDATE.NAU(FN.ENTRY.FILE,ENTRY.TYPE,FORWARD,ENTRY.REC,YACCT.OVERRIDES)
 *********************************************************************************************************
@@ -36,9 +37,10 @@ SUBROUTINE REDO.APAP.S.AC.AV.BAL.UPDATE.NAU(FN.ENTRY.FILE,ENTRY.TYPE,FORWARD,ENT
 * 05 JUN 2011       Prabhu N              PACS00071064                  Changed made for locked amount calculation
 * 01/11/2023	  VIGNESHWARI    ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *---------------------------------------------------------------------------------------
-*DATE               WHO                       REFERENCE                 DESCRIPTION
-*18-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   VM to @VM
-*18-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*DATE               WHO                       REFERENCE                			 DESCRIPTION
+*18-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION   		VM to @VM
+*18-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION 		NO CHANGE
+*27-11-2023	  VIGNESHWARI                 ADDED COMMENT FOR INTERFACE CHANGES     SQA-11380  - By Santiago
 *----------------------------------------------------------------------------------------
 
 *********************************************************************************************************
@@ -127,8 +129,13 @@ CALC.AV.BAL:
 * Y.AMT = R.ACCOUNT<AC.WORKING.BALANCE> ;* Tus start
     Y.AMT = R.ECB<ECB.WORKING.BALANCE>  ;* Tus end
     GOSUB GET.LOCKED.AMOUNT
+	
     Y.N.AMT=ENTRY.REC<3>		;*Interface Change by Santiago-NEWLINE IS ADDED
-    Y.TOTAL=Y.AMT+Y.N.AMT		;*Interface Change by Santiago-NEW LINE IS ADDED
+    IF Y.N.AMT LT 0 THEN			;*FIX SQA-11380  - By Santiago-NEW LINES ADDED-START
+	Y.TOTAL=Y.AMT
+	END ELSE			;*FIX SQA-11380  - By Santiago-END
+	Y.TOTAL=Y.AMT+Y.N.AMT       ;*Interface Change by Santiago-NEW LINE IS ADDED
+	END	;*FIX SQA-11380  - By Santiago-New lines added
     Y.AC.AV.BAL = Y.TOTAL - Y.LOCK.AMT		;*Interface Change by Santiago - "Y.AMT" changed to "Y.TOTAL"
 
     IF R.ACCOUNT<AC.LOCAL.REF,LOC.L.AC.AV.BAL.POS> EQ Y.AC.AV.BAL THEN
@@ -178,6 +185,7 @@ READ.ACCOUNT:
 * Tus start
     R.ECB = '' ; ECB.ERR =''
     CALL EB.READ.HVT('EB.CONTRACT.BALANCES',ACCOUNT.ID,R.ECB,ECB.ERR)
+    
 * Tus end
 
 RETURN

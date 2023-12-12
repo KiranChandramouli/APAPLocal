@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo0OTEwMzkxOTM6Q3AxMjUyOjE3MDA0ODA1MTYxNjY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:11:56
+* @ValidationCode : MjoyNTk5MDQ1MzE6Q3AxMjUyOjE3MDExMTAwODUwNzE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:04:45
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -40,6 +40,7 @@ SUBROUTINE REDO.V.INP.PROS.PF.CUST.RTN
 *17-04-2023      Mohanraj R          R22 Manual code conversion  CALL method format modified
 *07/10/2023	VIGNESHWARI      ADDED COMMENT FOR INTERFACE CHANGES      		Interface Change by Santiago
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
+*27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        Padron   � By Santiago
 *------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -297,77 +298,77 @@ CHK.PADRONE.OLD:	;*Interface Change by Santiago-CHANGES "CHK.PADRONE" TO "CHK.PA
 
 *--------------------------------------------------------------------------------------------------------------------
 *Raising override if the given value is not availble in padrone interface
-    Param1 = "com.padrone.ws.util.MainClass"
-    Param2 = "callPadrone"
-    Param3 = Cedule
-    Ret = ""
-    ACTIVATION = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM=Cedule
-    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
+Param1 = "com.padrone.ws.util.MainClass"
+Param2 = "callPadrone"
+Param3 = Cedule
+Ret = ""
+ACTIVATION = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM=Cedule
+ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
 *PACS00157018 - S
-    IF ERROR.CODE THEN
+IF ERROR.CODE THEN
 *TEXT = "REDO.CHECK.PADRONE"
 *CURR.NO = DCOUNT(R.NEW(EB.CUS.OVERRIDE),VM)+1
 *CALL STORE.OVERRIDE(CURR.NO)
 *ETEXT= "FAIL@FM":ERROR.CODE
 *CALL STORE.END.ERROR
-    END ELSE
-        Ret=INPUT_PARAM
-    END
+END ELSE
+    Ret=INPUT_PARAM
+END
 *PACS00157018 - E
-    VAR.NAME = Ret
-    INT.TYPE = 'ONLINE'
-    BAT.NO = ''
-    BAT.TOT = ''
-    INFO.OR = ''
-    INFO.DE = ''
-    ID.PROC = ''
-    MON.TP = ''
-    DESC = ''
-    REC.CON = ''
-    EX.USER = ''
-    EX.PC = ''
-    CHANGE '::' TO @FM IN VAR.NAME
-    REC.CON = VAR.NAME<2>
-    DESC = VAR.NAME<3>
-    IF Ret THEN
-        GOSUB PADRONE.CHECK.OLD		;*Interface Change by Santiago-CHANGES "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
-    END
+VAR.NAME = Ret
+INT.TYPE = 'ONLINE'
+BAT.NO = ''
+BAT.TOT = ''
+INFO.OR = ''
+INFO.DE = ''
+ID.PROC = ''
+MON.TP = ''
+DESC = ''
+REC.CON = ''
+EX.USER = ''
+EX.PC = ''
+CHANGE '::' TO @FM IN VAR.NAME
+REC.CON = VAR.NAME<2>
+DESC = VAR.NAME<3>
+IF Ret THEN
+    GOSUB PADRONE.CHECK.OLD		;*Interface Change by Santiago-CHANGES "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
+END
 RETURN
 *--------------------------------------------------------------------------------------------------------------------
 PADRONE.CHECK.OLD:	;*Interface Change by Santiago-CHANGES "PADRONE.CHECK" TO "PADRONE.CHECK.OLD"
 *--------------------------------------------------------------------------------------------------------------------
-    CHANGE '$' TO '' IN VAR.NAME
-    CHANGE '#' TO @FM IN VAR.NAME
-    VAL.NAME = VAR.NAME<1>
-    CHANGE ':' TO @FM IN VAL.NAME
-    IF VAL.NAME<1> EQ 'SUCCESS' ELSE
-        IF VAL.NAME<1> EQ 'FAILURE' THEN
-            GOSUB FAIL.PADRONE
-        END
+CHANGE '$' TO '' IN VAR.NAME
+CHANGE '#' TO @FM IN VAR.NAME
+VAL.NAME = VAR.NAME<1>
+CHANGE ':' TO @FM IN VAL.NAME
+IF VAL.NAME<1> EQ 'SUCCESS' ELSE
+    IF VAL.NAME<1> EQ 'FAILURE' THEN
+        GOSUB FAIL.PADRONE
     END
+END
 RETURN
 *--------------------------------------------------------------------------------------------------------------------
 FAIL.PADRONE.OLD:	;*Interface Change by Santiago-CHANGES "FAIL.PADRONE" TO "FAIL.PADRONE.OLD"
 *------------------------------------------------------------------------------------------------------------------------
 
-    CHECK.FAIL.MSG  = VAR.NAME<2>
-    CHECK.ERROR.CODE = FIELD(CHECK.FAIL.MSG,'-',1)
-    ERROR.CODE.VALUE = TRIM(FIELD(CHECK.ERROR.CODE,':',2), "", 'A')
-    IF ERROR.CODE.VALUE EQ '019' THEN
-        TEXT = "REDO.CHECK.PADRONE"
-        CURR.NO = DCOUNT(R.NEW(EB.CUS.OVERRIDE),@VM)+1
-        CALL STORE.OVERRIDE(CURR.NO)
+CHECK.FAIL.MSG  = VAR.NAME<2>
+CHECK.ERROR.CODE = FIELD(CHECK.FAIL.MSG,'-',1)
+ERROR.CODE.VALUE = TRIM(FIELD(CHECK.ERROR.CODE,':',2), "", 'A')
+IF ERROR.CODE.VALUE EQ '019' THEN
+    TEXT = "REDO.CHECK.PADRONE"
+    CURR.NO = DCOUNT(R.NEW(EB.CUS.OVERRIDE),@VM)+1
+    CALL STORE.OVERRIDE(CURR.NO)
 
-        MON.TP = '08'
-        DESC = 'El webservices no esta disponible'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
+    MON.TP = '08'
+    DESC = 'El webservices no esta disponible'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
 
-    END ELSE
-        FLAG.OVERRIDE = 1
-        MON.TP = '04'
-        APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
-    END
+END ELSE
+    FLAG.OVERRIDE = 1
+    MON.TP = '04'
+    APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;* R22 Manual Conversion - CALL method format modified
+END
 RETURN
 *-------------------------------------------END OF RECORD---------------------------------------------------------
 ;*Interface Change by Santiago-START
@@ -375,7 +376,7 @@ RETURN
 CHK.PADRONE:
 *--------------------------------------------------------------------------------------------------------------------
 *Raising override if the given value is not availble in padrone interface
-    R.PAD.WS<PAD.WS.CEDULA> = Cedule
+    R.PAD.WS<PAD.WS.CEDULA> = TRIM(Cedule)              ;* adding TRIM for all padron ws	;*Fix Padron � By Santiago-CHANGED "Cedule" TO "TRIM(Cedule)"
     Y.RESPONSE = ''
     Y.ID.TEMP = ID.NEW
     ID.NEW = Y.INTRF.ID

@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMTY3MTY1MjU1NjpDcDEyNTI6MTY4MTI3NjU0OTQ0NTpJVFNTOi0xOi0xOjc1MToxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 12 Apr 2023 10:45:49
+* @ValidationCode : MjotMTI4OTA2MTU5MTpDcDEyNTI6MTcwMTEwOTk2MzQwMDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 28 Nov 2023 00:02:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 751
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
+
 SUBROUTINE LATAM.CARD.ORDER.PROCESS
 *--------------------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -31,6 +32,7 @@ SUBROUTINE LATAM.CARD.ORDER.PROCESS
 * Date                 Who                              Reference                            DESCRIPTION
 *06-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
 *06-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
+*27-11-2023	       VIGNESHWARI                ADDED COMMENT FOR INTERFACE CHANGES     Embozado  � By Santiago
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -40,9 +42,9 @@ SUBROUTINE LATAM.CARD.ORDER.PROCESS
     $INSERT I_F.REDO.STOCK.REGISTER
     $INSERT I_LATAM.CARD.COMMON
 *--------------------------------------------------------------------------------------------------------
-**********
-MAIN.PARA:
-**********
+;***********	;*Fix Embozado � By Santiago-commented-start
+*MAIN.PARA:
+;***********	;*Fix Embozado � By Santiago-end
 
     IF R.OLD(CARD.IS.EMBOSS.TYPE) EQ 'PREEMBOZADA' AND R.OLD(CARD.IS.CARD.STATUS) EQ '97' AND R.NEW(CARD.IS.CARD.STATUS) NE '97' THEN
 

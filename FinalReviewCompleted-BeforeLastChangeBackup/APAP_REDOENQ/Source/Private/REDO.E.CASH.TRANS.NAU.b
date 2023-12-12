@@ -1,5 +1,18 @@
+* @ValidationCode : MjotMTgzODAxMDcyOkNwMTI1MjoxNzAxNzczOTQ1MTQ1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Dec 2023 16:29:05
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.CASH.TRANS.NAU(Y.FINAL.DATA)
+    
 *-----------------------------------------------------------------------------
 * Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 * Developed By : Pradeep M
@@ -19,6 +32,7 @@ SUBROUTINE REDO.E.CASH.TRANS.NAU(Y.FINAL.DATA)
 * 23/11/2017    Gopala Krishnan R   PACS00619093     DATE.TIME field in within the last 12 months
 *13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     VM TO @VM,FM TO @FM,++ TO +=1, F.READ TO CACHE.READ
 *13-07-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
+*04-12-2023     VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES    SQA-11889� By Santiago
 *-----------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -191,9 +205,10 @@ TT.PROCESS:
     NO.OF.REC1 = ''
     ERR.TT = ''
 *
-    SEL.CMD1 = "SELECT ":FN.TELLER$NAU
+
+    SEL.CMD1 = "SELECT ":FN.TELLER$NAU:" WITH RECORD.STATUS EQ INAO"	;*Fix SQA-11889� By Santiago
     GOSUB SEL.FLDS.TT
-    SEL.CMD1:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL
+*    SEL.CMD1:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL	;*Fix SQA-11889� By Santiago-commented
 
     CALL EB.READLIST(SEL.CMD1,SEL.LIST1,'',NO.OF.REC1,ERR.TT)
 
@@ -208,9 +223,9 @@ FT.PROCESS:
 *
     SEL.CMD = ''; SEL.LIST = ''; NO.OF.REC = ''; ERR.FT = ''
 
-    SEL.CMD = "SELECT ":FN.FUNDS.TRANSFER$NAU
+    SEL.CMD = "SELECT ":FN.FUNDS.TRANSFER$NAU:" WITH RECORD.STATUS EQ INAO"	;*Fix SQA-11889� By Santiago
     GOSUB SEL.FLDS.FT
-    SEL.CMD:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL
+    *SEL.CMD:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL	;*Fix SQA-11889� By Santiago-commented
 
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,ERR.FT)
 
@@ -231,9 +246,9 @@ TFS.PROCESS:
     SEL.LIST = ''
     NO.OF.REC = ''
     ERR.TFS = ''
-    SEL.CMD = "SELECT ":FN.T24.FUND.SERVICES$NAU
+    SEL.CMD = "SELECT ":FN.T24.FUND.SERVICES$NAU:" WITH RECORD.STATUS EQ INAO"		;*Fix SQA-11889� By Santiago
     GOSUB SEL.FLDS.TFS
-    SEL.CMD:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL
+    *SEL.CMD:= " AND WITH CO.CODE EQ ":ID.COMPANY:" AND EVAL'DATE.TIME[1,6]' GE ": DIFF.DATE.CAL		;*Fix SQA-11889� By Santiago-commented
     CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,ERR.TFS)
 
     IF Y.TTID THEN
