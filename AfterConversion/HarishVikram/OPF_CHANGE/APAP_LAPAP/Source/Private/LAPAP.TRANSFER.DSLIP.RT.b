@@ -30,7 +30,7 @@ SUBROUTINE LAPAP.TRANSFER.DSLIP.RT
     GOSUB DO.SELECT
 RETURN
 
-*File openers and initial var
+*File openers and initial vars
 INITIALIZE:
     FN.DIGI.REPRINT = 'F.ST.LAPAP.DIGI.DSLIP.REPRINT'
     F.DIGI.REPRINT = ''
