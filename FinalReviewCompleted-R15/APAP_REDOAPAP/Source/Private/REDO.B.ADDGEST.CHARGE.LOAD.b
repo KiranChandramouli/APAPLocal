@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxMDc2MDgzNzQ1OkNwMTI1MjoxNjg1MDc5NzY1MzAwOklUU1M6LTE6LTE6MTk5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 11:12:45
+* @ValidationCode : MjozNzQ2NjY2Nzk6Q3AxMjUyOjE3MDIzODQ1OTEwMjU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:06:31
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 199
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -16,6 +16,7 @@ $PACKAGE APAP.REDOAPAP
 *DATE                 WHO                    REFERENCE                         DESCRIPTION
 *25/05/2023      CONVERSION TOOL         AUTO R22 CODE CONVERSION             NOCHANGE
 *25/05/2023      HARISH VIKRAM              MANUAL R22 CODE CONVERSION           NOCHANGE
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *----------------------------------------------------------------------------------------
 SUBROUTINE REDO.B.ADDGEST.CHARGE.LOAD
 *-----------------------------------------------------------------------------
@@ -32,6 +33,8 @@ SUBROUTINE REDO.B.ADDGEST.CHARGE.LOAD
 ****FILE UPLOAD LOCATION***
     FN.SL = '&SAVEDLISTS&'
     F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+*   CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END ;*R22 MANUAL CODE CONVERSION
 RETURN
 END

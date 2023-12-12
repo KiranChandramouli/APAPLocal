@@ -1,10 +1,18 @@
-$PACKAGE APAP.AA;*MANUAL R22 CODE CONVERSTION
+* @ValidationCode : MjotMTk4Nzk2ODU2NTpDcDEyNTI6MTcwMjM4MzE2Mjk3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:42:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
+$PACKAGE APAP.AA          ;*MANUAL R22 CODE CONVERSTION
 SUBROUTINE REDO.FC.S.PAYSCH
-    
-    
-
-    
-
 *
 * Subroutine Type : ROUTINE
 * Attached to     : ROUTINE ACTIVITY API
@@ -30,7 +38,7 @@ SUBROUTINE REDO.FC.S.PAYSCH
 *DATE              WHO                REFERENCE                        DESCRIPTION
 *29-03-2023      Conversion Tool      AUTO R22 CODE CONVERSION        FM TO @FM,VM TO @VM
 *29-03-2023      MOHANRAJ R           MANUAL R22 CODE CONVERSION         Package name added APAP.AA
-    
+*08-12-2023	 VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11092-By Santiago-No Changes
 
 **-----------------------------------------------------------------------------------
 
@@ -48,14 +56,14 @@ SUBROUTINE REDO.FC.S.PAYSCH
         GOSUB OPEN.FILES
         GOSUB PROCESS
     END
-
-RETURN  ;* Program RETURN
+    
+RETURN          ;* Program RETURN
 *-----------------------------------------------------------------------------------
 PROCESS:
 *======
     CALL CACHE.READ(FN.REDO.FC.PAYSCH,YID.ARR,R.REDO.FC.PAYSCH,YERR)
     IF YERR THEN
-        ETEXT = "EB-FC-READ.ERROR" : @FM : FN.REDO.FC.PAYSCH ;*AUTO R22 CODE CONVERSION
+        ETEXT = "EB-FC-READ.ERROR" : @FM : FN.REDO.FC.PAYSCH          ;*AUTO R22 CODE CONVERSION
         CALL STORE.END.ERROR
     END ELSE
         Y.PAYMENT.TYPE   = R.REDO.FC.PAYSCH<AA.PS.PAYMENT.TYPE>
@@ -69,26 +77,33 @@ PROCESS:
         Y.FORM = R.REDO.FC.PAYSCH<AA.PS.LOCAL.REF,WPOSL2>
         Y.PAYMT.MHD = R.REDO.FC.PAYSCH<AA.PS.LOCAL.REF,WPOSL3>
     END
-
-
-
+*TEST-START	;*Fix SQA-11092- By Santiago-new lines added- start
     IF Y.PAYMENT.TYPE THEN
+        Y.PAY.CNT = DCOUNT(Y.PAYMENT.TYPE,@VM)
+        I=1
+        LOOP
+        WHILE I LE Y.PAY.CNT
 
-        R.NEW(AA.PS.PAYMENT.TYPE) =    Y.PAYMENT.TYPE
-        R.NEW(AA.PS.PAYMENT.METHOD) = Y.PAYMENT.METHOD
-        R.NEW(AA.PS.PAYMENT.FREQ) = Y.PAYMENT.FREQ
-        R.NEW(AA.PS.PROPERTY) = Y.PROPERTY
-        R.NEW(AA.PS.PERCENTAGE) = ""
-        R.NEW(AA.PS.DUE.FREQ) = Y.PAYMENT.FREQ
-        R.NEW(AA.PS.START.DATE) = Y.START.DATE
-        R.NEW(AA.PS.END.DATE) = Y.END.DATE
-        R.NEW(AA.PS.ACTUAL.AMT) = Y.ACTUAL.AMT
+*TEST-END	;*Fix SQA-11092- By Santiago-end
+;*Fix SQA-11092- By Santiago- "<1,I>" is added-start
+            R.NEW(AA.PS.PAYMENT.TYPE)<1,I> =    Y.PAYMENT.TYPE<1,I>
+            R.NEW(AA.PS.PAYMENT.METHOD)<1,I> = Y.PAYMENT.METHOD<1,I>
+            R.NEW(AA.PS.PAYMENT.FREQ)<1,I> = '"':Y.PAYMENT.FREQ<1,I>:'"'	;*Fix SQA-11092- By Santiago-new lines added
+            R.NEW(AA.PS.PAYMENT.FREQ)<1,I> = Y.PAYMENT.FREQ<1,I>
+            R.NEW(AA.PS.PROPERTY)<1,I> = Y.PROPERTY<1,I>
+            R.NEW(AA.PS.PERCENTAGE)<1,I> = ""
+            R.NEW(AA.PS.DUE.FREQ) = Y.PAYMENT.FREQ<1,I>
+            R.NEW(AA.PS.START.DATE)<1,I> = Y.START.DATE<1,I>
+            R.NEW(AA.PS.END.DATE)<1,I> = Y.END.DATE<1,I>
+            R.NEW(AA.PS.ACTUAL.AMT)<1,I> = Y.ACTUAL.AMT<1,I>
+            I=I+1
+        REPEAT
+;*Fix SQA-11092- By Santiago-end
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL1> = Y.ACC.TO.DEBIT
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL2> = Y.FORM
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL3> = Y.PAYMT.MHD
 
     END
-
 
 RETURN
 
@@ -107,7 +122,7 @@ INITIALISE:
 * Getting flag in order to know if transaction is coming through FC
     E = ""
     Y.ARR.ID = System.getVariable("CURRENT.RCA")
-    IF E EQ "EB-UNKNOWN.VARIABLE" THEN ;*AUTO R22 CODE CONVERSION
+    IF E EQ "EB-UNKNOWN.VARIABLE" THEN  ;*AUTO R22 CODE CONVERSION
         Y.ARR.ID = ""
     END
 
@@ -128,7 +143,7 @@ INITIALISE:
     WCAMPO    = "L.AA.DEBT.AC"
     WCAMPO<2> = "L.AA.FORM"
     WCAMPO<3> = "L.AA.PAY.METHD"
-    WCAMPO    = CHANGE(WCAMPO,@FM,@VM) ;*;*AUTO R22 CODE CONVERSION
+    WCAMPO    = CHANGE(WCAMPO,@FM,@VM)  ;*;*AUTO R22 CODE CONVERSION
     CALL MULTI.GET.LOC.REF(WAPP.LST,WCAMPO,YPOS)
     WPOSL1    = YPOS<1,1>
     WPOSL2    = YPOS<1,2>

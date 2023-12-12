@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNjA2ODIwMDk5OkNwMTI1MjoxNzAxMTA5NDk1NDI2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Nov 2023 23:54:55
+* @ValidationCode : MjotNzgxNTM0NzU5OkNwMTI1MjoxNzAxNzczNTQyMzEwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 05 Dec 2023 16:22:22
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
-
 
 SUBROUTINE LAPAP.DEF.CUSTOMER.TYPE
 *--------------------------------------------------------------------------------------------------------------------------------
@@ -38,6 +37,7 @@ SUBROUTINE LAPAP.DEF.CUSTOMER.TYPE
 *10-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *16-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES       Fix SQA-11679 Padrones - By Santiago
 *27-11-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES     SQA-11864 & SQA-11869 � By Santiago
+*04-12-2023	VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11937– By Santiago
 *-----------------------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -135,10 +135,10 @@ GET.PROOF.AND.PROCESS:
 *
     
     BEGIN CASE
-        CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "CEDULA"
+        CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "CEDULA" 
             APAP.REDOVER.redoValCidentCust(Y.APP.VERSION) ;*R22 Manual code conversion
-            CUSTOMER.FULL.NAME = System.getVariable("CURRENT.FULL.NAME")	;*Fix SQA-11864 & SQA-11869 � By Santiago-new lines added
-            CALL System.setVariable("CURRENT.FULL.NAME",CUSTOMER.FULL.NAME)	;*Fix SQA-11864 & SQA-11869 � By Santiago-new lines added
+*            CUSTOMER.FULL.NAME = System.getVariable("CURRENT.FULL.NAME")	;*Fix SQA-11864 & SQA-11869 - By Santiago-new lines added	;*Fix SQA-11937-commented
+*            CALL System.setVariable("CURRENT.FULL.NAME",CUSTOMER.FULL.NAME)	;*Fix SQA-11864 & SQA-11869 - By Santiago-new lines added	;*Fix SQA-11937-commented
 
         CASE R.NEW(REDO.CUS.PRF.IDENTITY.TYPE) EQ "RNC"
             RNC.NUMBER = COMI
@@ -287,7 +287,7 @@ END ELSE
     DESC = 'El webservices no esta disponible'
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP,DESC,REC.CON,EX.USER,EX.PC) ;*R22 Manual Code Conversion-Call Method Format Modified
 END
-RETURN
+RETURN 
 
 ;*Interface Change by Santiago-new lines added-start
 *-------------------------------------------------------------------------------------------------------------------------------------------------

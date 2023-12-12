@@ -1,16 +1,18 @@
-* @ValidationCode : MjotMTQ2MjE4MDgyMTpDcDEyNTI6MTY4MjU5ODAwOTYxMTpzYW1hcjotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:09
+* @ValidationCode : MjoxNjIwNDkzODU0OkNwMTI1MjoxNzAyMzg0MjE3MDExOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:00:17
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
+
+
 SUBROUTINE LATAM.CARD.ORDER.AUTHORISE
 *--------------------------------------------------------------------------------------------------------
 *Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -42,6 +44,8 @@ SUBROUTINE LATAM.CARD.ORDER.AUTHORISE
 * Date                 Who                              Reference                            DESCRIPTION
 *06-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM, = TO EQ, INCLUDE TO INSERT
 *06-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*10-nov-2023           ITSS                       		CallJavaApi replacing CALJEE         Embozado new java call
+*08-12-2023	      VIGNESHWARI                     ADDED COMMENT FOR INTERFACE CHANGES        SQA-11942-By Santiago
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -89,12 +93,12 @@ SUBROUTINE LATAM.CARD.ORDER.AUTHORISE
     $USING APAP.REDOCHNLS
 
 *-----------------------------------------------------------------------
-
+    
     GOSUB INIT.PARA
     GOSUB PROCESS.PARA
 
     GOSUB UPDATE.CARD.RENEWAL
-
+    
     CALL LATAM.V.AUTH.UPD.FILES
 *PACS00956041 - Start
     GOSUB UPDATE.REDO.CARD.NOS.AND.LOCK
@@ -182,13 +186,11 @@ INIT.PARA:
     F.REDO.CARD.REQUEST=''
     CALL OPF(FN.REDO.CARD.REQUEST,F.REDO.CARD.REQUEST)
 
-    LATAM.ID=ID.NEW
+    LATAM.ID = ID.NEW
     Pan = FIELD(LATAM.ID,'.',2)
 RETURN
 *-----------------------------------------------------------------------
 PROCESS.PARA:
-
-
 
     IF R.NEW(CARD.IS.CARD.STATUS) EQ '90' THEN
         GOSUB PROCESS.NEW     ;* newly added
@@ -260,7 +262,9 @@ PROCESS.PARA:
     END
 
 *APAP.REDORETAIL.LATAM.CARD.ORDER.SPLIT.AUTH
+
     APAP.REDORETAIL.latamCardOrderSplitAuth();*MANUAL R22 CODE CONVERSION
+    
 
 RETURN
 *-----------------------------Local part---------------------------------------
@@ -457,6 +461,7 @@ CARD.EMBOSS:
 
     Y.CARD.STATUS = R.NEW(CARD.IS.CARD.STATUS)
     Y.OLD.CARD.STATUS = R.OLD(CARD.IS.CARD.STATUS)
+    
     Y.RESP.CODE.DESB=R.APAP.PARAM<PARAM.RESP.CODE.DESB>
     Y.RESP.CODE=R.APAP.PARAM<PARAM.RESP.CODE>
     CHANGE @VM TO @FM IN Y.RESP.CODE.DESB
@@ -495,10 +500,25 @@ ASSIGN.NEW.EXPIRY.DATE.REQUEST.WEB.SERVICES:
         EXP.DATE  = R.NEW(CARD.IS.EXPIRY.DATE)
         UserId    = OPERATOR
         StationId = TSS$CLIENTIP
-
+        
         INPUT_PARAM ='IST_AssignNewExpiryDateRequest':Y.DEM:Pan:Y.DEM:EXP.DATE:Y.DEM:UserId:Y.DEM:StationId
-        ERROR.CODE = CALLJEE (ACTIVATION,INPUT_PARAM)
-        RESPONSE.CODE =FIELD(INPUT_PARAM,Y.DEM,4)
+*        ERROR.CODE = CALLJEE (ACTIVATION,INPUT_PARAM)	;*Fix SQA-11942-By Santiago-COMMENTED
+        CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', INPUT_PARAM, CalljResponse, CalljError)	;*Fix SQA-11942-By Santiago-New lines added-START
+        
+        CHANGE Y.DEM TO @FM IN CalljResponse
+        Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+        Y.LINE.TMP = ''
+        Y.TEMP = ''
+        I = 1
+        LOOP
+        WHILE I LE Y.TOT.VAL
+            Y.TEMP = CalljResponse<I>:' '
+            Y.LINE.TMP<I> = TRIM(Y.TEMP)
+            I++
+        REPEAT
+        INPUT_PARAM = Y.LINE.TMP
+  ;*Fix SQA-11942-By Santiago-END      
+        RESPONSE.CODE = INPUT_PARAM<4>	;*Fix SQA-11942-By Santiago-Changed "FIELD(INPUT_PARAM,Y.DEM,4)" to "INPUT_PARAM<4>"
         IF RESPONSE.CODE NE '' THEN
             R.NEW(CARD.IS.NED.RESPONSE.CODE)<1,1> = RESPONSE.CODE
             R.NEW(CARD.IS.NED.RESPONSE.DESC)<1,1> = Y.NEW.EXPIRY.DATE.DESC
@@ -506,23 +526,25 @@ ASSIGN.NEW.EXPIRY.DATE.REQUEST.WEB.SERVICES:
         LOCATE 'APPROVED' IN Y.RESP.CODE.DESB SETTING POS3 THEN
             Y.APPROVED.CODE=Y.RESP.CODE<POS3>
         END
+    
         INT.CODE='EMB002'
         INT.TYPE='ONLINE'
-        IF FIELD(INPUT_PARAM,':',1) EQ 'FAILED' THEN
+        IF INPUT_PARAM<1> EQ 'FAILED' THEN	;*Fix SQA-11942-By Santiago-Changed "FIELD(INPUT_PARAM,':',1)" to "INPUT_PARAM<1>"
             DESC='Java API Failure'
 *APAP.REDOCHNSL.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC) ;*MANUAL R22 CODE CONVERSION
-            E='EB-UPD.NO.PROC.DISP'
+            Y.VAL.ERR = ' FAILED: ':RESPONSE.CODE:' ':DESC	;*Fix SQA-11942-By Santiago-new lines added
+            E='EB-UPD.NO.PROC.DISP':@FM:Y.VAL.ERR	;*Fix SQA-11942-By Santiago-":@FM:Y.VAL.ERR" -newly added
             RETURN
         END
         IF RESPONSE.CODE NE Y.APPROVED.CODE THEN
-
             LOCATE RESPONSE.CODE IN Y.RESP.CODE SETTING Y.POS.2 THEN
                 DESC=Y.RESP.CODE.DESB<Y.POS.2>
             END
 *APAP.REDOCHNSL.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC)
             APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC);*MANUAL R22 CODE CONVERSION
-            E='EB-UPD.NO.PROC.DISP'
+            Y.VAL.ERR = ' ERROR: ':RESPONSE.CODE:' ':DESC	;*Fix SQA-11942-By Santiago-new line is added	
+            E='EB-UPD.NO.PROC.DISP':@FM:Y.VAL.ERR	;*Fix SQA-11942-By Santiago-":@FM:Y.VAL.ERR" -newly added
         END
     END
 *    END
@@ -576,23 +598,35 @@ UPDATE.CMS.CARD.REQUEST.WEB.SERVICES:
 
     CardIssueDate = Y.GEN.CARD
 
-
     EmbossedName = ' '
     MagneticStripName = 'VISA CARDHOLDER'
 
-
-
     INPUT_PARAM ='ISTTSF_UpdateCMSCardRequest':Y.DEM:Pan:Y.DEM:EXP.DATE:Y.DEM:CardIndicator:Y.DEM:CardIssueDate:Y.DEM:EmbossedName:Y.DEM:MagneticStripName:Y.DEM:EmbossingType
+    
+*    ERROR.CODE = CALLJEE (ACTIVATION,INPUT_PARAM)	;*Fix SQA-11942-By Santiago-commented
+    CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', INPUT_PARAM, CalljResponse, CalljError)	;*Fix SQA-11942-By Santiago-new lines added- START
 
-    ERROR.CODE = CALLJEE (ACTIVATION,INPUT_PARAM)
-    RESPONSE.CODE =FIELD(INPUT_PARAM,Y.DEM,3)
+    CHANGE Y.DEM TO @FM IN CalljResponse
+    Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+    Y.LINE.TMP = ''
+    Y.TEMP = ''
+    I = 1
+    LOOP
+    WHILE I LE Y.TOT.VAL
+        Y.TEMP = CalljResponse<I>:' '
+        Y.LINE.TMP<I> = TRIM(Y.TEMP)
+        I++
+    REPEAT
+    INPUT_PARAM = Y.LINE.TMP
+    ;*Fix SQA-11942-By Santiago-END
+    RESPONSE.CODE = INPUT_PARAM<3>	;*Fix SQA-11942-By Santiago-Changed "FIELD(INPUT_PARAM,Y.DEM,3)" to "INPUT_PARAM<3>"
     IF RESPONSE.CODE NE '' THEN
         R.NEW(CARD.IS.UCC.RESPONSE.CODE)<1,1> = RESPONSE.CODE
         R.NEW(CARD.IS.UCC.RESPONSE.DESC)<1,1> = Y.CMS.CARD.REQUEST.DESC
     END
     INT.CODE='EMB003'
     INT.TYPE='ONLINE'
-    IF FIELD(INPUT_PARAM,':',1) EQ 'FAILED' THEN
+    IF INPUT_PARAM<1> EQ 'FAILED' THEN
         DESC='Java API Failure'
 *APAP.REDOCHNSL.REDO.INTERFACE.REC.ACT(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC)
         APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE,INT.TYPE,BAT.NO,BAT.TOT,INFO.OR,INFO.DE,ID.PROC,MON.TP.REJ,DESC,REC.CON,EX.USER,EX.PC) ;*MANUAL R22 CODE CONVERSION

@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxNjI4NzcxNjQ1OkNwMTI1MjoxNjkxOTk1OTU2MDM5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 14 Aug 2023 12:22:36
+* @ValidationCode : Mjo4Mzc2NDY2OTA6Q3AxMjUyOjE3MDIzODQzNTE1NjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:02:31
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,10 +8,11 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
+    
 *-------------------------------------------------------------------------------------------------
 * Developer    : Luis Fernando Pazmino (lpazminodiaz@temenos.com).
 * Date         : 15.06.2011
@@ -29,6 +30,7 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
 * 5.1       03.04.2012      jvalarezo         CR.180         for all cases REVIEW.FRECUENCY has to be the EXPIRY.DATE
 ** 06-04-2023 R22 Auto Conversion - FM TO @FM, VM to @VM, SM to @SM
 ** 06-04-2023 Skanda R22 Manual Conversion line no. 163
+*08-12-2023    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11092 By Santiago
 *-------------------------------------------------------------------------------------------------
 * Input/Output: NA/RESULT (The result of the transaction)
 * Dependencies: NA
@@ -49,7 +51,7 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
     $USING APAP.AA
 
 * </region>
-
+    
     GOSUB INIT
     GOSUB OPEN.FILES
 
@@ -59,6 +61,7 @@ SUBROUTINE REDO.CREATE.ARRANGEMENT.A.LIMIT(RESULT)
         RESULT = "OK"
         GOSUB UPDATE.AVL.BAL
     END
+
 RETURN
 *-----------------------------------------------
 UPDATE.AVL.BAL:
@@ -68,8 +71,9 @@ UPDATE.AVL.BAL:
     REF.NO = FMT(FIELD(Y.LIMIT.REF,'.',1,1),"7'0'R")
     SEQ.NO = FMT(FIELD(Y.LIMIT.REF,'.',2,1),"2'0'R")
     Y.LIMIT.ID  = R.NEW(REDO.FC.CUSTOMER):".":REF.NO:".":SEQ.NO
+    Y.LIM.ERR = ''	;*Fix SQA-11092 By Santiago-new lines is added
 
-    CALL F.READU(FN.LIMIT,Y.LIMIT.ID,R.LIMIT,F.LIMIT,LIMIT.ERR,"")
+    CALL F.READU(FN.LIMIT,Y.LIMIT.ID,R.LIMIT,F.LIMIT,LIMIT.ERR,Y.LIM.ERR) ;*Fix SQA-11092 By Santiago-changed "" to Y.LIM.ERR
     IF R.LIMIT EQ '' THEN
         RETURN
     END
@@ -197,8 +201,8 @@ PROCESS:
 
     IF Y.LIMIT.SEQ.F GT 1 AND Y.LIMIT.SEQ.F LT 10 THEN
         Y.LIMIT.SEQ.F = ABS(Y.LIMIT.SEQ.F)
-        Y.LIMIT.SEQ.F = SUBSTRINGS(Y.LIMIT.SEQ.F,1,1)
-        Y.LIMIT.SEQ.F = FMT(Y.LIMIT.SEQ.F,"2'0'R")
+*        Y.LIMIT.SEQ.F = SUBSTRINGS(Y.LIMIT.SEQ.F,1,1)	;*Fix SQA-11092 By Santiago-commented
+*        Y.LIMIT.SEQ.F = FMT(Y.LIMIT.SEQ.F,"2'0'R")	;*Fix SQA-11092 By Santiago-commented
     END
     R.NEW(REDO.FC.ID.LIMIT) = Y.LIMIT.ID.F : "." : Y.LIMIT.SEQ.F
     IF Y.ERR THEN
@@ -239,7 +243,7 @@ GET.LIMIT.PRODUCT:
 
 * Get Limit Product
 *    CALL REDO.CREATE.AA.R.GET.LIMIT.PRODUCT("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)
-    APAP.AA.redoCreateAaRGetLimitProduct("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT) ;*R22 Manual Code Conversion
+    APAP.AA.redoCreateAaRGetLimitProduct("ACCOUNT", Y.LIMIT.CATEGORY.CODE, Y.PRODUCT)     ;*R22 Manual Code Conversion
 
 * After restoring, check if LIMIT.GET.PRODUCT found an error
     IF E NE '' THEN
@@ -276,7 +280,7 @@ GET.LIMIT.SEQ:
 *REMOVE Y.LIMIT.ID.LAST FROM SEL.LIST SETTING POS
         Y.LIMIT.ID.LAST = SEL.LIST<NO.REC>
         YNO.SEQ = FIELD(Y.LIMIT.ID.LAST,'.',3)
-        YNO.SEQ += 1 ;* R22 Auto conversion
+        YNO.SEQ += 1          ;* R22 Auto conversion
         YNO.SEQ = FMT(YNO.SEQ,"2'0'R")
     END ELSE
         YNO.SEQ = '01'
@@ -285,8 +289,8 @@ GET.LIMIT.SEQ:
 * ERROR DE LIMIT REFERENCE 2001.2 , 19062012
     IF YNO.SEQ GT 1 AND YNO.SEQ LT 10 THEN
         YNO.SEQ = ABS(YNO.SEQ)
-        YNO.SEQ = SUBSTRINGS(YNO.SEQ,1,1)
-        YNO.SEQ = FMT(YNO.SEQ,"2'0'R")
+*        YNO.SEQ = SUBSTRINGS(YNO.SEQ,1,1)	;*Fix SQA-11092 By Santiago-commented
+*        YNO.SEQ = FMT(YNO.SEQ,"2'0'R")	;*Fix SQA-11092 By Santiago-commented
     END
 
 *si el numero sec menor q 10 y mayor q 1 concatene con un 0 antes
@@ -297,6 +301,7 @@ RETURN
 * </region>
 
 * <region name="CREATE.LIMIT.OFS" description="Create LIMIT OFS Message">
+    
 CREATE.LIMIT.OFS:
 
     OFS.INFO.INPUT = ""
@@ -325,6 +330,7 @@ CREATE.LIMIT.OFS:
 * Create Parent LIMIT
 * Al ser un nuevo LIMIT, Y.LIMIT.REF.ID seria NULL!
     Y.LIMIT.SEQ    = Y.LIMIT.REF.ID[".",2,1]
+*    Y.LIMIT.SEQ    = "03"	;*Fix SQA-11092 By Santiago-commented
     Y.LIMIT.ID     = Y.LIMIT.REF.ID[".",1,1]
     Y.LIMIT.ID     = Y.LIMIT.ID[1,LEN(Y.LIMIT.ID)-2]
     Y.LIMIT.ID     = FMT(Y.LIMIT.ID : "00.","8'0'R")
@@ -341,7 +347,7 @@ CREATE.LIMIT.OFS:
 **** PACS00254642 -    For each child limit, there should be only one parent - PACS00254642 ****
 **** Manually created child should not used in automatic creation ****
 
-        Y.LIMIT.SEQ += 1 ;* R22 Auto conversion
+        Y.LIMIT.SEQ += 1      ;* R22 Auto conversion
         Y.LIMIT.SEQ = FMT(Y.LIMIT.SEQ,"2'0'R")
         R.NEW(REDO.FC.ID.LIMIT) = R.NEW(REDO.FC.ID.LIMIT)[".",1,1] : "." : Y.LIMIT.SEQ
         Y.PRODUCT = R.NEW(REDO.FC.ID.LIMIT)[".",1,1] : "." : Y.LIMIT.SEQ
@@ -388,11 +394,29 @@ RETURN
 * <region name="PROCESS.LIMIT.OFS" description="Process LIMIT OFS Message">
 PROCESS.LIMIT.OFS:
     OFS.INFO.INPUT<2,4> = Y.LIMIT.ID
+
 *Y.OFS.MSG.REQ = DYN.TO.OFS(R.LIMIT.INPUT, Y.APPLICATION, OFS.INFO.INPUT)
-    CALL OFS.BUILD.RECORD(Y.APPLICATION, OFS.INFO.INPUT<1,2> ,OFS.INFO.INPUT<2,1>, "LIMIT,APAP", "", OFS.INFO.INPUT<2,6>, OFS.INFO.INPUT<2,4>, R.LIMIT.INPUT, Y.OFS.MSG.REQ)
+;*Fix SQA-11092 By Santiago-new lines added-start
+* SJ start
+    APP.NAME = Y.APPLICATION  ;*R22 MANUAL CONVERSION START-DYN.TO.OFS to OFS.BUILD.RECORD
+    OFS.FUNCTION = 'I'
+    OFS.PROCESS = 'PROCESS'
+*    OFS.VERSION = "LIMIT,APAP"
+    OFS.VERSION = "LIMIT,"
+    Y.GTSMODE = ''
+    NO.OF.AUTH = '0'
+    TRANSACTION.ID = Y.LIMIT.ID
+    R.RECORD = R.LIMIT.INPUT
+    Y.OFS.MSG.REQ=''
+
+    CALL OFS.BUILD.RECORD(APP.NAME,OFS.FUNCTION,OFS.PROCESS,OFS.VERSION,Y.GTSMODE,NO.OF.AUTH,TRANSACTION.ID,R.RECORD, Y.OFS.MSG.REQ)
+
+*    CALL OFS.BUILD.RECORD(Y.APPLICATION, OFS.INFO.INPUT<1,2> ,OFS.INFO.INPUT<2,1>, "LIMIT,APAP", "", OFS.INFO.INPUT<2,6>, OFS.INFO.INPUT<2,4>, R.LIMIT.INPUT, Y.OFS.MSG.REQ)	;*Fix SQA-11092 By Santiago-commented
+* SJ end
+;*Fix SQA-11092 By Santiago-end
 * Process OFS Message
 * APAP.TAM.REDO.UTIL.PROCESS.OFS(Y.OFS.MSG.REQ, Y.OFS.MSG.RES)
-    APAP.TAM.redoUtilProcessOfs(Y.OFS.MSG.REQ, Y.OFS.MSG.RES) ;*R22 Manual Conversion
+    APAP.TAM.redoUtilProcessOfs(Y.OFS.MSG.REQ, Y.OFS.MSG.RES)         ;*R22 Manual Conversion
     GOSUB CHECK.PROCESS
     IF Y.ERR THEN
         RETURN
@@ -515,7 +539,7 @@ READ.HISTORY:
 
     IF NOT(Y.ERR) AND R.APP.HIS THEN
         LOOP WHILE R.APP.HIS DO
-            YNO.SEQ += 1 ;* R22 Auto conversion
+            YNO.SEQ += 1      ;* R22 Auto conversion
             Y.PRODUCT = Y.PRODUCT['.',1,1] : '.' : YNO.SEQ
             Y.LIMIT.ID = Y.APP.ID['.',1,1] : '.' : Y.APP.ID['.',2,1] : '.' : YNO.SEQ
             Y.APP.ID = Y.LIMIT.ID  : ';1'

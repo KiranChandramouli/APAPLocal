@@ -1,20 +1,21 @@
-* @ValidationCode : MjozNTU5ODk5NTI6Q3AxMjUyOjE2ODIzMzU5NDU2MTU6SVRTUzotMTotMTo2NjQ6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Apr 2023 17:02:25
+* @ValidationCode : MjotMzk1OTM5MDUzOkNwMTI1MjoxNzAyMzgzMzk0MzIyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:34
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 664
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *21-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                BP REMOVED , VM TO @VM, FM TO @FM
 *21-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
+*08-12-2023        AJITH KUMAR               R22 MANUAL CODE COVERISON    OPF TO OPEN
 *--------------------------------------------------------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.AA.DELETE.PAYM.EMPTY
 
@@ -49,7 +50,9 @@ INIT:
 
     FN.CHK.DIR1.REV = "&COMO&";
     F.CHK.DIR1.REV = "";
-    CALL OPF(FN.CHK.DIR1.REV,F.CHK.DIR1.REV)
+*CALL OPF(FN.CHK.DIR1.REV,F.CHK.DIR1.REV)
+    OPEN FN.CHK.DIR1.REV TO F.CHK.DIR1.REV ELSE  ;*R22 MANUAL CODE CONVERSION - START
+    END ;*R22 MANUAL CODE CONVERSION - END
 
 RETURN
 

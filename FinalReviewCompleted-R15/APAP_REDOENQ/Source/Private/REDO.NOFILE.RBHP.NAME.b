@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMzM0MzgyMTgyOkNwMTI1MjoxNzAxMTA5OTMyOTg0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 28 Nov 2023 00:02:12
+* @ValidationCode : MjotMTkxNTI2NzEyMDpDcDEyNTI6MTcwMTc3Mzk3NzYyNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 05 Dec 2023 16:29:37
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
+
 
 SUBROUTINE REDO.NOFILE.RBHP.NAME(Y.OUT)
 *-----------------------------------------------------------------------------
@@ -29,10 +30,10 @@ SUBROUTINE REDO.NOFILE.RBHP.NAME(Y.OUT)
 *  DATE             WHO                   REFERENCE
 * 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - FM to @FM
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes
-* 06/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Interface Change by Santiago  
-* 10-11-2023	     VIGNESHWARI           ADDED COMMENT FOR INTERFACE CHANGES-No changes 
-*27-11-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Padron   � By Santiago
-                        
+* 06/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Interface Change by Santiago
+* 10-11-2023	     VIGNESHWARI           ADDED COMMENT FOR INTERFACE CHANGES-No changes
+*27-11-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-Padron   - By Santiago
+*04-12-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES -SQA-11937– By Santiago                        
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -134,64 +135,64 @@ RETURN
 **********************
 FETCH.PADRONE.CIDENT.OLD:	;*Fix Padron � By Santiago-changed "FETCH.PADRONE.CIDENT" to "FETCH.PADRONE.CIDENT.OLD"
 **********************
-    Cedule = "padrone$":CIDENT.NUMBER
-    Param1 = "com.padrone.ws.util.MainClass"
-    Param2 = "callPadrone"
-    Param3 = Cedule
-    Ret = ""
-    ACTIVATION = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM=Cedule
-    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
-    IF ERROR.CODE THEN
-        E= "EB-JAVACOMP":@FM:ERROR.CODE
-    END ELSE
-        Ret=INPUT_PARAM
-    END
-    IF Ret NE "" THEN
-        CIDENT.RESULT = Ret
-        CHANGE '$' TO '' IN CIDENT.RESULT
-        CHANGE '#' TO @FM IN CIDENT.RESULT
-        CIDENT.RESULT.ERR = CIDENT.RESULT<1>
-        CHANGE '::' TO @FM IN CIDENT.RESULT.ERR
-        CHANGE '::' TO @FM IN CIDENT.RESULT
-        IF CIDENT.RESULT.ERR<1> EQ "SUCCESS" THEN     ;* On successfull CIDENT number
+Cedule = "padrone$":CIDENT.NUMBER
+Param1 = "com.padrone.ws.util.MainClass"
+Param2 = "callPadrone"
+Param3 = Cedule
+Ret = ""
+ACTIVATION = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM=Cedule
+ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
+IF ERROR.CODE THEN
+    E= "EB-JAVACOMP":@FM:ERROR.CODE
+END ELSE
+    Ret=INPUT_PARAM
+END
+IF Ret NE "" THEN
+    CIDENT.RESULT = Ret
+    CHANGE '$' TO '' IN CIDENT.RESULT
+    CHANGE '#' TO @FM IN CIDENT.RESULT
+    CIDENT.RESULT.ERR = CIDENT.RESULT<1>
+    CHANGE '::' TO @FM IN CIDENT.RESULT.ERR
+    CHANGE '::' TO @FM IN CIDENT.RESULT
+    IF CIDENT.RESULT.ERR<1> EQ "SUCCESS" THEN     ;* On successfull CIDENT number
 
-            Y.APELLIDO = CIDENT.RESULT<2>
-            Y.NOMBRE = CIDENT.RESULT<4>
-            CUSTOMER.FULL.NAME = Y.NOMBRE:' ':Y.APELLIDO
+        Y.APELLIDO = CIDENT.RESULT<2>
+        Y.NOMBRE = CIDENT.RESULT<4>
+        CUSTOMER.FULL.NAME = Y.NOMBRE:' ':Y.APELLIDO
 
-            Y.OUT = CUSTOMER.FULL.NAME
-        END
+        Y.OUT = CUSTOMER.FULL.NAME
     END
+END
 RETURN
 *********************
 FETCH.PADRONE.RNC.OLD:	;*Fix Padron � By Santiago-changed "FETCH.PADRONE.RNC" to "FETCH.PADRONE.RNC.OLD"
 ***********************
-    Cedule = "rnc$":RNC.NUMBER
-    Param1 = "com.padrone.ws.util.MainClass"
-    Param2 = "callPadrone"
-    Param3 = Cedule
-    Ret = ""
-    ACTIVATION = "APAP_PADRONES_WEBSERVICES"
-    INPUT_PARAM=Cedule
-    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
-    IF ERROR.CODE THEN
-        E= "EB-JAVACOMP":@FM:ERROR.CODE
-    END ELSE
-        Ret=INPUT_PARAM
-    END
+Cedule = "rnc$":RNC.NUMBER
+Param1 = "com.padrone.ws.util.MainClass"
+Param2 = "callPadrone"
+Param3 = Cedule
+Ret = ""
+ACTIVATION = "APAP_PADRONES_WEBSERVICES"
+INPUT_PARAM=Cedule
+ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
+IF ERROR.CODE THEN
+    E= "EB-JAVACOMP":@FM:ERROR.CODE
+END ELSE
+    Ret=INPUT_PARAM
+END
 
-    IF Ret NE "" THEN
-        RNC.RESULT = Ret
-        CHANGE '$' TO '' IN RNC.RESULT
-        CHANGE '#' TO @FM IN RNC.RESULT
-        RNC.RESULT.ERR = RNC.RESULT<1>
-        CHANGE '::' TO @FM IN RNC.RESULT.ERR
-        IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
-            CUSTOMER.FULL.NAME = RNC.RESULT<2>
-            Y.OUT = CUSTOMER.FULL.NAME
-        END
+IF Ret NE "" THEN
+    RNC.RESULT = Ret
+    CHANGE '$' TO '' IN RNC.RESULT
+    CHANGE '#' TO @FM IN RNC.RESULT
+    RNC.RESULT.ERR = RNC.RESULT<1>
+    CHANGE '::' TO @FM IN RNC.RESULT.ERR
+    IF RNC.RESULT.ERR<1> EQ "SUCCESS" THEN
+        CUSTOMER.FULL.NAME = RNC.RESULT<2>
+        Y.OUT = CUSTOMER.FULL.NAME
     END
+END
 RETURN
 *****************************************************************
 ;*Fix Padron � By Santiago-new lines added-start
@@ -199,6 +200,7 @@ RETURN
 FETCH.PADRONE.CIDENT:
 **********************
 *    Cedule = "padrone$":CIDENT.NUMBER
+
     Cedule = TRIM(CIDENT.NUMBER)                ;* adding TRIM for all padron ws
     Y.INTRF.ID = 'REDO.PADRON.FISICO'
     R.PAD.WS<PAD.WS.CEDULA> = Cedule
@@ -221,7 +223,7 @@ FETCH.PADRONE.CIDENT:
         ERROR.CODE = 'REDO.NOFILE.RBJP.NAME-cedula'
         E= "EB-JAVACOMP":@FM:ERROR.CODE
     END ELSE
-        IF CIDENT.RESULT.ERR<1> EQ "SUCCESS" THEN     ;* On successfull CIDENT number
+        IF Y.RESPONSE<7> EQ "SUCCESS" THEN     ;* On successfull CIDENT number  	;*Fix SQA-11937– By Santiago- changed "CIDENT.RESULT.ERR<1>" to "Y.RESPONSE<7>"
             Y.APELLIDO = Y.RESPONSE<6>
             Y.NOMBRE = Y.RESPONSE<2>
             CUSTOMER.FULL.NAME = Y.NOMBRE:' ':Y.APELLIDO

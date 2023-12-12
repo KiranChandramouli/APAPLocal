@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo0Mjc0NzYzMDc6Q3AxMjUyOjE2ODQ0OTEwMjcwNDk6SVRTUzotMTotMTo1OTc6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:27
+* @ValidationCode : MjotODUyNjIxMDIzOkNwMTI1MjoxNzAyMzg0MjY1ODExOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:01:05
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 597
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE PACS.FT.DELETE
@@ -17,6 +17,7 @@ SUBROUTINE PACS.FT.DELETE
 *DATE                WHO                         REFERENCE                DESCRIPTION
 *24-04-2023       Conversion Tool        R22 Auto Code conversion          No Changes
 *24-04-2023       Samaran T               R22 Manual Code Conversion       INP.ID  TO FT.ID
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *-------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -29,7 +30,9 @@ SUBROUTINE PACS.FT.DELETE
 
     FN.SL = "&SAVEDLISTS&"
     F.SL = ""
-    CALL OPF(FN.SL, F.SL)
+*CALL OPF(FN.SL, F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END ;*R22 MANUAL CODE CONVERSION
 
     SL.ID = "SL.PROB.FT"
 

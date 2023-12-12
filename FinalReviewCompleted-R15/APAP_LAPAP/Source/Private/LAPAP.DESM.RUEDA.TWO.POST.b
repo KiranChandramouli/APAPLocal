@@ -1,20 +1,21 @@
-* @ValidationCode : MjotMzMxMTIwNzkwOkNwMTI1MjoxNjg0MjIyODA4MDQxOklUU1M6LTE6LTE6OTY4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:08
+* @ValidationCode : MjoyNTIzNTE4NjA6Q3AxMjUyOjE3MDIzODM0MDAwNjI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:40
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 968
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *Modification history
 *Date                Who               Reference                  Description
 *24-04-2023      conversion tool     R22 Auto code conversion     FM TO @FM
 *24-04-2023      Mohanraj R          R22 Manual code conversion   SE L.ERR TO SEL.ERR
+* 08-12-2023        Suresh           Manual R22 conversion        OPF TO OPEN
 SUBROUTINE LAPAP.DESM.RUEDA.TWO.POST
 
     $INSERT I_COMMON
@@ -55,7 +56,9 @@ OPEN.FILES:
     CALL OPF(FN.CHK.DIR1,F.CHK.DIR1)
 
     FN.CHK.DIR = "&SAVEDLISTS&" ; F.CHK.DIR.SL = "";
-    CALL OPF(FN.CHK.DIR,F.CHK.DIR.SL)
+*   CALL OPF(FN.CHK.DIR,F.CHK.DIR.SL)
+    OPEN FN.CHK.DIR TO F.CHK.DIR.SL ELSE   ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
 
 RETURN
 

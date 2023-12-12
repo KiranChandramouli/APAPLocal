@@ -1,9 +1,23 @@
+* @ValidationCode : Mjo3MTkyMTIwNDM6Q3AxMjUyOjE3MDIzODMzODM3NTE6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:23
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     SM ,VM,FM to @SM,@FM,@VM,IF CONDITION FORMAT CHANGE
 *13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION   NO CHANGE
+* 08-12-2023      Suresh            Manual R22 conversion      OPF TO OPEN
 *---------------------------------------------------------------------------------------	-
 SUBROUTINE L.APAP.CORR.CASTIG.SEQPROT(AA.ARR.ID)
 *
@@ -112,7 +126,10 @@ SUBROUTINE L.APAP.CORR.CASTIG.SEQPROT(AA.ARR.ID)
         Y.FILE.ID='AK_CASTIGADO.':AA.ARR.ID:AGENT.NUMBER ;*R22 Auto code conversion
         FN.SAVE.LIST = '&SAVEDLISTS&'
         F.SAVE.LIST = ''
-        CALL OPF(FN.SAVE.LIST,F.SAVE.LIST)
+*        CALL OPF(FN.SAVE.LIST,F.SAVE.LIST)
+        OPEN FN.SAVE.LIST TO F.SAVE.LIST ELSE  ;*R22 Manual Conversion
+        END    ;*R22 Manual Conversion
+        
         WRITE CUST.ID TO F.SAVE.LIST, Y.FILE.ID
     END
 RETURN

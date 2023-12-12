@@ -1,12 +1,24 @@
+* @ValidationCode : MjozMDc0MTcyNzc6Q3AxMjUyOjE3MDIzODMzOTk3ODA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:39
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.DESM.RUEDA.LOAD
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - No changes
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
-
+* 08-12-2023        Suresh                Manual R22 conversion - OPF TO OPEN
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
@@ -48,8 +60,9 @@ OPEN.FILES:
     CALL OPF (FN.LAPAP.DESM.RUEDA,F.LAPAP.DESM.RUEDA)
 
     FN.CHK.DIR = "&SAVEDLISTS&" ; F.CHK.DIR = "";
-    CALL OPF(FN.CHK.DIR,F.CHK.DIR)
-
+*   CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+    OPEN FN.CHK.DIR TO F.CHK.DIR ELSE   ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
     FN.CHK.DIR1 = "DMFILES";
     F.CHK.DIR1 = "";
     CALL OPF(FN.CHK.DIR1,F.CHK.DIR1)

@@ -1,10 +1,10 @@
-* @ValidationCode : MjotMjAxNjc4ODY1NzpDcDEyNTI6MTY4NDIyMjgxMzk4NzpJVFNTOi0xOi0xOjMzNjU6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:13
+* @ValidationCode : MjoxMzE0MTE5ODg3OkNwMTI1MjoxNzAyMzgzNDA3NDY0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:47
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 3365
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -29,6 +29,7 @@ SUBROUTINE LAPAP.RAISE.ENTRY.WOF
 
 * 21-APR-2023    Conversion tool    R22 Auto conversion     BP is removed in Insert File, = to EQ, ++ to +=
 * 21-APR-2023    Narmadha V         R22 Manual Conversion    No Changes
+*08-12-2023       AJITHKUMAR               R22 MANUAL CODE COVERISON    OPF TO OPEN
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON ;*R22 Auto conversion - START
     $INSERT I_EQUATE
@@ -73,7 +74,9 @@ OPENFILES:
 
     FN.SAVEDLISTS = '&SAVEDLISTS&'
     F.SAVEDLISTS = ''
-    CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+*CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+	OPEN  FN.SAVEDLISTS TO F.SAVEDLISTS ELSE ;*R22 MANUAL CODE CONVERISON - START
+	END
 
     FN.AA.ARR = 'F.AA.ARRANGEMENT'
     F.AA.ARR = ''
@@ -110,11 +113,16 @@ OPENFILES:
     AA.SEP = '#'
     FN.COMO='&COMO&'
     F.COMO=''
-    CALL OPF(FN.COMO,F.COMO)
+* CALL OPF(FN.COMO,F.COMO)
+    OPEN FN.COMO TO F.COMO ELSE ;*R22 MANUAL CODE CONVERISON - START
+    END  ;*R22 MANUAL CODE CONVERISON - END
+      
 
     FN.SL='&SAVEDLISTS&'
     F.SL=''
-    CALL OPF(FN.SL,F.SL)
+*CALL OPF(FN.SL,F.SL)
+	OPEN  FN.SL TO F.SL ELSE ;*R22 MANUAL CODE CONVERISON - START
+    END  ;*R22 MANUAL CODE CONVERISON - END
 
     FN.TRANSACTION = 'F.TRANSACTION'
     F.TRANSACTION = ''

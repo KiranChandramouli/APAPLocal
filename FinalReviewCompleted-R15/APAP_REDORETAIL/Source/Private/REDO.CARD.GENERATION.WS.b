@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMjMzNzQ5MTQyOkNwMTI1MjoxNjgyNTk4MDE1NzA1OnNhbWFyOi0xOi0xOjA6MTpmYWxzZTpOL0E6REVWXzIwMjEwOC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:15
+* @ValidationCode : MjoxNjI4NzcxMzMzOkNwMTI1MjoxNzAyMzg0MjIyNDg3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:00:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.CARD.GENERATION.WS
@@ -33,6 +33,8 @@ SUBROUTINE REDO.CARD.GENERATION.WS
 *10 JUN 2011     KAVITHA                    ODR-2010-08-0467         PACS00063138 FIX
 * 11-04-2023     CONVERSION TOOL            AUTO R22 CODE CONVERSION     VM TO @VM ,FM TO @FM SM TO @SM and I++ to I=+1
 * 11-04-2023     jayasurya H                MANUAL R22 CODE CONVERSION   CALL RTN METHOD ADDED
+* 10-nov-2023    ITSS                       CallJavaApi replacing CALJEE   Embozado new java call
+*08-12-2023	 VIGNESHWARI       	    ADDED COMMENT FOR INTERFACE CHANGES        SQA-11942-By Santiago
 *--------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -47,11 +49,10 @@ SUBROUTINE REDO.CARD.GENERATION.WS
     $INSERT I_F.REDO.CARD.BIN
     $INSERT I_REDO.CARD.GEN.COMMON
     $USING APAP.REDOCHNLS
+
 *--------------------------------------------------------------------------------------------------------
 **********
-MAIN.PARA:
-
-
+*MAIN.PARA:	;*Fix SQA-11942-By Santiago-Commented
 
     ACTIVATION = "APAP_EMBOZADO_WEBSERVICES"
 
@@ -63,6 +64,7 @@ RETURN
 *---------------------------------------------------------------------------------------------------------
 UPDATE.WEB.SERVICE:
 ********************
+    
     CHANGE @VM TO '*' IN INPUT_PARAM_CMSACT.REQUEST
     CHANGE @VM TO '*' IN INPUT_PARAM_CMS.CARD.REQUEST
     CHANGE @VM TO '*' IN INPUT_PARAM_CARD.REQUEST
@@ -99,29 +101,56 @@ UPDATE.WEB.SERVICE:
         FETCH_PARAM_CARD.REQUEST      = 'ISTTSF_UpdateCardRequest':Y.DEM:FIELD(INPUT_PARAM_CARD.REQUEST,'*',FIRST.POS,MAX.ALLOWED.CARDS)
         FETCH_PARAM_CMS.CARD.REQUEST  = 'ISTTSF_UpdateCMSCardRequest':Y.DEM:FIELD(INPUT_PARAM_CMS.CARD.REQUEST,'*',FIRST.POS,MAX.ALLOWED.CARDS)
         FETCH_PARAM_CMSACT.REQUEST    = 'ISTTSF_UpdateCMSActRequest':Y.DEM:FIELD(INPUT_PARAM_CMSACT.REQUEST,'*',FIRST.POS,MAX.ALLOWED.CARDS)
-
-        ERROR.CODE.CARD.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CARD.REQUEST)
-        Y.ERROR.CODE=ERROR.CODE.CARD.REQUEST
-        Y.PARAM=FETCH_PARAM_CARD.REQUEST
-
+        
+*        ERROR.CODE.CARD.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CARD.REQUEST)	;*Fix SQA-11942-By Santiago-Commented
+        ;*Fix SQA-11942-By Santiago-START
+        CalljError = ''
+        CalljResponse = ''
+        CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', FETCH_PARAM_CARD.REQUEST, CalljResponse, CalljError)
+        IF CalljError THEN
+            Y.CONNECT.IND = 'FAILED'
+            GOSUB IST.UPD.WS.CON
+            RETURN
+        END
+        
+        GOSUB GET.CALLJ.RESP
+	;*Fix SQA-11942-By Santiago-END
         GOSUB EXCEP.PROCESS
         IF Y.RET THEN
             RETURN
         END
 
-        ERROR.CODE.CMS.CARD.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CMS.CARD.REQUEST)
-        Y.ERROR.CODE=ERROR.CODE.CMS.CARD.REQUEST
-        Y.PARAM     =FETCH_PARAM_CMS.CARD.REQUEST
+*        ERROR.CODE.CMS.CARD.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CMS.CARD.REQUEST)	;*Fix SQA-11942-By Santiago-COMMENTED
+ ;*Fix SQA-11942-By Santiago-NEW LINES ADDED-START       
+        CalljError = ''
+        CalljResponse = ''
+        CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', FETCH_PARAM_CMS.CARD.REQUEST, CalljResponse, CalljError)
+        IF CalljError THEN
+            Y.CONNECT.IND = 'FAILED'
+            GOSUB IST.UPD.WS.CON
+            RETURN
+        END
 
+        GOSUB GET.CALLJ.RESP
+	;*Fix SQA-11942-By Santiago-END
         GOSUB EXCEP.PROCESS
         IF Y.RET THEN
             RETURN
         END
 
-        ERROR.CODE.CMSACT.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CMSACT.REQUEST)
-        Y.ERROR.CODE=ERROR.CODE.CMSACT.REQUEST
-        Y.PARAM     =FETCH_PARAM_CMSACT.REQUEST
-
+*        ERROR.CODE.CMSACT.REQUEST = CALLJEE(ACTIVATION,FETCH_PARAM_CMSACT.REQUEST)	;*Fix SQA-11942-By Santiago-COMMENTED	
+ ;*Fix SQA-11942-By Santiago-NEW LINES ADDED- START       
+        CalljError = ''
+        CalljResponse = ''
+        CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', FETCH_PARAM_CMSACT.REQUEST, CalljResponse, CalljError)
+        IF CalljError THEN
+            Y.CONNECT.IND = 'FAILED'
+            GOSUB IST.UPD.WS.CON
+            RETURN
+        END
+    
+        GOSUB GET.CALLJ.RESP
+	;*Fix SQA-11942-By Santiago-END
         GOSUB EXCEP.PROCESS
         IF Y.RET THEN
             RETURN
@@ -141,12 +170,59 @@ UPDATE.WEB.SERVICE:
     GOSUB WEB.SERV.RESP.UPDATE
     GOSUB FILE.UPD.CHECK
 RETURN
+;*Fix SQA-11942-By Santiago-NEW LINES ADDED -START
+*--------------
+GET.CALLJ.RESP:
+*--------------
+    
+    CHANGE Y.DEM TO @FM IN CalljResponse
+    Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+    Y.LINE.TMP = ''
+    Y.TEMP = ''
+    I = 1
+    LOOP
+    WHILE I LE Y.TOT.VAL
+        Y.TEMP = CalljResponse<I>:' '
+        Y.LINE.TMP<I> = TRIM(Y.TEMP)
+        I++
+    REPEAT
+    CalljResponse = Y.LINE.TMP
+        
+    Y.PARAM = CalljResponse<1>
+    Y.ERROR.CODE = CalljResponse<3>
+    IF Y.ERROR.CODE EQ '00' OR Y.ERROR.CODE EQ '0' THEN
+        Y.ERROR.CODE = ''
+    END
+        
+RETURN
+
+*--------------
+EXCEP.PROCESS:
+*--------------
+*    IF Y.ERROR.CODE THEN
+*        GOSUB IST.UPD.INTF.FAIL
+*        Y.RET=1
+*        RETURN
+*    END
+    
+*    Y.CONNECT.IND=Y.PARAM
+*    GOSUB IST.UPD.WS.CON
+*    IF Y.CONNECT.IND EQ 'FAILED' THEN
+*        Y.RET=1
+*        RETURN
+*    END
+
+    Y.PARAM.SUC.FAIL=Y.PARAM
+    IF Y.PARAM.SUC.FAIL EQ 'FAILED' THEN
+        GOSUB IST.UPD.WS.RESP
+        Y.RET=1
+    END
+RETURN
+;*Fix SQA-11942-By Santiago-END
 *-------------------------------------------------------------------------------
 *******************
 WEB.SERV.RESP.UPDATE:
 *******************
-
-
     IF R.CARD.REQUEST THEN
         IF R.CARD.REQUEST<REDO.CARD.REQ.PERS.CARD> EQ 'URGENTE' THEN
             UrgentCards = 'Y'
@@ -191,9 +267,24 @@ WEB.SERV.RESP.UPDATE:
 
     AF=REDO.CARD.GEN.QTY
     INPUT_PARAM = 'ISTCMSActivityFileExpRequest':Y.DEM:InstitutionId:Y.DEM:FromDate:Y.DEM:ToDate:Y.DEM:FromCardNumber:Y.DEM:ToCardNumber:Y.DEM:CardType:Y.DEM:BranchId:Y.DEM:UrgentCards:Y.DEM:PreEmbossedCards:Y.DEM:RepeadInProduction
-    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)
+*    ERROR.CODE = CALLJEE(ACTIVATION,INPUT_PARAM)	;*Fix SQA-11942-By Santiago-COMMENTED
+	CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', INPUT_PARAM, CalljResponse, CalljError)	;*Fix SQA-11942-By Santiago-NEW LINES ADDED -START
+    
+    CHANGE Y.DEM TO @FM IN CalljResponse
+    Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+    Y.LINE.TMP = ''
+    Y.TEMP = ''
+    I = 1
+    LOOP
+    WHILE I LE Y.TOT.VAL
+        Y.TEMP = CalljResponse<I>:' '
+        Y.LINE.TMP<I> = TRIM(Y.TEMP)
+        I++
+    REPEAT
+    INPUT_PARAM = Y.LINE.TMP
+;*Fix SQA-11942-By Santiago-END    
 
-    IF FIELD(INPUT_PARAM,':',1) EQ 'FAILED' THEN
+    IF INPUT_PARAM<1> EQ 'FAILED' THEN	;*Fix SQA-11942-By Santiago- CHANGED "FIELD(INPUT_PARAM,':',1)" TO "INPUT_PARAM<1>"
         E='EB-CONNECT.FAIL'
         Y.CARD.AB.LIST=R.NEW(REDO.CARD.GEN.CARD.NUMBERS)
         CHANGE @VM TO ' ' IN Y.CARD.AB.LIST
@@ -204,37 +295,19 @@ WEB.SERV.RESP.UPDATE:
         R.NEW(REDO.CARD.GEN.RESPONSE.MSG)='ERROR'
     END
 
-    R.NEW(REDO.CARD.GEN.EXPORT.RECORDS)<1,Y.INIT.COUNT> = FIELD(INPUT_PARAM,Y.DEM,2)
-    R.NEW(REDO.CARD.GEN.RESPONSE.MSG)<1,Y.INIT.COUNT> = FIELD(INPUT_PARAM,Y.DEM,3)
+    R.NEW(REDO.CARD.GEN.EXPORT.RECORDS)<1,Y.INIT.COUNT> = INPUT_PARAM<2> ;*Fix SQA-11942-By Santiago-CHANGED "FIELD(INPUT_PARAM,Y.DEM,2)" TO "INPUT_PARAM<2>"
+    R.NEW(REDO.CARD.GEN.RESPONSE.MSG)<1,Y.INIT.COUNT> = INPUT_PARAM<3>	;*Fix SQA-11942-By Santiago-CHANGED "FIELD(INPUT_PARAM,Y.DEM,3)" TO "INPUT_PARAM<3>"
 RETURN
-*--------------
-EXCEP.PROCESS:
-*--------------
-    IF Y.ERROR.CODE THEN
-        GOSUB IST.UPD.INTF.FAIL
-        Y.RET=1
-        RETURN
-    END
-    Y.CONNECT.IND=FIELD(Y.PARAM,Y.DEM,1)
-    GOSUB IST.UPD.WS.CON
-    IF Y.CONNECT.IND EQ 'FAILED' THEN
-        Y.RET=1
-        RETURN
-    END
 
-    Y.PARAM.SUC.FAIL=FIELD(Y.PARAM,Y.DEM,3)
-    IF Y.PARAM.SUC.FAIL THEN
-
-        GOSUB IST.UPD.WS.RESP
-        Y.RET=1
-    END
-RETURN
 
 *--------------
 FILE.UPD.CHECK:
 *--------------
-    IF FIELD(INPUT_PARAM,Y.DEM,2) EQ 0 THEN
-        E=FIELD(INPUT_PARAM,Y.DEM,3)
+        
+*    IF FIELD(INPUT_PARAM,Y.DEM,2) EQ 0 THEN	;*Fix SQA-11942-By Santiago-COMMENTED
+*        E=FIELD(INPUT_PARAM,Y.DEM,3)	;*Fix SQA-11942-By Santiago-COMMENTED
+    IF INPUT_PARAM<2> EQ 0 THEN		;*Fix SQA-11942-By Santiago-NEW LINES ADDED -START
+        E=INPUT_PARAM<3>	;*Fix SQA-11942-By Santiago-END
 
         Y.CARD.AB.LIST=R.NEW(REDO.CARD.GEN.CARD.NUMBERS)
         CHANGE @VM TO ' ' IN Y.CARD.AB.LIST
@@ -261,6 +334,7 @@ IST.UPD.WS.RESP:
     Y.CARD.AB.LIST=R.NEW(REDO.CARD.GEN.CARD.NUMBERS)
     CHANGE @VM TO ' ' IN Y.CARD.AB.LIST
     CHANGE @SM TO ' ' IN Y.CARD.AB.LIST
+    
     DESC=Y.RESP.ERR:Y.CARD.AB.LIST
     INT.CODE='EMB005'
     INT.TYPE='ONLINE'
@@ -275,7 +349,7 @@ IST.UPD.WS.CON:
 *---------------
     INT.CODE='EMB005'
     INT.TYPE='ONLINE'
-    Y.CONNECT.IND=FIELD(Y.CONNECT.IND,':',1)
+*    Y.CONNECT.IND=FIELD(Y.CONNECT.IND,':',1)	;*Fix SQA-11942-By Santiago-COMMENTED
     IF Y.CONNECT.IND EQ 'FAILED' THEN
         E='EB-CONNECT.FAIL'
         Y.CARD.AB.LIST=R.NEW(REDO.CARD.GEN.CARD.NUMBERS)
