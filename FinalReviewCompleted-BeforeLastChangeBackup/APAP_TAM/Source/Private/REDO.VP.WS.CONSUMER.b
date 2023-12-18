@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTQ4NjcyNjY4NTpDcDEyNTI6MTcwMDQ4MDY2Mjg3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 20 Nov 2023 17:14:22
+* @ValidationCode : MjotNTQ4MTQ1NTk1OkNwMTI1MjoxNzAyMzg0NDI0MjkzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:03:44
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
@@ -28,6 +28,7 @@ SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
 * 1.0       04.23.2013     lpazmino       -                 Initial Version
 * 13/06/2023      Santosh      R22 MANUAL CODE CONVERSION       Changed FUNCTION CALL into SUBROUTINE CALL
 *20-11-2023       Santosh      Intrface Change comment added    Vision Plus-Interface Changes done by Santiago
+*08-12-2023	  VIGNESHWARI    ADDED COMMENT FOR INTERFACE CHANGES  SQA-11908- By Santiago
 *-----------------------------------------------------------------------------
 * Input:
 * ACTIVATION
@@ -249,6 +250,7 @@ SUBROUTINE REDO.VP.WS.CONSUMER(ACTIVATION, WS.DATA)
     EQUATE WS_ONLINE_PAYMENT TO 'ONLINE_PAYMENT'
     EQUATE WS_ONLINE_INFO TO 'ONLINE_INFO'
     EQUATE WS_T24_VPLUS TO 'WS_T24_VPLUS'
+    
 
 
 *   DEFFUN REDO.S.GET.USR.ERR.MSG() ;*R22 Manual Code Conersion
@@ -304,6 +306,7 @@ INIT:
 RETURN
 
 GET.WS.DATA:
+    
     ID.NEW = EB.SystemTables.getIdNew() ;*R22 Manual Code Conersion - After Interface Change
     Y.ID.TEMP = ID.NEW
     ID.NEW = Y.ID.DFE.TRANSFORM
@@ -322,7 +325,7 @@ GET.WS.DATA:
         WS.DATA<1> = 'ERROR'
         ERROR.CODE = Y.ID.DFE.TRANSFORM
 *       ETEXT= "EB-JAVACOMP":@FM:ERROR.CODE ;*R22 Manual Code Conersion - After Interface Change
-        ETEXT = EB.SystemTables.setEtext("EB-JAVACOMP":@FM:ERROR.CODE)
+        EB.SystemTables.setEtext("EB-JAVACOMP":@FM:ERROR.CODE)	;*Fix SQA-11908- By Santiago
         CALL STORE.END.ERROR
     END
     
@@ -341,7 +344,7 @@ GET.JAVA.DATA:
     Track2Length = WS.DATA<10>
     Track2Data = WS.DATA<11>
     CardValidationValue = WS.DATA<12>
-      
+    
     param = POSUserData : '^' :MCCType:'^': RequestType:'^': CardNumber:'^': OrgId:'^': MerchantNumber:'^': CardExpirationDate :'^':TotalSalesAmount :'^':Track2Length :'^':Track2Data:'^': CardValidationValue
  
     EB.SystemTables.CallJavaApi('REDO.VISION.PLUS.ONLINE', param, CalljResponse, CalljError)

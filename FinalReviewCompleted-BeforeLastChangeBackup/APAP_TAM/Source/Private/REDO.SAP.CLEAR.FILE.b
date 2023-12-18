@@ -17,6 +17,7 @@ $PACKAGE APAP.TAM
 *24-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *24-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *25-08-2023     VIGNESHWARI S       R22 MANUAL CONVERSION   PATH IS MODIFIED
+*13-12-2023     Edwin C             R22 Manual Conversion   COB Issue Fix
 *----------------------------------------------------------------------------------------
 
 SUBROUTINE REDO.SAP.CLEAR.FILE
@@ -35,7 +36,7 @@ SUBROUTINE REDO.SAP.CLEAR.FILE
 *09/10/11       PACS00071961            PRABHU N                MODIFICAION
 *
 *-----------------------------------------------------------------------------
-    $INSERT I_COMMON
+    $INSERT I_COMMON 
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
     $INSERT I_F.REDO.GL.H.EXTRACT.PARAMETER
@@ -73,7 +74,8 @@ TAKE.BACKUP:
 
 *    COPY.CMD = "COPY FROM ":SOURCE.DIR:" TO ":BACKUP.DIR:" ALL"
 *    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" ALL":' ':BACKUP.DIR:'/':" ALL" ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
-    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" *":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED	
+     COPY.CMD = 'SH -c cp ':SOURCE.DIR:"/*":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED	 ;*COB Issue Fix
+*	 cp ../interface/SAPRPT/* COPYTEST.BP/COPY/     ; * sample statement
     EXECUTE COPY.CMD
 
 
