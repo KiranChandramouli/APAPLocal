@@ -1,0 +1,14 @@
+* I_F.REDO.INTERFACE.MON.TYPE Created 12 AUG 10 at 05:48PM by apapr8/SHAKTI1
+*      PREFIX[REDO.INT.MON.TYPE]
+           EQU REDO.INT.MON.TYPE.MNEMONIC TO 1,   RedoInterfaceMonType_Mnemonic TO 1,
+            REDO.INT.MON.TYPE.DESCRIPTION TO 2,   RedoInterfaceMonType_Description TO 2,
+          REDO.INT.MON.TYPE.NOTIFY.ENABLE TO 3,   RedoInterfaceMonType_NotifyEnable TO 3,
+          REDO.INT.MON.TYPE.RECORD.STATUS TO 4,   RedoInterfaceMonType_RecordStatus TO 4,
+                REDO.INT.MON.TYPE.CURR.NO TO 5,   RedoInterfaceMonType_CurrNo TO 5,
+               REDO.INT.MON.TYPE.INPUTTER TO 6,   RedoInterfaceMonType_Inputter TO 6,
+              REDO.INT.MON.TYPE.DATE.TIME TO 7,   RedoInterfaceMonType_DateTime TO 7,
+             REDO.INT.MON.TYPE.AUTHORISER TO 8,   RedoInterfaceMonType_Authoriser TO 8,
+                REDO.INT.MON.TYPE.CO.CODE TO 9,   RedoInterfaceMonType_CoCode TO 9,
+              REDO.INT.MON.TYPE.DEPT.CODE TO 10,  RedoInterfaceMonType_DeptCode TO 10,
+           REDO.INT.MON.TYPE.AUDITOR.CODE TO 11,  RedoInterfaceMonType_AuditorCode TO 11,
+        REDO.INT.MON.TYPE.AUDIT.DATE.TIME TO 12,  RedoInterfaceMonType_AuditDateTime TO 12

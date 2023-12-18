@@ -1,0 +1,18 @@
+* I_F.REDO.L.NCF.STATUS Created 25 MAY 10 at 04:22PM by apapr8/PRABHU
+*      PREFIX[NCF.ST]
+     EQU NCF.ST.TRANSACTION.ID TO 1,   RedoLNcfStatus_TransactionId TO 1,
+            NCF.ST.CUSTOMER.ID TO 2,   RedoLNcfStatus_CustomerId TO 2,
+                   NCF.ST.DATE TO 3,   RedoLNcfStatus_Date TO 3,
+          NCF.ST.CHARGE.AMOUNT TO 4,   RedoLNcfStatus_ChargeAmount TO 4,
+             NCF.ST.TAX.AMOUNT TO 5,   RedoLNcfStatus_TaxAmount TO 5,
+                    NCF.ST.NCF TO 6,   RedoLNcfStatus_Ncf TO 6,
+                 NCF.ST.STATUS TO 7,   RedoLNcfStatus_Status TO 7,
+          NCF.ST.RECORD.STATUS TO 8,   RedoLNcfStatus_RecordStatus TO 8,
+                NCF.ST.CURR.NO TO 9,   RedoLNcfStatus_CurrNo TO 9,
+               NCF.ST.INPUTTER TO 10,  RedoLNcfStatus_Inputter TO 10,
+              NCF.ST.DATE.TIME TO 11,  RedoLNcfStatus_DateTime TO 11,
+             NCF.ST.AUTHORISER TO 12,  RedoLNcfStatus_Authoriser TO 12,
+                NCF.ST.CO.CODE TO 13,  RedoLNcfStatus_CoCode TO 13,
+              NCF.ST.DEPT.CODE TO 14,  RedoLNcfStatus_DeptCode TO 14,
+           NCF.ST.AUDITOR.CODE TO 15,  RedoLNcfStatus_AuditorCode TO 15,
+        NCF.ST.AUDIT.DATE.TIME TO 16,  RedoLNcfStatus_AuditDateTime TO 16
