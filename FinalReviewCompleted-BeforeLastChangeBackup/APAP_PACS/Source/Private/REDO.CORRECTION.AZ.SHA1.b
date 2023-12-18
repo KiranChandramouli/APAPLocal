@@ -1,10 +1,10 @@
-* @ValidationCode : MjozMDU2MTI0MTY6Q3AxMjUyOjE2ODQ4NTU2MTAyOTE6SVRTUzotMTotMToxNDU0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:56:50
+* @ValidationCode : MjozODA0Mzc4MTY6Q3AxMjUyOjE3MDIzODQxNjI2Nzk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:59:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1454
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -16,6 +16,7 @@ $PACKAGE APAP.PACS
 *DATE               WHO                       REFERENCE                 DESCRIPTION
 *19-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  FM to @FM , VM to @VM , ++ to +=
 *19-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*08-12-2023       SURESH                      R22 MANUAL CODE CONVERISON   OPF TO OPEN
 *----------------------------------------------------------------------------------------
 
 
@@ -72,7 +73,9 @@ INIT:
 
     FN.SL = "&SAVEDLISTS&"
     F.SL  = ""
-    CALL OPF(FN.SL,F.SL)
+*CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END
 
     CALL OPF(FN.ACCOUNT,F.ACCOUNT)
     CALL OPF(FN.CUSTOMER,F.CUSTOMER)

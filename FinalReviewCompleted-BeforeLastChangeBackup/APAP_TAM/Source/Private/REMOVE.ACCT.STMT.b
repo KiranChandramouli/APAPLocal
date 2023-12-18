@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTMwNjc2NDk0OkNwMTI1MjoxNjg0NDkxMDUxMjI4OklUU1M6LTE6LTE6NjczOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:51
+* @ValidationCode : MjotNTQ0NzI0MDU4OkNwMTI1MjoxNzAyMzg0NDI2MDkwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:03:46
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 673
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *---------------------------------------------------------------------------------------
@@ -16,6 +16,7 @@ $PACKAGE APAP.TAM
 *DATE           WHO                 REFERENCE               DESCRIPTION
 *25-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     X TO X.VAR
 *25-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *----------------------------------------------------------------------------------------
 SUBROUTINE REMOVE.ACCT.STMT
 
@@ -44,7 +45,9 @@ INITIALISE:
 
     FN.SAVEDLISTS = '&SAVEDLISTS&'
     F.SAVEDLISTS = ''
-    CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+*CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+    OPEN FN.SAVEDLISTS TO F.SAVEDLISTS ELSE
+    END ;*R22 MANUAL CODE CONVERSION
 
     SEL.LIST = ''
     NO.OF.REC = ''

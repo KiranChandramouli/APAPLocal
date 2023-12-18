@@ -1,18 +1,17 @@
-* @ValidationCode : MjoxMzQ4MjA3NTg6Q3AxMjUyOjE2ODI1OTgwMTYxMjE6c2FtYXI6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:16
+* @ValidationCode : MjotMTc3NDkwNDUwMjpDcDEyNTI6MTcwMjM4NDIyMjc4MjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:00:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
 SUBROUTINE REDO.CARD.PIN.RESET.UPD
-
 ****************************************************************
 *DESCRIPTION:
 *------------
@@ -36,6 +35,8 @@ SUBROUTINE REDO.CARD.PIN.RESET.UPD
 * Date                 Who                              Reference                            DESCRIPTION
 *11-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM FREAD TO CACHEREAD
 *11-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION           CALL RTN METHOD ADDED
+*10-nov-2023           ITSS                             CallJavaApi replacing CALJEE         Embozado new java call
+*08-12-2023	       VIGNESHWARI                  ADDED COMMENT FOR INTERFACE CHANGES        SQA-11942-By Santiago
 *----------------------------------------------------------------------------------------------
 *------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -47,6 +48,7 @@ SUBROUTINE REDO.CARD.PIN.RESET.UPD
     $INSERT I_F.REDO.APAP.H.PARAMETER
     $INSERT JBC.h
     $USING APAP.REDOCHNLS
+    
     GOSUB INIT
     GOSUB PROCESS
 RETURN
@@ -69,7 +71,7 @@ RETURN
 *-------
 PROCESS:
 *-------
-
+    
     CALL CACHE.READ('F.REDO.APAP.H.PARAMETER','SYSTEM',R.APAP.PARAM,PARAM.ERR)
     Y.DEM=R.APAP.PARAM<PARAM.DELIMITER>
     VAR.ID = ID.NEW[1,6]
@@ -87,13 +89,28 @@ PROCESS:
 
         IF NOT(Y.CARD.ERR) THEN
             INPUT_PARAM = "IST_ResetPinOffsetRequest":Y.DEM:ID.NEW:Y.DEM:OPERATOR
-            Y.RESPONSE = CALLJEE(ACTIVATION,INPUT_PARAM)
-            Y.OUTPUT=INPUT_PARAM
-            CHANGE Y.DEM TO @FM IN Y.OUTPUT
+*            Y.RESPONSE = CALLJEE(ACTIVATION,INPUT_PARAM)	;*Fix SQA-11942-By Santiago-COMMENTED
+			CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', INPUT_PARAM, CalljResponse, CalljError)	;*ADDED COMMENT FOR INTERFACE CHANGES-;*Fix SQA-11942-By Santiago-NEW LINES ADDED-START
+*            Y.OUTPUT=INPUT_PARAM	;*Fix SQA-11942-By Santiago-COMMENTED
+
+            CHANGE Y.DEM TO @FM IN CalljResponse
+            Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+            Y.LINE.TMP = ''
+            Y.TEMP = ''
+            I = 1
+            LOOP
+            WHILE I LE Y.TOT.VAL
+                Y.TEMP = CalljResponse<I>:' '
+                Y.LINE.TMP<I> = TRIM(Y.TEMP)
+                I++
+            REPEAT
+            Y.OUTPUT = Y.LINE.TMP	;*Fix SQA-11942-By Santiago-END
+            
             IF Y.OUTPUT<1> NE 'FAIL' THEN
                 IF Y.OUTPUT<4> NE '0' THEN
+*                    Y.VAL.ERR = ' SUCCESS: ':CalljResponse	;*Fix SQA-11942-By Santiago-COMMENTED
                     AF=RCPR.NAME.ON.PLASTIC
-                    E="EB-RESET.FAILED"
+                    E="EB-RESET.FAILED"     ;* :@FM:Y.VAL.ERR	;*Fix SQA-11942-By Santiago
                     CALL STORE.END.ERROR
                     CALL CACHE.READ(FN.EB.ERROR, "EB-UPD.NO.PROCESS", R.EB.ERROR, ERR) ;* R22 CODE CONVERSION
                     DESC=R.EB.ERROR<EB.ERR.ERROR.MSG,1>:' ':Y.OUTPUT<4>
@@ -101,8 +118,9 @@ PROCESS:
                 END
             END
             ELSE
+*                Y.VAL.ERR = ' FAIL: ':CalljResponse	;*Fix SQA-11942-By Santiago-COMMENTED
                 AF=RCPR.NAME.ON.PLASTIC
-                E="EB-RESET.FAILED"
+                E="EB-RESET.FAILED"         ;* :@FM:Y.VAL.ERR	;*Fix SQA-11942-By Santiago
                 CALL STORE.END.ERROR
                 CALL CACHE.READ(FN.EB.ERROR, "EB-CONNECT.FAIL", R.EB.ERROR, ERR) ;* R22 CODE CONVERSION
                 DESC=R.EB.ERROR<EB.ERR.ERROR.MSG,1>

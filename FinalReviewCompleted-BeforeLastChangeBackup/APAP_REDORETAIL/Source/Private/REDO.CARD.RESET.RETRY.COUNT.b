@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMTE4NjEzMTAxMTpDcDEyNTI6MTY4MjU5ODAxNzE2MTpzYW1hcjotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 27 Apr 2023 17:50:17
+* @ValidationCode : MjoyMDg0MzE5NTQ1OkNwMTI1MjoxNzAyMzg0MjIzNTM5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:00:23
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : samar
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDORETAIL
+
 SUBROUTINE REDO.CARD.RESET.RETRY.COUNT
 
 ****************************************************************
@@ -36,6 +37,9 @@ SUBROUTINE REDO.CARD.RESET.RETRY.COUNT
 * Date                 Who                              Reference                            DESCRIPTION
 *11-04-2023            CONVERSION TOOL                AUTO R22 CODE CONVERSION           VM TO @VM ,FM TO @FM SM TO @SM
 *11-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            CALL RTN METHOD ADDED
+*10-nov-2023           ITSS                             CallJavaApi replacing CALJEE         Embozado new java call
+*08-12-2023	        VIGNESHWARI                   ADDED COMMENT FOR INTERFACE CHANGES        SQA-11942-By Santiago
+
 *----------------------------------------------------------------------------------------------
 *------------------------------------------------------------------------
     $INSERT I_COMMON
@@ -48,6 +52,7 @@ SUBROUTINE REDO.CARD.RESET.RETRY.COUNT
     $INSERT I_TSS.COMMON
     $INSERT JBC.h
     $USING APAP.REDOCHNLS
+    
     GOSUB INIT
     GOSUB PROCESS
 RETURN
@@ -67,21 +72,36 @@ PROCESS:
     Y.PREV.STATUS=R.OLD(CARD.IS.CARD.STATUS)
     Y.NEW.STATUS =R.NEW(CARD.IS.CARD.STATUS)
     IF Y.PREV.STATUS NE '75' OR Y.NEW.STATUS NE '94' THEN
+        Y.VALUES = 'Output0 : ':Y.PREV.STATUS:' - ':Y.PREV.STATUS	;*Fix SQA-11942-By Santiago-NEW LINES ADDED
         AF=CARD.IS.CARD.STATUS
-        ETEXT="EB-RESET.CNT.FAILED"
+        ETEXT="EB-RESET.CNT.FAILED":@FM:Y.VALUES	;*Fix SQA-11942-By Santiago- ":@FM:Y.VALUES" NEW VALUES ADDED
         CALL STORE.END.ERROR
         RETURN
     END
     ACTIVATION = "APAP_EMBOZADO_WEBSERVICES"
     Y.PAN=FIELD(ID.NEW,'.',2)
     INPUT_PARAM="IST_ResetPinRetryCountRequest": Y.DEM : Y.PAN : Y.DEM : OPERATOR : Y.DEM : TSS$CLIENTIP
-    Y.RESPONSE = CALLJEE(ACTIVATION,INPUT_PARAM)
-    Y.OUTPUT=INPUT_PARAM
-    CHANGE Y.DEM TO @FM IN Y.OUTPUT
+*    Y.RESPONSE = CALLJEE(ACTIVATION,INPUT_PARAM)	;*Fix SQA-11942-By Santiago-COMMENTED
+	CALL EB.CALL.JAVA.API('REDO.WS.EMBOZADO', INPUT_PARAM, CalljResponse, CalljError)	;*Fix SQA-11942-By Santiago-NEW LINES ADDED-START
+
+    CHANGE Y.DEM TO @FM IN CalljResponse
+    Y.TOT.VAL = DCOUNT(CalljResponse,@FM)
+    Y.LINE.TMP = ''
+    Y.TEMP = ''
+    I = 1
+    LOOP
+    WHILE I LE Y.TOT.VAL
+        Y.TEMP = CalljResponse<I>:' '
+        Y.LINE.TMP<I> = TRIM(Y.TEMP)
+        I++
+    REPEAT
+    Y.OUTPUT = Y.LINE.TMP	;*Fix SQA-11942-By Santiago-END
+    
     IF Y.OUTPUT<1>[1,4] NE 'FAIL' THEN
         IF Y.OUTPUT<4> NE '0' THEN
+            Y.VALUES = ' Output1: ':CalljResponse	;*Fix SQA-11942-By Santiago-NEW LINES ADDED
             AF=CARD.IS.CARD.STATUS
-            ETEXT="EB-RESET.CNT.FAILED"
+            ETEXT="EB-RESET.CNT.FAILED":@FM:Y.VALUES	;*Fix SQA-11942-By Santiago-":@FM:Y.VALUES" NEW VALUE IS ADDED
             CALL STORE.END.ERROR
             CALL CACHE.READ(FN.EB.ERROR, "EB-UPD.NO.PROCESS", R.EB.ERROR, ERR) ;* AUTO R22 CODE CONVERSION
             DESC=R.EB.ERROR<EB.ERR.ERROR.MSG,1>:' ':Y.OUTPUT<4>
@@ -89,8 +109,9 @@ PROCESS:
         END
     END
     ELSE
+        Y.VALUES = ' Output2: ':Y.OUTPUT	;*Fix SQA-11942-By Santiago-NEW LINES IS ADDED
         AF=CARD.IS.CARD.STATUS
-        ETEXT="EB-RESET.CNT.FAILED"
+        ETEXT="EB-RESET.CNT.FAILED":@FM:Y.VALUES	;*Fix SQA-11942-By Santiago-":@FM:Y.VALUES" NEW VALUE IS ADDED
         CALL STORE.END.ERROR
         CALL CACHE.READ(FN.EB.ERROR, "EB-CONNECT.FAIL", R.EB.ERROR, ERR) ;* AUTO R22 CODE CONVERSION
         DESC=R.EB.ERROR<EB.ERR.ERROR.MSG,1>

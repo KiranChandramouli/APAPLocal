@@ -1,16 +1,19 @@
-* @ValidationCode : MjotMTIyMzAxMzM4NDpDcDEyNTI6MTY4MjMzMTMyMDUxNjpJVFNTOi0xOi0xOjYwMDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 24 Apr 2023 15:45:20
+* @ValidationCode : MjotMzYzOTM2OTMzOkNwMTI1MjoxNzAyMzgzMzgzNjg5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:23
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 600
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
+
+
 SUBROUTINE L.APAP.CORR.CASTIG.SEQPROT.POST
 *
 * Client Name   : APAP
@@ -31,7 +34,9 @@ SUBROUTINE L.APAP.CORR.CASTIG.SEQPROT.POST
 
     FN.SAVE.LST = '&SAVEDLISTS&'
     F.SAVE.LST = ''
-    CALL OPF(FN.SAVE.LST,F.SAVE.LST)
+*   CALL OPF(FN.SAVE.LST,F.SAVE.LST)
+    OPEN FN.SAVE.LST TO F.SAVE.LST ELSE  ;*R22 Manual Conversion
+    END ;*R22 Manual Conversion
 
     C.TABLE.ID = "CASTIGADO_SEGPROTFIN1.PRESTAMOS.txt"
     YGRP.ARR = "ARRANGEMENT.ID,BILL.ID,SEGPROTFIN1 AMOUNT"

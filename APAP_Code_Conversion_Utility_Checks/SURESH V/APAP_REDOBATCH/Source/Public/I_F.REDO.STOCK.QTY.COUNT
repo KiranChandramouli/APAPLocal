@@ -1,0 +1,12 @@
+* I_F.REDO.STOCK.QTY.COUNT Created 21 NOV 13 at 01:18PM by t24uatd/PRABHU
+*      PREFIX[REDO.STOCK.QTY.COUNT]
+             EQU REDO.STOCK.QTY.COUNT.AGENCY TO 1,   RedoStockQtyCount_Agency TO 1,
+              REDO.STOCK.QTY.COUNT.CARD.TYPE TO 2,   RedoStockQtyCount_CardType TO 2,
+                   REDO.STOCK.QTY.COUNT.DATE TO 3,   RedoStockQtyCount_Date TO 3,
+               REDO.STOCK.QTY.COUNT.QTY.RECD TO 4,   RedoStockQtyCount_QtyRecd TO 4,
+                 REDO.STOCK.QTY.COUNT.DAMAGE TO 5,   RedoStockQtyCount_Damage TO 5,
+                   REDO.STOCK.QTY.COUNT.LOST TO 6,   RedoStockQtyCount_Lost TO 6,
+                 REDO.STOCK.QTY.COUNT.ISSUED TO 7,   RedoStockQtyCount_Issued TO 7,
+              REDO.STOCK.QTY.COUNT.STOCK.QTY TO 8,   RedoStockQtyCount_StockQty TO 8,
+               REDO.STOCK.QTY.COUNT.RETURNED TO 9,   RedoStockQtyCount_Returned TO 9,
+              REDO.STOCK.QTY.COUNT.DESTROYED TO 10,  RedoStockQtyCount_Destroyed TO 10

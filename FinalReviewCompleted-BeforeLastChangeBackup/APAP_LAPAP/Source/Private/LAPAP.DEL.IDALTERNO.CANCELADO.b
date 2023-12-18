@@ -1,20 +1,21 @@
-* @ValidationCode : MjotMTM0MDIzNDQ2MzpDcDEyNTI6MTY4NDIyMjgwNzczOTpJVFNTOi0xOi0xOjE1NzQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:07
+* @ValidationCode : Mjo2NDk1MjU3OTg6Q3AxMjUyOjE3MDIzODMzOTk2NzA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:39
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1574
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *Modification history
 *Date                Who               Reference                  Description
 *21-04-2023      conversion tool     R22 Auto code conversion     VM TO @VM,FM TO @FM,SM TO @SM
 *21-04-2023      Mohanraj R          R22 Manual code conversion   No changes
+* 08-12-2023     Suresh               Manual R22 conversion       OPF TO OPEN
 ***Rutina para quitar el id alterno de ABANK a un prestamo despues
 *** de que el prestamo estan cancelado
 *-----------------------------------------------------------------------------
@@ -48,14 +49,18 @@ INITIALISE:
     CALL OPF(FN.ACCOUNT,FV.ACCOUNT)
     FN.SL = '&SAVEDLISTS&'
     F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+*   CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE   ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
+   
+    
     FN.ALTERNATE.ACCOUNT = "F.ALTERNATE.ACCOUNT"
     FV.ALTERNATE.ACCOUNT = ""
     CALL OPF(FN.ALTERNATE.ACCOUNT,FV.ALTERNATE.ACCOUNT)
     FN.AA = "F.AA.ARRANGEMENT"
     F.AA = ""
     CALL OPF(FN.AA, F.AA)
-
+ 
 RETURN
 ****************
 SET.CONTRATO.OLD:
