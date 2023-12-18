@@ -1,15 +1,15 @@
-* @ValidationCode : MjotMTIyNzc3Nzg3NDpDcDEyNTI6MTY4NDg0MjE1MDQyMzpJVFNTOi0xOi0xOjM4MjoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 17:12:30
+* @ValidationCode : MjotMTAxMTI4OTQzNTpDcDEyNTI6MTcwMjY1ODIzODA4NDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 15 Dec 2023 22:07:18
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 382
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+* @ValidationInfo : Compiler Version  : R23_SP4.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VISA.ACQUIRER.TXN
 ************************************************************
@@ -35,6 +35,7 @@ SUBROUTINE REDO.VISA.ACQUIRER.TXN
 *DATE                       WHO                         REFERENCE                                   DESCRIPTION
 *19-04-2023            Conversion Tool             R22 Auto Code conversion                      FM TO @FM SM TO @SM
 *19-04-2023              Samaran T                R22 Manual Code conversion                         No Changes
+*15-05-2023              Edwin D                  R22 Code conversion                         COB issues
 *---------------------------------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -58,6 +59,12 @@ INIT:
     F.REDO.VISA.FT.LOG = ''
     CALL OPF(FN.REDO.VISA.FT.LOG,F.REDO.VISA.FT.LOG)
 
+    LOC.REF.APPLICATION = "FUNDS.TRANSFER"   ; * R22 code conversion
+    LOC.REF.FIELDS = "AT.UNIQUE.ID"
+    LOC.REF.POS=''
+    CALL GET.LOC.REF(LOC.REF.APPLICATION,LOC.REF.FIELDS,LOC.REF.POS)
+    POS.AT.UNIQUE.ID = LOC.REF.POS<1,1>
+
 RETURN
 
 *******
@@ -77,10 +84,25 @@ PROCESS:
         ID.TEXT='"@ID:' ; MSG.DELIM="'*':" ; UNIQ.ID='AT.UNIQUE.ID"'
         EVA.TEXT=ID.TEXT:MSG.DELIM:UNIQ.ID
         SEL.LIST = '' ; SEL.CMD ='' ; REC.ERR = ''
-        SEL.CMD ="SELECT ":FN.FUNDS.TRANSFER:" WITH TRANSACTION.TYPE EQ ":Y.FTTC.ID:" AND DEBIT.VALUE.DATE EQ ":TODAY:" SAVING EVAL ":EVA.TEXT
+*        SEL.CMD ="SELECT ":FN.FUNDS.TRANSFER:" WITH TRANSACTION.TYPE EQ ":Y.FTTC.ID:" AND DEBIT.VALUE.DATE EQ ":TODAY:" SAVING EVAL ":EVA.TEXT ; * R22 code conversion
+        SEL.CMD ="SELECT ":FN.FUNDS.TRANSFER:" WITH TRANSACTION.TYPE EQ ":DQUOTE(Y.FTTC.ID):" AND DEBIT.VALUE.DATE EQ ":DQUOTE(TODAY)
 *write the records
         CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.RECS,REC.ERR)
-        CALL F.WRITE(FN.REDO.VISA.FT.LOG,Y.FTTC.ID,SEL.LIST)
+        SEL.NEW.LIST = ''
+        LOOP
+            REMOVE FT.ID FROM SEL.LIST SETTING FT.POS
+        WHILE FT.ID:FT.POS
+            FT.ERR = '' ; R.FT = ''
+            CALL F.READ(FN.FUNDS.TRANSFER, FT.ID, R.FT, F.FUNDS.TRANSFER, FT.ERR)
+            IF NOT(FT.ERR) THEN
+                IF NOT(SEL.NEW.LIST) THEN
+                    SEL.NEW.LIST = FT.ID:'*':R.FT<FT.LOCAL.REF, POS.AT.UNIQUE.ID>
+                END ELSE
+                    SEL.NEW.LIST<-1> = FT.ID:'*':R.FT<FT.LOCAL.REF, POS.AT.UNIQUE.ID>
+                END
+            END
+        REPEAT
+        CALL F.WRITE(FN.REDO.VISA.FT.LOG,Y.FTTC.ID,SEL.NEW.LIST)
     REPEAT
 RETURN
 ****************************************************
