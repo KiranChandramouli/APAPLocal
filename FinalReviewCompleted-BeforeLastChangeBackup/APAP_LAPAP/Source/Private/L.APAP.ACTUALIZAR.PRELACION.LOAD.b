@@ -1,4 +1,17 @@
+* @ValidationCode : MjotMTk0NDkyMDE2NTpDcDEyNTI6MTcwMjM4MzM4MDQ5MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:20
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 *-----------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 * <Rating>-10</Rating>
@@ -10,6 +23,7 @@ SUBROUTINE L.APAP.ACTUALIZAR.PRELACION.LOAD
 *DATE          WHO                 REFERENCE               DESCRIPTION
 
 *13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION   T24.BP,BP is Removed, INSERT FILE MODIFIED
+* 08-12-2023      Suresh           Manual R22 conversion  OPF TO OPEN
 *----------------------------------------------------------------------------------------
 
     $INSERT  I_COMMON
@@ -46,7 +60,10 @@ TABLAS:
 
     FN.DIRECTORIO = "&SAVEDLISTS&"
     FV.DIRECTORIO = ""
-    CALL OPF (FN.DIRECTORIO,FV.DIRECTORIO)
+*   CALL OPF (FN.DIRECTORIO,FV.DIRECTORIO)
+    OPEN FN.DIRECTORIO TO FV.DIRECTORIO ELSE  ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
+    
 
     Y.FECHA.DESMONTE = '20210329'
     Y.INFILE = 'INFILE.PRELACION.txt'

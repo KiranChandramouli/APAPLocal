@@ -17,6 +17,7 @@ $PACKAGE APAP.LAPAP
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *23-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED,FM TO @FM
+*08-12-2023   HARISHVIKRAM C       R22 MANUAL CONVERSION    OPF changed to OPEN
 *----------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.TRANSFER.DSLIP.RT
     $INSERT I_EQUATE ;*R22 MANUAL CONVERSION START
@@ -41,7 +42,9 @@ INITIALIZE:
 
     FN.HOLD = '&HOLD&'
     F.HOLD = ''
-    CALL OPF(FN.HOLD, F.HOLD);
+*    CALL OPF(FN.HOLD, F.HOLD);      ;*R22 MANUAL CONVERSION - START
+    OPEN FN.HOLD TO F.HOLD ELSE
+    END                              ;*R22 MANUAL CONVERSION - END
 
     FN.TT = 'F.TELLER'
     F.TT = ''

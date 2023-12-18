@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMjMwMzIwODI2OkNwMTI1MjoxNjgyMzM1OTQ1NTQ5OklUU1M6LTE6LTE6Mjg4OjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 24 Apr 2023 17:02:25
+* @ValidationCode : MjotMTM5NTIzMjY4OkNwMTI1MjoxNzAyMzgzMzkzOTc3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:33
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 288
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 * Modification History:
@@ -16,6 +16,7 @@ $PACKAGE APAP.LAPAP
 *21-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                BP REMOVED , F.READ TO CACHE.READ
 *21-04-2023          jayasurya H                     MANUAL R22 CODE CONVERSION            NO CHANGES
 *20-11-2023          Santosh			            Intrface Change comment added           Vision Plus-Interface Changes done by Santiago
+*08-12-2023	     VIGNESHWARI                      ADDED COMMENT FOR INTERFACE CHANGES        SQA-11985-By Santiago
 *----------------------------------------------------------------------------------------------------------------------------------
 SUBROUTINE L.APAP.VALIDATE.USER.RELATION
     $INSERT I_COMMON ;* AUTO R22 CODE CONVERSION START
@@ -51,7 +52,7 @@ PROCESS:
     IF APPLICATION EQ "T24.FUND.SERVICES" THEN
         CTE.CUSTOMER = R.NEW(3)
     END
-*Interface Changes done by Santiago- Start    
+*Interface Changes done by Santiago- Start
     IF CTE.CUSTOMER EQ '' THEN
 *        ETEXT = 'Codigo de Cliente esta vacio'
 *        CALL STORE.END.ERROR
@@ -89,6 +90,10 @@ PROCESS:
     SEL.LIST = ""
     NO.OF.REC = ""
     SEL.ERR = ""
+    IF DAO.IDENT EQ '' THEN	;*Fix SQA-11985-By Santiago-new lines added-start
+        RETURN
+    END	;*Fix SQA-11985-By Santiago-end
+    
     SEL.CMD = "SELECT " : FN.CUS : " WITH L.CU.CIDENT EQ " : DAO.IDENT
 
 *-- PARA ABRIR EL ACHIVO RELATION.CUSTOMER

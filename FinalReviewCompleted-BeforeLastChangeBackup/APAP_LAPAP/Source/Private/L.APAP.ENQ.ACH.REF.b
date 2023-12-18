@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMTUxMzkyNzU3MTpDcDEyNTI6MTY4MjMzMTMyMTUzODpJVFNTOi0xOi0xOjQ4NjoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 24 Apr 2023 15:45:21
+* @ValidationCode : MjotMTEzMzExNTY0MjpDcDEyNTI6MTcwMjM4MzM4NTI0MjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:25
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 486
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
 SUBROUTINE L.APAP.ENQ.ACH.REF (Y.ARREGLO)
 *-----------------------------------------------------------------------------
 *MODIFICATION HISTORY:
@@ -18,6 +19,7 @@ SUBROUTINE L.APAP.ENQ.ACH.REF (Y.ARREGLO)
 * DATE              WHO                REFERENCE                 DESCRIPTION
 * 21-APR-2023     Conversion tool    R22 Auto conversion       BP Removed in insert file
 * 21-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 08-12-2023      Suresh            Manual R22 conversion      OPF TO OPEN
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON ;*R22 Auto conversion - START
     $INSERT I_EQUATE
@@ -44,7 +46,9 @@ INT:
     CALL OPF(FN.ACH.FT.REVE.TXN,F.ACH.FT.REVE.TXN)
 
     FN.CHK.DIR = "&SAVEDLISTS&"; F.CHK.DIR = "" ;
-    CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+*   CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+    OPEN FN.CHK.DIR TO F.CHK.DIR ELSE  ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
 
 RETURN
 

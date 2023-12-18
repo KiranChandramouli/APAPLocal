@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTcyNzA1MDUyOkNwMTI1MjoxNjg0MjIyODAzNzk1OklUU1M6LTE6LTE6NjkxOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:03
+* @ValidationCode : Mjo2MjgyODUwOkNwMTI1MjoxNzAyMzgzMzk3ODgyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 691
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.CLEAR.ECB.BALANCES.POST
@@ -23,6 +23,7 @@ SUBROUTINE LAPAP.CLEAR.ECB.BALANCES.POST
 *Date                Who               Reference                  Description
 *21-04-2023      conversion tool     R22 Auto code conversion     No changes
 *21-04-2023      Mohanraj R          R22 Manual code conversion   No changes
+* 08-12-2023         Suresh          Manual R22 conversion       - OPF TO OPEN
 *======================================================================
 
     $INSERT I_COMMON
@@ -65,7 +66,10 @@ RETURN
 WRITE.DATA:
 
     FN.CHK.DIR = "&SAVEDLISTS&" ; F.CHK.DIR = "" ; Y.FILE.NAME = "AA.ADJ.CLEAR.BAL";
-    CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+*   CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+    OPEN FN.CHK.DIR TO F.CHK.DIR ELSE   ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
+    
     R.FIL = ''; READ.FIL.ERR = ''
     CALL F.READ(FN.CHK.DIR,Y.FILE.NAME,R.FIL,F.CHK.DIR,READ.FIL.ERR)
     IF R.FIL THEN

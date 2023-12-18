@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo5NDk4MDY4MDI6Q3AxMjUyOjE2ODQyMjI4MDg5ODk6SVRTUzotMTotMTozODQ6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:08
+* @ValidationCode : MjotMTQ5MjQwOTA2NzpDcDEyNTI6MTcwMjM4MzQwMTIwNzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:41
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 384
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 
@@ -16,6 +16,7 @@ $PACKAGE APAP.LAPAP
 *Date                Who               Reference                  Description
 *24-04-2023      conversion tool     R22 Auto code conversion     No changes
 *24-04-2023      Mohanraj R          R22 Manual code conversion   CALL routine format modified
+* 08-12-2023        Suresh           Manual R22 conversion       OPF TO OPEN
 
 *Routine to form Posting Restriction Activities String using the Arrangement ID from SL.CLEAR.AA savedlist file.
 *OFS string will be saved in STRING.IDS file under &SAVEDLISTS&.
@@ -42,7 +43,10 @@ OPEN.FILES:
 
     FN.SL = './&SAVEDLISTS&'
     F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+*  CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE   ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
+
     STRING.ID = ''
 
 RETURN

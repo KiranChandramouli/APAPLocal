@@ -1,10 +1,10 @@
-* @ValidationCode : Mjo2MzcwMTUwNzc6Q3AxMjUyOjE2OTI4NzE3ODk4Mzk6SVRTUzotMTotMTo5OTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 24 Aug 2023 15:39:49
+* @ValidationCode : Mjo0ODQ3MDQwNTk6Q3AxMjUyOjE3MDIzODQxODAwNTg6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:59:40
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 997
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -17,6 +17,7 @@ $PACKAGE APAP.REDOEB
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *21-08-2023    VICTORIA S          R22 MANUAL CONVERSION   FM TO @FM,VM TO @VM
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *----------------------------------------------------------------------------------------
 SUBROUTINE APAP.M.UPD.PROD.CODE
 * 02/01/2017 - Sunder - ITSS
@@ -36,7 +37,9 @@ SUBROUTINE APAP.M.UPD.PROD.CODE
 
     FN.SL = '&SAVEDLISTS&'
     F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+*CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END ;*R22 MANUAL CODE CONVERISON
 
     R.COMPANY.CONSOL = ""
     Y.COMPANY.CONSOL.ERR = ""

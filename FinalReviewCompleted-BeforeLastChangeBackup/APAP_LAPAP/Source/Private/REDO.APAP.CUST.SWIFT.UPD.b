@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMjQ2ODg1MDk4OkNwMTI1MjoxNjg5MzEwNzQxMDQ2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 14 Jul 2023 10:29:01
+* @ValidationCode : MjoxMjIzOTg2NjYzOkNwMTI1MjoxNzAyMzgzNDEzNzA3OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:53
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -19,10 +19,10 @@ SUBROUTINE REDO.APAP.CUST.SWIFT.UPD
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - No changes
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Insert , Added call OfsGlobusManager
-
+* 08-12-2023        SURESH                R22 MANUAL CODE COVERISON    OPF TO OPEN
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.REDO.APAP.CUST.SWIFT.DET
@@ -30,7 +30,9 @@ SUBROUTINE REDO.APAP.CUST.SWIFT.UPD
     FN.REDO.APAP.CUST.SWIFT.DET = 'F.REDO.APAP.CUST.SWIFT.DET'; F.REDO.APAP.CUST.SWIFT.DET = ''
     CALL OPF(FN.REDO.APAP.CUST.SWIFT.DET,F.REDO.APAP.CUST.SWIFT.DET)
     FN.SAVELST = '&SAVEDLISTS&'; F.SAVELST = ''
-    CALL OPF(FN.SAVELST,F.SAVELST)
+ *   CALL OPF(FN.SAVELST,F.SAVELST)
+    OPEN FN.SAVELST TO F.SAVELST ELSE
+    END ;*R22 MANUAL CODE CONVERISON
 
     READ R.SAVELST FROM F.SAVELST,'SWIFT.CUST' ELSE RETURN
 

@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxNTAxNzk4MDY6Q3AxMjUyOjE2ODUwOTA1MzIzNTA6SVRTUzotMTotMToxMzk5OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 26 May 2023 14:12:12
+* @ValidationCode : MjotNzMxMDk3MzY4OkNwMTI1MjoxNzAyMzg0NTkxNDE1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:06:31
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1399
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -19,7 +19,7 @@ SUBROUTINE REDO.B.ADDGEST.CORRECT1
 *DATE                       WHO                         REFERENCE                DESCRIPTION
 *25-05-2023           Conversion Tool          R22 Auto Code conversion          No Changes
 *25-05-2023           Harishvikram C          Manual R22 Code Conversion         No Changes
-*
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *---------------------------------------- -------------------------------------
 
     $INSERT I_EQUATE
@@ -53,7 +53,9 @@ SUBROUTINE REDO.B.ADDGEST.CORRECT1
 
     FN.SL = '&SAVEDLISTS&'
     F.SL = ''
-    CALL OPF(FN.SL,F.SL)
+* CALL OPF(FN.SL,F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END ;*R22 MANUAL CODE CONVERSION
 
     FN.AA.REF = "F.AA.ARRANGEMENT.DATED.XREF"
     F.AA.REF = ""

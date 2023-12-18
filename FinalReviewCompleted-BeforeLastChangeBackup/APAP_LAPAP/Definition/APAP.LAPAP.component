@@ -9261,3 +9261,11 @@ public method lApapGetAbsVal (
    jBC: L.APAP.GET.ABS.VAL
 }
 
+
+
+public method lapapCustomerIdenti (
+)
+{
+   jBC: LAPAP.CUSTOMER.IDENTI
+}
+
