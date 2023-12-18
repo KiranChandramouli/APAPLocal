@@ -1,0 +1,334 @@
+component APAP.DRREG
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method drReg213if01MonthlyExtractLoad (
+)
+{
+    jBC: DR.REG.213IF01.MONTHLY.EXTRACT.LOAD
+}
+
+
+
+public method drReg213if01MonthlyExtractSelect (
+)
+{
+    jBC: DR.REG.213IF01.MONTHLY.EXTRACT.SELECT
+}
+ 
+
+
+public method drReg213if01MonthlyExtract (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.213IF01.MONTHLY.EXTRACT
+} 
+
+
+
+public method drRegCommLoanSectorExtPost (
+)
+{
+    jBC: DR.REG.COMM.LOAN.SECTOR.EXT.POST
+}
+ 
+
+
+public method drRegIntTaxPaymentLoad (
+)
+{
+    jBC: DR.REG.INT.TAX.PAYMENT.LOAD
+}
+
+
+
+public method drRegRegn8ExtractMonth (
+)
+{
+    jBC: DR.REG.REGN8.EXTRACT.MONTH
+}
+
+
+
+public method drRegRien3ExtractPost (
+)
+{
+    jBC: DR.REG.RIEN3.EXTRACT.POST
+}
+
+
+
+public method drRegRien4AzExtLoad (
+)
+{
+    jBC: DR.REG.RIEN4.AZ.EXT.LOAD
+}
+
+
+
+public method drRegRien4AzRep1Post (
+)
+{
+    jBC: DR.REG.RIEN4.AZ.REP1.POST
+}
+
+
+
+public method drRegRien4Rep2 (
+)
+{
+    jBC: DR.REG.RIEN4.REP2
+}
+
+
+
+public method drRegRien4Rep3 (
+)
+{
+    jBC: DR.REG.RIEN4.REP3
+}
+
+
+
+public method drRegRien3ExtractLoad (
+)
+{
+    jBC: DR.REG.RIEN3.EXTRACT.LOAD
+}
+
+
+
+public method drRegRclAccDesIntTaxPay (
+)
+{
+    jBC: DR.REG.RCL.ACC.DES.INT.TAX.PAY
+}
+
+
+
+public method drRegRclCrAccIntTax (
+)
+{
+    jBC: DR.REG.RCL.CR.ACC.INT.TAX
+}
+
+
+
+public method drRegRclLoanDsnConvRtn (
+)
+{
+    jBC: DR.REG.RCL.LOAN.DSN.CONV.RTN
+}
+
+
+
+public method drRegRclLoanStatusConvRtn (
+)
+{
+    jBC: DR.REG.RCL.LOAN.STATUS.CONV.RTN
+}
+
+
+
+public method drRegRclLoanTermConvRtn (
+)
+{
+    jBC: DR.REG.RCL.LOAN.TERM.CONV.RTN
+}
+
+
+
+public method drRegRclOrigenRecursosConvRtn (
+)
+{
+    jBC: DR.REG.RCL.ORIGEN.RECURSOS.CONV.RTN
+}
+
+
+
+public method drRegRclTermConvRtn (
+)
+{
+    jBC: DR.REG.RCL.TERM.CONV.RTN
+}
+
+
+
+public method drRegRegn16ExtCustType (
+)
+{
+    jBC: DR.REG.REGN16.EXT.CUST.TYPE
+}
+
+
+
+public method drRegRegn22ExtractPost (
+)
+{
+    jBC: DR.REG.REGN22.EXTRACT.POST
+}
+
+
+
+public method drRegIntTaxPaymentPost (
+)
+{
+    jBC: DR.REG.INT.TAX.PAYMENT.POST
+}
+
+
+
+public method drRegRien4AzExtSelect (
+)
+{
+    jBC: DR.REG.RIEN4.AZ.EXT.SELECT
+}
+
+
+
+public method drRegRien4AzRep1 (
+)
+{
+    jBC: DR.REG.RIEN4.AZ.REP1
+}
+
+
+
+public method drRegRien4Rep4 (
+)
+{
+    jBC: DR.REG.RIEN4.REP4
+}
+
+
+
+public method drRegRien4Rep5 (
+)
+{
+    jBC: DR.REG.RIEN4.REP5
+}
+
+
+
+public method drRegRien4Rep6 (
+)
+{
+    jBC: DR.REG.RIEN4.REP6
+}
+
+
+
+public method drRegRien5ExtOut1 (
+)
+{
+    jBC: DR.REG.RIEN5.EXT.OUT1
+}
+
+
+
+public method drRegRien5ExtOut2 (
+)
+{
+    jBC: DR.REG.RIEN5.EXT.OUT2
+}
+
+
+
+public method drRegRien5ExtOut3 (
+)
+{
+    jBC: DR.REG.RIEN5.EXT.OUT3
+}
+
+
+
+public method drRegRien5Extract1 (
+)
+{
+    jBC: DR.REG.RIEN5.EXTRACT1
+}
+
+
+
+public method drRegRien5Extract3 (
+)
+{
+    jBC: DR.REG.RIEN5.EXTRACT3
+}
+
+
+
+public method drRegRien8ExtractLoad (
+)
+{
+    jBC: DR.REG.RIEN8.EXTRACT.LOAD
+}
+
+
+
+public method drRegRien8ExtractPost (
+)
+{
+    jBC: DR.REG.RIEN8.EXTRACT.POST
+}
+
+
+
+public method drRegRien8ExtractSelect (
+)
+{
+    jBC: DR.REG.RIEN8.EXTRACT.SELECT
+}
+
+
+
+public method drRegRien9ExtractFilter (
+    INOUT recId string
+)
+{
+    jBC: DR.REG.RIEN9.EXTRACT.FILTER
+}
+
+
+ 
+public method drRegn22GetCustCode (
+)
+{
+    jBC: DR.REGN22.GET.CUST.CODE
+}
+
+
+
+public method drRegn22GetCustType (
+)
+{
+    jBC: DR.REGN22.GET.CUST.TYPE
+}
+
+
+
+public method drRegIntTaxPaymentSelect (
+)
+{
+    jBC: DR.REG.INT.TAX.PAYMENT.SELECT
+}
+
+
+
+public method drRegRien5Extract2 (
+)
+{ 
+    jBC: DR.REG.RIEN5.EXTRACT2
+}
+
+
+
+public method drRegReportDeActivas (
+)
+{
+   jBC: DR.REG.REPORT.DE.ACTIVAS
+}
+
