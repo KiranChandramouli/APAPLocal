@@ -1,0 +1,7 @@
+* File Layout for REDO.COL.TRACE.PHONE Created 16 NOV 10 at 03:58PM by t24
+*      PREFIX[REDO.COL.TP.]      SUFFIX[]
+EQU REDO.COL.TP.PHONE.TYPE TO 1, RedoColTracePhone_PhoneType TO 1, 
+  REDO.COL.TP.PHONE.NUMBER TO 2, RedoColTracePhone_PhoneNumber TO 2, 
+ REDO.COL.TP.CREATION.DATE TO 3, RedoColTracePhone_CreationDate TO 3, 
+ REDO.COL.TP.LAST.UPD.DATE TO 4, RedoColTracePhone_LastUpdDate TO 4, 
+ REDO.COL.TP.LAST.IMPUTTER TO 5, RedoColTracePhone_LastImputter TO 5
