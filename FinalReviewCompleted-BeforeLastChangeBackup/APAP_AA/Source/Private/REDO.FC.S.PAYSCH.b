@@ -1,18 +1,18 @@
-* @ValidationCode : Mjo0NTg2NjU5NDE6Q3AxMjUyOjE3MDE4NzA1MDM4MDQ6SVRTUzE6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 06 Dec 2023 19:18:23
+* @ValidationCode : MjotMTk4Nzk2ODU2NTpDcDEyNTI6MTcwMjM4MzE2Mjk3NjpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:42:42
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
 $PACKAGE APAP.AA          ;*MANUAL R22 CODE CONVERSTION
 SUBROUTINE REDO.FC.S.PAYSCH
-
 *
 * Subroutine Type : ROUTINE
 * Attached to     : ROUTINE ACTIVITY API
@@ -38,7 +38,7 @@ SUBROUTINE REDO.FC.S.PAYSCH
 *DATE              WHO                REFERENCE                        DESCRIPTION
 *29-03-2023      Conversion Tool      AUTO R22 CODE CONVERSION        FM TO @FM,VM TO @VM
 *29-03-2023      MOHANRAJ R           MANUAL R22 CODE CONVERSION         Package name added APAP.AA
-*06-07-2023     HARISHVIKRAM C        wsFinal Fix
+*08-12-2023	 VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11092-By Santiago-No Changes
 
 **-----------------------------------------------------------------------------------
 
@@ -50,6 +50,7 @@ SUBROUTINE REDO.FC.S.PAYSCH
     $INSERT I_System
 
     GOSUB INITIALISE
+
 
     IF PROCESS.GOAHEAD THEN
         GOSUB OPEN.FILES
@@ -76,16 +77,18 @@ PROCESS:
         Y.FORM = R.REDO.FC.PAYSCH<AA.PS.LOCAL.REF,WPOSL2>
         Y.PAYMT.MHD = R.REDO.FC.PAYSCH<AA.PS.LOCAL.REF,WPOSL3>
     END
-
-    IF Y.PAYMENT.TYPE THEN                                       ;*wsFinal Fix - Start
+*TEST-START	;*Fix SQA-11092- By Santiago-new lines added- start
+    IF Y.PAYMENT.TYPE THEN
         Y.PAY.CNT = DCOUNT(Y.PAYMENT.TYPE,@VM)
         I=1
         LOOP
         WHILE I LE Y.PAY.CNT
 
+*TEST-END	;*Fix SQA-11092- By Santiago-end
+;*Fix SQA-11092- By Santiago- "<1,I>" is added-start
             R.NEW(AA.PS.PAYMENT.TYPE)<1,I> =    Y.PAYMENT.TYPE<1,I>
             R.NEW(AA.PS.PAYMENT.METHOD)<1,I> = Y.PAYMENT.METHOD<1,I>
-            R.NEW(AA.PS.PAYMENT.FREQ)<1,I> = '"':Y.PAYMENT.FREQ<1,I>:'"'
+            R.NEW(AA.PS.PAYMENT.FREQ)<1,I> = '"':Y.PAYMENT.FREQ<1,I>:'"'	;*Fix SQA-11092- By Santiago-new lines added
             R.NEW(AA.PS.PAYMENT.FREQ)<1,I> = Y.PAYMENT.FREQ<1,I>
             R.NEW(AA.PS.PROPERTY)<1,I> = Y.PROPERTY<1,I>
             R.NEW(AA.PS.PERCENTAGE)<1,I> = ""
@@ -94,8 +97,8 @@ PROCESS:
             R.NEW(AA.PS.END.DATE)<1,I> = Y.END.DATE<1,I>
             R.NEW(AA.PS.ACTUAL.AMT)<1,I> = Y.ACTUAL.AMT<1,I>
             I=I+1
-        REPEAT                                                    ;*wsFinal Fix- End
-
+        REPEAT
+;*Fix SQA-11092- By Santiago-end
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL1> = Y.ACC.TO.DEBIT
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL2> = Y.FORM
         R.NEW(AA.PS.LOCAL.REF)<1,WPOSL3> = Y.PAYMT.MHD

@@ -1,0 +1,13 @@
+*
+    *
+* I_APAP.B.CREATE.LN.SERVICE.COMMON
+*
+* 
+* 
+*
+*-----------------------------------------------------------------------------
+** COMMON Array Position:
+* ----------------------
+*--------
+*
+    COMMON/APAP.B.CREATE.LN.SERVICE.COMMON/FN.APAP.LN.OFS.CONCAT,F.APAP.LN.OFS.CONCAT,FN.REDO.CREATE.ARRANGEMENT,F.REDO.CREATE.ARRANGEMENT,FN.LIMIT,F.LIMIT,FN.COLLATERAL,F.COLLATERAL

@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxODI1OTM2MTI1OkNwMTI1MjoxNjg0NDkxMDI2OTg1OklUU1M6LTE6LTE6NzQxOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:26
+* @ValidationCode : MjotOTE0MDAxMDE1OkNwMTI1MjoxNzAyMzg0MjY0NTkzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 12 Dec 2023 18:01:04
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 741
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE PACS.EB.CORR.ENTRY.HOLD
@@ -17,6 +17,7 @@ SUBROUTINE PACS.EB.CORR.ENTRY.HOLD
 *DATE                       WHO                         REFERENCE                       DESCRIPTION
 *24-04-2023            Conversion Tool             R22 Auto Code conversion               = TO EQ
 *24-04-2023              Samaran T                R22 Manual Code conversion              No Changes
+*08-12-2023     SURESH             R22 MANUAL CODE CONVERISON  OPF TO OPEN
 *----------------------------------------------------------------------------------------------------------------------
 
 *-------------------------------------------------------------------------------------
@@ -41,7 +42,9 @@ GET.INPUT:
 
     FN.SL = "&SAVEDLISTS&"
     F.SL = ""
-    CALL OPF(FN.SL, F.SL)
+*CALL OPF(FN.SL, F.SL)
+    OPEN FN.SL TO F.SL ELSE
+    END ;*R22 MANUAL CODE CONVERSION
 
     SL.ID = "SL.PROB.FT"
 

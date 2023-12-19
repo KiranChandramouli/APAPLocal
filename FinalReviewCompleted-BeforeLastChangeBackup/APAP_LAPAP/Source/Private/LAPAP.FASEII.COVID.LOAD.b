@@ -1,11 +1,24 @@
+* @ValidationCode : Mjo3MTM2MzkxNzI6Q3AxMjUyOjE3MDIzODM0MDA3NTI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:40
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 SUBROUTINE LAPAP.FASEII.COVID.LOAD
 *------------------------------------------------------------------------
 * Modification History :
 *------------------------------------------------------------------------
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 13-JULY-2023      Harsha                R22 Auto Conversion  - No changes
 * 13-JULY-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
+* 08-12-2023        Suresh                Manual R22 conversion - OPF TO OPEN
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -52,7 +65,9 @@ OPEN.FILES:
     CALL OPF (FN.LAPAP.FASEII.COVID19,F.LAPAP.FASEII.COVID19)
 
     FN.CHK.DIR = "&SAVEDLISTS&" ; F.CHK.DIR = ""
-    CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+*   CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+    OPEN FN.CHK.DIR TO F.CHK.DIR ELSE  ;*R22 Manual Conversion
+    END  ;*R22 Manual Conversion
 
     FN.CHK.DIR1 = "DMFILES"
     F.CHK.DIR1 = ""

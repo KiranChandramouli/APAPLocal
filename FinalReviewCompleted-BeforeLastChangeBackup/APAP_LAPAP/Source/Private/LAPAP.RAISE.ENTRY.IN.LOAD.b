@@ -1,10 +1,10 @@
-* @ValidationCode : MjoxMzQzMjExMzY2OlVURi04OjE2ODk3NDk2NTcxMzI6SVRTUzotMTotMToxMTg4OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 Jul 2023 12:24:17
-* @ValidationInfo : Encoding          : UTF-8
-* @ValidationInfo : User Name         : ITSS
+* @ValidationCode : Mjo4NDI4NzkxMDk6Q3AxMjUyOjE3MDIzODM0MDcxODI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 12 Dec 2023 17:46:47
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1188
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
@@ -24,6 +24,7 @@ SUBROUTINE LAPAP.RAISE.ENTRY.IN.LOAD
 * DATE               AUTHOR              REFERENCE              DESCRIPTION
 * 14-07-2023    Conversion Tool        R22 Auto Conversion     BP is removed in insert file
 * 14-07-2023    Narmadha V             R22 Manual Conversion   No Changes
+*08-12-2023      AJITH KUMAR               R22 MANUAL CODE COVERISON    OPF TO OPEN
 *-----------------------------------------------------------------------------
     $INSERT I_COMMON ;*R22 Auto Conversion -START
     $INSERT I_EQUATE
@@ -52,7 +53,9 @@ OPENFILES:
 
     FN.SAVEDLISTS = '&SAVEDLISTS&'
     F.SAVEDLISTS = ''
-    CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+*CALL OPF(FN.SAVEDLISTS,F.SAVEDLISTS)
+	OPEN  FN.SAVEDLISTS TO F.SAVEDLISTS ELSE ;*R22 MANUAL CODE CONVERISON - START
+	END
 
     FN.AA.ARR = 'F.AA.ARRANGEMENT'
     F.AA.ARR = ''
@@ -89,11 +92,16 @@ OPENFILES:
     AA.SEP = '#'
     FN.COMO='&COMO&'
     F.COMO=''
-    CALL OPF(FN.COMO,F.COMO)
+*CALL OPF(FN.COMO,F.COMO)
+	OPEN FN.COMO TO F.COMO ELSE ;*R22 MANUAL CODE CONVERISON - START
+        
+    END ;*R22 MANUAL CODE CONVERSION - END
 
     FN.SL='&SAVEDLISTS&'
     F.SL=''
-    CALL OPF(FN.SL,F.SL)
+*CALL OPF(FN.SL,F.SL)
+	OPEN  FN.SL TO F.SL ELSE ;*R22 MANUAL CODE CONVERISON - START
+    END  ;*R22 MANUAL CODE CONVERISON - END
 
     FN.TRANSACTION = 'F.TRANSACTION'
     F.TRANSACTION = ''

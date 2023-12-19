@@ -1,0 +1,138 @@
+component APAP.REDOENQ
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+public method nofileApapDetailLoansPayments (
+   INOUT yArray string
+)
+{
+   jBC: NOFILE.APAP.DETAIL.LOANS.PAYMENTS
+}
+
+
+
+public method redoEFormSelStmt (
+   INOUT inFile string,
+   INOUT inFixed string,
+   INOUT inSort string,
+   INOUT outSelect string
+)
+{
+   jBC: REDO.E.FORM.SEL.STMT
+}
+
+
+
+public method nofileRedoLoanDets (
+   INOUT arrgArray string
+)
+{
+   jBC: NOFILE.REDO.LOAN.DETS
+}
+
+
+
+public method redoENofCoDebtor (
+   INOUT aaArray string
+)
+{
+   jBC: REDO.E.NOF.CO.DEBTOR
+}
+
+
+
+public method redoENofDatcust (
+   INOUT cuDetArr string
+)
+{
+   jBC: REDO.E.NOF.DATCUST
+}
+
+
+
+public method redoENofGuarantor (
+   INOUT aaArray string
+)
+{
+   jBC: REDO.E.NOF.GUARANTOR
+}
+
+
+
+public method redoENofLoanExpDate (
+   INOUT lnArray string
+)
+{
+   jBC: REDO.E.NOF.LOAN.EXP.DATE
+}
+
+
+
+public method redoENofArrangmentProcess (
+   INOUT yAaId string,
+   INOUT yPaymentAgency string,
+   INOUT yDisbursedAmount string
+)
+{
+   jBC: REDO.E.NOF.ARRANGMENT.PROCESS
+}
+
+
+
+public method redoENofBillDetails (
+   INOUT yAaId string,
+   INOUT yTotalBalanceDue string,
+   INOUT yCommissionChargeBalance string
+)
+{
+   jBC: REDO.E.NOF.BILL.DETAILS
+}
+
+
+
+public method redoEnqShowLoanPayAcct (
+   INOUT loanList string
+)
+{
+   jBC: REDO.ENQ.SHOW.LOAN.PAY.ACCT
+}
+
+
+
+public method redoNofInsuranceDetails (
+   INOUT yFinArr string
+)
+{
+   jBC: REDO.NOF.INSURANCE.DETAILS
+}
+
+
+
+public method redoNofLoanInsrPropRep (
+   INOUT yFinArr string
+)
+{
+   jBC: REDO.NOF.LOAN.INSR.PROP.REP
+}
+
+
+
+public method redoNofRestructLoandDet (
+   INOUT yFinArr string
+)
+{
+   jBC: REDO.NOF.RESTRUCT.LOAND.DET
+}
+
+
+
+public method redoNofileLoanCustomerPosition (
+   INOUT yArrayOut string
+)
+{
+   jBC: REDO.NOFILE.LOAN.CUSTOMER.POSITION
+}
+

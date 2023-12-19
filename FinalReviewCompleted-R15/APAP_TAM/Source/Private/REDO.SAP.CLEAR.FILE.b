@@ -1,15 +1,15 @@
-* @ValidationCode : MjoxMTAwMDE3OTkyOkNwMTI1MjoxNjkzMzEzNzYxNDgwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 29 Aug 2023 18:26:01
+* @ValidationCode : MjotNzQwMzY2MDQ1OkNwMTI1MjoxNzAyNjU5ODMwOTEyOklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjNfU1A0LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 15 Dec 2023 22:33:50
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+* @ValidationInfo : Compiler Version  : R23_SP4.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
 $PACKAGE APAP.TAM
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
@@ -73,7 +73,8 @@ TAKE.BACKUP:
 
 *    COPY.CMD = "COPY FROM ":SOURCE.DIR:" TO ":BACKUP.DIR:" ALL"
 *    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" ALL":' ':BACKUP.DIR:'/':" ALL" ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
-    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" *":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED	
+    COPY.CMD = 'SH -c cp ':SOURCE.DIR:"/*":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
+*	 cp ../interface/SAPRPT/* COPYTEST.BP/COPY/
     EXECUTE COPY.CMD
 
 
@@ -83,7 +84,8 @@ RETURN
 CLEAR.SAP.DIR:
 *--------------*
     CLEAR.DIR= R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.EXTRACT.OUT.PATH,1>
-    EXE.CMD = 'CLEAR.FILE ':CLEAR.DIR
+*   EXE.CMD = 'CLEAR.FILE ':CLEAR.DIR ;* R22 MANUAL CONVERSION
+	EXE.CMD = 'SH -c rm ':CLEAR.DIR:"/*"
     EXECUTE EXE.CMD
 
 RETURN
