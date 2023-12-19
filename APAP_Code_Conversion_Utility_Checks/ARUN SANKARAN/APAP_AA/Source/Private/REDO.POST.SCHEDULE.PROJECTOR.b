@@ -1,0 +1,69 @@
+$PACKAGE APAP.AA ;*Manual R22 Code Conversion
+SUBROUTINE REDO.POST.SCHEDULE.PROJECTOR
+*------------------------------------------------------------
+*Description: This post routine is to update the concat table about the schedule projector
+* for each arrangement. We need to trigger the schedule projector during auth stage and store
+* in a concat table.
+*---------------------------------------------------------------------------------------------
+*Modification History
+*Date           Who                 Reference                                    Descripition
+* 29-03-2023     Samaran T         Manual R22 code conversion                Package Name Added APAP.AA
+* 29-03-2023   Conversion Tool        Auto R22 code conversion                    VM TO @VM
+*---------------------------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_AA.LOCAL.COMMON
+    $INSERT I_AA.APP.COMMON
+    $INSERT I_F.AA.ARRANGEMENT.ACTIVITY
+
+    IF c_aalocActivityStatus MATCHES 'AUTH':@VM:'AUTH-REV' THEN ;*AUTO R22 CODE CONVERSION
+        GOSUB OFSSTRING
+        GOSUB OPEN.FILES
+        GOSUB PROCESS
+    END
+RETURN
+*------------------------------------------------------------
+OPEN.FILES:
+*------------------------------------------------------------
+
+    FN.REDO.B.PENDING.SCH.PROJECTOR.LIST = 'F.REDO.B.PENDING.SCH.PROJECTOR.LIST'
+    F.REDO.B.PENDING.SCH.PROJECTOR.LIST  = ''
+	
+    
+    
+
+RETURN
+*------------------------------------------------------------
+PROCESS:
+*------------------------------------------------------------
+
+    Y.AA.ID        =  c_aalocArrId
+    Y.UNIQUE.KEY   =  c_aalocArrActivityRec<AA.ARR.ACT.MASTER.AAA>      ;* We are using the master AAA id as @ID for this file
+*                                                    since we dont need to duplicate the same AA ids during
+*                                                    applypayment.
+
+    Y.REC = Y.AA.ID:'*': Y.UNIQUE.KEY
+    R.RECORD.LIST = ''
+    CALL F.READ(FN.REDO.B.PENDING.SCH.PROJECTOR.LIST,Y.UNIQUE.KEY,R.RECORD.LIST,F.REDO.B.PENDING.SCH.PROJECTOR.LIST,PROJ.ERR)
+    IF R.RECORD.LIST ELSE
+        CALL F.WRITE(FN.REDO.B.PENDING.SCH.PROJECTOR.LIST,Y.UNIQUE.KEY,Y.REC)       ;* Write only when record doesnt exist.
+    END
+
+
+RETURN
+
+*------------------------------------------------------------
+OFSSTRING:
+*------------------------------------------------------------
+DEBUG
+CALL OPF(FN.REDO.B.PENDING.SCH.PROJECTOR.LIST,F.REDO.B.PENDING.SCH.PROJECTOR.LIST)
+	FINAL.OFSSTRING = 'APAP.H.INSURANCE.DETAILS,REDO.FC/I/PROCESS///,//DO0010001////////////////////////////////////,,INS.POLICY.TYPE:1:1="VH",CLASS.POLICY:1:1="ED",POLICY.NUMBER:1:1="AU-35161",CUSTOMER:1:1="10000070",CURRENCY:1:1="DOP",MANAGEMENT.TYPE:1:1="NO INCLUIR EN CUOTA",INS.COMPANY:1:1="UNIVERSAL",INS.AMOUNT:1:1="1035000.00",INS.AMOUNT.DATE:1:1="20230102",CHARGE:1:1="SEGPRVEH",CHARGE.EXTRA.AMT:1:1="SEGEXTPRIMA",POLICY.ORG.DATE:1:1="20230102",POL.START.DATE:1:1="20230102",POL.EXP.DATE:1:1="20240102",ASSOCIATED.LOAN:1:1="AA230023DXDD",ID.TEMPORAL:1:1="POL201612220518036112001",'
+    CALL OFS.CALL.BULK.MANAGER(CALL.INFO, FINAL.OFSSTRING, THE.RESPONSE, TXN.COMMITED)
+	FINAL.OFSSTRING2 = 'COLLATERAL.RIGHT,APAP/I/PROCESS///,//DO0010001////////////////////////////////////,10000070.11,COLLATERAL.CODE:1:1="350",LIMIT.REFERENCE:1:1="2002.04",VALIDITY.DATE:1:1="20230102",CUSTOMER:1:1="10000070",LOCAL.REF:2:1="CUR",'
+    CALL OFS.CALL.BULK.MANAGER(CALL.INFO, FINAL.OFSSTRING2, THE.RESPONSE, TXN.COMMITED)
+    FINAL.OFSSTRING3 = 'COLLATERAL.RIGHT,APAP/I/PROCESS///,//DO0010001////////////////////////////////////,10000070.11.1,COLLATERAL.CODE:1:1="351",ALLOCATION.AMT:1:1="DOP",PERCENTAGE.COVER:1:1="3274815.00",REVIEW.DATE.FQU:1:1="3274815.00",EXPIRY.DATE:1:1="130992.6",NOTARY:1:1="20230102",LOCAL.REF:1:1="JEEP",'
+    CALL OFS.CALL.BULK.MANAGER(CALL.INFO, FINAL.OFSSTRING3, THE.RESPONSE, TXN.COMMITED)
+	RETURN
+*------------------------------------------------------------
+END

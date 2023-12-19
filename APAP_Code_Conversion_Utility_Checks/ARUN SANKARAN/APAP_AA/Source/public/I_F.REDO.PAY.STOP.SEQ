@@ -1,0 +1,4 @@
+* I_F.REDO.PAY.STOP.SEQ Created 18 NOV 11 at 12:30PM by apap/RIYASA4
+*      PREFIX[PS.SE]
+         EQU PS.SE.PAY.ID.SEQ TO 1,   RedoPayStopSeq_PayIdSeq TO 1,
+            PS.SE.PAY.ID.FLAG TO 2,   RedoPayStopSeq_PayIdFlag TO 2

@@ -1,0 +1,13 @@
+* I_F.REDO.BRAN.EDU.DETS Created 04 NOV 09 at 10:51AM by apapr8/INPUTTER
+*      PREFIX[CUS]
+        EQU CUS.DESCRIPTION TO 1,   RedoBranEduDets_Description TO 1,
+             CUS.SHORT.DESC TO 2,   RedoBranEduDets_ShortDesc TO 2,
+          CUS.RECORD.STATUS TO 3,   RedoBranEduDets_RecordStatus TO 3,
+                CUS.CURR.NO TO 4,   RedoBranEduDets_CurrNo TO 4,
+               CUS.INPUTTER TO 5,   RedoBranEduDets_Inputter TO 5,
+              CUS.DATE.TIME TO 6,   RedoBranEduDets_DateTime TO 6,
+             CUS.AUTHORISER TO 7,   RedoBranEduDets_Authoriser TO 7,
+                CUS.CO.CODE TO 8,   RedoBranEduDets_CoCode TO 8,
+              CUS.DEPT.CODE TO 9,   RedoBranEduDets_DeptCode TO 9,
+           CUS.AUDITOR.CODE TO 10,  RedoBranEduDets_AuditorCode TO 10,
+        CUS.AUDIT.DATE.TIME TO 11,  RedoBranEduDets_AuditDateTime TO 11

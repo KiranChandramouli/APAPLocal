@@ -1,0 +1,15 @@
+* I_F.REDO.H.TAX.DATA.CHECKS Created 08 OCT 13 at 03:47PM by apdev/THILAK1
+*      PREFIX[REDO.TAX]
+          EQU REDO.TAX.DATE.FROM TO 1,   RedoHTaxDataChecks_DateFrom TO 1,
+                REDO.TAX.DATE.TO TO 2,   RedoHTaxDataChecks_DateTo TO 2,
+             REDO.TAX.REPORT.GEN TO 3,   RedoHTaxDataChecks_ReportGen TO 3,
+               REDO.TAX.OVERRIDE TO 4,   RedoHTaxDataChecks_Override TO 4,
+          REDO.TAX.RECORD.STATUS TO 5,   RedoHTaxDataChecks_RecordStatus TO 5,
+                REDO.TAX.CURR.NO TO 6,   RedoHTaxDataChecks_CurrNo TO 6,
+               REDO.TAX.INPUTTER TO 7,   RedoHTaxDataChecks_Inputter TO 7,
+              REDO.TAX.DATE.TIME TO 8,   RedoHTaxDataChecks_DateTime TO 8,
+             REDO.TAX.AUTHORISER TO 9,   RedoHTaxDataChecks_Authoriser TO 9,
+                REDO.TAX.CO.CODE TO 10,  RedoHTaxDataChecks_CoCode TO 10,
+              REDO.TAX.DEPT.CODE TO 11,  RedoHTaxDataChecks_DeptCode TO 11,
+           REDO.TAX.AUDITOR.CODE TO 12,  RedoHTaxDataChecks_AuditorCode TO 12,
+        REDO.TAX.AUDIT.DATE.TIME TO 13,  RedoHTaxDataChecks_AuditDateTime TO 13

@@ -1,0 +1,52 @@
+*
+* I_T24.FS.COMMON
+*
+* INSERT FILE TO HOLD THE COMMON VARIABLES USED BY T24.FUND.SERVICES
+*
+*========================================================================
+*
+* Modification History:
+*
+* 08/09/04 - Sathish PS
+*            New Development
+*
+* 05/12/05 - Sathish PS
+*            Introduction of 2 new common variables - TFS$LINE.FIRST.FIELD &
+*            TFS$LINE.LAST.FIELD pointing to fields TFS.TRANSACTION & TFS.RETRY resp.
+*=========================================================================
+*
+COMMON/T24.FS.COMMON/TFS$R.TFS.TXN(999),  ; *  Max number of Multi Values allowed by EXPAND.MULTI.LINE
+                     TFS$R.TFS.PAR, ; * TFS.PARAMETER record
+                     TFS$MESSAGE, ; * A Copy of the Variable MESSAGE
+                     TFS$OFS.RET.MSGS, ; * Messages returned by OFS when VALIDATING
+                     TFS$OFS.SOURCE, ; * OFS.SOURCE to be used for Interfacing with other Modules
+                     TFS$CCY.LIST, ; * List of All Currencies, loaded in T24.FUND.SERVICES template
+                     TFS$AUTH.NO,  ; * Version Auth No., initialised in CHECK.RECORD in T24.FUND.SERVICES
+                     TFS$COMPANY.LIST, ;* List of Companies initialised in T24.FUND.SERVICES template
+                     TFS$TT.DENOM.CCY, ; * TT Denomination Currencies
+                     TFS$TT.DENOM(1000), ; * Denomination Data
+                     TFS$T(500), ; * Save the T array
+                     TFS$RESET.FIELD.NOS, ; * Field Numbers to Reset when TRANSACTION is changed
+                     TFS$LINE.FIRST.FIELD, ; * First field of a TFS Line (TRANSACTION)
+                     TFS$LINE.LAST.FIELD, ; * Last field of  a TFS Line (TRANSACTION)
+                     TFS$R.NEW, ; * R.NEW Built from R.GTS, in case of Browser
+                     TFS$TFS.TRANSACTIONS, ; * List of available TFS.TRANSACTIONS
+                     TFS$RESERVED.15,
+                     TFS$RESERVED.14,
+                     TFS$RESERVED.13,
+                     TFS$RESERVED.12,
+                     TFS$RESERVED.11,
+                     TFS$RESERVED.10,
+                     TFS$RESERVED.9,
+                     TFS$RESERVED.8,
+                     TFS$RESERVED.7,
+                     TFS$RESERVED.6,
+                     TFS$RESERVED.5,
+                     TFS$RESERVED.4,
+                     TFS$RESERVED.3,
+                     TFS$RESERVED.2,
+                     TFS$RESERVED.1
+
+*
+* End of File
+*
