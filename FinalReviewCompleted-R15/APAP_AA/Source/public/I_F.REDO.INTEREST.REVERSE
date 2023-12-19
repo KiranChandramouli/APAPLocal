@@ -1,6 +1,0 @@
-* I_F.REDO.INTEREST.REVERSE Created 23 DEC 10 at 02:35PM by apap/GANESH.4
-*      PREFIX[INT.REV]
-            EQU INT.REV.ACCOUNT TO 1,   RedoInterestReverse_Account TO 1,
-                 INT.REV.DAY.NO TO 2,   RedoInterestReverse_DayNo TO 2,
-        INT.REV.AMOUNT.UTILISED TO 3,   RedoInterestReverse_AmountUtilised TO 3,
-            INT.REV.INT.ACCRUED TO 4,   RedoInterestReverse_IntAccrued TO 4
