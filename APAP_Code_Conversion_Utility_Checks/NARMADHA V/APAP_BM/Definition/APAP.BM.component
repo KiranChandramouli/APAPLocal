@@ -4,10 +4,24 @@ metamodelVersion 1.6
 # -------------------------------------------------
 
 
-public method jtAnalyse (
+public method abBuildData (
 )
 {
-    jBC: JT.ANALYSE
+    jBC: AB.BUILD.DATA
+}
+
+public method abGetFcParam (
+)
+{
+    jBC: AB.GET.FC.PARAM
+}
+
+
+
+public method copyReports (
+)
+{
+    jBC: COPY.REPORTS
 }
 
 
@@ -20,9 +34,17 @@ public method jobListCheck (
 
 
 
-public method abBuildData (
+public method jtAnalyse (
 )
 {
-    jBC: AB.BUILD.DATA
+    jBC: JT.ANALYSE
+}
+
+
+public method redoEBldValSel (
+    INOUT enqData string
+)
+{
+    jBC: REDO.E.BLD.VAL.SEL
 }
 

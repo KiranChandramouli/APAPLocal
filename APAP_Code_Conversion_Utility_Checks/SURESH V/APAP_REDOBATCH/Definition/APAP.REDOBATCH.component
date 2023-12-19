@@ -12,7 +12,7 @@ public method apapBCreateLnService (
 
 
 public method redoBAchTransferRou (
-    INOUT YId string 
+    INOUT YId string
 )
 {
     jBC:REDO.B.ACH.TRANSFER.ROU
@@ -25,7 +25,7 @@ public method redoBAciUpdLoad (
     jBC:REDO.B.ACI.UPD.LOAD
 }
 
- 
+
 
 public method redoBAciUpdSelect (
 )

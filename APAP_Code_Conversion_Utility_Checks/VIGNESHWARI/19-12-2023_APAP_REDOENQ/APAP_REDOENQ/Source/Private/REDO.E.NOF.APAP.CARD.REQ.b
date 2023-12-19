@@ -1,0 +1,344 @@
+* @ValidationCode : MjotODUzMzg2NTYwOkNwMTI1MjoxNjgyMDczMzgzMjIwOklUU1M6LTE6LTE6Nzk2OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 21 Apr 2023 16:06:23
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 796
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOENQ
+SUBROUTINE REDO.E.NOF.APAP.CARD.REQ(Y.FINAL.ARRAY)
+*-----------------------------------------------------------------------------
+* Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By : A.C.Rajkumar
+* Program Name : NOFILE.REDO.APAP.CARD.REQ
+* ODR NUMBER : ODR-2010-03-0092
+*----------------------------------------------------------------------------------
+* Description : This is a Nofile routine for the Enquiry REDO.APAP.CARD.REQ.REP
+* to display the on line report needed to keep branches requests
+* control that have been closed
+* In parameter : None
+* out parameter : None
+*-----------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+* DATE WHO REFERENCE DESCRIPTION
+* 09-09-2010 A.C.Rajkumar ODR-2010-03-0092 Initial Creation
+*
+* 17-APR-2023     Conversion tool   R22 Auto conversion   FM TO @FM, VM to @VM, SM to @SM, ++ to +=
+* 17-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* ----------------------------------------------------------------------------
+*
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.CARD.TYPE
+    $INSERT I_F.COMPANY
+    $INSERT I_F.EB.LOOKUP
+    $INSERT I_F.REDO.CARD.REQUEST
+*
+
+    GOSUB INIT
+    GOSUB LOCATE.VARS
+    GOSUB SELECT.IDS
+    GOSUB PROCESS
+RETURN
+*
+*****
+INIT:
+*****
+*
+    FN.REDO.CARD.REQUEST = 'F.REDO.CARD.REQUEST'
+    F.REDO.CARD.REQUEST = ''
+    CALL OPF(FN.REDO.CARD.REQUEST, F.REDO.CARD.REQUEST)
+*
+    FN.COMPANY = 'F.COMPANY'
+    F.COMPANY = ''
+    CALL OPF(FN.COMPANY, F.COMPANY)
+*
+    FN.CARD.TYPE = 'F.CARD.TYPE'
+    F.CARD.TYPE = ''
+    CALL OPF(FN.CARD.TYPE, F.CARD.TYPE)
+*
+    FN.EB.LOOKUP = 'F.EB.LOOKUP'
+    F.EB.LOOKUP = ''
+    CALL OPF(FN.EB.LOOKUP, F.EB.LOOKUP)
+*
+    FN.REDO.CARD.REQUEST.HIS='F.REDO.CARD.REQUEST$HIS'
+    F.REDO.CARD.REQUEST.HIS=''
+    CALL OPF(FN.REDO.CARD.REQUEST.HIS,F.REDO.CARD.REQUEST.HIS)
+
+    Y.LRF.APPL = 'CARD.TYPE'
+    Y.LRF.FIELDS = 'L.CT.SUMIN.CO'
+    FIELD.POS = ''
+*
+    CALL GET.LOC.REF(Y.LRF.APPL, Y.LRF.FIELDS, FIELD.POS)
+*
+    Y.PROD.COD.POS = FIELD.POS<1,1>
+*
+    Y.DUMMY = ''
+    Y.JOIN.DATE = ''
+    Y.USER = ''
+    Y.REQUEST.TYPE = ''
+    Y.PRODUCT.TYPE = ''
+    Y.BRANCH = ''
+    Y.TEMP.CARD = ''
+    Y.TEMP.AMT.CARDS = ''
+    Y.TEMP.CARD = ''
+    Y.TEMP.AMT.CARDS = ''
+    Y.RET.ARRAY = ''
+    Y.FIN.DISP = ''
+    Y.FINAL.TOTAL = ''
+RETURN
+*
+************
+LOCATE.VARS:
+************
+*
+    LOCATE "DATE" IN D.FIELDS<1> SETTING DATE.POS THEN
+        Y.JOIN.DATE = D.RANGE.AND.VALUE<DATE.POS>
+    END
+
+    LOCATE "USER" IN D.FIELDS<1> SETTING USER.POS THEN
+        Y.USER = D.RANGE.AND.VALUE<USER.POS>
+    END
+
+    LOCATE "REQUEST.TYPE" IN D.FIELDS<1> SETTING REQUEST.TYPE.POS THEN
+        Y.REQUEST.TYPE = D.RANGE.AND.VALUE<REQUEST.TYPE.POS>
+    END
+
+    LOCATE "PRODUCT.TYPE" IN D.FIELDS<1> SETTING PRODUCT.TYPE.POS THEN
+        Y.PRODUCT.TYPE = D.RANGE.AND.VALUE<PRODUCT.TYPE.POS>
+    END
+
+    LOCATE "BRANCH" IN D.FIELDS<1> SETTING BRANCH.POS THEN
+        Y.BRANCH = D.RANGE.AND.VALUE<BRANCH.POS>
+    END
+RETURN
+*
+***********
+SELECT.IDS:
+************
+*
+    SEL.CMD = "SELECT ":FN.REDO.CARD.REQUEST :" WITH STATUS EQ 2"
+*
+
+    IF Y.JOIN.DATE NE '' THEN
+        GOSUB DATE.CHECK
+        SEL.CMD := " AND WITH DATE GE ":Y.FROM.DATE:" AND WITH DATE LE ":Y.TO.DATE
+    END
+
+    IF Y.REQUEST.TYPE EQ 'AUTOMATIC' THEN
+        Y.REQ.TYPE = 'YES'
+    END
+    IF Y.REQUEST.TYPE EQ 'MANUAL' THEN
+        Y.REQ.TYPE = 'NO'
+    END
+    IF Y.REQ.TYPE EQ 'YES' THEN
+        SEL.CMD := " AND WITH AUTO.REQUEST.FLAG EQ 'YES'"
+    END
+
+    IF Y.REQ.TYPE EQ 'NO' THEN
+        SEL.CMD := " AND WITH AUTO.REQUEST.FLAG NE 'YES'"
+    END
+
+    IF Y.PRODUCT.TYPE NE '' THEN
+        SEL.CMD := " AND WITH CARD.TYPE EQ ":Y.PRODUCT.TYPE
+    END
+    IF Y.BRANCH NE '' THEN
+        SEL.CMD := " AND WITH AGENCY EQ ":Y.BRANCH
+    END
+RETURN
+
+*************
+DATE.CHECK:
+************
+    Y.FROM.DATE = FIELD(Y.JOIN.DATE,@SM,1,1)
+    Y.TO.DATE = FIELD(Y.JOIN.DATE,@SM,2,1)
+    IF NOT(NUM(Y.FROM.DATE)) OR LEN(Y.FROM.DATE) NE '8' OR NOT(NUM(Y.TO.DATE)) OR LEN(Y.TO.DATE) NE '8' THEN
+        ENQ.ERROR = 'EB-REDO.DATE.RANGE'
+    END ELSE
+        IF Y.FROM.DATE[5,2] GT '12' OR Y.TO.DATE[5,2] GT '12' OR Y.FROM.DATE[7,2] GT '31' OR Y.TO.DATE[7,2] GT '31'OR Y.FROM.DATE GT Y.TO.DATE THEN
+            ENQ.ERROR = 'EB-REDO.DATE.RANGE'
+        END
+    END
+RETURN
+********
+PROCESS:
+********
+*
+    CALL EB.READLIST(SEL.CMD,SEL.LIST,"",NO.OF.REC,RET.CODE)
+*
+    LOOP
+        REMOVE Y.ID FROM SEL.LIST SETTING Y.POS
+    WHILE Y.ID:Y.POS
+        CALL F.READ(FN.REDO.CARD.REQUEST, Y.ID, R.REC.REDO.CARD.REQUEST, F.REDO.CARD.REQUEST, Y.ERR.REDO.CARD.REQUEST)
+        IF R.REC.REDO.CARD.REQUEST THEN
+            Y.INPUTTER=''
+            IF Y.USER THEN
+                Y.ID.HIST=Y.ID:";1"
+                CALL F.READ(FN.REDO.CARD.REQUEST.HIS, Y.ID.HIST, R.REC.REDO.CARD.REQUEST.HIS, F.REDO.CARD.REQUEST.HIS, Y.ERR.REDO.CARD.REQUEST)
+                Y.INPUTTER=FIELD(R.REC.REDO.CARD.REQUEST.HIS<REDO.CARD.REQ.INPUTTER>,'_',2)
+            END
+            IF Y.USER EQ Y.INPUTTER THEN
+                Y.REQ.CODE = Y.ID
+                Y.REQUEST.TYPE = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.AUTO.REQUEST.FLAG>
+                IF Y.REQUEST.TYPE EQ 'YES' THEN
+                    Y.REQ.TYPE = 'AUTOMATIC'
+                END ELSE
+                    Y.REQ.TYPE = 'MANUAL'
+                END
+                Y.BRANCH.CODE = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.AGENCY>
+                CALL CACHE.READ(FN.COMPANY, Y.BRANCH.CODE, R.REC.COMPANY, Y.ERR.COMPANY) ;*R22 Auto conversion
+                Y.BRANCH = R.REC.COMPANY<EB.COM.COMPANY.NAME>
+                Y.REQ.DATE = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.DATE>
+                Y.REQ.DATE.SORT= R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.DATE>
+                Y.REQ.DATE = Y.REQ.DATE[7,2]:'/':Y.REQ.DATE[5,2]:'/':Y.REQ.DATE[1,4]
+*
+                Y.REQUEST.STAT = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.STATUS>
+                GOSUB FETCH.VALUES
+                GOSUB PROD.CODE
+                GOSUB RETURN.ARRAY
+            END
+        END
+    REPEAT
+*
+    IF Y.FINAL.ARRAY NE '' THEN
+
+        Y.FINAL.ARRAY=SORT(Y.FINAL.ARRAY)
+        GOSUB FORM.VALUES
+    END
+*
+* Y.FINAL.ARRAY = Y.FIN.ARRAY:FM:Y.BRK:FM:Y.TOT.DISP.VAR:FM:Y.BRK:FM:Y.FIN.DISP:FM:Y.BRK:FM:Y.TOT.FIN.DISP
+*
+RETURN
+*
+***************
+TEMP.CARD.CALC:
+***************
+*
+    Y.COUNT.TYPE = DCOUNT(Y.CARD.TYPE,@VM)
+    Y.CARD.COUNT = 1
+    LOOP
+    WHILE Y.CARD.COUNT LE Y.COUNT.TYPE
+        Y.CRD = Y.CARD.TYPE<1,Y.CARD.COUNT>
+        LOCATE Y.CRD IN Y.TEMP.CARD<1,1> SETTING CARD.POS THEN
+            Y.CURR.AMT<1,CARD.POS> += Y.QTY.CARDS<1,Y.CARD.COUNT>
+        END ELSE
+            Y.TEMP.CARD<1,-1> = Y.CRD
+            Y.CURR.AMT<1,-1> = Y.QTY.CARDS<1,Y.CARD.COUNT>
+        END
+        Y.CARD.COUNT +=1
+    REPEAT
+RETURN
+*
+**********
+PROD.CODE:
+**********
+*
+    Y.CARD = Y.CARD.TYPE
+    Y.CARD.COUNT = DCOUNT(Y.CARD,@VM)
+    Y.COUNT =1
+    LOOP
+    WHILE Y.COUNT LE Y.CARD.COUNT
+        Y.CARD.TYPE = Y.CARD<1,Y.COUNT>
+        LOCATE Y.CARD.TYPE IN Y.ALL.CARD.TYPE.LIST SETTING Y.CR.TY.POS.ALL THEN
+            Y.PROD.CODE<-1> = Y.ALL.CARD.TYPE.PROD<Y.CR.TY.POS.ALL>
+            Y.CR.TY.DESC<-1>= Y.ALL.CARD.TYPE.DESC<Y.CR.TY.POS.ALL>
+        END
+        ELSE
+            CALL F.READ(FN.CARD.TYPE, Y.CARD.TYPE, R.REC.CARD.TYPE, F.CARD.TYPE, Y.ERR.CARD.TYPE)
+            IF R.REC.CARD.TYPE THEN
+                Y.PROD.CODE<-1> = R.REC.CARD.TYPE<CARD.TYPE.LOCAL.REF,Y.PROD.COD.POS>
+                Y.CR.TY.DESC<-1> = R.REC.CARD.TYPE<CARD.TYPE.DESCRIPTION>
+                Y.ALL.CARD.TYPE.LIST<-1>=Y.CARD.TYPE
+                Y.ALL.CARD.TYPE.PROD<-1>=R.REC.CARD.TYPE<CARD.TYPE.LOCAL.REF,Y.PROD.COD.POS>
+                Y.ALL.CARD.TYPE.DESC<-1>=R.REC.CARD.TYPE<CARD.TYPE.DESCRIPTION>
+            END
+        END
+        Y.COUNT +=1
+    REPEAT
+RETURN
+*
+**************
+RETURN.ARRAY:
+**************
+*
+    CHANGE @FM TO @VM IN Y.PROD.CODE
+    CHANGE @FM TO @VM IN Y.CR.TY.DESC
+    Y.Y.QTY.CARDS.TOT.TYPE=DCOUNT(Y.QTY.CARDS,@VM)
+    Y.QCT.CNT=1
+    LOOP
+    WHILE Y.QCT.CNT LE Y.Y.QTY.CARDS.TOT.TYPE
+        Y.FINAL.ARRAY<-1> = Y.BRANCH:'*':Y.CR.TY.DESC<1,Y.QCT.CNT>:'*':Y.REQ.DATE.SORT:'*':Y.REQ.TYPE:'*':Y.REQ.CODE:'*':Y.REQ.STATUS:'*':Y.QTY.CARDS<1,Y.QCT.CNT>:'*':Y.PROD.CODE<1,Y.QCT.CNT>:'*':Y.COMMENT<1,Y.QCT.CNT>:'*':Y.REQ.DATE
+        Y.QCT.CNT += 1
+    REPEAT
+
+    Y.BRANCH = ''; Y.CARD = ''; Y.REQ.CODE = ''; Y.REQ.TYPE = '';Y.REQ.DATE = ''; Y.REQ.STATUS = ''; Y.QTY.CARDS = ''; Y.PROD.CODE = ''; Y.COMMENT = '';Y.CR.TY.DESC=''
+RETURN
+*
+*************
+FETCH.VALUES:
+*************
+*
+    Y.ID.EB.LOOKUP = 'CARD.STATUS*':Y.REQUEST.STAT
+    CALL F.READ(FN.EB.LOOKUP, Y.ID.EB.LOOKUP, R.EB.LOOKUP, F.EB.LOOKUP, Y.ERR.LOOKUP)
+    Y.REQ.STATUS = R.EB.LOOKUP<EB.LU.DESCRIPTION,1>
+    Y.CARD.TYPE1 = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.CARD.TYPE>
+    IF Y.PRODUCT.TYPE THEN
+        LOCATE Y.PRODUCT.TYPE IN Y.CARD.TYPE1<1,1> SETTING CARD.POS THEN
+            Y.CARD.TYPE = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.CARD.TYPE,CARD.POS>
+            Y.QTY.CARDS = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.BRANCH.ORDERQTY,CARD.POS>
+            Y.COMMENT = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.COMMENTS,CARD.POS>
+        END
+    END ELSE
+        Y.CARD.TYPE = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.CARD.TYPE>
+        Y.QTY.CARDS = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.BRANCH.ORDERQTY>
+        Y.COMMENT = R.REC.REDO.CARD.REQUEST<REDO.CARD.REQ.COMMENTS>
+    END
+    Y.TMP.QFTY.CARDS = Y.QTY.CARDS
+    GOSUB TEMP.CARD.CALC
+
+RETURN
+************
+FORM.VALUES:
+************
+*
+
+    Y.TOT.DISP = 'Total Por Tipo Plastico'
+    Y.FINAL.ARRAY<-1> = Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.TOT.DISP:'*':Y.DUMMY::'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY
+
+    Y.CNT.CARD = DCOUNT(Y.TEMP.CARD,@VM)
+    Y.I = 1
+    LOOP
+    WHILE Y.I LE Y.CNT.CARD
+        Y.DUMMY.CARD = Y.TEMP.CARD<1,Y.I>
+        Y.DUMMY.AMT = Y.CURR.AMT<1,Y.I>
+        LOCATE Y.DUMMY.CARD IN Y.ALL.CARD.TYPE.LIST SETTING Y.ALL.CARD.TYPE.DE.POS THEN
+            Y.DUMMY.CARD.DESC=Y.ALL.CARD.TYPE.DESC<Y.ALL.CARD.TYPE.DE.POS>
+        END
+        Y.FIN.DUMMY = Y.DUMMY.CARD.DESC:' ':Y.DUMMY.AMT
+        Y.FINAL.ARRAY<-1> = Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.FIN.DUMMY:'*':Y.DUMMY::'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY
+        Y.I += 1
+    REPEAT
+*
+    CHANGE @VM TO @FM IN Y.CURR.AMT
+    LOOP
+        REMOVE Y.EACH.AMT FROM Y.CURR.AMT SETTING EACH.CARD.POS
+    WHILE Y.EACH.AMT:EACH.CARD.POS
+        Y.FINAL.TOTAL + = Y.EACH.AMT
+    REPEAT
+
+    Y.TOT.VAR = 'Total':' ':Y.FINAL.TOTAL
+    Y.FINAL.ARRAY<-1> = Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.TOT.VAR:'*':Y.DUMMY::'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY
+    Y.BRK.VAR = '--------------------------------'
+    Y.FINAL.ARRAY<-1> = Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.BRK.VAR:'*':Y.DUMMY::'*':Y.DUMMY:'*':Y.DUMMY:'*':Y.DUMMY
+
+RETURN
+******************************
+END
+*--------------End of Program----------------------------------------------------------------------
