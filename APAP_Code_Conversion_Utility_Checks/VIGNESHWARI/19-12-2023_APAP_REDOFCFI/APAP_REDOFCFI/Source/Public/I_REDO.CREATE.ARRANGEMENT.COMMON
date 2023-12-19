@@ -1,0 +1,18 @@
+* Version 1 13/04/00  GLOBUS Release No. G14.0.01 14/08/03
+*
+* Common area for XX.EOD multi-threaded Close of Business job
+* This will contain things such as filename, file variables and standard variables
+* AUTHOR: mgudino
+*-----------------------------------------------------------------------------
+* Modification History:
+*
+*
+*
+*-----------------------------------------------------------------------------
+      COMMON /REDO.CREATE.ARRANGEMENT/ Y.POLICY.EXISTING, Y.COLLATERAL.EXISTING, FN.REDO.FC.PROD.COLL.POLICY, F.REDO.FC.PROD.COLL.POLICY, R.REDO.FC.PROD.COLL.POLICY
+*Y.COLLATERAL.EXISTING -> Y IF THE COLLATERAL WAS INTRODUCED BY THE USER AND THIS EXISTING OTHERWISE N
+*Y.POLICY.EXISTING -> Y IF THE COLLATERAL WAS INTRODUCED BY THE USER AND THIS EXISTING OTHERWISE N
+
+* Constants
+*EQU K.COL.EXTRACT.TRACE.ID TO "REDO.COL.EXTRACT.TRACE"       ;* Part of The Id, to keep the trace of extract process
+*EQU K.COL.DELIVERY.TRACE.ID TO "REDO.COL.DELIVERY.TRACE"     ;* Part of The Id, to keep the trace of delivery process
