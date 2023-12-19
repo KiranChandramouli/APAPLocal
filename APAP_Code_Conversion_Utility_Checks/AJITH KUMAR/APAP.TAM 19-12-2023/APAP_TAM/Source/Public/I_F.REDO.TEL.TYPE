@@ -1,0 +1,15 @@
+* I_F.REDO.TEL.TYPE Created 04 DEC 09 at 10:20AM by apapr8/JANANI
+*      PREFIX[REDO]
+    EQU REDO.DESCRIPTION TO 1,   RedoTelType_Description TO 1,
+    REDO.RESERVED.1 TO 2,   RedoTelType_Reserved1 TO 2,
+    REDO.RESERVED.2 TO 3,   RedoTelType_Reserved2 TO 3,
+    REDO.RESERVED.3 TO 4,   RedoTelType_Reserved3 TO 4,
+    REDO.RECORD.STATUS TO 5,   RedoTelType_RecordStatus TO 5,
+    REDO.CURR.NO TO 6,   RedoTelType_CurrNo TO 6,
+    REDO.INPUTTER TO 7,   RedoTelType_Inputter TO 7,
+    REDO.DATE.TIME TO 8,   RedoTelType_DateTime TO 8,
+    REDO.AUTHORISER TO 9,   RedoTelType_Authoriser TO 9,
+    REDO.CO.CODE TO 10,  RedoTelType_CoCode TO 10,
+    REDO.DEPT.CODE TO 11,  RedoTelType_DeptCode TO 11,
+    REDO.AUDITOR.CODE TO 12,  RedoTelType_AuditorCode TO 12,
+    REDO.AUDIT.DATE.TIME TO 13,  RedoTelType_AuditDateTime TO 13

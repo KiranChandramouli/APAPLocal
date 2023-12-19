@@ -1,0 +1,21 @@
+* I_F.REDO.CUS.TXN.PARAM Created 04 APR 11 at 01:34PM by t24r09/TEM.HPASQUEL.01
+*      PREFIX[REDO.CUS.TP]
+        EQU REDO.CUS.TP.APPLICATION TO 1,   RedoCusTxnParam_Application TO 1,
+          REDO.CUS.TP.EVALUATOR.RTN TO 2,   RedoCusTxnParam_EvaluatorRtn TO 2,
+         REDO.CUS.TP.CUSTOMER.FIELD TO 3,   RedoCusTxnParam_CustomerField TO 3,
+               REDO.CUS.TP.ID.FIELD TO 4,   RedoCusTxnParam_IdField TO 4,
+             REDO.CUS.TP.RESERVED.1 TO 5,   RedoCusTxnParam_Reserved1 TO 5,
+             REDO.CUS.TP.RESERVED.2 TO 6,   RedoCusTxnParam_Reserved2 TO 6,
+             REDO.CUS.TP.RESERVED.3 TO 7,   RedoCusTxnParam_Reserved3 TO 7,
+             REDO.CUS.TP.RESERVED.4 TO 8,   RedoCusTxnParam_Reserved4 TO 8,
+             REDO.CUS.TP.RESERVED.5 TO 9,   RedoCusTxnParam_Reserved5 TO 9,
+             REDO.CUS.TP.RESERVED.6 TO 10,  RedoCusTxnParam_Reserved6 TO 10,
+          REDO.CUS.TP.RECORD.STATUS TO 11,   RedoCusTxnParam_RecordStatus TO 11,
+                REDO.CUS.TP.CURR.NO TO 12,   RedoCusTxnParam_CurrNo TO 12,
+               REDO.CUS.TP.INPUTTER TO 13,   RedoCusTxnParam_Inputter TO 13,
+              REDO.CUS.TP.DATE.TIME TO 14,   RedoCusTxnParam_DateTime TO 14,
+             REDO.CUS.TP.AUTHORISER TO 15,  RedoCusTxnParam_Authoriser TO 15,
+                REDO.CUS.TP.CO.CODE TO 16,  RedoCusTxnParam_CoCode TO 16,
+              REDO.CUS.TP.DEPT.CODE TO 17,  RedoCusTxnParam_DeptCode TO 17,
+           REDO.CUS.TP.AUDITOR.CODE TO 18,  RedoCusTxnParam_AuditorCode TO 18,
+        REDO.CUS.TP.AUDIT.DATE.TIME TO 19,  RedoCusTxnParam_AuditDateTime TO 19

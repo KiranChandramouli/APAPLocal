@@ -1,0 +1,17 @@
+* I_F.REDO.CHQ.PRNT.VERSIONS Created 12 MAR 11 at 12:58PM by t24tqa02/TEM.RSHANKAR.02
+*      PREFIX[PRINT.CHQ.LIST]
+           EQU PRINT.CHQ.LIST.VERSIONS TO 1,   RedoChqPrntVersions_Versions TO 1,
+             PRINT.CHQ.LIST.RESERVED.5 TO 2,   RedoChqPrntVersions_Reserved5 TO 2,
+             PRINT.CHQ.LIST.RESERVED.4 TO 3,   RedoChqPrntVersions_Reserved4 TO 3,
+             PRINT.CHQ.LIST.RESERVED.3 TO 4,   RedoChqPrntVersions_Reserved3 TO 4,
+             PRINT.CHQ.LIST.RESERVED.2 TO 5,   RedoChqPrntVersions_Reserved2 TO 5,
+             PRINT.CHQ.LIST.RESERVED.1 TO 6,   RedoChqPrntVersions_Reserved1 TO 6,
+          PRINT.CHQ.LIST.RECORD.STATUS TO 7,   RedoChqPrntVersions_RecordStatus TO 7,
+                PRINT.CHQ.LIST.CURR.NO TO 8,   RedoChqPrntVersions_CurrNo TO 8,
+               PRINT.CHQ.LIST.INPUTTER TO 9,   RedoChqPrntVersions_Inputter TO 9,
+              PRINT.CHQ.LIST.DATE.TIME TO 10,  RedoChqPrntVersions_DateTime TO 10,
+             PRINT.CHQ.LIST.AUTHORISER TO 11,  RedoChqPrntVersions_Authoriser TO 11,
+                PRINT.CHQ.LIST.CO.CODE TO 12,  RedoChqPrntVersions_CoCode TO 12,
+              PRINT.CHQ.LIST.DEPT.CODE TO 13,  RedoChqPrntVersions_DeptCode TO 13,
+           PRINT.CHQ.LIST.AUDITOR.CODE TO 14,  RedoChqPrntVersions_AuditorCode TO 14,
+        PRINT.CHQ.LIST.AUDIT.DATE.TIME TO 15,  RedoChqPrntVersions_AuditDateTime TO 15

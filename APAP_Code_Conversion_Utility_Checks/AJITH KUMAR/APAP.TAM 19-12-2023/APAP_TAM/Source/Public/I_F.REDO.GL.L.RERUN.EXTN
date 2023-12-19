@@ -1,0 +1,4 @@
+* I_F.REDO.GL.L.RERUN.EXTN Created 08 NOV 10 at 04:54PM by apap/ANIES1
+*      PREFIX[GL.RERUN]
+           EQU GL.RERUN.RUN.DATE TO 1,   RedoGlLRerunExtn_RunDate TO 1,
+               GL.RERUN.RUN.EXTN TO 2,   RedoGlLRerunExtn_RunExtn TO 2
