@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTEyNTA3MDpDcDEyNTI6MTcwMjkwMDg2OTUzMDphaml0aDotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 18 Dec 2023 17:31:09
+* @ValidationCode : MjotNzM3Mzk5OTIzOkNwMTI1MjoxNjg1NTQzNjQ3ODMxOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 31 May 2023 20:04:07
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *Modification history
@@ -30,8 +30,8 @@ SUBROUTINE REDO.V.VAL.ARCIB.PART.PYMNT
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.FUNDS.TRANSFER
-* $INSERT I_F.AA.ACCOUNT.DETAILS
-*$INSERT I_F.AA.BILL.DETAILS
+    $INSERT I_F.AA.ACCOUNT.DETAILS
+    $INSERT I_F.AA.BILL.DETAILS
     $INSERT I_F.AA.TERM.AMOUNT
     $INSERT I_F.AA.PAYMENT.SCHEDULE
     $INSERT I_F.AA.ARRANGEMENT
@@ -43,7 +43,6 @@ SUBROUTINE REDO.V.VAL.ARCIB.PART.PYMNT
     $INSERT I_F.AI.REDO.ACCT.RESTRICT.PARAMETER
     $USING APAP.TAM
     $USING APAP.AA
-    $USING AA.PaymentSchedule
 
 
 *****
@@ -198,8 +197,7 @@ RETURN
 AA.PROJECTOR.PARA:
 ******************
 
-*CALL AA.SCHEDULE.PROJECTOR(VAR.AA.ID,SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS,DUE.PROPS,DUE.PROP.AMTS, DUE.OUTS)
-    AA.PaymentSchedule.ScheduleProjector(VAR.AA.ID,SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS,DUE.PROPS,DUE.PROP.AMTS, DUE.OUTS)
+    CALL AA.SCHEDULE.PROJECTOR(VAR.AA.ID,SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS,DUE.PROPS,DUE.PROP.AMTS, DUE.OUTS)
     Y.DU.DTES = DUE.DATES
 
     Y.TOT.FUT.BILLS  = DCOUNT(TOT.PAYMENT,@FM)

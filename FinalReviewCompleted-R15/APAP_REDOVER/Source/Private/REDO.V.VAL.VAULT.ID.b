@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNTg0NTgwNTA5OkNwMTI1MjoxNzAyODk2NjkzNjA3OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 18 Dec 2023 16:21:33
+* @ValidationCode : MjozODQ3MjY5MjA6Q3AxMjUyOjE2ODI0MTIzNjYyMjI6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 25 Apr 2023 14:16:06
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : DEV_202108.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.VAULT.ID
@@ -34,8 +34,6 @@ INITIALISE:
     F.TELLER.ID = ''
     FN.TELLER.ID = 'F.TELLER.ID'
     CALL OPF(FN.TELLER.ID, F.TELLER.ID)
-    
-    FN.TELLER.PARAMETER = 'F.TELLER.PARAMETER'
 
 
 PROCESS:
@@ -72,7 +70,7 @@ PROCESS:
         END
 
         IF NOT(ETEXT) THEN
-            CALL CACHE.READ('FN.TELLER.PARAMETER', W.COMPANY, R.TT.PARAM, TT.PAR.ERR)
+            CALL CACHE.READ('F.TELLER.PARAMETER', W.COMPANY, R.TT.PARAM, TT.PAR.ERR)
 
             LOCATE TO.VAULT.ID IN R.TT.PARAM<TT.PAR.VAULT.ID,1> SETTING POS ELSE
                 GOSUB GET.ERRTTID     ;*  VNL 2012SEP28 - S/E

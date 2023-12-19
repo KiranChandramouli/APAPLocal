@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMjE5MzUxMDYyOkNwMTI1MjoxNzAyOTAwNDQwNzQ1OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 18 Dec 2023 17:24:00
+* @ValidationCode : MjotMzE0Nzc1MDg2OkNwMTI1MjoxNjgyNDEyMzU2OTg2OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -44,7 +44,6 @@ SUBROUTINE REDO.V.VAL.CANCELLATION
     $INSERT I_F.COLLATERAL
     $INSERT I_F.EB.LOOKUP
     $INSERT I_F.APAP.H.INSURANCE.DETAILS
-    $USING AA.PaymentSchedule
 
     GOSUB INIT
     GOSUB CAPTURE.DATA
@@ -160,8 +159,8 @@ CAPTURE.DATA:
     R.NEW(INS.DET.POLICY.STATUS) = "CANCELADA"
 
     IF R.NEW(INS.DET.MANAGEMENT.TYPE) EQ 'INCLUIR EN CUOTA' THEN
-*CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.TYPES, DUE.DEFER.DATES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)         ;* Routine to Project complete schedules
-        AA.PaymentSchedule.ScheduleProjector(ARR.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.TYPES, DUE.DEFER.DATES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+        CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.TYPES, DUE.DEFER.DATES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)         ;* Routine to Project complete schedules
+
         R.NEW(INS.DET.INS.END.DATE) = FIELD(DUE.DATES,@FM,1)
     END
 
