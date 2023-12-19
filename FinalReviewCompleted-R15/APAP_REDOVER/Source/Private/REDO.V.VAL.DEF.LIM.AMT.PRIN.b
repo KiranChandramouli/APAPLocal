@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxNTU5NTIzODAwOkNwMTI1MjoxNjg1NTQzNjUwODIzOklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 31 May 2023 20:04:10
+* @ValidationCode : MjoxODc4NzYzOTMyOkNwMTI1MjoxNzAyODk5Mjk2ODc1OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 18 Dec 2023 17:04:56
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ajith
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 *-----------------------------------------------------------------------------
@@ -44,7 +44,7 @@ SUBROUTINE REDO.V.VAL.DEF.LIM.AMT.PRIN
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_F.AA.ARRANGEMENT
-    $INSERT I_F.AA.ACCOUNT.DETAILS
+*  $INSERT I_F.AA.ACCOUNT.DETAILS
     $INSERT I_F.TELLER
     $INSERT I_F.AA.ACCOUNT
     $INSERT I_F.ACCOUNT
@@ -57,6 +57,7 @@ SUBROUTINE REDO.V.VAL.DEF.LIM.AMT.PRIN
     $INSERT I_F.EB.CONTRACT.BALANCES
     $USING APAP.TAM
     $USING APAP.AA
+    $USING AA.PaymentSchedule
 
     GOSUB INIT
     GOSUB OPENFILES
@@ -205,7 +206,8 @@ RETURN
 INSTALLMENT:
 *-------------------------------------------------------------
 * To calculate the next payment amount
-    CALL AA.SCHEDULE.PROJECTOR(Y.ARRANGEMENT.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+*CALL AA.SCHEDULE.PROJECTOR(Y.ARRANGEMENT.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+    AA.PaymentSchedule.ScheduleProjector(Y.ARRANGEMENT.ID, SIM.REF, "",CYCLE.DATE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS, DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
     Y.NO.OF.DATE=DCOUNT(DUE.DATES,@FM) ;*R22 Manual Code Conversion-Call Method Format Modified
     VAR1=1
     LOOP
@@ -224,7 +226,8 @@ BILLOVERDUE:
 *-------------------------------------------------------------
 * To calculate the no of bills that are overdue
     CALL CACHE.READ(FN.ACCOUNT.DETAILS,Y.ARRANGEMENT.ID,R.ACCOUNT.DETAILS,F.ACCOUNT.DETAILS,ACT.DET.ERR) ;*R22 Manual Code Conversion-Call Method Format Modified
-    Y.BILL.STATUS = R.ACCOUNT.DETAILS<AA.AD.BILL.STATUS>
+*Y.BILL.STATUS = R.ACCOUNT.DETAILS<AA.AD.BILL.STATUS>
+    Y.BILL.STATUS = R.ACCOUNT.DETAILS<AA.PaymentSchedule.AccountDetails.AdBillStatus>
     CONVERT @SM TO @FM IN Y.BILL.STATUS ;*R22 Manual Code Conversion-Call Method Format Modified
     CONVERT @VM TO @FM IN Y.BILL.STATUS ;*R22 Manual Code Conversion-Call Method Format Modified
     Y.BILL.STATUS.CNT=DCOUNT(Y.BILL.STATUS,@FM) ;*R22 Manual Code Conversion-Call Method Format Modified
@@ -320,8 +323,10 @@ OVERPAYRULES:
         APAP.AA.redoCrrGetConditions(Y.ARRANGEMENT.ID,EFF.DATE,PROP.CLASS,PROPERTY,R.Condition,ERR.MSG) ;*R22 Manual Code Conversion-Call Method Format Modified
         MAX.AMT.POS1=LOC.REF.POS<3,1>
         MIN.AMT.POS1=LOC.REF.POS<3,2>
-        Y.TERM.MAX.AMT=R.Condition<AA.PS.LOCAL.REF,MAX.AMT.POS1>
-        Y.TERM.MIN.AMT=R.Condition<AA.PS.LOCAL.REF,MIN.AMT.POS1>
+* Y.TERM.MAX.AMT=R.Condition<AA.PS.LOCAL.REF,MAX.AMT.POS1>
+        Y.TERM.MAX.AMT=R.Condition<AA.PaymentSchedule.PaymentSchedule.PsLocalRef,MAX.AMT.POS1>
+*Y.TERM.MIN.AMT=R.Condition<AA.PS.LOCAL.REF,MIN.AMT.POS1>
+        Y.TERM.MIN.AMT=R.Condition<AA.PaymentSchedule.PaymentSchedule.PsLocalRef,MIN.AMT.POS1>
         IF Y.TERM.MAX.AMT NE '' OR Y.TERM.MIN.AMT NE '' THEN
             Y.MAX.AMOUNT=Y.TOTAL.DUE*Y.TERM.MAX.AMT
             Y.MIN.AMOUNT=Y.TOTAL.DUE*Y.TERM.MIN.AMT

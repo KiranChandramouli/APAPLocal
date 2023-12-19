@@ -1,14 +1,14 @@
-* @ValidationCode : MjotNzM3ODA5NTgzOkNwMTI1MjoxNjgyNDEyMzU2ODk3OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpERVZfMjAyMTA4LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:56
+* @ValidationCode : MjozNTczNDU5OTY6Q3AxMjUyOjE3MDI5MDA2NDY1MjE6YWppdGg6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 18 Dec 2023 17:27:26
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ajith
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
 SUBROUTINE REDO.V.VAL.CALC.OF.PAYMENT
@@ -46,6 +46,7 @@ SUBROUTINE REDO.V.VAL.CALC.OF.PAYMENT
     $INSERT I_F.FT.COMMISSION.TYPE
     $INSERT I_F.TAX
     $INSERT I_F.REDO.T.AUTH.ARRANGEMENT
+    $USING AA.PaymentSchedule
 
     GOSUB INIT
     GOSUB MULTI.GET
@@ -179,7 +180,8 @@ AA.SCHEDULES:
         REMOVE ARR.ID FROM SEL.LIST SETTING ARR.ID.POS
     WHILE ARR.ID:ARR.ID.POS
 
-        CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+* CALL AA.SCHEDULE.PROJECTOR(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
+        AA.PaymentSchedule.ScheduleProjector(ARR.ID, SIMULATION.REF, NO.RESET, DATE.RANGE, TOT.PAYMENT, DUE.DATES, DUE.DEFER.DATES, DUE.TYPES, DUE.METHODS,DUE.TYPE.AMTS, DUE.PROPS, DUE.PROP.AMTS, DUE.OUTS)
         GOSUB AA.SCHEDULE.LOOP
     REPEAT
 RETURN
