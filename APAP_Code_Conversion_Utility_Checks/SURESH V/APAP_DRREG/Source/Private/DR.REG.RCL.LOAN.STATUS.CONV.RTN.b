@@ -1,16 +1,16 @@
-$PACKAGE APAP.DRREG
-* @ValidationCode : MjoxNTU3MTA2MTQ4OkNwMTI1MjoxNzAyNTU1NDU2Njk1OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 14 Dec 2023 17:34:16
+* @ValidationCode : MjoxNTU3MTA2MTQ4OkNwMTI1MjoxNzAyOTYzOTg4MTI2OjMzM3N1Oi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Dec 2023 11:03:08
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.DRREG
 
 *
 *-----------------------------------------------------------------------------
