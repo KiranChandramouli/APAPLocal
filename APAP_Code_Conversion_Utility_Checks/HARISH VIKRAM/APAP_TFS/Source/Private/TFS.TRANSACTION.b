@@ -33,7 +33,7 @@ SUBROUTINE TFS.TRANSACTION
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *26/10/2023         Ajithkumar             R22 Manual Conversion        USPLATFORM.BP File is Removed ,Call Rtn Format Can be Modified , VM to @VM,CALL UNAUTH.RECORD.WRITE;CALL AUTH.RECORD.WRITE;CALL TRANSACTION.ABORT Chnaged
-*
+*15/12/2023         HARISHVIKRAM            R22 Manual Conversion       RECORDID.INPUT, RECORD.READ Changed
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INCLUDE  I_T24.FS.COMMON ;*R22 Manual Code conversion _ Start
@@ -59,7 +59,8 @@ SUBROUTINE TFS.TRANSACTION
 
     LOOP
 
-        CALL RECORDID.INPUT
+*        CALL RECORDID.INPUT
+        EB.TransactionControl.RecordidInput()     ;*R22 Manual Conversion
 
     UNTIL (MESSAGE EQ 'RET')
 
@@ -79,7 +80,8 @@ SUBROUTINE TFS.TRANSACTION
             GOSUB CHECK.ID    ;* Special Editing of ID
             IF V$ERROR THEN GOTO MAIN.REPEAT
 
-            CALL RECORD.READ
+*            CALL RECORD.READ
+            EB.TransactionControl.RecordRead()   ;*R22 Manual Conversion
 
             IF MESSAGE EQ 'REPEAT' THEN
                 GOTO MAIN.REPEAT

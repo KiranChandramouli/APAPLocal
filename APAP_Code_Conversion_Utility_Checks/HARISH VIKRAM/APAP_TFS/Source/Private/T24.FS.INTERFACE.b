@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxOTMzNzM3NzE0OkNwMTI1MjoxNjk4NzUwNjczNjQ0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 31 Oct 2023 16:41:13
+* @ValidationCode : MjotMzk1NTM4MzY2OkNwMTI1MjoxNzAyOTY4MzE1ODAxOnZpZ25lc2h3YXJpOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Dec 2023 12:15:15
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : vigneshwari
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -69,8 +69,8 @@ SUBROUTINE T24.FS.INTERFACE(OFS.ACTION)
 *
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
-*26/10/2023         Suresh             R22 Manual Conversion          GLOBUS.BP File Removed, USPLATFORM.BP File Removed, CALL routine format modified, FM TO @FM, VM TO @VM, SM TO @SM, OFS.GLOBUS.MANAGER Format changed, CALL DISPLAY.MESSAGE Changed
-
+*26/10/2023         Suresh             R22 Manual Conversion          GLOBUS.BP File Removed, USPLATFORM.BP File Removed, CALL routine format modified, FM TO @FM, VM TO @VM, SM TO @SM
+*15/12/2023      HARISHVIKRAM             R22 Manual Conversion     DISPLAY.MESSAGE,OFS.GLOBUS.MANAGER,TFS.REVERSAL.MARK Format changed, CALL DISPLAY.MESSAGE, TFS.TRANSACTION Changed
 *-------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -92,8 +92,6 @@ SUBROUTINE T24.FS.INTERFACE(OFS.ACTION)
     $USING EB.Interface
     $USING TT.TellerFinancialService
     $USING EB.OverrideProcessing
-    
-
     SAVE.FUNCTION = V$FUNCTION
     IF V$FUNCTION EQ 'C' THEN
         V$FUNCTION = 'I'
@@ -121,7 +119,8 @@ INIT.OPEN.FILES:
     PROCESS.GOAHEAD = 1
     INTERFACE.PGM = 'T24.FS.INTERFACE'
     WE.ARE.VALIDATING = OFS.ACTION NE 'PROCESS' OR JOURNAL.BYPASS
-    TFS.TXNS = R.NEW(TFS.TRANSACTION)
+*    TFS.TXNS = R.NEW(TFS.TRANSACTION)
+    TFS.TXNS = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsTransaction)     ;*R22 Manual Conversion
     OFSS.ID = TFS$OFS.SOURCE
     TFS.AUTH.NO = TFS$AUTH.NO
 
@@ -146,6 +145,7 @@ INIT.OPEN.FILES:
 
     DC.COND1 = (R.ACCOUNT.PARAMETER<AC.PAR.DC.BALANCED> NE '')
     DC.COND2 = (TFS$R.TFS.PAR<TFS.PAR.ALLOW.DC.ZERO.AUT> EQ 'YES')
+     
 *
     R.OFSS = '' ; ERR.OFSS = ''
     FN.OFS.SOURCE = 'F.OFS.SOURCE'
@@ -153,7 +153,8 @@ INIT.OPEN.FILES:
     CALL CACHE.READ(FN.OFS.SOURCE,OFSS.ID,R.OFSS,ERR.OFSS)          ;*R22 Manual Conversion
 *
     OFSS.ID<4> = 1  ;* 20100624 umar
-    DC.COND3 = (R.OFSS<OFS.SRC.SAME.AUTHORISER> EQ 'YES')
+*DC.COND3 = (R.OFSS<OFS.SRC.SAME.AUTHORISER> EQ 'YES')
+    DC.COND3 = (R.OFSS<EB.Interface.OfsSource.OfsSrcSameAuthoriser> EQ 'YES')     ;*R22 Manual Conversion
 
     DC.COND4 = (TFS$AUTH.NO EQ 0)
     DC.OFS.SAME.AUTH = DC.COND1 AND DC.COND2 AND DC.COND3 AND DC.COND4          ;*20 Mar 06  -GP
@@ -171,23 +172,31 @@ PROCESS:
     NO.OF.TFS.TXNS = DCOUNT(TFS.TXNS,@VM) ;*R22 Manual Conversion
     FOR MV.NO = 1 TO NO.OF.TFS.TXNS
         DC.REQD = 0 ;*GP 07/15/05 S/E
-        TFS.TXN = R.NEW(TFS.TRANSACTION)<1,MV.NO>
-        UNDERLYING = R.NEW(TFS.UNDERLYING)<1,MV.NO>
-        REVERSAL.MARK = R.NEW(TFS.REVERSAL.MARK)<1,MV.NO>
-        R.UNDERLYING = R.NEW(TFS.R.UNDERLYING)<1,MV.NO>
+*        TFS.TXN = R.NEW(TFS.TRANSACTION)<1,MV.NO>                                                  ;*R22 Manual Conversion - STRAT
+        TFS.TXN = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsTransaction)<1,MV.NO>
+*        UNDERLYING = R.NEW(TFS.UNDERLYING)<1,MV.NO>
+        UNDERLYING = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUnderlying)<1,MV.NO>
+*        REVERSAL.MARK = R.NEW(TFS.REVERSAL.MARK)<1,MV.NO>
+        REVERSAL.MARK = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsReversalMark)<1,MV.NO>
+*        R.UNDERLYING = R.NEW(TFS.R.UNDERLYING)<1,MV.NO>
+        R.UNDERLYING = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUnderlying)<1,MV.NO>                                            ;*R22 Manual Conversion - END
         IF R.UNDERLYING AND R.NEW(TFS.R.UL.STATUS)<1,MV.NO> NE 'AUT' AND V$FUNCTION EQ 'A' THEN
             REVERSAL.MARK = 'R'
-            R.NEW(TFS.REVERSAL.MARK)<1,MV.NO> = REVERSAL.MARK         ;* Set it temporarily.
+*            R.NEW(TFS.REVERSAL.MARK)<1,MV.NO> = REVERSAL.MARK         ;* Set it temporarily.
+            R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsReversalMark)<1,MV.NO> = REVERSAL.MARK        ;*R22 Manual Conversion
         END
         UL.STATUS = R.NEW(TFS.UL.STATUS)<1,MV.NO>
         R.UL.STATUS = R.NEW(TFS.R.UL.STATUS)<1,MV.NO>
-        PREV.VAL.ERROR = R.NEW(TFS.VAL.ERROR)<1,MV.NO>
+*        PREV.VAL.ERROR = R.NEW(TFS.VAL.ERROR)<1,MV.NO>
+        PREV.VAL.ERROR = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsValError)<1,MV.NO>      ;*R22 Manual Conversion
         RETRY = R.NEW(TFS.RETRY)<1,MV.NO> NE ''
 
 * PACS00269508 - S
-        IF V$FUNCTION EQ 'I' AND UNDERLYING  AND UL.STATUS EQ 'INAU' AND R.NEW(TFS.RECORD.STATUS) EQ 'INAO' THEN
+*        IF V$FUNCTION EQ 'I' AND UNDERLYING  AND UL.STATUS EQ 'INAU' AND R.NEW(TFS.RECORD.STATUS) EQ 'INAO' THEN
+        IF V$FUNCTION EQ 'I' AND UNDERLYING  AND UL.STATUS EQ 'INAU' AND R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRecordStatus) EQ 'INAO' THEN      ;*R22 Manual Conversion
             ETEXT = "EB-TFS.INAO.AMMEND"
-            AF = TFS.RECORD.STATUS
+*            AF = TFS.RECORD.STATUS
+            AF = TT.TellerFinancialService.TellerFinancialServices.TfsRecordStatus                      ;*R22 Manual Conversion
             CALL STORE.END.ERROR
             RETURN
         END
@@ -211,18 +220,22 @@ PROCESS:
 RETURN
 *-------------------------------------------------------------------------
 PROCESS.THIS.TXN:
-    R.NEW(TFS.VAL.ERROR)<1,MV.NO> = ''
+*    R.NEW(TFS.VAL.ERROR)<1,MV.NO> = ''
+    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsValError)<1,MV.NO> = ''      ;*R22 Manual Conversion
     OFS.BODY = '' ; TFS.TXN.ID = '' ; DC.LEGS = ''
     UL.COMPANY.ID = ID.COMPANY
 
     BEGIN CASE
-        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'FT'
+*        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'FT'
+        CASE TFS$R.TFS.TXN(MV.NO)<TT.TellerFinancialService.TfsTransaction.TfsTxnInterfaceTo> EQ 'FT'     ;*R22 Manual Conversion
             GOSUB PRELIM.CONDS.FOR.FT
 
-        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'TT'
+*        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'TT'
+        CASE TFS$R.TFS.TXN(MV.NO)<TT.TellerFinancialService.TfsTransaction.TfsTxnInterfaceTo> EQ 'TT'     ;*R22 Manual Conversion
             GOSUB PRELIM.CONDS.FOR.TT
 
-        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'DC'
+*        CASE TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'DC'
+        CASE TFS$R.TFS.TXN(MV.NO)<TT.TellerFinancialService.TfsTransaction.TfsTxnInterfaceTo> EQ 'DC'      ;*R22 Manual Conversion
             GOSUB PRELIM.CONDS.FOR.DC
 
     END CASE
@@ -262,7 +275,8 @@ PRELIM.CONDS.FOR.TT:
     NO.HIS = 0
     RECORD.STATUS.FLD = TT.TE.RECORD.STATUS ; STMT.NOS.FLD = TT.TE.STMT.NO
     OVERRIDE.FLD = TT.TE.OVERRIDE
-    IF R.NEW(TFS.CURRENCY)<1,MV.NO> EQ LCCY THEN
+*IF R.NEW(TFS.CURRENCY)<1,MV.NO> EQ LCCY THEN
+    IF R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsCurrency)<1,MV.NO> EQ LCCY THEN     ;*R22 Manual Conversion
         CHARGE.FLD = TT.TE.CHRG.AMT.LOCAL
     END ELSE
         CHARGE.FLD = TT.TE.CHRG.AMT.FCCY
@@ -340,7 +354,8 @@ SETUP.OFS:
 * 10/30/03 - Sathish PS /s
 * Changes made to handle History Reversal in FT
                     DC.REQD = 1
-                    IF TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'FT' THEN
+*IF TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'FT' THEN
+                    IF TFS$R.TFS.TXN(MV.NO)<TT.TellerFinancialService.TfsTransaction.TfsTxnInterfaceTo> EQ 'FT' THEN    ;* R22 Manual Conversion-TFS.TRANSACTION Changed
                         GOSUB CHECK.SUPPORT.FOR.FT.HIS.REVERSAL ;* check HIS.REVERSAL in FT.TXN.TYPE.CONDITION & ALLOW.FT.HIS.REV in TFS.PARAMETER
                     END
 * 10/30/03 - Sathish PS /e
@@ -485,7 +500,8 @@ CALL.OFS:
 
     IF NOT(WE.ARE.VALIDATING) THEN
 * Only when PROCESS
-        IF TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'DC' OR  DC.REQD EQ '1' THEN     ;* 08 Feb 06 GP s/e
+* IF TFS$R.TFS.TXN(MV.NO)<TFS.TXN.INTERFACE.TO> EQ 'DC' OR  DC.REQD EQ '1' THEN     ;* 08 Feb 06 GP s/e
+        IF TFS$R.TFS.TXN(MV.NO)<TT.TellerFinancialService.TfsTransaction.TfsTxnInterfaceTo> EQ 'DC' OR  DC.REQD EQ '1' THEN    ;*R22 Manual Conversion    ;* 08 Feb 06 GP s/e
             IF DC.OFS.SAME.AUTH AND (TFS.FUNCTION MATCHES 'I':@VM:'R')  THEN     ;* 20 Mar 06  GP s/e
                 LAST.DC.ID = OFS.MSG['/',1,1] ; ERR.LAST.DC = ''
                 CALL CACHE.READ('F.DATA.CAPTURE$NAU',LAST.DC.ID,R.LAST.DC,ERR.LAST.DC)
@@ -531,10 +547,11 @@ PROCESS.AC.LOCKED.EVENTS:
                 LOCK.REF = ''
                 PROGRESS =  MV.NO:'/':NO.OF.TFS.TXNS:' - LEG ':XX:' ':TFS.TXN :' ': "AC.LOCKED.EVENT"
                 DISP.TEXT = OFS.ACTION :' ':PROGRESS:' ':TFS.DISP.TEXT
-                CALL DISPLAY.MESSAGE(DISP.TEXT,6)
+*                CALL DISPLAY.MESSAGE(DISP.TEXT,6)
+                EB.OverrideProcessing.DisplayMessage(DISP.TEXT,6)     ;*R22 Manual Conversion
                 ALE.OFS.MSG = ALE.OFS.MSGS<ALE.OFS.CNT>
                 OFSS.ID<4> = 1    ;* Umar - Flag set to maintain the cache
-*               EB.Interface.OfsGlobusManager(OFSS.ID,ALE.OFS.MSG)    ;*R22 Manual Conversion)
+*               EB.Interface.OfsGlobusManager(OFSS.ID,ALE.OFS.MSG)    ;*R22 Manual Conversion
                 EB.Interface.OfsGlobusManager(OFSS.ID,ALE.OFS.MSG)    ;*R22 Manual Conversion
 *                CALL TFS.ANALYSE.OFS.MSG(ALE.OFS.MSG,RET.MSG,'','')
                 APAP.TFS.tfsAnalyseOfsMsg(ALE.OFS.MSG,RET.MSG,'','') ;*R22 Manual Conversion
@@ -544,7 +561,8 @@ PROCESS.AC.LOCKED.EVENTS:
             NEXT ALE.OFS.CNT
 
         CASE OTHERWISE
-            LOCKED.REFS = R.NEW(TFS.LOCK.REF)<1,MV.NO>
+*LOCKED.REFS = R.NEW(TFS.LOCK.REF)<1,MV.NO>
+            LOCKED.REFS = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsLockRef)<1,MV.NO>    ;*R22 Manual Conversion
             IF LOCKED.REFS THEN
                 LOOP
                     REMOVE LOCKED.REF FROM LOCKED.REFS SETTING NEXT.LOCKED.REF.POS
@@ -552,7 +570,8 @@ PROCESS.AC.LOCKED.EVENTS:
 
                     PROGRESS =  MV.NO:'/':NO.OF.TFS.TXNS:' - LEG ':XX:' ':TFS.TXN :' ': "AC.LOCKED.EVENT"
                     DISP.TEXT = OFS.ACTION :' ':PROGRESS:' ':TFS.DISP.TEXT
-                    CALL DISPLAY.MESSAGE(DISP.TEXT,6)
+*                    CALL DISPLAY.MESSAGE(DISP.TEXT,6)
+                    EB.OverrideProcessing.DisplayMessage(DISP.TEXT,6)      ;*R22 Manual Conversion
                     ALE.OFS.MSG = ALE.OFS.HEADER :',': LOCKED.REF :','
                     OFSS.ID<4> = 1          ;* Umar - Flag set to maintain the cache
 *CALL OFS.GLOBUS.MANAGER(OFSS.ID,ALE.OFS.MSG)
@@ -574,11 +593,13 @@ HANDLE.OFS.RET.MSG:
     IF RET.MSG THEN
         IF R.NEW(TFS.ACCOUNTING.STYLE) EQ 'ATOMIC' THEN
             ETEXT = RET.MSG
-            AF = TFS.VAL.ERROR ; AV = MV.NO
+*AF = TFS.VAL.ERROR
+            AF = TT.TellerFinancialService.TellerFinancialServices.TfsValError ; AV = MV.NO ;*R22 Manual Conversion-TFS.VAL.ERROR
             CALL STORE.END.ERROR
         END         ;* Else, dont raise an error message. Let the user retry
         IF NOT(WE.ARE.VALIDATING) THEN
-            R.NEW(TFS.VAL.ERROR)<1,MV.NO> = RET.MSG
+*R.NEW(TFS.VAL.ERROR)<1,MV.NO> = RET.MSG
+            R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsValError)<1,MV.NO> = RET.MSG ;*R22 Manual Conversion-TFS.VAL.ERROR
         END
     END ELSE
         PREV.DC.ID = OFS.MSG['/',1,1]
@@ -604,23 +625,32 @@ RETURN
 *--------------------------------------------------------------------------
 UPDATE.UL.DETAILS:
 
-    R.NEW(TFS.REVERSAL.MARK)<1,MV.NO> = ''
+* R.NEW(TFS.REVERSAL.MARK)<1,MV.NO> = ''
+    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsReversalMark)<1,MV.NO> = ''         ;*R22 Manual Conversion
 
     BEGIN CASE
         CASE TFS.FUNCTION EQ 'D'
             BEGIN CASE
                 CASE UNDERLYING AND UL.STATUS[2,2] EQ 'NA' AND REVERSAL.MARK
-                    R.NEW(TFS.UNDERLYING)<1,MV.NO> = ''
+* R.NEW(TFS.UNDERLYING)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUnderlying)<1,MV.NO> = ''      ;*R22 Manual Conversion   - start
                     R.NEW(TFS.UL.STATUS)<1,MV.NO> = ''
-                    R.NEW(TFS.UL.STMT.NO)<1,MV.NO> = ''
-                    R.NEW(TFS.UL.COMPANY)<1,MV.NO> = ''
-                    R.NEW(TFS.VAL.ERROR)<1,MV.NO> = ''
-                    R.NEW(TFS.LOCK.REF)<1,MV.NO> = ''     ;* 26 SEP 07 - Sathish PS s/e
+                   
+*R.NEW(TFS.UL.STMT.NO)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUlStmtNo)<1,MV.NO> = ''
+*R.NEW(TFS.UL.COMPANY)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUlCompany)<1,MV.NO> = ''
+*  R.NEW(TFS.VAL.ERROR)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsValError)<1,MV.NO> = ''
+* R.NEW(TFS.LOCK.REF)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsLockRef)<1,MV.NO> = ''  ;* 26 SEP 07 - Sathish PS s/e
 
                 CASE R.UNDERLYING AND R.UL.STATUS[2,2] EQ 'NA' AND REVERSAL.MARK
-                    R.NEW(TFS.R.UNDERLYING)<1,MV.NO> = ''
+*R.NEW(TFS.R.UNDERLYING)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUnderlying)<1,MV.NO> = ''
                     R.NEW(TFS.R.UL.STATUS)<1,MV.NO> = ''
-                    R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> = ''
+*R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> = ''
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> = ''            ;*R22 Manual Conversion - end
 
             END CASE
 
@@ -640,22 +670,29 @@ UPDATE.UL.DETAILS:
                     R.UL.FILE<RECORD.STATUS.FLD> = 'AUT'
                 END
                 IF REVERSAL.MARK EQ 'R' THEN
-                    R.NEW(TFS.R.UNDERLYING)<1,MV.NO> = OFS.TXN.RET.ID     ;*20 Mar 06   GP  s/e
+*R.NEW(TFS.R.UNDERLYING)<1,MV.NO> = OFS.TXN.RET.ID     ;*20 Mar 06   GP  s/e
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUnderlying)<1,MV.NO> = OFS.TXN.RET.ID   ;*R22 Manual Conversion  ;*20 Mar 06   GP  s/e
                     R.NEW(TFS.R.UL.STATUS)<1,MV.NO> = R.UL.FILE<RECORD.STATUS.FLD>
-                    IF R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> THEN
-                        R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> := @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
+*                    IF R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> THEN
+                    IF R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> THEN
+*R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> := @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
+                        R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> := @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
                     END ELSE
-                        R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> = LOWER(UL.STMT.NOS)
+* R.NEW(TFS.R.UL.STMT.NO)<1,MV.NO> = LOWER(UL.STMT.NOS)
+                        R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> = LOWER(UL.STMT.NOS)    ;*R22 Manual Conversion
                     END
                 END ELSE
-                    R.NEW(TFS.UNDERLYING)<1,MV.NO> = OFS.TXN.RET.ID
-
+* R.NEW(TFS.UNDERLYING)<1,MV.NO> = OFS.TXN.RET.ID
+                    R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUnderlying)<1,MV.NO> = OFS.TXN.RET.ID        ;*R22 Manual Conversion
                     R.NEW(TFS.UL.STATUS)<1,MV.NO> = R.UL.FILE<RECORD.STATUS.FLD>
-                    IF R.NEW(TFS.UL.STMT.NO)<1,MV.NO> THEN
-                        R.NEW(TFS.UL.STMT.NO)<1,MV.NO> := @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
+*IF R.NEW(TFS.UL.STMT.NO)<1,MV.NO> THEN
+                    IF R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> THEN
+*   R.NEW(TFS.UL.STMT.NO)<1,MV.NO> := @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
+                        R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO>:= @SM: LOWER(UL.STMT.NOS) ;*R22 Manual Conversion
                     END ELSE
                         VM.COUNT = DCOUNT(UL.STMT.NOS,@VM) ;*R22 Manual Conversion
-                        R.NEW(TFS.UL.STMT.NO)<1,MV.NO> = LOWER(UL.STMT.NOS)
+*                     R.NEW(TFS.UL.STMT.NO)<1,MV.NO> = LOWER(UL.STMT.NOS)
+                        R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsRUlStmtNo)<1,MV.NO> = LOWER(UL.STMT.NOS)       ;*R22 Manual Conversion
                     END
                     IF CHARGE.FLD THEN UL.CHARGE = R.UL.FILE<CHARGE.FLD>
                     IF UL.CHARGE THEN
@@ -665,22 +702,26 @@ UPDATE.UL.DETAILS:
                                 UL.CHARGE[1,3] = ''
                                 R.NEW(TFS.UL.CHARGE)<1,MV.NO> = UL.CHARGE
                             CASE INTERFACE.MODULE EQ 'TT'
-                                R.NEW(TFS.UL.CHARGE.CCY)<1,MV.NO> = R.NEW(TFS.CHG.CCY)<1,MV.NO>
+*R.NEW(TFS.UL.CHARGE.CCY)<1,MV.NO> = R.NEW(TFS.CHG.CCY)<1,MV.NO>
+                                R.NEW(TFS.UL.CHARGE.CCY)<1,MV.NO> = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsChgCcy)<1,MV.NO>    ;*R22 Manual Conversion
                                 R.NEW(TFS.UL.CHARGE)<1,MV.NO> = UL.CHARGE
                         END CASE
                     END
                 END
-                R.NEW(TFS.UL.COMPANY)<1,MV.NO> = UL.COMPANY.ID
+*R.NEW(TFS.UL.COMPANY)<1,MV.NO> = UL.COMPANY.ID
+                R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsUlCompany)<1,MV.NO> = UL.COMPANY.ID     ;*R22 Manual Conversion
             END ELSE
                 IF DC.OFS.SAME.AUTH.INP EQ  '' THEN   ;*20 Mar 06    GP  s/e
                     IF NOT(LOCK.REF) AND NOT(OFS.TXN.RET.ID[1,4] EQ 'ACLK') THEN    ;! 26 SEP 07 - Sathish PS s/e
-                        R.NEW(TFS.VAL.ERROR)<1,MV.NO> = OFS.TXN.RET.ID :' - RECORD MISSING FROM FILE ': FN.UL.FILE
+*R.NEW(TFS.VAL.ERROR)<1,MV.NO> = OFS.TXN.RET.ID :' - RECORD MISSING FROM FILE ': FN.UL.FILE
+                        R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsValError)<1,MV.NO> = OFS.TXN.RET.ID :' - RECORD MISSING FROM FILE ': FN.UL.FILE          ;*R22 Manual Conversion
                     END ;! 26 SEP 07 - Sathish PS s/e
                 END
             END
             ! 26 SEP 07 - Sathish PS /s
             IF LOCK.REF THEN
-                R.NEW(TFS.LOCK.REF)<1,MV.NO,-1> = LOCK.REF
+* R.NEW(TFS.LOCK.REF)<1,MV.NO,-1> = LOCK.REF
+                R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsLockRef)<1,MV.NO,-1> = LOCK.REF             ;*R22 Manual Conversion
                 LOCK.REF = ''
             END
             ! 26 SEP 07 - Sathish PS /e
@@ -818,7 +859,8 @@ BUILD.AC.LOCKED.EVENT.MESSAGES:
     IF (R.NEW(TFS.NET.ENTRY) NE 'NO' AND R.NEW(TFS.NETTED.ENTRY)<1,MV.NO> EQ 'YES') OR (R.NEW(TFS.NET.ENTRY) EQ 'NO') THEN
 
         EXP.DATES = R.NEW(TFS.EXP.DATE)<1,MV.NO> ; EXP.AMTS = R.NEW(TFS.EXP.AMT)<1,MV.NO>
-        FROM.DATE = R.NEW(TFS.CR.VALUE.DATE)<1,MV.NO>
+*FROM.DATE = R.NEW(TFS.CR.VALUE.DATE)<1,MV.NO>
+        FROM.DATE = R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsCrValueDate)<1,MV.NO>          ;*R22 Manual Conversion
 
 * CHNG060608 - S - NET.ENTRY.LCY.AMT is not needed anymore, since EXP.AMT itself holds the amount in LCY.
 *        NET.ENTRY.LCY.AMT = 0 ; NET.ENTRY.LCY.AMT = R.NEW(TFS.AMOUNT.LCY)<1,MV.NO>        ;* 30 Apr 2008 s/e
@@ -841,7 +883,8 @@ BUILD.AC.LOCKED.EVENT.MESSAGES:
             IGNORE.THIS.ALE = 0
             IF EXP.DATE GT FROM.DATE THEN
                 ALE.OFS.BODY = '' ; ALE.OFS.MSG = ''
-                ALE.OFS.BODY = 'ACCOUNT.NUMBER:1:1=': R.NEW(TFS.ACCOUNT.CR)<1,MV.NO> :','
+* ALE.OFS.BODY = 'ACCOUNT.NUMBER:1:1=': R.NEW(TFS.ACCOUNT.CR)<1,MV.NO> :','
+                ALE.OFS.BODY = 'ACCOUNT.NUMBER:1:1=': R.NEW(TT.TellerFinancialService.TellerFinancialServices.TfsAccountCr)<1,MV.NO> :','     ;*R22 Manual Conversion
                 ALE.OFS.BODY := 'DESCRIPTION:1:1=': ID.NEW :','
                 ALE.OFS.BODY := 'FROM.DATE:1:1=': FROM.DATE :','
                 ALE.OFS.BODY := 'TO.DATE:1:1=': EXP.DATE :','

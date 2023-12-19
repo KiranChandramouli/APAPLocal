@@ -221,6 +221,7 @@ SUBROUTINE T24.FS.CHECK.FIELDS
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *26/10/2023         Suresh             R22 Manual Conversion             USPLATFORM.BP File Removed,REFRESH.FIELD changed, CALL routine format modified, FM TO @FM, VM TO @VM, SM TO @SM
+*15/12/2023         HARISHVIKRAM       R22 Manual Conversion
 *--------------------------------------------------------------------------------------------*
 *
     $INSERT I_COMMON
@@ -3536,14 +3537,17 @@ LOG.MESSAGE:
 
         LOG.MSG = '' ; E.MSG = '' ; R.NEW.MSG = ''
         IF LOG.MSG THEN
-            CALL TXT(LOG.MSG)
+*            CALL TXT(LOG.MSG)
+            EB.Display.Txt(LOG.MSG)            ;*R22 Manual Conversion
             E.MSG = ' E=& ETEXT=& END.ERROR=& COMI=&' :@FM: E :@VM: ETEXT :@VM: END.ERROR :@VM: COMI
-            CALL TXT(E.MSG)
+*            CALL TXT(E.MSG)
+            EB.Display.Txt(E.MSG)           ;*R22 Manual Conversion
             MATBUILD R.DYN.NEW FROM R.NEW
             CHANGE @FM TO '^' IN R.DYN.NEW
             CHANGE @VM TO ']' IN R.DYN.NEW
             CHANGE @SM TO '\' IN R.DYN.NEW
-            R.NEW.MSG := 'R.NEW=&' :@FM: R.DYN.NEW ; CALL TXT(R.NEW.MSG)
+*            R.NEW.MSG := 'R.NEW=&' :@FM: R.DYN.NEW ; CALL TXT(R.NEW.MSG)
+            R.NEW.MSG := 'R.NEW=&' :@FM: R.DYN.NEW ; EB.Display.Txt(R.NEW.MSG)    ;*R22 Manual Conversion
             LOG.MSG := ' ':E.MSG
             LOG.MSG := ' ':R.NEW.MSG
             LOG.MSG = SYSTEM(40):' --> ':LOG.MSG

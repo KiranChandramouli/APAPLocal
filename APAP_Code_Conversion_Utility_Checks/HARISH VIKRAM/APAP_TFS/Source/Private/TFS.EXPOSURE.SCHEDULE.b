@@ -19,7 +19,7 @@ $PACKAGE APAP.TFS
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *26/10/2023         Ajithkumar             R22 Manual Conversion       USPLATFORM.BP file be removed ,CALL UNAUTH.RECORD.WRITE;CALL AUTH.RECORD.WRITE;CALL TRANSACTION.ABORT Chnaged, Call Rtn Format can be modified
-*
+*15/12/2023         HARISHVIKRAM             R22 Manual Conversion     RECORDID.INPUT Changed
 
 SUBROUTINE TFS.EXPOSURE.SCHEDULE
 *-----------------------------------------------------------------------------
@@ -56,7 +56,8 @@ SUBROUTINE TFS.EXPOSURE.SCHEDULE
 
     LOOP
 
-        CALL RECORDID.INPUT
+*        CALL RECORDID.INPUT
+        EB.TransactionControl.RecordidInput()      ;*R22 Manual code conversion
 
     UNTIL (MESSAGE EQ 'RET')
 
@@ -76,7 +77,8 @@ SUBROUTINE TFS.EXPOSURE.SCHEDULE
             GOSUB CHECK.ID    ;* Special Editing of ID
             IF V$ERROR THEN GOTO MAIN.REPEAT
 
-            CALL RECORD.READ
+*            CALL RECORD.READ
+            EB.TransactionControl.RecordidInput()      ;*R22 Manual code conversion
 
             IF MESSAGE EQ 'REPEAT' THEN
                 GOTO MAIN.REPEAT

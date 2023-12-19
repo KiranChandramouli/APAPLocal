@@ -31,7 +31,7 @@ SUBROUTINE TFS.PARAMETER
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *26/10/2023         Ajithkumar             R22 Manual Conversion      USPLATFORM.BP File is Removed, VM TO @VM, CALL routine format modified
-*
+*15/12/2023         HARISHVIKRAM             R22 Manual Conversion   RECORD.READ Changed
 
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -56,7 +56,8 @@ SUBROUTINE TFS.PARAMETER
 
     LOOP
 
-        CALL RECORDID.INPUT
+*        CALL RECORDID.INPUT
+        EB.TransactionControl.RecordidInput()    ;* R22 Manual Code conversin
 
     UNTIL (MESSAGE EQ 'RET')
 
@@ -76,8 +77,8 @@ SUBROUTINE TFS.PARAMETER
             GOSUB CHECK.ID    ;* Special Editing of ID
             IF V$ERROR THEN GOTO MAIN.REPEAT
 
-            CALL RECORD.READ
-
+*            CALL RECORD.READ
+            EB.TransactionControl.RecordRead()    ;* R22 Manual Code conversin
             IF MESSAGE EQ 'REPEAT' THEN
                 GOTO MAIN.REPEAT
             END

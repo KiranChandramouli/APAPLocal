@@ -33,6 +33,7 @@ SUBROUTINE GET.LOC.REF.UPDATE(OFS.BODY)
 *Modification History:
 *DATE                 WHO                    REFERENCE                     DESCRIPTION
 *26/10/2023         Suresh             R22 Manual Conversion           USPLATFORM.BP  File Removed
+*15/12/2023    HARISHVIKRAM           R22 Manual Conversion
 *=======================================================================
 
     $INSERT I_COMMON
@@ -56,7 +57,7 @@ RETURN
 
 
 SS.SEL.TFS:
-*    CALL GET.LOC.REF('T24.FUND.SERVICES','COND.CUS.NO',CUS.NO.POS)
+*    CALL GET.LOC.REF('T24.FUND.SERVICES','COND.CUS.NO',CUS.NO.POS)                   ;*R22 Manual Conversion - start
     EB.LocalReferences.GetLocRef('T24.FUND.SERVICES','COND.CUS.NO',CUS.NO.POS)
 *    CALL GET.LOC.REF('T24.FUND.SERVICES','COND.FIRST.NM',FIRST.NM.POS)
     EB.LocalReferences.GetLocRef('T24.FUND.SERVICES','COND.FIRST.NM',FIRST.NM.POS)
@@ -67,13 +68,14 @@ SS.SEL.TFS:
 *    CALL GET.LOC.REF('T24.FUND.SERVICES','COND.ID.NO',ID.NO.POS)
     EB.LocalReferences.GetLocRef('T24.FUND.SERVICES','COND.ID.NO',ID.NO.POS)
 *    CALL GET.LOC.REF('T24.FUND.SERVICES','COND.ID.ISSU',ID.ISSU.POS)
-    EB.LocalReferences.GetLocRef('T24.FUND.SERVICES','COND.ID.ISSU',ID.ISSU.POS)
+    EB.LocalReferences.GetLocRef('T24.FUND.SERVICES','COND.ID.ISSU',ID.ISSU.POS)         ;*R22 Manual Conversion - end
     IF CUS.NO.POS THEN FLAG=1 ;*anitha s 23/6/2009
 RETURN
 
 *23/6/09 S ANITHA FOR ISSUE HD0916445
 SS.CHK.DC:
-    CALL GET.LOC.REF('DATA.CAPTURE','COND.CUS.NO',DC.NO.POS)
+*    CALL GET.LOC.REF('DATA.CAPTURE','COND.CUS.NO',DC.NO.POS)
+    EB.LocalReferences.GetLocRef('DATA.CAPTURE','COND.CUS.NO',DC.NO.POS)      ;*R22 Manual Conversion
     IF DC.NO.POS THEN
         FLAG=1
     END ELSE
