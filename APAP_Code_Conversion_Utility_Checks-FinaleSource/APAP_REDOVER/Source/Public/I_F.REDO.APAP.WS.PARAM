@@ -1,0 +1,22 @@
+* I_F.REDO.APAP.WS.PARAM Created 19 APR 11 at 10:58AM by apapr8/JANANIKS
+*      PREFIX[REDO.APAP.WS]
+       EQU REDO.APAP.WS.VERSION.NAME TO 1,   RedoApapWsParam_VersionName TO 1,
+         REDO.APAP.WS.AUTOM.FIELD.NO TO 2,   RedoApapWsParam_AutomFieldNo TO 2,
+        REDO.APAP.WS.AUT.NEW.CONTENT TO 3,   RedoApapWsParam_AutNewContent TO 3,
+             REDO.APAP.WS.RESERVED.6 TO 4,   RedoApapWsParam_Reserved6 TO 4,
+             REDO.APAP.WS.RESERVED.5 TO 5,   RedoApapWsParam_Reserved5 TO 5,
+             REDO.APAP.WS.RESERVED.4 TO 6,   RedoApapWsParam_Reserved4 TO 6,
+             REDO.APAP.WS.RESERVED.3 TO 7,   RedoApapWsParam_Reserved3 TO 7,
+             REDO.APAP.WS.RESERVED.2 TO 8,   RedoApapWsParam_Reserved2 TO 8,
+             REDO.APAP.WS.RESERVED.1 TO 9,   RedoApapWsParam_Reserved1 TO 9,
+              REDO.APAP.WS.LOCAL.REF TO 10,  RedoApapWsParam_LocalRef TO 10,
+               REDO.APAP.WS.OVERRIDE TO 11,  RedoApapWsParam_Override TO 11,
+          REDO.APAP.WS.RECORD.STATUS TO 12,  RedoApapWsParam_RecordStatus TO 12,
+                REDO.APAP.WS.CURR.NO TO 13,  RedoApapWsParam_CurrNo TO 13,
+               REDO.APAP.WS.INPUTTER TO 14,  RedoApapWsParam_Inputter TO 14,
+              REDO.APAP.WS.DATE.TIME TO 15,  RedoApapWsParam_DateTime TO 15,
+             REDO.APAP.WS.AUTHORISER TO 16,  RedoApapWsParam_Authoriser TO 16,
+                REDO.APAP.WS.CO.CODE TO 17,  RedoApapWsParam_CoCode TO 17,
+              REDO.APAP.WS.DEPT.CODE TO 18,  RedoApapWsParam_DeptCode TO 18,
+           REDO.APAP.WS.AUDITOR.CODE TO 19,  RedoApapWsParam_AuditorCode TO 19,
+        REDO.APAP.WS.AUDIT.DATE.TIME TO 20,  RedoApapWsParam_AuditDateTime TO 20

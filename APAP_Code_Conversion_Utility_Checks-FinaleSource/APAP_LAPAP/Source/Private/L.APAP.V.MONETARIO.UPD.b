@@ -1,0 +1,113 @@
+* @ValidationCode : MjotMTI2NjQ0MjMxODpDcDEyNTI6MTcwMjk4ODM2MjY0MDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Dec 2023 17:49:22
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+* Modification History:
+* Date                 Who                              Reference                            DESCRIPTION
+*21-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                 TNO TO C$T24.SESSION.NO
+*21-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
+*18-12-2023    Santosh C           MANUAL R22 CODE CONVERSION   APAP Code Conversion Utility Check
+*----------------------------------------------------------------------------------------------------------------------
+SUBROUTINE L.APAP.V.MONETARIO.UPD
+
+    $INSERT I_COMMON
+
+    $INSERT I_EQUATE
+
+    $INSERT I_F.DATES
+
+    $INSERT I_F.REDO.VISION.PLUS.TXN ;* AUTO R22 CODE CONVERSION BP REMOVED
+
+    $INSERT I_F.FUNDS.TRANSFER
+
+    $INSERT I_System
+    $USING EB.Interface ;*R22 Manual Code Conversion_Utility Check
+
+
+
+    FN.FUNDS.TRANSFER  = 'F.FUNDS.TRANSFER'
+    F.FUNDS.TRANSFER = ''
+    CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
+
+    FN.REDO.VISION.PLUS.TXN = 'F.REDO.VISION.PLUS.TXN'
+    F.VISION.PLUS = ''
+    CALL OPF(FN.REDO.VISION.PLUS.TXN,F.VISION.PLUS)
+
+    Y.CURRENCY.CREDIT  =  R.NEW(FT.CREDIT.CURRENCY)
+    PROCESS.DATE = R.DATES(EB.DAT.TODAY)
+
+    TXN.CURRENCY = R.NEW(FT.CREDIT.CURRENCY)
+    TXN.PAYMENT.AMT = R.NEW(FT.CREDIT.AMOUNT)
+    Y.GET.CUSTOMER = R.NEW(FT.DEBIT.CUSTOMER)
+    Y.TC =  R.NEW(FT.CREDIT.THEIR.REF)
+    BASE.REFERENCE =''
+    CALL ALLOCATE.UNIQUE.TIME(BASE.REFERENCE)
+    BASE.REFERENCE = BASE.REFERENCE * 100
+    LEN.BASE.REFERENCE = LEN(BASE.REFERENCE)
+    BASE.REFERENCE = BASE.REFERENCE[LEN.BASE.REFERENCE-4,4]
+
+    REDO.VISION.PLUS.TXN.ID = PROCESS.DATE : '.' : ID.NEW : '.' : FMT(BASE.REFERENCE,"R%4")
+
+    Y.TRANS.ID = REDO.VISION.PLUS.TXN.ID
+
+    Y.VER.NAME = "REDO.VISION.PLUS.TXN,MB.DM.LOAD"
+
+    Y.APP.NAME = "REDO.VISION.PLUS.TXN"
+
+    Y.FUNC = "I"
+
+    Y.PRO.VAL = "PROCESS"
+
+    Y.GTS.CONTROL = ""
+
+    Y.NO.OF.AUTH = ""
+
+    FINAL.OFS = ""
+
+    OPTIONS = ""
+
+    Y.CAN.NUM = 0
+
+    Y.CAN.MULT = ""
+
+    R.ACC = ""
+
+
+    CALL GET.LOC.REF("FUNDS.TRANSFER","L.FT.MSG.CODE",Y.POS.AUTH)
+
+    Y.AUTH.CODE  =   R.NEW(FT.LOCAL.REF)<1,Y.POS.AUTH>
+
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TRANS.AUTH>     = Y.AUTH.CODE
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CUSTOMER>       = Y.GET.CUSTOMER
+    R.REDO.VISION.PLUS.TXN<VP.TXN.DEBIT.ACCT>     = Y.TC
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CARDHOLDER.NUM> = Y.TC
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TRANS.AMOUNT>   = TXN.PAYMENT.AMT
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CASH.AMT>       = TXN.PAYMENT.AMT
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CHEQUE.AMT>     = 0
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TRANS.CODE> = '025'
+    R.REDO.VISION.PLUS.TXN<VP.TXN.ADV.PYMT.AMT> = 0
+    R.REDO.VISION.PLUS.TXN<VP.TXN.POSTING.DATE> = PROCESS.DATE
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CHANNEL> = 'DDD-AUTO'
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TRANS.TYPE> = 'PAGO AUTO'
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TERMINAL> = C$T24.SESSION.NO ;* AUTO R22 CODE CONVERSION
+    R.REDO.VISION.PLUS.TXN<VP.TXN.STATUS> = 'PEND'
+    R.REDO.VISION.PLUS.TXN<VP.TXN.CURRENCY> = TXN.CURRENCY
+    R.REDO.VISION.PLUS.TXN<VP.TXN.TXN.REF> = ID.NEW
+
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.REDO.VISION.PLUS.TXN,FINAL.OFS)
+    OFS.RESP   = ""; TXN.COMMIT = "" ;* R22 Manual conversion - Start
+*CALL OFS.GLOBUS.MANAGER("VP.OFS", FINAL.OFS)
+*   CALL OFS.CALL.BULK.MANAGER("VP.OFS", FINAL.OFS, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
+    EB.Interface.OfsCallBulkManager("VP.OFS", FINAL.OFS, OFS.RESP, TXN.COMMIT) ;*R22 Manual Code Conversion_Utility Check
+
+
+END

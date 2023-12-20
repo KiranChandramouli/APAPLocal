@@ -1,0 +1,22 @@
+* I_F.REDO.APAP.USER.PASSW.PARAM Created 09 MAY 15 at 01:37AM by t24uatd/AUTHORISER
+*      PREFIX[REDO.USER.PARM]
+   EQU REDO.USER.PARM.USER.PASSWORD.OT TO 1,   RedoApapUserPasswParam_UserPasswordOt TO 1,
+      REDO.USER.PARM.USER.PASSWORD.GEN TO 2,   RedoApapUserPasswParam_UserPasswordGen TO 2,
+            REDO.USER.PARM.REPORT.USER TO 3,   RedoApapUserPasswParam_ReportUser TO 3,
+             REDO.USER.PARM.RESERVED.8 TO 4,   RedoApapUserPasswParam_Reserved8 TO 4,
+             REDO.USER.PARM.RESERVED.7 TO 5,   RedoApapUserPasswParam_Reserved7 TO 5,
+             REDO.USER.PARM.RESERVED.6 TO 6,   RedoApapUserPasswParam_Reserved6 TO 6,
+             REDO.USER.PARM.RESERVED.5 TO 7,   RedoApapUserPasswParam_Reserved5 TO 7,
+             REDO.USER.PARM.RESERVED.4 TO 8,   RedoApapUserPasswParam_Reserved4 TO 8,
+             REDO.USER.PARM.RESERVED.3 TO 9,   RedoApapUserPasswParam_Reserved3 TO 9,
+             REDO.USER.PARM.RESERVED.2 TO 10,  RedoApapUserPasswParam_Reserved2 TO 10,
+             REDO.USER.PARM.RESERVED.1 TO 11,  RedoApapUserPasswParam_Reserved1 TO 11,
+          REDO.USER.PARM.RECORD.STATUS TO 12,  RedoApapUserPasswParam_RecordStatus TO 12,
+                REDO.USER.PARM.CURR.NO TO 13,  RedoApapUserPasswParam_CurrNo TO 13,
+               REDO.USER.PARM.INPUTTER TO 14,  RedoApapUserPasswParam_Inputter TO 14,
+              REDO.USER.PARM.DATE.TIME TO 15,  RedoApapUserPasswParam_DateTime TO 15,
+             REDO.USER.PARM.AUTHORISER TO 16,  RedoApapUserPasswParam_Authoriser TO 16,
+                REDO.USER.PARM.CO.CODE TO 17,  RedoApapUserPasswParam_CoCode TO 17,
+              REDO.USER.PARM.DEPT.CODE TO 18,  RedoApapUserPasswParam_DeptCode TO 18,
+           REDO.USER.PARM.AUDITOR.CODE TO 19,  RedoApapUserPasswParam_AuditorCode TO 19,
+        REDO.USER.PARM.AUDIT.DATE.TIME TO 20,  RedoApapUserPasswParam_AuditDateTime TO 20

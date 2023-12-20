@@ -1,0 +1,14 @@
+* I_F.REDO.INTERFACE.NOTIFY Created 12 AUG 10 at 05:54PM by apapr8/SHAKTI1
+*      PREFIX[REDO.INT.MON.TYPE]
+       EQU REDO.INT.MON.TYPE.ID.INTERFACE TO 1,   RedoInterfaceNotify_IdInterface TO 1,
+              REDO.INT.MON.TYPE.DEST.NAME TO 2,   RedoInterfaceNotify_DestName TO 2,
+           REDO.INT.MON.TYPE.DEST.ADDRESS TO 3,   RedoInterfaceNotify_DestAddress TO 3,
+          REDO.INT.MON.TYPE.RECORD.STATUS TO 4,   RedoInterfaceNotify_RecordStatus TO 4,
+                REDO.INT.MON.TYPE.CURR.NO TO 5,   RedoInterfaceNotify_CurrNo TO 5,
+               REDO.INT.MON.TYPE.INPUTTER TO 6,   RedoInterfaceNotify_Inputter TO 6,
+              REDO.INT.MON.TYPE.DATE.TIME TO 7,   RedoInterfaceNotify_DateTime TO 7,
+             REDO.INT.MON.TYPE.AUTHORISER TO 8,   RedoInterfaceNotify_Authoriser TO 8,
+                REDO.INT.MON.TYPE.CO.CODE TO 9,   RedoInterfaceNotify_CoCode TO 9,
+              REDO.INT.MON.TYPE.DEPT.CODE TO 10,  RedoInterfaceNotify_DeptCode TO 10,
+           REDO.INT.MON.TYPE.AUDITOR.CODE TO 11,  RedoInterfaceNotify_AuditorCode TO 11,
+        REDO.INT.MON.TYPE.AUDIT.DATE.TIME TO 12,  RedoInterfaceNotify_AuditDateTime TO 12

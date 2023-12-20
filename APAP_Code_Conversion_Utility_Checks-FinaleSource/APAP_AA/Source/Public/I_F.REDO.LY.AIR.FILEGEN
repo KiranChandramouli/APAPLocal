@@ -1,0 +1,13 @@
+* I_F.REDO.LY.AIR.FILEGEN Created 15 OCT 14 at 06:14PM by t24uatd/R.MONDRAGON
+*      PREFIX[REDO.AIRPAR]
+         EQU REDO.AIRPAR.PROGRAM.ID TO 1,   RedoLyAirFilegen_ProgramId TO 1,
+           REDO.AIRPAR.PREV.PTS.SUB TO 2,   RedoLyAirFilegen_PrevPtsSub TO 2,
+          REDO.AIRPAR.RECORD.STATUS TO 3,   RedoLyAirFilegen_RecordStatus TO 3,
+                REDO.AIRPAR.CURR.NO TO 4,   RedoLyAirFilegen_CurrNo TO 4,
+               REDO.AIRPAR.INPUTTER TO 5,   RedoLyAirFilegen_Inputter TO 5,
+              REDO.AIRPAR.DATE.TIME TO 6,   RedoLyAirFilegen_DateTime TO 6,
+             REDO.AIRPAR.AUTHORISER TO 7,   RedoLyAirFilegen_Authoriser TO 7,
+                REDO.AIRPAR.CO.CODE TO 8,   RedoLyAirFilegen_CoCode TO 8,
+              REDO.AIRPAR.DEPT.CODE TO 9,   RedoLyAirFilegen_DeptCode TO 9,
+           REDO.AIRPAR.AUDITOR.CODE TO 10,  RedoLyAirFilegen_AuditorCode TO 10,
+        REDO.AIRPAR.AUDIT.DATE.TIME TO 11,  RedoLyAirFilegen_AuditDateTime TO 11

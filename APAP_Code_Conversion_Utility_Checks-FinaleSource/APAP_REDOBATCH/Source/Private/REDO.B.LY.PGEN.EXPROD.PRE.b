@@ -1,0 +1,218 @@
+* @ValidationCode : MjotNzMwMTc4MzA5OkNwMTI1MjoxNjg0ODU0MzkxMzkzOklUU1M6LTE6LTE6MjM2NToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 20:36:31
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 2365
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOBATCH
+SUBROUTINE REDO.B.LY.PGEN.EXPROD.PRE
+*-------------------------------------------------------------------------------------------------
+*DESCRIPTION:
+*  This routine is attached to the batch record BNK/REDO.B.LY.PGEN.EXPROD
+*  This routine selects the necesary records from various files and updates it in temporary file
+* ------------------------------------------------------------------------------------------------
+* Input/Output:
+*--------------
+* IN  : -NA-
+* OUT : -NA-
+*
+* Dependencies:
+*---------------
+* CALLS     : -NA-
+* CALLED BY : -NA-
+*
+* Revision History:
+*------------------
+*   Date               who           Reference            Description
+* 17-JUN-2013       RMONDRAGON   ODR-2011-06-0243      Initial Creation
+* Date                   who                   Reference              
+* 12-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION - VM TO @VM AND ++ TO += 1 
+* 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+*-------------------------------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+
+    $INSERT I_F.REDO.LY.MODALITY
+    $INSERT I_F.REDO.LY.PDT.TYPE
+    $INSERT I_F.REDO.LY.PROGRAM
+    $INSERT I_REDO.B.LY.PGEN.EXPROD.COMMON
+
+    GOSUB INIT
+    GOSUB OPEN.FILE
+    GOSUB PROCESS.REDO.LY.MOD
+    GOSUB WRITE.REDO.LY.PRG
+
+RETURN
+
+*----
+INIT:
+*----
+
+    PRG.MOD.LST = ''         ; PRG.PER.MOD = '';
+    PRG.LST = ''             ; PRG.ST.DATE.LST = '';
+    PRG.END.DATE.LST = ''    ; PRG.DAYS.EXP.LST = '';
+    PRG.EXP.DATE.LST = ''    ; PRG.CUS.GRP.LST = '';
+    PRG.POINT.VALUE.LST = '' ; PRG.AVAIL.IF.DELAY.LST = '';
+    PRG.POINT.USE.LST = ''   ; PRG.PTS.IN.MOD = '';
+    PRG.EX.PROD.IN.MOD = ''  ; PRG.COND.TYPE.EXINC = '';
+    PRG.APP.EXC.COND = ''    ; PRG.EXC.EST.ACCT = '';
+    PRG.APP.INC.COND = ''    ; PRG.INC.EST.ACCT = '';
+    PRG.AIR.LST = ''         ; PRG.RECSEL = ''
+
+RETURN
+
+*---------
+OPEN.FILE:
+*---------
+
+    FN.REDO.LY.MODALITY = 'F.REDO.LY.MODALITY'
+    F.REDO.LY.MODALITY = ''
+    CALL OPF(FN.REDO.LY.MODALITY,F.REDO.LY.MODALITY)
+
+    FN.REDO.LY.PROGRAM = 'F.REDO.LY.PROGRAM'
+    F.REDO.LY.PROGRAM = ''
+    CALL OPF(FN.REDO.LY.PROGRAM,F.REDO.LY.PROGRAM)
+
+    FN.TEMP.LY.PGEN.EXPROD = 'F.TEMP.LY.PGEN.EXPROD'
+    F.TEMP.LY.PGEN.EXPROD = ''
+    OPEN FN.TEMP.LY.PGEN.EXPROD TO F.TEMP.LY.PGEN.EXPROD ELSE
+
+        TEXT = 'Error in opening : ':FN.TEMP.LY.PGEN.EXPROD
+        CALL FATAL.ERROR('REDO.B.LY.PGEN.EXPROD.PRE')
+    END
+    CLEARFILE F.TEMP.LY.PGEN.EXPROD
+
+RETURN
+
+*-------------------
+PROCESS.REDO.LY.MOD:
+*-------------------
+
+    SEL.MOD = ''
+    SEL.MOD = 'SSELECT ':FN.REDO.LY.MODALITY:' WITH TYPE EQ 7'
+    MOD.LST = ''; NO.OF.MOD = 0; MOD.ERR = ''
+    CALL EB.READLIST(SEL.MOD,MOD.LST,'',NO.OF.MOD,MOD.ERR)
+
+    IF NO.OF.MOD NE 0 THEN
+        PRG.RECSEL = 'Y'
+    END ELSE
+        PRG.RECSEL = 'N'
+    END
+
+    MOD.CNT = 1
+    Y.SEARCH.PARAM = ''
+    LOOP
+    WHILE MOD.CNT LE NO.OF.MOD
+        Y.MOD.SPEC = MOD.LST<MOD.CNT>
+        PRG.MOD.LST<MOD.CNT> = Y.MOD.SPEC
+        R.MOD = ''; MOD.ERR = ''
+        CALL F.READ(FN.REDO.LY.MODALITY,Y.MOD.SPEC,R.MOD,F.REDO.LY.MODALITY,MOD.ERR)
+        IF R.MOD THEN
+            GEN.PTS = R.MOD<REDO.MOD.GEN.POINTS>
+            EX.PROD = R.MOD<REDO.MOD.EX.PROD.AS>
+            CHANGE @VM TO '*' IN EX.PROD
+        END
+        GOSUB PROCESS.REDO.LY.PRG
+        MOD.CNT += 1
+    REPEAT
+
+RETURN
+
+*-------------------
+PROCESS.REDO.LY.PRG:
+*-------------------
+
+    SEL.PRG = 'SELECT ':FN.REDO.LY.PROGRAM:' WITH MODALITY EQ ':Y.MOD.SPEC:' AND STATUS EQ "Activo"'
+    PROGRAM.LST = ''
+    CALL EB.READLIST(SEL.PRG,PROGRAM.LST,'',NO.OF.PRG,PRG.ERR)
+
+    PRG.PER.MOD<MOD.CNT> = NO.OF.PRG
+
+    PRG.ID.CNT = 0
+    LOOP
+        REMOVE PRG.ID FROM PROGRAM.LST SETTING PRG.ID.POS
+    WHILE PRG.ID:PRG.ID.POS
+        PRG.ID.CNT += 1
+        CALL F.READ(FN.REDO.LY.PROGRAM,PRG.ID,R.REDO.LY.PROGRAM,F.REDO.LY.PROGRAM,PRG.ERR)
+        IF R.REDO.LY.PROGRAM THEN
+            PRG.LST<MOD.CNT,PRG.ID.CNT> = PRG.ID
+            PRG.ST.DATE.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.START.DATE>
+            PRG.END.DATE.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.END.DATE>
+            PRG.DAYS.EXP.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.DAYS.EXP>
+            PRG.EXP.DATE.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.EXP.DATE>
+            PRG.CUS.GRP.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.GROUP.CUS>
+            PRG.POINT.VALUE.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.POINT.VALUE>
+            PRG.AVAIL.IF.DELAY.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.AVAIL.IF.DELAY>
+            PRG.POINT.USE.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.POINT.USE>
+            PRG.COND.TYPE.EXINC<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.COND.TYPE.EXINC>
+            PRG.APP.EXC.COND<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.APP.EXC.COND>
+            Y.TEMP.EXC.EST.ACCT = R.REDO.LY.PROGRAM<REDO.PROG.EXC.EST.ACCT>
+            CHANGE @VM TO '*' IN Y.TEMP.EXC.EST.ACCT
+            PRG.EXC.EST.ACCT<MOD.CNT,PRG.ID.CNT> = Y.TEMP.EXC.EST.ACCT
+            PRG.APP.INC.COND<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.APP.INC.COND>
+            Y.TEMP.INC.EST.ACCT = R.REDO.LY.PROGRAM<REDO.PROG.INC.EST.ACCT>
+            CHANGE @VM TO '*' IN Y.TEMP.INC.EST.ACCT
+            PRG.INC.EST.ACCT<MOD.CNT,PRG.ID.CNT> = Y.TEMP.INC.EST.ACCT
+            PRG.AIR.LST<MOD.CNT,PRG.ID.CNT> = R.REDO.LY.PROGRAM<REDO.PROG.AIRL.PROG>
+
+            PRG.PTS.IN.MOD<MOD.CNT,PRG.ID.CNT> = GEN.PTS
+            PRG.EX.PROD.IN.MOD<MOD.CNT,PRG.ID.CNT> = EX.PROD
+        END
+    REPEAT
+
+RETURN
+
+*-----------------
+WRITE.REDO.LY.PRG:
+*-----------------
+
+    WRITE PRG.MOD.LST TO F.TEMP.LY.PGEN.EXPROD,'MOD'
+
+    WRITE PRG.PER.MOD TO F.TEMP.LY.PGEN.EXPROD,'NOPRG'
+
+    WRITE PRG.LST TO F.TEMP.LY.PGEN.EXPROD,'PRG'
+
+    WRITE PRG.ST.DATE.LST TO F.TEMP.LY.PGEN.EXPROD,'ST.DATE'
+
+    WRITE PRG.END.DATE.LST TO F.TEMP.LY.PGEN.EXPROD,'END.DATE'
+
+    WRITE PRG.DAYS.EXP.LST TO F.TEMP.LY.PGEN.EXPROD,'DAYS.EXP'
+
+    WRITE PRG.EXP.DATE.LST TO F.TEMP.LY.PGEN.EXPROD,'EXP.DATE'
+
+    WRITE PRG.CUS.GRP.LST TO F.TEMP.LY.PGEN.EXPROD,'CUS.GROUP'
+
+    WRITE PRG.POINT.VALUE.LST TO F.TEMP.LY.PGEN.EXPROD,'POINT.VALUE'
+
+    WRITE PRG.AVAIL.IF.DELAY.LST TO F.TEMP.LY.PGEN.EXPROD,'AVAIL.IF.DELAY'
+
+    WRITE PRG.POINT.USE.LST TO F.TEMP.LY.PGEN.EXPROD,'POINT.USE'
+
+    WRITE PRG.COND.TYPE.EXINC TO F.TEMP.LY.PGEN.EXPROD,'COND.TYPE.EXINC'
+
+    WRITE PRG.APP.EXC.COND TO F.TEMP.LY.PGEN.EXPROD,'APP.EXC.COND'
+
+    WRITE PRG.EXC.EST.ACCT TO F.TEMP.LY.PGEN.EXPROD,'EXC.EST.ACCT'
+
+    WRITE PRG.APP.INC.COND TO F.TEMP.LY.PGEN.EXPROD,'APP.INC.COND'
+
+    WRITE PRG.INC.EST.ACCT TO F.TEMP.LY.PGEN.EXPROD,'INC.EST.ACCT'
+
+    WRITE PRG.AIR.LST TO F.TEMP.LY.PGEN.EXPROD,'AIR'
+
+
+    WRITE PRG.PTS.IN.MOD TO F.TEMP.LY.PGEN.EXPROD,'PTS.IN.MOD'
+
+    WRITE PRG.EX.PROD.IN.MOD TO F.TEMP.LY.PGEN.EXPROD,'EX.PROD.IN.MOD'
+
+
+RETURN
+
+END

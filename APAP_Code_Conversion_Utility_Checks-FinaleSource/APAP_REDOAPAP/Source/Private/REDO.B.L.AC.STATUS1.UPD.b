@@ -1,0 +1,57 @@
+* @ValidationCode : MjotMjExMjg5NTEyMjpDcDEyNTI6MTY5NzcwMDM5NDM2Njp2aWN0bzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Oct 2023 12:56:34
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : victo
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOAPAP
+*-----------------------------------------------------------------------------
+* <Rating>0</Rating>
+*----------------------------------------------------------------------------
+SUBROUTINE REDO.B.L.AC.STATUS1.UPD(AC.ID)
+*-----------------------------------------------------------------------------
+*
+*-----------------------------------------------------------------------------
+* Modification History :
+*-----------------------------------------------------------------------------
+
+*-----------------------------------------------------------------------------
+* COMPANY NAME : APAP
+* DEVELOPED BY : JAYASURYA H
+* PROGRAM NAME : REDO.B.L.AC.STATUS1.UPD
+*------------------------------------------------------------------
+* Description : This is the MULTI thread to update the L.AC.STATUS  manually.
+*------------------------------------------------------------------
+
+*Modification Details:
+*=====================
+*14/08/2023 JAYASURYA H   TSR-637123   Correction routine
+
+*
+*------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.EB.CONTRACT.BALANCES
+    $INSERT I_L.AC.STATUS1.UPD.COMMON
+
+
+    CALL F.READ(FN.ACCOUNT,AC.ID,R.ACCOUNT,F.ACCOUNT,ACC.ERR)
+    AC.STS = R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS>
+
+    IF AC.STS EQ '' THEN
+        CALL F.READ(FN.ECB,AC.ID,R.ECB,F.ECB,ECB.ERR)
+        PRV.CONSOLE = R.ECB<ECB.PREV.CONSOL.KEY>
+        ACCT.STATUS = FIELD(PRV.CONSOLE,".",11)
+        R.ACCOUNT<AC.LOCAL.REF,Y.L.AC.STATUS.POS> = ACCT.STATUS
+
+        WRITE R.ACCOUNT ON F.ACCOUNT,AC.ID
+    END
+RETURN
+END
