@@ -1,0 +1,61 @@
+* @ValidationCode : MjoxNzM5Nzg4MjcwOkNwMTI1MjoxNzAzMTU5NjUyMDEwOmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 21 Dec 2023 17:24:12
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOVER
+SUBROUTINE REDO.AUTH.AZ.DEPOSIT.PRINT
+*-----------------------------------------------------------------------------
+*------------------------------------------------------------------------------------------
+* DESCRIPTION : This routine will be executed at check Record Routine for the deposit versions.
+*------------------------------------------------------------------------------------------
+*------------------------------------------------------------------------------------------
+* * Input / Output
+* --------------
+* IN : -NA-
+* OUT : -NA-
+*------------------------------------------------------------------------------------------
+* COMPANY NAME : APAP
+* DEVELOPED BY : SUDHARSANAN S
+* PROGRAM NAME : REDO.CHK.AZ.DEPOSIT.PRINT
+*------------------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+* DATE WHO REFERENCE DESCRIPTION
+* 08-11-2011 Sudharsanan S CR.18 Initial Creation.
+* -----------------------------------------------------------------------------------------
+*Modification History
+*DATE                   WHO                       REFERENCE                    DESCRIPITION
+*04-04-2023           Conversion Tool          R22 Auto Code conversion         No Changes
+*04-04-2023            Samaran T                Manual R22 Code Conversion    No Changes
+* 21-12-2023      AJITHKUMAR      R22 MANUAL CODE CONVERSION
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.AZ.ACCOUNT
+    $USING EB.LocalReferences
+
+    GOSUB PROCESS
+
+RETURN
+*-----------------------------------------------------------------------------------
+PROCESS:
+*-----------------------------------------------------------------------------------
+    LOC.REF = 'AZ.ACCOUNT'
+    LOC.FIELD = 'L.AC.OTH.REASON'
+    LOC.POS = ''
+*CALL GET.LOC.REF(LOC.REF,LOC.FIELD,LOC.POS)
+    EB.LocalReferences.GetLocRef(LOC.REF,LOC.FIELD,LOC.POS)
+    POS.L.AC.OTH.REASON = LOC.POS
+
+
+    R.NEW(AZ.LOCAL.REF)<1,POS.L.AC.OTH.REASON> = R.OLD(AZ.LOCAL.REF)<1,POS.L.AC.OTH.REASON>
+RETURN
+*---------------------------------------------------------------------------------------------------------------
+END

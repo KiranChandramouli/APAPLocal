@@ -1,0 +1,123 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+private method redoVValVaultId (
+)
+{
+    jBC: REDO.V.VAL.VAULT.ID
+}
+
+
+
+private method redoVValPdisAmt (
+    INOUT yId string
+)
+{
+    jBC: REDO.V.VAL.PDIS.AMT
+}
+
+
+
+private method redoVValDefaultAmt (
+)
+{
+    jBC: REDO.V.VAL.DEFAULT.AMT
+}
+
+
+
+private method redoVValDefLimAmtPrin (
+)
+{
+    jBC: REDO.V.VAL.DEF.LIM.AMT.PRIN
+}
+
+
+
+private method redoVValDefLimAmt (
+)
+{
+    jBC: REDO.V.VAL.DEF.LIM.AMT
+}
+
+
+
+private method redoVValCancellation (
+)
+{
+    jBC: REDO.V.VAL.CANCELLATION
+}
+
+
+
+private method redoVValCalcOfPayment (
+)
+{
+    jBC: REDO.V.VAL.CALC.OF.PAYMENT
+}
+
+
+
+private method redoVValArcibPartPymnt (
+)
+{
+    jBC: REDO.V.VAL.ARCIB.PART.PYMNT
+}
+
+
+
+private method redoVValAdvNoIns (
+)
+{
+    jBC: REDO.V.VAL.ADV.NO.INS
+}
+
+
+
+private method redoVValAdvCntPay (
+)
+{
+    jBC: REDO.V.VAL.ADV.CNT.PAY
+}
+
+
+
+private method redoVTtValVault (
+)
+{
+    jBC: REDO.V.TT.VAL.VAULT
+}
+
+
+
+private method redoVTempAdvNoIns (
+)
+{
+    jBC: REDO.V.TEMP.ADV.NO.INS
+}
+
+
+
+private method redoVTempAdvCntPay (
+)
+{
+    jBC: REDO.V.TEMP.ADV.CNT.PAY
+}
+
+
+
+private method redoVInpStoChkPay (
+)
+{
+    jBC: REDO.V.INP.STO.CHK.PAY
+}
+
+
+
+
+
+
+
