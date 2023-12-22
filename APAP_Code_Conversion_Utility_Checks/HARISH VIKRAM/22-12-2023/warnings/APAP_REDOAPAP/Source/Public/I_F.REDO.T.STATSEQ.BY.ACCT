@@ -1,0 +1,12 @@
+* I_F.REDO.T.STATSEQ.BY.ACCT Created 12 OCT 22 at 03:59AM by t24azdev6/EDWIN.01
+*      PREFIX[REDT]
+           EQU REDT.L.AC.STATUS.HAPPEN TO 1,   RedoTStatseqByAcct_LAcStatusHappen TO 1,
+                    REDT.RECORD.STATUS TO 2,   RedoTStatseqByAcct_RecordStatus TO 2,
+                          REDT.CURR.NO TO 3,   RedoTStatseqByAcct_CurrNo TO 3,
+                         REDT.INPUTTER TO 4,   RedoTStatseqByAcct_Inputter TO 4,
+                        REDT.DATE.TIME TO 5,   RedoTStatseqByAcct_DateTime TO 5,
+                       REDT.AUTHORISER TO 6,   RedoTStatseqByAcct_Authoriser TO 6,
+                          REDT.CO.CODE TO 7,   RedoTStatseqByAcct_CoCode TO 7,
+                        REDT.DEPT.CODE TO 8,   RedoTStatseqByAcct_DeptCode TO 8,
+                     REDT.AUDITOR.CODE TO 9,   RedoTStatseqByAcct_AuditorCode TO 9,
+                  REDT.AUDIT.DATE.TIME TO 10,  RedoTStatseqByAcct_AuditDateTime TO 10
