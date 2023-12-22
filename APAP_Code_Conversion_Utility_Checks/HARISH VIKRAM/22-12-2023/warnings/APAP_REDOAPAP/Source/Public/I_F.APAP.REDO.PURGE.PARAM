@@ -1,0 +1,21 @@
+* I_F.APAP.REDO.PURGE.PARAM Created 18 APR 11 at 11:40AM by apapr8/JANANIKS
+*      PREFIX[REDO.PARAM.PURGE]
+         EQU REDO.PARAM.PURGE.PURGE.TILL TO 1,   ApapRedoPurgeParam_PurgeTill TO 1,
+            REDO.PARAM.PURGE.APPLICATION TO 2,   ApapRedoPurgeParam_Application TO 2,
+             REDO.PARAM.PURGE.RESERVED.6 TO 3,   ApapRedoPurgeParam_Reserved6 TO 3,
+             REDO.PARAM.PURGE.RESERVED.5 TO 4,   ApapRedoPurgeParam_Reserved5 TO 4,
+             REDO.PARAM.PURGE.RESERVED.4 TO 5,   ApapRedoPurgeParam_Reserved4 TO 5,
+             REDO.PARAM.PURGE.RESERVED.3 TO 6,   ApapRedoPurgeParam_Reserved3 TO 6,
+             REDO.PARAM.PURGE.RESERVED.2 TO 7,   ApapRedoPurgeParam_Reserved2 TO 7,
+             REDO.PARAM.PURGE.RESERVED.1 TO 8,   ApapRedoPurgeParam_Reserved1 TO 8,
+              REDO.PARAM.PURGE.LOCAL.REF TO 9,   ApapRedoPurgeParam_LocalRef TO 9,
+               REDO.PARAM.PURGE.OVERRIDE TO 10,  ApapRedoPurgeParam_Override TO 10,
+          REDO.PARAM.PURGE.RECORD.STATUS TO 11,  ApapRedoPurgeParam_RecordStatus TO 11,
+                REDO.PARAM.PURGE.CURR.NO TO 12,  ApapRedoPurgeParam_CurrNo TO 12,
+               REDO.PARAM.PURGE.INPUTTER TO 13,  ApapRedoPurgeParam_Inputter TO 13,
+              REDO.PARAM.PURGE.DATE.TIME TO 14,  ApapRedoPurgeParam_DateTime TO 14,
+             REDO.PARAM.PURGE.AUTHORISER TO 15,  ApapRedoPurgeParam_Authoriser TO 15,
+                REDO.PARAM.PURGE.CO.CODE TO 16,  ApapRedoPurgeParam_CoCode TO 16,
+              REDO.PARAM.PURGE.DEPT.CODE TO 17,  ApapRedoPurgeParam_DeptCode TO 17,
+           REDO.PARAM.PURGE.AUDITOR.CODE TO 18,  ApapRedoPurgeParam_AuditorCode TO 18,
+        REDO.PARAM.PURGE.AUDIT.DATE.TIME TO 19,  ApapRedoPurgeParam_AuditDateTime TO 19
