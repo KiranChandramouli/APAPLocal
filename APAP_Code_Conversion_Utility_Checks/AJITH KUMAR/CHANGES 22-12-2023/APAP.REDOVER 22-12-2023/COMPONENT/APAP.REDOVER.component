@@ -1,0 +1,121 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+
+
+
+Public method redoAuthLoanAccClose (
+)
+{
+    jBC: REDO.AUTH.LOAN.ACC.CLOSE
+}
+
+
+
+Public method redoAuthNabWrConcat (
+)
+{
+    jBC: REDO.AUTH.NAB.WR.CONCAT
+}
+
+
+
+Public method redoAuthNcfRevUpd (
+)
+{
+    jBC: REDO.AUTH.NCF.REV.UPD
+}
+
+
+
+Public method redoAuthOrderReception (
+)
+{
+    jBC: REDO.AUTH.ORDER.RECEPTION
+}
+
+
+
+Public method redoAuthOveMessage (
+)
+{
+    jBC: REDO.AUTH.OVE.MESSAGE
+}
+
+
+
+Public method redoAuthPiggyTeller (
+)
+{
+    jBC: REDO.AUTH.PIGGY.TELLER
+}
+
+
+
+Public method redoAuthReprintChq (
+)
+{
+    jBC: REDO.AUTH.REPRINT.CHQ
+}
+
+
+
+Public method redoAuthRevDisbRepay (
+)
+{
+    jBC: REDO.AUTH.REV.DISB.REPAY
+}
+
+
+
+Public method redoAuthSolicitudCk (
+)
+{
+    jBC: REDO.AUTH.SOLICITUD.CK
+}
+
+
+
+Public method redoAuthStoOverrideParam (
+)
+{
+    jBC: REDO.AUTH.STO.OVERRIDE.PARAM
+}
+
+
+
+Public method redoAuthTdLastid (
+)
+{
+    jBC: REDO.AUTH.TD.LASTID
+}
+
+
+
+Public method redoAuthUpdAdmMgrInvTables (
+)
+{
+    jBC: REDO.AUTH.UPD.ADM.MGR.INV.TABLES
+}
+
+
+
+Public method redoAuthUpdDepAmt (
+)
+{
+    jBC: REDO.AUTH.UPD.DEP.AMT
+}
+
+
+
+Public method redoAuthUpdDepCashpayout (
+)
+{
+    jBC: REDO.AUTH.UPD.DEP.CASHPAYOUT
+}
+
