@@ -1,0 +1,151 @@
+* @ValidationCode : MjotMTQ5NzAxOTcwNDpVVEYtODoxNzAzMTY1MDE1NTUxOkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 21 Dec 2023 18:53:35
+* @ValidationInfo : Encoding          : UTF-8
+* @ValidationInfo : User Name         : Admin
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOENQ
+SUBROUTINE NOFILE.TYPE.INSTRU(AC.DETAILS)
+*
+* ====================================================================================
+*
+*
+* ====================================================================================
+*
+* Subroutine Type :Routine to  Nofile Enquiry
+* Attached to     :NOFILE.TYPE.INSTRU
+* Attached as     :Build routine that
+* Primary Purpose :Put de Description of the instrument of REDO.INSTRUMENT.TYPE in O.DATA to enquiry
+*
+*
+* Incoming:
+* ---------
+*
+*
+* Outgoing:
+* ---------
+* ---------
+*
+*-----------------------------------------------------------------------------------
+* Modification History:
+*
+* Development for : Asociacion Popular de Ahorros y Prestamos
+* Development by  : Pablo Castillo De La Rosa(pdelarosa@temenos.com) - TAM Latin America
+* Date            : January 20 2011
+*  DATE             WHO                   REFERENCE
+* 06-APRIL-2023      Conversion Tool       R22 Auto Conversion  - VM to @VM , FM to @FM
+* 06-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+* 21-12-2023         Narmadha V            Manual R22 Conversion - Changed FN Variable
+*----------------------------------------------------------------------------
+*=======================================================================
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.COLLATERAL
+    $INSERT I_F.REDO.ISSUE.ENTITY
+    $INSERT I_F.REDO.INSTRUMENT.TYPE
+
+*************************************************************************
+
+    GOSUB INITIALISE
+    GOSUB OPEN.FILES
+    GOSUB CHECK.PRELIM.CONDITIONS
+    IF PROCESS.GOAHEAD THEN
+        GOSUB PROCESS
+    END
+
+RETURN
+
+* ======
+PROCESS:
+* ======
+
+    AC.DETAILS = ''
+*GET THE ID FOR ENTITY(ENTIDAD)
+    Y.ENTY.ID  = R.NEW(COLL.LOCAL.REF)<1,WPOS.ENTIDAD>
+
+    CALL OPF(FN.REDO.INSTRUMENT.TYPE,F.REDO.INSTRUMENT.TYPE)
+
+* Read the lis of valuators
+    SELECT.STATEMENT = 'SELECT ':FN.REDO.INSTRUMENT.TYPE : " WITH @ID LIKE  ": Y.ENTY.ID :"..."
+    LOCK.LIST = ''
+    LIST.NAME = ''
+    SELECTED = ''
+    SYSTEM.RETURN.CODE = ''
+    Y.ID.AA.PRD = ''
+    CALL EB.READLIST(SELECT.STATEMENT,LOCK.LIST,LIST.NAME,SELECTED,SYSTEM.RETURN.CODE)
+
+*Get the data that view in the list
+    LOOP
+        REMOVE Y.ID.AA.PRD FROM LOCK.LIST SETTING POS
+    WHILE Y.ID.AA.PRD:POS
+
+
+*CALL F.READ (FN.REDO.INSTRUMENT.TYPE,Y.ID.AA.PRD,R.CUA,F.CUA.PC,Y.CUA.ERR)
+        CALL F.READ(FN.COLLATERAL,Y.ID.AA.PRD,R.CUA,F.CUA.PC,Y.CUA.ERR) ;*Manual R22 Conversion - Changed FN Variable
+
+        AC.DETAILS<-1>=Y.ID.AA.PRD:"*":R.CUA<1>
+
+    REPEAT
+RETURN
+*
+* =========
+OPEN.FILES:
+* =========
+*
+    CALL OPF(FN.REDO.ISSUE.ENTITY,F.REDO.ISSUE.ENTITY)
+    CALL OPF(FN.REDO.INSTRUMENT.TYPE,F.REDO.INSTRUMENT.TYPE)
+    CALL OPF(FN.COLLATERAL,F.CUA.PC)
+RETURN
+*
+* =========
+INITIALISE:
+* =========
+*
+    PROCESS.GOAHEAD = 1
+    WCAMPO    = "L.COL.ENTY.INS"
+    WCAMPO<2> = "L.COL.ISS.ENTY"
+
+    WCAMPO = CHANGE(WCAMPO,@FM,@VM)
+    YPOS=0
+
+*Get the position for all fields
+    CALL MULTI.GET.LOC.REF("COLLATERAL",WCAMPO,YPOS)
+
+    WPOS.NOMBRE   = YPOS<1,1>
+    WPOS.ENTIDAD  = YPOS<1,2>
+
+
+    VAR.CLASE1 = R.NEW(COLL.LOCAL.REF)<1,WPOS.ENTIDAD>
+
+    FN.REDO.ISSUE.ENTITY="F.REDO.ISSUE.ENTITY"
+    F.REDO.ISSUE.ENTITY=""
+
+    FN.REDO.INSTRUMENT.TYPE="F.REDO.INSTRUMENT.TYPE"
+    F.REDO.INSTRUMENT.TYPE=""
+
+    FN.COLLATERAL   = 'F.COLLATERAL'
+    F.COLLATERAL    = ''
+    R.COLLATERAL    = ''
+
+*Inicialice Vars for open
+    F.CUA.PC  = ''
+    R.CUA     = ''
+    Y.CUA.ERR = ''
+
+RETURN
+
+* ======================
+CHECK.PRELIM.CONDITIONS:
+* ======================
+*
+
+RETURN
+END
