@@ -1,0 +1,162 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+Public method redoAuthUpdItemSeriesMig (
+)
+{
+    jBC: REDO.AUTH.UPD.ITEM.SERIES.MIG
+}
+
+
+
+Public method redoAuthUpdNcf (
+)
+{
+    jBC: REDO.AUTH.UPD.NCF
+}
+
+
+
+Public method redoAuthUpdRevStatus (
+)
+{
+    jBC: REDO.AUTH.UPD.REV.STATUS
+}
+
+ 
+
+
+Public method redoAuthUpdWorkFile (
+)
+{
+    jBC: REDO.AUTH.UPD.WORK.FILE
+}
+
+
+
+Public method redoAuthUpdateNvCheques (
+)
+{
+    jBC: REDO.AUTH.UPDATE.NV.CHEQUES
+}
+
+
+
+Public method redoICardType (
+)
+{
+    jBC: REDO.I.CARD.TYPE
+}
+
+
+
+Public method redoIdCheckSameVersionMm (
+)
+{
+    jBC: REDO.ID.CHECK.SAME.VERSION.MM
+}
+
+
+
+Public method redoInpAchMadeTrans (
+)
+{
+    jBC: REDO.INP.ACH.MADE.TRANS
+}
+
+
+
+Public method redoInpApapBenAcctChk (
+)
+{
+    jBC: REDO.INP.APAP.BEN.ACCT.CHK
+}
+
+
+
+Public method redoInpAzAccModeParam (
+)
+{
+    jBC: REDO.INP.AZ.ACC.MODE.PARAM
+}
+
+
+
+
+
+
+
+Public method redoInpBranchUnauthRecords (
+)
+{
+    jBC: REDO.INP.BRANCH.UNAUTH.RECORDS
+}
+
+
+
+Public method redoInpCallDealslip (
+)
+{
+    jBC: REDO.INP.CALL.DEALSLIP
+}
+
+
+
+Public method redoInpCallPdisDs (
+)
+{
+    jBC: REDO.INP.CALL.PDIS.DS
+}
+
+
+
+
+
+
+Public method redoInpCheckLimitNew (
+)
+{
+    jBC: REDO.INP.CHECK.LIMIT.NEW
+}
+
+
+
+Public method redoInpChequeProcess (
+)
+{
+    jBC: REDO.INP.CHEQUE.PROCESS
+}
+
+
+
+Public method redoInpChkChargeAmount (
+)
+{
+    jBC: REDO.INP.CHK.CHARGE.AMOUNT
+}
+
+
+
+Public method redoInpChqRepWrite (
+)
+{
+    jBC: REDO.INP.CHQ.REP.WRITE
+}
+
+
+
+Public method redoInpCompAltId (
+)
+{
+    jBC: REDO.INP.COMP.ALT.ID
+}
+
+
+public method redoAuthUpdWaiveLedgerAcct (
+)
+{
+    jBC: REDO.AUTH.UPD.WAIVE.LEDGER.ACCT
+}
