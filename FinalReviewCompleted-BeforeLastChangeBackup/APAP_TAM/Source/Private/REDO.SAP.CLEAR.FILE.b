@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxMTAwMDE3OTkyOkNwMTI1MjoxNjkzMzEzNzYxNDgwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 29 Aug 2023 18:26:01
+* @ValidationCode : MjotNzQwMzY2MDQ1OkNwMTI1MjoxNzAyOTkxMjI0MDMzOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Dec 2023 18:37:04
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R23_SP4.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 *---------------------------------------------------------------------------------------
@@ -17,7 +17,6 @@ $PACKAGE APAP.TAM
 *24-APR-2023    CONVERSION TOOL     R22 AUTO CONVERSION     NO CHANGE
 *24-APR-2023    VICTORIA S          R22 MANUAL CONVERSION   NO CHANGE
 *25-08-2023     VIGNESHWARI S       R22 MANUAL CONVERSION   PATH IS MODIFIED
-*13-12-2023     Edwin C             R22 Manual Conversion   COB Issue Fix
 *----------------------------------------------------------------------------------------
 
 SUBROUTINE REDO.SAP.CLEAR.FILE
@@ -36,7 +35,7 @@ SUBROUTINE REDO.SAP.CLEAR.FILE
 *09/10/11       PACS00071961            PRABHU N                MODIFICAION
 *
 *-----------------------------------------------------------------------------
-    $INSERT I_COMMON 
+    $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_BATCH.FILES
     $INSERT I_F.REDO.GL.H.EXTRACT.PARAMETER
@@ -74,8 +73,8 @@ TAKE.BACKUP:
 
 *    COPY.CMD = "COPY FROM ":SOURCE.DIR:" TO ":BACKUP.DIR:" ALL"
 *    COPY.CMD = 'SH -c cp ':SOURCE.DIR: '/':" ALL":' ':BACKUP.DIR:'/':" ALL" ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
-     COPY.CMD = 'SH -c cp ':SOURCE.DIR:"/*":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED	 ;*COB Issue Fix
-*	 cp ../interface/SAPRPT/* COPYTEST.BP/COPY/     ; * sample statement
+    COPY.CMD = 'SH -c cp ':SOURCE.DIR:"/*":' ':BACKUP.DIR:'/' ;* R22 MANUAL CONVERSION - PATH IS MODIFIED
+*	 cp ../interface/SAPRPT/* COPYTEST.BP/COPY/
     EXECUTE COPY.CMD
 
 
@@ -85,7 +84,8 @@ RETURN
 CLEAR.SAP.DIR:
 *--------------*
     CLEAR.DIR= R.REDO.GL.H.EXTRACT.PARAMETER<SAP.EP.EXTRACT.OUT.PATH,1>
-    EXE.CMD = 'CLEAR.FILE ':CLEAR.DIR
+*   EXE.CMD = 'CLEAR.FILE ':CLEAR.DIR ;* R22 MANUAL CONVERSION
+	EXE.CMD = 'SH -c rm ':CLEAR.DIR:"/*"
     EXECUTE EXE.CMD
 
 RETURN

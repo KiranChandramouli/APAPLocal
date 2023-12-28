@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTUwMDI0MjE4OkNwMTI1MjoxNjg2Njc1NTY4OTg2OklUU1M6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Jun 2023 22:29:28
+* @ValidationCode : Mjo3MzIwOTAzMDg6Q3AxMjUyOjE3MDI5OTA4OTA3MjY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjNfU1A0LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Dec 2023 18:31:30
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R23_SP4.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 ******************************************************************************************************************
 $PACKAGE APAP.REDOENQ
@@ -36,7 +36,8 @@ SUBROUTINE REDO.E.FORM.SEL.STMT(IN.FILE, IN.FIXED, IN.SORT, OUT.SELECT)
 * Date            By Who                 Reference                                   Reason
 *
 * 08.12.31        N. Satheesh Kumar
-* 09.06.2023       Santosh             R22 Manual Conversion        Added package
+* 09.06.2023       Santosh                  R22 Manual Conversion        Added package
+* 15-05-2023       Edwin D                  R22 Code conversion                         COB issues
 ******************************************************************************************************************
 
     $INSERT I_COMMON
@@ -82,37 +83,42 @@ BUILD.SELECT.STMT:
     YUSR.FIELD.NAME = R.SS<SSL.USR.FIELD.NAME>
     YUSR.TYPE = R.SS<SSL.USR.TYPE>
     OUT.SELECT = "SELECT " : IN.FILE
-    YCOUNT = DCOUNT(D.FIELDS, @FM)
+    IF D.FIELDS THEN       ; * R22 code conversion
+        YCOUNT = DCOUNT(D.FIELDS, @FM)
 
-    FOR I.VAR = 1 TO YCOUNT
-        LOCATE D.FIELDS<I.VAR> IN YUSR.FIELD.NAME<1, 1> SETTING YPOS ELSE
-            CONTINUE
-        END
+        FOR I.VAR = 1 TO YCOUNT
+            LOCATE D.FIELDS<I.VAR> IN YUSR.FIELD.NAME<1, 1> SETTING YPOS ELSE
+                CONTINUE
+            END
 
-        IF YUSR.TYPE<1, YPOS> EQ "R" THEN
-            CONTINUE
-        END
+            IF YUSR.TYPE<1, YPOS> EQ "R" THEN
+                CONTINUE
+            END
 
-        GOSUB BUILD.SELECT.CONDITION
-    NEXT I.VAR
+            GOSUB BUILD.SELECT.CONDITION
+        NEXT I.VAR
+    END
+    IF YFIXED THEN          ; * R22 code conversion
+        YCOUNT = DCOUNT(YFIXED, @FM)
+        FOR I.VAR = 1 TO YCOUNT
+            IF YFIRST.COND EQ 1 THEN
+                OUT.SELECT := " WITH "
+                YFIRST.COND = 0
+            END ELSE
+                OUT.SELECT := " AND "
+            END
 
-    YCOUNT = DCOUNT(YFIXED, @FM)
-    FOR I.VAR = 1 TO YCOUNT
-        IF YFIRST.COND EQ 1 THEN
-            OUT.SELECT := " WITH "
-            YFIRST.COND = 0
-        END ELSE
-            OUT.SELECT := " AND "
-        END
-
-        OUT.SELECT := YFIXED<I.VAR>
-    NEXT I.VAR
-
-    YCOUNT = DCOUNT(YSORT, @FM)
-    FOR I.VAR = 1 TO YCOUNT
-        OUT.SELECT := " " : YSORT<I.VAR>
-    NEXT I.VAR
+            OUT.SELECT := YFIXED<I.VAR>
+        NEXT I.VAR
+    END
+    IF YSORT THEN           ; * R22 code conversion
+        YCOUNT = DCOUNT(YSORT, @FM)
+        FOR I.VAR = 1 TO YCOUNT
+            OUT.SELECT := " " : YSORT<I.VAR>
+        NEXT I.VAR
+    END
     CHANGE @SM TO ' ' IN OUT.SELECT
+   
 RETURN
 
 *----------------------

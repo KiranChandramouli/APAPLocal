@@ -1,14 +1,14 @@
-* @ValidationCode : Mjo2MjE0MTY1MzA6Q3AxMjUyOjE2ODQ4NTQzODYyMDM6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:26
+* @ValidationCode : Mjo1Mjc0ODc5MjM6Q3AxMjUyOjE3MDMwNzQ2NDk1MDk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:47:29
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.EMAIL.EXP.LIMIT.SELECT
@@ -26,9 +26,10 @@ SUBROUTINE REDO.B.EMAIL.EXP.LIMIT.SELECT
 *-----------------------
 * Reference              Date                Description
 * PACS00242938        23-Jan-2013           Cob job to raise email
-* Date                  who                   Reference              
+* Date                  who                   Reference
 * 11-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
 * 11-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+* 15-05-2023              Edwin D                  R22 Code conversion
 *-----------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -40,17 +41,26 @@ SUBROUTINE REDO.B.EMAIL.EXP.LIMIT.SELECT
 
     $INSERT I_F.REDO.MM.CUST.LIMIT
 
-    SEL.CMD1='SELECT ' : FN.REDO.APAP.FX.BRN.COND :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.FX.BRN.COND'" : '"'
+*    SEL.CMD1='SELECT ' : FN.REDO.APAP.FX.BRN.COND :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.FX.BRN.COND'" : '"' ; * R22 code conversion
+   
+    SEL.CMD1='SELECT ' : FN.REDO.APAP.FX.BRN.COND
     CALL EB.READLIST(SEL.CMD1,SEL.LIST1,'',SEL.ID,ERR)
+    SEL.LIST1 = SPLICE(SEL.LIST1,'*REDO.APAP.FX.BRN.COND', '')
 
-    SEL.CMD2='SELECT ' : FN.REDO.APAP.FX.BRN.POSN :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.FX.BRN.POSN'" : '"'
+*    SEL.CMD2='SELECT ' : FN.REDO.APAP.FX.BRN.POSN :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.FX.BRN.POSN'" : '"' ; * R22 code conversion
+    SEL.CMD2='SELECT ' : FN.REDO.APAP.FX.BRN.POSN
     CALL EB.READLIST(SEL.CMD2,SEL.LIST2,'',SEL.ID,ERR)
-
-    SEL.CMD3='SELECT ' : FN.REDO.APAP.USER.LIMITS :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.USER.LIMITS'" : '"'
+    SEL.LIST2 = SPLICE(SEL.LIST2,'*REDO.APAP.FX.BRN.POSN', '')
+    
+*    SEL.CMD3='SELECT ' : FN.REDO.APAP.USER.LIMITS :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.USER.LIMITS'" : '"' ; * R22 code conversion
+    SEL.CMD3='SELECT ' : FN.REDO.APAP.USER.LIMITS
     CALL EB.READLIST(SEL.CMD3,SEL.LIST3,'',SEL.ID,ERR)
-
-    SEL.CMD4='SELECT ' :  FN.REDO.MM.CUST.LIMIT :' SAVING EVAL ': '"@ID : ' : "'*REDO.MM.CUST.LIMIT'" : '"'
+    SEL.LIST3 = SPLICE(SEL.LIST3,'*REDO.APAP.USER.LIMITS', '')
+ 
+*    SEL.CMD4='SELECT ' :  FN.REDO.MM.CUST.LIMIT :' SAVING EVAL ': '"@ID : ' : "'*REDO.MM.CUST.LIMIT'" : '"' ; * R22 code conversion
+    SEL.CMD4='SELECT ' :  FN.REDO.MM.CUST.LIMIT
     CALL EB.READLIST(SEL.CMD4,SEL.LIST4,'',SEL.ID,ERR)
+    SEL.LIST4 = SPLICE(SEL.LIST4,'*REDO.MM.CUST.LIMIT', '')
 
     SEL.IDS<-1>=SEL.LIST1
     SEL.IDS<-1>=SEL.LIST2

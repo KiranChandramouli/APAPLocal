@@ -1,22 +1,22 @@
-* @ValidationCode : MjotMzk1OTM5MDUzOkNwMTI1MjoxNzAyMDMzNTgyNTk1OmFqaXRoOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 08 Dec 2023 16:36:22
+* @ValidationCode : MjotMTA0NzE0ODMxNzpDcDEyNTI6MTcwMjY2MDQ5MjU3NzpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 15 Dec 2023 22:44:52
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ajith
+* @ValidationInfo : User Name         : ITSS
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+* @ValidationInfo : Compiler Version  : R23_SP4.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
 $PACKAGE APAP.LAPAP
 * Modification History:
 * Date                 Who                              Reference                            DESCRIPTION
 *21-04-2023           CONVERSION TOOL                AUTO R22 CODE CONVERSION                BP REMOVED , VM TO @VM, FM TO @FM
 *21-04-2023          jayasurya H                       MANUAL R22 CODE CONVERSION            NO CHANGES
-*08-12-2023        AJITH KUMAR               R22 MANUAL CODE COVERISON    OPF TO OPEN
-*13-12-2023         Edwin C             R22 Manual Conversion     COB Issue Fix
+*08-12-2023          AJITH KUMAR               R22 MANUAL CODE COVERISON    OPF TO OPEN
+*15-05-2023              Edwin D                  R22 MANUAL CODE CONVERSION
 *--------------------------------------------------------------------------------------------------------------------------------------
 SUBROUTINE LAPAP.AA.DELETE.PAYM.EMPTY
 
@@ -44,7 +44,7 @@ INIT:
     FN.AA.PAYMENT.SCHEDULE = "F.AA.ARR.PAYMENT.SCHEDULE"
     F.AA.PAYMENT.SCHEDULE  = ""
     R.AA.PAYMENT.SCHEDULE  = ""
-	CALL OPF(FN.AA.PAYMENT.SCHEDULE, F.AA.PAYMENT.SCHEDULE) ;*COB Issue Fix
+    CALL OPF(FN.AA.PAYMENT.SCHEDULE, F.AA.PAYMENT.SCHEDULE) ; * R22 Code conversion
 
     FN.AA.ARRANGEMENT.ACTIVITY = 'F.AA.ARRANGEMENT.ACTIVITY'
     F.AA.ARRANGEMENT.ACTIVITY = ''

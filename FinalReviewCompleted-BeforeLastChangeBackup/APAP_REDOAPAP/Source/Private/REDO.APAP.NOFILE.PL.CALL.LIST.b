@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxMzY3MDAwODYwOkNwMTI1MjoxNjg0ODM2MDUxNTIyOklUU1M6LTE6LTE6MTM1NDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 23 May 2023 15:30:51
+* @ValidationCode : MjoxNTA1NzUzNDQxOkNwMTI1MjoxNzAzMDczMzU5NjY1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:25:59
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 1354
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOFILE.PL.CALL.LIST(Y.ARRAY)
@@ -35,9 +35,10 @@ SUBROUTINE REDO.APAP.NOFILE.PL.CALL.LIST(Y.ARRAY)
 * 19 April  2011         Pradeep S              PACS00055015                For Place contracts
 * 29 June   2011         Pradeep S              PACS00075192                Changes for Floating interest rates
 * 04 Auguest2011         Pradeep S              PACS00099904                Select command changed for live records
-* Date                   who                   Reference              
+* Date                   who                   Reference
 * 06-04-2023         CONVERSTION TOOL     R22 AUTO CONVERSTION FM TO @FM AND SM TO @SM AND CONVERT TO CHANGE AND F.READ TO CACHE.READ AND REMOVED F.INT
 * 06-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
+* 15-05-2023              Edwin D                  R22 Code conversion                         COB issues
 *********************************************************************************************************
 
     $INSERT I_COMMON
@@ -108,13 +109,13 @@ PROCESS:
     BEGIN CASE
         CASE  INITIAL.DATE.OP EQ 'EQ' OR INITIAL.DATE.OP EQ 'GE'
 
-            SEL.COND = " AND WITH VALUE.DATE GE ":INITIAL.DATE.ENQ
-            SEL.COND.HIS = " AND WITH VALUE.DATE GE ":INITIAL.DATE.ENQ
+            SEL.COND = " AND WITH VALUE.DATE GE ":DQUOTE(INITIAL.DATE.ENQ) ; * R22 Code conversion
+            SEL.COND.HIS = " AND WITH VALUE.DATE GE ":DQUOTE(INITIAL.DATE.ENQ) ; * R22 Code conversion
 
         CASE INITIAL.DATE.OP EQ 'GT'
 
-            SEL.COND = " AND WITH VALUE.DATE GT ":INITIAL.DATE.ENQ
-            SEL.COND.HIS = " AND WITH VALUE.DATE GT ":INITIAL.DATE.ENQ
+            SEL.COND = " AND WITH VALUE.DATE GT ":DQUOTE(INITIAL.DATE.ENQ)     ; * R22 Code conversion
+            SEL.COND.HIS = " AND WITH VALUE.DATE GT ":DQUOTE(INITIAL.DATE.ENQ) ; * R22 Code conversion
 
     END CASE
 
@@ -126,13 +127,13 @@ PROCESS:
     BEGIN CASE
         CASE  FINAL.DATE.OP EQ 'EQ' OR FINAL.DATE.OP EQ 'LE'
 
-            SEL.COND := " AND WITH VALUE.DATE LE ":FINAL.DATE.ENQ
-            SEL.COND.HIS := " AND WITH VALUE.DATE LE ":FINAL.DATE.ENQ
+            SEL.COND := " AND WITH VALUE.DATE LE ":DQUOTE(FINAL.DATE.ENQ) ; * R22 Code conversion
+            SEL.COND.HIS := " AND WITH VALUE.DATE LE ":DQUOTE(FINAL.DATE.ENQ) ; * R22 Code conversion
 
         CASE FINAL.DATE.OP EQ 'GT'
 
-            SEL.COND := " AND WITH VALUE.DATE LT ":FINAL.DATE.ENQ
-            SEL.COND.HIS := " AND WITH VALUE.DATE LT ":FINAL.DATE.ENQ
+            SEL.COND := " AND WITH VALUE.DATE LT ":DQUOTE(FINAL.DATE.ENQ) ; * R22 Code conversion
+            SEL.COND.HIS := " AND WITH VALUE.DATE LT ":DQUOTE(FINAL.DATE.ENQ) ; * R22 Code conversion
 
     END CASE
 
@@ -146,8 +147,8 @@ PROCESS:
     END
     IF CURRENCY.OP EQ 'EQ' THEN
 
-        SEL.COND := " AND WITH CURRENCY EQ ":CURRENCY.ENQ
-        SEL.COND.HIS := " AND WITH CURRENCY EQ ":CURRENCY.ENQ
+        SEL.COND := " AND WITH CURRENCY EQ ":DQUOTE(CURRENCY.ENQ) ; * R22 Code conversion
+        SEL.COND.HIS := " AND WITH CURRENCY EQ ":DQUOTE(CURRENCY.ENQ) ; * R22 Code conversion
         Y.SEL.CCY = CURRENCY.ENQ  ;*PACS00052347 - S/E
 
     END
@@ -164,11 +165,11 @@ PROCESS:
     END
     IF USER.OP EQ 'EQ' THEN
 
-        SEL.COND := " AND WITH AUTHORISER LIKE ...":USER.ENQ:"..."
-        SEL.COND.HIS := " AND WITH AUTHORISER LIKE ...":USER.ENQ:"..."
+        SEL.COND := " AND WITH AUTHORISER LIKE "DQUOTE("...":SQUOTE(USER.ENQ):"...") ; * R22 Code conversion
+        SEL.COND.HIS := " AND WITH AUTHORISER LIKE "DQUOTE("...":SQUOTE(USER.ENQ):"...") ; * R22 Code conversion
 
     END
-
+ 
     STATUS.OP = '' ; Y.SEL.STATUS = "ALL"
     LOCATE 'STATUS' IN D.FIELDS<1> SETTING STATUS.POS THEN
 
@@ -191,8 +192,8 @@ PROCESS:
     END
     IF CUSTOMER.ID.OP EQ 'EQ' THEN
 
-        SEL.COND := " AND WITH CUSTOMER.ID EQ ":CUSTOMER.ID.ENQ
-        SEL.COND.HIS := " AND WITH CUSTOMER.ID EQ ":CUSTOMER.ID.ENQ
+        SEL.COND := " AND WITH CUSTOMER.ID EQ ":DQUOTE(CUSTOMER.ID.ENQ) ; * R22 Code conversion
+        SEL.COND.HIS := " AND WITH CUSTOMER.ID EQ ":DQUOTE(CUSTOMER.ID.ENQ) ; * R22 Code conversion
         Y.SEL.CNTR = CUSTOMER.ID.ENQ        ;* PACS00055015 - S/E
 
     END
@@ -241,14 +242,14 @@ PROCESS.SEL:
     END
 *PACS00055015 - E
 
-    CHANGE @SM TO " " IN Y.CATEGORY       ;*PACS00052347 - S/E ;*R22 AUTO CONVERSTION CONVERT TO CHANGE
-
+    CHANGE @SM TO "' '" IN Y.CATEGORY       ;*PACS00052347 - S/E ;*R22 AUTO CONVERSTION CONVERT TO CHANGE
+    Y.CATEGORY = SQUOTE(Y.CATEGORY)
 *PACS00054884 - S
     BEGIN CASE
 
         CASE STATUS.ENQ EQ 'MATURED'
-
-            SELECT.CMD.MAT = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:") AND WITH (STATUS EQ 'LIQ')"
+ 
+            SELECT.CMD.MAT = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:" AND WITH (STATUS EQ 'LIQ')" ; * R22 Code conversion
             CALL EB.READLIST(SELECT.CMD.MAT,SEL.LIST.MAT,'',NOR.MAT,Y.MAT.ERR)
 
             SELECT.CMD.HIS = "SSELECT ":FN.MM.MONEY.MARKET.HIS:" WITH (CATEGORY EQ ":Y.CATEGORY:SEL.COND:") AND WITH (RECORD.STATUS EQ 'MAT')"
@@ -258,7 +259,7 @@ PROCESS.SEL:
         CASE STATUS.ENQ EQ 'LIVE'
 
 
-            SELECT.CMD.LIVE = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:" WITH STATUS EQ 'CUR'"
+            SELECT.CMD.LIVE = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:" WITH STATUS EQ 'CUR'" ; * R22 Code conversion
             CALL EB.READLIST(SELECT.CMD.LIVE,SEL.LIST.LIVE,'',NOR.LIVE,Y.LIVE.ERR)
 
             Y.SEL.STATUS = "LIVE"
@@ -271,7 +272,7 @@ PROCESS.SEL:
             SELECT.CMD.LIVE = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND
             CALL EB.READLIST(SELECT.CMD.LIVE,SEL.LIST.LIVE,'',NOR.LIVE,Y.LIVE.ERR)
 
-            SELECT.CMD.MAT = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:") AND WITH (STATUS EQ 'LIQ')"
+            SELECT.CMD.MAT = "SSELECT ":FN.MM.MONEY.MARKET:" WITH CATEGORY EQ ":Y.CATEGORY:SEL.COND:" AND WITH (STATUS EQ 'LIQ')"
             CALL EB.READLIST(SELECT.CMD.MAT,SEL.LIST.MAT,'',NOR.MAT,Y.MAT.ERR)
 
             SELECT.CMD.HIS = "SSELECT ":FN.MM.MONEY.MARKET.HIS:" WITH (CATEGORY EQ ":Y.CATEGORY:SEL.COND:") AND WITH (RECORD.STATUS EQ 'MAT')"
