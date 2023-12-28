@@ -1,15 +1,15 @@
-* @ValidationCode : Mjo3MzIwOTAzMDg6Q3AxMjUyOjE3MDI2NTg4NDE1NjQ6SVRTUzotMTotMTowOjA6ZmFsc2U6Ti9BOlIyM19TUDQuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 15 Dec 2023 22:17:21
+* @ValidationCode : Mjo3MzIwOTAzMDg6Q3AxMjUyOjE3MDI5OTA4OTA3MjY6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjNfU1A0LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Dec 2023 18:31:30
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R23_SP4.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 ******************************************************************************************************************
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.E.FORM.SEL.STMT(IN.FILE, IN.FIXED, IN.SORT, OUT.SELECT)

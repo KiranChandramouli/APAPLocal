@@ -1,15 +1,15 @@
-* @ValidationCode : MjotMTAxMTI4OTQzNTpDcDEyNTI6MTcwMjY1ODIzODA4NDpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Dec 2023 22:07:18
+* @ValidationCode : MjoxNzY5OTM4MjkxOkNwMTI1MjoxNzAzMDc0ODQ4ODM5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:50:48
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R23_SP4.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE REDO.VISA.ACQUIRER.TXN
 ************************************************************
@@ -81,8 +81,8 @@ PROCESS:
     LOOP
         REMOVE  Y.FTTC.ID FROM FTTC.ID SETTING ID.POS
     WHILE Y.FTTC.ID:ID.POS
-        ID.TEXT='"@ID:' ; MSG.DELIM="'*':" ; UNIQ.ID='AT.UNIQUE.ID"'
-        EVA.TEXT=ID.TEXT:MSG.DELIM:UNIQ.ID
+*        ID.TEXT='"@ID:' ; MSG.DELIM="'*':" ; UNIQ.ID='AT.UNIQUE.ID"'
+*        EVA.TEXT=ID.TEXT:MSG.DELIM:UNIQ.ID
         SEL.LIST = '' ; SEL.CMD ='' ; REC.ERR = ''
 *        SEL.CMD ="SELECT ":FN.FUNDS.TRANSFER:" WITH TRANSACTION.TYPE EQ ":Y.FTTC.ID:" AND DEBIT.VALUE.DATE EQ ":TODAY:" SAVING EVAL ":EVA.TEXT ; * R22 code conversion
         SEL.CMD ="SELECT ":FN.FUNDS.TRANSFER:" WITH TRANSACTION.TYPE EQ ":DQUOTE(Y.FTTC.ID):" AND DEBIT.VALUE.DATE EQ ":DQUOTE(TODAY)

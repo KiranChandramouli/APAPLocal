@@ -1,15 +1,15 @@
-* @ValidationCode : MjoxNTEwMDIxNzgyOkNwMTI1MjoxNzAyNjU4MzEzNzc2OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjNfU1A0LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 Dec 2023 22:08:33
+* @ValidationCode : Mjo1Mjc0ODc5MjM6Q3AxMjUyOjE3MDMwNzQ2NDk1MDk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:47:29
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R23_SP4.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.EMAIL.EXP.LIMIT.SELECT
 *-----------------------------------------------------------------------------
@@ -55,12 +55,12 @@ SUBROUTINE REDO.B.EMAIL.EXP.LIMIT.SELECT
 *    SEL.CMD3='SELECT ' : FN.REDO.APAP.USER.LIMITS :' SAVING EVAL ': '"@ID : ' : "'*REDO.APAP.USER.LIMITS'" : '"' ; * R22 code conversion
     SEL.CMD3='SELECT ' : FN.REDO.APAP.USER.LIMITS
     CALL EB.READLIST(SEL.CMD3,SEL.LIST3,'',SEL.ID,ERR)
-    SEL.LIST3 = SPLICE(SEL.LIST3,'*REDO.APAP.FX.BRN.POSN', '')
+    SEL.LIST3 = SPLICE(SEL.LIST3,'*REDO.APAP.USER.LIMITS', '')
  
 *    SEL.CMD4='SELECT ' :  FN.REDO.MM.CUST.LIMIT :' SAVING EVAL ': '"@ID : ' : "'*REDO.MM.CUST.LIMIT'" : '"' ; * R22 code conversion
     SEL.CMD4='SELECT ' :  FN.REDO.MM.CUST.LIMIT
     CALL EB.READLIST(SEL.CMD4,SEL.LIST4,'',SEL.ID,ERR)
-    SEL.LIST4 = SPLICE(SEL.LIST4,'*FN.REDO.MM.CUST.LIMIT', '')
+    SEL.LIST4 = SPLICE(SEL.LIST4,'*REDO.MM.CUST.LIMIT', '')
 
     SEL.IDS<-1>=SEL.LIST1
     SEL.IDS<-1>=SEL.LIST2

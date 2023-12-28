@@ -1,15 +1,15 @@
-* @ValidationCode : MjoxNzY0MTUzNzQ5OkNwMTI1MjoxNzAyNjU4OTY3NDY3OklUU1M6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjNfU1A0LjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 15 Dec 2023 22:19:27
+* @ValidationCode : MjoxNzY0MTUzNzQ5OkNwMTI1MjoxNzAyOTkwODk3NjQ2OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 19 Dec 2023 18:31:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R23_SP4.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
 SUBROUTINE REDO.ENQ.INV.TRAN.GEN.RPT(Y.ARR)
 *********************************************************************************************************

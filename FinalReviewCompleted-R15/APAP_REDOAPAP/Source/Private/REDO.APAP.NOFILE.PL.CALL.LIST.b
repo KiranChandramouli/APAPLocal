@@ -1,15 +1,15 @@
-* @ValidationCode : MjotMjA4MzQ0NjUwOTpDcDEyNTI6MTcwMjY1OTE2MjAyOTpJVFNTOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIzX1NQNC4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 15 Dec 2023 22:22:42
+* @ValidationCode : MjoxNTA1NzUzNDQxOkNwMTI1MjoxNzAzMDczMzU5NjY1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:25:59
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R23_SP4.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2023. All rights reserved.
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOAPAP
 SUBROUTINE REDO.APAP.NOFILE.PL.CALL.LIST(Y.ARRAY)
 ***********************************************************************
@@ -242,7 +242,7 @@ PROCESS.SEL:
     END
 *PACS00055015 - E
 
-    CHANGE @SM TO " " IN Y.CATEGORY       ;*PACS00052347 - S/E ;*R22 AUTO CONVERSTION CONVERT TO CHANGE
+    CHANGE @SM TO "' '" IN Y.CATEGORY       ;*PACS00052347 - S/E ;*R22 AUTO CONVERSTION CONVERT TO CHANGE
     Y.CATEGORY = SQUOTE(Y.CATEGORY)
 *PACS00054884 - S
     BEGIN CASE
