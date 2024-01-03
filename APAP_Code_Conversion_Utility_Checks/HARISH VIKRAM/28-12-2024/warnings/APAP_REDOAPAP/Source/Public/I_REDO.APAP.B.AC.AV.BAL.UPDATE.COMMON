@@ -1,0 +1,22 @@
+*********************************************************************************************************
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : I_REDO.APAP.B.AC.AV.BAL.UPDATE.COMMON
+*--------------------------------------------------------------------------------------------------------
+*Description       : I_REDO.APAP.B.AC.AV.BAL.UPDATE.COMMON, this routine is used to update the local reference
+*                    field L.AC.AV.BAL which will be difference between the amount of WORKING.BALANCE and
+*                    LOCKED.AMOUNT
+*Linked With       : Batch BNK/REDO.B.AC.AV.BAL.UPDATE
+*In  Parameter     : NA
+*Out Parameter     : NA
+*--------------------------------------------------------------------------------------------------------
+*Modification Details:
+*=====================
+*    Date               Who                    Reference                  Description
+*   ------             -----                 -------------               -------------
+* 24 Nov 2010       Shiva Prasad Y       ODR-2010-11-0196 CR012         Initial Creation
+*
+*********************************************************************************************************
+    COMMON / REDO.APAP.B.AC.AV.BAL.UPDATE / FN.ACCOUNT,
+    FN.ACCOUNT,                      F.ACCOUNT,                      R.ACCOUNT,
+    LOC.L.AC.AV.BAL.POS
