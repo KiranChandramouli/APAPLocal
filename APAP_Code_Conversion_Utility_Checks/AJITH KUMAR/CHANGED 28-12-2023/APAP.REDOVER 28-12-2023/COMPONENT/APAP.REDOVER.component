@@ -1,0 +1,258 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+
+
+Public method redoVAutAmlCcy (
+)
+{
+    jBC: REDO.V.AUT.AML.CCY
+}
+
+
+
+Public method redoVAutChequeNumber (
+)
+{
+    jBC: REDO.V.AUT.CHEQUE.NUMBER
+}
+
+
+
+Public method redoVAutChkLckEvnts (
+)
+{
+    jBC: REDO.V.AUT.CHK.LCK.EVNTS
+}
+
+
+
+Public method redoVAutClaimsMailAlert (
+)
+{
+    jBC: REDO.V.AUT.CLAIMS.MAIL.ALERT
+}
+
+
+
+Public method redoVAutDelBen (
+)
+{
+    jBC: REDO.V.AUT.DEL.BEN
+}
+
+
+
+Public method redoVAutDelCon (
+)
+{
+    jBC: REDO.V.AUT.DEL.CON
+}
+
+
+
+Public method redoVAutComplaintsMailAlert (
+)
+{
+    jBC: REDO.V.AUT.COMPLAINTS.MAIL.ALERT
+}
+
+
+
+Public method redoVAutDisbBranchPostFt (
+)
+{
+    jBC: REDO.V.AUT.DISB.BRANCH.POST.FT
+}
+
+
+
+Public method redoVAutEffRate (
+)
+{
+    jBC: REDO.V.AUT.EFF.RATE
+}
+
+
+
+Public method redoVAutFtCheckAcc (
+)
+{
+    jBC: REDO.V.AUT.FT.CHECK.ACC
+}
+
+
+
+Public method redoVAutFtTp (
+)
+{
+    jBC: REDO.V.AUT.FT.TP
+}
+
+
+
+Public method redoVAutGetSha1 (
+)
+{
+    jBC: REDO.V.AUT.GET.SHA1
+}
+
+
+
+Public method redoVAutGetSha1Mig (
+)
+{
+    jBC: REDO.V.AUT.GET.SHA1.MIG
+}
+
+
+
+Public method redoVAutLetterIssue (
+)
+{
+    jBC: REDO.V.AUT.LETTER.ISSUE
+}
+
+
+
+Public method redoVAutMgrFtentry (
+)
+{
+    jBC: REDO.V.AUT.MGR.FTENTRY
+}
+
+
+
+Public method redoVAutMsgUpd (
+)
+{
+    jBC: REDO.V.AUT.MSG.UPD
+}
+
+
+
+Public method redoVAutOfsUpdStatus (
+)
+{
+    jBC: REDO.V.AUT.OFS.UPD.STATUS
+}
+
+
+
+
+
+
+
+Public method redoVAutPayrollFile (
+)
+{
+    jBC: REDO.V.AUT.PAYROLL.FILE
+}
+
+
+
+Public method redoVAutRaiseFtentry (
+)
+{
+    jBC: REDO.V.AUT.RAISE.FTENTRY
+}
+
+
+
+Public method redoVAutRaiseMgrttentry (
+)
+{
+    jBC: REDO.V.AUT.RAISE.MGRTTENTRY
+}
+
+
+
+
+Public method redoVAutReduceRegister (
+)
+{
+    jBC: REDO.V.AUT.REDUCE.REGISTER
+}
+
+
+
+Public method redoVAutRegisterUpd (
+)
+{
+    jBC: REDO.V.AUT.REGISTER.UPD
+}
+
+
+
+Public method redoVAutRenewCards (
+)
+{
+    jBC: REDO.V.AUT.RENEW.CARDS
+}
+
+
+
+Public method redoVAutRequestsMailAlert (
+)
+{
+    jBC: REDO.V.AUT.REQUESTS.MAIL.ALERT
+}
+
+
+
+Public method redoVAutRevTxn (
+)
+{
+    jBC: REDO.V.AUT.REV.TXN
+}
+
+
+
+Public method redoVAutReverseChg (
+)
+{
+    jBC: REDO.V.AUT.REVERSE.CHG
+}
+
+
+
+Public method redoVAutRteAuthRev (
+)
+{
+    jBC: REDO.V.AUT.RTE.AUTH.REV
+}
+
+
+
+Public method redoVAutRteReprint (
+    INOUT widHold string
+)
+{
+    jBC: REDO.V.AUT.RTE.REPRINT
+}
+
+
+
+Public method redoVAutScBuyEffRate (
+)
+{
+    jBC: REDO.V.AUT.SC.BUY.EFF.RATE
+}
+
+
+
+Public method redoVAutStatusChange (
+)
+{
+    jBC: REDO.V.AUT.STATUS.CHANGE
+}
+
+public method redoVAutRaiseTtentry (
+)
+{
+    jBC: REDO.V.AUT.RAISE.TTENTRY
+}
+

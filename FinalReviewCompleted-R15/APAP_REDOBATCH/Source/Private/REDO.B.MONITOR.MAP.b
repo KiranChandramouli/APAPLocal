@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTI4OTMzNjM2NDpDcDEyNTI6MTcwMTc3MzYwNTAwMTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Dec 2023 16:23:25
+* @ValidationCode : MjoxNzcxMTU4MjQ1OkNwMTI1MjoxNzAzNzY5MTM2MjM4OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:42:16
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
-
 SUBROUTINE REDO.B.MONITOR.MAP(MSG.ID)
 *
 *--------------------------------------------------------------------------------------
@@ -23,8 +22,10 @@ SUBROUTINE REDO.B.MONITOR.MAP(MSG.ID)
 * 12-04-2023          ANIL KUMAR B        R22 MANUAL CONVERSTION -NO CHANGES
 * 27-11-2023	      VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-11542 | MONITOR  - By Santiago 
 * 04-12-2023	      VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-11985 | MONITOR  - By Santiago 
+*20-12-2023	      VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-12155  |By Santiago
+*22-12-2023	      VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES- SQA-12151 - By Santiago
 *-------------------------------------------------------------------------------------
-*					
+*
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.B.MONITOR.MAP.COMMON
@@ -64,7 +65,7 @@ RETURN
 *
 MAIN.PROCESSING:
 *
-
+    
     CALL F.READ(FN.REDO.MON.MAP.QUEUE, MSG.ID, R.MSG, F.REDO.MON.MAP.QUEUE, ERR)
 *
     IF ERR THEN
@@ -93,7 +94,7 @@ MAIN.PROCESSING:
                 CHANGE @VM TO '@vm' IN  R.RESULT<2>
                 CHANGE @VM TO '@vm' IN  R.RESULT<3>
                 CALL F.WRITE(FN.REDO.MON.SEND.QUEUE, MSG.ID, R.RESULT)
-                CALL F.DELETE(FN.REDO.MON.MAP.QUEUE, MSG.ID)
+                CALL F.DELETE(FN.REDO.MON.MAP.QUEUE, MSG.ID)	;*;*Fix SQA-12151 � By Santiago-uncommented
                 RETURN
             END ELSE
                 ERR.MSG = "MESSAGE NULL " : MSG.ID
@@ -147,16 +148,21 @@ GET.MAPPING.VALUES:
     
     Y.FN.APP = 'F.':FIELD(Y.MAPPING.ID,'/',1)
     Y.F.APP  = ''
-    CALL OPF(Y.FN.APP,Y.F.APP)
-    CALL F.READ(Y.FN.APP,Y.RECORD.ID,R.APP,Y.F.APP,Y.ERR)
-    
+    IF Y.FUNCTION EQ 'R' THEN	;*Fix SQA-12155? By Santiago-new line added
+        Y.FN.APP = Y.FN.APP:'$HIS'	;*Fix SQA-12155? By Santiago-new line added
+        CALL OPF(Y.FN.APP,Y.F.APP)
+        CALL EB.READ.HISTORY.REC(Y.F.APP,Y.RECORD.ID,R.APP,Y.ERR)	;*Fix SQA-12155? By Santiago-new line added
+    END ELSE	;*Fix SQA-12155? By Santiago-new line added
+        CALL OPF(Y.FN.APP,Y.F.APP)	;*Fix SQA-12155? By Santiago-new line added
+        CALL F.READ(Y.FN.APP,Y.RECORD.ID,R.APP,Y.F.APP,Y.ERR)
+    END		;*Fix SQA-12155? By Santiago-new line added
+
 *    CALL RAD.CONDUIT.LINEAR.TRANSLATION(MAP.FMT, ID.RCON.L, APP, ID.APP, R.APP, R.RETURN.MSG, ERR.MAPPING) ;*SJ
     APAP.LAPAP.redoConduitLinearTranslation(MAP.FMT, ID.RCON.L, APP, ID.APP, R.APP, R.RETURN.MSG, ERR.MAPPING)
 ;*Fix SQA-11542 | MONITOR - By Santiago-end
 RETURN
 *-----------------------------------------------------------------------------------
-PREPARE.MSG:
-    
+PREPARE.MSG:    
 * Getting name of monitor table
     
     Y.MNEM.MON.TABLE = FIELD(Y.MAPPING.ID, '/', 2)
@@ -255,6 +261,8 @@ LOG.ERROR:
             CALL F.WRITE(FN.REDO.MON.MAP.QUEUE.ERR, MSG.ID, R.MSG)
             CALL F.DELETE(FN.REDO.MON.MAP.QUEUE, MSG.ID)	;*Fix- SQA-11985- By Santiago-uncommented
     END CASE
+
+
 *    CALL REDO.INTERFACE.REC.ACT(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC)
     APAP.REDOCHNLS.redoInterfaceRecAct(INT.CODE, INT.TYPE, BAT.NO, BAT.TOT, INFO.OR, INFO.DE, ID.PROC, MON.TP, DESC, REC.CON, EX.USER, EX.PC) ;*R22 Manual Code Conversion
 RETURN

@@ -1,12 +1,26 @@
+* @ValidationCode : MjotOTkwOTM1MjQwOkNwMTI1MjoxNzAzMDczMjYwODM1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 20 Dec 2023 17:24:20
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
 *---------------------------------------------------------------------------------------
 *MODIFICATION HISTORY:
 *DATE          WHO                 REFERENCE               DESCRIPTION
 *13-07-2023    CONVERSION TOOL     R22 AUTO CONVERSION     TAM.BP and LAPAP.BP is Removed
 *13-07-2023    AJITHKUMAR S        R22 MANUAL CONVERSION   NO CHANGE
+*15-05-2023    Edwin D             R22 Code conversion                         COB issues
+*18-12-2023    Santosh C           MANUAL R22 CODE CONVERSION   APAP Code Conversion Utility Check
 *----------------------------------------------------------------------------------------
 SUBROUTINE L.APAP.B.AC.NCF.CHREQ.SELECT
-
+ 
 *
 * Client Name : APAP
 * Description: Routine to generate / issue the NCF for AC.CHARGE.REQUEST table
@@ -20,6 +34,7 @@ SUBROUTINE L.APAP.B.AC.NCF.CHREQ.SELECT
     $INSERT I_F.REDO.NCF.ISSUED  ;*R22 Auto code conversion
     $INSERT I_F.REDO.REPAYMENT.CHARGE ;*R22 Auto code conversion
     $INSERT I_L.APAP.B.AC.NCF.CHREQ.COMMON ;*R22 Auto code conversion
+    $USING EB.Service ;*R22 Manual Code Conversion_Utility Check
 
 
     GOSUB INIT.READ
@@ -38,21 +53,33 @@ RETURN
 
 PROCESS:
 ********
-    SEL.STPRT = "SELECT ":FN.STMT.PRINTED:" WITH @ID LIKE ":YIMP.ACCOUNT:"...-":YLSTDAY
+    SEL.STPRT = "SELECT ":FN.STMT.PRINTED:" WITH @ID LIKE ":DQUOTE("'":YIMP.ACCOUNT:"'...'-":YLSTDAY:"'")
     EXECUTE SEL.STPRT RTNLIST PRT.LIST
-    SEL.STPRNT = 'QSELECT FBNK.STMT.PRINTED'
-    EXECUTE SEL.STPRNT PASSLIST PRT.LIST RTNLIST STMT.LIST
-
+*    SEL.STPRNT = 'QSELECT FBNK.STMT.PRINTED'    ; R22 code conversion
+*    EXECUTE SEL.STPRNT PASSLIST PRT.LIST RTNLIST STMT.LIST
+    STMT.LIST = ''
+    LOOP
+        REMOVE STP.ID FROM PRT.LIST SETTING STP.POS
+    WHILE STP.ID:STP.POS
+        CALL F.READ(FN.STMT.PRINTED, STP.ID, R.STP, F.STMT.PRINTED, STD.ERR)
+        IF NOT(STMT.LIST) THEN
+            STMT.LIST = R.STP
+        END ELSE
+            STMT.LIST<-1> = R.STP
+        END
+    REPEAT
+    
     SEL.ACREQ = ''; SEL.LIST = ''; SEL.REC = ''; ERR.SEL = ''
-    SEL.ACREQ = "SELECT ":FN.AC.CHARGE.REQUEST:" WITH CHARGE.DATE EQ ":YLSTDAY
+    SEL.ACREQ = "SELECT ":FN.AC.CHARGE.REQUEST:" WITH CHARGE.DATE EQ ":DQUOTE(YLSTDAY) ; * R22 code conversion
     CALL EB.READLIST(SEL.ACREQ,SEL.LIST,'',SEL.REC,ERR.SEL)
 
     SEL.REPAY = ''; SEL.RPLIST = ''; SEL.RPREC = ''; ERR.SELRP = ''
-    SEL.REPAY = "SELECT ":FN.REDO.REPAYMENT.CHARGE:" WITH @ID LIKE ...":YLSTDAY:" AND TRANSACTION LIKE CHG..."
+    SEL.REPAY = "SELECT ":FN.REDO.REPAYMENT.CHARGE:" WITH @ID LIKE ":DQUOTE("...":SQUOTE(YLSTDAY)):" AND TRANSACTION LIKE ":DQUOTE("'CHG'...")  ; * R22 code conversion
     CALL EB.READLIST(SEL.REPAY,SEL.RPLIST,'',SEL.RPREC,ERR.SELRP)
 
     FINAL.LIST = STMT.LIST:@FM:SEL.LIST:@FM:SEL.RPLIST
-    CALL BATCH.BUILD.LIST('',FINAL.LIST)
+*   CALL BATCH.BUILD.LIST('',FINAL.LIST)
+    EB.Service.BatchBuildList('',FINAL.LIST) ;*R22 Manual Code Conversion_Utility Check
 RETURN
 
 END

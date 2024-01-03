@@ -1,16 +1,17 @@
-* @ValidationCode : MjotMTAyNTk5NTc4OkNwMTI1MjoxNjgwMTkwMTYwNjc1OklUU1M6LTE6LTE6MTcyOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 30 Mar 2023 20:59:20
+* @ValidationCode : Mjo1MjA5OTgwMTQ6Q3AxMjUyOjE3MDM3NjY4MjMyMTA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:03:43
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 172
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.AA
+
 
 SUBROUTINE REDO.S.FC.AA.ST.CHG.DT(AA.ID, AA.ARR)
 
@@ -39,6 +40,7 @@ SUBROUTINE REDO.S.FC.AA.ST.CHG.DT(AA.ID, AA.ARR)
 * Date             Who                   Reference      Description
 * 30.03.2023       Conversion Tool       R22            Auto Conversion     - VM TO @VM, I TO I.VAR
 * 30.03.2023       Shanmugapriya M       R22            Manual Conversion   - No changes
+*22-12-2023	   VIGNESHWARI                       ADDED COMMENT FOR INTERFACE CHANGES- FIX SIT2 - By Santiago
 *-----------------------------------------------------------------------------------
 
 
@@ -60,7 +62,7 @@ RETURN  ;* Program RETURN
 *-----------------------------------------------------------------------------------
 PROCESS:
 *======
-
+    
     CALL F.READ(FN.AA.ACCOUNT.DETAILS,Y.ARRG.ID,R.AA.ACCOUNT.DETAILS,F.AA.ACCOUNT.DETAILS,Y.ACT.DET.ERR)
     IF R.AA.ACCOUNT.DETAILS NE '' THEN
         Y.CONT = DCOUNT(R.AA.ACCOUNT.DETAILS<AA.AD.BILL.ID>,@VM)    ;** R22 Auto conversion - VM TO @VM
@@ -70,8 +72,12 @@ PROCESS:
                 CALL AA.GET.BILL.DETAILS(Y.ARRG.ID, BILL.REFERENCE, BILL.DETAILS, RET.ERROR)
                 Y.PRE.DATE =  BILL.DETAILS<AA.BD.SET.ST.CHG.DT,1>   ;* 35
                 Y.DIFF = "C"
-                CALL CDD("",Y.PRE.DATE,TODAY,Y.DIFF)
-                AA.ARR = Y.DIFF
+                IF Y.PRE.DATE NE '' THEN	;*Fix FIX SIT2 � By Santiago-new lines added
+                    CALL CDD("",Y.PRE.DATE,TODAY,Y.DIFF)
+                    AA.ARR = Y.DIFF
+                END ELSE	;*Fix FIX SIT2 � By Santiago-new lines added-start	
+                    AA.ARR = ''
+                END	;*Fix FIX SIT2 � By Santiago-new lines added-end
                 BREAK
             END
         NEXT

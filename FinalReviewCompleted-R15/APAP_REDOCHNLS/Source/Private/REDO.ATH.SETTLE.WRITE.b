@@ -1,17 +1,20 @@
-* @ValidationCode : MjotMTMyMjk2NzM5MzpDcDEyNTI6MTY4MTM4MDc4NzcwNTpJVFNTOi0xOi0xOjI5MToxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Apr 2023 15:43:07
+* @ValidationCode : MjoxNTIwMTE4NTU1OkNwMTI1MjoxNzAzNzY5MTc4MjMwOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:42:58
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 291
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-SUBROUTINE REDO.ATH.SETTLE.WRITE(Y.ID,R.ARRAY)
+*-----------------------------------------------------------------------------
+* <Rating>-12</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.ATH.SETTLE.WRITE(Y.ID,R.ARRAY)
 ***********************************************************************
 * COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 * DEVELOPED BY: H GANESH
@@ -19,7 +22,6 @@ SUBROUTINE REDO.ATH.SETTLE.WRITE(Y.ID,R.ARRAY)
 * ODR NO      : ODR-2010-08-0469
 *----------------------------------------------------------------------
 *DESCRIPTION: This routine is write the REDO.ATH.SETTLE.WRITE with Audit Fields
-
 
 
 *IN PARAMETER: R.ARRAY
@@ -33,28 +35,30 @@ SUBROUTINE REDO.ATH.SETTLE.WRITE(Y.ID,R.ARRAY)
 *
 * 11-APR-2023     Conversion tool    R22 Auto conversion       VM to @VM, ++ to +=, TNO to C$T24.SESSION.NO
 * 11-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+*20-12-2023	   VIGNESHWARI    ADDED COMMENT FOR INTERFACE CHANGES          ATM- By Santiago
 *----------------------------------------------------------------------
 
 
-    $INSERT I_COMMON
-    $INSERT I_EQUATE
-    $INSERT I_F.USER
-    $INSERT I_F.REDO.ATH.SETTLMENT
-    $INSERT I_F.REDO.ATH.STLMT.MAPPING
+$INSERT I_COMMON
+$INSERT I_EQUATE
+$INSERT I_F.USER
+$INSERT I_F.REDO.ATH.SETTLMENT
+$INSERT I_F.REDO.ATH.STLMT.MAPPING
+	
+  
 
-
-    GOSUB PROCESS
-RETURN
+  GOSUB PROCESS
+  RETURN
 *----------------------------------------------------------------------
 PROCESS:
 *----------------------------------------------------------------------
 
 
 
-    FN.REDO.ATH.SETTLMENT='F.REDO.ATH.SETTLMENT'
-    F.REDO.ATH.SETTLMENT=''
-    CALL OPF(FN.REDO.ATH.SETTLMENT,F.REDO.ATH.SETTLMENT)
-
+  FN.REDO.ATH.SETTLMENT='F.REDO.ATH.SETTLMENT'
+  F.REDO.ATH.SETTLMENT=''
+  CALL OPF(FN.REDO.ATH.SETTLMENT,F.REDO.ATH.SETTLMENT)
+  
 * PACS00577318 -S
     FN.REDO.ATH.STLMT.MAPPING = 'F.REDO.ATH.STLMT.MAPPING'
     F.REDO.ATH.STLMT.MAPPING  = ''
@@ -64,10 +68,10 @@ PROCESS:
     IF R.REDO.ATH.STLMT.MAPPING<ATH.STL.MAP.FIELD.NAME> THEN
         Y.IN.APPLICATION = 'REDO.ATH.SETTLMENT' ; R.SS.APPLICATION = ''
         CALL GET.STANDARD.SELECTION.DETS(Y.IN.APPLICATION,R.SS.APPLICATION)
-        CONV.CNT = DCOUNT(R.REDO.ATH.STLMT.MAPPING<ATH.STL.MAP.FIELD.NAME>,@VM)
+        CONV.CNT = DCOUNT(R.REDO.ATH.STLMT.MAPPING<ATH.STL.MAP.FIELD.NAME>,@VM)	;*Fix ATM- By Santiago-CHANGE "VM" TO "@VM"
         II = 0
         LOOP
-            II += 1
+            II++	;*Fix ATM- By Santiago-CHANGE "II += 1" TO "II++"
         WHILE II LE CONV.CNT
             FLD.NAME = R.REDO.ATH.STLMT.MAPPING<ATH.STL.MAP.FIELD.NAME,II>
             YAF = '' ; YAV = '' ; YAS = '' ; DATA.TYPE = '' ; ERR.MSG = '' ; FIELD.NO = ''
@@ -77,20 +81,20 @@ PROCESS:
     END
 * PACS00577318 -e
 
-    TEMPTIME = OCONV(TIME(),"MTS")
-    TEMPTIME = TEMPTIME[1,5]
-    CHANGE ':' TO '' IN TEMPTIME
-    CHECK.DATE = DATE()
-    R.ARRAY<ATH.SETT.RECORD.STATUS>=''
-    R.ARRAY<ATH.SETT.DATE.TIME>=OCONV(CHECK.DATE,"DY2"):FMT(OCONV(CHECK.DATE,"DM"),"R%2"):FMT(OCONV(CHECK.DATE,"DD"),"R%2"):TEMPTIME
-    R.ARRAY<ATH.SETT.CURR.NO>=R.ARRAY<ATH.SETT.CURR.NO>+1
-    R.ARRAY<ATH.SETT.INPUTTER>=C$T24.SESSION.NO:'_':OPERATOR
-    R.ARRAY<ATH.SETT.AUTHORISER>=C$T24.SESSION.NO:'_':OPERATOR
-    R.ARRAY<ATH.SETT.DEPT.CODE>=R.USER<EB.USE.DEPARTMENT.CODE>
-    R.ARRAY<ATH.SETT.CO.CODE>=ID.COMPANY
-    CALL F.WRITE(FN.REDO.ATH.SETTLMENT,Y.ID,R.ARRAY)
+  TEMPTIME = OCONV(TIME(),"MTS")
+  TEMPTIME = TEMPTIME[1,5]
+  CHANGE ':' TO '' IN TEMPTIME
+  CHECK.DATE = DATE()
+  R.ARRAY<ATH.SETT.RECORD.STATUS>=''
+  R.ARRAY<ATH.SETT.DATE.TIME>=OCONV(CHECK.DATE,"DY2"):FMT(OCONV(CHECK.DATE,"DM"),"R%2"):FMT(OCONV(CHECK.DATE,"DD"),"R%2"):TEMPTIME
+  R.ARRAY<ATH.SETT.CURR.NO>=R.ARRAY<ATH.SETT.CURR.NO>+1
+  R.ARRAY<ATH.SETT.INPUTTER>=TNO:'_':OPERATOR	;*Fix ATM- By Santiago-change"C$T24.SESSION.NO" to "TNO"
+  R.ARRAY<ATH.SETT.AUTHORISER>=TNO:'_':OPERATOR	;*Fix ATM- By Santiago-change"C$T24.SESSION.NO" to "TNO"
+  R.ARRAY<ATH.SETT.DEPT.CODE>=R.USER<EB.USE.DEPARTMENT.CODE>
+  R.ARRAY<ATH.SETT.CO.CODE>=ID.COMPANY
+  CALL F.WRITE(FN.REDO.ATH.SETTLMENT,Y.ID,R.ARRAY)
 
 
-RETURN
+  RETURN
 
 END
