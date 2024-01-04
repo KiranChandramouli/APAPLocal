@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxMTk0MDQ3OTQ2OkNwMTI1MjoxNjg0ODU0MzkwMTk4OklUU1M6LTE6LTE6NDY3OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
+* @ValidationCode : MjoxMDgwMzQxNTU5OkNwMTI1MjoxNzA0MzY0MjYyMDMyOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jan 2024 16:01:02
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 467
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -36,91 +36,91 @@ SUBROUTINE REDO.B.LY.FILE.GEN.LOAD
 * 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *-----------------------------------------------------------------------------
-$INSERT I_COMMON
-$INSERT I_EQUATE
-$INSERT I_F.REDO.LY.PROGRAM
-$INSERT I_F.REDO.LY.POINTS
-$INSERT I_F.REDO.LY.POINTS.TOT
-$INSERT I_F.REDO.LY.LOG
-$INSERT I_F.DATES
-$INSERT I_REDO.B.LY.FILE.GEN.COMMON
-$INSERT I_F.REDO.LY.PARAMTCM
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.REDO.LY.PROGRAM
+    $INSERT I_F.REDO.LY.POINTS
+    $INSERT I_F.REDO.LY.POINTS.TOT
+    $INSERT I_F.REDO.LY.LOG
+    $INSERT I_F.DATES
+    $INSERT I_REDO.B.LY.FILE.GEN.COMMON
+    $INSERT I_F.REDO.LY.PARAMTCM
 *-----------------------------------------------------------------------------
 MAIN:
 *-----------------------------------------------------------------------------
-GOSUB INIT
-GOSUB OPENFILES
-GOSUB READ.PARAM
-GOSUB PROGRAM.END
+    GOSUB INIT
+    GOSUB OPENFILES
+    GOSUB READ.PARAM
+    GOSUB PROGRAM.END
 *-----------------------------------------------------------------------------
 INIT:
 *-----------------------------------------------------------------------------
 
 
-Y.PATH = ''
-F.PATH = ''
+    Y.PATH = ''
+    F.PATH = ''
 
-G.DATE = ''
-I.DATE = DATE()
-CALL DIETER.DATE(G.DATE,I.DATE,'')
+    G.DATE = ''
+    I.DATE = DATE()
+    CALL DIETER.DATE(G.DATE,I.DATE,'')
 
-Y.NEXT.WRK.DAY = R.DATES(EB.DAT.NEXT.WORKING.DAY)
-NEXT.MONTH = Y.NEXT.WRK.DAY[5,2]
+    Y.NEXT.WRK.DAY = R.DATES(EB.DAT.NEXT.WORKING.DAY)
+    NEXT.MONTH = Y.NEXT.WRK.DAY[5,2]
 
-CUR.MONTH = TODAY[5,2]
-CUR.YEAR  = TODAY[1,4]
-FIRST.MONTH.DAY=TODAY[1,6]:'01'
+    CUR.MONTH = TODAY[5,2]
+    CUR.YEAR  = TODAY[1,4]
+    FIRST.MONTH.DAY=TODAY[1,6]:'01'
 
 RETURN
 *-----------------------------------------------------------------------------
 OPENFILES:
 *-----------------------------------------------------------------------------
-FN.REDO.LY.PROGRAM = 'F.REDO.LY.PROGRAM'
-F.REDO.LY.PROGRAM = ''
-CALL OPF(FN.REDO.LY.PROGRAM,F.REDO.LY.PROGRAM)
+    FN.REDO.LY.PROGRAM = 'F.REDO.LY.PROGRAM'
+    F.REDO.LY.PROGRAM = ''
+    CALL OPF(FN.REDO.LY.PROGRAM,F.REDO.LY.PROGRAM)
 
-FN.REDO.LY.POINTS = 'F.REDO.LY.POINTS'
-F.REDO.LY.POINTS = ''
-CALL OPF(FN.REDO.LY.POINTS,F.REDO.LY.POINTS)
+    FN.REDO.LY.POINTS = 'F.REDO.LY.POINTS'
+    F.REDO.LY.POINTS = ''
+    CALL OPF(FN.REDO.LY.POINTS,F.REDO.LY.POINTS)
 
-FN.REDO.LY.POINTS.TOT = 'F.REDO.LY.POINTS.TOT'
-F.REDO.LY.POINTS.TOT = ''
-CALL OPF(FN.REDO.LY.POINTS.TOT,F.REDO.LY.POINTS.TOT)
+    FN.REDO.LY.POINTS.TOT = 'F.REDO.LY.POINTS.TOT'
+    F.REDO.LY.POINTS.TOT = ''
+    CALL OPF(FN.REDO.LY.POINTS.TOT,F.REDO.LY.POINTS.TOT)
 
-FN.REDO.LY.PARAMTCM = 'F.REDO.LY.PARAMTCM'
-F.REDO.LY.PARAMTCM = ''
-CALL OPF(FN.REDO.LY.PARAMTCM,F.REDO.LY.PARAMTCM)
+    FN.REDO.LY.PARAMTCM = 'F.REDO.LY.PARAMTCM'
+    F.REDO.LY.PARAMTCM = ''
+    CALL OPF(FN.REDO.LY.PARAMTCM,F.REDO.LY.PARAMTCM)
 
-FN.REDO.LY.LOG = 'F.REDO.LY.LOG'
-F.REDO.LY.LOG = ''
-CALL OPF(FN.REDO.LY.LOG,F.REDO.LY.LOG)
+    FN.REDO.LY.LOG = 'F.REDO.LY.LOG'
+    F.REDO.LY.LOG = ''
+    CALL OPF(FN.REDO.LY.LOG,F.REDO.LY.LOG)
 
-FLAG.COUNT = ''
-RECNUM = ''
-VAR.TOT.REC = ''
+    FLAG.COUNT = ''
+    RECNUM = ''
+    VAR.TOT.REC = ''
 RETURN
 *-----------------------------------------------------------------------------
 READ.PARAM:
 *-----------------------------------------------------------------------------
-IF NEXT.MONTH EQ CUR.MONTH THEN
-FILE.NAME = 'PGDIARIO':TODAY[7,2]:TODAY[5,2]:TODAY[1,4]
-LASTMONTHWDAY = 'N'
-END ELSE
-FILE.NAME = 'PGMENSUAL':TODAY[7,2]:TODAY[5,2]:TODAY[1,4]
-LASTMONTHWDAY = 'Y'
-END
+    IF NEXT.MONTH EQ CUR.MONTH THEN
+        FILE.NAME = 'PGDIARIO':TODAY[7,2]:TODAY[5,2]:TODAY[1,4]
+        LASTMONTHWDAY = 'N'
+    END ELSE
+        FILE.NAME = 'PGMENSUAL':TODAY[7,2]:TODAY[5,2]:TODAY[1,4]
+        LASTMONTHWDAY = 'Y'
+    END
 
 *CALL CACHE.READ(FN.REDO.LY.PARAMTCM,'SYSTEM',R.REC.PARAM,PARAM.ERR)
-IDVAR.1 = 'SYSTEM' ;* R22 AUTO CONVERSION
-CALL CACHE.READ(FN.REDO.LY.PARAMTCM,IDVAR.1,R.REC.PARAM,PARAM.ERR);* R22 AUTO CONVERSION
+    IDVAR.1 = 'SYSTEM' ;* R22 AUTO CONVERSION
+    CALL CACHE.READ(FN.REDO.LY.PARAMTCM,IDVAR.1,R.REC.PARAM,PARAM.ERR);* R22 AUTO CONVERSION
 
-Y.PATH = R.REC.PARAM<REDO.PARAM.GEN.PATH.FG>
+    Y.PATH = R.REC.PARAM<REDO.PARAM.GEN.PATH.FG>
 
-OPENSEQ Y.PATH,FILE.NAME TO F.PATH ELSE
-CREATE F.PATH ELSE
-END
-END
-
+    OPENSEQ Y.PATH,FILE.NAME TO F.PATH ELSE
+        CREATE F.PATH ELSE
+        END
+    END
+ 
 RETURN
 *-----------------------------------------------------------------------------
 PROGRAM.END:

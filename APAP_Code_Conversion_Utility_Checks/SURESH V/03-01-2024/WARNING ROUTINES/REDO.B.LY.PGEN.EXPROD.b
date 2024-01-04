@@ -1,14 +1,14 @@
-* @ValidationCode : MjotMTA0NDA1NjczNjpDcDEyNTI6MTY5MDI2NDQwODU4MTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:28
+* @ValidationCode : Mjo0OTU2MjA0NzM6Q3AxMjUyOjE3MDQzNjQ5OTk0Mzg6MzMzc3U6LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 04 Jan 2024 16:13:19
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.LY.PGEN.EXPROD(CUS.ID)
@@ -432,7 +432,7 @@ CHECK.MASTER.PRG:
 
 *  CALL F.READ(FN.REDO.LY.MASTERPRGDR,'SYSTEM',R.REDO.LY.MASTERPRGDR,F.REDO.LY.MASTERPRGDR,MAS.ERR) ;*Tus Start
 *    CALL CACHE.READ(FN.REDO.LY.MASTERPRGDR,'SYSTEM',R.REDO.LY.MASTERPRGDR,MAS.ERR) ; * Tus End
-IDVAR.1 = 'SYSTEM' ;* R22 UTILITY AUTO CONVERSION
+    IDVAR.1 = 'SYSTEM' ;* R22 UTILITY AUTO CONVERSION
     CALL CACHE.READ(FN.REDO.LY.MASTERPRGDR,IDVAR.1,R.REDO.LY.MASTERPRGDR,MAS.ERR) ; * Tus End;* R22 UTILITY AUTO CONVERSION
     IF R.REDO.LY.MASTERPRGDR THEN
         Y.MASTER.PRG = R.REDO.LY.MASTERPRGDR<REDO.MASPRG.MASTER.PRG>

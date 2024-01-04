@@ -1,12 +1,12 @@
-* @ValidationCode : MjotNzMzNTUxNjMwOkNwMTI1MjoxNjg0ODU0MzkxNDE0OklUU1M6LTE6LTE6LTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:31
+* @ValidationCode : MjotMTAzOTcxOTg0MDpDcDEyNTI6MTcwNDM2NTA3NTIxODozMzNzdTotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 04 Jan 2024 16:14:35
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -7
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -38,13 +38,13 @@ SUBROUTINE REDO.B.LY.PGEN.EXPROD.SELECT
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *----------------------------------------------------------------------------------------------------------
 
-$INSERT I_COMMON
-$INSERT I_EQUATE
-   $USING EB.Service
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $USING EB.Service
 
-$INSERT I_REDO.B.LY.PGEN.EXPROD.COMMON
+    $INSERT I_REDO.B.LY.PGEN.EXPROD.COMMON
 
-GOSUB PROCESS
+    GOSUB PROCESS
 
 RETURN
 
@@ -52,13 +52,13 @@ RETURN
 PROCESS:
 *-------
 
-SEL.LIST = ''
-IF PRG.RECSEL EQ 'Y' THEN
-SEL.CUST.CMD = 'SELECT ':FN.CUSTOMER
-CALL EB.READLIST(SEL.CUST.CMD,SEL.LIST,'',ID.CNT,'')
-END
+    SEL.LIST = ''
+    IF PRG.RECSEL EQ 'Y' THEN
+        SEL.CUST.CMD = 'SELECT ':FN.CUSTOMER
+        CALL EB.READLIST(SEL.CUST.CMD,SEL.LIST,'',ID.CNT,'')
+    END
 *CALL BATCH.BUILD.LIST('',SEL.LIST)
-EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
+    EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
 
 RETURN
 
