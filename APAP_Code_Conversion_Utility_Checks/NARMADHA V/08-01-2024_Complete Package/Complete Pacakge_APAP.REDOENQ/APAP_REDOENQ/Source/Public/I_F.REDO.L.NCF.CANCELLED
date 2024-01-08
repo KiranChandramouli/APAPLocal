@@ -1,0 +1,14 @@
+* I_F.REDO.L.NCF.CANCELLED Created 06 DEC 13 at 11:13AM by t24uatd/INPUTTER
+*      PREFIX[NCF.CAN]
+             EQU NCF.CAN.TXN.ID TO 1,   RedoLNcfCancelled_TxnId TO 1,
+               NCF.CAN.TXN.TYPE TO 2,   RedoLNcfCancelled_TxnType TO 2,
+                   NCF.CAN.DATE TO 3,   RedoLNcfCancelled_Date TO 3,
+          NCF.CAN.CHARGE.AMOUNT TO 4,   RedoLNcfCancelled_ChargeAmount TO 4,
+             NCF.CAN.TAX.AMOUNT TO 5,   RedoLNcfCancelled_TaxAmount TO 5,
+                    NCF.CAN.NCF TO 6,   RedoLNcfCancelled_Ncf TO 6,
+           NCF.CAN.MODIFIED.NCF TO 7,   RedoLNcfCancelled_ModifiedNcf TO 7,
+                NCF.CAN.ACCOUNT TO 8,   RedoLNcfCancelled_Account TO 8,
+               NCF.CAN.CUSTOMER TO 9,   RedoLNcfCancelled_Customer TO 9,
+                NCF.CAN.ID.TYPE TO 10,  RedoLNcfCancelled_IdType TO 10,
+              NCF.CAN.ID.NUMBER TO 11,  RedoLNcfCancelled_IdNumber TO 11,
+               NCF.CAN.CAN.TYPE TO 12,  RedoLNcfCancelled_CanType TO 12
