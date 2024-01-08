@@ -1,5 +1,5 @@
-* @ValidationCode : MjoxODgyNTMyNzc6VVRGLTg6MTcwNDM3MzUzOTE5MzpBZG1pbjotMTotMTowOjA6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 04 Jan 2024 18:35:39
+* @ValidationCode : MjotMTU5MjM1MDE3OTpVVEYtODoxNzA0Njk1MTcxMDQ1OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 08 Jan 2024 11:56:11
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -34,6 +34,7 @@ SUBROUTINE REDO.NOF.PLASTIC.GNB130.REG
 *  DATE               WHO                REFERENCE                 DESCRIPTION
 * 18-APR-2023     Conversion tool   R22 Auto conversion       VM to @VM, SM to @SM, ++ to +=, -- to -=, I to I.VAR
 * 18-APR-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
+* 08-01-2024      Narmadha  V       Manual R22 Coversion       CALL OPF changed, F.READ to CACHE.READ
 *-------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -114,15 +115,17 @@ FILE.INIT:
 
     FN.REDO.CARD.PRINT.LOST.HIS='F.REDO.CARD.PRINT.LOST$HIS'
     F.REDO.CARD.PRINT.LOST.HIS =''
-    CALL OPF(FN.REDO.CARD.PRINT.LOST,F.REDO.CARD.PRINT.LOST)
+*CALL OPF(FN.REDO.CARD.PRINT.LOST,F.REDO.CARD.PRINT.LOST)
+    CALL OPF(FN.REDO.CARD.PRINT.LOST.HIS,F.REDO.CARD.PRINT.LOST.HIS) ;*Manual R22 Conversion
 
     FN.REDO.H.REPORTS.PARAM='F.REDO.H.REPORTS.PARAM'
     F.REDO.H.REPORTS.PARAM =''
-    CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
+*CALL OPF(FN.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM)
 
 *CALL F.READ(FN.REDO.H.REPORTS.PARAM,'TDN5',R.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM,ERR)
     IDVAR.1 = 'TDN5' ;* R22 Utility Changes
-    CALL F.READ(FN.REDO.H.REPORTS.PARAM,IDVAR.1,R.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM,ERR);* R22 Utility Changes
+*CALL F.READ(FN.REDO.H.REPORTS.PARAM,IDVAR.1,R.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM,ERR);* R22 Utility Changes
+    CALL CACHE.READ(FN.REDO.H.REPORTS.PARAM,IDVAR.1,R.REDO.H.REPORTS.PARAM,F.REDO.H.REPORTS.PARAM,ERR);* Manual R22 Conversion
     Y.OUT.DIR =R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.OUT.DIR>
     Y.OUT.FILE=R.REDO.H.REPORTS.PARAM<REDO.REP.PARAM.OUT.FILE.NAME>
     OPEN Y.OUT.DIR TO F.OUT.DIR ELSE
