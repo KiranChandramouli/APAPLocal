@@ -1,12 +1,12 @@
-* @ValidationCode : MjoxNzQxNTczMDM3OkNwMTI1MjoxNjg0ODU0MzkwMjI0OklUU1M6LTE6LTE6LTE0OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
+* @ValidationCode : MjoyMDUxODUyNTU0OkNwMTI1MjoxNzA0MzY0MjgyNTk3OjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jan 2024 16:01:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -14
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -35,35 +35,35 @@ SUBROUTINE REDO.B.LY.FILE.GEN.SELECT
 * 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
-$INSERT I_COMMON
-$INSERT I_EQUATE
-$INSERT I_F.REDO.LY.PROGRAM
-$INSERT I_F.REDO.LY.POINTS
-$INSERT I_F.DATES
-$INSERT I_REDO.B.LY.FILE.GEN.COMMON
-   $USING EB.Service
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.REDO.LY.PROGRAM
+    $INSERT I_F.REDO.LY.POINTS
+    $INSERT I_F.DATES
+    $INSERT I_REDO.B.LY.FILE.GEN.COMMON
+    $USING EB.Service
 *-----------------------------------------------------------------------------
-GOSUB SELECT.PRGM
-GOSUB PROGRAM.END
+    GOSUB SELECT.PRGM
+    GOSUB PROGRAM.END
 *-----------------------------------------------------------------------------
 SELECT.PRGM:
 *-----------------------------------------------------------------------------
 
-IF LASTMONTHWDAY EQ 'N' THEN
-SEL.CMD = 'SELECT ':FN.REDO.LY.PROGRAM:' WITH GEN.FREC EQ DIARIO AND POINT.USE EQ 2'
-CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.REC,PRGM.ERR)
-VAR.TOT.REC = NO.REC
+    IF LASTMONTHWDAY EQ 'N' THEN
+        SEL.CMD = 'SELECT ':FN.REDO.LY.PROGRAM:' WITH GEN.FREC EQ DIARIO AND POINT.USE EQ 2'
+        CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.REC,PRGM.ERR)
+        VAR.TOT.REC = NO.REC
 *CALL BATCH.BUILD.LIST('',SEL.LIST)
-EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
-END
+        EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
+    END
 
-IF LASTMONTHWDAY EQ 'Y' THEN
-SEL.CMD = 'SELECT ':FN.REDO.LY.PROGRAM:' WITH GEN.FREC EQ MENSUAL AND POINT.USE EQ 2'
-CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.REC,PRGM.ERR)
-VAR.TOT.REC = NO.REC
+    IF LASTMONTHWDAY EQ 'Y' THEN
+        SEL.CMD = 'SELECT ':FN.REDO.LY.PROGRAM:' WITH GEN.FREC EQ MENSUAL AND POINT.USE EQ 2'
+        CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.REC,PRGM.ERR)
+        VAR.TOT.REC = NO.REC
 *CALL BATCH.BUILD.LIST('',SEL.LIST)
-EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
-END
+        EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
+    END
 
 RETURN
 *-----------------------------------------------------------------------------

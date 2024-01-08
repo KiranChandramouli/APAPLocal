@@ -1,12 +1,12 @@
-* @ValidationCode : MjoyNDk2NTU1NzI6Q3AxMjUyOjE2ODQ4NTQzOTA1OTQ6SVRTUzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 23 May 2023 20:36:30
+* @ValidationCode : MjoxNjg3MzcwMDY2OkNwMTI1MjoxNzA0MzY0NjE0MTcyOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jan 2024 16:06:54
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : 333su
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
@@ -36,16 +36,16 @@ SUBROUTINE REDO.B.LY.GET.TXN.M.SELECT
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
 *---------------------------------------------------------------------------------------------
 
-$INSERT I_COMMON
-$INSERT I_EQUATE
-   $USING EB.Service
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $USING EB.Service
 
-$INSERT I_REDO.B.LY.GET.TXN.M.COMMON
+    $INSERT I_REDO.B.LY.GET.TXN.M.COMMON
 
-SEL.CMD = 'SELECT ':FN.ACCT.ENT.TODAY
-CALL EB.READLIST(SEL.CMD,ACCT.ENT.TODAY.LIST,'',NO.OF.REC,'')
+    SEL.CMD = 'SELECT ':FN.ACCT.ENT.TODAY
+    CALL EB.READLIST(SEL.CMD,ACCT.ENT.TODAY.LIST,'',NO.OF.REC,'')
 *CALL BATCH.BUILD.LIST('',ACCT.ENT.TODAY.LIST)
-EB.Service.BatchBuildList('',ACCT.ENT.TODAY.LIST);* R22 AUTO CONVERSION
+    EB.Service.BatchBuildList('',ACCT.ENT.TODAY.LIST);* R22 AUTO CONVERSION
 
 RETURN
 END
