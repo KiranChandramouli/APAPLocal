@@ -1,5 +1,5 @@
-* @ValidationCode : MjoyNTYwODkzMTpVVEYtODoxNzA0MzczNDE2NTY1OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 04 Jan 2024 18:33:36
+* @ValidationCode : MjotMTIwMzA4MzUyNzpVVEYtODoxNzA0NjkwODgxMzM2OkFkbWluOi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 08 Jan 2024 10:44:41
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -35,6 +35,7 @@ SUBROUTINE REDO.NOF.PLASTIC.CARD.GNB130.BCK(Y.FINAL.ARRAY)
 *  DATE             WHO                   REFERENCE
 * 13-APRIL-2023      Conversion Tool       R22 Auto Conversion - VM to @VM , ++ to += , -- to -= , ! to * , I to I.VAR and SM to @SM
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+* 08-01-2024         Narmadha V            Manual R22 Conversion   Call OPF changed
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -113,7 +114,8 @@ FILE.INIT:
 
     FN.REDO.CARD.PRINT.LOST.HIS='F.REDO.CARD.PRINT.LOST$HIS'
     F.REDO.CARD.PRINT.LOST.HIS =''
-    CALL OPF(FN.REDO.CARD.PRINT.LOST,F.REDO.CARD.PRINT.LOST)
+*CALL OPF(FN.REDO.CARD.PRINT.LOST,F.REDO.CARD.PRINT.LOST)
+    CALL OPF(FN.REDO.CARD.PRINT.LOST.HIS,F.REDO.CARD.PRINT.LOST.HIS);*Manual R22 Changes
 
 RETURN
 *--------------------------------------------------------------------------------------------
