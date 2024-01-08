@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTU2NTgxNTUwOlVURi04OjE3MDQ0NTM3NTQzMTQ6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 05 Jan 2024 16:52:34
+* @ValidationCode : MjoyMDk1ODg4Nzc0OlVURi04OjE3MDQ2OTk4MTgxMzA6QWRtaW46LTE6LTE6MDowOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 08 Jan 2024 13:13:38
 * @ValidationInfo : Encoding          : UTF-8
 * @ValidationInfo : User Name         : Admin
 * @ValidationInfo : Nb tests success  : N/A
@@ -28,6 +28,7 @@ SUBROUTINE REDO.NOFILE.THIRDPARTY.SUPPLIER(THIRD.PARTY.LIST)
 *  DATE             WHO                   REFERENCE
 * 13-APRIL-2023      Conversion Tool       R22 Auto Conversion  - Added IF E EQ "EB-UNKNOWN.VARIABLE" THEN , F.READ to CACHE.READ , VM to @VM , FM to @FM
 * 13-APRIL-2023      Harsha                R22 Manual Conversion - Call routine modified
+* 08-01-2024         Narmadha V            Manual R22 Conversion   Changed hardcoded value to variable, F.READ to CACHE.READ
 *------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -118,7 +119,8 @@ MAIN.PROCESS:
     Y.ID = SEL.RTP.LIST<1>
     IF Y.ID THEN
 
-        CALL F.READ(FN.RTP,Y.ID,R.RTP,F.RTP,REDO.ERR)
+*CALL F.READ(FN.RTP,Y.ID,R.RTP,F.RTP,REDO.ERR)
+        CALL CACHE.READ(FN.RTP,Y.ID,R.RTP,REDO.ERR) ;*Manual R22 Conversion
         Y.COMP.ID       = R.RTP<REDO.TP.COMP.NAME>
         Y.INTERFACE.REQ = R.RTP<REDO.TP.INTERFACE.REQ>
         Y.METHOD.LIST   = R.RTP<REDO.TP.METHOD.DESC>
@@ -211,8 +213,10 @@ HANDLE.FAIL:
         Y.RESPONSE.MSG = EJB_ARGUMENT[1,4]
         IF Y.RESPONSE.MSG EQ 'FAIL' OR Y.RESPONSE THEN
             Y.MESSAGE=EJB_ARGUMENT<1>
+            Y.VAR =  "EB-TP.CON.FAIL.CODE"
             IF Y.RESPONSE THEN
-                CALL CACHE.READ(FN.EB.ERROR, "EB-TP.CON.FAIL.CODE", R.EB.ERROR, ERR)	;*R22 Auto Conversion  - F.READ to CACHE.READ
+*CALL CACHE.READ(FN.EB.ERROR, "EB-TP.CON.FAIL.CODE", R.EB.ERROR, ERR)	;*R22 Auto Conversion
+                CALL CACHE.READ(FN.EB.ERROR, Y.VAR, R.EB.ERROR, ERR) ;*Manual R22 Conversion
                 Y.RESP.ERR=R.EB.ERROR<EB.ERR.ERROR.MSG>:' ':Y.RESPONSE
             END
             ELSE
