@@ -1,0 +1,28 @@
+component APAP.LAPAP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method lApapOpCanalesSfDeletef (
+)
+{
+   jBC: L.APAP.OP.CANALES.SF.DELETEF
+}
+
+
+
+public method lapapRtnAbortTxn (
+)
+{
+   jBC: LAPAP.RTN.ABORT.TXN
+}
+
+
+
+public method redoApapPrestacLabDeletef (
+)
+{
+   jBC: REDO.APAP.PRESTAC.LAB.DELETEF
+}
+

@@ -1,0 +1,12 @@
+component APAP.REDOVER
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method redoVValGetCtename (
+)
+{
+   jBC: REDO.V.VAL.GET.CTENAME
+}
+
