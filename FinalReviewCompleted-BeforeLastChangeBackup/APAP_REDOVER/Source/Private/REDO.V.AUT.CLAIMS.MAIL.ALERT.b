@@ -1,7 +1,7 @@
-* @ValidationCode : MjoyODM1MTA3NDI6Q3AxMjUyOjE2ODI0MTIzMzM1NDU6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 25 Apr 2023 14:15:33
+* @ValidationCode : MjoxMDQxMTIyNTg0OkNwMTI1MjoxNzAzNzcwNzU4NzU1OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Dec 2023 19:09:18
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : HarishvikramC
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -36,6 +36,7 @@ SUBROUTINE REDO.V.AUT.CLAIMS.MAIL.ALERT
 *Date                Who               Reference                  Description
 *12-04-2023      conversion tool     R22 Auto code conversion     No changes
 *12-04-2023      Mohanraj R          R22 Manual code conversion   No changes
+*22-12-2023	 VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12165 - By Santiago
 * ----------------------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -52,6 +53,7 @@ RETURN
 *****
 INIT:
 *****
+
     FN.REDO.ISSUE.CLAIMS = 'F.REDO.ISSUE.CLAIMS'
     F.REDO.ISSUE.CLAIMS  = ''
     CALL OPF(FN.REDO.ISSUE.CLAIMS,F.REDO.ISSUE.CLAIMS)
@@ -75,12 +77,12 @@ PROCESS:
     Y.NOTIFICATION      = R.NEW(ISS.CL.CLOSE.NOTIFICATION)
     MSG.EXTRACT.FOLDER  = "&HOLD&"
 *
-    CALL ALLOCATE.UNIQUE.TIME(UNIQUE.TIME)
-    Y.UNIQUE.ID         = UNIQUE.TIME
-    FILENAME            = 'APAP-NOTIFICATION':Y.LAST.HOLD.ID:Y.UNIQUE.ID:'.TXT'
-    FN.HRMS.FILE        = "B186_Mail_Folder"
-    F.HRMA.FILE         = ""
-    CALL OPF(FN.HRMS.FILE,F.HRMA.FILE)
+*    CALL ALLOCATE.UNIQUE.TIME(UNIQUE.TIME)	;*Fix SQA-12165 � By Santiago-commented-start
+*    Y.UNIQUE.ID         = UNIQUE.TIME
+*    FILENAME            = 'APAP-NOTIFICATION':Y.LAST.HOLD.ID:Y.UNIQUE.ID:'.TXT'
+*    FN.HRMS.FILE        = "B186_Mail_Folder"
+*    F.HRMA.FILE         = ""
+*    CALL OPF(FN.HRMS.FILE,F.HRMA.FILE)	;*Fix SQA-12165 � By Santiago-end
     IF Y.NOTIFICATION EQ 'YES' THEN
 
 * PACS00077652 - S
@@ -111,7 +113,7 @@ PROCESS:
         Y.BODY        = R.FILE.REC
 
         RECORD = Y.FROM.MAIL:"#":Y.TO.MAIL:"#":Y.SUBJECT:"#":Y.BODY
-        WRITE RECORD TO F.HRMA.FILE,FILENAME
+*        WRITE RECORD TO F.HRMA.FILE,FILENAME	;*Fix SQA-12165 � By Santiago-commented
 
     END
 RETURN

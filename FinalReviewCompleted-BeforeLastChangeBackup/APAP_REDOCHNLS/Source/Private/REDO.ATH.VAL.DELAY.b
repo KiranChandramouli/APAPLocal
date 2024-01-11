@@ -1,18 +1,8 @@
-* @ValidationCode : Mjo2MTAyNjQ5MjE6Q3AxMjUyOjE2OTQ2MDUxNzI2OTM6SVRTUzotMTotMTo4ODoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 13 Sep 2023 17:09:32
-* @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
-* @ValidationInfo : Nb tests success  : N/A
-* @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 88
-* @ValidationInfo : Coverage          : N/A
-* @ValidationInfo : Strict flag       : true
-* @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
-* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-
-SUBROUTINE REDO.ATH.VAL.DELAY
+*-----------------------------------------------------------------------------
+* <Rating>-12</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.ATH.VAL.DELAY
 **************************************************************************
 ******************************************************************************
 *  Company   Name    :Asociacion Popular de Ahorros y Prestamos
@@ -32,43 +22,56 @@ SUBROUTINE REDO.ATH.VAL.DELAY
 *03.12.2010   S DHAMU       ODR-2010-08-0469  INITIAL CREATION
 * 10-APR-2023     Conversion tool    R22 Auto conversion       No changes
 * 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+* 20-12-2023    VIGNESHWARI      ADDED COMMENT FOR INTERFACE CHANGES 
 *----------------------------------------------------------------------
-    $INSERT I_COMMON
-    $INSERT I_EQUATE
-    $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
-    $INSERT I_F.REDO.APAP.H.PARAMETER
-    $INSERT I_F.ATM.REVERSAL
+$INSERT I_COMMON
+$INSERT I_EQUATE
+$INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
+$INSERT I_F.REDO.APAP.H.PARAMETER
+$INSERT I_F.ATM.TRANSACTION ;* ATM Change by Mario team
 
 
-    GOSUB PROCESS
+  GOSUB PROCESS
 
-RETURN
+  RETURN
 
 
 *******
 PROCESS:
 ********
-
-
-    Y.PARAM.DAYS=R.REDO.APAP.H.PARAMETER<PARAM.LOCK.DAYS>
-    ATM.REVERSAL.ID=CARD.NUMBER:'.':Y.FIELD.VALUE
-    CALL F.READU(FN.ATM.REVERSAL,ATM.REVERSAL.ID,R.ATM.REVERSAL,F.ATM.REVERSAL,ATM.REV.ERR,'')
-    IF R.ATM.REVERSAL EQ '' THEN
+**ATM Change by Mario team-Start
+  ERROR.READU = ''
+  FN.ATM.TRANSACTION = 'F.ATM.TRANSACTION'
+  F.ATM.TRANSACTION = ''
+  Y.PARAM.DAYS=R.REDO.APAP.H.PARAMETER<PARAM.LOCK.DAYS>
+  ATM.TRANSACTION.ID=CARD.NUMBER:'.':Y.FIELD.VALUE
+  
+  CALL F.READ(FN.ATM.TRANSACTION,ATM.TRANSACTION.ID,R.ATM.TRANSACTION,F.ATM.TRANSACTION,ERR.ATM)
+  *CALL F.READU(FN.ATM.TRANSACTION,ATM.TRANSACTION.ID,R.ATM.TRANSACTION,F.ATM.TRANSACTION,ERR.ATM,ATM.REV.ERR)
+  IF R.ATM.TRANSACTION EQ '' THEN
 *        ERROR.MESSAGE='NOT.VALID.TRANSACTION'
-        ERROR.MESSAGE='NO.MATCH.TRANSACTION'
-    END
+    ERROR.MESSAGE='NO.MATCH.TRANSACTION'
+  END
 
+*INICIAN CAMBIOS JORGE
+	LOCAL.APPLICATION = 'ATM.TRANSACTION'
+    LOCAL.FIELD = 'L.LOCAL.DATE'
+    LOCAL.POSITION = ""
+    CALL MULTI.GET.LOC.REF(LOCAL.APPLICATION, LOCAL.FIELD, LOCAL.POSITION)
+    L.LOCAL.DATE.POS = LOCAL.POSITION<1,1>
+*TERMINAN CAMBIOS JORGE
 
-    Y.ATM.REV.LOC.DATE=R.ATM.REVERSAL<AT.REV.T24.DATE>
-    YREGION=''
-    Y.ADD.DAYS='+':Y.PARAM.DAYS:'C'
-
+  *Y.ATM.REV.LOC.DATE=R.ATM.REVERSAL<AT.REV.AUDIT.DATE.TIME> --CAMBIO JORGE
+  Y.ATM.REV.LOC.DATE=R.ATM.TRANSACTION<AT.REV.LOCAL.REF, L.LOCAL.DATE.POS>  ;*--CAMBIO JORGE
+  YREGION=''
+  Y.ADD.DAYS='+':Y.PARAM.DAYS:'C'
+**ATM Change by Mario team-End
 *    CALL CDT(YREGION,Y.ATM.REV.LOC.DATE,Y.ADD.DAYS)
 
 *    IF Y.ATM.REV.LOC.DATE LT TODAY THEN
 *        ERROR.MESSAGE='DELAY.SUBMISSION'
 *    END
 
-RETURN
+  RETURN
 
 END

@@ -1,21 +1,25 @@
-* @ValidationCode : MjotNzYyNzM4MDk4OkNwMTI1MjoxNjgxMjE1MTY0MjAyOklUU1M6LTE6LTE6LTc6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 11 Apr 2023 17:42:44
+* @ValidationCode : MjoxMjA5NTM3OTkzOkNwMTI1MjoxNzAzNzY5MTc4MjkyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:42:58
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -7
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-SUBROUTINE REDO.ATH.STATUS.UPDATE
+*-----------------------------------------------------------------------------
+* <Rating>-10</Rating>
+*-----------------------------------------------------------------------------
+  SUBROUTINE REDO.ATH.STATUS.UPDATE
 *******************************************************************************
 * Company Name : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
 * Developed By : DHAMU S
 * Program Name : REDO.ATH.STATUS.UPDATE
+
 *****************************************************************
 *Description:This routine is to update the status and response code based on the error message
 ***********************************************************************************************
@@ -29,33 +33,35 @@ SUBROUTINE REDO.ATH.STATUS.UPDATE
 *
 * 04-APR-2023     Conversion tool    R22 Auto conversion       No changes
 * 10-APR-2023      Harishvikram C   Manual R22 conversion      No changes
+*20-12-2023	  VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          NO CHANGES
 *--------------------------------------------------------------------------------------------------------
-    $INSERT I_COMMON
-    $INSERT I_EQUATE
-    $INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
-    $INSERT I_F.REDO.ATH.SETTLMENT
-    $INSERT I_F.REDO.DC.STLMT.ERR.CODE
-    GOSUB PROCESS
+$INSERT I_COMMON
+$INSERT I_EQUATE
+$INSERT I_REDO.ATH.STLMT.FILE.PROCESS.COMMON
+$INSERT I_F.REDO.ATH.SETTLMENT
+$INSERT I_F.REDO.DC.STLMT.ERR.CODE
+  
+  GOSUB PROCESS
 
-RETURN
+  RETURN
 ********
 PROCESS:
 ********
 
-    IF ERROR.MESSAGE EQ '' THEN
+  IF ERROR.MESSAGE EQ '' THEN
 
-        R.REDO.STLMT.LINE<ATH.SETT.STATUS> = "SETTLED"
-    END
-    IF ERROR.MESSAGE NE '' THEN
+    R.REDO.STLMT.LINE<ATH.SETT.STATUS> = "SETTLED"
+  END
+  IF ERROR.MESSAGE NE '' THEN
 
-        LOCATE ERROR.MESSAGE IN R.REDO.DC.STLMT.ERR.CODE<STM.ERR.CODE.ERR.MSG,1> SETTING ERROR.POS THEN
-            R.REDO.STLMT.LINE<ATH.SETT.REASON.CODE> = R.REDO.DC.STLMT.ERR.CODE<STM.ERR.CODE.ERR.CODE,ERROR.POS>
-        END
-
-        R.REDO.STLMT.LINE<ATH.SETT.STATUS> = "REJECTED"
+    LOCATE ERROR.MESSAGE IN R.REDO.DC.STLMT.ERR.CODE<STM.ERR.CODE.ERR.MSG,1> SETTING ERROR.POS THEN
+      R.REDO.STLMT.LINE<ATH.SETT.REASON.CODE> = R.REDO.DC.STLMT.ERR.CODE<STM.ERR.CODE.ERR.CODE,ERROR.POS>
     END
 
+    R.REDO.STLMT.LINE<ATH.SETT.STATUS> = "REJECTED"
+  END
 
-RETURN
+
+  RETURN
 
 END
