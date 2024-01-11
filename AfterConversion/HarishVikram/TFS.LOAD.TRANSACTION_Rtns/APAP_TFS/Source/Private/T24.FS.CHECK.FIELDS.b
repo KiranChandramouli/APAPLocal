@@ -1,7 +1,7 @@
-* @ValidationCode : MjoxNTk5NDA0MTUwOkNwMTI1MjoxNjk4NzUwNjcyODYwOklUU1MxOi0xOi0xOjA6MTp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 31 Oct 2023 16:41:12
+* @ValidationCode : Mjo4MTEwNzY3OTM6Q3AxMjUyOjE3MDQ5NzI0NDE4NTI6SGFyaXNodmlrcmFtQzotMTotMTowOjE6dHJ1ZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Jan 2024 16:57:21
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -396,13 +396,14 @@ CHECK.PRELIM.CONDS:
 * recursively
 *
                         ALL.TFS.TXNS = R.NEW(TFS.TRANSACTION)
-                        NO.OF.TXNS = DCOUNT(ALL.TFS.TXNS,@VM) 
+                        NO.OF.TXNS = DCOUNT(ALL.TFS.TXNS,@VM)
                         FOR XX = 1 TO NO.OF.TXNS
                             TFS.TXN = ALL.TFS.TXNS<1,XX>
                             TFS$R.TFS.TXN(XX) = ''
                             IF TFS.TXN THEN
 *                                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
-                                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
+*                                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
+                                APAP.TFS.t24LoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion    ;* TSR-734921 fix
                                 TFS$R.TFS.TXN(XX) = R.TFS.TXN
                                 SAVE.AV = AV ; AV = XX
                                 GOSUB LOAD.STO.RECORD
@@ -441,7 +442,7 @@ CHECK.PRELIM.CONDS:
 * of GE.
 *
                 IF AF GT LINE.FIRST.FIELD AND AF LE LINE.LAST.FIELD AND AF NE TFS.IMPORT.UL THEN
-                    IF T(AF)<3> MATCHES 'NOINPUT' :@VM: 'NOCHANGE' THEN 
+                    IF T(AF)<3> MATCHES 'NOINPUT' :@VM: 'NOCHANGE' THEN
                         PROCESS.GOAHEAD = 0
                     END ELSE
                         IF NOT(R.NEW(TFS.TRANSACTION)<1,AV>) THEN
@@ -602,7 +603,8 @@ CHECK.FIELDS:
             IF COMI THEN
                 TFS.TXN = COMI
 *                CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
-                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
+*                APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion
+                APAP.TFS.t24LoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ;*R22 Manual Conversion          ;* TSR-734921 fix
                 IF NOT(E) THEN
                     LOCATE R.TFS.TXN<TFS.TXN.INTERFACE.TO> IN TFS$R.TFS.PAR<TFS.PAR.APPLICATION,1> SETTING INTERFACE.OK THEN
                         TFS$R.TFS.TXN(AV) = R.TFS.TXN
@@ -904,7 +906,8 @@ CHECK.FIELDS:
                     END
                 END
                 IF NOT(E) THEN
-                    CALL US.GET.LOCAL.REF.POS.ARRAY('FUNDS.TRANSFER','TFS.STO.ID',FT.LREF.POS,FT.LREF.ERR)
+*                    CALL US.GET.LOCAL.REF.POS.ARRAY('FUNDS.TRANSFER','TFS.STO.ID',FT.LREF.POS,FT.LREF.ERR)
+                    CALL MULTI.GET.LOC.REF('FUNDS.TRANSFER','TFS.STO.ID',FT.LREF.POS)   ;* TSR-734921 fix
                     IF NOT(FT.LREF.POS) THEN
                         E = 'EB-TFS.LOCAL.REF.FIELD.MISSING' :@FM: 'TFS.STO.ID' :@FM: 'FUNDS.TRANSFER'
                     END
