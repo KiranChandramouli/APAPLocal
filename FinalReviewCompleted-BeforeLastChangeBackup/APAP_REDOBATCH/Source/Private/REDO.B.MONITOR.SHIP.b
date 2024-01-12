@@ -1,5 +1,5 @@
-* @ValidationCode : MjotOTgyNTMzOTI4OkNwMTI1MjoxNjkwMjY0NDE1OTIxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIyX1NQNS4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 25 Jul 2023 11:23:35
+* @ValidationCode : Mjo2NDYwNDQ5MTY6Q3AxMjUyOjE3MDM3NjkxMzYzMzI6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:42:16
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,7 +8,7 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOBATCH
 SUBROUTINE REDO.B.MONITOR.SHIP(MSG.ID)
@@ -19,9 +19,10 @@ SUBROUTINE REDO.B.MONITOR.SHIP(MSG.ID)
 * 03/09/10 - Created by Victor Nava
 * 07/09/10 - Cesar Yepez. CALLJ to java program
 * Date                  who                   Reference
-* 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - = TO EQ
+* 12-04-2023        CONVERSTION TOOL     R22 AUTO CONVERSTION - = TO EQ
 * 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
-*
+*04-12-2023	        VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES -SQA-11985- No changes
+*22-12-2023	       VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES - SQA-12193 - By Santiago-no changes
 *-------------------------------------------------------------------------------------
 *
     $INSERT I_COMMON
@@ -59,7 +60,7 @@ RETURN
 *
 MAIN.PROCESSING:
 *
-
+    
     CALL F.READ(FN.REDO.MON.SEND.QUEUE, MSG.ID, R.MSG, F.REDO.MON.SEND.QUEUE, ERR.READ)
 *
     IF ERR.READ THEN
@@ -73,7 +74,7 @@ MAIN.PROCESSING:
         Y.MSG.SQL = Y.MSG.SQL : "@fm" : R.MSG<2>
         Y.MSG.SQL = Y.MSG.SQL : "@fm" : R.MSG<3>
         Y.MSG.SQL = Y.MSG.SQL : "@fm" : R.MSG<4>
-
+        
         Y.INSERT.SENTENCE = R.MSG<10>
 
         CALLJ className,methodName,Y.MSG.SQL SETTING ret ON ERROR
@@ -91,8 +92,9 @@ MAIN.PROCESSING:
             RETURN
         END
 
-
         CALL F.DELETE(FN.REDO.MON.SEND.QUEUE, MSG.ID)
+
+ 
 *below lines commented for performance fix. No need to write the log for service completion-Prabhu N
 *        ERR.TYPE = 'OK'
 *        ERR.MSG = 'RECORD ID PROCESSED SUCCESSFULLY'

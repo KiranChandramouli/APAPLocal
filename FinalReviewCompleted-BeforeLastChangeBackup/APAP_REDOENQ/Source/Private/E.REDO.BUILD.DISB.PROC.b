@@ -1,4 +1,17 @@
+* @ValidationCode : MjoxOTU0MDkxNDI5OkNwMTI1MjoxNzAzNzY5MjI5MzA0OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:43:49
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOENQ
+
 SUBROUTINE E.REDO.BUILD.DISB.PROC(ENQ.DATA)
 *
 * ====================================================================================
@@ -17,9 +30,10 @@ SUBROUTINE E.REDO.BUILD.DISB.PROC(ENQ.DATA)
 * Development for : APAP
 * Development by  : JoaquCosta C
 * Date            : 2011-11-29
-*  DATE             WHO                   REFERENCE                  
+*  DATE             WHO                   REFERENCE
 * 06-APRIL-2023      Conversion Tool       R22 Auto Conversion - FM to @FM
-* 06-APRIL-2023      Harsha                R22 Manual Conversion - No changes                             
+* 06-APRIL-2023      Harsha                R22 Manual Conversion - No changes
+*20-12-2023	     VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES-SQA-12007 � By Santiago
 *------------------------------------------------------------------------
 *=======================================================================
 
@@ -34,14 +48,16 @@ SUBROUTINE E.REDO.BUILD.DISB.PROC(ENQ.DATA)
 *
 *************************************************************************
 *
-*  DEBUG
-*
-    GOSUB INITIALISE
-    GOSUB OPEN.FILES
-    GOSUB CHECK.PRELIM.CONDITIONS
-    IF PROCESS.GOAHEAD THEN
-        GOSUB PROCESS
-    END
+
+    
+    ENQ.DATA<-1> = 'STATUS.DISB':@VM:'EQ':@VM:'P AP D NULL'	;*Fix SQA-12007 � By Santiago-new lines added
+    
+*    GOSUB INITIALISE	;*Fix SQA-12007 � By Santiago-commented-start
+*    GOSUB OPEN.FILES
+*    GOSUB CHECK.PRELIM.CONDITIONS
+*    IF PROCESS.GOAHEAD THEN
+*        GOSUB PROCESS
+*    END	;*Fix SQA-12007 � By Santiago-end
 *
 RETURN
 *

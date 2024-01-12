@@ -9269,3 +9269,11 @@ public method lapapCustomerIdenti (
    jBC: LAPAP.CUSTOMER.IDENTI
 }
 
+
+
+public method lapapGetValCardOrder (
+)
+{
+   jBC: LAPAP.GET.VAL.CARD.ORDER
+}
+

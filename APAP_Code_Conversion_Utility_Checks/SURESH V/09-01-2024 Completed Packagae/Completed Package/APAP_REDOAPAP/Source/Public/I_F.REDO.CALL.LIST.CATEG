@@ -1,0 +1,19 @@
+* I_F.REDO.CALL.LIST.CATEG Created 29 JUN 11 at 05:44PM by apap/SPRADEEP1
+*      PREFIX[CALL.LIST.CATEG]
+        EQU CALL.LIST.CATEG.REPORT.NAME TO 1,   RedoCallListCateg_ReportName TO 1,
+            CALL.LIST.CATEG.DESCRIPTION TO 2,   RedoCallListCateg_Description TO 2,
+               CALL.LIST.CATEG.CATEGORY TO 3,   RedoCallListCateg_Category TO 3,
+             CALL.LIST.CATEG.RESERVED.3 TO 4,   RedoCallListCateg_Reserved3 TO 4,
+             CALL.LIST.CATEG.RESERVED.2 TO 5,   RedoCallListCateg_Reserved2 TO 5,
+             CALL.LIST.CATEG.RESERVED.1 TO 6,   RedoCallListCateg_Reserved1 TO 6,
+              CALL.LIST.CATEG.LOCAL.REF TO 7,   RedoCallListCateg_LocalRef TO 7,
+               CALL.LIST.CATEG.OVERRIDE TO 8,   RedoCallListCateg_Override TO 8,
+          CALL.LIST.CATEG.RECORD.STATUS TO 9,   RedoCallListCateg_RecordStatus TO 9,
+                CALL.LIST.CATEG.CURR.NO TO 10,  RedoCallListCateg_CurrNo TO 10,
+               CALL.LIST.CATEG.INPUTTER TO 11,  RedoCallListCateg_Inputter TO 11,
+              CALL.LIST.CATEG.DATE.TIME TO 12,  RedoCallListCateg_DateTime TO 12,
+             CALL.LIST.CATEG.AUTHORISER TO 13,  RedoCallListCateg_Authoriser TO 13,
+                CALL.LIST.CATEG.CO.CODE TO 14,  RedoCallListCateg_CoCode TO 14,
+              CALL.LIST.CATEG.DEPT.CODE TO 15,  RedoCallListCateg_DeptCode TO 15,
+           CALL.LIST.CATEG.AUDITOR.CODE TO 16,  RedoCallListCateg_AuditorCode TO 16,
+        CALL.LIST.CATEG.AUDIT.DATE.TIME TO 17,  RedoCallListCateg_AuditDateTime TO 17

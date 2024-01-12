@@ -1,0 +1,55 @@
+component APAP.TFS
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+
+public method t24LoadTransaction (
+    INOUT tfsTxn string,
+    INOUT rTfsTxn string,
+    INOUT futArg1 string,
+    INOUT futArg2 string,
+    INOUT futArg3 string
+)
+{
+    jBC: T24.LOAD.TRANSACTION
+}
+
+
+
+public method t24FsCheckFields (
+)
+{
+    jBC: T24.FS.CHECK.FIELDS
+}
+
+
+
+public method tfsImportUnderlying (
+    INOUT defaultedField string,
+    INOUT defaultedEnri string
+)
+{
+    jBC: TFS.IMPORT.UNDERLYING
+}
+
+
+public method tfsParseStmtNos (
+    INOUT ulStmtNos string,
+    INOUT resvArg1 string,
+    INOUT resvArg2 string,
+    INOUT resvArg3 string
+)
+{
+    jBC: TFS.PARSE.STMT.NOS
+}
+
+
+
+
+public method vTfsFtPopulateStoDetails (
+)
+{
+    jBC: V.TFS.FT.POPULATE.STO.DETAILS
+}
+

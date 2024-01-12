@@ -1,17 +1,16 @@
-* @ValidationCode : MjotMTcyMTQ0MTE0NTpDcDEyNTI6MTY5NzcxNzg4MzU4MzpJVFNTOi0xOi0xOi05OjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 Oct 2023 17:48:03
+* @ValidationCode : MjotMTMzNzQ2NjA5MDpDcDEyNTI6MTcwMzc2OTE3Nzk0NzpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 28 Dec 2023 18:42:57
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : -9
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-
 SUBROUTINE  REDO.ATH.AUTH.CODE
 *--------------------------------------------------------------------------
 *Company Name      : APAP Bank
@@ -30,8 +29,9 @@ SUBROUTINE  REDO.ATH.AUTH.CODE
 * -------                ----                   ----------              --------
 *23/11/2010      saktharrasool@temenos.com   ODR-2010-08-0469       Initial Version
 
-* 10-APR-2023     Conversion tool    R22 Auto conversion                 No changes
-* 10-APR-2023      Harishvikram C   Manual R22 conversion            CALL routine format modified
+* 10-APR-2023     Conversion tool    R22 Auto conversion       No changes
+* 10-APR-2023      Harishvikram C   Manual R22 conversion      CALL routine format modified
+* 20-12-2023   VIGNESHWARI         ADDED COMMENT ATM Change        ATM Change By Mario Team
 *------------------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -46,8 +46,12 @@ RETURN
 *------------------------------------------------------------------------------------
 INIT:
 *------------------------------------------------------------------------------------
+
+
+
     APAP.REDOCHNLS.redoAthValDelay();*Manual R22 conversion
-*  CALL REDO.ATH.VAL.DELAY
+
+*    CALL REDO.ATH.VAL.DELAY ;*Commenting back after ATM team confirmation
     IF NOT(Y.FIELD.VALUE) THEN
         ERROR.MESSAGE="NO.AUTH.CODE"
     END ELSE
