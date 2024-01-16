@@ -1,0 +1,164 @@
+* @ValidationCode : MjotMTg5NzI4NDY1MzpDcDEyNTI6MTcwMjk4ODM0MDk2NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 19 Dec 2023 17:49:00
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+SUBROUTINE DR.REG.213IF01.UPDATE.CONCAT.LOAD
+*-----------------------------------------------------------------------------
+* Company Name   : APAP
+* Developed By   :
+* Program Name   : DR.REG.213IF01.TXN.EXTRACT
+* Date           : 2-May-2013
+*-----------------------------------------------------------------------------
+* Description:
+*------------
+* This multi-thread job is meant for to extact the tranactions made over 10000 by individual Customer daily.
+*-----------------------------------------------------------------------------
+*
+* Modification History :
+* ----------------------
+*   Date          Author              Modification Description
+* 11-Aug-2014     V.P.Ashokkumar      PACS00309079 - Updated the field mapping and format
+* 14-Oct-2014     V.P.Ashokkumar      PACS00309079 - Updated to filter AML transaction
+* 01-Dec-2014     Ashokkumar.V.P      PACS00309080:- Added the REGN8 report parameter.
+* 21-Mar-2015     Ashokkumar.V.P      PACS00309079:- Added AA overpayment details.
+*---------------------------------------------------------------------------------------
+*DATE               WHO                       REFERENCE                 DESCRIPTION
+*24-04-2023       CONVERSION TOOLS            AUTO R22 CODE CONVERSION  T24.BP ,LAPAP.BP,REGREP.BP,TAM.BP is removed ,$INCLUDE to $INSERT
+*24-04-2023       AJITHKUMAR                  MANUAL R22 CODE CONVERSION NO CHANGE
+*14-12-2023       Santosh C                   MANUAL R22 CODE CONVERSION NO CHANGE   APAP Code Conversion Utility Check
+*----------------------------------------------------------------------------------------
+
+
+
+
+
+*-----------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_BATCH.FILES
+    $INSERT I_F.DATES
+
+    $INSERT I_DR.REG.213IF01.UPDATE.CONCAT.COMMON
+    $INSERT I_F.DR.REG.213IF01.PARAM
+    $INSERT I_F.DR.REG.REGN8.PARAM
+    $INSERT I_F.REDO.AZ.FUND.PARAM ;*R22 AUTO CODE CONVERSION
+
+    GOSUB OPEN.FILES
+    GOSUB INIT.PARA
+RETURN
+
+OPEN.FILES:
+***********
+    FN.CUS = 'F.CUSTOMER'  ; F.CUS = ''
+    CALL OPF(FN.CUS, F.CUS)
+
+    FN.ACCOUNT = 'F.ACCOUNT'  ; F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT, F.ACCOUNT)
+
+    FN.ACCOUNT.HST = 'F.ACCOUNT$HIS' ; F.ACCOUNT.HST = ''
+    CALL OPF(FN.ACCOUNT.HST,F.ACCOUNT.HST)
+
+    FN.STMT.ENTRY = 'F.STMT.ENTRY'  ; F.STMT.ENTRY = ''
+    CALL OPF(FN.STMT.ENTRY, F.STMT.ENTRY)
+
+    FN.FT.HST = 'F.FUNDS.TRANSFER$HIS'  ; F.FT.HST = ''
+    CALL OPF(FN.FT.HST, F.FT.HST)
+
+    FN.TT.HST = 'F.TELLER$HIS'  ; F.TT.HST = ''
+    CALL OPF(FN.TT.HST, F.TT.HST)
+
+    FN.TELLER = 'F.TELLER'; F.TELLER = ''
+    CALL OPF(FN.TELLER,F.TELLER)
+
+    FN.ACCT.ENT.LWORK.DAY = 'F.ACCT.ENT.LWORK.DAY'  ; F.ACCT.ENT.LWORK.DAY = ""
+    CALL OPF(FN.ACCT.ENT.LWORK.DAY, F.ACCT.ENT.LWORK.DAY)
+
+    FN.DR.REG.213IF01.PARAM = 'F.DR.REG.213IF01.PARAM'   ; F.DR.REG.213IF01.PARAM = ''
+    CALL OPF(FN.DR.REG.213IF01.PARAM, F.DR.REG.213IF01.PARAM)
+
+    FN.DR.REG.213IF01.CONCAT = 'F.DR.REG.213IF01.CONCAT'
+    CALL OPF(FN.DR.REG.213IF01.CONCAT,F.DR.REG.213IF01.CONCAT)
+
+    FN.TRANSACTION = 'F.TRANSACTION'; F.TRANSACTION = ''
+    CALL OPF(FN.TRANSACTION,F.TRANSACTION)
+
+    FN.CURRENCY = 'F.CURRENCY'; FV.CURRENCY = ''
+    CALL OPF(FN.CURRENCY,FV.CURRENCY)
+
+    FN.REDO.TRANSACTION.CHAIN = 'F.REDO.TRANSACTION.CHAIN'; F.REDO.TRANSACTION.CHAIN = ''
+    CALL OPF(FN.REDO.TRANSACTION.CHAIN,F.REDO.TRANSACTION.CHAIN)
+
+    FN.CUS.HIS = 'F.CUSTOMER'  ; F.CUS.HIS = ''
+    CALL OPF(FN.CUS.HIS,F.CUS.HIS)
+
+    FN.T24.FUND.SERVICES = 'F.T24.FUND.SERVICES'; F.T24.FUND.SERVICES = ''
+    CALL OPF(FN.T24.FUND.SERVICES,F.T24.FUND.SERVICES)
+
+    FN.T24.FUND.SERVICES.HST = 'F.T24.FUND.SERVICES$HIS'; F.T24.FUND.SERVICES.HST = ''
+    CALL OPF(FN.T24.FUND.SERVICES.HST,F.T24.FUND.SERVICES.HST)
+
+    FN.DR.REG.REGN8.PARAM = 'F.DR.REG.REGN8.PARAM'; F.DR.REG.REGN8.PARAM = ''
+    CALL OPF(FN.DR.REG.REGN8.PARAM,F.DR.REG.REGN8.PARAM)
+
+    FN.REDO.AZ.FUND.PARAM = 'F.REDO.AZ.FUND.PARAM'; F.REDO.AZ.FUND.PARAM = ''
+    CALL OPF(FN.REDO.AZ.FUND.PARAM,F.REDO.AZ.FUND.PARAM)
+
+    FN.REDO.AA.OVERPAYMENT = 'F.REDO.AA.OVERPAYMENT'; F.REDO.AA.OVERPAYMENT = ''
+    CALL OPF(FN.REDO.AA.OVERPAYMENT,F.REDO.AA.OVERPAYMENT)
+
+    FN.RELATION.CUSTOMER = 'F.RELATION.CUSTOMER'; F.RELATION.CUSTOMER = ''
+    CALL OPF(FN.RELATION.CUSTOMER,F.RELATION.CUSTOMER)
+RETURN
+
+INIT.PARA:
+**********
+    R.DR.REG.REGN8.PARAM = ''; DR.REG.REGN8.PARAM.ERR = ''
+    R.DR.REG.213IF01.PARAM = ''; DR.REG.213IF01.PARAM.ERR = ''; LAST.WRK.DATE = ''
+    R.REDO.AZ.FUND.PARAM = ''; REDO.AZ.FUND.PARAM.ERR = ''; YSUSP.ACCT.NO = ''
+*   CALL CACHE.READ(FN.DR.REG.213IF01.PARAM, "SYSTEM", R.DR.REG.213IF01.PARAM, DR.REG.213IF01.PARAM.ERR)
+*   CALL CACHE.READ(FN.DR.REG.REGN8.PARAM, "SYSTEM", R.DR.REG.REGN8.PARAM, DR.REG.REGN8.PARAM.ERR)
+*   CALL CACHE.READ(FN.REDO.AZ.FUND.PARAM,"SYSTEM",R.REDO.AZ.FUND.PARAM,REDO.AZ.FUND.PARAM.ERR)
+    Y.SYS.ID = "SYSTEM" ;*R22 Manual Code Conversion_Utility Check
+    CALL CACHE.READ(FN.DR.REG.213IF01.PARAM, Y.SYS.ID, R.DR.REG.213IF01.PARAM, DR.REG.213IF01.PARAM.ERR) ;*R22 Manual Code Conversion_Utility Check
+    CALL CACHE.READ(FN.DR.REG.REGN8.PARAM, Y.SYS.ID, R.DR.REG.REGN8.PARAM, DR.REG.REGN8.PARAM.ERR) ;*R22 Manual Code Conversion_Utility Check
+    CALL CACHE.READ(FN.REDO.AZ.FUND.PARAM, Y.SYS.ID,R.REDO.AZ.FUND.PARAM,REDO.AZ.FUND.PARAM.ERR) ;*R22 Manual Code Conversion_Utility Check
+    YSUSP.ACCT.NO = R.REDO.AZ.FUND.PARAM<REDO.FUND.ACCT.NUMBER>
+
+    DB.CAT = ''; CHK.SAV.CAT = ''; TT.CASH.WTDW.CODES = ''; ATM.CODES = ''; CHK.CURR.CAT = ''
+    CHK.SAV.CAT = R.DR.REG.REGN8.PARAM<REGN8.PARAM.SAV.CAT>
+    CHANGE @VM TO @FM IN CHK.SAV.CAT
+    TT.CASH.WTDW.CODES = R.DR.REG.REGN8.PARAM<REGN8.PARAM.TT.CASH.WTDW>
+    CHANGE @VM TO @FM IN TT.CASH.WTDW.CODES
+    ATM.CODES = R.DR.REG.REGN8.PARAM<REGN8.PARAM.ATM.AC.COD>
+    CHANGE @VM TO @FM IN ATM.CODES
+    CHK.CURR.CAT = R.DR.REG.REGN8.PARAM<REGN8.PARAM.CURR.CAT>
+    CHANGE @VM TO @FM IN CHK.CURR.CAT
+
+    LAST.WRK.DATE = R.DATES(EB.DAT.LAST.WORKING.DAY)
+
+    LOC.POS = ''; LOC.APP = ''; LOC.FLD = ''
+    LOC.APP = "FUNDS.TRANSFER":@FM:"TELLER":@FM:"CUSTOMER":@FM:"TRANSACTION":@FM:"CURRENCY":@FM:"T24.FUND.SERVICES"
+    LOC.FLD = "L.RTE.FORM":@FM:"L.RTE.FORM":@VM:"T24.FS.REF":@VM:"L.FT.ADD.INFO":@FM:"L.CU.PEPS":@FM:"L.TR.AML.CHECK":@FM:"L.CU.AMLBUY.RT":@FM:"L.RTE.FORM":@VM:"L.FT.ADD.INFO"
+    CALL MULTI.GET.LOC.REF(LOC.APP, LOC.FLD, LOC.POS)
+    FT.L.RTE.FORM.POS = LOC.POS<1,1>
+    TT.L.RTE.FORM.POS = LOC.POS<2,1>
+    T24.FS.REF.POS = LOC.POS<2,2>
+    L.FT.ADD.INFO.POS = LOC.POS<2,3>
+    CUS.L.CU.PEPS.POS = LOC.POS<3,1>
+    L.TR.AML.CHECK.POS = LOC.POS<4,1>
+    L.CU.AMLBUY.RT.POS = LOC.POS<5,1>
+    TFS.L.RTE.FORM.POS = LOC.POS<6,1>
+    TFS.L.FT.ADD.INFO.POS = LOC.POS<6,2>
+RETURN
+
+END
