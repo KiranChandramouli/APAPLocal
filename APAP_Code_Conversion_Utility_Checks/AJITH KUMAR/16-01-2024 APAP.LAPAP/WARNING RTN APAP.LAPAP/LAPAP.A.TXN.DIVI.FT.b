@@ -1,0 +1,186 @@
+* @ValidationCode : MjotMTg0NTc0NTg2MjpDcDEyNTI6MTY5Mjk0NjY0NDcxNzpJVFNTOi0xOi0xOjE3MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 25 Aug 2023 12:27:24
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 170
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+*-----------------------------------------------------------------------------
+* <Rating>-41</Rating>
+*-----------------------------------------------------------------------------
+SUBROUTINE LAPAP.A.TXN.DIVI.FT
+***********************************************************
+*----------------------------------------------------------
+*
+* COMPANY NAME    : APAP
+* DEVELOPED BY    : ROQUEZADA
+*
+*----------------------------------------------------------
+*
+* DESCRIPTION     : AUTHORISATION routine to be used in FT versions
+*                   to save USD/EUR transfer in historic table
+*------------------------------------------------------------
+*
+* Modification History :
+*-----------------------
+*  DATE             WHO             REFERENCE       DESCRIPTION
+*2022-09-12       ROQUEZADA                           CREATE
+*23-08-2023    VICTORIA S          R22 MANUAL CONVERSION   INSERT FILE MODIFIED
+*----------------------------------------------------------------------
+*
+    $INSERT I_COMMON ;*R22 MANUAL CONVERSION START
+    $INSERT I_EQUATE
+    $INSERT I_GTS.COMMON
+    $INSERT I_System
+    $INSERT I_F.FUNDS.TRANSFER
+    $INSERT I_F.ST.LAPAP.TRANS.DIVISA.SDT
+    $INSERT I_F.CUSTOMER ;*R22 MANUAL CONVERSION START
+   $USING EB.LocalReferences
+
+    GOSUB INIT
+    GOSUB READ.CUSTOMER
+    GOSUB FT.PROCESS
+
+RETURN
+
+
+* ===
+INIT:
+* ===
+
+    APPL.NAME.ARR = "FUNDS.TRANSFER" : @FM : "CUSTOMER"
+    FLD.NAME.ARR = "L.COMMENTS" : @VM : "L.ACTUAL.VERSIO" : @VM : "L.CU.CIDENT" : @VM: "L.CU.RNC" : @VM : "L.CU.PASS.NAT"
+    CALL MULTI.GET.LOC.REF(APPL.NAME.ARR,FLD.NAME.ARR,FLD.POS.ARR)
+
+    Y.L.COMMENTS.POS = FLD.POS.ARR<1,1>
+    Y.L.ACTUAL.VERSIO.POS = FLD.POS.ARR<1,2>
+    Y.L.CU.CIDENT.POS = FLD.POS.ARR<2,1>
+    Y.L.CU.RNC.POS = FLD.POS.ARR<2,2>
+    Y.L.CU.PASS.NAT.POS = FLD.POS.ARR<2,3>
+
+    Y.FECHA.EFECTIVA = R.NEW(FT.PROCESSING.DATE)
+    Y.FECHA.VALOR = R.NEW(FT.PROCESSING.DATE)
+    Y.ID.LOCALIDAD = R.NEW(FT.CO.CODE)
+    Y.ID.TIPO.TRANSACCION = R.NEW(FT.TRANSACTION.TYPE)
+    Y.MONTO.ORIGEN = RIGHT(R.NEW(FT.AMOUNT.DEBITED),LEN(R.NEW(FT.AMOUNT.DEBITED))-3)
+    Y.MONTO.DESTINO = RIGHT(R.NEW(FT.AMOUNT.CREDITED),LEN(R.NEW(FT.AMOUNT.CREDITED))-3)
+    Y.ID.TIPO.CAMBIO = ''
+    Y.TASA.CAMBIO = R.NEW(FT.CUSTOMER.RATE)
+    Y.ID.MONEDA.ORIGEN = R.NEW(FT.DEBIT.CURRENCY)
+    Y.ID.MONEDA.DESTINO = R.NEW(FT.CREDIT.CURRENCY)
+    Y.COMENTARIOS = R.NEW(FT.LOCAL.REF)<1,Y.L.COMMENTS.POS>
+    Y.ID.CLIENTE = R.NEW(FT.CHARGED.CUSTOMER)
+    Y.DOCUMENTO.CLIENTE = ''
+    Y.NOMBRE.CLIENTE = ''
+    Y.APELLIDO.CLIENTE = ''
+    Y.ID.APAP = ID.NEW
+    Y.USUARIO.REGISTRO.APAP = FIELD(R.NEW(FT.INPUTTER),'_',2)
+    Y.VERSION = 'FUNDS.TRANSFER' : PGM.VERSION
+
+    FN.CUSTOMER = 'F.CUSTOMER';
+    F.CUSTOMER = ''
+    ERR.CUSTOMER = '';
+    R.CUSTOMER = '';
+    CUSTOMER.NAME = '';
+    TIPO.CL.POS = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+*MSG<-1> = 'INIT VERSION: ': Y.VERSION
+*CALL LAPAP.LOGGER('TESTLOG',ID.NEW,MSG)
+
+RETURN
+
+
+***********
+FT.PROCESS:
+***********
+    VALORDCOUNT = DCOUNT(PGM.VERSION,'.')
+    Y.VERSION.VALID = FIELD(PGM.VERSION,'.',VALORDCOUNT)
+
+    IF Y.VERSION.VALID EQ 'FIM' THEN
+
+        RETURN
+    END
+    IF (Y.ID.MONEDA.ORIGEN EQ 'USD' OR Y.ID.MONEDA.ORIGEN EQ 'EUR') OR (Y.ID.MONEDA.DESTINO EQ 'USD' OR Y.ID.MONEDA.DESTINO EQ 'EUR') THEN
+
+        GOSUB SAVE.TRANS.DIVISA
+    END
+
+RETURN
+
+****************************************************************************************
+READ.CUSTOMER:
+****************************************************************************************
+
+*    CALL GET.LOC.REF('CUSTOMER','L.CU.TIPO.CL',TIPO.CL.POS)
+EB.LocalReferences.GetLocRef('CUSTOMER','L.CU.TIPO.CL',TIPO.CL.POS);* R22 UTILITY AUTO CONVERSION
+*    CALL GET.LOC.REF('CUSTOMER','L.CU.CIDENT',Y.L.CU.CIDENT.POS)
+EB.LocalReferences.GetLocRef('CUSTOMER','L.CU.CIDENT',Y.L.CU.CIDENT.POS);* R22 UTILITY AUTO CONVERSION
+*    CALL GET.LOC.REF('CUSTOMER','L.CU.RNC',Y.L.CU.RNC.POS)
+EB.LocalReferences.GetLocRef('CUSTOMER','L.CU.RNC',Y.L.CU.RNC.POS);* R22 UTILITY AUTO CONVERSION
+*    CALL GET.LOC.REF('CUSTOMER','L.CU.PASS.NAT',Y.L.CU.PASS.NAT.POS)
+EB.LocalReferences.GetLocRef('CUSTOMER','L.CU.PASS.NAT',Y.L.CU.PASS.NAT.POS);* R22 UTILITY AUTO CONVERSION
+
+    CALL F.READ(FN.CUSTOMER,Y.ID.CLIENTE,R.CUSTOMER,F.CUSTOMER,CUSTOMER.ERR)
+    L.CU.TIPO.CL.VAL = R.CUSTOMER<EB.CUS.LOCAL.REF,TIPO.CL.POS>
+
+    IF R.CUSTOMER<EB.CUS.LOCAL.REF,TIPO.CL.POS> EQ 'PERSONA JURIDICA' THEN
+        Y.NOMBRE.CLIENTE = R.CUSTOMER<EB.CUS.NAME.1>:' ':R.CUSTOMER<EB.CUS.NAME.2>
+        Y.DOCUMENTO.CLIENTE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.RNC.POS>
+    END
+    ELSE
+        Y.NOMBRE.CLIENTE = R.CUSTOMER<EB.CUS.GIVEN.NAMES>
+        Y.APELLIDO.CLIENTE = R.CUSTOMER<EB.CUS.FAMILY.NAME>
+        Y.DOCUMENTO.CLIENTE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.CIDENT.POS>
+        IF NOT(R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.CIDENT.POS>) THEN
+
+            Y.DOCUMENTO.CLIENTE = R.CUSTOMER<EB.CUS.LOCAL.REF,Y.L.CU.PASS.NAT.POS>
+        END
+    END
+
+RETURN
+
+***************************
+SAVE.TRANS.DIVISA:
+****************************
+
+    Y.TRANS.ID = Y.ID.APAP
+    Y.APP.NAME = "ST.LAPAP.TRANS.DIVISA.SDT"
+    Y.VER.NAME = Y.APP.NAME :",INPUT"
+    Y.FUNC = "I"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    FINAL.OFS = ""
+    OPTIONS = ""
+
+    R.ACR = ""
+    R.ACR<ST.LAP72.FECHA.EFECTIVA> = Y.FECHA.EFECTIVA
+    R.ACR<ST.LAP72.FECHA.VALOR> = Y.FECHA.VALOR
+    R.ACR<ST.LAP72.ID.LOCALIDAD> = Y.ID.LOCALIDAD
+    R.ACR<ST.LAP72.ID.TIPO.TRANS> = Y.ID.TIPO.TRANSACCION
+    R.ACR<ST.LAP72.MONTO> = Y.MONTO.ORIGEN
+    R.ACR<ST.LAP72.MONTO.DESTINO> = Y.MONTO.DESTINO
+    R.ACR<ST.LAP72.ID.TIPO.CAMBIO> = Y.ID.TIPO.CAMBIO
+    R.ACR<ST.LAP72.TASA.CAMBIO> = Y.TASA.CAMBIO
+    R.ACR<ST.LAP72.ID.MONEDA.ORIGEN> = Y.ID.MONEDA.ORIGEN
+    R.ACR<ST.LAP72.ID.MONEDA.DESTINO> = Y.ID.MONEDA.DESTINO
+    R.ACR<ST.LAP72.COMENTARIOS> = Y.COMENTARIOS
+    R.ACR<ST.LAP72.ID.CLIENTE> = Y.ID.CLIENTE
+    R.ACR<ST.LAP72.DOCUMENTO> = Y.DOCUMENTO.CLIENTE
+    R.ACR<ST.LAP72.NOMBRE> = Y.NOMBRE.CLIENTE
+    R.ACR<ST.LAP72.APELLIDO> = Y.APELLIDO.CLIENTE
+    R.ACR<ST.LAP72.ID.APAP> = Y.ID.APAP
+    R.ACR<ST.LAP72.USR.REG.APAP> = Y.USUARIO.REGISTRO.APAP
+    R.ACR<ST.LAP72.VERSION> = Y.VERSION
+
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.ACR,FINAL.OFS)
+    CALL OFS.POST.MESSAGE(FINAL.OFS,'',"TXN.DIVI.SDT",'')
+
+RETURN

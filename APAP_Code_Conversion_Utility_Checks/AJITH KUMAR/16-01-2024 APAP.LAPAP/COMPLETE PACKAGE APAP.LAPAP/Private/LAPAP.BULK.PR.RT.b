@@ -1,0 +1,134 @@
+$PACKAGE APAP.LAPAP
+* @ValidationCode : MjoxMzE0MTQyODk4OkNwMTI1MjoxNjkxNjQ4ODA0ODM0OklUU1M6LTE6LTE6NjY6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 10 Aug 2023 11:56:44
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 66
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+
+
+SUBROUTINE LAPAP.BULK.PR.RT(Y.PAYROLL)
+*------------------------------------------------------------------------
+* Modification History :
+*------------------------------------------------------------------------
+*  DATE             WHO                   REFERENCE
+* 09-AUG-2023      Harsha                R22 Manual Conversion - BP removed from Inserts
+*DATE                 WHO                    REFERENCE                     DESCRIPTION
+*24/11/2023         Suresh             R22 Manual Conversion             Latest Routine - Changes
+    $INSERT I_EQUATE
+    $INSERT I_COMMON
+    $INSERT I_GTS.COMMON
+    $INSERT I_System
+    $INSERT I_F.DATES
+    $INSERT I_F.LAPAP.BULK.PAYROLL
+    $INSERT I_F.ST.LAPAP.BULK.PAYROLL.DET
+    $INSERT I_LAPAP.BULK.PR.RT.COMMON
+    $INSERT I_F.FUNDS.TRANSFER
+ 
+    GOSUB DO.PROCESS
+
+RETURN
+  
+DO.PROCESS:
+
+
+    CALL OCOMO("PAYROLL TO PROCESS : " : Y.PAYROLL)
+    GOSUB DO.READ
+
+RETURN
+
+DO.READ:
+
+    CALL F.READ(FN.BPRD,Y.PAYROLL,R.BPRD,F.BPRD,ERR.BPRD)
+
+    IF (R.BPRD) THEN
+        IF R.BPRD<ST.LAP4.PAYROLL.TYPE> EQ 'APAP' THEN
+
+            GOSUB DO.FORM.ARRAY
+
+        END ELSE
+            Y.THIS.PR.ID = R.BPRD<ST.LAP4.PAYROLL.ID> ;* Latest Routine- Changes
+            GOSUB DO.READ.PR ;* Latest Routine- Changes
+            GOSUB DO.FORM.ARRAY.LBTR
+        END
+    END
+
+RETURN ;* Latest Routine- Changes -START
+
+DO.READ.PR:
+    CALL F.READ(FN.BPR,Y.THIS.PR.ID,R.BPRM,F.BPR,ERR.BPR)
+    Y.MASTER.DEBIT.ACC = R.BPRM<ST.LAP39.DEBIT.ACCOUNT> ;* Latest Routine- Changes - END
+RETURN
+
+DO.FORM.ARRAY:
+
+    R.FT = ''
+    R.FT<FT.TRANSACTION.TYPE> = 'AC24'  ;*On CDI-580 change from AC02 to AC24
+    R.FT<FT.DEBIT.ACCT.NO> = 'DOP1406100090017'   ;*On CDI-345 change from DOP1792039010039 to DOP1406100090017
+    R.FT<FT.CREDIT.CURRENCY> = R.BPRD<ST.LAP4.CREDIT.CCY>
+    R.FT<FT.CREDIT.ACCT.NO> = R.BPRD<ST.LAP4.CREDIT.ACCOUNT>
+    R.FT<FT.CREDIT.AMOUNT> = R.BPRD<ST.LAP4.CREDIT.AMOUNT>
+    R.FT<FT.LOCAL.REF,Y.L.COMMENTS.POS> = R.BPRD<ST.LAP4.COMMENTS>
+    R.FT<FT.LOCAL.REF,Y.L.PAYROLL.ID.POS> = Y.PAYROLL
+
+    GOSUB DO.FORM.OFS
+
+RETURN
+
+DO.FORM.OFS:
+    Y.TRANS.ID = ''
+    Y.APP.NAME = "FUNDS.TRANSFER"
+    Y.VER.NAME = Y.APP.NAME :",PAYROLL"
+    Y.FUNC = "I"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    FINAL.OFS = ""
+    OPTIONS = ""
+
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.FT,FINAL.OFS)
+    CALL OFS.POST.MESSAGE(FINAL.OFS,'',"PAYROLL.OFS",'')
+RETURN
+
+DO.FORM.ARRAY.LBTR:
+    R.FT = ''
+    R.FT<FT.TRANSACTION.TYPE> = 'OT30'
+    R.FT<FT.DEBIT.ACCT.NO> = 'DOP1406100090017'   ;*CDI-345
+    R.FT<FT.DEBIT.CURRENCY> = R.BPRD<ST.LAP4.CREDIT.CCY>
+    R.FT<FT.DEBIT.AMOUNT> = R.BPRD<ST.LAP4.CREDIT.AMOUNT>
+    R.FT<FT.ORDERING.CUST> = 'APAP'     ;*Cambiar por la empresa..
+    R.FT<FT.BEN.ACCT.NO> = R.BPRD<ST.LAP4.CREDIT.ACCOUNT>
+    R.FT<FT.BEN.CUSTOMER,1> = 'NOMINA'
+    R.FT<FT.BEN.CUSTOMER,2> = R.BPRD<ST.LAP4.BEN.IDENTIFICATION>
+    R.FT<FT.ACCT.WITH.BANK> = ''
+    R.FT<FT.LOCAL.REF,Y.L.FTST.ACH.PART.POS> = R.BPRD<ST.LAP4.BEN.BANK>
+    R.FT<FT.LOCAL.REF,Y.L.COMMENTS.POS> = R.BPRD<ST.LAP4.COMMENTS>
+    R.FT<FT.LOCAL.REF,Y.L.PAYROLL.ID.POS> = Y.PAYROLL
+    R.FT<FT.BK.TO.BK.OUT,1> = '/REC/CC'
+    R.FT<FT.ORD.CUST.ACCT> = Y.MASTER.DEBIT.ACC ;* Latest Routine- Changes
+
+    GOSUB DO.FORM.OFS.LBTR
+RETURN
+
+DO.FORM.OFS.LBTR:
+    Y.TRANS.ID = ''
+    Y.APP.NAME = "FUNDS.TRANSFER"
+    Y.VER.NAME = Y.APP.NAME :",LAPAP.PAYROLL.LBTR"
+    Y.FUNC = "I"
+    Y.PRO.VAL = "PROCESS"
+    Y.GTS.CONTROL = ""
+    Y.NO.OF.AUTH = ""
+    FINAL.OFS = ""
+    OPTIONS = ""
+
+    CALL OFS.BUILD.RECORD(Y.APP.NAME,Y.FUNC,Y.PRO.VAL,Y.VER.NAME,Y.GTS.CONTROL,Y.NO.OF.AUTH,Y.TRANS.ID,R.FT,FINAL.OFS)
+    CALL OFS.POST.MESSAGE(FINAL.OFS,'',"PAYROLL.OFS",'')
+
+RETURN
+END

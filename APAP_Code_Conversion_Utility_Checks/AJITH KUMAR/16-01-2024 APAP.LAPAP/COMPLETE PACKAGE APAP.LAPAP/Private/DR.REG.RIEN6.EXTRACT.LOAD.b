@@ -1,0 +1,140 @@
+* @ValidationCode : MjozNjUxOTY5ODg6Q3AxMjUyOjE3MDI5ODgzNDI3NTU6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjJfU1A1LjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 19 Dec 2023 17:49:02
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.LAPAP
+SUBROUTINE DR.REG.RIEN6.EXTRACT.LOAD
+*-----------------------------------------------------------------------------
+* Company Name   : APAP
+* Developed By   : gangadhar@temenos.com
+* Program Name   : DR.REG.RIEN6.EXTRACT
+* Date           : 3-May-2013
+*-----------------------------------------------------------------------------
+* Description:
+*------------
+* This multi-thread job is meant for to extact the AZ.ACCOUNT
+*-----------------------------------------------------------------------------
+*
+* Modification History :
+* ----------------------
+*   Date          Author              Modification Description
+* 11/07/2014      Ashokkumar       PACS00312508 - Updated selection criteria and fixed the field bug
+* Date                  who                   Reference
+* 21-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT AND $INCLUDE REGREP.BP TO $INSERT AND $INCLUDE LAPAP.BP TO $INSERT AND FM TO @FM AND VM TO @VM
+* 21-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+* 15-12-2023         Santosh C             MANUAL R22 CODE CONVERSION   APAP Code Conversion Utility Check
+*-----------------------------------------------------------------------------
+
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_BATCH.FILES
+    $INSERT I_F.DATES
+    $INSERT I_F.EB.LOOKUP
+    $INSERT I_DR.REG.RIEN6.EXTRACT.COMMON
+    $INSERT I_F.DR.REG.RIEN6.PARAM
+
+    GOSUB INIT.PROCESS
+    GOSUB GET.EB.LOOK
+RETURN
+
+INIT.PROCESS:
+*-----------*
+
+    FN.CUSTOMER = 'F.CUSTOMER'; F.CUSTOMER = ''
+    CALL OPF(FN.CUSTOMER,F.CUSTOMER)
+
+    FN.ACCOUNT = 'F.ACCOUNT' ; F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+
+    FN.GROUP.DATE = 'F.GROUP.DATE' ;F.GROUP.DATE = ''
+    CALL OPF(FN.GROUP.DATE,F.GROUP.DATE)
+
+    FN.GROUP.CREDIT.INT = 'F.GROUP.CREDIT.INT'; F.GROUP.CREDIT.INT = ''
+    CALL OPF(FN.GROUP.CREDIT.INT,F.GROUP.CREDIT.INT)
+
+    FN.AZ.ACCOUNT = 'F.AZ.ACCOUNT' ; F.AZ.ACCOUNT = ''
+    CALL OPF(FN.AZ.ACCOUNT,F.AZ.ACCOUNT)
+
+    FN.DR.REG.RIEN6.WORKFILE = 'F.DR.REG.RIEN6.WORKFILE' ; F.DR.REG.RIEN6.WORKFILE = ''
+    CALL OPF(FN.DR.REG.RIEN6.WORKFILE,F.DR.REG.RIEN6.WORKFILE)
+
+    FN.DR.REG.RIEN6.WORKFILE.FCY = 'F.DR.REG.RIEN6.WORKFILE.FCY' ; F.DR.REG.RIEN6.WORKFILE.FCY = ''
+    CALL OPF(FN.DR.REG.RIEN6.WORKFILE.FCY,F.DR.REG.RIEN6.WORKFILE.FCY)
+
+    FN.REDO.AZACC.DESC = 'F.REDO.AZACC.DESC' ; F.REDO.AZACC.DESC = ''
+    CALL OPF(FN.REDO.AZACC.DESC,F.REDO.AZACC.DESC)
+
+    FN.EB.CONTRACT.BALANCES = 'F.EB.CONTRACT.BALANCES'  ; F.EB.CONTRACT.BALANCES = ''
+    CALL OPF(FN.EB.CONTRACT.BALANCES,F.EB.CONTRACT.BALANCES)
+
+    FN.RE.STAT.REP.LINE = 'F.RE.STAT.REP.LINE'; F.RE.STAT.REP.LINE = ''
+    CALL OPF(FN.RE.STAT.REP.LINE,F.RE.STAT.REP.LINE)
+
+    FN.DR.REG.RIEN6.PARAM = 'F.DR.REG.RIEN6.PARAM' ; F.DR.REG.RIEN6.PARAM = ''
+    CALL OPF(FN.DR.REG.RIEN6.PARAM,F.DR.REG.RIEN6.PARAM)
+
+    FN.ACCOUNT.HST = 'F.ACCOUNT$HIS'; F.ACCOUNT.HST = ''
+    CALL OPF(FN.ACCOUNT.HST,F.ACCOUNT.HST)
+
+    FN.AZ.ACCOUNT.HST = 'F.AZ.ACCOUNT$HIS' ; F.AZ.ACCOUNT.HST = ''
+    CALL OPF(FN.AZ.ACCOUNT.HST,F.AZ.ACCOUNT.HST)
+
+    FN.ACCOUNT.CLOSURE = 'F.ACCOUNT.CLOSURE'; F.ACCOUNT.CLOSURE = ''
+    CALL OPF(FN.ACCOUNT.CLOSURE,F.ACCOUNT.CLOSURE)
+
+    FN.COMP.APP = 'F.COMPANY'; F.COMP.APP = ''
+    CALL OPF(FN.COMP.APP,F.COMP.APP)
+
+    FN.EB.LOOKUP.APP = 'F.EB.LOOKUP'; F.EB.LOOKUP.APP = ''
+    CALL OPF(FN.EB.LOOKUP.APP,F.EB.LOOKUP.APP)
+
+    FN.CATEGORY = 'F.CATEGORY'; F.CATEGORY = ''
+    CALL OPF(FN.CATEGORY,F.CATEGORY)
+
+    R.DR.REG.RIEN6.PARAM = ''; ERR.DR.REG.RIEN6.PARAM = ''
+    Y.SYS.ID = 'SYSTEM' ;*R22 Manual Code Conversion_Utility Check
+    CALL CACHE.READ(FN.DR.REG.RIEN6.PARAM,Y.SYS.ID,R.DR.REG.RIEN6.PARAM,DR.REG.RIEN6.PARAM.ERR)
+*    Y.TODAY = R.DATES(EB.DAT.TODAY)
+    Y.TODAY = R.DATES(EB.DAT.LAST.WORKING.DAY)
+    Y.DTE.SEL = Y.TODAY[3,6]
+
+    Y.APP = ''; Y.FLD = ''; Y.POS = ''
+    Y.APP = 'CUSTOMER':@FM:'AZ.ACCOUNT':@FM:'ACCOUNT':@FM:'COMPANY':@FM:'CATEGORY'
+    Y.FLD = 'L.CU.CIDENT':@VM:'L.CU.RNC':@VM:'L.CU.TIPO.CL':@VM:'L.TIP.CLI':@VM:'L.APAP.INDUSTRY':@VM:'L.CU.PASS.NAT':@VM:'L.LOCALIDAD':@FM:'L.INV.FACILITY':@VM:'L.TYPE.INT.PAY':@VM:'L.AC.STATUS1':@VM:'L.AC.STATUS2':@VM:'L.AZ.SHA1.CODE':@FM:'L.AC.REINVESTED':@VM:'L.AC.AV.BAL':@FM:'L.LOCALIDAD':@FM:'L.CU.AGE'
+    CALL MULTI.GET.LOC.REF(Y.APP,Y.FLD,Y.POS)
+    L.CU.CIDENT.POS = Y.POS<1,1>
+    L.CU.RNC.POS = Y.POS<1,2>
+    L.CU.TIPO.CL.POS = Y.POS<1,3>
+    L.TIP.CLI.POS = Y.POS<1,4>
+    L.APAP.INDUSTRY.POS = Y.POS<1,5>
+    L.CU.FOREIGN.POS = Y.POS<1,6>
+    L.CU.LOCAL.POS = Y.POS<1,7>
+    L.INV.FACILITY.POS = Y.POS<2,1>
+    L.TYPE.INT.PAY.POS = Y.POS<2,2>
+    L.AC.STATUS1.POS = Y.POS<2,3>
+    L.AC.STATUS2.POS = Y.POS<2,4>
+    L.AZ.SHA1.CODE.POS = Y.POS<2,5>
+    L.AC.REINVESTED.POS = Y.POS<3,1>
+    L.AC.AV.BAL.POS = Y.POS<3,2>
+    LCOMP.LOCALIDAD.POS = Y.POS<4,1>
+    L.CU.AGE.POS = Y.POS<5,1>
+RETURN
+
+
+GET.EB.LOOK:
+************
+    Y.LNK.TYPE = "REDO.CONSUMO.LOAN*VINCATION"
+    EB.LOOKUP.ERR = ''; R.EB.LOOKUP.APP.LNK = ''
+    CALL F.READ(FN.EB.LOOKUP.APP,Y.LNK.TYPE,R.EB.LOOKUP.APP.LNK,F.EB.LOOKUP.APP,EB.LOOKUP.ERR)
+    Y.LNK.TYP.NAME = R.EB.LOOKUP.APP.LNK<EB.LU.DATA.NAME>
+RETURN
+
+END

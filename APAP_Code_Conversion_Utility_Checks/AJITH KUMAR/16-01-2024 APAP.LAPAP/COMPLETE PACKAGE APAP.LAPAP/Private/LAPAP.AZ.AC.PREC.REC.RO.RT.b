@@ -1,0 +1,289 @@
+* @ValidationCode : MjotMTE4MTE2MDQ5MTpDcDEyNTI6MTcwMDg0MjY2MTUyODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 24 Nov 2023 21:47:41
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R22_SP5.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+*-----------------------------------------------------------------------------
+* <Rating>-81</Rating>
+*-----------------------------------------------------------------------------
+$PACKAGE APAP.LAPAP
+SUBROUTINE LAPAP.AZ.AC.PREC.REC.RO.RT
+*********************************************************************************************************
+*Company   Name    : APAP Bank
+*Developed By      : APAP, Desarrollo Proyectios e Innonavion team.
+*Program   Name    : LAPAP.AZ.AC.PREC.REC.RO.RT
+*--------------------------------------------------------------------------------------------------------
+*Description       : This routine ia a CHECK RECORD ROUTINE attached to version AZ.ACCOUNT,FD.PRECLOSE
+*                    It is used to calculate the preclosure deposit days.It is done
+*                    by checking if deposit has roll over then number of days between ROLL OVER DATE and
+*                    SYSTEM DATE is calculated otherwise number of days between DEPOSIT START DATE and SYSTEM
+*                    DATE is calculated
+*In Parameter      :
+*Out Parameter     :
+*Files  Used       : AZ.ACCOUNT               As             I/O          Mode
+*
+*----------------------------------------------------------------------------------------------------------------------
+*Modification Details:
+*=====================
+* Date          Who               Reference               Description
+* ------        ------            -------------           -------------
+* 11/SEP/2023   J.Q.              CTO-229                 Initial code.
+*
+*24/11/2023     Santosh          R22 Manual Conversion    BP Removed From Inserts, Changed FM/VM/ to @FM/@VM
+*----------------------------------------------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.AZ.ACCOUNT
+    $INSERT I_System
+    $INSERT I_F.LAPAP.AZ.PENAL.RATE
+    $INSERT I_F.REDO.AZ.FUND.PARAM
+    $INSERT I_F.AZ.PRODUCT.PARAMETER
+
+    GOSUB INIT
+    GOSUB GET.LOCAL.FLD.POS
+    GOSUB DO.GET.PARAM.INFO
+    GOSUB MAIN.PROCESS
+RETURN
+
+INIT:
+    FN.LAPAP.AZ.PENAL.RATE = 'F.ST.LAPAP.AZ.PENAL.RATE'
+    F.LAPAP.AZ.PENAL.RATE = ''
+    CALL OPF(FN.LAPAP.AZ.PENAL.RATE,F.LAPAP.AZ.PENAL.RATE)
+
+    FN.REDO.AZ.FUND.PARM = 'F.REDO.AZ.FUND.PARAM'
+
+    VAR.ID = 'SYSTEM'
+
+    CALL CACHE.READ(FN.REDO.AZ.FUND.PARM,VAR.ID,R.FUND.PARAM,FUND.ERR)
+
+    FN.AZ.PRODUCT.PARAMETER = 'F.AZ.PRODUCT.PARAMETER'
+    F.AZ.PRODUCT.PARAMETER = ''
+
+
+    CALL OPF(FN.AZ.PRODUCT.PARAMETER,F.AZ.PRODUCT.PARAMETER)
+
+    ROLLOVER.DATE = ''
+    Y.MATURITY.DATE = ''
+    Y.PREC.DEP.DAYS = ''
+    Y.CREATED.DEP.DAYS = ''
+    Y.LEFT.DEP.DAYS = ''
+    YDATE = ''
+    YDATE2 = ''
+    Y.VALUE = '0'
+    Y.FUNCTION = V$FUNCTION
+    Y.MIN.AMT = 0;
+RETURN
+
+DO.GET.PARAM.INFO:
+    Y.CATEGORY = R.NEW(AZ.CATEGORY)
+    Y.CREATE.DATE = R.NEW(AZ.CREATE.DATE)
+    IF Y.CATEGORY NE '' THEN
+        CALL F.READ(FN.LAPAP.AZ.PENAL.RATE,Y.CATEGORY,R.LAPAP.AZ.PENAL.RATE,F.LAPAP.AZ.PENAL.RATE,Y.AZ.P.ERR)
+
+        Y.REF.DATE = R.LAPAP.AZ.PENAL.RATE<ST.LAP50.FROM.DATE>
+        Y.MIN.AMT = R.LAPAP.AZ.PENAL.RATE<ST.LAP50.MINIMUM.CHARGE>
+
+        CALL F.READ(FN.AZ.PRODUCT.PARAMETER,Y.CATEGORY,R.AZ.PRODUCT.PARAMETER,F.AZ.PRODUCT.PARAMETER,Y.AZ.ERR)
+        INT.DAY.BASIS = R.AZ.PRODUCT.PARAMETER<AZ.APP.INT.BASIS>
+
+    END
+*DEBUG
+RETURN
+*---------------------------------------------------------------------------------------------------------------------
+******************
+GET.LOCAL.FLD.POS:
+******************
+    APPL.ARRAY = 'AZ.ACCOUNT'
+    FLD.ARRAY  = 'L.AZ.PR.DEP.DAY':@VM:'L.AZ.PENAL.AMT':@VM:'L.AZ.PENAL.PER':@VM:'L.AZ.GRACE.DAYS'
+    FLD.POS    = ''
+    CALL MULTI.GET.LOC.REF(APPL.ARRAY,FLD.ARRAY,FLD.POS)
+
+    LOC.L.AZ.PR.DEP.DAY = FLD.POS<1,1>
+    LOC.L.AZ.PENAL.AMT = FLD.POS<1,2>
+    LOC.L.AZ.PENAL.PER = FLD.POS<1,3>
+    POS.L.AZ.GRACE.DAYS=  FLD.POS<1,4>
+
+RETURN
+*---------------------------------------------------------------------------------------------------------------------
+**********************
+MAIN.PROCESS:
+**********************
+*DEBUG
+    VAR.CURRENCY =  R.NEW(AZ.CURRENCY)
+    IF R.NEW(AZ.NOMINATED.ACCOUNT) EQ '' THEN
+        IF PGM.VERSION NE ',NOR.TELLER.PRECLOSURE' THEN
+            R.NEW(AZ.NOMINATED.ACCOUNT)=R.NEW(AZ.INTEREST.LIQU.ACCT)
+        END ELSE
+            CCY.PARAM = R.FUND.PARAM<REDO.FUND.CURRENCY>
+            CHANGE @VM TO @FM IN CCY.PARAM
+            LOCATE VAR.CURRENCY IN CCY.PARAM SETTING CCY.POS THEN
+                VAR.ACCT.NUM = R.FUND.PARAM<REDO.FUND.ACCT.NUMBER,CCY.POS>
+                R.NEW(AZ.NOMINATED.ACCOUNT) = VAR.ACCT.NUM
+            END
+        END
+    END
+    ROLLOVER.DATE = R.NEW(AZ.ROLLOVER.DATE)
+    Y.MATURITY.DATE = R.NEW(AZ.MATURITY.DATE)
+    IF ROLLOVER.DATE THEN
+        YDATE = ROLLOVER.DATE
+        YDATE2 = TODAY
+
+
+        CALL BD.CALC.DAYS(YDATE,YDATE2, INT.DAY.BASIS , ACCR.DAYS)
+
+        Y.PREC.DEP.DAYS = ACCR.DAYS
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PR.DEP.DAY> = Y.PREC.DEP.DAYS
+
+        OUT.DAYS = 'C'
+        CALL CDD('',YDATE2,Y.MATURITY.DATE,OUT.DAYS)
+*CALL BD.CALC.DAYS(YDATE2,Y.MATURITY.DATE, INT.DAY.BASIS , OUT.DAYS)
+        Y.LEFT.DEP.DAYS = OUT.DAYS
+*DEBUG
+        GOSUB CHECK.FOR.PENALTY         ;* This Para checks whether to calculate penalty or not
+    END  ELSE
+        YDATE = R.NEW(AZ.VALUE.DATE)
+        YDATE2 = TODAY
+
+        CALL BD.CALC.DAYS(YDATE,YDATE2, INT.DAY.BASIS , ACCR.DAYS)
+
+        Y.PREC.DEP.DAYS = ACCR.DAYS
+
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PR.DEP.DAY> = Y.PREC.DEP.DAYS
+
+        OUT.DAYS = 'C'
+        CALL CDD('',YDATE2,Y.MATURITY.DATE,OUT.DAYS)
+*CALL BD.CALC.DAYS(YDATE2,Y.MATURITY.DATE, INT.DAY.BASIS , OUT.DAYS)
+        Y.LEFT.DEP.DAYS = OUT.DAYS
+
+*DEBUG
+        GOSUB BEF.ROLLOVER
+    END
+    Y.PENAL.PERCENT = R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER>
+    CALL System.setVariable('CURRENT.PENAL.PERCENT',Y.PENAL.PERCENT)
+
+*DEBUG
+
+RETURN
+*---------------------------------------------------------------------------------------------------------------------
+*******************
+CHECK.FOR.PENALTY:
+*******************
+    Y.NO.OF.GRC.DAYS=R.NEW(AZ.LOCAL.REF)<1,POS.L.AZ.GRACE.DAYS>
+    Y.NO.OF.GRC.DAYS='+':Y.NO.OF.GRC.DAYS:'W'
+    Y.GRACE.END.DATE=ROLLOVER.DATE
+    CALL CDT('',Y.GRACE.END.DATE,Y.NO.OF.GRC.DAYS)
+*DEBUG
+    IF TODAY GE ROLLOVER.DATE AND TODAY LE Y.GRACE.END.DATE THEN
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = '0.00'
+        CALL REDO.AZ.PENAL.AMT.CALC(Y.VALUE,Y.PREC.DEP.DAYS,PEN.AMT)
+*DEBUG
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+    END ELSE
+        GOSUB BEF.ROLLOVER
+    END
+RETURN
+*-----------------------------------------------------------------------------------------------------------------------
+********************
+BEF.ROLLOVER:
+********************
+* This part raises a penalty for preclosure before maturity(Deposit Not Rolled Over)
+
+    CATEGORY = R.NEW(AZ.CATEGORY)
+    IF R.LAPAP.AZ.PENAL.RATE THEN
+        GOSUB GET.PENAL.RATE
+    END ELSE
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = '0.00'
+        CALL REDO.AZ.PENAL.AMT.CALC(Y.VALUE,Y.PREC.DEP.DAYS,PEN.AMT)
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+        RETURN
+    END
+
+RETURN
+********************
+*-----------------------------------------------------------------------------------------------------------------------
+********************
+GET.PENAL.RATE:
+********************
+*DEBUG
+    Y.DATE.RANGE = R.LAPAP.AZ.PENAL.RATE<ST.LAP50.DATE.RANGE>
+    Y.DATE.RNG.CNT=DCOUNT(Y.DATE.RANGE,@VM)
+    Y.VAR1=1
+    Y.START.DATE=FIELD(Y.DATE.RANGE<1,Y.VAR1>,'-',1)
+*DEBUG
+    IF Y.PREC.DEP.DAYS LT Y.START.DATE THEN       ;* If suppose preclosure happens before the pre-defined days in REDO.AZ.DISCOUNT.RATE.(i.e if DATE.RANGE begins from 30 days and preclosure happens with that days)
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = '0.00'
+        CALL REDO.AZ.PENAL.AMT.CALC(Y.VALUE,Y.PREC.DEP.DAYS,PEN.AMT)
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+        RETURN
+    END
+*DEBUG
+*****
+    IF Y.PREC.DEP.DAYS LT 30 THEN       ;* IF preclusure happens on or before 30 days of rollover, apply maximium penalty.
+        Y.PENAL.PER= R.LAPAP.AZ.PENAL.RATE<ST.LAP50.PENAL.PERCENT,Y.DATE.RNG.CNT>
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = Y.PENAL.PER
+        CALL REDO.AZ.PENAL.AMT.CALC(Y.PENAL.PER,Y.PREC.DEP.DAYS,PEN.AMT)
+        IF PEN.AMT GT 0 AND PEN.AMT LT Y.MIN.AMT<1,Y.DATE.RNG.CNT> THEN         ;* GT 0, changed to GE 0 ...
+            PEN.AMT = Y.MIN.AMT<1,Y.DATE.RNG.CNT>
+        END
+        R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+        RETURN
+    END
+*****
+    Y.REMAIN.CAL.DAYS = "C"
+    Y.CREATED.DATE = R.NEW(AZ.CREATE.DATE)
+    Y.FINAL.DATE1 = TODAY
+
+*DEBUG
+    IF Y.CREATED.DATE LE Y.FINAL.DATE1 THEN       ;* IF preclusure happens on or before 30 days of creation, apply maximium penalty., LT changed to LE
+        CALL CDD('',Y.CREATED.DATE, Y.FINAL.DATE1, REMAIN.CAL.DAYS)
+        IF REMAIN.CAL.DAYS LT 30 THEN
+            Y.PENAL.PER= R.LAPAP.AZ.PENAL.RATE<ST.LAP50.PENAL.PERCENT,Y.DATE.RNG.CNT>
+            R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = Y.PENAL.PER
+            CALL REDO.AZ.PENAL.AMT.CALC(Y.PENAL.PER,Y.PREC.DEP.DAYS,PEN.AMT)
+            IF PEN.AMT GT 0 AND PEN.AMT LT Y.MIN.AMT<1,Y.DATE.RNG.CNT> THEN     ;*--> GT 0 ... changed to GE 0 ...
+                PEN.AMT = Y.MIN.AMT<1,Y.DATE.RNG.CNT>
+            END
+            R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+            RETURN
+        END
+    END
+
+
+
+    LOOP
+    WHILE Y.VAR1 LE Y.DATE.RNG.CNT
+        Y.START.DATE=FIELD(Y.DATE.RANGE<1,Y.VAR1>,'-',1)
+        Y.END.DATE=FIELD(Y.DATE.RANGE<1,Y.VAR1>,'-',2)
+        IF Y.VAR1 EQ Y.DATE.RNG.CNT THEN          ;* This is for Default Case at last multivalue of table REDO.AZ.DISCOUNT.RATE
+            Y.PENAL.PER= R.LAPAP.AZ.PENAL.RATE<ST.LAP50.PENAL.PERCENT,Y.VAR1>
+        END
+*DEBUG
+*Fix, instead of using total days from rollover/creation till now, we use left days from today to maturity
+        IF Y.LEFT.DEP.DAYS GE Y.START.DATE AND Y.LEFT.DEP.DAYS LE Y.END.DATE THEN
+            Y.PENAL.PER= R.LAPAP.AZ.PENAL.RATE<ST.LAP50.PENAL.PERCENT,Y.VAR1>
+            Y.VAR1=Y.DATE.RNG.CNT + 1
+        END
+        Y.VAR1++
+    REPEAT
+    R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.PER> = Y.PENAL.PER
+    CALL REDO.AZ.PENAL.AMT.CALC(Y.PENAL.PER,Y.PREC.DEP.DAYS,PEN.AMT)
+*CALL LAPAP.AZ.PENAL.AMT.CALC(Y.PENAL.PER,Y.PREC.DEP.DAYS,PEN.AMT)
+*DEBUG
+    Y.COUNTER = Y.VAR1
+    IF Y.COUNTER GT Y.DATE.RNG.CNT THEN
+        Y.COUNTER = Y.DATE.RNG.CNT
+    END
+    IF PEN.AMT GT 0 AND PEN.AMT LT Y.MIN.AMT<1,Y.COUNTER> THEN
+        PEN.AMT = Y.MIN.AMT<1,Y.COUNTER>
+    END
+    R.NEW(AZ.LOCAL.REF)<1,LOC.L.AZ.PENAL.AMT> = PEN.AMT
+RETURN
+
+END
