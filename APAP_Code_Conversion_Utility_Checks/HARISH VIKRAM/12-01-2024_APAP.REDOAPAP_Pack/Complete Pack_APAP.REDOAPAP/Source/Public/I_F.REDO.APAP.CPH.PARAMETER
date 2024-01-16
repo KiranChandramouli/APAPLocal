@@ -1,0 +1,17 @@
+* I_F.REDO.APAP.CPH.PARAMETER Created 17 AUG 10 at 06:39PM by apapr8/VAMSI
+*      PREFIX[CPH.PARAM]
+       EQU CPH.PARAM.CPH.CATEGORY TO 1,   RedoApapCphParameter_CphCategory TO 1,
+            CPH.PARAM.MG.CATEGORY TO 2,   RedoApapCphParameter_MgCategory TO 2,
+      CPH.PARAM.EXCESS.PERCENTAGE TO 3,   RedoApapCphParameter_ExcessPercentage TO 3,
+         CPH.PARAM.NO.OF.RENEWALS TO 4,   RedoApapCphParameter_NoOfRenewals TO 4,
+         CPH.PARAM.ALLOWED.STATUS TO 5,   RedoApapCphParameter_AllowedStatus TO 5,
+       CPH.PARAM.CHARGE.PROP.NAME TO 6,   RedoApapCphParameter_ChargePropName TO 6,
+          CPH.PARAM.RECORD.STATUS TO 7,   RedoApapCphParameter_RecordStatus TO 7,
+                CPH.PARAM.CURR.NO TO 8,   RedoApapCphParameter_CurrNo TO 8,
+               CPH.PARAM.INPUTTER TO 9,   RedoApapCphParameter_Inputter TO 9,
+              CPH.PARAM.DATE.TIME TO 10,  RedoApapCphParameter_DateTime TO 10,
+             CPH.PARAM.AUTHORISER TO 11,  RedoApapCphParameter_Authoriser TO 11,
+                CPH.PARAM.CO.CODE TO 12,  RedoApapCphParameter_CoCode TO 12,
+              CPH.PARAM.DEPT.CODE TO 13,  RedoApapCphParameter_DeptCode TO 13,
+           CPH.PARAM.AUDITOR.CODE TO 14,  RedoApapCphParameter_AuditorCode TO 14,
+        CPH.PARAM.AUDIT.DATE.TIME TO 15,  RedoApapCphParameter_AuditDateTime TO 15

@@ -1,0 +1,116 @@
+* @ValidationCode : MjoyNTI0MjQxMzpDcDEyNTI6MTY4NDgzNjAzNjE2OTpJVFNTOi0xOi0xOjI3NzoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 23 May 2023 15:30:36
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : 277
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : true
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOAPAP
+SUBROUTINE REDO.APAP.CONV.LAST.TRANS.DATE
+*-----------------------------------------------------------------------------
+*Company   Name    : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+*Developed By      : Temenos Application Management
+*Program   Name    : REDO.APAP.CONV.LAST.TRANS.DATE
+*------------------------------------------------------------------------------
+*Description  : This is a conversion routine used to fetch the value of LAST.TRANS.DATE from ACCOUNT
+*Linked With  :
+*In Parameter : O.DATA
+*Out Parameter: O.DATA
+*-------------------------------------------------------------------------------
+* Modification History :
+*-----------------------
+*  Date            Who                        Reference                    Description
+* ------          ------                      -------------                -------------
+* 12-11-2010      Sakthi Sellappillai         ODR-2010-08-0173 N.73       Initial Creation
+* Date                  who                   Reference              
+* 05-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
+* 05-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+*--------------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_ENQUIRY.COMMON
+    $INSERT I_F.ACCOUNT
+    GOSUB INITIALISE
+    GOSUB PROCESS
+RETURN
+*---------------------------
+INITIALISE:
+*---------------------------
+    Y.ACCOUNT.ID = O.DATA
+    FN.ACCOUNT = 'F.ACCOUNT'
+    F.ACCOUNT = ''
+    CALL OPF(FN.ACCOUNT,F.ACCOUNT)
+    R.ACCOUNT.REC = ''
+    Y.ACCT.ERR = ''
+    FN.ACCOUNT$HIS = 'F.ACCOUNT$HIS'
+    F.ACCOUNT$HIS = ''
+    CALL OPF(FN.ACCOUNT$HIS,F.ACCOUNT$HIS)
+    R.ACCOUNT.HIS.REC = ''
+    Y.ACCOUNT.HIS.ERR = ''
+    Y.ACT.DATE = ''
+    Y.LAST.CRD.DATE = ''
+    Y.LAST.DBT.DATE = ''
+    Y.ACT.DATE.VAL = ''
+RETURN
+*------------------------------------------------------------------------------------
+PROCESS:
+*------------------------------------------------------------------------------------
+    Y.HIS.ACCT.ID = ''
+    Y.HIS.SYM.VAL = FIELD(Y.ACCOUNT.ID,';',2,1)
+    IF Y.HIS.SYM.VAL THEN
+        Y.HIS.ACCT.ID = FIELD(Y.ACCOUNT.ID,';',1,1)
+        CALL EB.READ.HISTORY.REC(F.ACCOUNT$HIS,Y.HIS.ACCT.ID,R.ACCOUNT.HIS.REC,Y.ACCOUNT.HIS.ERR)
+        IF NOT(Y.ACCOUNT.HIS.ERR) THEN
+            Y.LAST.CRD.DATE = R.ACCOUNT.HIS.REC<AC.DATE.LAST.CR.CUST>
+            Y.LAST.DBT.DATE = R.ACCOUNT.HIS.REC<AC.DATE.LAST.DR.CUST>
+        END
+    END ELSE
+        CALL F.READ(FN.ACCOUNT,Y.ACCOUNT.ID,R.ACCOUNT.REC,F.ACCOUNT,Y.ACCT.ERR)
+        IF NOT(Y.ACCT.ERR) THEN
+            Y.LAST.CRD.DATE = R.ACCOUNT.REC<AC.DATE.LAST.CR.CUST>
+            Y.LAST.DBT.DATE = R.ACCOUNT.REC<AC.DATE.LAST.DR.CUST>
+        END
+    END
+    IF Y.LAST.CRD.DATE NE '' AND Y.LAST.DBT.DATE NE '' THEN
+        IF Y.LAST.CRD.DATE GE Y.LAST.DBT.DATE THEN
+            Y.ACT.DATE  = Y.LAST.CRD.DATE
+*Y.ACT.DATE = ICONV(Y.ACT.DATE, "DI")
+*Y.ACT.DATE = OCONV(Y.ACT.DATE, "D4")
+            Y.ACT.DATE.VAL = Y.ACT.DATE
+        END ELSE
+            Y.ACT.DATE = Y.LAST.DBT.DATE
+*Y.ACT.DATE = ICONV(Y.ACT.DATE, "DI")
+*Y.ACT.DATE = OCONV(Y.ACT.DATE, "D4")
+            Y.ACT.DATE.VAL = Y.ACT.DATE
+        END
+    END
+    IF Y.LAST.CRD.DATE EQ '' THEN
+        IF Y.LAST.DBT.DATE THEN
+            Y.ACT.DATE = Y.LAST.DBT.DATE
+*Y.ACT.DATE = ICONV(Y.ACT.DATE, "DI")
+*Y.ACT.DATE = OCONV(Y.ACT.DATE, "D4")
+            Y.ACT.DATE.VAL = Y.ACT.DATE
+        END
+    END
+    IF Y.LAST.DBT.DATE EQ '' THEN
+        IF Y.LAST.CRD.DATE THEN
+            Y.ACT.DATE = Y.LAST.CRD.DATE
+*Y.ACT.DATE = ICONV(Y.ACT.DATE, "DI")
+*Y.ACT.DATE = OCONV(Y.ACT.DATE, "D4")
+            Y.ACT.DATE.VAL = Y.ACT.DATE
+        END
+    END
+
+    IF Y.ACT.DATE.VAL THEN
+        O.DATA = Y.ACT.DATE.VAL
+    END ELSE
+        O.DATA = ''
+    END
+RETURN
+*-------------------------------------------------------------------------------------
+END
