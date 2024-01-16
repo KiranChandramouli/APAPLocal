@@ -9277,3 +9277,62 @@ public method lapapGetValCardOrder (
    jBC: LAPAP.GET.VAL.CARD.ORDER
 }
 
+
+
+public method lApapCorrApdArr (
+   INOUT yAaaId string
+)
+{
+   jBC: L.APAP.CORR.APD.ARR
+}
+
+
+
+public method lApapCorrApdArrLoad (
+)
+{
+   jBC: L.APAP.CORR.APD.ARR.LOAD
+}
+
+
+
+public method lApapCorrApdArrSelect (
+)
+{
+   jBC: L.APAP.CORR.APD.ARR.SELECT
+}
+
+
+
+public method lApapMethodAaAc (
+)
+{
+   jBC: L.APAP.METHOD.AA.AC
+}
+
+
+
+public method lApapPaymentAaAc (
+)
+{
+   jBC: L.APAP.PAYMENT.AA.AC
+}
+
+
+
+public method lapapBldAccCustRt (
+   INOUT enqData string
+)
+{
+   jBC: LAPAP.BLD.ACC.CUST.RT
+}
+
+
+
+public method lapapBldClAzCustRt (
+   INOUT enqData string
+)
+{
+   jBC: LAPAP.BLD.CL.AZ.CUST.RT
+}
+

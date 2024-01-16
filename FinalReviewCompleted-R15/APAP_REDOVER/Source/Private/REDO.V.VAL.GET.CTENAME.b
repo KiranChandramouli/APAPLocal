@@ -1,17 +1,17 @@
-* @ValidationCode : MjoyMDgzOTk1NTQ0OkNwMTI1MjoxNjgyNjkxNTIyMDQ4OklUU1M6LTE6LTE6NTMwOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 28 Apr 2023 19:48:42
+* @ValidationCode : MjotMTk2NzM0ODYzODpDcDEyNTI6MTcwNDk4ODIzNzE1ODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:20:37
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 530
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOVER
-SUBROUTINE REDO.V.VAL.GET.CTENAME
+SUBROUTINE REDO.V.VAL.GET.CTENAME    
 *--------------------------------------------------------------------------------
 *Company   Name    :Asociacion Popular de Ahorros y Prestamos
 *Developed By      :NAVA V
@@ -27,6 +27,7 @@ SUBROUTINE REDO.V.VAL.GET.CTENAME
 *DATE                WHO                         REFERENCE                DESCRIPTION
 *17-04-2023       Conversion Tool        R22 Auto Code conversion         VM TO @VM
 *17-04-2023       Samaran T               R22 Manual Code Conversion      CALL ROUTINE FORMAT MODIFIED
+*09-01-2024	 VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12211 � By Santiago
 *---------------------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -34,11 +35,19 @@ SUBROUTINE REDO.V.VAL.GET.CTENAME
     $INSERT I_F.CUSTOMER
     $INSERT I_F.TELLER
     $INSERT I_F.ALTERNATE.ACCOUNT
+    $INSERT I_System	;*Fix SQA-12211 � By Santiago-new line is added
     $USING APAP.TAM
 *
     GOSUB INIT
 *----------------------------------
 *PACS00203353-S
+;*Fix SQA-12211 � By Santiago-new line is added-start
+    Y.CURRENT.CARD = COMI
+    IF INDEX(Y.CURRENT.CARD,'*',1) THEN
+    END ELSE
+        CALL System.setVariable("CURRENT.CARD.NUM",COMI)
+    END
+;*Fix SQA-12211 � By Santiago-new line is added-end
     APAP.TAM.redoChkDebitCardNumber()    ;*R22 MANUAL CODE CONVERSION
 *PACS00203353-E
 *----------------------------------

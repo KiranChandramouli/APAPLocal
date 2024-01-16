@@ -1,7 +1,7 @@
-* @ValidationCode : Mjo4MjM1NzM0MDU6Q3AxMjUyOjE2OTg3NTA2NzQ3Mjk6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 31 Oct 2023 16:41:14
+* @ValidationCode : MjotNDI4NTU2MjI1OkNwMTI1MjoxNzA0OTcyNDQyMjY3OkhhcmlzaHZpa3JhbUM6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 Jan 2024 16:57:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -32,6 +32,8 @@ SUBROUTINE V.TFS.FT.POPULATE.STO.DETAILS
     $INSERT I_F.STO.BULK.CODE
 
     $INCLUDE I_F.T24.FUND.SERVICES ;*R22 Manual Conversion
+    
+    $USING EB.Updates
 
 
     GOSUB INIT
@@ -59,9 +61,12 @@ INIT:
     FN.SBC = 'F.STO.BULK.CODE' ; F.SBC = ''
     FN.CATEG = 'F.CATEGORY' ; F.CATEG = ''
 *
-    CALL US.GET.LOCAL.REF.POS.ARRAY('FUNDS.TRANSFER','TFS.STO.ID',STO.ID.POS,STO.ID.LREF.ERR)
-    IF STO.ID.LREF.ERR THEN
-        ETEXT = STO.ID.LREF.ERR
+*    CALL US.GET.LOCAL.REF.POS.ARRAY('FUNDS.TRANSFER','TFS.STO.ID',STO.ID.POS,STO.ID.LREF.ERR)
+    EB.Updates.MultiGetLocRef('FUNDS.TRANSFER','TFS.STO.ID',STO.ID.POS)                                ;* TSR-734921 fix
+*    IF STO.ID.LREF.ERR THEN
+*        ETEXT = STO.ID.LREF.ERR
+    IF NOT(STO.ID.POS) THEN
+        ETEXT = "Missing Field-TFS.STO.ID"
         PROCESS.GOAHEAD = 0
     END
 

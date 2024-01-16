@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTE0NjA3OTk5OTpDcDEyNTI6MTY5NzAyOTMxMTIyODpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 11 Oct 2023 18:31:51
+* @ValidationCode : MjotMTUyNjg1NTk6Q3AxMjUyOjE3MDQ5ODgwNTUzOTA6SVRTUzE6LTE6LTE6MDoxOmZhbHNlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:17:35
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,6 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.ATM
-
 SUBROUTINE REDO.POPULATE.FT.DETAILS
 **************************************************************************************************************
 * COMPANY NAME: ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
@@ -32,7 +31,7 @@ SUBROUTINE REDO.POPULATE.FT.DETAILS
 * Date             Who                   Reference      Description
 * 10.04.2023       Conversion Tool       R22            Auto Conversion     - New condition added
 * 10.04.2023       Shanmugapriya M       R22            Manual Conversion   - No changes
-*
+*09-01-2024	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12211 � By Santiago
 *-------------------------------------------------------------------------
     $INSERT I_COMMON
     $INSERT I_EQUATE
@@ -42,7 +41,8 @@ SUBROUTINE REDO.POPULATE.FT.DETAILS
     $INSERT I_System
     $INSERT I_GTS.COMMON
     $INSERT I_REDO.DEBIT.CARD.COMMON
-    $INSERT I_F.ATM.REVERSAL
+    $INSERT I_F.ATM.TRANSACTION		;*Fix SQA-12211 � By Santiago-new line is added
+    
 
     IF OFS$HOT.FIELD EQ 'L.TT.POS.AUTHNM' THEN
         GOSUB OPEN.FILES
@@ -53,10 +53,11 @@ RETURN
 ************
 OPEN.FILES:
 ************
-    FN.ATM.REVERSAL = 'F.ATM.REVERSAL'
-    F.ATM.REVERSAL  = ''
-    CALL OPF(FN.ATM.REVERSAL,F.ATM.REVERSAL)
-
+;*Fix SQA-12211 � By Santiago-new line is added-start
+    FN.ATM.TRANSACTION = 'F.ATM.TRANSACTION'
+    F.ATM.TRANSACTION  = ''
+    CALL OPF(FN.ATM.TRANSACTION,F.ATM.TRANSACTION)
+;*Fix SQA-12211 � By Santiago-new line is added-end
     FN.FUNDS.TRANSFER = 'F.FUNDS.TRANSFER'
     F.FUNDS.TRANSFER = ''
     CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
@@ -65,11 +66,22 @@ OPEN.FILES:
     F.FUNDS.TRANSFER.HIS = ''
     CALL OPF(FN.FUNDS.TRANSFER.HIS,F.FUNDS.TRANSFER.HIS)
 
-
     FN.ACCOUNT = 'F.ACCOUNT'
     F.ACCOUNT  = ''
     CALL OPF(FN.ACCOUNT,F.ACCOUNT)
-
+;*Fix SQA-12211 � By Santiago-new line is added-start
+*INICIAN CAMBIOS FELICITAS
+    Y.LT.APP = 'TELLER':@FM:'ATM.TRANSACTION'
+    Y.LT.FLD = 'L.TT.POS.AUTHNM':@VM:'L.TT.CR.CARD.NO':@FM:'L.WITHDRAW.STAT'
+    Y.LT.POS = ''
+ 
+    CALL MULTI.GET.LOC.REF(Y.LT.APP, Y.LT.FLD, Y.LT.POS)
+    Y.POS.AUTH = Y.LT.POS<1,1>
+    Y.CARD.NUM = Y.LT.POS<1,2>
+    L.WITHDRAW.STATUS.POS = Y.LT.POS<2,1>
+*    Y.AUTH.NO = EB.SystemTables.getRNew(TT.Contract.Teller.TeLocalRef)<1,Y.POS.AUTH>
+*TERMINAN CAMBIOS FELICITAS
+ ;*Fix SQA-12211 � By Santiago-new line is added-end   
 RETURN
 **********
 PROCESS:
@@ -77,22 +89,19 @@ PROCESS:
 *Get the Value of Auth Code.
 *    Y.CCARD.NO = TEMP.VAR
     Y.CCARD.NO = System.getVariable("CURRENT.CARD.NUM")
-    IF E EQ "EB-UNKNOWN.VARIABLE" THEN          ;** R22 Auto Conversion - Start
-        Y.CCARD.NO = ""
-    END                                         ;** R22 Auto Conversion - End
     Y.AUTH.ID = COMI
     Y.AUTH.ID = Y.CCARD.NO:'.':Y.AUTH.ID
 
     Y.DR.CR.MARKER = R.NEW(TT.TE.DR.CR.MARKER)
-    CALL F.READ(FN.ATM.REVERSAL,Y.AUTH.ID,R.ATM.REVERSAL,F.ATM.REVERSAL,ATM.ERR)
-    IF R.ATM.REVERSAL THEN
+    CALL F.READ(FN.ATM.TRANSACTION,Y.AUTH.ID,R.ATM.TRANSACTION,F.ATM.TRANSACTION,ATM.ERR)	;*Fix SQA-12211 � By Santiago-new line is added-start
+    IF R.ATM.TRANSACTION THEN	;*Fix SQA-12211 � By Santiago-new line is added-start
         GOSUB CHECK.PROCESS
     END ELSE
         ETEXT = "EB-REDO.WRONG.AUTH.NUM"
         CALL STORE.END.ERROR
         GOSUB PGM.END
     END
-
+    
 *Read the FT id and get the details
 
     CALL F.READ(FN.FUNDS.TRANSFER,Y.FT.ID,R.FUNDS.TRANSFER,F.FUNDS.TRANSFER,FUNDS.ERR)
@@ -100,6 +109,7 @@ PROCESS:
         FUNDS.ERR = ''
         CALL EB.READ.HISTORY.REC(F.FUNDS.TRANSFER.HIS,Y.FT.ID,R.FUNDS.TRANSFER,FUNDS.ERR)
     END
+    
     IF R.FUNDS.TRANSFER THEN
         Y.DEBIT.ACCOUNT = R.FUNDS.TRANSFER<FT.CREDIT.ACCT.NO>
         Y.ACC.ID        = R.FUNDS.TRANSFER<FT.DEBIT.ACCT.NO>
@@ -110,9 +120,13 @@ PROCESS:
         END
         Y.DEBIT.CCY     = R.FUNDS.TRANSFER<FT.DEBIT.CURRENCY>
 
-        R.NEW(TT.TE.ACCOUNT.2)  = Y.DEBIT.ACCOUNT
-        R.NEW(TT.TE.CURRENCY.2) = Y.DEBIT.CCY
-
+*        R.NEW(TT.TE.ACCOUNT.2)  = Y.DEBIT.ACCOUNT	;*Fix SQA-12211 � By Santiago-commented
+*        R.NEW(TT.TE.CURRENCY.2) = Y.DEBIT.CCY		;*Fix SQA-12211 � By Santiago-commented
+        R.NEW(TT.TE.ACCOUNT.2)  = Y.ACC.ID	;*Fix SQA-12211 � By Santiago-new line is added
+        R.NEW(TT.TE.CURRENCY.2) = R.FUNDS.TRANSFER<FT.CREDIT.CURRENCY>	;*Fix SQA-12211 � By Santiago-new line is added
+        
+        
+        
         IF Y.DEBIT.CCY EQ LCCY THEN
             R.NEW(TT.TE.AMOUNT.LOCAL.2) = Y.DEBIT.AMOUNT
             R.NEW(TT.TE.AMOUNT.LOCAL.1) = Y.DEBIT.AMOUNT
@@ -132,9 +146,12 @@ RETURN
 *****************
 CHECK.PROCESS:
 *****************
-    Y.WITHDRAW.STATUS = R.ATM.REVERSAL<AT.REV.WITHDRAW.STATUS>
-    IF NOT(Y.WITHDRAW.STATUS) THEN
-        Y.FT.ID = R.ATM.REVERSAL<AT.REV.TRANSACTION.ID>
+;*Fix SQA-12211 � By Santiago-new line is added-start
+    Y.WITHDRAW.STATUS = ''
+    Y.WITHDRAW.STATUS = R.ATM.TRANSACTION<AT.REV.LOCAL.REF, L.WITHDRAW.STATUS.POS>
+    IF Y.WITHDRAW.STATUS EQ '' THEN
+        Y.FT.ID = R.ATM.TRANSACTION<AT.REV.TRANS.REF>
+	;*Fix SQA-12211 � By Santiago-new line is added-end
     END ELSE
         ETEXT = "EB-NUM.ALREADY.USED"
         CALL STORE.END.ERROR

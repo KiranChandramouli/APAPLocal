@@ -1,5 +1,5 @@
-* @ValidationCode : MjotMTUxODc2MTYzMDpDcDEyNTI6MTcwMTc3MzY2MjMxNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 05 Dec 2023 16:24:22
+* @ValidationCode : MjotMTk3MTY2NTg2MzpDcDEyNTI6MTcwNDk4ODE3NDgwNTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:19:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -12,6 +12,7 @@
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
 SUBROUTINE REDO.IVR.PROCESS(R.DATA)
+    
     
 *-----------------------------------------------------------------------------
 *DESCRIPTION:
@@ -41,6 +42,7 @@ SUBROUTINE REDO.IVR.PROCESS(R.DATA)
 * 12-APR-2023      Harishvikram C   Manual R22 conversion     CALL routine format modified
 * 07/10/2023	   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES      Interface Change by Santiago
 *04-12-2023	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES        SQA-11242 IVR� By Santiago
+*09-01-2024	    VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12248 – By Santiago
 *-----------------------------------------------------------------------------
 * <region name= Inserts>
     $INSERT I_COMMON
@@ -150,7 +152,7 @@ RETURN
 TRANSACTION:
 ************
 *Read the value of APP.MAP field from REDO.IVR.PARAMS application and T24 mapping is done
-
+    
     Y.APP.ENQ = R.REDO.IVR.PARAMS<REDO.IVR.PAR.APP.ENQ>
     Y.APP.MAP = R.REDO.IVR.PARAMS<REDO.IVR.PAR.APP.MAP>
     Y.APPLICATION = Y.APP.ENQ
@@ -244,68 +246,69 @@ REPORT.LOG:
         APAP.REDOCHNLS.redoInterfaceRecAct(Y.INT.CODE,Y.INT.TYPE,Y.BAT.NO,Y.BAT.TOT,Y.INFO.OR,Y.INFO.DE,Y.ID.PROC,Y.MON.TP,Y.DESC,Y.REC.CON,Y.EX.USER,Y.EX.PC);*Manual R22 conversion
     END
 
+
 RETURN
 
 **************
 PROC.FORMAT.0:		;*Fix SQA-11242 IVR� By Santiago-new lines added -start
 **************
-    ERR.ENQ = ''
-    CALL F.READ(FN.ENQUIRY,Y.ENQ.ID,R.ENQUIRY,F.ENQUIRY,ERR.ENQ)
-    IF ERR.ENQ NE '' THEN
-        R.DATA = 'RET_CODE*3'
-        RETURN
-    END
+ERR.ENQ = ''
+CALL F.READ(FN.ENQUIRY,Y.ENQ.ID,R.ENQUIRY,F.ENQUIRY,ERR.ENQ)
+IF ERR.ENQ NE '' THEN
+    R.DATA = 'RET_CODE*3'
+RETURN
+END
         
-    Y.RESP.DATA = FIELD(Y.RETURN.DATA,',',3)
+Y.RESP.DATA = FIELD(Y.RETURN.DATA,',',3)
     
-    Y.NOREC2 = 'No records'
-    IF INDEX(Y.RESP.DATA,Y.NOREC2,1) THEN
-        R.DATA = 'RET_CODE*2'
-        RETURN
-    END
+Y.NOREC2 = 'No records'
+IF INDEX(Y.RESP.DATA,Y.NOREC2,1) THEN
+R.DATA = 'RET_CODE*2'
+RETURN
+END
     
 *    Y.DELIM = '*'
 *    IF INDEX(R.ENQUIRY<ENQ.CONVERSION>,'|',1) THEN
 *        Y.DELIM = '|'
 *    END
         
-    Y.POS = INDEX(Y.RETURN.DATA,",",2) + 1
-    Y.RESP.DATA = SUBSTRINGS(Y.RETURN.DATA,Y.POS,999999)
+Y.POS = INDEX(Y.RETURN.DATA,",",2) + 1
+Y.RESP.DATA = SUBSTRINGS(Y.RETURN.DATA,Y.POS,999999)
 
-    CHANGE '","' TO @FM IN Y.RESP.DATA
-    Y.TOT.ROWS = DCOUNT(Y.RESP.DATA,@FM)
-    Y.TOT.ENQ.FLD = DCOUNT(R.ENQUIRY<ENQ.FIELD.NAME>,@VM)
-    R.COLUM   = R.ENQUIRY<ENQ.COLUMN>
-    Y.CNT.ROWS = 1
+CHANGE '","' TO @FM IN Y.RESP.DATA
+Y.TOT.ROWS = DCOUNT(Y.RESP.DATA,@FM)
+Y.TOT.ENQ.FLD = DCOUNT(R.ENQUIRY<ENQ.FIELD.NAME>,@VM)
+R.COLUM   = R.ENQUIRY<ENQ.COLUMN>
+Y.CNT.ROWS = 1
 
     
 *    CHANGE CHARX(9) TO @FM IN Y.RESP.DATA
-    CHANGE @VM TO @FM IN R.COLUM
+CHANGE @VM TO @FM IN R.COLUM
     
-    LOOP
-    WHILE Y.CNT.ROWS LE Y.TOT.ROWS
+LOOP
+WHILE Y.CNT.ROWS LE Y.TOT.ROWS
         
-        Y.NEXT.VAL = 1
-        Y.CONT.RESP = 1
-        Y.COLUM = 0
-        Y.ROW = Y.RESP.DATA<Y.CNT.ROWS>
+Y.NEXT.VAL = 1
+Y.CONT.RESP = 1
+Y.COLUM = 0
+Y.ROW = Y.RESP.DATA<Y.CNT.ROWS>
     
-        LOOP
-        WHILE Y.NEXT.VAL LE Y.TOT.ENQ.FLD
-            Y.COLUM  = R.ENQUIRY<ENQ.COLUMN,Y.NEXT.VAL>
+LOOP
+WHILE Y.NEXT.VAL LE Y.TOT.ENQ.FLD
+    Y.COLUM  = R.ENQUIRY<ENQ.COLUMN,Y.NEXT.VAL>
         
-            IF Y.COLUM GT 0 THEN
-                Y.FIELD.NAME  = R.ENQUIRY<ENQ.FIELD.NAME,Y.NEXT.VAL>
-                Y.FIELD.VALUE = FIELD(Y.ROW,CHARX(9),Y.CONT.RESP)
-                Y.FIELD.VALUE = TRIM(CHANGE(Y.FIELD.VALUE,'"',""))
-                R.DATA<-1> = Y.FIELD.NAME:'*':Y.FIELD.VALUE
-                Y.CONT.RESP += 1
-            END
-            Y.NEXT.VAL += 1
-        REPEAT
-        Y.CNT.ROWS += 1
+    IF Y.COLUM GT 0 THEN
+        Y.FIELD.NAME  = R.ENQUIRY<ENQ.FIELD.NAME,Y.NEXT.VAL>
+        Y.FIELD.VALUE = FIELD(Y.ROW,CHARX(9),Y.CONT.RESP)
+        Y.FIELD.VALUE = TRIM(CHANGE(Y.FIELD.VALUE,'"',""))
+        R.DATA<-1> = Y.FIELD.NAME:'*':Y.FIELD.VALUE
+        Y.CONT.RESP += 1
+    END
+    Y.NEXT.VAL += 1
+REPEAT
+Y.CNT.ROWS += 1
         
-    REPEAT
+REPEAT
 
 RETURN
 
@@ -455,7 +458,7 @@ TRANSACTION.VERSION:
 ********************
 *If APP.ENQ field contains VERSION, OFS message is formed and OFS.POST.MESSAGE is called to execute the OFS message and value return is mapped to
 *DATA.OUT field of REDO.IVR.RECEPTOR
-
+    
     Y.OFSVERSION = Y.APPLICATION
     Y.OFSRECORD = ""
 *
@@ -471,7 +474,11 @@ TRANSACTION.VERSION:
 *    CALL OFS.CALL.BULK.MANAGER(Y.OFS.SOURCE.ID,Y.MSG, OFS.RESP, TXN.COMMIT) ;* R22 Manual conversion - End
 *
 ;*Interface Change by Santiago-START
-    Y.ID = TODAY:'-IVR.REQUEST'
+;*Fix SQA-12248 – By Santiago-newlines added-start    
+    Y.ID = ''
+    CALL ALLOCATE.UNIQUE.TIME(Y.ID)
+    Y.ID = Y.ID:'-IVR.REQUEST'
+    ;*Fix SQA-12248 – By Santiago-newlines added-end
     R.IVR<IRV.ENQ.OFS.REQUEST> = Y.MSG.BULK
     CALL F.WRITE(FN.IVR,Y.ID,R.IVR)
     CALL JOURNAL.UPDATE("")
@@ -481,7 +488,9 @@ TRANSACTION.VERSION:
 
 ;*Interface Change by Santiago-END
     GOSUB PROC.RESP.VERSION
-    CALL EB.CLEAR.FILE(FN.IVR,F.IVR)	;*Interface Change by Santiago
+*    CALL EB.CLEAR.FILE(FN.IVR,F.IVR)	;*Interface Change by Santiago	;*Fix SQA-12248 – By Santiago-commented
+    CALL F.DELETE(FN.IVR,Y.ID)	;*Fix SQA-12248 – By Santiago-newlines added
+    CALL JOURNAL.UPDATE("")	;*Fix SQA-12248 – By Santiago-newlines added
 *    GOSUB PROCESS.RESPONSE
 
 RETURN

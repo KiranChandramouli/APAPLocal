@@ -1,16 +1,18 @@
-* @ValidationCode : MjotMTQwODc3MDMzMTpDcDEyNTI6MTY4NDIyMjgxNDY1NDpJVFNTOi0xOi0xOjc4OjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 16 May 2023 13:10:14
+* @ValidationCode : MjoyMTA4NDMyNzkwOkNwMTI1MjoxNzA0OTg4MTMyMjcxOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:18:52
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 78
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.LAPAP
+
+
 * Item ID        : BIT007374
 *-------------------------------------------------------------------------------------
 * Description :
@@ -34,6 +36,7 @@ $PACKAGE APAP.LAPAP
 *DATE                WHO                         REFERENCE                DESCRIPTION
 *21-04-2023       Conversion Tool        R22 Auto Code conversion          INSERT FILE MODIFIED
 *21-04-2023       Samaran T               R22 Manual Code Conversion       No Changes
+*09-01-2024	  VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-11970 � By Santiago
 *-------------------------------------------------------------------------------------------------
 
 
@@ -50,15 +53,15 @@ SUBROUTINE LAPAP.RTN.ABORT.TXN
 
     CALL OPF(FN.FUNDS.TRANSFER,F.FUNDS.TRANSFER)
     POS.DEBIT.AMOUNT=COMI
-
+    R.NEW(FT.DEBIT.AMOUNT)=POS.DEBIT.AMOUNT	;*Fix SQA-11970 � By Santiago-new line added
 
 * Conseguir valor local del campo Cuenta de Credito desde la version
 
     POS.CREDIT.ACT.NO= R.NEW(FT.CREDIT.ACCT.NO)
 
-
+    IF POS.CREDIT.ACT.NO NE '' THEN	;*Fix SQA-11970 � By Santiago-new line added
 * Comando de seleccion en base a valores enviados desde el archivo de pago
-
+    NO.OF.REC=''	;*Fix SQA-11970 � By Santiago-new line added
     SEL.CMD = "SELECT " :FN.FUNDS.TRANSFER: " WITH TRANSACTION.TYPE EQ ACN1 AND DEBIT.AMOUNT EQ " :POS.DEBIT.AMOUNT : " AND CREDIT.ACCT.NO EQ ": POS.CREDIT.ACT.NO
     CALL EB.READLIST(SEL.CMD, Y.FT.ID,"", NO.OF.REC, SEL.ERR)
     Y.VALUE=1
@@ -95,5 +98,5 @@ SUBROUTINE LAPAP.RTN.ABORT.TXN
 *        RETURN
     END
 
-
+END	;*Fix SQA-11970 � By Santiago-new line added
 END

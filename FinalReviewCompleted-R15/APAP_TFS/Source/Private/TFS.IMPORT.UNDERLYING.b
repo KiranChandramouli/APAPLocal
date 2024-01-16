@@ -1,7 +1,7 @@
-* @ValidationCode : MjotNDg5Mzg3MTQ1OkNwMTI1MjoxNjk4NzUwNjc0MTAyOklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
-* @ValidationInfo : Timestamp         : 31 Oct 2023 16:41:14
+* @ValidationCode : Mjo5MDU5NzE5OTc6Q3AxMjUyOjE3MDQ5NzI0NDIxNDc6SGFyaXNodmlrcmFtQzotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Jan 2024 16:57:22
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS1
+* @ValidationInfo : User Name         : HarishvikramC
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
 * @ValidationInfo : Rating            : N/A
@@ -261,7 +261,8 @@ GET.TFS.TXN:
 *
         IF TFS.TXN THEN
 *CALL TFS.LOAD.TRANSACTION(TFS.TXN,R.TFS.TXN,'','','')
-            APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ; *R22 Manual Code conversion
+*            APAP.TFS.tfsLoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ; *R22 Manual Code conversion
+            APAP.TFS.t24LoadTransaction(TFS.TXN,R.TFS.TXN,'','','') ; *R22 Manual Code conversion      ;* TSR-734921 fix
             IF R.TFS.TXN THEN
                 R.NEW(TFS.TRANSACTION)<1,AV> = TFS.TXN
                 TFS$R.TFS.TXN(AV) = R.TFS.TXN

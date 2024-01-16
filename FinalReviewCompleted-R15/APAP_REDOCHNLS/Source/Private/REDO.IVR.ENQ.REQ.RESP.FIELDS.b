@@ -1,5 +1,5 @@
-* @ValidationCode : MjotNTY2NjU0NTA5OkNwMTI1MjoxNjk5NTA2NDc4MjA1OklUU1MxOi0xOi0xOjA6MTp0cnVlOk4vQTpSMjFfQU1SLjA6LTE6LTE=
-* @ValidationInfo : Timestamp         : 09 Nov 2023 10:37:58
+* @ValidationCode : Mjo2ODQxMDcyMTE6Q3AxMjUyOjE3MDQ5ODgxNzQzNTA6SVRTUzE6LTE6LTE6MDoxOnRydWU6Ti9BOlIyMV9BTVIuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:19:34
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,6 +11,7 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
+
 *-----------------------------------------------------------------------------
 * <Rating>-7</Rating>
 *-----------------------------------------------------------------------------
@@ -36,20 +37,21 @@ SUBROUTINE REDO.IVR.ENQ.REQ.RESP.FIELDS
 *DATE          AUTHOR                   Modification                            DESCRIPTION
 *07-Nov-2023  Harishvikram C   Manual R22 conversion    Batch created for IVRInterfaceTWS Fix
 *07/10/2023   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES            NOCHANGES
-*07/11/2023   VIGNESHWARI������        MANUAL R22 CODE CONVERSION              Insert file is commented
+*07/11/2023   VIGNESHWARI        MANUAL R22 CODE CONVERSION              Insert file is commented
+*09-01-2024   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12248 – By Santiago
 *-----------------------------------------------------------------------------
 *** <region name= Header>
 *** <desc>Inserts and control logic</desc>
-*    $INSERT I_COMMON   ;*MANUAL R22 CODE CONVERSION 
- *   $INSERT I_EQUATE   ;*MANUAL R22 CODE CONVERSION
-  *  $INSERT I_DataTypes    ;*MANUAL R22 CODE CONVERSION
+*    $INSERT I_COMMON   ;*MANUAL R22 CODE CONVERSION
+*   $INSERT I_EQUATE   ;*MANUAL R22 CODE CONVERSION
+*  $INSERT I_DataTypes    ;*MANUAL R22 CODE CONVERSION
     $USING EB.SystemTables
     $USING EB.API
     $USING EB.Template
 *** </region>
 *-----------------------------------------------------------------------------
 *CALL Table.defineId("@ID", T24_String)          ;* Define Table id
-EB.Template.TableDefineid("@ID", T24_String)    ;*MANUAL R22 CODE CONVERSION
+    EB.Template.TableDefineid("@ID", T24_String)    ;*MANUAL R22 CODE CONVERSION
 
 
 *-----------------------------------------------------------------------------
@@ -57,13 +59,14 @@ EB.Template.TableDefineid("@ID", T24_String)    ;*MANUAL R22 CODE CONVERSION
 
     EB.Template.TableAddfielddefinition("OFS.REQUEST","200", "TEXT" ,"") ;* Add a new fields
     EB.Template.TableAddfielddefinition("OFS.RESPONSE","200", "TEXT" ,"") ;* Add a new fields
+    EB.Template.TableAddfielddefinition("PROCESSED","1", "A" ,"") ;* Add a new Reserved fields	;*Fix SQA-12248 – By Santiago-new line added
+    EB.Template.TableAddreservedfield("RESERVED.4") ;* Add a new Reserved fields	;*Fix SQA-12248 – By Santiago-changed "RESERVED.1" to "RESERVED.4"
+    EB.Template.TableAddreservedfield("RESERVED.3") ;* Add a new Reserved fields
+    EB.Template.TableAddreservedfield("RESERVED.2") ;* Add a new Reserved fields	;*Fix SQA-12248 – By Santiago-changed "RESERVED.4" to "RESERVED.2"
+    EB.Template.TableAddreservedfield("RESERVED.1") ;* Add a new Reserved fields	;*Fix SQA-12248 – By Santiago-changed "RESERVED.5" to "RESERVED.1"
 
     EB.Template.TableAddlocalreferencefield("") ;* Add a new Local Reference fields
-    EB.Template.TableAddreservedfield("RESERVED.1") ;* Add a new Reserved fields
-    EB.Template.TableAddreservedfield("RESERVED.2") ;* Add a new Reserved fields
-    EB.Template.TableAddreservedfield("RESERVED.3") ;* Add a new Reserved fields
-    EB.Template.TableAddreservedfield("RESERVED.4") ;* Add a new Reserved fields
-    EB.Template.TableAddreservedfield("RESERVED.5") ;* Add a new Reserved fields
+    
     EB.Template.TableAddstatementnumbersfield("") ;* Add a statement numbers field
     EB.Template.TableAddoverridefield() ;* Add a new Override fields
 *-----------------------------------------------------------------------------

@@ -253,18 +253,6 @@ public method tfsImportUnderlying (
 
 
 
-public method tfsLoadTransaction (
-    INOUT tfsTxn string,
-    INOUT rTfsTxn string,
-    INOUT futArg1 string,
-    INOUT futArg2 string,
-    INOUT futArg3 string
-)
-{
-    jBC: TFS.LOAD.TRANSACTION
-}
-
-
 
 public method tfsModifyDenom (
 )
@@ -362,5 +350,18 @@ public method vDefaultRate (
 )
 {
     jBC: V.DEFAULT.RATE
+}
+
+
+
+public method t24LoadTransaction (
+   INOUT tfsTxn string,
+   INOUT rTfsTxn string,
+   INOUT futArg1 string,
+   INOUT futArg2 string,
+   INOUT futArg3 string
+)
+{
+   jBC: T24.LOAD.TRANSACTION
 }
 

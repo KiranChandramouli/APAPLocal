@@ -1,5 +1,5 @@
-* @ValidationCode : Mjo5MTYxMzU0MzpDcDEyNTI6MTY5OTUwNjQ3MzM0NTpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMV9BTVIuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 09 Nov 2023 10:37:53
+* @ValidationCode : MjoxODk4OTk2OTk2OkNwMTI1MjoxNzA0OTg4MTcyMDI5OklUU1MxOi0xOi0xOjA6MTpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:19:32
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
@@ -11,7 +11,8 @@
 * @ValidationInfo : Compiler Version  : R21_AMR.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.REDOCHNLS
-    SUBROUTINE REDO.B.IVR.ENQ.REQUEST.SELECT
+SUBROUTINE REDO.B.IVR.ENQ.REQUEST.SELECT
+    
 *-----------------------------------------------------------------------------
 *
 *-----------------------------------------------------------------------------
@@ -19,6 +20,7 @@ $PACKAGE APAP.REDOCHNLS
 *DATE          AUTHOR                   Modification                            DESCRIPTION
 *07-Nov-2023  Harishvikram C   Manual R22 conversion    Batch created for IVRInterfaceTWS Fix
 *07/10/2023   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES            NOCHANGES
+*09-01-2024   VIGNESHWARI       ADDED COMMENT FOR INTERFACE CHANGES          SQA-12248 � By Santiago
 *-----------------------------------------------------------------------------
 *-----------------------------------------------------------------------------
 
@@ -30,9 +32,11 @@ $PACKAGE APAP.REDOCHNLS
     $INSERT I_REDO.B.IVR.ENQ.REQUEST.COMMON
     $INSERT I_F.REDO.IVR.ENQ.REQ.RESP
     
-    SEL.CMD = "SELECT ":FN.IVR: ' WITH @ID LIKE ...IVR.REQUEST'
+*    SEL.CMD = "SELECT ":FN.IVR: ' WITH @ID LIKE ...IVR.REQUEST'	;*Fix SQA-12248 � By Santiago-commented
+    
+    SEL.CMD = "SELECT ": FN.IVR : " WITH PROCESSED EQ '' "	;*Fix SQA-12248 � By Santiago-new line is added
     EB.DataAccess.Readlist(SEL.CMD, LIST.ID, '', Selected, SystemReturnCode)
     EB.Service.BatchBuildList('', LIST.ID)
 
-    RETURN
+RETURN
 END

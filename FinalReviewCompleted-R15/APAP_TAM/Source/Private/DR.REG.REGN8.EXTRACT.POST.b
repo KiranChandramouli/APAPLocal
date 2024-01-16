@@ -1,14 +1,14 @@
-* @ValidationCode : MjoxOTU4NTUyOTA3OkNwMTI1MjoxNjg0NDkxMDI1ODIzOklUU1M6LTE6LTE6NjEwOjE6ZmFsc2U6Ti9BOkRFVl8yMDIxMDguMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2023 15:40:25
+* @ValidationCode : MjotMTY2NjkzMDAyMDpDcDEyNTI6MTcwNDk4ODU4NDU4NDpJVFNTMTotMTotMTowOjE6ZmFsc2U6Ti9BOlIyMl9TUDUuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 11 Jan 2024 21:26:24
 * @ValidationInfo : Encoding          : Cp1252
-* @ValidationInfo : User Name         : ITSS
+* @ValidationInfo : User Name         : ITSS1
 * @ValidationInfo : Nb tests success  : N/A
 * @ValidationInfo : Nb tests failure  : N/A
-* @ValidationInfo : Rating            : 610
+* @ValidationInfo : Rating            : N/A
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : true
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_202108.0
+* @ValidationInfo : Compiler Version  : R22_SP5.0
 * @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
 $PACKAGE APAP.TAM
 SUBROUTINE DR.REG.REGN8.EXTRACT.POST
@@ -24,6 +24,7 @@ SUBROUTINE DR.REG.REGN8.EXTRACT.POST
 * Date                  who                   Reference
 * 24-04-2023         CONVERSTION TOOL      R22 AUTO CONVERSTION -$INSERT T24.BP TO $INSERT AND $INCLUDE REGREP.BP TO $INSERT AND $INCLUDE TAM.BP TO $INSERT
 * 24-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+* 11-01-2024          Santosh           R22 MANUAL CONVERSTION - COBFix
 *-------------------------------------------------------------------------
 
     $INSERT I_COMMON
@@ -58,6 +59,12 @@ OPEN.FILES:
 
     F.CHK.DIR = ''; LAST.WORK.VAL = ''
     CALL OPF(FN.CHK.DIR,F.CHK.DIR)
+**COBFix-Start
+    OPEN FN.CHK.DIR TO F.CHK.DIR ELSE
+        TEXT = "Unable to OPEN File -> ":FN.CHK.DIR
+        CALL FATAL.ERROR("DR.REG.REGN8.EXTRACT.POST")
+    END
+**COBFix_End
     LAST.WORK.VAL = R.DATES(EB.DAT.LAST.WORKING.DAY)
     EXTRACT.FILE.ID = Y.OUT.FILE.ID:'_':LAST.WORK.VAL:'.csv'
     LOCATE 'TAX.ACCT.NO' IN Y.FIELD.NAME<1,1> SETTING Y.TAC.POS THEN
