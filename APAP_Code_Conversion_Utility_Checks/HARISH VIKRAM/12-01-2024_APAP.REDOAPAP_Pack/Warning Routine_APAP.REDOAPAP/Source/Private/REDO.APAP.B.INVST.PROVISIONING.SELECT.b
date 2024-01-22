@@ -43,6 +43,7 @@ SUBROUTINE REDO.APAP.B.INVST.PROVISIONING.SELECT
     $INSERT I_COMMON
     $INSERT I_EQUATE
     $INSERT I_REDO.APAP.B.INVST.PROVISIONING.COMMON
+    $USING EB.Service
 *-------------------------------------------------------------------------------------------------------
 **********
 MAIN.PARA:
@@ -62,7 +63,8 @@ PROCESS.PARA:
         CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,SEL.ERR)
     END
 
-    CALL BATCH.BUILD.LIST('',SEL.LIST)
+*    CALL BATCH.BUILD.LIST('',SEL.LIST)
+    EB.Service.BatchBuildList('',SEL.LIST)     ;*R22 Manual conversion
 
 RETURN
 *--------------------------------------------------------------------------------------------------------
