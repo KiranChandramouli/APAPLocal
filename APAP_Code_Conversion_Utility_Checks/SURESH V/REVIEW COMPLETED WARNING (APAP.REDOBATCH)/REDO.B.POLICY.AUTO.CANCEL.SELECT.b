@@ -1,0 +1,59 @@
+* @ValidationCode : MjotNDEwMDYwMTI1OkNwMTI1MjoxNzA0MzcxMjAyMzcyOjMzM3N1Oi0xOi0xOjA6MDpmYWxzZTpOL0E6UjIxX0FNUi4wOi0xOi0x
+* @ValidationInfo : Timestamp         : 04 Jan 2024 17:56:42
+* @ValidationInfo : Encoding          : Cp1252
+* @ValidationInfo : User Name         : 333su
+* @ValidationInfo : Nb tests success  : N/A
+* @ValidationInfo : Nb tests failure  : N/A
+* @ValidationInfo : Rating            : N/A
+* @ValidationInfo : Coverage          : N/A
+* @ValidationInfo : Strict flag       : N/A
+* @ValidationInfo : Bypass GateKeeper : false
+* @ValidationInfo : Compiler Version  : R21_AMR.0
+* @ValidationInfo : Copyright Temenos Headquarters SA 1993-2021. All rights reserved.
+$PACKAGE APAP.REDOBATCH
+SUBROUTINE REDO.B.POLICY.AUTO.CANCEL.SELECT
+****************************************************************
+*-------------------------------------------------------------------------
+* Company Name  : ASOCIACION POPULAR DE AHORROS Y PRESTAMOS
+* Developed By  : HARISH Y
+* Program Name  : REDO.B.POLICY.AUTO.CANCEL
+*-------------------------------------------------------------------------
+
+* Description :This routine will SELECT the files required
+*              by the routine REDO.B.POLICY.AUTO.CANCEL
+
+* In parameter : None
+* out parameter : None
+*-------------------------------------------------------------------------------------
+*Modification
+* Date                  who                   Reference
+* 12-04-2023        �CONVERSTION TOOL   �  R22 AUTO CONVERSTION - No Change
+* 12-04-2023          ANIL KUMAR B         R22 MANUAL CONVERSTION -NO CHANGES
+*18/01/2024         Suresh                 R22 AUTO Conversion   CALL routine Modified
+*-------------------------------------------------------------------------------------
+*------------------------------------------------------------------------
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+    $INSERT I_F.AA.ARRANGEMENT
+    $INSERT I_F.APAP.H.INSURANCE.DETAILS
+    $INSERT I_REDO.B.POLICY.AUTO.CANCEL.COMMON
+    $USING EB.Service ;* R22 AUTO CONVERSION
+
+    GOSUB INIT
+    GOSUB PROCESS
+
+RETURN
+
+***********
+INIT:
+***********
+    SEL.CMD="SELECT ":FN.APAP.H.INSURANCE.DETAILS
+    CALL EB.READLIST(SEL.CMD,SEL.LIST,'',NO.OF.REC,RET.CODE)
+*CALL BATCH.BUILD.LIST('',SEL.LIST)
+    EB.Service.BatchBuildList('',SEL.LIST);* R22 AUTO CONVERSION
+RETURN
+********
+PROCESS:
+*********
+RETURN
+END
