@@ -1,5 +1,0 @@
-* I_F.REDO.STOCK.REGISTER Created 18 MAY 11 at 03:39PM by apapr8/GANESH.5
-*      PREFIX[STK.REG]
-          EQU STK.REG.SERIES.ID TO 1,   RedoStockRegister_SeriesId TO 1,
-             STK.REG.SERIES.BAL TO 2,   RedoStockRegister_SeriesBal TO 2,
-            STK.REG.STO.REG.BAL TO 3,   RedoStockRegister_StoRegBal TO 3

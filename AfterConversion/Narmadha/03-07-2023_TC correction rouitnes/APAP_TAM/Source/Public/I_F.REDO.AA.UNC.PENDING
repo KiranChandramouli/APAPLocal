@@ -1,3 +1,0 @@
-* I_F.REDO.AA.UNC.PENDING Created 26 AUG 17 at 06:11PM by da5tus/UPGRADE2
-*      PREFIX[AA.UN]
-                   EQU AA.UN.ARR.STATUS TO 1,   RedoAaUncPending_ArrStatus TO 1

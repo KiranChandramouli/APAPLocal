@@ -1,3 +1,0 @@
-* I_F.REDO.ACH.DET.IDS Created 30 OCT 10 at 09:23AM by apap/SWAMI.1
-*      PREFIX[CONC.ACH]
-         EQU CONC.ACH.ACH.DET.ID TO 1,   RedoAchDetIds_AchDetId TO 1
