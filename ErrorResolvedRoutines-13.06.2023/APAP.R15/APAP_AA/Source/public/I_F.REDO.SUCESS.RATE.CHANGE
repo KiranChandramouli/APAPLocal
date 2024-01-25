@@ -1,4 +1,0 @@
-* I_F.REDO.SUCESS.RATE.CHANGE Created 22 SEP 10 at 04:58PM by apapr8/KISHORE2
-*      PREFIX[REDO.SUC]
-               EQU REDO.SUC.DATE TO 1,   RedoSucessRateChange_Date TO 1,
-      REDO.SUC.OLD.INTEREST.RATE TO 2,   RedoSucessRateChange_OldInterestRate TO 2
