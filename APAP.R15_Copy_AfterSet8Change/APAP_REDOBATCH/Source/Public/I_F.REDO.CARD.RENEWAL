@@ -1,9 +1,0 @@
-* I_F.REDO.CARD.RENEWAL Created 10 JUN 11 at 10:18AM by apapr8/KAVI1
-*      PREFIX[REDO.RENEW]
-       EQU REDO.RENEW.PREV.CARD.NO TO 1,   RedoCardRenewal_PrevCardNo TO 1,
-           REDO.RENEW.NEXT.CARD.NO TO 2,   RedoCardRenewal_NextCardNo TO 2,
-           REDO.RENEW.TYPE.OF.CARD TO 3,   RedoCardRenewal_TypeOfCard TO 3,
-            REDO.RENEW.EXPIRY.DATE TO 4,   RedoCardRenewal_ExpiryDate TO 4,
-                 REDO.RENEW.STATUS TO 5,   RedoCardRenewal_Status TO 5,
-             REDO.RENEW.ISSUE.TYPE TO 6,   RedoCardRenewal_IssueType TO 6,
-             REDO.RENEW.AUTO.RENEW TO 7,   RedoCardRenewal_AutoRenew TO 7

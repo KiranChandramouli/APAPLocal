@@ -1,3 +1,0 @@
-* I_F.REDO.CUSTOMER.REQUESTS Created 01 MAR 11 at 07:12PM by t24tqa02/INPUTTER
-*      PREFIX[CU.CO]
-            EQU CU.CO.CUS.CNT TO 1,   RedoCustomerRequests_CusCnt TO 1
