@@ -1,3 +1,0 @@
-* I_F.REDO.CARD.REG.STOCK Created 03 JUN 11 at 03:22PM by apap/KAVI
-*      PREFIX[REDO.CARD.REG.STOCK]
-         EQU REDO.CARD.REG.STOCK.SERIES.BAL TO 1,   RedoCardRegStock_SeriesBal TO 1

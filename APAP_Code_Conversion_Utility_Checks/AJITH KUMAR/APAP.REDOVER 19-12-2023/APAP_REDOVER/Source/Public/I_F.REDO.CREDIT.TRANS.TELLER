@@ -1,5 +1,0 @@
-* I_F.REDO.CREDIT.TRANS.TELLER Created 20 APR 10 at 07:12PM by apapr8/PRABHU
-*      PREFIX[CT]
-     EQU CT.TRANSACTION.ID TO 1,   RedoCreditTransTeller_TransactionId TO 1,
-                   CT.DATE TO 2,   RedoCreditTransTeller_Date TO 2,
-              CT.CREDIT.NO TO 3,   RedoCreditTransTeller_CreditNo TO 3

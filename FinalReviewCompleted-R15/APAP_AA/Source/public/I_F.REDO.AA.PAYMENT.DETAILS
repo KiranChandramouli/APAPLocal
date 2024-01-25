@@ -1,5 +1,0 @@
-* I_F.REDO.AA.PAYMENT.DETAILS Created 26 OCT 10 at 06:11PM by apapr8/GANES
-*      PREFIX[REDO.PAYMENT.DET]
-             EQU REDO.PAYMENT.DET.ARR.ID TO 1,   RedoAaPaymentDetails_ArrId TO 1,
-         REDO.PAYMENT.DET.EFFECTIVE.DATE TO 2,   RedoAaPaymentDetails_EffectiveDate TO 2,
-         REDO.PAYMENT.DET.ACTIVITY.CLASS TO 3,   RedoAaPaymentDetails_ActivityClass TO 3
