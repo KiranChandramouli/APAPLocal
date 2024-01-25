@@ -1,3 +1,0 @@
-* I_F.REDO.CARD.NO.LOCK Created 24 JAN 11 at 04:06PM by apapr8/SRSWAM
-*      PREFIX[REDO.CARD.LOCK]
-        EQU REDO.CARD.LOCK.CARD.NUMBER TO 1,   RedoCardNoLock_CardNumber TO 1

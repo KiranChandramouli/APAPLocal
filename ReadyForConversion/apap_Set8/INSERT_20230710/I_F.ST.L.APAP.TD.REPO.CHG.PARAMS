@@ -1,8 +1,0 @@
-* File Layout for ST.L.APAP.TD.REPO.CHG.PARAMS Created 10 MAR 18 at 06:28AM by t24dmpro
-*      PREFIX[ST.L.A22.]   
-EQU ST.L.A22.COMMISSION.TYPE TO 1,           ST.L.A22.CARD.TYPE TO 2, 
-           ST.L.A22.OVERRIDE TO 3,       ST.L.A22.RECORD.STATUS TO 4, 
-            ST.L.A22.CURR.NO TO 5,            ST.L.A22.INPUTTER TO 6, 
-          ST.L.A22.DATE.TIME TO 7,          ST.L.A22.AUTHORISER TO 8, 
-            ST.L.A22.CO.CODE TO 9,          ST.L.A22.DEPT.CODE TO 10, 
-      ST.L.A22.AUDITOR.CODE TO 11,    ST.L.A22.AUDIT.DATE.TIME TO 12

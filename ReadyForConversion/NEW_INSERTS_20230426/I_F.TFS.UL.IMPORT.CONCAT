@@ -1,3 +1,0 @@
-* File Layout for TFS.UL.IMPORT.CONCAT Created 25 JUL 05 at 12:21PM by t24tt
-*      PREFIX[TFS.UL.IMP.CON.]      SUFFIX[]
-EQU TFS.UL.IMP.CON.TFS.TRAN.ID TO 1

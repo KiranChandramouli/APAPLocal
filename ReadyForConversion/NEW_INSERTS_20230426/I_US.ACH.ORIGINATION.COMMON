@@ -1,4 +1,0 @@
-COM /US.ACH.ORIGINATION/ US.ACH$FN.STO, US.ACH$F.STO,
-                         US.ACH$FN.FT, US.ACH$F.FT,
-                         US.ACH$FN.UAP, US.ACH$F.UAP, US.ACH$R.UAP,
-                         US.ACH$POS, US.ACH.TRACE.NO$POS, US.ACH$PROCESS.GOAHEAD
