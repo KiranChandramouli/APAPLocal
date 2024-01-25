@@ -1,6 +1,0 @@
-* I_F.REDO.TRANUTIL.INTAMT Created 30 MAR 12 at 03:17PM by apapr8/RKV000
-*      PREFIX[TRAN.INT]
-          EQU TRAN.INT.UTIL.DATE TO 1,   RedoTranutilIntamt_UtilDate TO 1,
-            TRAN.INT.UTIL.AMOUNT TO 2,   RedoTranutilIntamt_UtilAmount TO 2,
-          TRAN.INT.CALC.INTEREST TO 3,   RedoTranutilIntamt_CalcInterest TO 3,
-             TRAN.INT.NO.OF.DAYS TO 4,   RedoTranutilIntamt_NoOfDays TO 4

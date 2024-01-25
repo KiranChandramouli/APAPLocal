@@ -1,7 +1,0 @@
-*
-    * I_F.DR.REG.RIEN4.AC.REP1 Created 01 JUN 13 at 06:36AM by apap/GANGADHAR1
-*      PREFIX[DR.RIEN4.AC1]
-           EQU DR.RIEN4.AC1.INT.RATE TO 1,   DrRegRien4AcRep1_IntRate TO 1,
-         DR.RIEN4.AC1.ONLINE.ACT.BAL TO 2,   DrRegRien4AcRep1_OnlineActBal TO 2,
-               DR.RIEN4.AC1.CATEGORY TO 3,   DrRegRien4AcRep1_Category TO 3,
-                  DR.RIEN4.AC1.TOTAL TO 4,   DrRegRien4AcRep1_Total TO 4

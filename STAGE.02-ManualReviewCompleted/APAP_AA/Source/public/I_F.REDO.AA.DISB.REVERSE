@@ -1,6 +1,0 @@
-* I_F.REDO.AA.DISB.REVERSE Created 01 JUL 17 at 05:14PM by da5tus/E.01252
-*      PREFIX[AA.RE]
-                     EQU AA.RE.DESB.REF TO 1,   RedoAaDisbReverse_DesbRef TO 1,
-                      AA.RE.FT.TEMP.REF TO 2,   RedoAaDisbReverse_FtTempRef TO 2,
-                       AA.RE.FT.TXN.REF TO 3,   RedoAaDisbReverse_FtTxnRef TO 3,
-                       AA.RE.RESERVED.1 TO 4,   RedoAaDisbReverse_Reserved1 TO 4

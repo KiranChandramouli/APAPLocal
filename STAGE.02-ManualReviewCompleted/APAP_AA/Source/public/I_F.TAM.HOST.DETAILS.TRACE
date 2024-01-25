@@ -1,5 +1,0 @@
-* I_F.TAM.HOST.DETAILS.TRACE Created 24 AUG 10 at 04:56PM by apapr8/RAMKUMAR.1
-*      PREFIX[HOST.DET]
-          EQU HOST.DET.HOST.NAME TO 1,   TamHostDetailsTrace_HostName TO 1,
-             HOST.DET.IP.ADDRESS TO 2,   TamHostDetailsTrace_IpAddress TO 2,
-                   HOST.DET.DATE TO 3,   TamHostDetailsTrace_Date TO 3

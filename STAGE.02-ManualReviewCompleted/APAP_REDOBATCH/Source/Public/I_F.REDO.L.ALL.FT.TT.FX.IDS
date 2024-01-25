@@ -1,8 +1,0 @@
-* I_F.REDO.L.ALL.FT.TT.FX.IDS Created 27 MAR 14 at 12:53PM by apdev/INPUTTER
-*      PREFIX[ALL.IDS]
-               EQU ALL.IDS.DATE TO 1,   RedoLAllFtTtFxIds_Date TO 1,
-            ALL.IDS.FT.TXN.TYPE TO 2,   RedoLAllFtTtFxIds_FtTxnType TO 2,
-            ALL.IDS.TT.TXN.TYPE TO 3,   RedoLAllFtTtFxIds_TtTxnType TO 3,
-           ALL.IDS.FX.DEAL.TYPE TO 4,   RedoLAllFtTtFxIds_FxDealType TO 4,
-            ALL.IDS.FX.CCY.SOLD TO 5,   RedoLAllFtTtFxIds_FxCcySold TO 5,
-             ALL.IDS.FX.CCY.BUY TO 6,   RedoLAllFtTtFxIds_FxCcyBuy TO 6

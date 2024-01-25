@@ -1,9 +1,0 @@
-*
-    * I_F.DR.REG.RIEN4.AZ.REP Created 30 MAY 13 at 11:15AM by apap/GANGADHAR1
-*      PREFIX[DR.RIEN4]
-           EQU DR.RIEN4.INT.RATE TO 1,   DrRegRien4AzRep_IntRate TO 1,
-               DR.RIEN4.MAT.DATE TO 2,   DrRegRien4AzRep_MatDate TO 2,
-                   DR.RIEN4.DAYS TO 3,   DrRegRien4AzRep_Days TO 3,
-              DR.RIEN4.PRINCIPAL TO 4,   DrRegRien4AzRep_Principal TO 4,
-              DR.RIEN4.DAY.RANGE TO 5,   DrRegRien4AzRep_DayRange TO 5,
-                  DR.RIEN4.TOTAL TO 6,   DrRegRien4AzRep_Total TO 6
